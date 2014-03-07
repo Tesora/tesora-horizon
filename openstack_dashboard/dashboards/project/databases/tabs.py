@@ -15,6 +15,7 @@
 #    under the License.
 
 from django.conf import settings
+from django import template
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import tabs
@@ -26,10 +27,21 @@ from openstack_dashboard.dashboards.project.databases import tables
 class OverviewTab(tabs.Tab):
     name = _("Overview")
     slug = "overview"
-    template_name = ("project/databases/_detail_overview.html")
 
     def get_context_data(self, request):
         return {"instance": self.tab_group.kwargs['instance']}
+
+    def get_template_name(self, request):
+        instance = self.tab_group.kwargs['instance']
+        template_file = ('project/databases/_detail_overview_%s.html'
+                         % instance.datastore['type'])
+        try:
+            template.loader.get_template(template_file)
+            return template_file
+        except template.TemplateDoesNotExist:
+            # This datastore type does not have a template file
+            # Just use the base template file
+            return ('project/databases/_detail_overview.html')
 
 
 class UserTab(tabs.TableTab):
