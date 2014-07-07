@@ -19,6 +19,8 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import exceptions
 from horizon import tabs
 from openstack_dashboard import api
+from openstack_dashboard.dashboards.project.database_configurations \
+    import config_param_manager
 from openstack_dashboard.dashboards.project.databases import db_capability
 from openstack_dashboard.dashboards.project.databases import tables
 
@@ -100,6 +102,25 @@ class DatabaseTab(tabs.TableTab):
         return True
 
 
+class ConfigDefaultsTab(tabs.TableTab):
+    table_classes = [tables.ConfigDefaultsTable]
+    name = _("Defaults")
+    slug = "config_defaults"
+    instance = None
+    template_name = "horizon/common/_detail_table.html"
+    preload = False
+
+    def get_config_defaults_data(self):
+        instance = self.tab_group.kwargs['instance']
+        values_data = []
+        data = api.trove.configuration_default(self.request, instance.id)
+        if data is not None:
+            for k, v in data.configuration.items():
+                values_data.append(
+                    config_param_manager.ConfigParam(None, k, v))
+        return sorted(values_data, key=lambda config: config.name)
+
+
 class BackupsTab(tabs.TableTab):
     table_classes = [tables.InstanceBackupsTable]
     name = _("Backups")
@@ -131,5 +152,5 @@ class BackupsTab(tabs.TableTab):
 
 class InstanceDetailTabs(tabs.TabGroup):
     slug = "instance_details"
-    tabs = (OverviewTab, UserTab, DatabaseTab, BackupsTab)
+    tabs = (OverviewTab, UserTab, DatabaseTab, BackupsTab, ConfigDefaultsTab)
     sticky = True

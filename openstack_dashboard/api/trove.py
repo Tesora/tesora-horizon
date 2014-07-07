@@ -211,3 +211,7 @@ def configuration_instances(request, group_id):
 
 def configuration_update(request, group_id, values):
     return troveclient(request).configurations.update(group_id, values)
+
+
+def configuration_default(request, instance_id):
+    return troveclient(request).instances.configuration(instance_id)

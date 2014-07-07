@@ -466,3 +466,15 @@ class InstanceBackupsTable(tables.DataTable):
         row_class = UpdateRow
         table_actions = (backup_tables.LaunchLink, backup_tables.DeleteBackup)
         row_actions = (backup_tables.RestoreLink, backup_tables.DeleteBackup)
+
+
+class ConfigDefaultsTable(tables.DataTable):
+    name = tables.Column('name', verbose_name=_('Property'))
+    value = tables.Column('value', verbose_name=_('Value'))
+
+    class Meta(object):
+        name = 'config_defaults'
+        verbose_name = _('Configuration Defaults')
+
+    def get_object_id(self, datum):
+        return datum.name
