@@ -148,3 +148,52 @@ class ResizeVolumeView(horizon_forms.ModalFormView):
         instance = self.get_object()
         return {'instance_id': self.kwargs['instance_id'],
                 'orig_size': instance.volume.get('size', 0)}
+
+
+class ResizeInstanceView(horizon_forms.ModalFormView):
+    form_class = forms.ResizeInstanceForm
+    template_name = 'project/databases/resize_instance.html'
+    success_url = reverse_lazy('horizon:project:databases:index')
+
+    @memoized.memoized_method
+    def get_object(self, *args, **kwargs):
+        instance_id = self.kwargs['instance_id']
+        try:
+            instance = api.trove.instance_get(self.request, instance_id)
+            flavor_id = instance.flavor['id']
+            flavors = self.get_flavors()
+            if flavor_id in flavors:
+                instance.flavor_name = flavors[flavor_id].name
+            else:
+                flavor = api.trove.flavor_get(self.request, flavor_id)
+                instance.flavor_name = flavor.name
+            return instance
+        except Exception:
+            redirect = reverse('horizon:project:databases:index')
+            msg = _('Unable to retrieve instance details.')
+            exceptions.handle(self.request, msg, redirect=redirect)
+
+    def get_context_data(self, **kwargs):
+        context = super(ResizeInstanceView, self).get_context_data(**kwargs)
+        context['instance_id'] = self.kwargs['instance_id']
+        return context
+
+    @memoized.memoized_method
+    def get_flavors(self, *args, **kwargs):
+        try:
+            flavors = api.trove.flavor_list(self.request)
+            return SortedDict((str(f.id), f) for f in flavors)
+        except Exception:
+            redirect = reverse("horizon:project:databases:index")
+            exceptions.handle(self.request,
+                _('Unable to retrieve flavors.'), redirect=redirect)
+
+    def get_initial(self):
+        initial = super(ResizeInstanceView, self).get_initial()
+        _object = self.get_object()
+        if _object:
+            initial.update({'instance_id': self.kwargs['instance_id'],
+                'old_flavor_id': _object.flavor['id'],
+                'old_flavor_name': getattr(_object, 'flavor_name', ''),
+                'flavors': self.get_flavors()})
+        return initial
