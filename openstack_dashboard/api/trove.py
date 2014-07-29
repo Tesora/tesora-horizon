@@ -1,4 +1,5 @@
 # Copyright 2013 Rackspace Hosting.
+# Copyright 2015 HP Software, LLC
 #
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
 #    not use this file except in compliance with the License. You may obtain
@@ -40,6 +41,64 @@ def troveclient(request):
     c.client.auth_token = request.user.token.id
     c.client.management_url = trove_url
     return c
+
+
+def cluster_list(request, marker=None):
+    # default_page_size = getattr(settings, 'API_RESULT_PAGE_SIZE', 20)
+    # page_size = request.session.get('horizon_pagesize', default_page_size)
+    page_size = utils.get_page_size(request)
+    return troveclient(request).clusters.list(limit=page_size, marker=marker)
+
+
+def cluster_get(request, cluster_id):
+    return troveclient(request).clusters.get(cluster_id)
+
+
+def cluster_delete(request, cluster_id):
+    return troveclient(request).clusters.delete(cluster_id)
+
+
+def cluster_create(request, name, volume, flavor, num_instances,
+                   datastore, datastore_version, users=None):
+    # TODO(dklyle): adding conditional to support trove without volume
+    # support for now until API supports checking for volume support
+    if volume > 0:
+        volume_params = {'size': volume}
+    else:
+        volume_params = None
+    instances = []
+    for i in range(0, num_instances):
+        instance = {}
+        instance["flavorRef"] = flavor
+        instance["volume"] = volume_params
+        instances.append(instance)
+
+    # It appears the code below depends on this trove change
+    # https://review.openstack.org/#/c/166954/.  Comment out when that
+    # change merges.
+    # return troveclient(request).clusters.create(
+    #     name,
+    #     datastore,
+    #     datastore_version,
+    #     instances=instances,
+    #     users=users)
+    return troveclient(request).clusters.create(
+        name,
+        datastore,
+        datastore_version,
+        instances=instances)
+
+
+def cluster_add_shard(request, cluster_id):
+    return troveclient(request).clusters.add_shard(cluster_id)
+
+
+def cluster_edit_admin(request, cluster_id, user, password):
+    # It appears the code below depends on this trove change
+    # https://review.openstack.org/#/c/166954/.  Comment out when that
+    # change merges.
+    # return troveclient(request).cluster.reset_root_password(cluster_id)
+    pass
 
 
 def instance_list(request, marker=None):

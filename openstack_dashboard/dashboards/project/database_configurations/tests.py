@@ -58,7 +58,7 @@ class DatabaseConfigurationsTests(test.TestCase):
         api.trove.datastore_list(IsA(http.HttpRequest)) \
             .AndReturn(self.datastores.list())
         api.trove.datastore_version_list(IsA(http.HttpRequest), IsA(str)) \
-            .AndReturn(self.datastore_versions.list())
+            .MultipleTimes().AndReturn(self.datastore_versions.list())
         self.mox.ReplayAll()
         res = self.client.get(CREATE_URL)
         self.assertTemplateUsed(res,
@@ -96,7 +96,7 @@ class DatabaseConfigurationsTests(test.TestCase):
         api.trove.datastore_list(IsA(http.HttpRequest)) \
             .AndReturn(self.datastores.list())
         api.trove.datastore_version_list(IsA(http.HttpRequest), IsA(str)) \
-            .AndReturn(self.datastore_versions.list())
+            .MultipleTimes().AndReturn(self.datastore_versions.list())
 
         name = u'config1'
         values = "{}"
@@ -136,7 +136,7 @@ class DatabaseConfigurationsTests(test.TestCase):
         api.trove.datastore_list(IsA(http.HttpRequest)) \
             .AndReturn(self.datastores.list())
         api.trove.datastore_version_list(IsA(http.HttpRequest), IsA(str)) \
-            .AndReturn(self.datastore_versions.list())
+            .MultipleTimes().AndReturn(self.datastore_versions.list())
 
         name = u'config1'
         values = "{}"
