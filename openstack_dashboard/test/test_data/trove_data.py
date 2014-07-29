@@ -489,7 +489,7 @@ def data(TEST):
     TEST.datastores.add(datastore1)
     TEST.datastores.add(datastore_mongodb)
     TEST.datastore_versions = utils.TestDataContainer()
+    TEST.datastore_versions.add(version_mongodb_2_6)
     TEST.datastore_versions.add(version1)
     TEST.datastore_versions.add(version2)
     TEST.database_flavors.add(flavor1, flavor2, flavor3)
-    TEST.datastore_versions.add(version_mongodb_2_6)

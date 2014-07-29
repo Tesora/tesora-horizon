@@ -120,6 +120,13 @@ class DetailView(horizon_tabs.TabbedTableView):
             LOG.error('Unable to retrieve flavor details'
                       ' for database cluster: %s' % cluster_id)
         cluster.num_instances = len(cluster.instances)
+
+        # Todo(saurabhs) Set mgmt_url to dispaly Mgmt Console URL on
+        # cluster details page
+        # for instance in cluster.instances:
+        #   if instance['type'] == "master":
+        #       cluster.mgmt_url = "https://%s:5450/webui" % instance['ip'][0]
+
         return cluster
 
     def get_tabs(self, request, *args, **kwargs):
@@ -184,7 +191,7 @@ class ResetPasswordView(horizon_forms.ModalFormView):
     form_class = forms.ResetPasswordForm
     template_name = 'project/database_clusters/reset_password.html'
     success_url = reverse_lazy('horizon:project:database_clusters:index')
-    page_title = _("Reset Password")
+    page_title = _("Reset Root Password")
 
     @memoized.memoized_method
     def get_object(self, *args, **kwargs):

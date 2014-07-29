@@ -103,11 +103,15 @@ class ClustersTests(test.TestCase):
         self.assertTemplateUsed(res, 'project/database_clusters/index.html')
         self.assertMessageCount(res, error=1)
 
-    @test.create_stubs({api.trove: ('flavor_list',
+    @test.create_stubs({api.trove: ('datastore_flavors',
                                     'datastore_list',
-                                    'datastore_version_list')})
+                                    'datastore_version_list'),
+                        api.base: ['is_service_enabled']})
     def test_launch_cluster(self):
-        api.trove.flavor_list(IsA(http.HttpRequest))\
+        api.base.is_service_enabled(IsA(http.HttpRequest), 'network')\
+            .AndReturn(False)
+        api.trove.datastore_flavors(IsA(http.HttpRequest),
+                                    'mongodb', '2.6')\
             .AndReturn(self.flavors.list())
         api.trove.datastore_list(IsA(http.HttpRequest))\
             .AndReturn(self.datastores.list())
@@ -118,12 +122,16 @@ class ClustersTests(test.TestCase):
         res = self.client.get(LAUNCH_URL)
         self.assertTemplateUsed(res, 'project/database_clusters/launch.html')
 
-    @test.create_stubs({api.trove: ('flavor_list',
+    @test.create_stubs({api.trove: ['datastore_flavors',
                                     'cluster_create',
                                     'datastore_list',
-                                    'datastore_version_list')})
+                                    'datastore_version_list'],
+                        api.base: ['is_service_enabled']})
     def test_create_simple_cluster(self):
-        api.trove.flavor_list(IsA(http.HttpRequest))\
+        api.base.is_service_enabled(IsA(http.HttpRequest), 'network')\
+            .AndReturn(False)
+        api.trove.datastore_flavors(IsA(http.HttpRequest),
+                                    'mongodb', '2.6')\
             .AndReturn(self.flavors.list())
         api.trove.datastore_list(IsA(http.HttpRequest))\
             .AndReturn(self.datastores.list())
@@ -136,6 +144,7 @@ class ClustersTests(test.TestCase):
         cluster_instances = 3
         cluster_datastore = u'mongodb'
         cluster_datastore_version = u'2.6'
+        cluster_network = u''
         api.trove.cluster_create(
             IsA(http.HttpRequest),
             cluster_name,
@@ -144,39 +153,51 @@ class ClustersTests(test.TestCase):
             cluster_instances,
             datastore=cluster_datastore,
             datastore_version=cluster_datastore_version,
-            users=None).AndReturn(self.trove_clusters.first())
+            nics=cluster_network,
+            root_password=None).AndReturn(self.trove_clusters.first())
 
         self.mox.ReplayAll()
         post = {
             'name': cluster_name,
             'volume': cluster_volume,
             'num_instances': cluster_instances,
-            'datastore': cluster_datastore + u',' + cluster_datastore_version,
-            'flavor': cluster_flavor,
-            'num_shards': cluster_instances
+            'num_shards': 1,
+            'num_instances_per_shards': cluster_instances,
+            'datastore': cluster_datastore + u'-' + cluster_datastore_version,
+            'mongodb_flavor': cluster_flavor,
+            'network': cluster_network
         }
 
         res = self.client.post(LAUNCH_URL, post)
         self.assertNoFormErrors(res)
         self.assertMessageCount(success=1)
 
-    @test.create_stubs({api.trove: ('flavor_list',
+    @test.create_stubs({api.trove: ['datastore_flavors',
                                     'cluster_create',
                                     'datastore_list',
-                                    'datastore_version_list')})
-    def test_create_simple_cluster_exception(self):
-        api.trove.flavor_list(IsA(http.HttpRequest))\
+                                    'datastore_version_list'],
+                        api.neutron: ['network_list_for_tenant'],
+                        api.base: ['is_service_enabled']})
+    def test_create_simple_cluster_neutron(self):
+        api.base.is_service_enabled(IsA(http.HttpRequest), 'network')\
+            .AndReturn(True)
+        api.neutron.network_list_for_tenant(IsA(http.HttpRequest), '1')\
+            .AndReturn(self.networks.list())
+        api.trove.datastore_flavors(IsA(http.HttpRequest),
+                                    'mongodb', '2.6')\
             .AndReturn(self.flavors.list())
         api.trove.datastore_list(IsA(http.HttpRequest))\
             .AndReturn(self.datastores.list())
         api.trove.datastore_version_list(IsA(http.HttpRequest), IsA(str))\
             .AndReturn(self.datastore_versions.list())
+
         cluster_name = u'MyCluster'
         cluster_volume = 1
         cluster_flavor = u'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
         cluster_instances = 3
         cluster_datastore = u'mongodb'
         cluster_datastore_version = u'2.6'
+        cluster_network = u'82288d84-e0a5-42ac-95be-e6af08727e42'
         api.trove.cluster_create(
             IsA(http.HttpRequest),
             cluster_name,
@@ -185,16 +206,69 @@ class ClustersTests(test.TestCase):
             cluster_instances,
             datastore=cluster_datastore,
             datastore_version=cluster_datastore_version,
-            users=None).AndRaise(self.exceptions.trove)
+            nics=cluster_network,
+            root_password=None).AndReturn(self.trove_clusters.first())
 
         self.mox.ReplayAll()
         post = {
             'name': cluster_name,
             'volume': cluster_volume,
             'num_instances': cluster_instances,
-            'datastore': cluster_datastore + u',' + cluster_datastore_version,
-            'flavor': cluster_flavor,
-            'num_shards': cluster_instances
+            'num_shards': 1,
+            'num_instances_per_shards': cluster_instances,
+            'datastore': cluster_datastore + u'-' + cluster_datastore_version,
+            'mongodb_flavor': cluster_flavor,
+            'network': cluster_network
+        }
+
+        res = self.client.post(LAUNCH_URL, post)
+        self.assertNoFormErrors(res)
+        self.assertMessageCount(success=1)
+
+    @test.create_stubs({api.trove: ['datastore_flavors',
+                                    'cluster_create',
+                                    'datastore_list',
+                                    'datastore_version_list'],
+                        api.neutron: ['network_list_for_tenant']})
+    def test_create_simple_cluster_exception(self):
+        api.neutron.network_list_for_tenant(IsA(http.HttpRequest), '1')\
+            .AndReturn(self.networks.list())
+        api.trove.datastore_flavors(IsA(http.HttpRequest),
+                                    'mongodb', '2.6')\
+            .AndReturn(self.flavors.list())
+        api.trove.datastore_list(IsA(http.HttpRequest))\
+            .AndReturn(self.datastores.list())
+        api.trove.datastore_version_list(IsA(http.HttpRequest), IsA(str))\
+            .AndReturn(self.datastore_versions.list())
+
+        cluster_name = u'MyCluster'
+        cluster_volume = 1
+        cluster_flavor = u'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+        cluster_instances = 3
+        cluster_datastore = u'mongodb'
+        cluster_datastore_version = u'2.6'
+        cluster_network = u'82288d84-e0a5-42ac-95be-e6af08727e42'
+        api.trove.cluster_create(
+            IsA(http.HttpRequest),
+            cluster_name,
+            cluster_volume,
+            cluster_flavor,
+            cluster_instances,
+            datastore=cluster_datastore,
+            datastore_version=cluster_datastore_version,
+            nics=cluster_network,
+            root_password=None).AndReturn(self.trove_clusters.first())
+
+        self.mox.ReplayAll()
+        post = {
+            'name': cluster_name,
+            'volume': cluster_volume,
+            'num_instances': cluster_instances,
+            'num_shards': 1,
+            'num_instances_per_shards': cluster_instances,
+            'datastore': cluster_datastore + u'-' + cluster_datastore_version,
+            'mongodb_flavor': cluster_flavor,
+            'network': cluster_network
         }
 
         res = self.client.post(LAUNCH_URL, post)

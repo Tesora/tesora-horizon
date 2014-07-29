@@ -78,7 +78,7 @@ class AddShard(tables.LinkAction):
 
 class ResetPassword(tables.LinkAction):
     name = "reset_password"
-    verbose_name = _("Reset Password")
+    verbose_name = _("Reset Root Password")
     url = "horizon:project:database_clusters:reset_password"
     classes = ("ajax-modal",)
 
@@ -171,10 +171,27 @@ def get_instance_size(instance):
     return _("Not available")
 
 
+def get_instance_type(instance):
+    if hasattr(instance, "type"):
+        return instance.type
+    return _("Not available")
+
+
+def get_host(instance):
+    if hasattr(instance, "hostname"):
+        return instance.hostname
+    elif hasattr(instance, "ip") and instance.ip:
+        return instance.ip[0]
+    return _("Not Assigned")
+
+
 class InstancesTable(tables.DataTable):
     name = tables.Column("name",
-                         link=("horizon:project:databases:detail"),
                          verbose_name=_("Name"))
+    type = tables.Column(get_instance_type,
+                         verbose_name=_("Type"))
+    host = tables.Column(get_host,
+                         verbose_name=_("Host"))
     size = tables.Column(get_instance_size,
                          verbose_name=_("Size"),
                          attrs={'data-type': 'size'})
