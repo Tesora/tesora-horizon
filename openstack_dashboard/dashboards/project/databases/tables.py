@@ -35,7 +35,7 @@ class TerminateInstance(tables.BatchAction):
     action_past = _("Scheduled termination of %(data_type)s")
     data_type_singular = _("Instance")
     data_type_plural = _("Instances")
-    classes = ("ajax-modal",)
+    classes = ("btn-danger", )
     icon = "off"
 
     def action(self, request, obj_id):
@@ -75,9 +75,6 @@ class DetachReplication(tables.BatchAction):
 
 
 class DeleteUser(tables.DeleteAction):
-    name = "delete"
-    action_present = _("Delete")
-    action_past = _("Deleted")
     data_type_singular = _("User")
     data_type_plural = _("Users")
 
@@ -91,9 +88,6 @@ class DeleteUser(tables.DeleteAction):
 
 
 class DeleteDatabase(tables.DeleteAction):
-    name = "delete"
-    action_present = _("Delete")
-    action_past = _("Deleted")
     data_type_singular = _("Database")
     data_type_plural = _("Databases")
 
