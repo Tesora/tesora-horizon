@@ -329,10 +329,7 @@ class LaunchInstance(workflows.Workflow):
         return backup
 
     def _get_master(self, context):
-        master = None
-        if context.get('master'):
-            master = {'slave_of': context['master']}
-        return master
+        return context.get('master', None)
 
     def _get_nics(self, context):
         netids = context.get('network_id', None)
@@ -350,7 +347,7 @@ class LaunchInstance(workflows.Workflow):
                      "{name=%s, volume=%s, flavor=%s, "
                      "datastore=%s, datastore_version=%s, "
                      "dbs=%s, users=%s, "
-                     "backups=%s, nics=%s, slave+of=%s}",
+                     "backups=%s, nics=%s, slave_of=%s}",
                      context['name'], context['volume'], context['flavor'],
                      datastore, datastore_version,
                      self._get_databases(context), self._get_users(context),

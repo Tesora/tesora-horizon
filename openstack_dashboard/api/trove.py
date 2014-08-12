@@ -96,7 +96,7 @@ def instance_restart(request, instance_id):
 
 
 def instance_detach_replication(request, instance_id):
-    return None
+    return troveclient(request).instances.detach_replication(instance_id)
 
 
 def database_list(request, instance_id):
