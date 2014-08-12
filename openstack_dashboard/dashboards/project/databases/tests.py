@@ -160,7 +160,8 @@ class DatabaseTests(test.TestCase):
 
     @test.create_stubs({
         api.trove: ('flavor_list', 'backup_list', 'instance_create',
-                    'datastore_list', 'datastore_version_list'),
+                    'datastore_list', 'datastore_version_list',
+                    'instance_list'),
         api.neutron: ('network_list',)})
     def test_create_simple_instance(self):
         api.trove.flavor_list(IsA(http.HttpRequest)).AndReturn(
@@ -168,6 +169,9 @@ class DatabaseTests(test.TestCase):
 
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
+
+        api.trove.instance_list(IsA(http.HttpRequest)).AndReturn(
+            self.databases.list())
 
         # Mock datastores
         api.trove.datastore_list(IsA(http.HttpRequest))\
@@ -198,6 +202,7 @@ class DatabaseTests(test.TestCase):
             datastore=IsA(unicode),
             datastore_version=IsA(unicode),
             restore_point=None,
+            slave_of=None,
             users=None,
             nics=nics).AndReturn(self.databases.first())
 
@@ -215,7 +220,8 @@ class DatabaseTests(test.TestCase):
 
     @test.create_stubs({
         api.trove: ('flavor_list', 'backup_list', 'instance_create',
-                    'datastore_list', 'datastore_version_list'),
+                    'datastore_list', 'datastore_version_list',
+                    'instance_list'),
         api.neutron: ('network_list',)})
     def test_create_simple_instance_exception(self):
         trove_exception = self.exceptions.nova
@@ -224,6 +230,9 @@ class DatabaseTests(test.TestCase):
 
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
+
+        api.trove.instance_list(IsA(http.HttpRequest)).AndReturn(
+            self.databases.list())
 
         # Mock datastores
         api.trove.datastore_list(IsA(http.HttpRequest))\
@@ -254,6 +263,7 @@ class DatabaseTests(test.TestCase):
             datastore=IsA(unicode),
             datastore_version=IsA(unicode),
             restore_point=None,
+            slave_of=None,
             users=None,
             nics=nics).AndRaise(trove_exception)
 
@@ -439,3 +449,62 @@ class DatabaseTests(test.TestCase):
         res = self.client.post(url, post)
         self.assertContains(res, "Please choose a new flavor that can "
                                  "not be same as the old one.")
+
+    @test.create_stubs({
+        api.trove: ('flavor_list', 'backup_list', 'instance_create',
+                    'datastore_list', 'datastore_version_list',
+                    'instance_list'),
+        api.neutron: ('network_list',)})
+    def test_create_replication_instance(self):
+        api.trove.flavor_list(IsA(http.HttpRequest)).AndReturn(
+            self.flavors.list())
+
+        api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
+            self.database_backups.list())
+
+        api.trove.instance_list(IsA(http.HttpRequest)).AndReturn(
+            self.databases.list())
+
+        api.trove.datastore_list(IsA(http.HttpRequest))\
+            .AndReturn(self.datastores.list())
+
+        api.trove.datastore_version_list(IsA(http.HttpRequest),
+            IsA(str)).AndReturn(self.datastore_versions.list())
+
+        api.neutron.network_list(IsA(http.HttpRequest),
+                                 tenant_id=self.tenant.id,
+                                 shared=False).AndReturn(
+                                     self.networks.list()[:1])
+
+        api.neutron.network_list(IsA(http.HttpRequest),
+                                 shared=True).AndReturn(
+                                     self.networks.list()[1:])
+
+        nics = [{"net-id": self.networks.first().id, "v4-fixed-ip": ''}]
+
+        # Actual create database call
+        api.trove.instance_create(
+            IsA(http.HttpRequest),
+            IsA(unicode),
+            IsA(int),
+            IsA(unicode),
+            databases=None,
+            datastore=IsA(unicode),
+            datastore_version=IsA(unicode),
+            restore_point=None,
+            slave_of=self.databases.first().id,
+            users=None,
+            nics=nics).AndReturn(self.databases.first())
+
+        self.mox.ReplayAll()
+        post = {
+            'name': "MyDB",
+            'volume': '1',
+            'flavor': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+            'network': self.networks.first().id,
+            'datastore': 'mysql,5.5',
+            'master': self.databases.first().id
+        }
+
+        res = self.client.post(LAUNCH_URL, post)
+        self.assertRedirectsNoFollow(res, INDEX_URL)

@@ -68,7 +68,7 @@ class DetachReplication(tables.BatchAction):
 
     def allowed(self, request, instance=None):
         return (instance.status in ACTIVE_STATES
-                and instance.slave_of)
+                and hasattr(instance, 'slave_of'))
 
     def action(self, request, obj_id):
         api.trove.instance_detach_replication(request, obj_id)

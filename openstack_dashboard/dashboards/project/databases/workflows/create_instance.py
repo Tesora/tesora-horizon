@@ -329,7 +329,10 @@ class LaunchInstance(workflows.Workflow):
         return backup
 
     def _get_master(self, context):
-        return context.get('master', None)
+        master = None
+        if context.get('master'):
+            master = context['master']
+        return master
 
     def _get_nics(self, context):
         netids = context.get('network_id', None)
