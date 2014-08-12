@@ -227,7 +227,6 @@ class AdvancedAction(workflows.Action):
                                required=False,
                                help_text=_('Select a master instance'))
 
-
     class Meta:
         name = _("Advanced")
         help_text_template = "project/databases/_launch_advanced_help.html"
@@ -250,7 +249,7 @@ class AdvancedAction(workflows.Action):
         try:
             instances = api.trove.instance_list(request)
             choices = [(i.id, i.name) for i in instances
-                       if i.status == 'ACTIVE' ]
+                if i.status == 'ACTIVE']
         except Exception:
             choices = []
 
@@ -332,7 +331,7 @@ class LaunchInstance(workflows.Workflow):
     def _get_master(self, context):
         master = None
         if context.get('master'):
-            backup = {'slave_of': context['master']}
+            master = {'slave_of': context['master']}
         return master
 
     def _get_nics(self, context):

@@ -91,7 +91,6 @@ def instance_restart(request, instance_id):
 
 
 def instance_detach_replication(request, instance_id):
-    # TODO
     return None
 
 
