@@ -55,3 +55,30 @@
     {% endwith %}
   </dl>
 </div>
+
+{% if instance.slave_of or instance.slaves %}
+<div class="specs row detail">
+  <h4>{% trans "Replication" %}</h4>
+  <hr class="header_rule">
+  <dl>
+    {% if instance.slave_of %}
+      <dt>{% trans "Slave Of" %}</dt>
+      <dd>
+        {% url 'horizon:project:databases:detail' instance.slave_of.id as instance_url %}
+        <a href="{{ instance_url }}">{{ instance.slave_of.id }}</a>
+      </dd>
+    {% endif %}
+
+    {% if instance.slaves %}
+      <dt>{% trans "Slave" %}</dt>
+      {% for slave in instance.slaves %}
+        <dd>
+          {% url 'horizon:project:databases:detail' slave.id as instance_url %}
+          <a href="{{ instance_url }}">{{ slave.id }}</a>
+        </dd>
+      {% endfor %}
+    {% endif %}
+  </dl>
+</div>
+{% endif %}
+

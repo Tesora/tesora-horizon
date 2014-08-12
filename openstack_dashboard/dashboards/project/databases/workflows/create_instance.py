@@ -219,15 +219,18 @@ class InitializeDatabase(workflows.Step):
     contributes = ["databases", 'user', 'password', 'host']
 
 
-class RestoreAction(workflows.Action):
-    backup = forms.ChoiceField(label=_("Backup"),
+class AdvancedAction(workflows.Action):
+    backup = forms.ChoiceField(label=_("Restore from Backup"),
                                required=False,
                                help_text=_('Select a backup to restore'))
+    master = forms.ChoiceField(label=_("Replicate from Instance"),
+                               required=False,
+                               help_text=_('Select a master instance'))
+
 
     class Meta:
-        name = _("Restore From Backup")
-        permissions = ('openstack.services.object-store',)
-        help_text_template = "project/databases/_launch_restore_help.html"
+        name = _("Advanced")
+        help_text_template = "project/databases/_launch_advanced_help.html"
 
     def populate_backup_choices(self, request, context):
         try:
@@ -241,6 +244,20 @@ class RestoreAction(workflows.Action):
             choices.insert(0, ("", _("Select backup")))
         else:
             choices.insert(0, ("", _("No backups available")))
+        return choices
+
+    def populate_master_choices(self, request, context):
+        try:
+            instances = api.trove.instance_list(request)
+            choices = [(i.id, i.name) for i in instances
+                       if i.status == 'ACTIVE' ]
+        except Exception:
+            choices = []
+
+        if choices:
+            choices.insert(0, ("", _("Select instance")))
+        else:
+            choices.insert(0, ("", _("No instances available")))
         return choices
 
     def clean_backup(self):
@@ -257,9 +274,9 @@ class RestoreAction(workflows.Action):
         return backup
 
 
-class RestoreBackup(workflows.Step):
-    action_class = RestoreAction
-    contributes = ['backup']
+class Advanced(workflows.Step):
+    action_class = AdvancedAction
+    contributes = ['backup', 'master']
 
 
 class LaunchInstance(workflows.Workflow):
@@ -272,7 +289,7 @@ class LaunchInstance(workflows.Workflow):
     default_steps = (SetInstanceDetails,
                      SetNetwork,
                      InitializeDatabase,
-                     RestoreBackup)
+                     Advanced)
 
     def __init__(self, request=None, context_seed=None, entry_point=None,
                  *args, **kwargs):
@@ -312,6 +329,12 @@ class LaunchInstance(workflows.Workflow):
             backup = {'backupRef': context['backup']}
         return backup
 
+    def _get_master(self, context):
+        master = None
+        if context.get('master'):
+            backup = {'slave_of': context['master']}
+        return master
+
     def _get_nics(self, context):
         netids = context.get('network_id', None)
         if netids:
@@ -328,11 +351,12 @@ class LaunchInstance(workflows.Workflow):
                      "{name=%s, volume=%s, flavor=%s, "
                      "datastore=%s, datastore_version=%s, "
                      "dbs=%s, users=%s, "
-                     "backups=%s, nics=%s}",
+                     "backups=%s, nics=%s, slave+of=%s}",
                      context['name'], context['volume'], context['flavor'],
                      datastore, datastore_version,
                      self._get_databases(context), self._get_users(context),
-                     self._get_backup(context), self._get_nics(context))
+                     self._get_backup(context), self._get_nics(context),
+                     self._get_master(context))
             api.trove.instance_create(request,
                                       context['name'],
                                       context['volume'],
@@ -342,7 +366,8 @@ class LaunchInstance(workflows.Workflow):
                                       databases=self._get_databases(context),
                                       users=self._get_users(context),
                                       restore_point=self._get_backup(context),
-                                      nics=self._get_nics(context))
+                                      nics=self._get_nics(context),
+                                      slave_of=self._get_master(context))
             return True
         except Exception:
             exceptions.handle(request)
