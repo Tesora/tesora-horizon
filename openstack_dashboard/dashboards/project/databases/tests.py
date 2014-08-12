@@ -403,7 +403,7 @@ class DatabaseTests(test.TestCase):
                     'datastore_list', 'datastore_version_list',
                     'instance_list'),
         api.neutron: ('network_list',)})
-    def test_create_replication_instance(self):
+    def test_create_replica_instance(self):
         api.trove.flavor_list(IsA(http.HttpRequest)).AndReturn(
             self.flavors.list())
 

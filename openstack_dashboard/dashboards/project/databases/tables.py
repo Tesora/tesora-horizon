@@ -58,20 +58,20 @@ class RestartInstance(tables.BatchAction):
         api.trove.instance_restart(request, obj_id)
 
 
-class DetachReplication(tables.BatchAction):
-    name = "detach_replication"
+class DetachReplica(tables.BatchAction):
+    name = "detach_replica"
     action_present = _("Detach")
     action_past = _("Scheduled detatchment of %(data_type)s")
     data_type_singular = _("Replica")
     data_type_plural = _("Replicas")
-    classes = ('btn-danger', 'btn-detach-replication')
+    classes = ('btn-danger', 'btn-detach-replica')
 
     def allowed(self, request, instance=None):
         return (instance.status in ACTIVE_STATES
                 and hasattr(instance, 'replica_of'))
 
     def action(self, request, obj_id):
-        api.trove.instance_detach_replication(request, obj_id)
+        api.trove.instance_detach_replica(request, obj_id)
 
 
 class DeleteUser(tables.DeleteAction):
@@ -255,7 +255,7 @@ class InstancesTable(tables.DataTable):
                        ResizeVolume,
                        ResizeInstance,
                        RestartInstance,
-                       DetachReplication,
+                       DetachReplica,
                        TerminateInstance)
 
 
