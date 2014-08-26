@@ -155,9 +155,6 @@ h3 {
   margin-top: 190px;
 }
 
-.container-fluid {
-  padding-left: 0;
-}
 
 .sidebar {
   border-width: 0 5px 5px 0;
@@ -184,24 +181,10 @@ h3 {
   background-color: $body-bg;
 }
 
-h1.brand {
-  width: 100%;
-  margin: 0;
-}
 
-h1.brand a {
-  background: url(../img/logo.png) top left no-repeat;
-  display: block;
-  float: left;
-  width: 216px;
-  height: 35px;
-  text-indent: -9999px;
-  margin-left: 16px;
-}
 
 
 /* Tenant Dropdown */
-
 
 a.current_item {
   width: 163px;
