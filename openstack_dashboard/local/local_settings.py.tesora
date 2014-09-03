@@ -14,6 +14,12 @@ TEMPLATE_DEBUG = DEBUG
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['*', ]
 
+# Default Ubuntu apache configuration uses /horizon as the application root.
+# Configure auth redirects here accordingly.
+LOGIN_URL='/horizon/auth/login/'
+LOGOUT_URL='/horizon/auth/logout/'
+LOGIN_REDIRECT_URL='/horizon'
+
 # Set SSL proxy settings:
 # For Django 1.4+ pass this header from the proxy after terminating the SSL,
 # and don't forget to strip it from the client's request.
