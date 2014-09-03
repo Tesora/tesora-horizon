@@ -1,5 +1,5 @@
 // bootstrap overrides:
-$icon-font-path: "/static/bootstrap/fonts/bootstrap/";
+$icon-font-path: "../../bootstrap/fonts/bootstrap/";
 $font-size-base: 13px;
 $modal-md: 732px;
 
@@ -34,14 +34,14 @@ $modal-md: 732px;
 
 @font-face {
   font-family: 'anivers';
-  src: url('/static/dashboard/fonts/Anivers_Regular-webfont.eot');
-  src: url('/static/dashboard/fonts/Anivers_Regular-webfont.eot?iefix')
+  src: url('../fonts/Anivers_Regular-webfont.eot');
+  src: url('../fonts/Anivers_Regular-webfont.eot?iefix')
       format('eot'),
-    url('/static/dashboard/fonts/Anivers_Regular-webfont.woff')
+    url('../fonts/Anivers_Regular-webfont.woff')
       format('woff'),
-    url('/static/dashboard/fonts/Anivers_Regular-webfont.ttf')
+    url('../fonts/Anivers_Regular-webfont.ttf')
       format('truetype'),
-    url('/static/dashboard/fonts/Anivers_Regular-webfont.svg#webfont3JLVF59W')
+    url('../fonts/Anivers_Regular-webfont.svg#webfont3JLVF59W')
       format('svg');
   font-weight: normal;
   font-style: normal;
@@ -73,6 +73,18 @@ ul {
   margin: 0;
 }
 
+// Disc-styled list. This list should be used to build bullet-items lists.
+.list-bullet {
+  list-style: disc;
+}
+
+/* Used to build compact node groups and tags tables */
+.small-padding {
+  padding-left: 0;
+  padding-right: 5px;
+  padding-bottom: 5px;
+}
+
 dt {
   font-weight: bold;
 }
@@ -96,7 +108,7 @@ dt {
   margin-bottom: 0;
   margin-right: 10px;
   padding: 0;
-  background-image: url(/static/dashboard/img/drop_arrow.png);
+  background-image: url(../img/drop_arrow.png);
   background-color: $body-bg;
   background-repeat: no-repeat;
   border: 1px solid $gray-light;
@@ -144,7 +156,7 @@ dt {
   max-width: 200px;
   vertical-align: top;
   white-space: nowrap;
-  background-image: url(/static/dashboard/img/profile_drop.png);
+  background-image: url(../img/profile_drop.png);
   background-repeat: no-repeat;
   background-position: right center;
 }
@@ -188,7 +200,7 @@ h3 {
 /* Login Splash Page */
 
 #splash .login {
-  background: url(/static/dashboard/img/tesora-logo-splash.png) no-repeat center 35px;
+  background: url(../img/tesora-logo-splash.png) no-repeat center 35px;
   position: absolute;
   top: 80px;
   left: 50%;
@@ -261,7 +273,7 @@ h1.brand {
 }
 
 h1.brand a {
-  background: url(/static/dashboard/img/tesora-logo.png) top left no-repeat;
+  background: url(../img/logo.png) top left no-repeat;
   display: block;
   float: left;
   width: 216px;
@@ -300,7 +312,7 @@ a.current_item:hover h4 {
 .sidebar .switcher_bar a.dropdown-toggle {
   display: block;
   padding: 5px 0;
-  background-image: url(/static/dashboard/img/drop_arrow.png);
+  background-image: url(../img/drop_arrow.png);
   border: 1px solid #c0d9e4;
   background-color: #e9f5fa;
   background-repeat: no-repeat;
@@ -496,10 +508,10 @@ a.current_item:hover h4 {
   background-position: 98% center;
 }
 .table th.headerSortDown {
-  background-image: url(/static/dashboard/img/drop_arrow.png);
+  background-image: url(../img/drop_arrow.png);
 }
 .table th.headerSortUp {
-  background-image: url(/static/dashboard/img/up_arrow.png);
+  background-image: url(../img/up_arrow.png);
 }
 .table tr.summation td:first-child,
 .table tr.summation td:last-child {
@@ -656,6 +668,26 @@ table form {
   input[type="text"] {
     padding-right: 26px;
   }
+  select {
+    width: auto;
+  }
+}
+
+.table_actions .table_actions_menu {
+  display: inline-block;
+  position: relative;
+  margin-left: 5px;
+  .dropdown-menu {
+    left: auto;
+    right: 0;
+    a, button {
+      margin-left: 0px;
+      padding-left: 22px;
+      .glyphicon {
+        margin-left: -14px;
+      }
+    }
+  }
 }
 
 td.no-transition {
@@ -674,7 +706,7 @@ td.loading {
 }
 
 @mixin btn-icon-inline_edit($x, $y, $top: 1px, $left: 5px,
-    $icons: "/static/bootstrap/img/glyphicons-halflings.png") {
+    $icons: "../../bootstrap/img/glyphicons-halflings.png") {
   padding: 9px 12px 9px 12px;
   position: relative;
   border-radius: 0px;
@@ -704,31 +736,8 @@ td.inline_edit_available div.table_cell_wrapper .table_cell_action button.ajax-i
   border: 0 none;
 }
 
-@mixin btn-icon-inline-actions($x, $y, $top: 1px, $left: 5px,
-    $icons: "/static/bootstrap/img/glyphicons-halflings.png") {
-  padding: 9px 12px 9px 12px;
-  position: relative;
-  border-radius: 0px;
-
-  &:before {
-    display: inline-block;
-    content: "";
-    width: 18px;
-    height: 20px;
-    margin-top: 0px;
-    *margin-right: .3em;
-    line-height: 14px;
-    background-image: url($icons);
-    background-position: $x $y;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: $top;
-    left: $left;
-  }
-}
-
 @mixin status-icon($x, $y, $top: 1px, $left: 5px,
-    $icons: "/static/bootstrap/img/glyphicons-halflings.png") {
+    $icons: "../../bootstrap/img/glyphicons-halflings.png") {
   padding: 9px 12px 9px 12px;
   position: relative;
   border-radius: 0px;
@@ -767,17 +776,8 @@ div.table_cell_wrapper {
     width: 20px;
     margin: 0;
 
-    button.inline-edit-cancel {
-      float: right;
-      @include btn-icon-inline-actions(-312px, 0);
-    }
-
-    button.inline-edit-submit {
-      @include btn-icon-inline-actions(-288px, 0, 1px, 5px,
-        "/static/bootstrap/img/glyphicons-halflings-white.png");
-    }
     button.ajax-inline-edit {
-      @include btn-icon-inline-actions(0, -72px, 2px, 4px);
+      padding: 10px;
       position: relative;
       display: none;
       background: none;
@@ -794,14 +794,6 @@ div.table_cell_wrapper {
     top: -10px;
     right: 0px;
     z-index: 99;
-  }
-
-  .table_cell_action.hovered {
-    background-image: -webkit-linear-gradient(top, +body-bg, +gray-lighter);
-    border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
-    border: 1px solid $gray-light;
-    border-bottom-color: darken($gray-light, 10%);
-    border-radius: 4px;
   }
 
   .inline-edit-error {
@@ -829,7 +821,7 @@ div.table_cell_wrapper {
       z-index: 100;
     }
     .loading {
-      @include status-icon(0px, 0px, 0px, 0px, '/static/dashboard/img/spinner.gif');
+      @include status-icon(0px, 0px, 0px, 0px, '../img/spinner.gif');
       padding: 0;
       position:absolute;
       top: 0px;
@@ -890,6 +882,7 @@ div.table_cell_wrapper {
 .table-striped.datatable tbody {
   tr.odd td {
     background-color: $table-bg-odd;
+    background-clip: padding-box;
   }
   tr.even td {
     background-color: inherit;
@@ -898,6 +891,7 @@ div.table_cell_wrapper {
   tr.even:hover td,
   tr:hover th {
     background-color: $table-bg-hover;
+    background-clip: padding-box;
   }
 }
 
@@ -959,6 +953,10 @@ div.table_cell_wrapper {
     padding-left: 4px;
     color: $brand-primary;
   }
+
+  .normal_column ul {
+    padding-left: 0;
+  }
 }
 
 
@@ -972,6 +970,17 @@ form label {
     color: $gray;
     font-weight: bold;
     display: inline-block;
+}
+
+form .form-group > div.dynamic-select {
+  display: table;
+  border-collapse: separate;
+  > * {
+    display: table-cell;
+  }
+  > a {
+    width: 1%;
+  }
 }
 
 .modal.fullscreen .modal-dialog {
@@ -1126,7 +1135,10 @@ td.actions_column .btn-group {
 
 td.actions_column .row_actions a,
 td.actions_column .row_actions input,
-td.actions_column .row_actions button {
+td.actions_column .row_actions button,
+div.table_actions_menu .dropdown-menu a,
+div.table_actions_menu .dropdown-menu input,
+div.table_actions_menu .dropdown-menu button {
   background: none;
   float: none;
   display: block;
@@ -1177,14 +1189,16 @@ td.actions_column .btn-action-required {
 }
 
 td.actions_column .dropdown-menu a:hover,
-td.actions_column .dropdown-menu button:hover {
+td.actions_column .dropdown-menu button:hover,
+div.table_actions_menu .dropdown-menu a:hover,
+div.table_actions_menu .dropdown-menu button:hover {
   background-color: $gray-lighter;
 }
 .dropdown-menu .btn.btn-danger {
   color: $brand-danger;
 }
 .dropdown-menu .btn.btn-danger:hover {
-  background-color: $body-bg;
+  background-color: $gray-lighter;
 }
 
 
@@ -1311,7 +1325,7 @@ tr.terminated {
   font-weight: bold;
   color: #555;
   cursor: pointer;
-  background-image: url(/static/dashboard/img/right_droparrow.png);
+  background-image: url(../img/right_droparrow.png);
   background-repeat: no-repeat;
   background-position: 130px center;
 }
@@ -1320,7 +1334,7 @@ tr.terminated {
   width: 334px;
   margin-bottom: 10px;
   border-bottom: solid 1px $border-color;
-  background-image: url(/static/dashboard/img/drop_arrow.png);
+  background-image: url(../img/drop_arrow.png);
 }
 
 .nav-tabs a {
@@ -1375,7 +1389,7 @@ form .form-group.required > label:after {
 }
 
 #region_selector li:first-child p{
-  background: #ededed url(/static/dashboard/img/drop_arrow.png) no-repeat 106px 9px !important;
+  background: #ededed url(../img/drop_arrow.png) no-repeat 106px 9px !important;
   display: block;
   border: 1px solid #e1e1e1;
   padding: 5px;
@@ -1581,11 +1595,11 @@ label.log-length {
     /* Buttons */
   .btn-group {
     margin-left:0px;
-      padding: 2px 10px 0 0;
-      margin-bottom: 0px;
-      border: 1px solid $gray-light;
-      border-bottom: none;
-    }
+    padding: 3px 10px;
+    margin-bottom: 0px;
+    border: 1px solid $gray-light;
+    border-bottom: none;
+  }
   .btn-group .active {
     float: right;
   }
@@ -1595,68 +1609,54 @@ label.log-length {
 
   /* Header */
   .help_text {
-    margin-left: 15px;
+    margin-left: 5px;
     margin-bottom: 15px;
+    width: 650px;
   }
   .members_title {
     color: $gray;
     font-weight: bold;
-    padding-left: 10px;
     float: left;
+    line-height: 30px;
     width: 160px;
   }
-  input {
-    background: url(/static/dashboard/img/search.png) no-repeat 105px 5px;
-  }
-  input[type="text"]:disabled {
-    background: url(/static/dashboard/img/search.png) no-repeat 105px 5px $gray-lighter;
+  input[type="text"]:disabled + span.glyphicon-search {
+    color: $gray-light;
   }
   .fake_table_header {
     background-color: $body-bg;
-    width: 306px;
-    height: 38px;
-    padding-top: 15px;
+    padding: 10px;
     border: 1px solid $table-border-color;
     border-bottom: none;
+    overflow: hidden;
   }
 
     /* 'Fake table' body */
   .fake_table {
-    margin-left: 5px;
-    width: 315px;
-    ul.no_results {
-      width: 298px;
+    > ul {
+      padding: 0;
+      &.no_results {
+        border: 1px solid $table-border-color;
+        padding: 10px;
+      }
     }
     ul.btn-group:hover {
         background-color: $border-color;
     }
   }
-  .left {
-    .fake_table_header {
-      width: 318px;
-    }
-  }
-  .right {
-    .fake_table_header {
-      width: 318px;
-      margin-left: -15px;
-    }
-    .fake_table ul.no_results {
-      margin-left: -20px;
-    }
-  }
 
   /* Member lists */
   .member {
-    padding: 10px;
     text-align: left;
+    line-height: 32px;
   }
-  .members {
-    margin-left: -20px;
-  }
+
   .members ul.btn-group,
   .available_members ul.btn-group {
-    width: 308px;
+    display: block;
+    &.nav-pills > li > a {
+      padding: 6px 11px;
+    }
   }
   .dark_stripe {
     background-color: $table-bg-odd;
@@ -1667,19 +1667,18 @@ label.log-length {
   .last_stripe {
     border-bottom: 1px solid $table-border-color;
   }
-
+  .has-feedback {
+    display: inline-block;
+    float: right;
+    margin-bottom: 0;
+  }
   /* List filtering */
   .filter {
-    width: 120px;
-    margin: -5px 13px 15px 0px;
-    float: right;
+    width: 130px;
   }
-  .no_results {
-    border: 1px solid $table-border-color;
-    padding: 10px;
-    opacity: 0.5;
+  .form-control-feedback {
+    top:0;
   }
-
   /* Role dropdown menus */
   .role_dropdown li {
     cursor: pointer;
@@ -1694,9 +1693,15 @@ label.log-length {
     @include box-shadow(none);
     z-index: 99999;
     i {
+      @extend .glyphicon;
+      &:before { content: "\e013"; }
       opacity: 0;
+      display: inline-block;
+      width: 14px;
+      font-size: 12px;
+      line-height: 14px;
+      vertical-align: text-top;
     }
-
     &:hover {
       background-color: #cdcdcd;
     }
@@ -1769,7 +1774,7 @@ label.log-length {
     border-radius: 3px;
     cursor: move;
     padding-left: 23px;
-    background: $body-bg url(/static/dashboard/img/drag.png) no-repeat 11px 50%;
+    background: $body-bg url(../img/drag.png) no-repeat 11px 50%;
     em {
       font-size: 0.5em;
       line-height: 1em;
@@ -2185,7 +2190,7 @@ label.log-length {
     border-radius: 3px;
     cursor: move;
     padding-left: 23px;
-    background: $body-bg url(/static/dashboard/img/drag.png) no-repeat 11px 50%;
+    background: $body-bg url(../img/drag.png) no-repeat 11px 50%;
     em {
       font-size: 0.5em;
       line-height: 1em;
@@ -2283,11 +2288,11 @@ label.log-length {
   }
 
   &.tablesorter-headerAsc {
-    background-image: url(/static/dashboard/img/up_arrow.png);
+    background-image: url(../img/up_arrow.png);
   }
 
   &.tablesorter-headerDesc {
-    background-image: url(/static/dashboard/img/drop_arrow.png);
+    background-image: url(../img/drop_arrow.png);
   }
 }
 
@@ -2306,5 +2311,5 @@ span.password-reveal-button {
     // Work around a bug in Bootstrap SCSS.
     // https://github.com/twbs/bootstrap-sass/issues/105
     // TODO(rdopieralski) Remove when fixed.
-    background-image: url(/static/bootstrap/img/glyphicons-halflings.png);
+    background-image: url(../../bootstrap/img/glyphicons-halflings.png);
 }
