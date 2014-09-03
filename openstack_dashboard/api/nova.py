@@ -28,6 +28,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from novaclient import exceptions as nova_exceptions
 from novaclient.v1_1 import client as nova_client
+from novaclient.v1_1.contrib import instance_action as nova_instance_action
 from novaclient.v1_1.contrib import list_extensions as nova_list_extensions
 from novaclient.v1_1 import security_group_rules as nova_rules
 from novaclient.v1_1 import security_groups as nova_security_groups
@@ -388,6 +389,9 @@ class FloatingIpManager(network_base.FloatingIpManager):
 
     def is_simple_associate_supported(self):
         return conf.HORIZON_CONFIG["simple_ip_management"]
+
+    def is_supported(self):
+        return True
 
 
 def novaclient(request):
@@ -781,3 +785,8 @@ def extension_supported(extension_name, request):
 def can_set_server_password():
     features = getattr(settings, 'OPENSTACK_HYPERVISOR_FEATURES', {})
     return features.get('can_set_password', False)
+
+
+def instance_action_list(request, instance_id):
+    return nova_instance_action.InstanceActionManager(
+        novaclient(request)).list(instance_id)

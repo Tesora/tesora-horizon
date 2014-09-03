@@ -57,10 +57,11 @@ class InstanceTests(helpers.TestCase):
         api.glance: ('image_list_detailed',),
         api.network: (
             'floating_ip_simple_associate_supported',
+            'floating_ip_supported',
             'servers_update_addresses',
         ),
     })
-    def test_index(self):
+    def _get_index(self):
         servers = self.servers.list()
         api.nova.extension_supported('AdminActions',
                                      IsA(http.HttpRequest)) \
@@ -75,12 +76,18 @@ class InstanceTests(helpers.TestCase):
         api.network.servers_update_addresses(IsA(http.HttpRequest), servers)
         api.nova.tenant_absolute_limits(IsA(http.HttpRequest), reserved=True) \
            .MultipleTimes().AndReturn(self.limits['absolute'])
+        api.network.floating_ip_supported(IsA(http.HttpRequest)) \
+            .MultipleTimes().AndReturn(True)
         api.network.floating_ip_simple_associate_supported(
             IsA(http.HttpRequest)).MultipleTimes().AndReturn(True)
 
         self.mox.ReplayAll()
 
-        res = self.client.get(INDEX_URL)
+        return self.client.get(INDEX_URL)
+
+    def test_index(self):
+
+        res = self._get_index()
 
         self.assertTemplateUsed(res,
             'project/instances/index.html')
@@ -111,6 +118,7 @@ class InstanceTests(helpers.TestCase):
                    'tenant_absolute_limits', 'extension_supported',),
         api.glance: ('image_list_detailed',),
         api.network: ('floating_ip_simple_associate_supported',
+                      'floating_ip_supported',
                       'servers_update_addresses',),
     })
     def test_index_flavor_list_exception(self):
@@ -133,6 +141,8 @@ class InstanceTests(helpers.TestCase):
                 AndReturn(full_flavors[server.flavor["id"]])
         api.nova.tenant_absolute_limits(IsA(http.HttpRequest), reserved=True) \
            .MultipleTimes().AndReturn(self.limits['absolute'])
+        api.network.floating_ip_supported(IsA(http.HttpRequest)) \
+            .MultipleTimes().AndReturn(True)
         api.network.floating_ip_simple_associate_supported(
             IsA(http.HttpRequest)).MultipleTimes().AndReturn(True)
 
@@ -150,6 +160,7 @@ class InstanceTests(helpers.TestCase):
                    'tenant_absolute_limits', 'extension_supported',),
         api.glance: ('image_list_detailed',),
         api.network: ('floating_ip_simple_associate_supported',
+                      'floating_ip_supported',
                       'servers_update_addresses',),
     })
     def test_index_flavor_get_exception(self):
@@ -175,6 +186,8 @@ class InstanceTests(helpers.TestCase):
                 AndRaise(self.exceptions.nova)
         api.nova.tenant_absolute_limits(IsA(http.HttpRequest), reserved=True) \
            .MultipleTimes().AndReturn(self.limits['absolute'])
+        api.network.floating_ip_supported(IsA(http.HttpRequest)) \
+            .MultipleTimes().AndReturn(True)
         api.network.floating_ip_simple_associate_supported(
             IsA(http.HttpRequest)).MultipleTimes().AndReturn(True)
 
@@ -193,6 +206,7 @@ class InstanceTests(helpers.TestCase):
                    'extension_supported',),
         api.glance: ('image_list_detailed',),
         api.network: ('floating_ip_simple_associate_supported',
+                      'floating_ip_supported',
                       'servers_update_addresses',),
     })
     def test_index_with_instance_booted_from_volume(self):
@@ -215,6 +229,8 @@ class InstanceTests(helpers.TestCase):
         api.network.servers_update_addresses(IsA(http.HttpRequest), servers)
         api.nova.tenant_absolute_limits(IsA(http.HttpRequest), reserved=True) \
            .MultipleTimes().AndReturn(self.limits['absolute'])
+        api.network.floating_ip_supported(IsA(http.HttpRequest)) \
+            .MultipleTimes().AndReturn(True)
         api.network.floating_ip_simple_associate_supported(
             IsA(http.HttpRequest)).MultipleTimes().AndReturn(True)
 
@@ -227,11 +243,36 @@ class InstanceTests(helpers.TestCase):
         self.assertEqual(len(instances), len(servers))
         self.assertContains(res, "(not found)")
 
+    def test_index_with_console_link(self):
+        res = self._get_index()
+
+        instances_table = res.context['instances_table']
+        instances = res.context['instances_table'].data
+        console_link_rendered = False
+        for instance in instances:
+            for action in instances_table.get_row_actions(instance):
+                if isinstance(action, tables.ConsoleLink):
+                    console_link_rendered = True
+                    break
+            if console_link_rendered:
+                break
+            self.assertTrue(console_link_rendered)
+
+    @django.test.utils.override_settings(CONSOLE_TYPE=None)
+    def test_index_without_console_link(self):
+        res = self._get_index()
+
+        instances_table = res.context['instances_table']
+        instances = res.context['instances_table'].data
+        for instance in instances:
+            for action in instances_table.get_row_actions(instance):
+                self.assertNotIsInstance(action, tables.ConsoleLink)
+
     @helpers.create_stubs({api.nova: ('server_list',
-                                   'flavor_list',
-                                   'server_delete',),
-                        api.glance: ('image_list_detailed',),
-                        api.network: ('servers_update_addresses',)})
+                                      'flavor_list',
+                                      'server_delete',),
+                           api.glance: ('image_list_detailed',),
+                           api.network: ('servers_update_addresses',)})
     def test_terminate_instance(self):
         servers = self.servers.list()
         server = servers[0]
@@ -611,52 +652,56 @@ class InstanceTests(helpers.TestCase):
                                    "flavor_get"),
                         api.network: ("server_security_groups",
                                       "servers_update_addresses")})
+    def _get_instance_details(self, server, qs=None,
+                              flavor_return=None, volumes_return=None,
+                              security_groups_return=None, ):
+
+        url = reverse('horizon:project:instances:detail', args=[server.id])
+        if qs:
+            url += qs
+
+        if flavor_return is None:
+            flavor_return = self.flavors.first()
+
+        if volumes_return is None:
+            volumes_return = []
+
+        if security_groups_return is None:
+            security_groups_return = self.security_groups.list()
+
+        api.nova.server_get(IsA(http.HttpRequest), server.id).AndReturn(server)
+        api.network.servers_update_addresses(IsA(http.HttpRequest),
+                                             IgnoreArg())
+        api.nova.instance_volumes_list(IsA(http.HttpRequest),
+                                       server.id).AndReturn(volumes_return)
+        api.nova.flavor_get(IsA(http.HttpRequest), server.flavor['id']) \
+                .AndReturn(flavor_return)
+        api.network.server_security_groups(IsA(http.HttpRequest), server.id) \
+                .AndReturn(security_groups_return)
+
+        self.mox.ReplayAll()
+
+        return self.client.get(url)
+
     def test_instance_details_volumes(self):
         server = self.servers.first()
         volumes = [self.volumes.list()[1]]
+        security_group = self.security_groups.first()
 
-        api.nova.server_get(IsA(http.HttpRequest), server.id).AndReturn(server)
-        api.network.servers_update_addresses(IsA(http.HttpRequest),
-                                             IgnoreArg())
-        api.nova.instance_volumes_list(IsA(http.HttpRequest),
-                                       server.id).AndReturn(volumes)
-        api.nova.flavor_get(IsA(http.HttpRequest), server.flavor['id']) \
-                .AndReturn(self.flavors.first())
-        api.network.server_security_groups(IsA(http.HttpRequest), server.id) \
-                .AndReturn(self.security_groups.list())
-
-        self.mox.ReplayAll()
-
-        url = reverse('horizon:project:instances:detail',
-                      args=[server.id])
-        res = self.client.get(url)
+        res = self._get_instance_details(server, volumes_return=volumes,
+                                         security_groups_return=security_group)
 
         self.assertItemsEqual(res.context['instance'].volumes, volumes)
 
-    @helpers.create_stubs({api.nova: ("server_get",
-                                   "instance_volumes_list",
-                                   "flavor_get"),
-                        api.network: ("server_security_groups",
-                                      "servers_update_addresses")})
+        self.assertItemsEqual(res.context['instance'].volumes, volumes)
+
     def test_instance_details_volume_sorting(self):
         server = self.servers.first()
         volumes = self.volumes.list()[1:3]
+        security_group = self.security_groups.first()
 
-        api.nova.server_get(IsA(http.HttpRequest), server.id).AndReturn(server)
-        api.network.servers_update_addresses(IsA(http.HttpRequest),
-                                             IgnoreArg())
-        api.nova.instance_volumes_list(IsA(http.HttpRequest),
-                                       server.id).AndReturn(volumes)
-        api.nova.flavor_get(IsA(http.HttpRequest), server.flavor['id']) \
-                .AndReturn(self.flavors.first())
-        api.network.server_security_groups(IsA(http.HttpRequest), server.id) \
-                .AndReturn(self.security_groups.list())
-
-        self.mox.ReplayAll()
-
-        url = reverse('horizon:project:instances:detail',
-                      args=[server.id])
-        res = self.client.get(url)
+        res = self._get_instance_details(server, volumes_return=volumes,
+                                         security_groups_return=security_group)
 
         self.assertItemsEqual(res.context['instance'].volumes, volumes)
         self.assertEqual(res.context['instance'].volumes[0].device,
@@ -664,31 +709,12 @@ class InstanceTests(helpers.TestCase):
         self.assertEqual(res.context['instance'].volumes[1].device,
                          "/dev/hdk")
 
-    @helpers.create_stubs({api.nova: ("server_get",
-                                   "instance_volumes_list",
-                                   "flavor_get"),
-                        api.network: ("server_security_groups",
-                                      "servers_update_addresses")})
     def test_instance_details_metadata(self):
         server = self.servers.first()
 
-        api.nova.server_get(IsA(http.HttpRequest), server.id).AndReturn(server)
-        api.network.servers_update_addresses(IsA(http.HttpRequest),
-                                             IgnoreArg())
-        api.nova.instance_volumes_list(IsA(http.HttpRequest),
-                                       server.id).AndReturn([])
-        api.nova.flavor_get(IsA(http.HttpRequest), server.flavor['id']) \
-                .AndReturn(self.flavors.first())
-        api.network.server_security_groups(IsA(http.HttpRequest), server.id) \
-                .AndReturn(self.security_groups.list())
-
-        self.mox.ReplayAll()
-
-        url = reverse('horizon:project:instances:detail',
-                      args=[server.id])
         tg = tabs.InstanceDetailTabs(self.request, instance=server)
         qs = "?%s=%s" % (tg.param_name, tg.get_tab("overview").get_id())
-        res = self.client.get(url + qs)
+        res = self._get_instance_details(server, qs)
 
         self.assertContains(res, "<dd>keyName</dd>", 1)
         self.assertContains(res, "<dt>someMetaLabel</dt>", 1)
@@ -700,11 +726,6 @@ class InstanceTests(helpers.TestCase):
         # TODO(david-lyle): uncomment when fixed with Django 1.6
         # self.assertContains(res, "<dd><em>N/A</em></dd>", 1)
 
-    @helpers.create_stubs({api.nova: ("server_get",
-                                   "instance_volumes_list",
-                                   "flavor_get"),
-                        api.network: ("server_security_groups",
-                                      "servers_update_addresses")})
     def test_instance_details_fault(self):
         server = self.servers.first()
 
@@ -719,22 +740,36 @@ class InstanceTests(helpers.TestCase):
                                    "(reason=\"\")\n",
                         "created": "2013-10-07T00:08:32Z"}
 
-        api.nova.server_get(IsA(http.HttpRequest), server.id).AndReturn(server)
-        api.network.servers_update_addresses(IsA(http.HttpRequest),
-                                             IgnoreArg())
-        api.nova.instance_volumes_list(IsA(http.HttpRequest),
-                                       server.id).AndReturn([])
-        api.nova.flavor_get(IsA(http.HttpRequest), server.flavor['id']) \
-                .AndReturn(self.flavors.first())
-        api.network.server_security_groups(IsA(http.HttpRequest), server.id) \
-                .AndReturn(self.security_groups.list())
-
-        self.mox.ReplayAll()
-
-        url = reverse('horizon:project:instances:detail',
-                      args=[server.id])
-        res = self.client.get(url)
+        res = self._get_instance_details(server)
         self.assertItemsEqual(res.context['instance'].fault, server.fault)
+
+    def test_instance_details_console_tab(self):
+        server = self.servers.first()
+
+        tg = tabs.InstanceDetailTabs(self.request, instance=server)
+        qs = "?%s=%s" % (tg.param_name, tg.get_tab("console").get_id())
+        res = self._get_instance_details(server, qs)
+        self.assertIn(tabs.ConsoleTab, res.context_data['tab_group'].tabs)
+        self.assertTemplateUsed(res,
+            'project/instances/_detail_console.html')
+        console_tab_rendered = False
+        for tab in res.context_data['tab_group'].get_loaded_tabs():
+            if isinstance(tab, tabs.ConsoleTab):
+                console_tab_rendered = True
+                break
+        self.assertTrue(console_tab_rendered)
+
+    @django.test.utils.override_settings(CONSOLE_TYPE=None)
+    def test_instance_details_console_tab_deactivated(self):
+        server = self.servers.first()
+
+        tg = tabs.InstanceDetailTabs(self.request, instance=server)
+        self.assertIsNone(tg.get_tab("console"))
+        res = self._get_instance_details(server)
+        self.assertTemplateNotUsed(res,
+            'project/instances/_detail_console.html')
+        for tab in res.context_data['tab_group'].get_loaded_tabs():
+            self.assertNotIsInstance(tab, tabs.ConsoleTab)
 
     @helpers.create_stubs({api.nova: ('server_get',)})
     def test_instance_details_exception(self):
@@ -972,6 +1007,7 @@ class InstanceTests(helpers.TestCase):
                    'extension_supported',),
         api.glance: ('image_list_detailed',),
         api.network: ('floating_ip_simple_associate_supported',
+                      'floating_ip_supported',
                       'servers_update_addresses',),
     })
     def _test_instances_index_retrieve_password_action(self):
@@ -989,6 +1025,8 @@ class InstanceTests(helpers.TestCase):
         api.network.servers_update_addresses(IsA(http.HttpRequest), servers)
         api.nova.tenant_absolute_limits(IsA(http.HttpRequest), reserved=True) \
            .MultipleTimes().AndReturn(self.limits['absolute'])
+        api.network.floating_ip_supported(IsA(http.HttpRequest)) \
+            .MultipleTimes().AndReturn(True)
         api.network.floating_ip_simple_associate_supported(
             IsA(http.HttpRequest)).MultipleTimes().AndReturn(True)
 
@@ -1344,7 +1382,7 @@ class InstanceTests(helpers.TestCase):
     def test_launch_instance_get_with_only_one_network(self):
         self.test_launch_instance_get(only_one_network=True)
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_instance_get_with_profile(self):
         self.test_launch_instance_get(test_with_profile=True)
@@ -1433,7 +1471,7 @@ class InstanceTests(helpers.TestCase):
         for volume in bootable_volumes:
             self.assertTrue(volume in volume_sources_ids)
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_instance_get_bootable_volumes_with_profile(self):
         self.test_launch_instance_get_bootable_volumes(test_with_profile=True)
@@ -1559,7 +1597,7 @@ class InstanceTests(helpers.TestCase):
     def test_launch_instance_post_no_disk_config_supported(self):
         self.test_launch_instance_post(disk_config=False)
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_instance_post_with_profile(self):
         self.test_launch_instance_post(test_with_profile=True)
@@ -1618,6 +1656,8 @@ class InstanceTests(helpers.TestCase):
         api.neutron.network_list(IsA(http.HttpRequest),
                                  shared=True) \
                 .AndReturn(self.networks.list()[1:])
+        api.nova.flavor_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.flavors.list())
         if test_with_profile:
             policy_profiles = self.policy_profiles.list()
             policy_profile_id = self.policy_profiles.first().id
@@ -1679,7 +1719,7 @@ class InstanceTests(helpers.TestCase):
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_instance_post_boot_from_volume_with_profile(self):
         self.test_launch_instance_post_boot_from_volume(test_with_profile=True)
@@ -1742,6 +1782,8 @@ class InstanceTests(helpers.TestCase):
         api.neutron.network_list(IsA(http.HttpRequest),
                                  shared=True) \
                 .AndReturn(self.networks.list()[1:])
+        api.nova.flavor_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.flavors.list())
         if test_with_profile:
             policy_profiles = self.policy_profiles.list()
             policy_profile_id = self.policy_profiles.first().id
@@ -1804,7 +1846,7 @@ class InstanceTests(helpers.TestCase):
         self.assertNoFormErrors(res)
         self.assertRedirectsNoFollow(res, INDEX_URL)
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_lnch_inst_post_no_images_avail_boot_from_vol_with_profile(self):
         self.test_launch_instance_post_no_images_available_boot_from_volume(
@@ -1854,6 +1896,8 @@ class InstanceTests(helpers.TestCase):
         api.neutron.network_list(IsA(http.HttpRequest),
                                  shared=True) \
                 .AndReturn(self.networks.list()[1:])
+        api.nova.flavor_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.flavors.list())
         if test_with_profile:
             policy_profiles = self.policy_profiles.list()
             api.neutron.profile_list(IsA(http.HttpRequest),
@@ -1895,7 +1939,7 @@ class InstanceTests(helpers.TestCase):
         self.assertFormErrors(res, 1, "You must select an image.")
         self.assertTemplateUsed(res, views.WorkflowView.template_name)
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_instance_post_no_images_available_with_profile(self):
         self.test_launch_instance_post_no_images_available(
@@ -1963,7 +2007,7 @@ class InstanceTests(helpers.TestCase):
 
         self.assertTemplateUsed(res, views.WorkflowView.template_name)
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_flavorlist_error_with_profile(self):
         self.test_launch_flavorlist_error(test_with_profile=True)
@@ -2082,7 +2126,7 @@ class InstanceTests(helpers.TestCase):
 
         self.assertRedirectsNoFollow(res, INDEX_URL)
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_form_keystone_exception_with_profile(self):
         self.test_launch_form_keystone_exception(test_with_profile=True)
@@ -2180,7 +2224,124 @@ class InstanceTests(helpers.TestCase):
 
         self.assertContains(res, "greater than or equal to 1")
 
-    @django.test.utils.override_settings(
+    @helpers.create_stubs({api.glance: ('image_list_detailed',),
+                           api.neutron: ('network_list',
+                                         'profile_list',),
+                           api.nova: ('extension_supported',
+                                      'flavor_list',
+                                      'keypair_list',
+                                      'tenant_absolute_limits',
+                                      'availability_zone_list',),
+                           api.network: ('security_group_list',),
+                           cinder: ('volume_list',
+                                    'volume_snapshot_list',),
+                           quotas: ('tenant_quota_usages',)})
+    def _test_launch_form_count_error(self, resource,
+                                      avail, test_with_profile=False):
+        flavor = self.flavors.first()
+        image = self.images.first()
+        keypair = self.keypairs.first()
+        server = self.servers.first()
+        volume = self.volumes.first()
+        sec_group = self.security_groups.first()
+        avail_zone = self.availability_zones.first()
+        customization_script = 'user data'
+        device_name = u'vda'
+        volume_choice = "%s:vol" % volume.id
+        quota_usages = self.quota_usages.first()
+        if resource == 'both':
+            quota_usages['cores']['available'] = avail
+            quota_usages['ram']['available'] = 512
+        else:
+            quota_usages[resource]['available'] = avail
+
+        api.nova.extension_supported('BlockDeviceMappingV2Boot',
+                                     IsA(http.HttpRequest)) \
+                .AndReturn(True)
+        api.nova.flavor_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.flavors.list())
+        api.nova.keypair_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.keypairs.list())
+        api.network.security_group_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.security_groups.list())
+        api.nova.availability_zone_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.availability_zones.list())
+        api.glance.image_list_detailed(IsA(http.HttpRequest),
+                                       filters={'is_public': True,
+                                                'status': 'active'}) \
+                  .AndReturn([self.images.list(), False, False])
+        api.glance.image_list_detailed(IsA(http.HttpRequest),
+                            filters={'property-owner_id': self.tenant.id,
+                                     'status': 'active'}) \
+                  .AndReturn([[], False, False])
+        api.neutron.network_list(IsA(http.HttpRequest),
+                                 tenant_id=self.tenant.id,
+                                 shared=False) \
+                .AndReturn(self.networks.list()[:1])
+        api.neutron.network_list(IsA(http.HttpRequest),
+                                 shared=True) \
+                .AndReturn(self.networks.list()[1:])
+        if test_with_profile:
+            policy_profiles = self.policy_profiles.list()
+            api.neutron.profile_list(IsA(http.HttpRequest),
+                                     'policy').AndReturn(policy_profiles)
+        api.nova.extension_supported('DiskConfig',
+                                     IsA(http.HttpRequest)) \
+                .AndReturn(True)
+        cinder.volume_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.volumes.list())
+        cinder.volume_snapshot_list(IsA(http.HttpRequest)).AndReturn([])
+
+        api.nova.flavor_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.flavors.list())
+        api.nova.tenant_absolute_limits(IsA(http.HttpRequest)) \
+           .AndReturn(self.limits['absolute'])
+        quotas.tenant_quota_usages(IsA(http.HttpRequest)) \
+                .AndReturn(quota_usages)
+        api.nova.flavor_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.flavors.list())
+
+        self.mox.ReplayAll()
+
+        form_data = {'flavor': flavor.id,
+                     'source_type': 'image_id',
+                     'image_id': image.id,
+                     'availability_zone': avail_zone.zoneName,
+                     'keypair': keypair.name,
+                     'name': server.name,
+                     'customization_script': customization_script,
+                     'project_id': self.tenants.first().id,
+                     'user_id': self.user.id,
+                     'groups': sec_group.name,
+                     'volume_type': 'volume_id',
+                     'volume_id': volume_choice,
+                     'device_name': device_name,
+                     'count': 2}
+        url = reverse('horizon:project:instances:launch')
+        res = self.client.post(url, form_data)
+
+        if resource == 'ram':
+            msg = ("The following requested resource(s) exceed quota(s): "
+                   "RAM(Available: %s" % avail)
+        if resource == 'cores':
+            msg = ("The following requested resource(s) exceed quota(s): "
+                   "Cores(Available: %s" % avail)
+        if resource == 'both':
+            msg = ("The following requested resource(s) exceed quota(s): "
+                   "Cores(Available: %(avail)s, Requested: 2), RAM(Available: "
+                   "512, Requested: 1024)" % {'avail': avail})
+        self.assertContains(res, msg)
+
+    def test_launch_form_cores_count_error(self):
+        self._test_launch_form_count_error('cores', 1, test_with_profile=False)
+
+    def test_launch_form_ram_count_error(self):
+        self._test_launch_form_count_error('ram', 512, test_with_profile=False)
+
+    def test_launch_form_ram_cores_count_error(self):
+        self._test_launch_form_count_error('both', 1, test_with_profile=False)
+
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_form_instance_count_error_with_profile(self):
         self.test_launch_form_instance_count_error(test_with_profile=True)
@@ -2299,13 +2460,13 @@ class InstanceTests(helpers.TestCase):
         self._test_launch_form_instance_requirement_error(image, flavor,
                                                           test_with_profile)
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_form_instance_requirement_error_disk_with_profile(self):
         self.test_launch_form_instance_requirement_error_disk(
             test_with_profile=True)
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_form_instance_requirement_error_ram_with_profile(self):
         self.test_launch_form_instance_requirement_error_ram(
@@ -2333,6 +2494,7 @@ class InstanceTests(helpers.TestCase):
         customization_script = 'user data'
         device_name = u'vda'
         quota_usages = self.quota_usages.first()
+        quota_usages['cores']['available'] = 2000
 
         api.nova.extension_supported('BlockDeviceMappingV2Boot',
                                      IsA(http.HttpRequest)) \
@@ -2418,13 +2580,13 @@ class InstanceTests(helpers.TestCase):
         self._test_launch_form_instance_volume_size(image, 1.5, msg,
                                                     test_with_profile)
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_form_instance_volume_size_error_with_profile(self):
         self.test_launch_form_instance_volume_size_error(
             test_with_profile=True)
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_form_instance_non_int_volume_size_with_profile(self):
         self.test_launch_form_instance_non_int_volume_size(
@@ -2435,6 +2597,7 @@ class InstanceTests(helpers.TestCase):
                    'extension_supported',),
         api.glance: ('image_list_detailed',),
         api.network: ('floating_ip_simple_associate_supported',
+                      'floating_ip_supported',
                       'servers_update_addresses',),
     })
     def test_launch_button_disabled_when_quota_exceeded(self):
@@ -2455,6 +2618,8 @@ class InstanceTests(helpers.TestCase):
         api.network.servers_update_addresses(IsA(http.HttpRequest), servers)
         api.nova.tenant_absolute_limits(IsA(http.HttpRequest), reserved=True) \
             .MultipleTimes().AndReturn(limits)
+        api.network.floating_ip_supported(IsA(http.HttpRequest)) \
+            .MultipleTimes().AndReturn(True)
         api.network.floating_ip_simple_associate_supported(
             IsA(http.HttpRequest)).MultipleTimes().AndReturn(True)
 
@@ -2483,6 +2648,7 @@ class InstanceTests(helpers.TestCase):
                    'extension_supported',),
         api.glance: ('image_list_detailed',),
         api.network: ('floating_ip_simple_associate_supported',
+                      'floating_ip_supported',
                       'servers_update_addresses',),
     })
     def test_index_options_after_migrate(self):
@@ -2502,6 +2668,8 @@ class InstanceTests(helpers.TestCase):
         api.network.servers_update_addresses(IsA(http.HttpRequest), servers)
         api.nova.tenant_absolute_limits(IsA(http.HttpRequest), reserved=True) \
            .MultipleTimes().AndReturn(self.limits['absolute'])
+        api.network.floating_ip_supported(IsA(http.HttpRequest)) \
+            .MultipleTimes().AndReturn(True)
         api.network.floating_ip_simple_associate_supported(
             IsA(http.HttpRequest)).MultipleTimes().AndReturn(True)
 
@@ -2578,7 +2746,7 @@ class InstanceTests(helpers.TestCase):
             html=True,
             msg_prefix="The default key pair was not selected.")
 
-    @django.test.utils.override_settings(
+    @helpers.update_settings(
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_select_default_keypair_if_only_one_with_profile(self):
         self.test_select_default_keypair_if_only_one(test_with_profile=True)
@@ -2978,6 +3146,7 @@ class InstanceTests(helpers.TestCase):
                    'extension_supported',),
         api.glance: ('image_list_detailed',),
         api.network: ('floating_ip_simple_associate_supported',
+                      'floating_ip_supported',
                       'servers_update_addresses',),
     })
     def test_index_form_action_with_pagination(self):
@@ -3008,6 +3177,8 @@ class InstanceTests(helpers.TestCase):
 
         api.nova.tenant_absolute_limits(IsA(http.HttpRequest), reserved=True) \
            .MultipleTimes().AndReturn(self.limits['absolute'])
+        api.network.floating_ip_supported(IsA(http.HttpRequest)) \
+            .MultipleTimes().AndReturn(True)
         api.network.floating_ip_simple_associate_supported(
             IsA(http.HttpRequest)).MultipleTimes().AndReturn(True)
 

@@ -16,6 +16,8 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import collections
+import copy
 from functools import wraps  # noqa
 import os
 
@@ -28,6 +30,7 @@ from django.core.handlers import wsgi
 from django.core import urlresolvers
 from django import http
 from django.test.client import RequestFactory  # noqa
+from django.test import utils as django_test_utils
 from django.utils.importlib import import_module  # noqa
 from django.utils import unittest
 import glanceclient
@@ -137,6 +140,7 @@ class TestCase(horizon_helpers.TestCase):
         self.setActiveUser(id=self.user.id,
                            token=self.token,
                            username=self.user.name,
+                           domain_id=self.domain.id,
                            tenant_id=self.tenant.id,
                            service_catalog=self.service_catalog,
                            authorized_tenants=tenants)
@@ -157,11 +161,12 @@ class TestCase(horizon_helpers.TestCase):
 
     def setActiveUser(self, id=None, token=None, username=None, tenant_id=None,
                         service_catalog=None, tenant_name=None, roles=None,
-                        authorized_tenants=None, enabled=True):
+                        authorized_tenants=None, enabled=True, domain_id=None):
         def get_user(request):
             return user.User(id=id,
                              token=token,
                              user=username,
+                             domain_id=domain_id,
                              tenant_id=tenant_id,
                              service_catalog=service_catalog,
                              roles=roles,
@@ -488,3 +493,28 @@ class PluginTestCase(TestCase):
         urlresolvers.clear_url_caches()
         reload(import_module(settings.ROOT_URLCONF))
         base.Horizon._urls()
+
+
+class update_settings(django_test_utils.override_settings):
+    """override_settings which allows override an item in dict.
+
+    django original override_settings replaces a dict completely,
+    however OpenStack dashboard setting has many dictionary configuration
+    and there are test case where we want to override only one item in
+    a dictionary and keep other items in the dictionary.
+    This version of override_settings allows this if keep_dict is True.
+
+    If keep_dict False is specified, the original behavior of
+    Django override_settings is used.
+    """
+
+    def __init__(self, keep_dict=True, **kwargs):
+        if keep_dict:
+            for key, new_value in kwargs.items():
+                value = getattr(settings, key, None)
+                if (isinstance(new_value, collections.Mapping) and
+                        isinstance(value, collections.Mapping)):
+                    copied = copy.copy(value)
+                    copied.update(new_value)
+                    kwargs[key] = copied
+        super(update_settings, self).__init__(**kwargs)

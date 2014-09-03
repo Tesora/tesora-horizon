@@ -333,7 +333,10 @@ class ConsoleLink(tables.LinkAction):
         return {"project_id": project_id}
 
     def allowed(self, request, instance=None):
-        return instance.status in ACTIVE_STATES and not is_deleting(instance)
+        # We check if ConsoleLink is allowed only if settings.CONSOLE_TYPE is
+        # not set at all, or if it's set to any value other than None or False.
+        return bool(getattr(settings, 'CONSOLE_TYPE', True)) and \
+            instance.status in ACTIVE_STATES and not is_deleting(instance)
 
     def get_link_url(self, datum):
         base_url = super(ConsoleLink, self).get_link_url(datum)
@@ -491,6 +494,8 @@ class AssociateIP(tables.LinkAction):
         return {"project_id": project_id}
 
     def allowed(self, request, instance):
+        if not api.network.floating_ip_supported(request):
+            return False
         if api.network.floating_ip_simple_associate_supported(request):
             return False
         return not is_deleting(instance)
@@ -552,6 +557,8 @@ class SimpleDisassociateIP(tables.Action):
         return {"project_id": project_id}
 
     def allowed(self, request, instance):
+        if not api.network.floating_ip_supported(request):
+            return False
         if not conf.HORIZON_CONFIG["simple_ip_management"]:
             return False
         return not is_deleting(instance)

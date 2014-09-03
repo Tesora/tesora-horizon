@@ -46,7 +46,8 @@ TEMPLATE_DEBUG = DEBUG
 # OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = 'Default'
 
 # Set Console type:
-# valid options would be "AUTO", "VNC", "SPICE" or "RDP"
+# valid options would be "AUTO"(default), "VNC", "SPICE", "RDP" or None
+# Set to None explicitly if you want to deactivate the console.
 # CONSOLE_TYPE = "AUTO"
 
 # Default OpenStack Dashboard configuration.
@@ -178,11 +179,13 @@ OPENSTACK_CINDER_FEATURES = {
 # services provided by neutron. Options currently available are load
 # balancer service, security groups, quotas, VPN service.
 OPENSTACK_NEUTRON_NETWORK = {
-    'enable_lb': False,
-    'enable_firewall': False,
+    'enable_router': True,
     'enable_quotas': True,
-    'enable_vpn': False,
     'enable_ipv6': True,
+    'enable_distributed_router': True,
+    'enable_lb': True,
+    'enable_firewall': True,
+    'enable_vpn': True,
     # The profile_support option is used to detect if an external router can be
     # configured via the dashboard. When using specific plugins the
     # profile_support can be turned on if needed.

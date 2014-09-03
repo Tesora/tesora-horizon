@@ -34,6 +34,7 @@ from horizon.utils.memoized import memoized  # noqa
 from openstack_dashboard.api import base
 from openstack_dashboard.api import network_base
 from openstack_dashboard.api import nova
+from openstack_dashboard import policy
 
 
 LOG = logging.getLogger(__name__)
@@ -120,8 +121,8 @@ class Router(NeutronAPIDictWrapper):
     """Wrapper for neutron routers."""
 
     def __init__(self, apiresource):
-        # apiresource['admin_state'] = \
-        #    'UP' if apiresource['admin_state_up'] else 'DOWN'
+        apiresource['admin_state'] = \
+            'UP' if apiresource['admin_state_up'] else 'DOWN'
         super(Router, self).__init__(apiresource)
 
 
@@ -425,6 +426,10 @@ class FloatingIpManager(network_base.FloatingIpManager):
         # we need to check whether such VIF is only one for an instance
         # to enable simple association support.
         return False
+
+    def is_supported(self):
+        network_config = getattr(settings, 'OPENSTACK_NEUTRON_NETWORK', {})
+        return network_config.get('enable_router', True)
 
 
 def get_ipver_str(ip_version):
@@ -783,8 +788,11 @@ def servers_update_addresses(request, servers):
     try:
         ports = port_list(request,
                           device_id=[instance.id for instance in servers])
-        floating_ips = FloatingIpManager(request).list(
-            port_id=[port.id for port in ports])
+        fips = FloatingIpManager(request)
+        if fips.is_supported():
+            floating_ips = fips.list(port_id=[port.id for port in ports])
+        else:
+            floating_ips = []
         networks = network_list(request,
                                 id=[port.network_id for port in ports])
     except Exception:
@@ -874,10 +882,21 @@ def is_extension_supported(request, extension_alias):
         return False
 
 
+def is_enabled_by_config(name, default=True):
+    network_config = (getattr(settings, 'OPENSTACK_NEUTRON_NETWORK', {}) or
+                      getattr(settings, 'OPENSTACK_QUANTUM_NETWORK', {}))
+    return network_config.get(name, default)
+
+
+@memoized
+def is_service_enabled(request, config_name, ext_name):
+    return (is_enabled_by_config(config_name) and
+            is_extension_supported(request, ext_name))
+
+
 @memoized
 def is_quotas_extension_supported(request):
-    network_config = getattr(settings, 'OPENSTACK_NEUTRON_NETWORK', {})
-    if (network_config.get('enable_quotas', False) and
+    if (is_enabled_by_config('enable_quotas', False) and
             is_extension_supported(request, 'quotas')):
         return True
     else:
@@ -898,3 +917,33 @@ def is_port_profiles_supported():
     profile_support = network_config.get('profile_support', None)
     if str(profile_support).lower() == 'cisco':
         return True
+
+
+def get_dvr_permission(request, operation):
+    """Check if "distributed" field can be displayed.
+
+    :param request: Request Object
+    :param operation: Operation type. The valid value is "get" or "create"
+    """
+    network_config = getattr(settings, 'OPENSTACK_NEUTRON_NETWORK', {})
+    if not network_config.get('enable_distributed_router', False):
+        return False
+    policy_check = getattr(settings, "POLICY_CHECK_FUNCTION", None)
+    allowed_operations = ("get", "create", "update")
+    if operation not in allowed_operations:
+        raise ValueError(_("The 'operation' parameter for get_dvr_permission "
+                           "is invalid. It should be one of %s")
+                         % ' '.join(allowed_operations))
+    role = (("network", "%s_router:distributed" % operation),)
+    if policy_check:
+        has_permission = policy.check(role, request)
+    else:
+        has_permission = True
+    if not has_permission:
+        return False
+    try:
+        return is_extension_supported(request, 'dvr')
+    except Exception:
+        msg = _('Failed to check Neutron "dvr" extension is not supported')
+        LOG.info(msg)
+        return False
