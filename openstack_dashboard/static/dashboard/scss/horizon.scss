@@ -165,6 +165,9 @@ h3 {
   @include border-radius(0 0 5px 0);
   float: left;
   min-width: 236px;
+  background: #f9f9f9;
+  height: 100%;
+  position: fixed;
 }
 
 .sidebar h4 {
