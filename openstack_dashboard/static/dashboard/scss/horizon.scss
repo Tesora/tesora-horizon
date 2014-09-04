@@ -90,12 +90,12 @@ dt {
 }
 
 .topbar {
-  background: $gray-lighter;
+  background: $gray-light;
   // How to convert to SCSS?
   //#gradient > {
   //  +vertical($body-bg, $gray-lighter);
   //}
-  border-bottom: 1px solid $gray-light;
+  border-bottom: 1px solid $gray;
   padding: 10px 0px 15px 0px;
 }
 
@@ -109,7 +109,7 @@ dt {
   margin-right: 10px;
   padding: 0;
   background-image: url(../img/drop_arrow.png);
-  background-color: $gray-lighter;
+  background-color: $body-bg;
   background-repeat: no-repeat;
   border: 1px solid $gray-light;
   border-bottom-color: darken($gray-light, 10%);
@@ -135,7 +135,7 @@ dt {
 .topbar .switcher_bar div {
   padding: 2px 10px 1px;
   line-height: 20px;
-  color: $gray;
+  color: $text-color;
   text-decoration: none;
   overflow: hidden;
   padding-right: 32px;
@@ -177,21 +177,24 @@ dt {
 .page-header {
   margin: 0 0 5px 0;
   padding: 0 0 5px 0;
-  border-bottom: 2px solid $headings-color;
+  border-bottom: 1px solid $headings-color;
   font-family: anivers;
   height: auto;
   width: 100%;
   h2 {
-    margin: 0;
+    margin: 5px 0 0 0;
   }
 }
 
 h2 {
-  color: $headings-color;
+  color: $tesora-orange;
   font-size: 30px;
   font-weight: normal;
 }
 
+h3 {
+  color: $tesora-dark-blue;
+}
 
 
 /* Login Splash Page */
@@ -327,7 +330,7 @@ a.current_item:hover h4 {
 
 .sidebar .switcher_bar {
   h3 {
-    color: #4790ae;
+    color: $tesora-dark-blue;
     font-size: 16px;
     margin: -6px 0 0 14px;
     padding: 0;
@@ -345,7 +348,7 @@ a.current_item:hover h4 {
 }
 
 .sidebar .switcher_bar h4 {
-  color: #6fabc4;
+  color: $tesora-light-blue;
   font-size: 10px;
   text-transform: uppercase;
   font-weight: normal;
@@ -360,7 +363,7 @@ a.current_item:hover h4 {
 }
 
 .sidebar .switcher_bar li a:hover{
-  background: #92d6f1;
+  background: $tesora-light-blue;
 }
 
 
@@ -424,6 +427,7 @@ a.current_item:hover h4 {
 .table_header {
   min-height: 35px;
   padding: 5px 0;
+  background-color: $body-bg !important;
 }
 
 .table_caption th {
@@ -435,6 +439,8 @@ a.current_item:hover h4 {
 
 .table-bordered tr.table_caption + tr th {
   border-top: 1px solid $table-border-color;
+  border-left: 1px solid $table-border-color;
+  border-bottom: 1px solid $table-border-color;
 }
 .table-bordered tr.table_caption + tr th:first-child,
 .table-bordered tr.table_caption + tr th.hide + th {
@@ -631,9 +637,18 @@ table form {
   text-align: center;
 }
 
+.table th {
+  background-color: $gray-light;
+}
+
+.table thead tr th {
+  border-top: 1px solid $table-border-color;
+  background-color: $gray-light;
+}
+
 .table tfoot tr td {
   border-top: 1px solid $table-border-color;
-  background-color: #f1f1f1;
+  background-color: $gray-light;
   font-size: 11px;
   line-height: 14px;
 }
@@ -1048,7 +1063,7 @@ form .form-group > div.dynamic-select {
   margin-right: 5px;
   font-size: 13px;
   line-height: $line-height-base;
-  color: #666;
+  color: $gray;
   font-weight: normal;
   filter: alpha(opacity=100);
   -khtml-opacity: 1;
@@ -1057,7 +1072,7 @@ form .form-group > div.dynamic-select {
 }
 
 .modal-footer a.close:hover {
-  color: #333;
+  color: $gray;
   text-decoration: underline;
 }
 
