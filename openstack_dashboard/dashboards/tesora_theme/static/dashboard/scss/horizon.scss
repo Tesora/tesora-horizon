@@ -134,7 +134,6 @@ dt {
 
 .topbar .switcher_bar div {
   padding: 2px 10px 1px;
-  font-size: 13px !important;
   line-height: 20px;
   color: $text-color;
   text-decoration: none;
@@ -145,6 +144,7 @@ dt {
 
 .topbar .context-box {
   display: inline;
+  @import "_context_selection";
 }
 
 .hide_image {
@@ -170,7 +170,7 @@ dt {
 #user_info > a {
   color: $text-color;
   margin-left: 15px;
-  line-height: 30px;
+  line-height: 20px;
   font-size: 13px !important;
 }
 
@@ -182,7 +182,7 @@ dt {
   height: auto;
   width: 100%;
   h2 {
-    margin: 0;
+    margin: 5px 0 0 0;
   }
 }
 
@@ -273,7 +273,7 @@ h1.brand {
 }
 
 h1.brand a {
-  background: url(../img/logo.png) top left no-repeat;
+  background: url(../img/tesora-logo.png) top left no-repeat;
   display: block;
   float: left;
   width: 216px;
@@ -1061,7 +1061,8 @@ form .form-group > div.dynamic-select {
 .modal-footer a.close {
   margin-top: 0;
   margin-right: 5px;
-  font-size: 12px;
+  font-size: 13px;
+  line-height: $line-height-base;
   color: $gray;
   font-weight: normal;
   filter: alpha(opacity=100);
