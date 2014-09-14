@@ -14,12 +14,6 @@ TEMPLATE_DEBUG = DEBUG
 # https://docs.djangoproject.com/en/dev/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = ['*', ]
 
-# Default Ubuntu apache configuration uses /horizon as the application root.
-# Configure auth redirects here accordingly.
-LOGIN_URL='/horizon/auth/login/'
-LOGOUT_URL='/horizon/auth/logout/'
-LOGIN_REDIRECT_URL='/horizon'
-
 # Set SSL proxy settings:
 # For Django 1.4+ pass this header from the proxy after terminating the SSL,
 # and don't forget to strip it from the client's request.
@@ -52,7 +46,8 @@ LOGIN_REDIRECT_URL='/horizon'
 # OPENSTACK_KEYSTONE_DEFAULT_DOMAIN = 'Default'
 
 # Set Console type:
-# valid options would be "AUTO", "VNC", "SPICE" or "RDP"
+# valid options would be "AUTO"(default), "VNC", "SPICE", "RDP" or None
+# Set to None explicitly if you want to deactivate the console.
 # CONSOLE_TYPE = "AUTO"
 
 # Default OpenStack Dashboard configuration.
@@ -101,8 +96,7 @@ LOCAL_PATH = os.path.dirname(os.path.abspath(__file__))
 # for all of them.
 from horizon.utils import secret_key
 SECRET_KEY = secret_key.generate_or_read_from_file(
-    '/var/lib/openstack-dashboard/secret_key')
-
+    os.path.join(LOCAL_PATH, '.secret_key_store'))
 
 # We recommend you use memcached for development; otherwise after every reload
 # of the django development server, you will have to login again. To use
@@ -112,12 +106,12 @@ SECRET_KEY = secret_key.generate_or_read_from_file(
 #        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
 #        'LOCATION': '127.0.0.1:11211',
 #    }
-# }
+#}
 
 CACHES = {
-   'default': {
-       'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
-   }
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+    }
 }
 
 # Send email to the console by default
@@ -185,11 +179,13 @@ OPENSTACK_CINDER_FEATURES = {
 # services provided by neutron. Options currently available are load
 # balancer service, security groups, quotas, VPN service.
 OPENSTACK_NEUTRON_NETWORK = {
-    'enable_lb': False,
-    'enable_firewall': False,
+    'enable_router': True,
     'enable_quotas': True,
-    'enable_vpn': False,
     'enable_ipv6': True,
+    'enable_distributed_router': True,
+    'enable_lb': True,
+    'enable_firewall': True,
+    'enable_vpn': True,
     # The profile_support option is used to detect if an external router can be
     # configured via the dashboard. When using specific plugins the
     # profile_support can be turned on if needed.
