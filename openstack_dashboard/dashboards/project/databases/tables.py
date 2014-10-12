@@ -58,6 +58,22 @@ class RestartInstance(tables.BatchAction):
         api.trove.instance_restart(request, obj_id)
 
 
+class DetachReplica(tables.BatchAction):
+    name = "detach_replica"
+    action_present = _("Detach")
+    action_past = _("Scheduled detatchment of %(data_type)s")
+    data_type_singular = _("Replica")
+    data_type_plural = _("Replicas")
+    classes = ('btn-danger', 'btn-detach-replica')
+
+    def allowed(self, request, instance=None):
+        return (instance.status in ACTIVE_STATES
+                and hasattr(instance, 'replica_of'))
+
+    def action(self, request, obj_id):
+        api.trove.instance_detach_replica(request, obj_id)
+
+
 class DeleteUser(tables.DeleteAction):
     data_type_singular = _("User")
     data_type_plural = _("Users")
@@ -117,6 +133,21 @@ class ResizeVolume(tables.LinkAction):
     def allowed(self, request, instance=None):
         return ((instance.status in ACTIVE_STATES
                  or instance.status == 'SHUTDOWN'))
+
+    def get_link_url(self, datum):
+        instance_id = self.table.get_object_id(datum)
+        return urlresolvers.reverse(self.url, args=[instance_id])
+
+
+class ResizeInstance(tables.LinkAction):
+    name = "resize_instance"
+    verbose_name = _("Resize Instance")
+    url = "horizon:project:databases:resize_instance"
+    classes = ("ajax-modal", "btn-resize")
+
+    def allowed(self, request, instance=None):
+        return ((instance.status in ACTIVE_STATES
+                 or instance.status == 'SHUTOFF'))
 
     def get_link_url(self, datum):
         instance_id = self.table.get_object_id(datum)
@@ -184,7 +215,7 @@ class InstancesTable(tables.DataTable):
     STATUS_CHOICES = (
         ("ACTIVE", True),
         ("BLOCKED", True),
-        ("BUILD", True),
+        ("BUILD", None),
         ("FAILED", False),
         ("REBOOT", None),
         ("RESIZE", None),
@@ -222,7 +253,9 @@ class InstancesTable(tables.DataTable):
         table_actions = (LaunchLink, TerminateInstance)
         row_actions = (CreateBackup,
                        ResizeVolume,
+                       ResizeInstance,
                        RestartInstance,
+                       DetachReplica,
                        TerminateInstance)
 
 
