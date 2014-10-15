@@ -148,6 +148,16 @@ h3 {
   }
 }
 
+#splash-version {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  right: 20px;
+  text-align: center;
+  color: $tesora-dark-blue;
+  font-weight: bold;
+}
+
 #splash p.help-block {
   display: none;
 }
