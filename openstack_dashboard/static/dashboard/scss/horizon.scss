@@ -4,8 +4,10 @@ $font-size-base: 13px;
 $modal-md: 732px;
 
 @import "/bootstrap/scss/bootstrap";
+@import "/horizon/lib/bootstrap_datepicker/datepicker.css";
 @import "_variables";
 @import "_accordion_nav";
+@import "_inline_edit";
 
 // Components
 @import "components/resource_browser";
@@ -171,12 +173,12 @@ dt {
 
 .page-header {
   margin: 0 0 5px 0;
-  padding: 0 0 5px 0;
-  border-bottom: 2px solid $headings-color;
+  padding: 10px 0 5px 0;
+  border-bottom: 0;
   font-family: anivers;
   height: auto;
   width: 100%;
-  h2 {
+  h1 {
     margin: 0;
   }
 }
@@ -231,7 +233,8 @@ h2 {
 }
 
 .sidebar {
-  border-width: 0 5px 5px 0;
+  background-color: $sidebar-background-color;
+  border-width: 0 6px 5px 0;
   border-color: $border-color;
   border-style: solid;
   border-radius: 0 0 5px 0;
@@ -666,141 +669,6 @@ td.loading {
   background-color: #e6e6e6 !important;
 }
 
-@mixin btn-icon-inline_edit($x, $y, $top: 1px, $left: 5px,
-    $icons: "../../bootstrap/img/glyphicons-halflings.png") {
-  padding: 9px 12px 9px 12px;
-  position: relative;
-  border-radius: 0px;
-
-  &:before {
-    display: inline-block;
-    content: "";
-    width: 18px;
-    height: 20px;
-    margin-top: 0px;
-    *margin-right: .3em;
-    line-height: 14px;
-    background-image: url($icons);
-    background-position: $x $y;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: $top;
-    left: $left;
-  }
-}
-
-td.inline_edit_available div.table_cell_wrapper .table_cell_action button.ajax-inline-edit {
-  @include btn-icon-inline_edit(0, -72px, 2px, 4px);
-  position: relative;
-  display: block;
-  background: none;
-  border: 0 none;
-}
-
-@mixin status-icon($x, $y, $top: 1px, $left: 5px,
-    $icons: "../../bootstrap/img/glyphicons-halflings.png") {
-  padding: 9px 12px 9px 12px;
-  position: relative;
-  border-radius: 0px;
-
-  &:before {
-    display: inline-block;
-    content: "";
-    width: 20px;
-    height: 20px;
-    margin-top: 0px;
-    *margin-right: .3em;
-    line-height: 14px;
-    background-image: url($icons);
-    background-position: $x $y;
-    background-repeat: no-repeat;
-    position: absolute;
-    top: $top;
-    left: $left;
-  }
-}
-
-div.table_cell_wrapper {
-   min-height: 18px;
-   position: relative;
-
-  .inline-edit-label {
-    display: inline;
-  }
-
-  .inline-edit-form {
-    float: left;
-  }
-
-  .inline-edit-actions, .table_cell_action {
-    float: right;
-    width: 20px;
-    margin: 0;
-
-    button.ajax-inline-edit {
-      padding: 10px;
-      position: relative;
-      display: none;
-      background: none;
-      border: 0 none;
-    }
-  }
-
-  .table_cell_action {
-    width: auto;
-
-    margin: auto 0px 0px 0px;
-    display: none;
-    position: absolute;
-    top: -10px;
-    right: 0px;
-    z-index: 99;
-  }
-
-  .inline-edit-error {
-    .error {
-      @include status-icon(-144px, -120px, 0px, 0px);
-      position: absolute;
-      width: 18px;
-      height: 20px;
-
-      top: 20px;
-      left: 2px;
-      padding: 0;
-    }
-  }
-  .inline-edit-status {
-    .success {
-      @include status-icon(-288px, 0px, 0px, 0px);
-      padding: 0;
-      position:absolute;
-      top: 2px;
-      right: 18px;
-
-      width: 18px;
-      height: 20px;
-      z-index: 100;
-    }
-    .loading {
-      @include status-icon(0px, 0px, 0px, 0px, '../img/spinner.gif');
-      padding: 0;
-      position:absolute;
-      top: 0px;
-      right: 24px;
-
-      width: 18px;
-      height: 20px;
-      z-index: 100;
-    }
-  }
-  .inline-edit-status.inline-edit-mod {
-    .loading {
-      top: 15px;
-      right: 34px;
-    }
-  }
-}
-
 .table_header .table_actions {
   min-width: 0;
 }
@@ -931,17 +799,6 @@ form label {
     color: $gray;
     font-weight: bold;
     display: inline-block;
-}
-
-form .form-group > div.dynamic-select {
-  display: table;
-  border-collapse: separate;
-  > * {
-    display: table-cell;
-  }
-  > a {
-    width: 1%;
-  }
 }
 
 .modal.fullscreen .modal-dialog {
@@ -1089,20 +946,25 @@ td.select {
 
 /* Actions dropdown */
 
-td.actions_column {
+.actions_column {
   white-space: nowrap;
   padding: 10px;
   position: relative;
   width: 200px;
 }
 
-td.actions_column .btn-group {
+form.actions_column {
+  width: auto;
+  font-family: $font-family-base;
+}
+
+.actions_column .btn-group {
   display: inline-block;
 }
 
-td.actions_column .row_actions a,
-td.actions_column .row_actions input,
-td.actions_column .row_actions button,
+.actions_column .row_actions a,
+.actions_column .row_actions input,
+.actions_column .row_actions button,
 div.table_actions_menu .dropdown-menu a,
 div.table_actions_menu .dropdown-menu input,
 div.table_actions_menu .dropdown-menu button {
@@ -1117,11 +979,11 @@ div.table_actions_menu .dropdown-menu button {
   @include box-shadow(none);
 }
 
-td.actions_column .row_actions .hide {
+.actions_column .row_actions .hide {
   display: none;
 }
 
-td.actions_column .btn-action-required {
+.actions_column .btn-action-required {
   font-weight: bold;
 }
 
@@ -1155,8 +1017,8 @@ td.actions_column .btn-action-required {
   background: none;
 }
 
-td.actions_column .dropdown-menu a:hover,
-td.actions_column .dropdown-menu button:hover,
+.actions_column .dropdown-menu a:hover,
+.actions_column .dropdown-menu button:hover,
 div.table_actions_menu .dropdown-menu a:hover,
 div.table_actions_menu .dropdown-menu button:hover {
   background-color: $gray-lighter;
@@ -1171,30 +1033,30 @@ div.table_actions_menu .dropdown-menu button:hover {
 
 /* Overrides for single-action rows (no dropdown) */
 
-tr td.actions_column ul.row_actions.single,
-tr:hover td.actions_column ul.row_actions.single,
-td.actions_column ul.row_actions.single,
-td.actions_column ul.row_actions.single:hover {
+tr .actions_column ul.row_actions.single,
+tr:hover .actions_column ul.row_actions.single,
+.actions_column ul.row_actions.single,
+.actions_column ul.row_actions.single:hover {
   border: none;
 }
 
-td.actions_column ul.row_actions.single li.action {
+.actions_column ul.row_actions.single li.action {
   display: block;
 }
 
-td.actions_column ul.row_actions.single li.action:hover {
+.actions_column ul.row_actions.single li.action:hover {
   background-color: transparent;
 }
 
-td.actions_column ul.row_actions.single a,
-td.actions_column ul.row_actions.single input,
-td.actions_column ul.row_actions.single button {
+.actions_column ul.row_actions.single a,
+.actions_column ul.row_actions.single input,
+.actions_column ul.row_actions.single button {
   color: $brand-info;
 }
 
-td.actions_column ul.row_actions.single a:hover,
-td.actions_column ul.row_actions.single input:hover,
-td.actions_column ul.row_actions.single button:hover {
+.actions_column ul.row_actions.single a:hover,
+.actions_column ul.row_actions.single input:hover,
+.actions_column ul.row_actions.single button:hover {
   color: $text-color;
 }
 
@@ -1254,12 +1116,34 @@ tr.terminated {
 }
 
 #main_content .nav-tabs {
-  margin-bottom: 0;
+  border-top: 1px solid $nav-tabs-border-color;
+  border-bottom: none;
+  > li {
+    margin-bottom: 0;
+    margin-top: -1px;
+    > a {
+      margin-right: 0;
+      border-radius: 0;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      &:hover {
+        border-color: $nav-tabs-border-color $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color;
+      }
+    }
+    &.active > a {
+      &,
+      &:hover,
+      &:focus {
+        font-weight: bold;
+        background-color: #555;
+        border-color: #555;
+        color: #fff;
+      }
+    }
+  }
 }
 
 #main_content .tab-content {
-  border: 1px solid #ddd;
-  border-top: 0 none;
   padding: 10px;
 }
 
@@ -2011,22 +1895,6 @@ label.log-length {
     .delete {
       padding-right: 0;
       text-align: right;
-      .btn {
-        &:before {
-          content:"Delete ";
-        }
-        &.deleting:before {
-          content:"Deleting ";
-        }
-      }
-      .btn.instance {
-        &:before {
-          content:"Terminate ";
-        }
-        &.deleting:before {
-          content:"Terminating ";
-        }
-      }
     }
   }
   table.detailInfoTable {
@@ -2069,12 +1937,6 @@ label.log-length {
     }
     .btn {
       line-height: 1.4;
-    }
-    .btn:before {
-      content:"Delete ";
-    }
-    .btn.deleting:before {
-      content:"Deleting ";
     }
   }
   font-size: 11px;

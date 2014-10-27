@@ -18,6 +18,7 @@
 
 import logging
 
+from oslo.utils import timeutils
 import six.moves.urllib.parse as urlparse
 import swiftclient
 
@@ -28,7 +29,6 @@ from horizon import exceptions
 from horizon.utils.memoized import memoized  # noqa
 
 from openstack_dashboard.api import base
-from openstack_dashboard.openstack.common import timeutils
 
 
 LOG = logging.getLogger(__name__)
@@ -110,8 +110,6 @@ def swift_api(request):
     endpoint = base.url_for(request, 'object-store')
     cacert = getattr(settings, 'OPENSTACK_SSL_CACERT', None)
     insecure = getattr(settings, 'OPENSTACK_SSL_NO_VERIFY', False)
-    LOG.debug('Swift connection created using token "%s" and url "%s"'
-              % (request.user.token.id, endpoint))
     return swiftclient.client.Connection(None,
                                          request.user.username,
                                          None,
@@ -165,7 +163,8 @@ def swift_get_container(request, container_name, with_data=True):
             swift_endpoint = base.url_for(request,
                                           'object-store',
                                           endpoint_type='publicURL')
-            public_url = swift_endpoint + '/' + urlparse.quote(container_name)
+            parameters = urlparse.quote(container_name.encode('utf8'))
+            public_url = swift_endpoint + '/' + parameters
         ts_float = float(headers.get('x-timestamp'))
         timestamp = timeutils.iso8601_from_timestamp(ts_float)
     except Exception:
@@ -219,7 +218,7 @@ def swift_get_objects(request, container_name, prefix=None, marker=None,
                   delimiter=FOLDER_DELIMITER,
                   full_listing=True)
     headers, objects = swift_api(request).get_container(container_name,
-                                                          **kwargs)
+                                                        **kwargs)
     object_objs = _objectify(objects, container_name)
 
     if(len(object_objs) > limit):

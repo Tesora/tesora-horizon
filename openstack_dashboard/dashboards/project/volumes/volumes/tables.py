@@ -146,7 +146,7 @@ class ExtendVolume(VolumePolicyTargetMixin, tables.LinkAction):
 
 class EditAttachments(tables.LinkAction):
     name = "attachments"
-    verbose_name = _("Edit Attachments")
+    verbose_name = _("Manage Attachments")
     url = "horizon:project:volumes:volumes:attach"
     classes = ("ajax-modal",)
     icon = "pencil"
@@ -184,12 +184,12 @@ class CreateSnapshot(VolumePolicyTargetMixin, tables.LinkAction):
             limits = {}
 
         snapshots_available = (limits.get('maxTotalSnapshots', float("inf"))
-                             - limits.get('totalSnapshotsUsed', 0))
+                               - limits.get('totalSnapshotsUsed', 0))
 
         if snapshots_available <= 0 and "disabled" not in self.classes:
             self.classes = [c for c in self.classes] + ['disabled']
             self.verbose_name = string_concat(self.verbose_name, ' ',
-                                                  _("(Quota exceeded)"))
+                                              _("(Quota exceeded)"))
         return volume.status in ("available", "in-use")
 
 
@@ -217,8 +217,8 @@ class UploadToImage(VolumePolicyTargetMixin, tables.LinkAction):
         has_image_service_perm = \
             request.user.has_perm('openstack.services.image')
 
-        return volume.status in ("available", "in-use") and \
-               has_image_service_perm
+        return (volume.status in ("available", "in-use") and
+                has_image_service_perm)
 
 
 class EditVolume(VolumePolicyTargetMixin, tables.LinkAction):
@@ -357,12 +357,12 @@ class VolumesTable(VolumesTableBase):
                                 verbose_name=_("Type"),
                                 empty_value="-")
     attachments = AttachmentColumn("attachments",
-                                verbose_name=_("Attached To"))
+                                   verbose_name=_("Attached To"))
     availability_zone = tables.Column("availability_zone",
-                         verbose_name=_("Availability Zone"))
+                                      verbose_name=_("Availability Zone"))
     bootable = tables.Column('is_bootable',
-                         verbose_name=_("Bootable"),
-                         filters=(filters.yesno, filters.capfirst))
+                             verbose_name=_("Bootable"),
+                             filters=(filters.yesno, filters.capfirst))
     encryption = tables.Column(get_encrypted_value,
                                verbose_name=_("Encrypted"))
 
@@ -379,12 +379,25 @@ class VolumesTable(VolumesTableBase):
 
 class DetachVolume(tables.BatchAction):
     name = "detach"
-    action_present = _("Detach")
-    action_past = _("Detaching")  # This action is asynchronous.
-    data_type_singular = _("Volume")
-    data_type_plural = _("Volumes")
     classes = ('btn-danger', 'btn-detach')
     policy_rules = (("compute", "compute:detach_volume"),)
+
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Detach Volume",
+            u"Detach Volumes",
+            count
+        )
+
+    # This action is asynchronous.
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Detaching Volume",
+            u"Detaching Volumes",
+            count
+        )
 
     def action(self, request, obj_id):
         attachment = self.table.get_object_by_id(obj_id)

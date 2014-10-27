@@ -21,6 +21,7 @@ from __future__ import absolute_import
 
 import collections
 import logging
+import warnings
 
 import netaddr
 
@@ -269,14 +270,14 @@ class SecurityGroupManager(network_base.SecurityGroupManager):
             ip_protocol = None
 
         body = {'security_group_rule':
-                    {'security_group_id': parent_group_id,
-                     'direction': direction,
-                     'ethertype': ethertype,
-                     'protocol': ip_protocol,
-                     'port_range_min': from_port,
-                     'port_range_max': to_port,
-                     'remote_ip_prefix': cidr,
-                     'remote_group_id': group_id}}
+                {'security_group_id': parent_group_id,
+                 'direction': direction,
+                 'ethertype': ethertype,
+                 'protocol': ip_protocol,
+                 'port_range_min': from_port,
+                 'port_range_max': to_port,
+                 'remote_ip_prefix': cidr,
+                 'remote_group_id': group_id}}
         rule = self.client.create_security_group_rule(body)
         rule = rule.get('security_group_rule')
         sg_dict = self._sg_name_dict(parent_group_id, [rule])
@@ -401,11 +402,26 @@ class FloatingIpManager(network_base.FloatingIpManager):
         self.client.update_floatingip(floating_ip_id,
                                       {'floatingip': update_dict})
 
+    def _get_reachable_subnets(self, ports):
+        # Retrieve subnet list reachable from external network
+        ext_net_ids = [ext_net.id for ext_net in self.list_pools()]
+        gw_routers = [r.id for r in router_list(self.request)
+                      if (r.external_gateway_info and
+                          r.external_gateway_info.get('network_id')
+                          in ext_net_ids)]
+        reachable_subnets = set([p.fixed_ips[0]['subnet_id'] for p in ports
+                                 if ((p.device_owner ==
+                                      'network:router_interface')
+                                     and (p.device_id in gw_routers))])
+        return reachable_subnets
+
     def list_targets(self):
         tenant_id = self.request.user.tenant_id
         ports = port_list(self.request, tenant_id=tenant_id)
         servers, has_more = nova.server_list(self.request)
         server_dict = SortedDict([(s.id, s.name) for s in servers])
+        reachable_subnets = self._get_reachable_subnets(ports)
+
         targets = []
         for p in ports:
             # Remove network ports from Floating IP targets
@@ -414,8 +430,11 @@ class FloatingIpManager(network_base.FloatingIpManager):
             port_id = p.id
             server_name = server_dict.get(p.device_id)
             for ip in p.fixed_ips:
+                if ip['subnet_id'] not in reachable_subnets:
+                    continue
                 target = {'name': '%s: %s' % (server_name, ip['ip_address']),
-                          'id': '%s_%s' % (port_id, ip['ip_address'])}
+                          'id': '%s_%s' % (port_id, ip['ip_address']),
+                          'instance_id': p.device_id}
                 targets.append(FloatingIpTarget(target))
         return targets
 
@@ -425,19 +444,30 @@ class FloatingIpManager(network_base.FloatingIpManager):
         search_opts = {'device_id': instance_id}
         return port_list(self.request, **search_opts)
 
-    def get_target_id_by_instance(self, instance_id):
-        # In Neutron one port can have multiple ip addresses, so this method
-        # picks up the first one and generate target id.
-        ports = self._target_ports_by_instance(instance_id)
-        if not ports:
-            return None
-        return '{0}_{1}'.format(ports[0].id,
-                                ports[0].fixed_ips[0]['ip_address'])
+    def get_target_id_by_instance(self, instance_id, target_list=None):
+        if target_list is not None:
+            targets = [target for target in target_list
+                       if target['instance_id'] == instance_id]
+            if not targets:
+                return None
+            return targets[0]['id']
+        else:
+            # In Neutron one port can have multiple ip addresses, so this
+            # method picks up the first one and generate target id.
+            ports = self._target_ports_by_instance(instance_id)
+            if not ports:
+                return None
+            return '{0}_{1}'.format(ports[0].id,
+                                    ports[0].fixed_ips[0]['ip_address'])
 
-    def list_target_id_by_instance(self, instance_id):
-        ports = self._target_ports_by_instance(instance_id)
-        return ['{0}_{1}'.format(p.id, p.fixed_ips[0]['ip_address'])
-                for p in ports]
+    def list_target_id_by_instance(self, instance_id, target_list=None):
+        if target_list is not None:
+            return [target['id'] for target in target_list
+                    if target['instance_id'] == instance_id]
+        else:
+            ports = self._target_ports_by_instance(instance_id)
+            return ['{0}_{1}'.format(p.id, p.fixed_ips[0]['ip_address'])
+                    for p in ports]
 
     def is_simple_associate_supported(self):
         # NOTE: There are two reason that simple association support
@@ -463,10 +493,6 @@ def get_ipver_str(ip_version):
 def neutronclient(request):
     insecure = getattr(settings, 'OPENSTACK_SSL_NO_VERIFY', False)
     cacert = getattr(settings, 'OPENSTACK_SSL_CACERT', None)
-    LOG.debug('neutronclient connection created using token "%s" and url "%s"'
-              % (request.user.token.id, base.url_for(request, 'network')))
-    LOG.debug('user_id=%(user)s, tenant_id=%(tenant)s' %
-              {'user': request.user.id, 'tenant': request.user.tenant_id})
     c = neutron_client.Client(token=request.user.token.id,
                               auth_url=base.url_for(request, 'identity'),
                               endpoint_url=base.url_for(request, 'network'),
@@ -582,9 +608,9 @@ def subnet_create(request, network_id, cidr, ip_version, **kwargs):
     LOG.debug("subnet_create(): netid=%s, cidr=%s, ipver=%d, kwargs=%s"
               % (network_id, cidr, ip_version, kwargs))
     body = {'subnet':
-                {'network_id': network_id,
-                 'ip_version': ip_version,
-                 'cidr': cidr}}
+            {'network_id': network_id,
+             'ip_version': ip_version,
+             'cidr': cidr}}
     body['subnet'].update(kwargs)
     subnet = neutronclient(request).create_subnet(body=body).get('subnet')
     return Subnet(subnet)
@@ -907,6 +933,12 @@ def is_extension_supported(request, extension_alias):
 
 
 def is_enabled_by_config(name, default=True):
+    if hasattr(settings, 'OPENSTACK_QUANTUM_NETWORK'):
+        warnings.warn(
+            'OPENSTACK_QUANTUM_NETWORK setting is deprecated and will be '
+            'removed in the near future. '
+            'Please use OPENSTACK_NEUTRON_NETWORK instead.',
+            DeprecationWarning)
     network_config = (getattr(settings, 'OPENSTACK_NEUTRON_NETWORK', {}) or
                       getattr(settings, 'OPENSTACK_QUANTUM_NETWORK', {}))
     return network_config.get(name, default)

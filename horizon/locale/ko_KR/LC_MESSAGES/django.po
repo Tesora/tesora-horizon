@@ -3,17 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Chun-Kil Kang <gilbird@gmail.com>, 2014
-# Mario Cho <hephaex@gmail.com>, 2014
-# muhanpong <muhanpong@gmail.com>, 2014
+# jaekwon.park <jaekwon.park@rockplace.co.kr>, 2014
 # Sungjin Kang <potopro@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-29 22:50-0500\n"
-"PO-Revision-Date: 2014-09-29 07:12+0000\n"
-"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
+"POT-Creation-Date: 2014-10-23 02:04-0500\n"
+"PO-Revision-Date: 2014-10-23 15:51+0000\n"
+"Last-Translator: jaekwon.park <jaekwon.park@rockplace.co.kr>\n"
 "Language-Team: Korean (Korea) (http://www.transifex.com/projects/p/horizon/language/ko_KR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +19,7 @@ msgstr ""
 "Language: ko_KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: base.py:454
+#: base.py:480
 msgid "Other"
 msgstr "다른"
 
@@ -95,73 +93,73 @@ msgstr "취소"
 msgid "Filter"
 msgstr "필터"
 
-#: tables/actions.py:756
+#: tables/actions.py:758
 #, python-format
 msgctxt "past"
 msgid "%(action)s %(data_type)s"
 msgstr "%(data_type)s %(action)s"
 
-#: tables/actions.py:758
+#: tables/actions.py:760
 #, python-format
 msgctxt "present"
 msgid "%(action)s %(data_type)s"
 msgstr "%(data_type)s %(action)s"
 
-#: tables/actions.py:786 tables/base.py:1537
+#: tables/actions.py:788 tables/base.py:1549
 msgid "N/A"
 msgstr "N/A"
 
-#: tables/actions.py:815
+#: tables/actions.py:817
 #, python-format
 msgid "You are not allowed to %(action)s: %(objs)s"
 msgstr " %(action)s 이(가) 허용되지 않습니다: %(objs)s "
 
-#: tables/actions.py:822
+#: tables/actions.py:824
 #, python-format
 msgid "Unable to %(action)s: %(objs)s"
 msgstr "%(action)s를 할 수 없습니다.: %(objs)s"
 
-#: tables/actions.py:828
+#: tables/actions.py:830
 #, python-format
 msgid "%(action)s: %(objs)s"
 msgstr "%(action)s: %(objs)s"
 
-#: tables/actions.py:898
+#: tables/actions.py:900
 msgid "Delete"
 msgstr "삭제"
 
-#: tables/actions.py:900
+#: tables/actions.py:902
 msgid "Deleted"
 msgstr "삭제됨"
 
-#: tables/actions.py:931
+#: tables/actions.py:933
 msgid "Update"
 msgstr "업데이트"
 
-#: tables/actions.py:932
+#: tables/actions.py:934
 msgid "Updated"
-msgstr "업데이트됨"
+msgstr "업데이트 완료"
 
-#: tables/base.py:355
+#: tables/base.py:361
 #, python-format
 msgid "The attribute %(attr)s doesn't exist on %(obj)s."
 msgstr "%(obj)s 에 %(attr)s 속성이 없습니다."
 
-#: tables/base.py:967
+#: tables/base.py:973
 msgid "No items to display."
 msgstr "표시할 항목이 없습니다."
 
-#: tables/base.py:1074
+#: tables/base.py:1082
 #: templates/horizon/common/_data_table_table_actions.html:40
 msgid "Actions"
 msgstr "작업"
 
-#: tables/base.py:1302
+#: tables/base.py:1308
 #, python-format
 msgid "No match returned for the id \"%s\"."
 msgstr "ID \"%s\" 에 일치되는 항목이 없습니다."
 
-#: tables/base.py:1453
+#: tables/base.py:1465
 msgid "Please select a row before taking that action."
 msgstr "해당 작업을 실행하기 전에 열(row)을 선택하십시오."
 
@@ -217,21 +215,21 @@ msgstr "완료:"
 msgid "Error: "
 msgstr "오류:"
 
-#: templates/horizon/common/_data_table.html:54
+#: templates/horizon/common/_data_table.html:61
 msgid "Summary"
 msgstr "요약"
 
-#: templates/horizon/common/_data_table.html:63
+#: templates/horizon/common/_data_table.html:70
 #, python-format
 msgid "Displaying %(counter)s item"
 msgid_plural "Displaying %(counter)s items"
-msgstr[0] "%(counter)s 항목을 보여줍니다"
+msgstr[0] "%(counter)s 항목 표시"
 
-#: templates/horizon/common/_data_table.html:68
+#: templates/horizon/common/_data_table.html:75
 msgid "&laquo;&nbsp;Prev"
 msgstr "&laquo;&nbsp;이전"
 
-#: templates/horizon/common/_data_table.html:71
+#: templates/horizon/common/_data_table.html:78
 msgid "Next&nbsp;&raquo;"
 msgstr "다음&nbsp;&raquo;"
 
@@ -239,9 +237,19 @@ msgstr "다음&nbsp;&raquo;"
 msgid "More Actions"
 msgstr "기타 작업"
 
+#: templates/horizon/common/_domain_page_header.html:6
+#, python-format
+msgid "%(context_name)s:"
+msgstr "%(context_name)s:"
+
 #: templates/horizon/common/_formset_table.html:35
 msgid "Add a row"
 msgstr "열 추가"
+
+#: templates/horizon/common/_formset_table_row.html:15
+#, python-format
+msgid "%(name)s: %(error)s"
+msgstr "%(name)s: %(error)s"
 
 #: templates/horizon/common/_limit_summary.html:4
 msgid "Limit Summary"
@@ -310,8 +318,8 @@ msgstr "잘못된 키 "
 
 #: templates/horizon/common/_modal_form_update_metadata.html:88
 #: templates/horizon/common/_modal_form_update_metadata.html:200
-msgid "No existing metadata"
-msgstr "메타데이터가 없습니다. "
+msgid "No available metadata"
+msgstr "사용할 수 있는 메타데이타 없음"
 
 #: templates/horizon/common/_modal_form_update_metadata.html:99
 msgid "Existing Metadata"
@@ -336,21 +344,21 @@ msgstr "저장"
 #, python-format
 msgid "Displaying %(nav_items)s item"
 msgid_plural "Displaying %(nav_items)s items"
-msgstr[0] "%(nav_items)s 항목을 보여줍니다."
+msgstr[0] "%(nav_items)s 항목 표시"
 
 #: templates/horizon/common/_resource_browser.html:11
 #, python-format
 msgid "Displaying %(content_items)s item"
 msgid_plural "Displaying %(content_items)s items"
-msgstr[0] "%(content_items)s 항목을 보여줍니다."
+msgstr[0] "%(content_items)s 항목 표시"
 
 #: templates/horizon/common/_usage_summary.html:3
 msgid "Usage Summary"
 msgstr "사용량 요약"
 
 #: templates/horizon/common/_usage_summary.html:7
-msgid "Select a period of time to query its usage"
-msgstr "사용량을 조회할 기간을 선택하세요."
+msgid "Select a period of time to query its usage:"
+msgstr "사용량을 조회할 기간을 선택하세요:"
 
 #: templates/horizon/common/_usage_summary.html:9
 #, python-format
@@ -371,20 +379,20 @@ msgid "The date should be in YYYY-mm-dd format."
 msgstr "날짜는 YYYY-mm-dd 형식이어야 합니다."
 
 #: templates/horizon/common/_usage_summary.html:20
-msgid "Active Instances"
-msgstr "동작 중인 인스턴스"
+msgid "Active Instances:"
+msgstr "동작 중인 인스턴스:"
 
 #: templates/horizon/common/_usage_summary.html:21
-msgid "Active RAM"
-msgstr "사용 중인 RAM"
+msgid "Active RAM:"
+msgstr "사용 중인 RAM:"
 
 #: templates/horizon/common/_usage_summary.html:22
-msgid "This Period's VCPU-Hours"
-msgstr "이 기간의 VCPU 사용 시간"
+msgid "This Period's VCPU-Hours:"
+msgstr "이 기간의 VCPU 사용 시간:"
 
 #: templates/horizon/common/_usage_summary.html:23
-msgid "This Period's GB-Hours"
-msgstr "이 기간의 GB-Hours 사용 시간"
+msgid "This Period's GB-Hours:"
+msgstr "이 기간의 GB-Hours 사용 시간:"
 
 #: templates/horizon/common/_workflow.html:40
 msgid "Back"
@@ -438,18 +446,20 @@ msgid "%s PB"
 msgstr "%s PB"
 
 #: templatetags/sizeformat.py:77
-msgid "0 bytes"
-msgstr "0 bytes"
+msgid "0 Bytes"
+msgstr "0 Bytes"
 
+#. Translators: test code, don't really have to translate
 #: test/test_dashboards/dogs/puppies/tables.py:31
 msgid "Sell Puppy"
 msgid_plural "Sell Puppies"
-msgstr[0] ""
+msgstr[0] "강아지 판매"
 
+#. Translators: test code, don't really have to translate
 #: test/test_dashboards/dogs/puppies/tables.py:40
 msgid "Sold Puppy"
 msgid_plural "Sold Puppies"
-msgstr[0] ""
+msgstr[0] "강아지 판매함"
 
 #: utils/filters.py:49
 msgid "Never"

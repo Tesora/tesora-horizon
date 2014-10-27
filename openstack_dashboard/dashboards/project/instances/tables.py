@@ -215,7 +215,8 @@ class TogglePause(tables.BatchAction):
         has_permission = True
         policy_check = getattr(settings, "POLICY_CHECK_FUNCTION", None)
         if policy_check:
-            has_permission = policy_check(policy, request,
+            has_permission = policy_check(
+                policy, request,
                 target={'project_id': getattr(instance, 'tenant_id', None)})
 
         return (has_permission
@@ -282,7 +283,8 @@ class ToggleSuspend(tables.BatchAction):
         has_permission = True
         policy_check = getattr(settings, "POLICY_CHECK_FUNCTION", None)
         if policy_check:
-            has_permission = policy_check(policy, request,
+            has_permission = policy_check(
+                policy, request,
                 target={'project_id': getattr(instance, 'tenant_id', None)})
 
         return (has_permission
@@ -700,7 +702,7 @@ class StopInstance(policy.PolicyTargetMixin, tables.BatchAction):
 
     def allowed(self, request, instance):
         return ((get_power_state(instance)
-                in ("RUNNING", "PAUSED", "SUSPENDED"))
+                in ("RUNNING", "SUSPENDED"))
                 and not is_deleting(instance))
 
     def action(self, request, obj_id):
@@ -911,7 +913,7 @@ class InstancesTable(tables.DataTable):
                           verbose_name=_("Power State"),
                           display_choices=POWER_DISPLAY_CHOICES)
     created = tables.Column("created",
-                            verbose_name=_("Uptime"),
+                            verbose_name=_("Time since created"),
                             filters=(filters.parse_isotime,
                                      filters.timesince_sortable),
                             attrs={'data-type': 'timesince'})

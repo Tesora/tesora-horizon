@@ -166,7 +166,7 @@ horizon.modals.init_wizard = function () {
 };
 
 
-horizon.addInitFunction(function() {
+horizon.addInitFunction(horizon.modals.init = function() {
 
   // Bind handler for initializing new modals.
   $('#modal_wrapper').on('new_modal', function (evt, modal) {
@@ -369,5 +369,12 @@ horizon.addInitFunction(function() {
         $("#modal_wrapper .modal").last().modal("show");
       }
     }
+  });
+
+  // Make modals draggable
+  $(document).on("show.bs.modal", ".modal", function () {
+    $(".modal-content").draggable({
+      handle: ".modal-header"
+    });
   });
 });

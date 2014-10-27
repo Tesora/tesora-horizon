@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Adhi Priharmanto <adhi.pri@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-29 22:50-0500\n"
-"PO-Revision-Date: 2014-09-29 07:12+0000\n"
+"POT-Creation-Date: 2014-10-18 20:37-0500\n"
+"PO-Revision-Date: 2014-10-19 01:37+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/horizon/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +17,7 @@ msgstr ""
 "Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: base.py:454
+#: base.py:480
 msgid "Other"
 msgstr "Lainnya"
 
@@ -92,50 +91,50 @@ msgstr "Batal"
 msgid "Filter"
 msgstr "Penyaring"
 
-#: tables/actions.py:756
+#: tables/actions.py:758
 #, python-format
 msgctxt "past"
 msgid "%(action)s %(data_type)s"
 msgstr "%(action)s %(data_type)s"
 
-#: tables/actions.py:758
+#: tables/actions.py:760
 #, python-format
 msgctxt "present"
 msgid "%(action)s %(data_type)s"
 msgstr "%(action)s %(data_type)s"
 
-#: tables/actions.py:786 tables/base.py:1537
+#: tables/actions.py:788 tables/base.py:1543
 msgid "N/A"
 msgstr "Tidak Tersedia"
 
-#: tables/actions.py:815
+#: tables/actions.py:817
 #, python-format
 msgid "You are not allowed to %(action)s: %(objs)s"
 msgstr "Anda tidak diijinkan untuk %(action)s: %(objs)s"
 
-#: tables/actions.py:822
+#: tables/actions.py:824
 #, python-format
 msgid "Unable to %(action)s: %(objs)s"
 msgstr "Tidak dapat %(action)s: %(objs)s"
 
-#: tables/actions.py:828
+#: tables/actions.py:830
 #, python-format
 msgid "%(action)s: %(objs)s"
 msgstr "%(action)s: %(objs)s"
 
-#: tables/actions.py:898
+#: tables/actions.py:900
 msgid "Delete"
 msgstr "Hapus"
 
-#: tables/actions.py:900
+#: tables/actions.py:902
 msgid "Deleted"
 msgstr "Terhapus"
 
-#: tables/actions.py:931
+#: tables/actions.py:933
 msgid "Update"
 msgstr "Perbaharui"
 
-#: tables/actions.py:932
+#: tables/actions.py:934
 msgid "Updated"
 msgstr "Sudah di perbaharui"
 
@@ -148,7 +147,7 @@ msgstr "Atribut  %(attr)s  tidak tersedia di %(obj)s."
 msgid "No items to display."
 msgstr "Tidak ada yang ditampilkan"
 
-#: tables/base.py:1074
+#: tables/base.py:1076
 #: templates/horizon/common/_data_table_table_actions.html:40
 msgid "Actions"
 msgstr "Lakukan"
@@ -158,7 +157,7 @@ msgstr "Lakukan"
 msgid "No match returned for the id \"%s\"."
 msgstr "Tidak ada hasil yang berhubungan dengan id \"%s\"."
 
-#: tables/base.py:1453
+#: tables/base.py:1459
 msgid "Please select a row before taking that action."
 msgstr "Mohon pilih baris terlebih dahulu."
 
@@ -222,7 +221,7 @@ msgstr "Ringkasan"
 #, python-format
 msgid "Displaying %(counter)s item"
 msgid_plural "Displaying %(counter)s items"
-msgstr[0] "Menampilkan %(counter)s items"
+msgstr[0] ""
 
 #: templates/horizon/common/_data_table.html:68
 msgid "&laquo;&nbsp;Prev"
@@ -236,9 +235,19 @@ msgstr "Next&nbsp;&raquo;"
 msgid "More Actions"
 msgstr "Perintah Lanjutan"
 
+#: templates/horizon/common/_domain_page_header.html:6
+#, python-format
+msgid "%(context_name)s:"
+msgstr ""
+
 #: templates/horizon/common/_formset_table.html:35
 msgid "Add a row"
 msgstr "Tambah baris"
+
+#: templates/horizon/common/_formset_table_row.html:15
+#, python-format
+msgid "%(name)s: %(error)s"
+msgstr ""
 
 #: templates/horizon/common/_limit_summary.html:4
 msgid "Limit Summary"
@@ -307,8 +316,8 @@ msgstr "Kesalahan pada nama \"key\""
 
 #: templates/horizon/common/_modal_form_update_metadata.html:88
 #: templates/horizon/common/_modal_form_update_metadata.html:200
-msgid "No existing metadata"
-msgstr "Tidak ada metadata yang sudah ada"
+msgid "No available metadata"
+msgstr ""
 
 #: templates/horizon/common/_modal_form_update_metadata.html:99
 msgid "Existing Metadata"
@@ -333,21 +342,21 @@ msgstr "Simpan"
 #, python-format
 msgid "Displaying %(nav_items)s item"
 msgid_plural "Displaying %(nav_items)s items"
-msgstr[0] "Menampilkan %(nav_items)s hal"
+msgstr[0] ""
 
 #: templates/horizon/common/_resource_browser.html:11
 #, python-format
 msgid "Displaying %(content_items)s item"
 msgid_plural "Displaying %(content_items)s items"
-msgstr[0] "Menampilkan %(content_items)s hal"
+msgstr[0] ""
 
 #: templates/horizon/common/_usage_summary.html:3
 msgid "Usage Summary"
 msgstr "Ringkasan Penggunaan"
 
 #: templates/horizon/common/_usage_summary.html:7
-msgid "Select a period of time to query its usage"
-msgstr "Pilih periode waktu untuk query penggunaannya"
+msgid "Select a period of time to query its usage:"
+msgstr ""
 
 #: templates/horizon/common/_usage_summary.html:9
 #, python-format
@@ -368,20 +377,20 @@ msgid "The date should be in YYYY-mm-dd format."
 msgstr "Format tanggal harus berupa YYYY-mm-dd"
 
 #: templates/horizon/common/_usage_summary.html:20
-msgid "Active Instances"
-msgstr "Instances yang Aktif"
+msgid "Active Instances:"
+msgstr ""
 
 #: templates/horizon/common/_usage_summary.html:21
-msgid "Active RAM"
-msgstr "RAM yang aktif"
+msgid "Active RAM:"
+msgstr ""
 
 #: templates/horizon/common/_usage_summary.html:22
-msgid "This Period's VCPU-Hours"
-msgstr "VCPU-Hours saat ini"
+msgid "This Period's VCPU-Hours:"
+msgstr ""
 
 #: templates/horizon/common/_usage_summary.html:23
-msgid "This Period's GB-Hours"
-msgstr "GB-Hours saat ini"
+msgid "This Period's GB-Hours:"
+msgstr ""
 
 #: templates/horizon/common/_workflow.html:40
 msgid "Back"
@@ -407,7 +416,7 @@ msgstr "Tersedia"
 #, python-format
 msgid "%(size)d Byte"
 msgid_plural "%(size)d Bytes"
-msgstr[0] "%(size)d Bytes"
+msgstr[0] ""
 
 #: templatetags/sizeformat.py:57
 #, python-format
@@ -435,14 +444,16 @@ msgid "%s PB"
 msgstr "%s PB"
 
 #: templatetags/sizeformat.py:77
-msgid "0 bytes"
-msgstr "0 bytes"
+msgid "0 Bytes"
+msgstr ""
 
+#. Translators: test code, don't really have to translate
 #: test/test_dashboards/dogs/puppies/tables.py:31
 msgid "Sell Puppy"
 msgid_plural "Sell Puppies"
 msgstr[0] ""
 
+#. Translators: test code, don't really have to translate
 #: test/test_dashboards/dogs/puppies/tables.py:40
 msgid "Sold Puppy"
 msgid_plural "Sold Puppies"
@@ -474,7 +485,7 @@ msgstr "Sedang di proses..."
 
 #: workflows/base.py:475
 msgid "All available"
-msgstr "Semua yang tersedia"
+msgstr "Semua yang tersed1a"
 
 #: workflows/base.py:476
 msgid "Members"

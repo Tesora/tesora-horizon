@@ -1,7 +1,6 @@
 $accordionBorderColor: #e5e5e5;
 
 .nav_accordion {
-  background-color: #f9f9f9;
   color: #6e6e6e;
   margin: 0px 0px;
   dt, dd {
@@ -66,7 +65,7 @@ $accordionBorderColor: #e5e5e5;
         border-top: 2px solid $accordionBorderColor;
         border-left: 4px solid #d93c27;
         border-bottom: 2px solid $accordionBorderColor;
-        margin-left: 18px;
+        margin-left: 19px;
         border-radius: 5px 0 0 5px; }
       a:last-child {
         margin-bottom: 8px; } } }

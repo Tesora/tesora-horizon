@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# Jerome Gotangco <jgotangco@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-29 22:50-0500\n"
-"PO-Revision-Date: 2014-09-29 07:12+0000\n"
+"POT-Creation-Date: 2014-10-18 20:37-0500\n"
+"PO-Revision-Date: 2014-10-19 01:37+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Filipino (http://www.transifex.com/projects/p/horizon/language/fil/)\n"
 "MIME-Version: 1.0\n"
@@ -18,7 +17,7 @@ msgstr ""
 "Language: fil\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: base.py:454
+#: base.py:480
 msgid "Other"
 msgstr "Iba"
 
@@ -92,50 +91,50 @@ msgstr "Ikansela"
 msgid "Filter"
 msgstr "Salain"
 
-#: tables/actions.py:756
+#: tables/actions.py:758
 #, python-format
 msgctxt "past"
 msgid "%(action)s %(data_type)s"
 msgstr "%(action)s %(data_type)s"
 
-#: tables/actions.py:758
+#: tables/actions.py:760
 #, python-format
 msgctxt "present"
 msgid "%(action)s %(data_type)s"
 msgstr "%(action)s %(data_type)s"
 
-#: tables/actions.py:786 tables/base.py:1537
+#: tables/actions.py:788 tables/base.py:1543
 msgid "N/A"
 msgstr "N/A"
 
-#: tables/actions.py:815
+#: tables/actions.py:817
 #, python-format
 msgid "You are not allowed to %(action)s: %(objs)s"
 msgstr "Wala kang pahintulot sa %(action)s: %(objs)s"
 
-#: tables/actions.py:822
+#: tables/actions.py:824
 #, python-format
 msgid "Unable to %(action)s: %(objs)s"
 msgstr "Hindi magawa ang %(action)s: %(objs)s"
 
-#: tables/actions.py:828
+#: tables/actions.py:830
 #, python-format
 msgid "%(action)s: %(objs)s"
 msgstr "%(action)s: %(objs)s"
 
-#: tables/actions.py:898
+#: tables/actions.py:900
 msgid "Delete"
 msgstr "Alisin"
 
-#: tables/actions.py:900
+#: tables/actions.py:902
 msgid "Deleted"
 msgstr "Naalis na"
 
-#: tables/actions.py:931
+#: tables/actions.py:933
 msgid "Update"
 msgstr "I-update"
 
-#: tables/actions.py:932
+#: tables/actions.py:934
 msgid "Updated"
 msgstr "Nai-update"
 
@@ -148,7 +147,7 @@ msgstr "Ang katangian %(attr)s ay hindi umiiral sa %(obj)s."
 msgid "No items to display."
 msgstr "Walang mga items na ipapakita."
 
-#: tables/base.py:1074
+#: tables/base.py:1076
 #: templates/horizon/common/_data_table_table_actions.html:40
 msgid "Actions"
 msgstr "Mga Aksyon"
@@ -158,7 +157,7 @@ msgstr "Mga Aksyon"
 msgid "No match returned for the id \"%s\"."
 msgstr "Walang tugma para sa id na \"%s\"."
 
-#: tables/base.py:1453
+#: tables/base.py:1459
 msgid "Please select a row before taking that action."
 msgstr "Mangyaring pumili ng isang hilera bago simulan ang aksiyon."
 
@@ -222,8 +221,8 @@ msgstr "Buod"
 #, python-format
 msgid "Displaying %(counter)s item"
 msgid_plural "Displaying %(counter)s items"
-msgstr[0] "Pinapakita ang %(counter)s items"
-msgstr[1] "Pinapakita ang %(counter)s items"
+msgstr[0] ""
+msgstr[1] ""
 
 #: templates/horizon/common/_data_table.html:68
 msgid "&laquo;&nbsp;Prev"
@@ -237,9 +236,19 @@ msgstr ""
 msgid "More Actions"
 msgstr ""
 
+#: templates/horizon/common/_domain_page_header.html:6
+#, python-format
+msgid "%(context_name)s:"
+msgstr ""
+
 #: templates/horizon/common/_formset_table.html:35
 msgid "Add a row"
 msgstr "Magdagdag ng hilera"
+
+#: templates/horizon/common/_formset_table_row.html:15
+#, python-format
+msgid "%(name)s: %(error)s"
+msgstr ""
 
 #: templates/horizon/common/_limit_summary.html:4
 msgid "Limit Summary"
@@ -308,7 +317,7 @@ msgstr ""
 
 #: templates/horizon/common/_modal_form_update_metadata.html:88
 #: templates/horizon/common/_modal_form_update_metadata.html:200
-msgid "No existing metadata"
+msgid "No available metadata"
 msgstr ""
 
 #: templates/horizon/common/_modal_form_update_metadata.html:99
@@ -334,23 +343,23 @@ msgstr "I-Save"
 #, python-format
 msgid "Displaying %(nav_items)s item"
 msgid_plural "Displaying %(nav_items)s items"
-msgstr[0] "Pinapakita ang %(nav_items)s item"
-msgstr[1] "Pinapakita ang %(nav_items)s item"
+msgstr[0] ""
+msgstr[1] ""
 
 #: templates/horizon/common/_resource_browser.html:11
 #, python-format
 msgid "Displaying %(content_items)s item"
 msgid_plural "Displaying %(content_items)s items"
-msgstr[0] "Pinapakita ang %(content_items)s item"
-msgstr[1] "Pinapakita ang %(content_items)s items"
+msgstr[0] ""
+msgstr[1] ""
 
 #: templates/horizon/common/_usage_summary.html:3
 msgid "Usage Summary"
 msgstr "Buod ng Paggamit"
 
 #: templates/horizon/common/_usage_summary.html:7
-msgid "Select a period of time to query its usage"
-msgstr "Pumili ng isang tagal ng panahon para matanong ang paggamit"
+msgid "Select a period of time to query its usage:"
+msgstr ""
 
 #: templates/horizon/common/_usage_summary.html:9
 #, python-format
@@ -371,20 +380,20 @@ msgid "The date should be in YYYY-mm-dd format."
 msgstr "Ang petsa ay dapat nasa YYYY-mm-dd format."
 
 #: templates/horizon/common/_usage_summary.html:20
-msgid "Active Instances"
-msgstr "Mga Aktibong Instances"
+msgid "Active Instances:"
+msgstr ""
 
 #: templates/horizon/common/_usage_summary.html:21
-msgid "Active RAM"
-msgstr "Aktibong RAM"
+msgid "Active RAM:"
+msgstr ""
 
 #: templates/horizon/common/_usage_summary.html:22
-msgid "This Period's VCPU-Hours"
-msgstr "VCPU-Hours nitong panahon"
+msgid "This Period's VCPU-Hours:"
+msgstr ""
 
 #: templates/horizon/common/_usage_summary.html:23
-msgid "This Period's GB-Hours"
-msgstr "GB-Hours nitong panahon"
+msgid "This Period's GB-Hours:"
+msgstr ""
 
 #: templates/horizon/common/_workflow.html:40
 msgid "Back"
@@ -410,8 +419,8 @@ msgstr "Magagamit"
 #, python-format
 msgid "%(size)d Byte"
 msgid_plural "%(size)d Bytes"
-msgstr[0] "%(size)d Byte"
-msgstr[1] "%(size)d Bytes"
+msgstr[0] ""
+msgstr[1] ""
 
 #: templatetags/sizeformat.py:57
 #, python-format
@@ -439,15 +448,17 @@ msgid "%s PB"
 msgstr "%s PB"
 
 #: templatetags/sizeformat.py:77
-msgid "0 bytes"
+msgid "0 Bytes"
 msgstr ""
 
+#. Translators: test code, don't really have to translate
 #: test/test_dashboards/dogs/puppies/tables.py:31
 msgid "Sell Puppy"
 msgid_plural "Sell Puppies"
 msgstr[0] ""
 msgstr[1] ""
 
+#. Translators: test code, don't really have to translate
 #: test/test_dashboards/dogs/puppies/tables.py:40
 msgid "Sold Puppy"
 msgid_plural "Sold Puppies"

@@ -3,13 +3,12 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# darioristic <office@darioristic.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-09-29 22:50-0500\n"
-"PO-Revision-Date: 2014-09-29 07:12+0000\n"
+"POT-Creation-Date: 2014-10-18 20:37-0500\n"
+"PO-Revision-Date: 2014-10-19 01:37+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Serbian (http://www.transifex.com/projects/p/horizon/language/sr/)\n"
 "MIME-Version: 1.0\n"
@@ -18,9 +17,9 @@ msgstr ""
 "Language: sr\n"
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: base.py:454
+#: base.py:480
 msgid "Other"
-msgstr "Drugo"
+msgstr "Drugi"
 
 #: decorators.py:53
 msgid "Please log in to continue."
@@ -43,7 +42,7 @@ msgstr "Neovlašćen: %s"
 
 #: exceptions.py:290
 msgid "Unauthorized. Please try logging in again."
-msgstr "Niste ovlašćeni. Molim, pokušajte ponovo."
+msgstr "Niste ovlašćeni. Molim, pokušajte da se ulogujete ponovo."
 
 #: middleware.py:97
 msgid "Session timed out."
@@ -72,11 +71,11 @@ msgstr "Neispravna verzija IP adrese"
 
 #: forms/fields.py:66
 msgid "Invalid subnet mask"
-msgstr "Nevažeća maska subnet-a"
+msgstr "Nevažeća maska podmreže"
 
 #: forms/views.py:81 templates/horizon/common/_usage_summary.html:16
 msgid "Submit"
-msgstr "Podneti"
+msgstr "Predaj"
 
 #: forms/views.py:82
 #: templates/horizon/common/_modal_form_update_metadata.html:239
@@ -92,52 +91,52 @@ msgstr "Odustani"
 msgid "Filter"
 msgstr "Filter"
 
-#: tables/actions.py:756
+#: tables/actions.py:758
 #, python-format
 msgctxt "past"
 msgid "%(action)s %(data_type)s"
 msgstr "%(action)s %(data_type)s"
 
-#: tables/actions.py:758
+#: tables/actions.py:760
 #, python-format
 msgctxt "present"
 msgid "%(action)s %(data_type)s"
 msgstr "%(action)s %(data_type)s"
 
-#: tables/actions.py:786 tables/base.py:1537
+#: tables/actions.py:788 tables/base.py:1543
 msgid "N/A"
 msgstr "Neprimenljivo"
 
-#: tables/actions.py:815
+#: tables/actions.py:817
 #, python-format
 msgid "You are not allowed to %(action)s: %(objs)s"
 msgstr "Nije vam dozvoljeno da %(action)s: %(objs)s"
 
-#: tables/actions.py:822
+#: tables/actions.py:824
 #, python-format
 msgid "Unable to %(action)s: %(objs)s"
 msgstr "Nemoguće je %(action)s: %(objs)s"
 
-#: tables/actions.py:828
+#: tables/actions.py:830
 #, python-format
 msgid "%(action)s: %(objs)s"
 msgstr "%(action)s: %(objs)s"
 
-#: tables/actions.py:898
+#: tables/actions.py:900
 msgid "Delete"
 msgstr "Brisanje"
 
-#: tables/actions.py:900
+#: tables/actions.py:902
 msgid "Deleted"
 msgstr "Obrisano"
 
-#: tables/actions.py:931
+#: tables/actions.py:933
 msgid "Update"
-msgstr "Izmena"
+msgstr "Ažuriranje"
 
-#: tables/actions.py:932
+#: tables/actions.py:934
 msgid "Updated"
-msgstr "Izmenjeno"
+msgstr "Ažurirano"
 
 #: tables/base.py:355
 #, python-format
@@ -146,9 +145,9 @@ msgstr "Atribut %(attr)s ne postoji na %(obj)s."
 
 #: tables/base.py:967
 msgid "No items to display."
-msgstr "Nema stavke za prikaz."
+msgstr "Nema stavki za prikaz."
 
-#: tables/base.py:1074
+#: tables/base.py:1076
 #: templates/horizon/common/_data_table_table_actions.html:40
 msgid "Actions"
 msgstr "Akcije"
@@ -156,9 +155,9 @@ msgstr "Akcije"
 #: tables/base.py:1302
 #, python-format
 msgid "No match returned for the id \"%s\"."
-msgstr "Nije vraćen očekivani id \"%s\"."
+msgstr "Ne postoji podudaranje za id \"%s\"."
 
-#: tables/base.py:1453
+#: tables/base.py:1459
 msgid "Please select a row before taking that action."
 msgstr "Molim odaberite vrstu pre nego počnete."
 
@@ -192,7 +191,7 @@ msgstr "Nemate dozvolu za pristup resursu:"
 msgid ""
 "Login as different user or go back to <a href=\"%(home_url)s\"> home "
 "page</a>"
-msgstr "Ulogujte se kao drugi korisnik ili idite nazad na <a href=\"%(home_url)s\"> home page</a>"
+msgstr "Ulogujte se kao drugi korisnik ili idite nazad na <a href=\"%(home_url)s\"> naslovna stranu</a>"
 
 #: templates/auth/_login.html:32
 msgid "Sign In"
@@ -224,7 +223,7 @@ msgid "Displaying %(counter)s item"
 msgid_plural "Displaying %(counter)s items"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] "Prikazivanje %(counter)s stavke"
+msgstr[2] ""
 
 #: templates/horizon/common/_data_table.html:68
 msgid "&laquo;&nbsp;Prev"
@@ -238,9 +237,19 @@ msgstr ""
 msgid "More Actions"
 msgstr ""
 
+#: templates/horizon/common/_domain_page_header.html:6
+#, python-format
+msgid "%(context_name)s:"
+msgstr ""
+
 #: templates/horizon/common/_formset_table.html:35
 msgid "Add a row"
 msgstr "Dodavanje vrste"
+
+#: templates/horizon/common/_formset_table_row.html:15
+#, python-format
+msgid "%(name)s: %(error)s"
+msgstr ""
 
 #: templates/horizon/common/_limit_summary.html:4
 msgid "Limit Summary"
@@ -309,8 +318,8 @@ msgstr "Pogresno ime kljuca"
 
 #: templates/horizon/common/_modal_form_update_metadata.html:88
 #: templates/horizon/common/_modal_form_update_metadata.html:200
-msgid "No existing metadata"
-msgstr "Nema postojecih metadata podataka"
+msgid "No available metadata"
+msgstr ""
 
 #: templates/horizon/common/_modal_form_update_metadata.html:99
 msgid "Existing Metadata"
@@ -337,7 +346,7 @@ msgid "Displaying %(nav_items)s item"
 msgid_plural "Displaying %(nav_items)s items"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] "Prikazivanje %(nav_items)s stavke"
+msgstr[2] ""
 
 #: templates/horizon/common/_resource_browser.html:11
 #, python-format
@@ -345,15 +354,15 @@ msgid "Displaying %(content_items)s item"
 msgid_plural "Displaying %(content_items)s items"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] "Prikazivanje %(content_items)s stavke"
+msgstr[2] ""
 
 #: templates/horizon/common/_usage_summary.html:3
 msgid "Usage Summary"
 msgstr "Rezime korišćenja"
 
 #: templates/horizon/common/_usage_summary.html:7
-msgid "Select a period of time to query its usage"
-msgstr "Odaberite trenutak za upit za upotrebu"
+msgid "Select a period of time to query its usage:"
+msgstr ""
 
 #: templates/horizon/common/_usage_summary.html:9
 #, python-format
@@ -374,20 +383,20 @@ msgid "The date should be in YYYY-mm-dd format."
 msgstr "Format datuma treba da bude GGGG-mm-dd."
 
 #: templates/horizon/common/_usage_summary.html:20
-msgid "Active Instances"
-msgstr "Aktivne instance"
+msgid "Active Instances:"
+msgstr ""
 
 #: templates/horizon/common/_usage_summary.html:21
-msgid "Active RAM"
-msgstr "Aktivna memorija"
+msgid "Active RAM:"
+msgstr ""
 
 #: templates/horizon/common/_usage_summary.html:22
-msgid "This Period's VCPU-Hours"
-msgstr "Ovo odmerava VCPU-časove"
+msgid "This Period's VCPU-Hours:"
+msgstr ""
 
 #: templates/horizon/common/_usage_summary.html:23
-msgid "This Period's GB-Hours"
-msgstr "Ovo odmerava GB-časove"
+msgid "This Period's GB-Hours:"
+msgstr ""
 
 #: templates/horizon/common/_workflow.html:40
 msgid "Back"
@@ -415,7 +424,7 @@ msgid "%(size)d Byte"
 msgid_plural "%(size)d Bytes"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] "%(size)d Byte-ovi"
+msgstr[2] ""
 
 #: templatetags/sizeformat.py:57
 #, python-format
@@ -443,9 +452,10 @@ msgid "%s PB"
 msgstr "%s PB"
 
 #: templatetags/sizeformat.py:77
-msgid "0 bytes"
+msgid "0 Bytes"
 msgstr ""
 
+#. Translators: test code, don't really have to translate
 #: test/test_dashboards/dogs/puppies/tables.py:31
 msgid "Sell Puppy"
 msgid_plural "Sell Puppies"
@@ -453,6 +463,7 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
+#. Translators: test code, don't really have to translate
 #: test/test_dashboards/dogs/puppies/tables.py:40
 msgid "Sold Puppy"
 msgid_plural "Sold Puppies"
@@ -478,7 +489,7 @@ msgstr "Jedna dvotačka je dozvoljena u opsegu portova"
 
 #: utils/validators.py:49
 msgid "Port number must be integer"
-msgstr "Broj porta mora biti celobroj"
+msgstr "Broj porta mora biti celobrojna vrednost"
 
 #: workflows/base.py:71
 msgid "Processing..."
@@ -486,7 +497,7 @@ msgstr "Obrada..."
 
 #: workflows/base.py:475
 msgid "All available"
-msgstr "Sve je dostupno"
+msgstr "Sve dostupno"
 
 #: workflows/base.py:476
 msgid "Members"

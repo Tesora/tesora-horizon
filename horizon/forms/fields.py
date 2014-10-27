@@ -173,7 +173,7 @@ class SelectWidget(widgets.Select):
                ])
     """
     def __init__(self, attrs=None, choices=(), data_attrs=(), transform=None,
-                transform_html_attrs=None):
+                 transform_html_attrs=None):
         self.data_attrs = data_attrs
         self.transform = transform
         self.transform_html_attrs = transform_html_attrs
@@ -181,8 +181,8 @@ class SelectWidget(widgets.Select):
 
     def render_option(self, selected_choices, option_value, option_label):
         option_value = force_text(option_value)
-        other_html = (option_value in selected_choices) and \
-                         u' selected="selected"' or ''
+        other_html = (u' selected="selected"'
+                      if option_value in selected_choices else '')
 
         if callable(self.transform_html_attrs):
             html_attrs = self.transform_html_attrs(option_label)

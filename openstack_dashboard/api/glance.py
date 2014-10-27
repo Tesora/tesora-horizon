@@ -41,8 +41,6 @@ def glanceclient(request, version='1'):
     url = base.url_for(request, 'image')
     insecure = getattr(settings, 'OPENSTACK_SSL_NO_VERIFY', False)
     cacert = getattr(settings, 'OPENSTACK_SSL_CACERT', None)
-    LOG.debug('glanceclient connection created using token "%s" and url "%s"'
-              % (request.user.token.id, url))
     return glance_client.Client(version, url, token=request.user.token.id,
                                 insecure=insecure, cacert=cacert)
 
@@ -162,7 +160,7 @@ class Namespace(BaseGlanceMetadefAPIResourceWrapper):
     @property
     def resource_type_associations(self):
         result = [resource_type['name'] for resource_type in
-                    getattr(self._apiresource, 'resource_type_associations')]
+                  getattr(self._apiresource, 'resource_type_associations')]
         return result
 
     @property
