@@ -1,19 +1,10 @@
 /* Horizon Variables */
 
-$tesora-orange: #f18530;
-$tesora-light-blue: #96b3c6;
-$tesora-dark-blue: #1377a8;
-$tesora-lighter-gray: #ebebeb;
-$tesora-light-gray: #e0e0e0;
-$tesora-gray: #b5b5b5;
-$tesora-dark-gray: #a1a1a1;
-$tesora-darker-gray: #6c6c6c;
-
-$gray-darker: $tesora-darker-gray;
-$gray-dark: $tesora-dark-gray;
-$gray: $tesora-gray;
-$gray-light: $tesora-light-gray;
-$gray-lighter: $tesora-lighter-gray;
+$gray-darker: #222222;
+$gray-dark: #333333;
+$gray: #555555;
+$gray-light: #cccccc;
+$gray-lighter: #eeeeee;
 
 $brand-primary: #428bca;
 $brand-success: #5cb85c;
@@ -23,12 +14,12 @@ $brand-danger: #d9534f;
 
 $body-bg: #ffffff;
 
-$text-color: $gray-darker;
+$text-color: $gray-dark;
 
-$link-color: $tesora-dark-blue;
+$link-color: $brand-primary;
 $link-hover-color: darken($link-color, 15%);
 
-$border-color: $gray;
+$border-color: #dddddd;
 
 $headings-color: $gray-dark;
 

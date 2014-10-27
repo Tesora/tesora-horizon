@@ -1,26 +1,17 @@
 $accordionBorderColor: #e5e5e5;
 
-$accordionBg1Color: #e0e0e0;
-$accordionBg2Color: #b5b5b5;
-$accordionBg3Color: #a1a1a1;
-
-$accordionDarkTextColor: #424242;
-$accordionTextColor: #919191;
-$accordionActiveColor: #f18530;
-$accordionActiveTextColor: #1377a8;
-
 .nav_accordion {
-  background-color: $accordionBg1Color;
-  color: $accordionTextColor;
+  background-color: #f9f9f9;
+  color: #6e6e6e;
   margin: 0px 0px;
   dt, dd {
     padding: 10px 0 10px 0;
     line-height: 18px;
     h4 {
-      border: 1px solid $accordionBorderColor;
+      border: 1px solid #bbbbbb;
       border-right: 0;
       border-bottom: 0;
-      background-color: $accordionBg2Color;
+      background-color: #f0f0f0;
       background-repeat: no-repeat;
       background-position: 96% center;
       background-image: url("../img/right_droparrow.png");
@@ -28,14 +19,14 @@ $accordionActiveTextColor: #1377a8;
       line-height: 16px;
       margin-top: 0;
       margin-bottom: 0;
-      color: $accordionTextColor;
+      color: #6e6e6e;
       font-weight: bold;
       text-rendering: optimizelegibility;
       max-width: 217px;
       padding-right: 16px;
       cursor: pointer;
       div {
-        color: $accordionDarkTextColor;
+        color: #6e6e6e;
         font-size: 14px;
         margin: 0 0 0 14px;
         display: block;
@@ -45,10 +36,10 @@ $accordionActiveTextColor: #1377a8;
         text-overflow: ellipsis;
         max-width: 177px; } }
     h4.active {
-      border-bottom: 1px solid $accordionBorderColor;
+      border-bottom: 1px solid #bbbbbb;
       background-image: url("../img/drop_arrow.png"); }
     a {
-      color: $accordionDarkTextColor;
+      color: #6e6e6e;
       font-size: 16px;
       margin: 0 0 0 14px;
       padding: 0;
@@ -71,10 +62,9 @@ $accordionActiveTextColor: #1377a8;
         font-weight: normal;
         font-size: 13px; }
       a.active {
-        color: $accordionActiveTextColor;
         background: white;
         border-top: 2px solid $accordionBorderColor;
-        border-left: 4px solid $accordionActiveColor;
+        border-left: 4px solid #d93c27;
         border-bottom: 2px solid $accordionBorderColor;
         margin-left: 18px;
         border-radius: 5px 0 0 5px; }
@@ -85,8 +75,8 @@ $accordionActiveTextColor: #1377a8;
     margin-left: 9px;
     font-size: 12px; }
   dt {
-    border-top: 1px solid $accordionBorderColor;
-    background-color: $accordionBg3Color;
+    border-top: 1px solid #bbbbbb;
+    background-color: $accordionBorderColor;
     background-repeat: no-repeat;
     background-position: 96% center;
     background-image: url("../img/right_droparrow.png");
@@ -94,7 +84,7 @@ $accordionActiveTextColor: #1377a8;
     max-width: 231px;
     cursor: pointer;
     div {
-      color: $accordionDarkTextColor;
+      color: #6e6e6e;
       font-size: 14px;
       margin: 0 0 0 14px;
       padding: 0;
