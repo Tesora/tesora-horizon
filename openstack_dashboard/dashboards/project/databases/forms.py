@@ -12,8 +12,6 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import logging
-
 from django.core.urlresolvers import reverse
 from django.forms import ValidationError  # noqa
 from django.utils.translation import ugettext_lazy as _
@@ -22,8 +20,6 @@ from horizon import exceptions
 from horizon import forms
 from horizon import messages
 from openstack_dashboard import api
-
-LOG = logging.getLogger(__name__)
 
 
 class ResizeVolumeForm(forms.SelfHandlingForm):
@@ -55,47 +51,5 @@ class ResizeVolumeForm(forms.SelfHandlingForm):
         except Exception as e:
             redirect = reverse("horizon:project:databases:index")
             exceptions.handle(request, _('Unable to resize volume. %s') %
-                              e.message, redirect=redirect)
-        return True
-
-
-class ResizeInstanceForm(forms.SelfHandlingForm):
-    instance_id = forms.CharField(widget=forms.HiddenInput())
-    old_flavor_name = forms.CharField(label=_("Old Flavor"),
-        required=False, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
-    new_flavor = forms.ChoiceField(label=_("New Flavor"),
-                               required=True,
-                               help_text=_("Choose a new instance flavor."))
-
-    def __init__(self, request, *args, **kwargs):
-        super(ResizeInstanceForm, self).__init__(request, *args, **kwargs)
-        flavors = kwargs.get('initial', {}).get('flavors').values()
-
-        choices = [(f.id, f.name) for f in flavors]
-        if choices:
-            choices.insert(0, ("", _("Select a new flavor")))
-        else:
-            choices.insert(0, ("", _("No flavors available")))
-        self.fields['new_flavor'].choices = choices
-
-    def clean(self):
-        cleaned_data = super(ResizeInstanceForm, self).clean()
-        flavor = cleaned_data.get('new_flavor', None)
-
-        if flavor is None or flavor == self.initial['old_flavor_id']:
-            raise forms.ValidationError(_('Please choose a new flavor that '
-                                          'can not be same as the old one.'))
-        return cleaned_data
-
-    def handle(self, request, data):
-        instance = data.get('instance_id')
-        flavor = data.get('new_flavor')
-        try:
-            api.trove.instance_resize_instance(request, instance, flavor)
-
-            messages.success(request, _('Resizing instance "%s"') % instance)
-        except Exception as e:
-            redirect = reverse("horizon:project:databases:index")
-            exceptions.handle(request, _('Unable to resize instance. %s') %
                               e.message, redirect=redirect)
         return True
