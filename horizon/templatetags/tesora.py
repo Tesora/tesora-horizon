@@ -22,6 +22,7 @@ Template tags for customizing Horizon.
 from __future__ import absolute_import
 
 from django import template
+
 from horizon import version
 
 
@@ -33,4 +34,4 @@ def tesora_version():
     try:
         return version.version_info.version_string()
     except (Exception):
-       return ''
+        return ''
