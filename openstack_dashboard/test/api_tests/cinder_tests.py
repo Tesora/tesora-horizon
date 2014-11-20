@@ -13,6 +13,7 @@
 #    under the License.
 
 from django.test.utils import override_settings
+import six
 
 import cinderclient as cinder_client
 
@@ -86,6 +87,28 @@ class CinderApiTests(test.APITestCase):
         associate_spec = assoc_vol_types[0].associated_qos_spec
         self.assertTrue(associate_spec, qos_specs_only_one[0].name)
 
+    def test_absolute_limits_with_negative_values(self):
+        values = {"maxTotalVolumes": -1, "totalVolumesUsed": -1}
+        expected_results = {"maxTotalVolumes": float("inf"),
+                            "totalVolumesUsed": 0}
+
+        limits = self.mox.CreateMockAnything()
+        limits.absolute = []
+        for key, val in six.iteritems(values):
+            limit = self.mox.CreateMockAnything()
+            limit.name = key
+            limit.value = val
+            limits.absolute.append(limit)
+
+        cinderclient = self.stub_cinderclient()
+        cinderclient.limits = self.mox.CreateMockAnything()
+        cinderclient.limits.get().AndReturn(limits)
+        self.mox.ReplayAll()
+
+        ret_val = api.cinder.tenant_absolute_limits(self.request)
+        for key in expected_results.keys():
+            self.assertEqual(expected_results[key], ret_val[key])
+
 
 class CinderApiVersionTests(test.TestCase):
 
@@ -96,32 +119,14 @@ class CinderApiVersionTests(test.TestCase):
         # versions.
         api.cinder.VERSIONS._active = None
 
-    def test_default_client_is_v1(self):
+    def test_default_client_is_v2(self):
         client = api.cinder.cinderclient(self.request)
-        self.assertIsInstance(client, cinder_client.v1.client.Client)
-
-    @override_settings(OPENSTACK_API_VERSIONS={'volume': 1})
-    def test_v1_setting_returns_v1_client(self):
-        client = api.cinder.cinderclient(self.request)
-        self.assertIsInstance(client, cinder_client.v1.client.Client)
+        self.assertIsInstance(client, cinder_client.v2.client.Client)
 
     @override_settings(OPENSTACK_API_VERSIONS={'volume': 2})
     def test_v2_setting_returns_v2_client(self):
         client = api.cinder.cinderclient(self.request)
         self.assertIsInstance(client, cinder_client.v2.client.Client)
-
-    def test_get_v1_volume_attributes(self):
-        # Get a v1 volume
-        volume = self.cinder_volumes.first()
-        self.assertTrue(hasattr(volume._apiresource, 'display_name'))
-        self.assertFalse(hasattr(volume._apiresource, 'name'))
-
-        name = "A test volume name"
-        description = "A volume description"
-        setattr(volume._apiresource, 'display_name', name)
-        setattr(volume._apiresource, 'display_description', description)
-        self.assertEqual(name, volume.name)
-        self.assertEqual(description, volume.description)
 
     def test_get_v2_volume_attributes(self):
         # Get a v2 volume
@@ -135,18 +140,6 @@ class CinderApiVersionTests(test.TestCase):
         setattr(volume._apiresource, 'description', description)
         self.assertEqual(name, volume.name)
         self.assertEqual(description, volume.description)
-
-    def test_get_v1_snapshot_attributes(self):
-        # Get a v1 snapshot
-        snapshot = self.cinder_volume_snapshots.first()
-        self.assertFalse(hasattr(snapshot._apiresource, 'name'))
-
-        name = "A test snapshot name"
-        description = "A snapshot description"
-        setattr(snapshot._apiresource, 'display_name', name)
-        setattr(snapshot._apiresource, 'display_description', description)
-        self.assertEqual(name, snapshot.name)
-        self.assertEqual(description, snapshot.description)
 
     def test_get_v2_snapshot_attributes(self):
         # Get a v2 snapshot
@@ -166,20 +159,6 @@ class CinderApiVersionTests(test.TestCase):
         setattr(volume._apiresource, 'display_name', "")
         self.assertEqual(volume.id, volume.name)
 
-    @override_settings(OPENSTACK_API_VERSIONS={'volume': 1})
-    def test_adapt_dictionary_to_v1(self):
-        volume = self.cinder_volumes.first()
-        data = {'name': volume.name,
-                'description': volume.description,
-                'size': volume.size}
-
-        ret_data = api.cinder._replace_v2_parameters(data)
-        self.assertIn('display_name', ret_data.keys())
-        self.assertIn('display_description', ret_data.keys())
-        self.assertNotIn('name', ret_data.keys())
-        self.assertNotIn('description', ret_data.keys())
-
-    @override_settings(OPENSTACK_API_VERSIONS={'volume': 2})
     def test_adapt_dictionary_to_v2(self):
         volume = self.cinder_volumes.first()
         data = {'name': volume.name,
@@ -191,18 +170,3 @@ class CinderApiVersionTests(test.TestCase):
         self.assertIn('description', ret_data.keys())
         self.assertNotIn('display_name', ret_data.keys())
         self.assertNotIn('display_description', ret_data.keys())
-
-    @override_settings(OPENSTACK_API_VERSIONS={'volume': 1})
-    def test_version_get_1(self):
-        version = api.cinder.version_get()
-        self.assertEqual(version, 1)
-
-    @override_settings(OPENSTACK_API_VERSIONS={'volume': 2})
-    def test_version_get_2(self):
-        version = api.cinder.version_get()
-        self.assertEqual(version, 2)
-
-    @override_settings(OPENSTACK_API_VERSIONS={'volume': 1})
-    def test_retype_not_supported(self):
-        retype_supported = api.cinder.retype_supported()
-        self.assertFalse(retype_supported)

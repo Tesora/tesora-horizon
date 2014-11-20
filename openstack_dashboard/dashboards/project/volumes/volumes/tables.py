@@ -242,9 +242,7 @@ class RetypeVolume(VolumePolicyTargetMixin, tables.LinkAction):
     policy_rules = (("volume", "volume:retype"),)
 
     def allowed(self, request, volume=None):
-        retype_supported = cinder.retype_supported()
-
-        return volume.status in ("available", "in-use") and retype_supported
+        return volume.status in ("available", "in-use")
 
 
 class UpdateRow(tables.Row):
@@ -295,7 +293,7 @@ class AttachmentColumn(tables.Column):
             # without the server name...
             instance = get_attachment_name(request, attachment)
             vals = {"instance": instance,
-                    "dev": html.escape(attachment["device"])}
+                    "dev": html.escape(attachment.get("device", ""))}
             attachments.append(link % vals)
         return safestring.mark_safe(", ".join(attachments))
 

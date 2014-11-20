@@ -1,17 +1,13 @@
-// bootstrap overrides:
-$icon-font-path: "../../bootstrap/fonts/bootstrap/";
-$font-size-base: 13px;
-$modal-md: 732px;
-
+@import "variables";
 @import "/bootstrap/scss/bootstrap";
+
 @import "/horizon/lib/bootstrap_datepicker/datepicker.css";
-@import "_variables";
-@import "_accordion_nav";
-@import "_inline_edit";
+@import "accordion_nav";
+@import "inline_edit";
 
 // Components
 @import "components/resource_browser";
-
+@import "components/topbar";
 
 /* new clearfix */
 .clearfix:after {
@@ -86,91 +82,6 @@ dt {
   font-weight: bold;
 }
 
-.topbar {
-  background: $gray-lighter;
-  // How to convert to SCSS?
-  //#gradient > {
-  //  +vertical($body-bg, $gray-lighter);
-  //}
-  border-bottom: 1px solid $gray-light;
-  padding: 10px 0px 15px 0px;
-}
-
-.topbar .switcher_bar {
-  display: inline-block;
-  height: auto;
-  width: 160px;
-  max-width: 160px;
-  background-position: 140px center;
-  margin-bottom: 0;
-  margin-right: 10px;
-  padding: 0;
-  background-image: url(../img/drop_arrow.png);
-  background-color: $gray-lighter;
-  background-repeat: no-repeat;
-  border: 1px solid $gray-light;
-  border-bottom-color: darken($gray-light, 10%);
-  border-radius: 4px;
-  // How to convert to SCSS?
-  // @include box-shadow(inset 0 1px 0 rgba(255,255,255,.2), 0 1px 2px rgba(0,0,0,.05);
-  ul#tenant_list a {
-    max-width: 160px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
-.topbar .switcher_bar a {
-  margin-left: 0;
-  display: block;
-}
-
-.topbar .switcher_bar ul {
-  width: 130px;
-}
-
-.topbar .switcher_bar div {
-  padding: 2px 10px 1px;
-  line-height: 20px;
-  color: $gray;
-  text-decoration: none;
-  overflow: hidden;
-  padding-right: 32px;
-  text-overflow: ellipsis;
-}
-
-.topbar .context-box {
-  display: inline;
-  @import "_context_selection";
-}
-
-.hide_image {
-  background-image: none !important;
-}
-
-#profile_editor_switcher {
-  width:auto;
-  max-width: 200px;
-  vertical-align: top;
-  white-space: nowrap;
-  background-image: url(../img/profile_drop.png);
-  background-repeat: no-repeat;
-  background-position: right center;
-}
-
-#user_info {
-  margin: auto 10px;
-  padding-bottom: 15px;
-  padding-right: 25px;
-}
-
-#user_info > a {
-  color: $text-color;
-  margin-left: 15px;
-  line-height: 20px;
-  font-size: 13px !important;
-}
-
 .page-header {
   margin: 0 0 5px 0;
   padding: 10px 0 5px 0;
@@ -238,9 +149,6 @@ h2 {
   margin-top: 190px;
 }
 
-.container-fluid {
-  padding-left: 0;
-}
 
 .sidebar {
   background-color: $sidebar-background-color;
@@ -265,24 +173,10 @@ h2 {
   background-color: $body-bg;
 }
 
-h1.brand {
-  width: 100%;
-  margin: 0;
-}
 
-h1.brand a {
-  background: url(../img/logo.png) top left no-repeat;
-  display: block;
-  float: left;
-  width: 216px;
-  height: 35px;
-  text-indent: -9999px;
-  margin-left: 16px;
-}
 
 
 /* Tenant Dropdown */
-
 
 a.current_item {
   width: 163px;
@@ -635,7 +529,11 @@ table form {
 
 .table_actions .table_search,
 .table_actions .table_filter {
-  display: inline-block;
+   display: inline-flex;
+   display: -ms-inline-flexbox;
+   -ms-flex-direction: row;
+   display: -webkit-inline-flex;
+   display: -moz-inline-flex;
 }
 
 .table_search {
@@ -680,6 +578,11 @@ td.loading {
 }
 
 .table_header .table_actions {
+  display: inline-flex;
+  display: -ms-inline-flexbox;
+  -ms-flex-direction: row;
+  display: -webkit-inline-flex;
+  display: -moz-inline-flex;
   min-width: 0;
 }
 
@@ -688,6 +591,7 @@ td.loading {
 .table_header .table_actions .table_search button {
   display: inline-block;
   float: none;
+  max-height: 32px;
 }
 
 .table_header .table_actions .table_search select {
@@ -719,9 +623,11 @@ td.loading {
  * the bootstrap style when necessary by setting the odd/even classes.
  */
 .table-striped.datatable tbody {
+  td {
+    background-clip: padding-box;
+  }
   tr.odd td {
     background-color: $table-bg-odd;
-    background-clip: padding-box;
   }
   tr.even td {
     background-color: inherit;
@@ -730,7 +636,6 @@ td.loading {
   tr.even:hover td,
   tr:hover th {
     background-color: $table-bg-hover;
-    background-clip: padding-box;
   }
 }
 
@@ -846,11 +751,9 @@ form label {
 
 .static_page {
   float: left;
-  background-color: $body-bg;
-  border: 1px solid $border-color;
-}
-.static_page > form {
-  margin-bottom: 0;
+  > form {
+    margin-bottom: 0;
+  }
 }
 
 .left {
@@ -961,6 +864,7 @@ td.select {
   padding: 10px;
   position: relative;
   width: 200px;
+  background-clip: padding-box;
 }
 
 form.actions_column {
@@ -2206,7 +2110,16 @@ label.log-length {
   }
 }
 
+/* Read only text fields */
+.form-control[readonly], .view-credentials input {
+    cursor: text;
+}
+
 /**** Popover ****/
 a.link-popover { cursor: default; }
 
 a:hover.link-popover { text-decoration: none; }
+
+.has-feedback .form-control-feedback {
+  top: 0;
+}

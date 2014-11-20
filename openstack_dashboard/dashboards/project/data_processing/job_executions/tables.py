@@ -27,27 +27,24 @@ from openstack_dashboard.dashboards.project.data_processing. \
 LOG = logging.getLogger(__name__)
 
 
-class DeleteJobExecution(tables.BatchAction):
+class DeleteJobExecution(tables.DeleteAction):
     @staticmethod
     def action_present(count):
         return ungettext_lazy(
-            u"Delete Job execution",
-            u"Delete Job executions",
+            u"Delete Job Execution",
+            u"Delete Job Executions",
             count
         )
 
     @staticmethod
     def action_past(count):
         return ungettext_lazy(
-            u"Deleted Job execution",
-            u"Deleted Job executions",
+            u"Deleted Job Execution",
+            u"Deleted Job Executions",
             count
         )
 
-    name = "delete"
-    classes = ('btn-danger', 'btn-terminate')
-
-    def action(self, request, obj_id):
+    def delete(self, request, obj_id):
         saharaclient.job_execution_delete(request, obj_id)
 
 

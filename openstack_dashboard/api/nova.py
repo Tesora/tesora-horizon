@@ -656,6 +656,14 @@ def server_stop(request, instance_id):
     novaclient(request).servers.stop(instance_id)
 
 
+def server_lock(request, instance_id):
+    novaclient(request).servers.lock(instance_id)
+
+
+def server_unlock(request, instance_id):
+    novaclient(request).servers.unlock(instance_id)
+
+
 def tenant_quota_get(request, tenant_id):
     return base.QuotaSet(novaclient(request).quotas.get(tenant_id))
 
@@ -709,13 +717,13 @@ def instance_volume_detach(request, instance_id, att_id):
 
 
 def instance_volumes_list(request, instance_id):
-    from openstack_dashboard.api.cinder import cinderclient  # noqa
+    from openstack_dashboard.api import cinder
 
     volumes = novaclient(request).volumes.get_server_volumes(instance_id)
 
     for volume in volumes:
-        volume_data = cinderclient(request).volumes.get(volume.id)
-        volume.name = volume_data.display_name
+        volume_data = cinder.cinderclient(request).volumes.get(volume.id)
+        volume.name = cinder.Volume(volume_data).name
 
     return volumes
 

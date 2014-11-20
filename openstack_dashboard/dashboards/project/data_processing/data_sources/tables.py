@@ -31,27 +31,24 @@ class CreateDataSource(tables.LinkAction):
     icon = "plus"
 
 
-class DeleteDataSource(tables.BatchAction):
+class DeleteDataSource(tables.DeleteAction):
     @staticmethod
     def action_present(count):
         return ungettext_lazy(
-            u"Delete Data source",
-            u"Delete Data sources",
+            u"Delete Data Source",
+            u"Delete Data Sources",
             count
         )
 
     @staticmethod
     def action_past(count):
         return ungettext_lazy(
-            u"Deleted Data source",
-            u"Deleted Data sources",
+            u"Deleted Data Source",
+            u"Deleted Data Sources",
             count
         )
 
-    name = "delete"
-    classes = ('btn-danger', 'btn-terminate')
-
-    def action(self, request, obj_id):
+    def delete(self, request, obj_id):
         saharaclient.data_source_delete(request, obj_id)
 
 

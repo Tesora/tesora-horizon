@@ -321,6 +321,17 @@ This example sorts flavors by vcpus in descending order::
          'reverse': True,
     }
 
+``DROPDOWN_MAX_ITEMS``
+----------------------
+
+.. versionadded:: 2015.1(Kilo)
+
+Default: ``30``
+
+This setting sets the maximum number of items displayed in a dropdown.
+Dropdowns that limit based on this value need to support a way to observe
+the entire list.
+
 ``IMAGES_LIST_FILTER_TENANTS``
 ------------------------------
 
@@ -362,7 +373,7 @@ Default::
     {
         "data_processing": 1.1,
         "identity": 2.0,
-        "volume": 1
+        "volume": 2
     }
 
 Overrides for OpenStack API versions. Use this setting to force the

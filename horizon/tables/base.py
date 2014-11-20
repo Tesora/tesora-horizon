@@ -183,9 +183,9 @@ class Column(html.HTMLElement):
     .. attribute:: truncate
 
         An integer for the maximum length of the string in this column. If the
-        data in this column is larger than the supplied number, the data for
-        this column will be truncated and an ellipsis will be appended to the
-        truncated data.
+        length of the data in this column is larger than the supplied number,
+        the data for this column will be truncated and an ellipsis will be
+        appended to the truncated data.
         Defaults to ``None``.
 
     .. attribute:: link_classes
@@ -194,7 +194,7 @@ class Column(html.HTMLElement):
         is displayed as a link.
         This is left for backward compatibility. Deprecated in favor of the
         link_attributes attribute.
-        Example: ``classes=('link-foo', 'link-bar')``.
+        Example: ``link_classes=('link-foo', 'link-bar')``.
         Defaults to ``None``.
 
     .. attribute:: wrap_list
@@ -532,7 +532,7 @@ class Row(html.HTMLElement):
 
     def load_cells(self, datum=None):
         """Load the row's data (either provided at initialization or as an
-        argument to this function), initiailize all the cells contained
+        argument to this function), initialize all the cells contained
         by this row, and set the appropriate row properties which require
         the row's data to be determined.
 
@@ -647,6 +647,12 @@ class Cell(html.HTMLElement):
             self.attrs['data-cell-name'] = column.name
             self.attrs['data-update-url'] = self.get_ajax_update_url()
         self.inline_edit_mod = False
+        # add tooltip to cells if the truncate variable is set
+        if column.truncate:
+            data = getattr(datum, column.name, '') or ''
+            if len(data) > column.truncate:
+                self.attrs['data-toggle'] = 'tooltip'
+                self.attrs['title'] = data
         self.data = self.get_data(datum, column, row)
 
     def get_data(self, datum, column, row):
@@ -943,6 +949,11 @@ class DataTableOptions(object):
         Boolean to control whether or not to show the table's footer.
         Default: ``True``.
 
+    .. attribute:: hidden_title
+
+        Boolean to control whether or not to show the table's title.
+        Default: ``True``.
+
     .. attribute:: permissions
 
         A list of permission names which this table requires in order to be
@@ -968,6 +979,7 @@ class DataTableOptions(object):
         self.pagination_param = getattr(options, 'pagination_param', 'marker')
         self.browser_table = getattr(options, 'browser_table', None)
         self.footer = getattr(options, 'footer', True)
+        self.hidden_title = getattr(options, 'hidden_title', True)
         self.no_data_message = getattr(options,
                                        "no_data_message",
                                        _("No items to display."))
@@ -1253,7 +1265,8 @@ class DataTable(object):
     def render(self):
         """Renders the table using the template from the table options."""
         table_template = template.loader.get_template(self._meta.template)
-        extra_context = {self._meta.context_var_name: self}
+        extra_context = {self._meta.context_var_name: self,
+                         'hidden_title': self._meta.hidden_title}
         context = template.RequestContext(self.request, extra_context)
         return table_template.render(context)
 
