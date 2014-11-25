@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-19 17:40-0600\n"
-"PO-Revision-Date: 2014-11-19 23:37+0000\n"
+"POT-Creation-Date: 2014-11-21 10:36-0600\n"
+"PO-Revision-Date: 2014-11-22 15:00+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/horizon/language/cs/)\n"
 "MIME-Version: 1.0\n"
@@ -439,7 +439,7 @@ msgstr "Správce"
 #: dashboards/project/data_processing/job_binaries/forms.py:48
 #: dashboards/project/data_processing/job_binaries/tables.py:79
 #: dashboards/project/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:5
-#: dashboards/project/data_processing/jobs/tables.py:146
+#: dashboards/project/data_processing/jobs/tables.py:98
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/_details.html:6
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/config_template.html:54
 #: dashboards/project/data_processing/jobs/workflows/create.py:55
@@ -1410,7 +1410,7 @@ msgstr "Přístup ke konfiguraci"
 msgid ""
 "Select the projects where the flavors will be used. If no projects are "
 "selected, then the flavor will be available in all projects."
-msgstr ""
+msgstr "Vyberte projekty v kterých bude konfigurace použita. Pokud nejsou žádné vybrány, pak bude konfigurace dostupná ve všech projektech."
 
 #: dashboards/admin/flavors/workflows.py:160
 msgid "All Projects"
@@ -1452,7 +1452,7 @@ msgid ""
 "Edit the flavor details. Flavors define the sizes for RAM, disk, number of "
 "cores, and other resources. Flavors are selected when users deploy "
 "instances."
-msgstr ""
+msgstr "Upravit podrobnosti konfigurace. Konfigurace určují velikosti RAM, disku, počet jader a další zdroje které mohou být zvoleny při nasazování instancí."
 
 #: dashboards/admin/flavors/workflows.py:267
 #, python-format
@@ -1473,7 +1473,7 @@ msgstr "Změněna informace konfigurace, ale nelze změnit přístup k ní."
 #: dashboards/admin/flavors/templates/flavors/update_metadata.html:3
 #: dashboards/admin/flavors/templates/flavors/update_metadata.html:6
 msgid "Update Flavor Metadata"
-msgstr ""
+msgstr "Aktualizovat popisná data konfigurace"
 
 #: dashboards/admin/hypervisors/panel.py:22
 #: dashboards/admin/hypervisors/tables.py:64
@@ -1549,7 +1549,7 @@ msgstr "Instance hypervizorů"
 
 #: dashboards/admin/hypervisors/tabs.py:26
 msgid "Hypervisor"
-msgstr ""
+msgstr "Hypervisor"
 
 #: dashboards/admin/hypervisors/tabs.py:36
 #: dashboards/admin/hypervisors/views.py:40
@@ -1571,19 +1571,19 @@ msgstr "Současný hostitel"
 
 #: dashboards/admin/hypervisors/compute/forms.py:29
 msgid "Target Host"
-msgstr ""
+msgstr "Cílová hostitel"
 
 #: dashboards/admin/hypervisors/compute/forms.py:30
 msgid "Choose a Host to evacuate servers to."
-msgstr ""
+msgstr "Zvolte hostitele na kterého servery vyklidit."
 
 #: dashboards/admin/hypervisors/compute/forms.py:32
 msgid "Shared Storage"
-msgstr ""
+msgstr "Sdílené úložiště"
 
 #: dashboards/admin/hypervisors/compute/forms.py:48
 msgid "Select a target host"
-msgstr ""
+msgstr "Vyberte cílového hostitele"
 
 #: dashboards/admin/hypervisors/compute/forms.py:50
 #: dashboards/admin/instances/forms.py:58
@@ -1593,33 +1593,22 @@ msgstr "Žádní další hostitelé nejsou dostupní."
 #: dashboards/admin/hypervisors/compute/forms.py:61
 #, python-format
 msgid "Starting evacuation from %(current)s to %(target)s."
-msgstr ""
+msgstr "Zahájeno vyklizení z %(current)s do %(target)s."
 
 #: dashboards/admin/hypervisors/compute/forms.py:67
 #, python-format
 msgid "Failed to evacuate host: %s."
-msgstr ""
+msgstr "Nelze vyklidit hostitele: %s"
 
-#: dashboards/admin/hypervisors/compute/tables.py:27
-#: dashboards/admin/hypervisors/compute/tables.py:41
+#: dashboards/admin/hypervisors/compute/tables.py:24
 #: dashboards/admin/hypervisors/templates/hypervisors/compute/_evacuate_host.html:8
 #: dashboards/admin/hypervisors/templates/hypervisors/compute/_evacuate_host.html:23
 #: dashboards/admin/hypervisors/templates/hypervisors/compute/evacuate_host.html:3
 #: dashboards/admin/hypervisors/templates/hypervisors/compute/evacuate_host.html:6
 msgid "Evacuate Host"
-msgid_plural "Evacuate Hosts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr ""
 
-#: dashboards/admin/hypervisors/compute/tables.py:35
-msgid "Evacuated Host"
-msgid_plural "Evacuated Hosts"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-
-#: dashboards/admin/hypervisors/compute/tables.py:65
+#: dashboards/admin/hypervisors/compute/tables.py:48
 #: dashboards/admin/info/tables.py:66 dashboards/admin/info/tables.py:95
 #: dashboards/admin/info/tables.py:119 dashboards/admin/info/tables.py:171
 #: dashboards/admin/instances/tables.py:124
@@ -1635,12 +1624,12 @@ msgstr[2] ""
 msgid "Host"
 msgstr "Hostitel"
 
-#: dashboards/admin/hypervisors/compute/tables.py:66
+#: dashboards/admin/hypervisors/compute/tables.py:49
 #: dashboards/admin/info/tables.py:96 dashboards/admin/info/tables.py:120
 msgid "Zone"
 msgstr "Zóna"
 
-#: dashboards/admin/hypervisors/compute/tables.py:67
+#: dashboards/admin/hypervisors/compute/tables.py:50
 #: dashboards/admin/info/tables.py:68 dashboards/admin/info/tables.py:97
 #: dashboards/admin/info/tables.py:121 dashboards/admin/info/tables.py:172
 #: dashboards/admin/instances/tables.py:141
@@ -1699,18 +1688,18 @@ msgstr "Zóna"
 msgid "Status"
 msgstr "Stav"
 
-#: dashboards/admin/hypervisors/compute/tables.py:68
+#: dashboards/admin/hypervisors/compute/tables.py:51
 #: dashboards/admin/info/tables.py:98 dashboards/admin/info/tables.py:123
 #: dashboards/admin/info/tables.py:173 dashboards/project/overview/views.py:34
 msgid "State"
 msgstr "Stav"
 
-#: dashboards/admin/hypervisors/compute/tables.py:70
+#: dashboards/admin/hypervisors/compute/tables.py:53
 #: dashboards/admin/networks/agents/tables.py:94
 msgid "Updated At"
 msgstr "Aktualizováno"
 
-#: dashboards/admin/hypervisors/compute/tables.py:79
+#: dashboards/admin/hypervisors/compute/tables.py:62
 #: dashboards/admin/hypervisors/compute/tabs.py:24
 msgid "Compute Host"
 msgstr ""
@@ -1759,11 +1748,11 @@ msgstr ""
 #: dashboards/admin/hypervisors/templates/hypervisors/compute/_evacuate_host.html:18
 msgid ""
 "Evacuate the servers from the selected down host to an active target host."
-msgstr ""
+msgstr "Přesídlit servery ze zvoleného hostitele na aktivního cílového hostitele."
 
 #: dashboards/admin/images/forms.py:65
 msgid "Unable to update the image metadata."
-msgstr ""
+msgstr "Nelze aktualizovat popisná data obrazu."
 
 #: dashboards/admin/images/panel.py:27 dashboards/admin/images/tables.py:77
 #: dashboards/admin/images/templates/images/index.html:3
@@ -1777,25 +1766,25 @@ msgstr "Obrazy"
 
 #: dashboards/admin/images/tables.py:61
 msgid "Image Name ="
-msgstr ""
+msgstr "Název obrazu ="
 
 #: dashboards/admin/images/tables.py:62
 #: dashboards/admin/instances/tables.py:98
 #: dashboards/project/instances/tables.py:928
 msgid "Status ="
-msgstr ""
+msgstr "Stav ="
 
 #: dashboards/admin/images/tables.py:63
 msgid "Format ="
-msgstr ""
+msgstr "Formát ="
 
 #: dashboards/admin/images/tables.py:64
 msgid "Min. Size (MB)"
-msgstr ""
+msgstr "Min. velikost (MB)"
 
 #: dashboards/admin/images/tables.py:65
 msgid "Max. Size (MB)"
-msgstr ""
+msgstr "Max. velikost (MB)"
 
 #: dashboards/admin/images/tables.py:71
 #: dashboards/admin/instances/tables.py:130
@@ -1813,11 +1802,11 @@ msgstr "Nele získat seznam obrazů."
 
 #: dashboards/admin/images/views.py:178
 msgid "Unable to retrieve available properties for image."
-msgstr ""
+msgstr "Nelze získat dostupné vlastnosti obrazu."
 
 #: dashboards/admin/images/views.py:191
 msgid "Unable to retrieve the image to be updated."
-msgstr ""
+msgstr "Nelze získat obraz k aktualizaci."
 
 #: dashboards/admin/images/templates/images/_create.html:9
 #: dashboards/admin/images/templates/images/create.html:3
@@ -1872,20 +1861,20 @@ msgstr "Aktualizovat obraz"
 #: dashboards/admin/images/templates/images/_update.html:19
 #: dashboards/project/images/templates/images/images/_update.html:18
 msgid "Edit the image details."
-msgstr ""
+msgstr "Upravit podrobnosti obrazu."
 
 #: dashboards/admin/images/templates/images/_update_metadata.html:4
 #: dashboards/admin/images/templates/images/_update_metadata.html:7
 #: dashboards/admin/images/templates/images/update_metadata.html:3
 #: dashboards/admin/images/templates/images/update_metadata.html:6
 msgid "Update Image Metadata"
-msgstr ""
+msgstr "Aktualizovat popisná data obrazu"
 
 #: dashboards/admin/info/panel.py:27
 #: dashboards/admin/info/templates/info/index.html:3
 #: dashboards/admin/info/templates/info/index.html:6
 msgid "System Information"
-msgstr ""
+msgstr "Informace o systému"
 
 #: dashboards/admin/info/tables.py:26 dashboards/admin/info/tables.py:156
 #: dashboards/admin/networks/agents/tables.py:78
@@ -1934,7 +1923,7 @@ msgstr "Služby Compute"
 
 #: dashboards/admin/info/tables.py:137 dashboards/admin/info/tabs.py:64
 msgid "Block Storage Services"
-msgstr ""
+msgstr "Služby blokového úložiště"
 
 #: dashboards/admin/info/tables.py:163
 #: dashboards/admin/networks/agents/tables.py:84
@@ -1956,7 +1945,7 @@ msgstr "Nelze získat seznam služeb cinder."
 
 #: dashboards/admin/info/tabs.py:91
 msgid "Unable to get network agents info."
-msgstr ""
+msgstr "Nelze získat informace o síťových agentech."
 
 #: dashboards/admin/info/tabs.py:98
 msgid "Unable to get network agents list."
@@ -2048,25 +2037,25 @@ msgstr "Projekt"
 
 #: dashboards/admin/instances/tables.py:94
 msgid "Host ="
-msgstr ""
+msgstr "Hostitel ="
 
 #: dashboards/admin/instances/tables.py:96
 msgid "IPv4 Address ="
-msgstr ""
+msgstr "Adresa IPv4 = "
 
 #: dashboards/admin/instances/tables.py:97
 msgid "IPv6 Address ="
-msgstr ""
+msgstr "Adresa IPv6 ="
 
 #: dashboards/admin/instances/tables.py:99
 #: dashboards/project/instances/tables.py:929
 msgid "Image ID ="
-msgstr ""
+msgstr "ID obrazu ="
 
 #: dashboards/admin/instances/tables.py:100
 #: dashboards/project/instances/tables.py:930
 msgid "Flavor ID ="
-msgstr ""
+msgstr "ID konfigurace = "
 
 #: dashboards/admin/instances/tables.py:132
 #: dashboards/project/access_and_security/floating_ips/tables.py:192
@@ -2108,7 +2097,7 @@ msgstr "Stav napájení"
 #: dashboards/admin/instances/tables.py:156
 #: dashboards/project/instances/tables.py:978 usage/tables.py:78
 msgid "Time since created"
-msgstr ""
+msgstr "Doba od vytvoření"
 
 #: dashboards/admin/instances/views.py:81
 #: dashboards/admin/networks/views.py:49
@@ -2133,7 +2122,7 @@ msgstr "Nelze získat informace o velikosti instance."
 
 #: dashboards/admin/instances/views.py:167
 msgid "Unable to retrieve host information."
-msgstr ""
+msgstr "Nelze získat informace o hostiteli."
 
 #: dashboards/admin/instances/views.py:177
 #: dashboards/project/databases/views.py:146
@@ -2150,7 +2139,7 @@ msgstr "Přesunout za běhu"
 
 #: dashboards/admin/instances/templates/instances/_live_migrate.html:18
 msgid "Live migrate an instance to a specific host."
-msgstr ""
+msgstr "Přesunout instanci za běhu na konkrétního hostitele."
 
 #: dashboards/admin/instances/templates/instances/index.html:6
 msgid "All Instances"
@@ -2261,7 +2250,7 @@ msgstr "Metr"
 #: dashboards/project/data_processing/job_binaries/forms.py:77
 #: dashboards/project/data_processing/job_binaries/tables.py:84
 #: dashboards/project/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:11
-#: dashboards/project/data_processing/jobs/tables.py:149
+#: dashboards/project/data_processing/jobs/tables.py:101
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/_details.html:10
 #: dashboards/project/data_processing/jobs/workflows/create.py:65
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:10
@@ -2476,11 +2465,11 @@ msgstr "Statistiky všech zdrojů"
 
 #: dashboards/admin/networks/forms.py:29
 msgid "Local"
-msgstr ""
+msgstr "Místní"
 
 #: dashboards/admin/networks/forms.py:29
 msgid "Flat"
-msgstr ""
+msgstr "Plochý"
 
 #: dashboards/admin/networks/forms.py:30
 #: dashboards/router/nexus1000v/forms.py:49
@@ -2506,11 +2495,11 @@ msgstr "Síťový profil"
 
 #: dashboards/admin/networks/forms.py:49
 msgid "Provider Network Type"
-msgstr ""
+msgstr "Typ sítě poskytovatele"
 
 #: dashboards/admin/networks/forms.py:50
 msgid "The physical mechanism by which the virtual network is implemented."
-msgstr ""
+msgstr "Fyzický mechanismus podle kterého je virtuální síť zavedena."
 
 #: dashboards/admin/networks/forms.py:58 dashboards/admin/networks/forms.py:65
 #: dashboards/admin/networks/forms.py:66
@@ -2523,7 +2512,7 @@ msgstr "Fyzická síť"
 msgid ""
 "The name of the physical network over which the virtual network is "
 "implemented."
-msgstr ""
+msgstr "Název fyzické sítě, přes který je zavedena virtuální síť."
 
 #: dashboards/admin/networks/forms.py:69 dashboards/admin/networks/forms.py:73
 #: dashboards/admin/networks/forms.py:74 dashboards/admin/networks/forms.py:75
@@ -2549,7 +2538,7 @@ msgstr "ID členění"
 #: dashboards/project/loadbalancers/workflows.py:346
 #: dashboards/project/loadbalancers/workflows.py:549
 #: dashboards/project/networks/forms.py:39
-#: dashboards/project/networks/tables.py:154
+#: dashboards/project/networks/tables.py:155
 #: dashboards/project/networks/workflows.py:49
 #: dashboards/project/networks/ports/forms.py:38
 #: dashboards/project/networks/ports/tables.py:61
@@ -2602,7 +2591,7 @@ msgid ""
 "GRE or VXLAN networks, the tunnel ID. Valid tunnel IDs for GRE networks are "
 "%(gre_min)s through %(gre_max)s. For VXLAN networks, %(vxlan_min)s through "
 "%(vxlan_max)s."
-msgstr ""
+msgstr "Pro sítě VLAN je virtuální síť na fyzické síti určena pomocí VLAN VID. Platné VLAN VID jsou %(vlan_min)s až po %(vlan_max)s. Pro sítě GRE či VXLAN je to ID tunelu. Platné ID tunelu pro sítě GRE jsou %(gre_min)s až %(gre_max)s. Pro sítě VXLAN %(vxlan_min)s až %(vxlan_max)s."
 
 #: dashboards/admin/networks/forms.py:145
 #: dashboards/project/instances/workflows/create_instance.py:697
@@ -2630,17 +2619,17 @@ msgstr "Vytváření sítě %s selhalo"
 #: dashboards/admin/networks/forms.py:222
 #, python-format
 msgid "For VLAN networks, valid VLAN IDs are %(min)s through %(max)s."
-msgstr ""
+msgstr "Platné VLAN ID pro sítě VLAN jsou %(min)s až %(max)s."
 
 #: dashboards/admin/networks/forms.py:225
 #, python-format
 msgid "For GRE networks, valid tunnel IDs are %(min)s through %(max)s."
-msgstr ""
+msgstr "Platné ID tunelu pro sítě GRE jsou %(min)s až %(max)s."
 
 #: dashboards/admin/networks/forms.py:228
 #, python-format
 msgid "For VXLAN networks, valid tunnel IDs are %(min)s through %(max)s."
-msgstr ""
+msgstr "Platné ID tunelu pro sítě VXLAN jsou %(min)s až %(max)s."
 
 #: dashboards/admin/networks/forms.py:252
 #: dashboards/project/networks/forms.py:49
@@ -2662,7 +2651,7 @@ msgstr "Aktualizace sítě %s selhala"
 #: dashboards/project/databases/workflows/create_instance.py:131
 #: dashboards/project/instances/workflows/create_instance.py:650
 #: dashboards/project/networks/panel.py:23
-#: dashboards/project/networks/tables.py:158
+#: dashboards/project/networks/tables.py:159
 #: dashboards/project/networks/templates/networks/index.html:3
 #: dashboards/project/networks/templates/networks/index.html:6
 #: usage/quotas.py:77
@@ -2675,7 +2664,7 @@ msgid "Delete Network"
 msgid_plural "Delete Networks"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
+msgstr[2] "Smazat sítě"
 
 #: dashboards/admin/networks/tables.py:45
 #: dashboards/project/networks/tables.py:56
@@ -2683,7 +2672,7 @@ msgid "Deleted Network"
 msgid_plural "Deleted Networks"
 msgstr[0] ""
 msgstr[1] ""
-msgstr[2] ""
+msgstr[2] "Smazané sítě"
 
 #: dashboards/admin/networks/tables.py:56
 #: dashboards/project/networks/tables.py:78
@@ -2727,7 +2716,7 @@ msgstr "Podsítě připojeny"
 #: dashboards/admin/networks/tables.py:92
 #: dashboards/admin/networks/agents/tables.py:100
 msgid "DHCP Agents"
-msgstr ""
+msgstr "Agenti DHCP"
 
 #: dashboards/admin/networks/views.py:57
 #: dashboards/admin/routers/templates/routers/_detail_overview.html:16
@@ -2753,7 +2742,7 @@ msgstr "Nelze získat seznam sítí."
 #: dashboards/admin/networks/views.py:139
 #: dashboards/admin/networks/agents/forms.py:62
 msgid "Unable to list dhcp agents hosting network."
-msgstr ""
+msgstr "Nelze získat informace o agentech dhcp hostujících síť."
 
 #: dashboards/admin/networks/views.py:114
 #: dashboards/project/networks/views.py:107
@@ -3445,8 +3434,8 @@ msgstr "Přehled snímku svazku"
 #: dashboards/project/volumes/templates/volumes/backups/_detail_overview.html:9
 #: dashboards/project/volumes/templates/volumes/snapshots/_detail_overview.html:7
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:7
-msgid "Info"
-msgstr "Informace"
+msgid "Information"
+msgstr ""
 
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:20
 #: dashboards/project/instances/templates/instances/_detail_overview.html:134
@@ -3579,7 +3568,7 @@ msgstr ""
 #: dashboards/project/containers/templates/containers/_create_pseudo_folder.html:23
 #: dashboards/project/data_processing/cluster_templates/workflows/create.py:81
 #: dashboards/project/data_processing/cluster_templates/workflows/create.py:225
-#: dashboards/project/data_processing/clusters/workflows/create.py:196
+#: dashboards/project/data_processing/clusters/workflows/create.py:202
 #: dashboards/project/data_processing/data_sources/workflows/create.py:79
 #: dashboards/project/data_processing/job_binaries/templates/data_processing.job_binaries/_create.html:25
 #: dashboards/project/data_processing/jobs/workflows/create.py:119
@@ -6108,7 +6097,7 @@ msgstr ""
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/create_cluster.html:3
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/create_cluster.html:6
 #: dashboards/project/data_processing/clusters/workflows/create.py:54
-#: dashboards/project/data_processing/clusters/workflows/create.py:195
+#: dashboards/project/data_processing/clusters/workflows/create.py:201
 msgid "Launch Cluster"
 msgstr ""
 
@@ -6441,7 +6430,7 @@ msgid "Unable to update row"
 msgstr ""
 
 #: dashboards/project/data_processing/clusters/tables.py:91
-#: dashboards/project/data_processing/clusters/workflows/create.py:177
+#: dashboards/project/data_processing/clusters/workflows/create.py:183
 #: dashboards/project/data_processing/jobs/workflows/launch.py:312
 msgid "Configure Cluster"
 msgstr ""
@@ -6577,20 +6566,28 @@ msgstr "Který pár klíčů má být použit pro ověření."
 msgid "Unable to fetch image choices."
 msgstr ""
 
-#: dashboards/project/data_processing/clusters/workflows/create.py:134
+#: dashboards/project/data_processing/clusters/workflows/create.py:128
+msgid "No Images Available"
+msgstr ""
+
+#: dashboards/project/data_processing/clusters/workflows/create.py:138
 msgid "Unable to fetch keypair choices."
 msgstr ""
 
-#: dashboards/project/data_processing/clusters/workflows/create.py:136
+#: dashboards/project/data_processing/clusters/workflows/create.py:140
 msgid "No keypair"
 msgstr ""
 
-#: dashboards/project/data_processing/clusters/workflows/create.py:197
+#: dashboards/project/data_processing/clusters/workflows/create.py:156
+msgid "No Templates Available"
+msgstr ""
+
+#: dashboards/project/data_processing/clusters/workflows/create.py:203
 #, python-format
 msgid "Created Cluster %s"
 msgstr ""
 
-#: dashboards/project/data_processing/clusters/workflows/create.py:229
+#: dashboards/project/data_processing/clusters/workflows/create.py:235
 msgid "Unable to create the cluster"
 msgstr ""
 
@@ -7059,9 +7056,6 @@ msgstr[2] ""
 
 #: dashboards/project/data_processing/job_executions/tables.py:55
 #: dashboards/project/data_processing/job_executions/tables.py:84
-#: dashboards/project/data_processing/jobs/tables.py:61
-#: dashboards/project/data_processing/jobs/tables.py:90
-#: dashboards/project/data_processing/jobs/tables.py:119
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/launch.html:3
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/launch.html:6
 #: dashboards/project/data_processing/jobs/workflows/launch.py:330
@@ -7075,9 +7069,6 @@ msgstr[2] ""
 
 #: dashboards/project/data_processing/job_executions/tables.py:63
 #: dashboards/project/data_processing/job_executions/tables.py:92
-#: dashboards/project/data_processing/jobs/tables.py:69
-#: dashboards/project/data_processing/jobs/tables.py:98
-#: dashboards/project/data_processing/jobs/tables.py:127
 msgid "Launched Job"
 msgid_plural "Launched Jobs"
 msgstr[0] ""
@@ -7167,7 +7158,7 @@ msgid "Job Execution Details"
 msgstr ""
 
 #: dashboards/project/data_processing/jobs/panel.py:22
-#: dashboards/project/data_processing/jobs/tables.py:153
+#: dashboards/project/data_processing/jobs/tables.py:105
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/jobs.html:6
 msgid "Jobs"
 msgstr ""
@@ -7194,12 +7185,12 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: dashboards/project/data_processing/jobs/tables.py:75
+#: dashboards/project/data_processing/jobs/tables.py:59
 msgid "Launch On Existing Cluster"
 msgstr ""
 
-#: dashboards/project/data_processing/jobs/tables.py:104
-#: dashboards/project/data_processing/jobs/tables.py:133
+#: dashboards/project/data_processing/jobs/tables.py:72
+#: dashboards/project/data_processing/jobs/tables.py:85
 msgid "Launch On New Cluster"
 msgstr ""
 
@@ -11416,10 +11407,10 @@ msgstr ""
 
 #: dashboards/project/networks/workflows.py:225
 msgid ""
-"It specifies how IPv6 address and additional information are configured. We "
+"Specifies how IPv6 addresses and additional information are configured. We "
 "can specify SLAAC/DHCPv6 stateful/DHCPv6 stateless provided by OpenStack, or"
-" specify no option. 'No option selected' means addresses are configured "
-"manually or configured by non-OpenStack system."
+" specify no option. 'No options specified' means addresses are configured "
+"manually or configured by a non-OpenStack system."
 msgstr ""
 
 #: dashboards/project/networks/workflows.py:233
