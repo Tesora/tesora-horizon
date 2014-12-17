@@ -11,7 +11,9 @@
 #    under the License.
 
 import selenium.common.exceptions as Exceptions
+from selenium.webdriver.support import expected_conditions
 import selenium.webdriver.support.ui as Support
+from selenium.webdriver.support import wait
 
 
 class BaseWebObject(object):
@@ -19,23 +21,27 @@ class BaseWebObject(object):
     def __init__(self, driver, conf):
         self.driver = driver
         self.conf = conf
+        self.explicit_wait = self.conf.selenium.explicit_wait
 
     def _is_element_present(self, *locator):
         try:
-            self.driver.find_element(*locator)
+            self._get_element(*locator)
             return True
         except Exceptions.NoSuchElementException:
             return False
 
     def _is_element_visible(self, *locator):
         try:
-            return self.driver.find_element(*locator).is_displayed()
+            return self._get_element(*locator).is_displayed()
         except (Exceptions.NoSuchElementException,
                 Exceptions.ElementNotVisibleException):
             return False
 
     def _get_element(self, *locator):
         return self.driver.find_element(*locator)
+
+    def _get_elements(self, *locator):
+        return self.driver.find_elements(*locator)
 
     def _fill_field_element(self, data, field_element):
         field_element.clear()
@@ -49,3 +55,19 @@ class BaseWebObject(object):
     def _select_dropdown_by_value(self, value, element):
         select = Support.Select(element)
         select.select_by_value(value)
+
+    def _turn_off_implicit_wait(self):
+        self.driver.implicitly_wait(0)
+
+    def _turn_on_implicit_wait(self):
+        self.driver.implicitly_wait(self.conf.selenium.page_timeout)
+
+    def _wait_till_text_present_in_element(self, locator, text):
+        condition = expected_conditions.text_to_be_present_in_element(locator,
+                                                                      text)
+        try:
+            wait.WebDriverWait(self.driver, self.explicit_wait).\
+                until(condition)
+        except Exceptions.TimeoutException:
+            return False
+        return True

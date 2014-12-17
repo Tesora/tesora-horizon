@@ -537,9 +537,10 @@ class AssociateIP(policy.PolicyTargetMixin, tables.LinkAction):
 
     def get_link_url(self, datum):
         base_url = urlresolvers.reverse(self.url)
-        next = urlresolvers.reverse("horizon:project:instances:index")
-        params = {"instance_id": self.table.get_object_id(datum),
-                  workflows.IPAssociationWorkflow.redirect_param_name: next}
+        next_url = self.table.get_full_url()
+        params = {
+            "instance_id": self.table.get_object_id(datum),
+            workflows.IPAssociationWorkflow.redirect_param_name: next_url}
         params = urlencode(params)
         return "?".join([base_url, params])
 
@@ -570,7 +571,7 @@ class SimpleAssociateIP(policy.PolicyTargetMixin, tables.Action):
         except Exception:
             exceptions.handle(request,
                               _("Unable to associate floating IP."))
-        return shortcuts.redirect("horizon:project:instances:index")
+        return shortcuts.redirect(request.get_full_path())
 
 
 class SimpleDisassociateIP(policy.PolicyTargetMixin, tables.Action):
@@ -601,8 +602,7 @@ class SimpleDisassociateIP(policy.PolicyTargetMixin, tables.Action):
             # off the first one.
             if fips:
                 fip = fips.pop()
-                api.network.floating_ip_disassociate(request,
-                                                     fip.id, fip.port_id)
+                api.network.floating_ip_disassociate(request, fip.id)
                 messages.success(request,
                                  _("Successfully disassociated "
                                    "floating IP: %s") % fip.ip)
@@ -611,7 +611,7 @@ class SimpleDisassociateIP(policy.PolicyTargetMixin, tables.Action):
         except Exception:
             exceptions.handle(request,
                               _("Unable to disassociate floating IP."))
-        return shortcuts.redirect("horizon:project:instances:index")
+        return shortcuts.redirect(request.get_full_path())
 
 
 def instance_fault_to_friendly_message(instance):
@@ -658,6 +658,7 @@ class UpdateRow(tables.Row):
 
 class StartInstance(policy.PolicyTargetMixin, tables.BatchAction):
     name = "start"
+    classes = ('btn-confirm',)
     policy_rules = (("compute", "compute:start"),)
 
     @staticmethod
@@ -677,7 +678,8 @@ class StartInstance(policy.PolicyTargetMixin, tables.BatchAction):
         )
 
     def allowed(self, request, instance):
-        return instance.status in ("SHUTDOWN", "SHUTOFF", "CRASHED")
+        return ((instance is None) or
+                (instance.status in ("SHUTDOWN", "SHUTOFF", "CRASHED")))
 
     def action(self, request, obj_id):
         api.nova.server_start(request, obj_id)
@@ -707,9 +709,9 @@ class StopInstance(policy.PolicyTargetMixin, tables.BatchAction):
         )
 
     def allowed(self, request, instance):
-        return ((get_power_state(instance)
-                in ("RUNNING", "SUSPENDED"))
-                and not is_deleting(instance))
+        return ((instance is None)
+                or ((get_power_state(instance) in ("RUNNING", "SUSPENDED"))
+                    and not is_deleting(instance)))
 
     def action(self, request, obj_id):
         api.nova.server_stop(request, obj_id)
@@ -844,7 +846,9 @@ STATUS_DISPLAY_CHOICES = (
                                         u"Shelved Offloaded")),
 )
 
+TASK_DISPLAY_NONE = pgettext_lazy("Task status of an Instance", u"None")
 
+# Mapping of task states taken from Nova's nova/compute/task_states.py
 TASK_DISPLAY_CHOICES = (
     ("scheduling", pgettext_lazy("Task status of an Instance",
                                  u"Scheduling")),
@@ -878,8 +882,16 @@ TASK_DISPLAY_CHOICES = (
     ("resize_confirming", pgettext_lazy("Task status of an Instance",
                                         u"Confirming Resize or Migrate")),
     ("rebooting", pgettext_lazy("Task status of an Instance", u"Rebooting")),
+    ("reboot_pending", pgettext_lazy("Task status of an Instance",
+                                     u"Reboot Pending")),
+    ("reboot_started", pgettext_lazy("Task status of an Instance",
+                                     u"Reboot Started")),
     ("rebooting_hard", pgettext_lazy("Task status of an Instance",
                                      u"Rebooting Hard")),
+    ("reboot_pending_hard", pgettext_lazy("Task status of an Instance",
+                                          u"Reboot Pending Hard")),
+    ("reboot_started_hard", pgettext_lazy("Task status of an Instance",
+                                          u"Reboot Started Hard")),
     ("pausing", pgettext_lazy("Task status of an Instance", u"Pausing")),
     ("unpausing", pgettext_lazy("Task status of an Instance", u"Resuming")),
     ("suspending", pgettext_lazy("Task status of an Instance",
@@ -972,7 +984,7 @@ class InstancesTable(tables.DataTable):
                        verbose_name=_("Availability Zone"))
     task = tables.Column("OS-EXT-STS:task_state",
                          verbose_name=_("Task"),
-                         filters=(title, filters.replace_underscores),
+                         empty_value=TASK_DISPLAY_NONE,
                          status=True,
                          status_choices=TASK_STATUS_CHOICES,
                          display_choices=TASK_DISPLAY_CHOICES)
@@ -991,8 +1003,8 @@ class InstancesTable(tables.DataTable):
         verbose_name = _("Instances")
         status_columns = ["status", "task"]
         row_class = UpdateRow
-        table_actions = (LaunchLink, SoftRebootInstance, TerminateInstance,
-                         InstancesFilterAction)
+        table_actions_menu = (StartInstance, StopInstance, SoftRebootInstance)
+        table_actions = (LaunchLink, TerminateInstance, InstancesFilterAction)
         row_actions = (StartInstance, ConfirmResize, RevertResize,
                        CreateSnapshot, SimpleAssociateIP, AssociateIP,
                        SimpleDisassociateIP, EditInstance,

@@ -44,8 +44,8 @@ class CreateNetworkInfoAction(workflows.Action):
                                        required=False,
                                        widget=widget)
 
-    # TODO(amotoki): make UP/DOWN translatable
-    admin_state = forms.ChoiceField(choices=[(True, 'UP'), (False, 'DOWN')],
+    admin_state = forms.ChoiceField(choices=[(True, _('UP')),
+                                             (False, _('DOWN'))],
                                     label=_("Admin State"),
                                     help_text=_("The state to start"
                                                 " the network in."))
@@ -252,7 +252,7 @@ class CreateSubnetDetailAction(workflows.Action):
         required=False)
 
     class Meta:
-        name = _("Subnet Detail")
+        name = _("Subnet Details")
         help_text = _('Specify additional attributes for the subnet.')
 
     def populate_ipv6_modes_choices(self, request, context):

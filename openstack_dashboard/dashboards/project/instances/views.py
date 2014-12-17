@@ -121,12 +121,13 @@ class IndexView(tables.DataTableView):
         return instances
 
     def get_filters(self, filters):
-        filter_field = self.table.get_filter_field()
         filter_action = self.table._meta._filter_action
-        if filter_action.is_api_filter(filter_field):
-            filter_string = self.table.get_filter_string()
-            if filter_field and filter_string:
-                filters[filter_field] = filter_string
+        if filter_action:
+            filter_field = self.table.get_filter_field()
+            if filter_action.is_api_filter(filter_field):
+                filter_string = self.table.get_filter_string()
+                if filter_field and filter_string:
+                    filters[filter_field] = filter_string
         return filters
 
 
@@ -258,6 +259,9 @@ class DetailView(tabs.TabView):
         table = project_tables.InstancesTable(self.request)
         context["url"] = reverse(self.redirect_url)
         context["actions"] = table.render_row_actions(instance)
+        context["page_title"] = _("Instance Details: "
+                                  "%(instance_name)s") % {'instance_name':
+                                                          instance.name}
         return context
 
     @memoized.memoized_method
@@ -291,7 +295,8 @@ class DetailView(tabs.TabView):
             instance.volumes.sort(key=lambda vol: vol.device)
         except Exception:
             msg = _('Unable to retrieve volume list for instance '
-                    '"%s".') % instance_id
+                    '"%(name)s" (%(id)s).') % {'name': instance.name,
+                                               'id': instance_id}
             exceptions.handle(self.request, msg, ignore=True)
 
         try:
@@ -299,7 +304,8 @@ class DetailView(tabs.TabView):
                 self.request, instance.flavor["id"])
         except Exception:
             msg = _('Unable to retrieve flavor information for instance '
-                    '"%s".') % instance_id,
+                    '"%(name)s" (%(id)s).') % {'name': instance.name,
+                                               'id': instance_id}
             exceptions.handle(self.request, msg, ignore=True)
 
         try:
@@ -307,16 +313,17 @@ class DetailView(tabs.TabView):
                 self.request, instance_id)
         except Exception:
             msg = _('Unable to retrieve security groups for instance '
-                    '"%s".') % instance_id
+                    '"%(name)s" (%(id)s).') % {'name': instance.name,
+                                               'id': instance_id}
             exceptions.handle(self.request, msg, ignore=True)
 
         try:
             api.network.servers_update_addresses(self.request, [instance])
         except Exception:
-            exceptions.handle(
-                self.request,
-                _('Unable to retrieve IP addresses from Neutron for instance '
-                  '"%s".') % instance_id, ignore=True)
+            msg = _('Unable to retrieve IP addresses from Neutron for '
+                    'instance "%(name)s" (%(id)s).') % {'name': instance.name,
+                                                        'id': instance_id}
+            exceptions.handle(self.request, msg, ignore=True)
 
         return instance
 

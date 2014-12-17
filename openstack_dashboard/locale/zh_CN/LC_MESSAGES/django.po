@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-25 19:35-0600\n"
-"PO-Revision-Date: 2014-11-25 15:48+0000\n"
+"POT-Creation-Date: 2014-12-16 22:15-0600\n"
+"PO-Revision-Date: 2014-12-17 04:14+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/horizon/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -275,11 +275,11 @@ msgstr "能源数量"
 msgid "Power consumption"
 msgstr "电源消耗"
 
-#: api/cinder.py:46
+#: api/cinder.py:46 dashboards/admin/volumes/volume_types/forms.py:32
 msgid "back-end"
 msgstr "后端"
 
-#: api/cinder.py:47
+#: api/cinder.py:47 dashboards/admin/volumes/volume_types/forms.py:30
 msgid "front-end"
 msgstr "前端"
 
@@ -316,17 +316,17 @@ msgstr "密码已更改。请重新登录。"
 msgid "ALLOW %(ethertype)s %(proto_port)s %(direction)s %(remote)s"
 msgstr "允许 %(ethertype)s %(proto_port)s %(direction)s %(remote)s"
 
-#: api/neutron.py:849
+#: api/neutron.py:859
 msgid "Unable to connect to Neutron."
 msgstr "无法连接到Neutron."
 
-#: api/neutron.py:886
+#: api/neutron.py:896
 #, python-format
 msgid "Unable to parse IP address %s."
 msgstr "无法解析IP地址 %s."
 
 #. Translators: Only used inside Horizon code and invisible to users
-#: api/neutron.py:1025
+#: api/neutron.py:1035
 #, python-format
 msgid ""
 "The requested feature '%(feature)s' is unknown. Please make sure to specify "
@@ -334,61 +334,97 @@ msgid ""
 msgstr "请求特性'%(feature)s'未知。确保指定FEATURE_MAP定义的特性。"
 
 #. Translators: Only used inside Horizon code and invisible to users
-#: api/neutron.py:1043
+#: api/neutron.py:1053
 #, python-format
 msgid ""
 "The 'operation' parameter for get_feature_permission '%(feature)s' is "
 "invalid. It should be one of %(allowed)s"
 msgstr "get_feature_permission '%(feature)s'的参数'operation'无效。应该是%(allowed)s中的一个。"
 
-#: api/neutron.py:1058
+#: api/neutron.py:1068
 #, python-format
 msgid "Failed to check Neutron '%s' extension is not supported"
 msgstr "检查Neutron '%s'失败，扩展不被支持。"
 
-#: api/nova.py:211
+#: api/nova.py:102 api/nova.py:112 dashboards/project/databases/tables.py:230
+#: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:8
+#: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:11
+#: dashboards/project/firewalls/templates/firewalls/_policy_details.html:8
+#: dashboards/project/firewalls/templates/firewalls/_policy_details.html:11
+#: dashboards/project/firewalls/templates/firewalls/_policy_details.html:27
+#: dashboards/project/firewalls/templates/firewalls/_rule_details.html:8
+#: dashboards/project/firewalls/templates/firewalls/_rule_details.html:11
+#: dashboards/project/firewalls/templates/firewalls/_rule_details.html:43
+#: dashboards/project/firewalls/templates/firewalls/_rule_details.html:48
+#: dashboards/project/instances/templates/instances/_detail_overview.html:17
+#: dashboards/project/instances/templates/instances/_detail_overview.html:23
+#: dashboards/project/loadbalancers/tables.py:327
+#: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:10
+#: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:13
+#: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:23
+#: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:47
+#: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:59
+#: dashboards/project/loadbalancers/templates/loadbalancers/_vip_details.html:10
+#: dashboards/project/loadbalancers/templates/loadbalancers/_vip_details.html:13
+#: dashboards/project/networks/templates/networks/_detail_overview.html:12
+#: dashboards/project/networks/templates/networks/_detail_overview.html:24
+#: dashboards/project/networks/templates/networks/_detail_overview.html:25
+#: dashboards/project/networks/templates/networks/ports/_detail_overview.html:18
+#: dashboards/project/networks/templates/networks/ports/_detail_overview.html:43
+#: dashboards/project/networks/templates/networks/subnets/_detail_overview.html:17
+#: dashboards/project/networks/templates/networks/subnets/_detail_overview.html:28
+#: dashboards/project/routers/tables.py:182
+#: dashboards/project/volumes/volumes/tables.py:300
+msgid "-"
+msgstr "-"
+
+#: api/nova.py:215
 #, python-format
 msgid "ALLOW %(from)s:%(to)s from %(group)s"
 msgstr "允许 %(group)s 访问 %(from)s:%(to)s"
 
-#: api/nova.py:216
+#: api/nova.py:220
 #, python-format
 msgid "ALLOW %(from)s:%(to)s from %(cidr)s"
 msgstr "允许 %(cidr)s 访问 %(from)s:%(to)s"
 
-#: api/nova.py:292
+#: api/nova.py:296
 msgid "Couldn't get security group list."
 msgstr "无法获得安全组列表。"
 
-#: api/nova.py:299
+#: api/nova.py:303
 #, python-format
 msgid "Couldn't get current security group list for instance %s."
 msgstr "无法为云主机%s获得当前安全组列表"
 
-#: api/nova.py:316
+#: api/nova.py:320
 #, python-format
 msgid ""
 "Failed to modify %(num_groups_to_modify)d instance security groups: %(err)s"
 msgstr "修改 %(num_groups_to_modify)d 实例安全组失败: %(err)s"
 
-#: api/nova.py:331
+#: api/nova.py:335
 #, python-format
 msgid "Failed to modify %d instance security groups"
 msgstr "修改 %d 实例安全组失败"
 
-#: api/nova.py:758
+#: api/nova.py:762
 #, python-format
 msgid "Name: %(name)s ID: %(uuid)s"
 msgstr "名称: %(name)s ID: %(uuid)s"
 
-#: api/nova.py:763
+#: api/nova.py:767
 #, python-format
 msgid "Failed to evacuate instances: %s"
 msgstr "疏散云主机 %s 失败"
 
 #: api/swift.py:203
-msgid "The container cannot be deleted since it's not empty."
-msgstr "由于此容器非空，因此不能被删除。"
+msgid "The container cannot be deleted since it is not empty."
+msgstr ""
+
+#: api/swift.py:320
+msgid "The pseudo folder cannot be deleted since it is not empty."
+msgstr ""
 
 #: dashboards/admin/dashboard.py:22
 msgid "System"
@@ -408,15 +444,17 @@ msgstr "管理员"
 #: dashboards/admin/networks/forms.py:38
 #: dashboards/admin/networks/forms.py:234
 #: dashboards/admin/networks/ports/forms.py:40
-#: dashboards/admin/networks/ports/tables.py:91
+#: dashboards/admin/networks/ports/tables.py:98
 #: dashboards/admin/networks/subnets/tables.py:92
 #: dashboards/admin/routers/tables.py:41
-#: dashboards/admin/routers/ports/tables.py:26
+#: dashboards/admin/routers/ports/tables.py:33
 #: dashboards/admin/routers/templates/routers/_detail_overview.html:7
 #: dashboards/admin/volumes/snapshots/tables.py:59
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:10
-#: dashboards/admin/volumes/volume_types/tables.py:71
-#: dashboards/admin/volumes/volume_types/tables.py:147
+#: dashboards/admin/volumes/templates/volumes/volume_types/_volume_encryption_type_detail.html:11
+#: dashboards/admin/volumes/volume_types/forms.py:24
+#: dashboards/admin/volumes/volume_types/tables.py:107
+#: dashboards/admin/volumes/volume_types/tables.py:188
 #: dashboards/admin/volumes/volumes/forms.py:29
 #: dashboards/admin/volumes/volumes/forms.py:88
 #: dashboards/admin/volumes/volumes/tables.py:41
@@ -425,8 +463,8 @@ msgstr "管理员"
 #: dashboards/identity/groups/forms.py:30
 #: dashboards/identity/groups/forms.py:56
 #: dashboards/identity/groups/tables.py:115
-#: dashboards/identity/projects/tables.py:214
-#: dashboards/identity/projects/workflows.py:141
+#: dashboards/identity/projects/tables.py:222
+#: dashboards/identity/projects/workflows.py:144
 #: dashboards/project/access_and_security/security_groups/forms.py:37
 #: dashboards/project/access_and_security/security_groups/forms.py:66
 #: dashboards/project/access_and_security/security_groups/tables.py:132
@@ -434,7 +472,7 @@ msgstr "管理员"
 #: dashboards/project/data_processing/cluster_templates/tables.py:108
 #: dashboards/project/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:6
 #: dashboards/project/data_processing/clusters/tables.py:105
-#: dashboards/project/data_processing/clusters/tabs.py:134
+#: dashboards/project/data_processing/clusters/tabs.py:135
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/_details.html:6
 #: dashboards/project/data_processing/data_plugins/templates/data_processing.data_plugins/_details.html:9
 #: dashboards/project/data_processing/data_sources/tables.py:57
@@ -482,16 +520,16 @@ msgstr "管理员"
 #: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:9
 #: dashboards/project/loadbalancers/templates/loadbalancers/_vip_details.html:9
 #: dashboards/project/networks/forms.py:35
-#: dashboards/project/networks/tables.py:146
+#: dashboards/project/networks/tables.py:153
 #: dashboards/project/networks/ports/forms.py:34
-#: dashboards/project/networks/ports/tables.py:55
+#: dashboards/project/networks/ports/tables.py:62
 #: dashboards/project/networks/subnets/tables.py:129
 #: dashboards/project/networks/templates/networks/_detail_overview.html:7
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:10
 #: dashboards/project/networks/templates/networks/subnets/_detail_overview.html:9
 #: dashboards/project/routers/forms.py:85
 #: dashboards/project/routers/tables.py:187
-#: dashboards/project/routers/ports/tables.py:94
+#: dashboards/project/routers/ports/tables.py:101
 #: dashboards/project/routers/templates/routers/_detail_overview.html:9
 #: dashboards/project/stacks/templates/stacks/_detail_overview.html:9
 #: dashboards/project/volumes/backups/tables.py:106
@@ -499,8 +537,8 @@ msgstr "管理员"
 #: dashboards/project/volumes/templates/volumes/backups/_detail_overview.html:12
 #: dashboards/project/volumes/templates/volumes/snapshots/_detail_overview.html:10
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:10
-#: dashboards/project/volumes/volumes/tables.py:323
-#: dashboards/project/volumes/volumes/tables.py:352
+#: dashboards/project/volumes/volumes/tables.py:316
+#: dashboards/project/volumes/volumes/tables.py:345
 #: dashboards/project/vpn/forms.py:31 dashboards/project/vpn/forms.py:65
 #: dashboards/project/vpn/forms.py:137 dashboards/project/vpn/forms.py:208
 #: dashboards/project/vpn/tables.py:230 dashboards/project/vpn/tables.py:260
@@ -523,13 +561,13 @@ msgstr "名称"
 #: dashboards/project/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:22
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:19
 #: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:46
-#: dashboards/project/instances/tables.py:966
+#: dashboards/project/instances/tables.py:984
 #: dashboards/project/instances/templates/instances/_detail_overview.html:16
-#: dashboards/project/instances/workflows/create_instance.py:78
+#: dashboards/project/instances/workflows/create_instance.py:79
 #: dashboards/project/volumes/volumes/forms.py:90
 #: dashboards/project/volumes/volumes/forms.py:95
 #: dashboards/project/volumes/volumes/forms.py:96
-#: dashboards/project/volumes/volumes/tables.py:360
+#: dashboards/project/volumes/volumes/tables.py:352
 msgid "Availability Zone"
 msgstr "可用域"
 
@@ -612,7 +650,7 @@ msgstr "主机"
 
 #: dashboards/admin/aggregates/tables.py:136
 #: dashboards/admin/flavors/tables.py:141
-#: dashboards/project/instances/templates/instances/_detail_overview.html:96
+#: dashboards/project/instances/templates/instances/_detail_overview.html:104
 #: dashboards/project/volumes/templates/volumes/backups/_detail_overview.html:46
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:68
 msgid "Metadata"
@@ -752,7 +790,7 @@ msgstr "添加/删除集合中的主机"
 #: dashboards/admin/volumes/templates/volumes/volume_types/extras/_edit.html:25
 #: dashboards/admin/volumes/templates/volumes/volume_types/qos_specs/_edit.html:25
 #: dashboards/identity/domains/workflows.py:300
-#: dashboards/identity/projects/workflows.py:528
+#: dashboards/identity/projects/workflows.py:543
 #: dashboards/identity/users/templates/users/_update.html:33
 #: dashboards/project/instances/workflows/update_instance.py:133
 #: dashboards/project/networks/subnets/workflows.py:161
@@ -769,6 +807,7 @@ msgid "Error when adding or removing hosts."
 msgstr "增加或删除主机时错误"
 
 #: dashboards/admin/aggregates/templates/aggregates/_update.html:18
+#: dashboards/admin/hypervisors/templates/hypervisors/compute/_disable_service.html:17
 #: dashboards/admin/hypervisors/templates/hypervisors/compute/_evacuate_host.html:17
 #: dashboards/admin/images/templates/images/_create.html:18
 #: dashboards/admin/images/templates/images/_update.html:18
@@ -784,6 +823,7 @@ msgstr "增加或删除主机时错误"
 #: dashboards/admin/volumes/templates/volumes/volume_types/_associate_qos_spec.html:18
 #: dashboards/admin/volumes/templates/volumes/volume_types/_create_qos_spec.html:18
 #: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type.html:18
+#: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type_encryption.html:18
 #: dashboards/admin/volumes/templates/volumes/volume_types/_edit_qos_spec_consumer.html:18
 #: dashboards/admin/volumes/templates/volumes/volume_types/extras/_create.html:19
 #: dashboards/admin/volumes/templates/volumes/volume_types/extras/_edit.html:19
@@ -812,8 +852,8 @@ msgstr "增加或删除主机时错误"
 #: dashboards/project/firewalls/templates/firewalls/_updatefirewall.html:17
 #: dashboards/project/firewalls/templates/firewalls/_updatepolicy.html:17
 #: dashboards/project/firewalls/templates/firewalls/_updaterule.html:17
-#: dashboards/project/images/templates/images/images/_create.html:19
-#: dashboards/project/images/templates/images/images/_update.html:17
+#: dashboards/project/images/templates/images/images/_create.html:13
+#: dashboards/project/images/templates/images/images/_update.html:11
 #: dashboards/project/images/templates/images/snapshots/_create.html:18
 #: dashboards/project/instances/templates/instances/_decryptpassword.html:20
 #: dashboards/project/instances/templates/instances/_rebuild.html:18
@@ -856,6 +896,7 @@ msgid ""
 msgstr "主机聚合通过将主机组合来把可用区域划分成逻辑单元。编辑主机聚合，选择它里面的主机。"
 
 #: dashboards/admin/aggregates/templates/aggregates/_update.html:25
+#: dashboards/admin/hypervisors/templates/hypervisors/compute/_disable_service.html:24
 #: dashboards/admin/hypervisors/templates/hypervisors/compute/_evacuate_host.html:24
 #: dashboards/admin/images/templates/images/_create.html:34
 #: dashboards/admin/images/templates/images/_update.html:25
@@ -871,6 +912,7 @@ msgstr "主机聚合通过将主机组合来把可用区域划分成逻辑单元
 #: dashboards/admin/volumes/templates/volumes/volume_types/_associate_qos_spec.html:35
 #: dashboards/admin/volumes/templates/volumes/volume_types/_create_qos_spec.html:37
 #: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type.html:34
+#: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type_encryption.html:39
 #: dashboards/admin/volumes/templates/volumes/volume_types/_edit_qos_spec_consumer.html:29
 #: dashboards/admin/volumes/templates/volumes/volume_types/extras/_create.html:26
 #: dashboards/admin/volumes/templates/volumes/volume_types/extras/_edit.html:26
@@ -906,8 +948,8 @@ msgstr "主机聚合通过将主机组合来把可用区域划分成逻辑单元
 #: dashboards/project/firewalls/templates/firewalls/_updatefirewall.html:24
 #: dashboards/project/firewalls/templates/firewalls/_updatepolicy.html:24
 #: dashboards/project/firewalls/templates/firewalls/_updaterule.html:24
-#: dashboards/project/images/templates/images/images/_create.html:40
-#: dashboards/project/images/templates/images/images/_update.html:24
+#: dashboards/project/images/templates/images/images/_create.html:33
+#: dashboards/project/images/templates/images/images/_update.html:17
 #: dashboards/project/images/templates/images/snapshots/_create.html:25
 #: dashboards/project/instances/templates/instances/_decryptpassword.html:34
 #: dashboards/project/instances/templates/instances/_rebuild.html:28
@@ -974,29 +1016,29 @@ msgstr "默认值"
 msgid "Update Defaults"
 msgstr "更新默认值"
 
-#: dashboards/admin/defaults/tables.py:41
+#: dashboards/admin/defaults/tables.py:42
 #: dashboards/admin/defaults/workflows.py:31 usage/quotas.py:66
 msgid "Injected File Content Bytes"
 msgstr "注入的文件内容字节数"
 
-#: dashboards/admin/defaults/tables.py:42
+#: dashboards/admin/defaults/tables.py:43
 #: dashboards/admin/defaults/workflows.py:32
 msgid "Length of Injected File Path"
 msgstr "注入文件路径的长度"
 
-#: dashboards/admin/defaults/tables.py:43
+#: dashboards/admin/defaults/tables.py:44
 #: dashboards/admin/defaults/workflows.py:36
-#: dashboards/identity/projects/workflows.py:46 usage/quotas.py:62
+#: dashboards/identity/projects/workflows.py:49 usage/quotas.py:62
 msgid "Metadata Items"
 msgstr "元数据条目"
 
-#: dashboards/admin/defaults/tables.py:44
+#: dashboards/admin/defaults/tables.py:45
 #: dashboards/admin/defaults/workflows.py:47
 #: dashboards/admin/flavors/tables.py:122
 #: dashboards/admin/flavors/workflows.py:46
 #: dashboards/admin/overview/views.py:33
-#: dashboards/identity/projects/workflows.py:47
-#: dashboards/project/instances/templates/instances/_detail_overview.html:50
+#: dashboards/identity/projects/workflows.py:50
+#: dashboards/project/instances/templates/instances/_detail_overview.html:53
 #: dashboards/project/instances/templates/instances/_flavors_and_quotas.html:10
 #: dashboards/project/instances/templates/instances/_instance_flavor.html:4
 #: dashboards/project/overview/views.py:32 usage/quotas.py:63
@@ -1004,20 +1046,20 @@ msgstr "元数据条目"
 msgid "VCPUs"
 msgstr "虚拟内核"
 
-#: dashboards/admin/defaults/tables.py:45
+#: dashboards/admin/defaults/tables.py:46
 #: dashboards/admin/defaults/workflows.py:42
 #: dashboards/admin/hypervisors/tables.py:57
 #: dashboards/admin/instances/panel.py:27
 #: dashboards/admin/instances/tables.py:163
 #: dashboards/admin/instances/templates/instances/index.html:3
-#: dashboards/identity/projects/workflows.py:48
-#: dashboards/project/data_processing/clusters/tabs.py:149
+#: dashboards/identity/projects/workflows.py:51
+#: dashboards/project/data_processing/clusters/tabs.py:150
 #: dashboards/project/databases/panel.py:23
 #: dashboards/project/databases/tables.py:269
 #: dashboards/project/databases/templates/databases/index.html:3
 #: dashboards/project/databases/templates/databases/index.html:6
 #: dashboards/project/instances/panel.py:23
-#: dashboards/project/instances/tables.py:985
+#: dashboards/project/instances/tables.py:1003
 #: dashboards/project/instances/templates/instances/index.html:3
 #: dashboards/project/instances/templates/instances/index.html:6
 #: dashboards/project/network_topology/instances/tables.py:23
@@ -1025,89 +1067,89 @@ msgstr "虚拟内核"
 msgid "Instances"
 msgstr "实例"
 
-#: dashboards/admin/defaults/tables.py:46
+#: dashboards/admin/defaults/tables.py:47
 #: dashboards/admin/defaults/workflows.py:46
-#: dashboards/identity/projects/workflows.py:50 usage/quotas.py:65
+#: dashboards/identity/projects/workflows.py:53 usage/quotas.py:65
 msgid "Injected Files"
 msgstr "注入的文件"
 
-#: dashboards/admin/defaults/tables.py:47
+#: dashboards/admin/defaults/tables.py:48
 #: dashboards/admin/defaults/workflows.py:54
 #: dashboards/admin/volumes/panel.py:21 dashboards/admin/volumes/tabs.py:35
 #: dashboards/admin/volumes/templates/volumes/index.html:3
 #: dashboards/admin/volumes/templates/volumes/index.html:6
 #: dashboards/admin/volumes/volumes/tables.py:48
-#: dashboards/identity/projects/workflows.py:53
+#: dashboards/identity/projects/workflows.py:56
 #: dashboards/project/volumes/panel.py:23
-#: dashboards/project/volumes/tabs.py:62
+#: dashboards/project/volumes/tabs.py:83
 #: dashboards/project/volumes/templates/volumes/index.html:3
 #: dashboards/project/volumes/templates/volumes/index.html:6
-#: dashboards/project/volumes/volumes/tables.py:369 usage/quotas.py:74
+#: dashboards/project/volumes/volumes/tables.py:361 usage/quotas.py:74
 msgid "Volumes"
 msgstr "云硬盘"
 
-#: dashboards/admin/defaults/tables.py:48
+#: dashboards/admin/defaults/tables.py:49
 #: dashboards/admin/defaults/workflows.py:53
-#: dashboards/admin/volumes/tabs.py:93
+#: dashboards/admin/volumes/tabs.py:115
 #: dashboards/admin/volumes/snapshots/tables.py:69
-#: dashboards/identity/projects/workflows.py:54
-#: dashboards/project/volumes/tabs.py:76
+#: dashboards/identity/projects/workflows.py:57
+#: dashboards/project/volumes/tabs.py:99
 #: dashboards/project/volumes/snapshots/tables.py:147 usage/quotas.py:75
 msgid "Volume Snapshots"
 msgstr "云硬盘快照"
 
-#: dashboards/admin/defaults/tables.py:49
+#: dashboards/admin/defaults/tables.py:50
 #: dashboards/admin/defaults/workflows.py:52
-#: dashboards/identity/projects/workflows.py:56 usage/quotas.py:76
+#: dashboards/identity/projects/workflows.py:59 usage/quotas.py:76
 msgid "Total Size of Volumes and Snapshots (GB)"
 msgstr "云硬盘和快照的总大小(GB)"
 
-#: dashboards/admin/defaults/tables.py:50
+#: dashboards/admin/defaults/tables.py:51
 #: dashboards/admin/defaults/workflows.py:37
 #: dashboards/admin/flavors/workflows.py:48
 #: dashboards/admin/overview/views.py:33
-#: dashboards/identity/projects/workflows.py:57
+#: dashboards/identity/projects/workflows.py:60
 #: dashboards/project/overview/views.py:32 usage/quotas.py:67
 msgid "RAM (MB)"
 msgstr "内存 (MB)"
 
-#: dashboards/admin/defaults/tables.py:51
+#: dashboards/admin/defaults/tables.py:52
 #: dashboards/admin/defaults/workflows.py:38
-#: dashboards/identity/projects/workflows.py:58
-#: dashboards/identity/projects/workflows.py:70
+#: dashboards/identity/projects/workflows.py:61
+#: dashboards/identity/projects/workflows.py:73
 #: dashboards/project/access_and_security/tabs.py:80
-#: dashboards/project/access_and_security/floating_ips/tables.py:222
+#: dashboards/project/access_and_security/floating_ips/tables.py:220
 #: usage/quotas.py:68 usage/quotas.py:81
 msgid "Floating IPs"
 msgstr "浮动IP"
 
-#: dashboards/admin/defaults/tables.py:52
+#: dashboards/admin/defaults/tables.py:53
 #: dashboards/admin/defaults/workflows.py:49
-#: dashboards/identity/projects/workflows.py:61
-#: dashboards/identity/projects/workflows.py:67
+#: dashboards/identity/projects/workflows.py:64
+#: dashboards/identity/projects/workflows.py:70
 #: dashboards/project/access_and_security/tabs.py:43
 #: dashboards/project/access_and_security/security_groups/tables.py:140
 #: dashboards/project/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:29
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:32
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:42
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:115
-#: dashboards/project/instances/templates/instances/_detail_overview.html:77
-#: dashboards/project/instances/workflows/create_instance.py:499
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:116
+#: dashboards/project/instances/templates/instances/_detail_overview.html:83
+#: dashboards/project/instances/workflows/create_instance.py:544
 #: dashboards/project/instances/workflows/update_instance.py:80
 #: usage/quotas.py:70 usage/quotas.py:82
 msgid "Security Groups"
 msgstr "安全组"
 
-#: dashboards/admin/defaults/tables.py:53
+#: dashboards/admin/defaults/tables.py:54
 #: dashboards/admin/defaults/workflows.py:44
-#: dashboards/identity/projects/workflows.py:63
-#: dashboards/identity/projects/workflows.py:69
+#: dashboards/identity/projects/workflows.py:66
+#: dashboards/identity/projects/workflows.py:72
 #: dashboards/project/access_and_security/security_groups/tables.py:268
 #: usage/quotas.py:71 usage/quotas.py:83
 msgid "Security Group Rules"
 msgstr "安全组规则"
 
-#: dashboards/admin/defaults/tables.py:54
+#: dashboards/admin/defaults/tables.py:55
 #: dashboards/admin/defaults/workflows.py:39
 #: dashboards/project/access_and_security/tabs.py:63
 #: dashboards/project/access_and_security/keypairs/tables.py:90
@@ -1115,40 +1157,40 @@ msgstr "安全组规则"
 msgid "Key Pairs"
 msgstr "密钥对"
 
-#: dashboards/admin/defaults/tables.py:55
-#: dashboards/admin/networks/ports/tables.py:94
-#: dashboards/admin/routers/ports/tables.py:29
-#: dashboards/identity/projects/workflows.py:59
-#: dashboards/project/networks/ports/tables.py:57
-#: dashboards/project/routers/ports/tables.py:97 usage/quotas.py:69
+#: dashboards/admin/defaults/tables.py:56
+#: dashboards/admin/networks/ports/tables.py:101
+#: dashboards/admin/routers/ports/tables.py:36
+#: dashboards/identity/projects/workflows.py:62
+#: dashboards/project/networks/ports/tables.py:64
+#: dashboards/project/routers/ports/tables.py:104 usage/quotas.py:69
 msgid "Fixed IPs"
 msgstr "固定IP"
 
-#: dashboards/admin/defaults/tables.py:56
+#: dashboards/admin/defaults/tables.py:57
 msgid "LUKS Volumes"
 msgstr "LUKS 卷"
 
-#: dashboards/admin/defaults/tables.py:57
+#: dashboards/admin/defaults/tables.py:58
 msgid "LUKS Volume Snapshots"
 msgstr "LUKS 卷快照"
 
-#: dashboards/admin/defaults/tables.py:59
+#: dashboards/admin/defaults/tables.py:60
 msgid "Total Size of LUKS Volumes and Snapshots (GB)"
 msgstr "LUKS卷和快照的总大小(GB)"
 
-#: dashboards/admin/defaults/tables.py:60
+#: dashboards/admin/defaults/tables.py:61
 msgid "dm-crypt"
 msgstr "dm加密模块"
 
-#: dashboards/admin/defaults/tables.py:66
+#: dashboards/admin/defaults/tables.py:67
 msgid "Quota Name"
 msgstr "配额名称"
 
-#: dashboards/admin/defaults/tables.py:67
+#: dashboards/admin/defaults/tables.py:68
 msgid "Limit"
 msgstr "限制"
 
-#: dashboards/admin/defaults/tables.py:74
+#: dashboards/admin/defaults/tables.py:75
 msgid "Quotas"
 msgstr "配额"
 
@@ -1231,7 +1273,7 @@ msgstr "%s MB"
 #: dashboards/admin/flavors/tables.py:109
 #: dashboards/admin/flavors/tables.py:113
 #: dashboards/project/volumes/backups/tables.py:95
-#: dashboards/project/volumes/volumes/tables.py:257
+#: dashboards/project/volumes/volumes/tables.py:250
 #, python-format
 msgid "%sGB"
 msgstr "%sGB"
@@ -1242,7 +1284,7 @@ msgstr "云主机类型名称"
 
 #: dashboards/admin/flavors/tables.py:124
 #: dashboards/project/databases/templates/databases/_detail_overview.html:28
-#: dashboards/project/instances/templates/instances/_detail_overview.html:48
+#: dashboards/project/instances/templates/instances/_detail_overview.html:51
 #: dashboards/project/instances/templates/instances/_flavors_and_quotas.html:14
 #: dashboards/project/instances/templates/instances/_instance_flavor.html:5
 #: usage/tables.py:37
@@ -1255,7 +1297,7 @@ msgid "Root Disk"
 msgstr "根磁盘"
 
 #: dashboards/admin/flavors/tables.py:130
-#: dashboards/project/instances/templates/instances/_detail_overview.html:55
+#: dashboards/project/instances/templates/instances/_detail_overview.html:58
 #: dashboards/project/instances/templates/instances/_flavors_and_quotas.html:12
 msgid "Ephemeral Disk"
 msgstr "临时磁盘"
@@ -1266,7 +1308,7 @@ msgstr "交换盘空间"
 
 #: dashboards/admin/flavors/tables.py:135
 #: dashboards/admin/flavors/workflows.py:41
-#: dashboards/admin/networks/agents/tables.py:89
+#: dashboards/admin/networks/agents/tables.py:90
 #: dashboards/admin/networks/templates/networks/ports/_update.html:13
 #: dashboards/admin/routers/templates/routers/_detail_overview.html:9
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:12
@@ -1276,7 +1318,7 @@ msgstr "交换盘空间"
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/_details.html:8
 #: dashboards/project/data_processing/data_sources/templates/data_processing.data_sources/_details.html:7
 #: dashboards/project/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:7
-#: dashboards/project/data_processing/job_executions/tables.py:135
+#: dashboards/project/data_processing/job_executions/tables.py:143
 #: dashboards/project/data_processing/job_executions/templates/data_processing.job_executions/_details.html:8
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/_details.html:8
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:8
@@ -1483,7 +1525,7 @@ msgstr "主机名字"
 
 #: dashboards/admin/hypervisors/tables.py:28
 #: dashboards/admin/info/tables.py:169
-#: dashboards/admin/routers/ports/tables.py:32
+#: dashboards/admin/routers/ports/tables.py:39
 #: dashboards/project/access_and_security/security_groups/forms.py:173
 #: dashboards/project/access_and_security/security_groups/forms.py:180
 #: dashboards/project/data_processing/data_sources/tables.py:61
@@ -1491,12 +1533,12 @@ msgstr "主机名字"
 #: dashboards/project/images/images/tables.py:229
 #: dashboards/project/loadbalancers/workflows.py:486
 #: dashboards/project/loadbalancers/templates/loadbalancers/_monitor_details.html:12
-#: dashboards/project/routers/ports/tables.py:100
+#: dashboards/project/routers/ports/tables.py:107
 #: dashboards/project/volumes/volumes/forms.py:81
 #: dashboards/project/volumes/volumes/forms.py:86
 #: dashboards/project/volumes/volumes/forms.py:87
-#: dashboards/project/volumes/volumes/forms.py:648
-#: dashboards/project/volumes/volumes/tables.py:355
+#: dashboards/project/volumes/volumes/forms.py:659
+#: dashboards/project/volumes/volumes/tables.py:348
 msgid "Type"
 msgstr "类型"
 
@@ -1527,9 +1569,9 @@ msgstr "本地存储(总共）"
 #: dashboards/admin/hypervisors/tables.py:70
 #: dashboards/project/databases/tables.py:248
 #: dashboards/project/databases/workflows/create_instance.py:35
-#: dashboards/project/instances/tables.py:927
-#: dashboards/project/instances/tables.py:949
-#: dashboards/project/instances/workflows/create_instance.py:81
+#: dashboards/project/instances/tables.py:945
+#: dashboards/project/instances/tables.py:967
+#: dashboards/project/instances/workflows/create_instance.py:82
 #: dashboards/project/overview/views.py:32 usage/tables.py:75
 msgid "Instance Name"
 msgstr "云主机名称"
@@ -1596,19 +1638,12 @@ msgstr "开始疏散实例从主机 %(current)s 到主机 %(target)s."
 msgid "Failed to evacuate host: %s."
 msgstr "无法疏散主机: %s."
 
-#: dashboards/admin/hypervisors/compute/tables.py:24
-#: dashboards/admin/hypervisors/templates/hypervisors/compute/_evacuate_host.html:8
-#: dashboards/admin/hypervisors/templates/hypervisors/compute/_evacuate_host.html:23
-#: dashboards/admin/hypervisors/templates/hypervisors/compute/evacuate_host.html:3
-#: dashboards/admin/hypervisors/templates/hypervisors/compute/evacuate_host.html:6
-msgid "Evacuate Host"
-msgstr "疏散主机"
-
-#: dashboards/admin/hypervisors/compute/tables.py:48
+#: dashboards/admin/hypervisors/compute/forms.py:73
+#: dashboards/admin/hypervisors/compute/tables.py:94
 #: dashboards/admin/info/tables.py:66 dashboards/admin/info/tables.py:95
 #: dashboards/admin/info/tables.py:119 dashboards/admin/info/tables.py:171
 #: dashboards/admin/instances/tables.py:124
-#: dashboards/admin/networks/agents/tables.py:90
+#: dashboards/admin/networks/agents/tables.py:91
 #: dashboards/admin/volumes/snapshots/tables.py:64
 #: dashboards/admin/volumes/volumes/tables.py:43
 #: dashboards/project/databases/tables.py:253
@@ -1617,30 +1652,71 @@ msgstr "疏散主机"
 #: dashboards/project/databases/templates/databases/_detail_overview_mongodb.html:10
 #: dashboards/project/databases/templates/databases/_detail_overview_mysql.html:10
 #: dashboards/project/databases/templates/databases/_detail_overview_redis.html:10
+#: dashboards/project/instances/templates/instances/_detail_overview.html:22
 msgid "Host"
 msgstr "主机"
 
-#: dashboards/admin/hypervisors/compute/tables.py:49
+#: dashboards/admin/hypervisors/compute/forms.py:77
+msgid "Reason"
+msgstr "原因"
+
+#: dashboards/admin/hypervisors/compute/forms.py:86
+#, python-format
+msgid "Disabled compute service for host: %s."
+msgstr ""
+
+#: dashboards/admin/hypervisors/compute/forms.py:91
+#, python-format
+msgid "Failed to disable compute service for host: %s."
+msgstr ""
+
+#: dashboards/admin/hypervisors/compute/tables.py:26
+#: dashboards/admin/hypervisors/templates/hypervisors/compute/_evacuate_host.html:8
+#: dashboards/admin/hypervisors/templates/hypervisors/compute/_evacuate_host.html:23
+#: dashboards/admin/hypervisors/templates/hypervisors/compute/evacuate_host.html:3
+#: dashboards/admin/hypervisors/templates/hypervisors/compute/evacuate_host.html:6
+msgid "Evacuate Host"
+msgstr "疏散主机"
+
+#: dashboards/admin/hypervisors/compute/tables.py:44
+#: dashboards/admin/hypervisors/templates/hypervisors/compute/_disable_service.html:8
+#: dashboards/admin/hypervisors/templates/hypervisors/compute/_disable_service.html:23
+#: dashboards/admin/hypervisors/templates/hypervisors/compute/disable_service.html:3
+#: dashboards/admin/hypervisors/templates/hypervisors/compute/disable_service.html:6
+msgid "Disable Service"
+msgstr ""
+
+#: dashboards/admin/hypervisors/compute/tables.py:63
+msgid "Enable Service"
+msgid_plural "Enable Services"
+msgstr[0] ""
+
+#: dashboards/admin/hypervisors/compute/tables.py:71
+msgid "Enabled Service"
+msgid_plural "Enabled Services"
+msgstr[0] ""
+
+#: dashboards/admin/hypervisors/compute/tables.py:95
 #: dashboards/admin/info/tables.py:96 dashboards/admin/info/tables.py:120
 msgid "Zone"
 msgstr "域"
 
-#: dashboards/admin/hypervisors/compute/tables.py:50
+#: dashboards/admin/hypervisors/compute/tables.py:96
 #: dashboards/admin/info/tables.py:68 dashboards/admin/info/tables.py:97
 #: dashboards/admin/info/tables.py:121 dashboards/admin/info/tables.py:172
 #: dashboards/admin/instances/tables.py:141
-#: dashboards/admin/networks/tables.py:95
-#: dashboards/admin/networks/agents/tables.py:91
-#: dashboards/admin/networks/ports/tables.py:97
-#: dashboards/admin/routers/ports/tables.py:30
+#: dashboards/admin/networks/tables.py:102
+#: dashboards/admin/networks/agents/tables.py:92
+#: dashboards/admin/networks/ports/tables.py:104
+#: dashboards/admin/routers/ports/tables.py:37
 #: dashboards/admin/routers/templates/routers/_detail_overview.html:13
 #: dashboards/admin/volumes/snapshots/forms.py:33
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:18
 #: dashboards/admin/volumes/volumes/forms.py:46
-#: dashboards/project/access_and_security/floating_ips/tables.py:202
+#: dashboards/project/access_and_security/floating_ips/tables.py:200
 #: dashboards/project/data_processing/clusters/tables.py:109
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/_details.html:12
-#: dashboards/project/data_processing/job_executions/tables.py:150
+#: dashboards/project/data_processing/job_executions/tables.py:158
 #: dashboards/project/data_processing/job_executions/templates/data_processing.job_executions/_details.html:6
 #: dashboards/project/database_backups/tables.py:161
 #: dashboards/project/database_backups/templates/database_backups/details.html:30
@@ -1652,23 +1728,23 @@ msgstr "域"
 #: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:25
 #: dashboards/project/images/images/tables.py:233
 #: dashboards/project/images/templates/images/images/_detail_overview.html:19
-#: dashboards/project/instances/tables.py:961
+#: dashboards/project/instances/tables.py:979
 #: dashboards/project/instances/templates/instances/_detail_overview.html:14
 #: dashboards/project/loadbalancers/tables.py:277
 #: dashboards/project/loadbalancers/tables.py:311
 #: dashboards/project/loadbalancers/templates/loadbalancers/_member_details.html:28
 #: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:66
 #: dashboards/project/loadbalancers/templates/loadbalancers/_vip_details.html:60
-#: dashboards/project/networks/tables.py:152
-#: dashboards/project/networks/ports/tables.py:59
+#: dashboards/project/networks/tables.py:159
+#: dashboards/project/networks/ports/tables.py:66
 #: dashboards/project/networks/templates/networks/_detail_overview.html:13
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:32
 #: dashboards/project/routers/tables.py:191
-#: dashboards/project/routers/ports/tables.py:98
+#: dashboards/project/routers/ports/tables.py:105
 #: dashboards/project/routers/templates/routers/_detail_overview.html:13
-#: dashboards/project/stacks/tables.py:113
-#: dashboards/project/stacks/tables.py:150
-#: dashboards/project/stacks/tables.py:197
+#: dashboards/project/stacks/tables.py:117
+#: dashboards/project/stacks/tables.py:154
+#: dashboards/project/stacks/tables.py:201
 #: dashboards/project/stacks/templates/stacks/_detail_overview.html:19
 #: dashboards/project/stacks/templates/stacks/_detail_overview.html:26
 #: dashboards/project/stacks/templates/stacks/_resource_overview.html:35
@@ -1677,25 +1753,25 @@ msgstr "域"
 #: dashboards/project/volumes/templates/volumes/backups/_detail_overview.html:20
 #: dashboards/project/volumes/templates/volumes/snapshots/_detail_overview.html:18
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:18
-#: dashboards/project/volumes/volumes/tables.py:333
+#: dashboards/project/volumes/volumes/tables.py:326
 #: dashboards/project/vpn/tables.py:240 dashboards/project/vpn/tables.py:267
 #: dashboards/project/vpn/templates/vpn/_ipsecsiteconnection_details.html:71
 #: dashboards/project/vpn/templates/vpn/_vpnservice_details.html:38
 msgid "Status"
 msgstr "状态"
 
-#: dashboards/admin/hypervisors/compute/tables.py:51
+#: dashboards/admin/hypervisors/compute/tables.py:97
 #: dashboards/admin/info/tables.py:98 dashboards/admin/info/tables.py:123
 #: dashboards/admin/info/tables.py:173 dashboards/project/overview/views.py:34
 msgid "State"
 msgstr "状态"
 
-#: dashboards/admin/hypervisors/compute/tables.py:53
-#: dashboards/admin/networks/agents/tables.py:94
+#: dashboards/admin/hypervisors/compute/tables.py:99
+#: dashboards/admin/networks/agents/tables.py:95
 msgid "Updated At"
 msgstr "已更新于"
 
-#: dashboards/admin/hypervisors/compute/tables.py:62
+#: dashboards/admin/hypervisors/compute/tables.py:108
 #: dashboards/admin/hypervisors/compute/tabs.py:24
 msgid "Compute Host"
 msgstr "计算主机"
@@ -1741,6 +1817,10 @@ msgstr "内存使用情况"
 msgid "Local Disk Usage"
 msgstr "本地磁盘使用"
 
+#: dashboards/admin/hypervisors/templates/hypervisors/compute/_disable_service.html:18
+msgid "Disable the compute service."
+msgstr ""
+
 #: dashboards/admin/hypervisors/templates/hypervisors/compute/_evacuate_host.html:18
 msgid ""
 "Evacuate the servers from the selected down host to an active target host."
@@ -1766,7 +1846,7 @@ msgstr "镜像名称 ="
 
 #: dashboards/admin/images/tables.py:62
 #: dashboards/admin/instances/tables.py:98
-#: dashboards/project/instances/tables.py:928
+#: dashboards/project/instances/tables.py:946
 msgid "Status ="
 msgstr "状态 ="
 
@@ -1785,10 +1865,10 @@ msgstr "容量最大值 (MB)"
 #: dashboards/admin/images/tables.py:71
 #: dashboards/admin/instances/tables.py:130
 #: dashboards/project/images/images/tables.py:227
-#: dashboards/project/instances/tables.py:951
-#: dashboards/project/instances/templates/instances/_detail_overview.html:104
-#: dashboards/project/instances/workflows/create_instance.py:105
-#: dashboards/project/volumes/volumes/forms.py:540
+#: dashboards/project/instances/tables.py:969
+#: dashboards/project/instances/templates/instances/_detail_overview.html:112
+#: dashboards/project/instances/workflows/create_instance.py:106
+#: dashboards/project/volumes/volumes/forms.py:551
 msgid "Image Name"
 msgstr "镜像名称"
 
@@ -1818,7 +1898,7 @@ msgid "Specify an image to upload to the Image Service."
 msgstr "指定镜像上传到镜像服务"
 
 #: dashboards/admin/images/templates/images/_create.html:23
-#: dashboards/project/images/templates/images/images/_create.html:24
+#: dashboards/project/images/templates/images/images/_create.html:18
 msgid ""
 "Currently only images available via an HTTP URL are supported. The image "
 "location must be accessible to the Image Service. Compressed image binaries "
@@ -1826,12 +1906,12 @@ msgid ""
 msgstr "目前只支持HTTP URL可用镜像。镜像服务必须能够访问到镜像地址。支持镜像的二进制压缩格式(.zip,.tar,.gz.)"
 
 #: dashboards/admin/images/templates/images/_create.html:26
-#: dashboards/project/images/templates/images/images/_create.html:28
+#: dashboards/project/images/templates/images/images/_create.html:22
 msgid "Please note: "
 msgstr "请注意："
 
 #: dashboards/admin/images/templates/images/_create.html:27
-#: dashboards/project/images/templates/images/images/_create.html:32
+#: dashboards/project/images/templates/images/images/_create.html:26
 msgid ""
 "The Image Location field MUST be a valid and direct URL to the image binary."
 " URLs that redirect or serve error pages will result in unusable images."
@@ -1839,7 +1919,7 @@ msgstr "镜像地址必须是有效的直接定位到镜像二进制文件的URL
 
 #: dashboards/admin/images/templates/images/_create.html:33
 #: dashboards/project/images/images/tables.py:93
-#: dashboards/project/images/templates/images/images/_create.html:39
+#: dashboards/project/images/templates/images/images/_create.html:32
 msgid "Create Image"
 msgstr "创建镜像"
 
@@ -1848,14 +1928,14 @@ msgstr "创建镜像"
 #: dashboards/admin/images/templates/images/update.html:4
 #: dashboards/admin/images/templates/images/update.html:7
 #: dashboards/project/images/templates/images/images/_update.html:8
-#: dashboards/project/images/templates/images/images/_update.html:23
+#: dashboards/project/images/templates/images/images/_update.html:16
 #: dashboards/project/images/templates/images/images/update.html:3
 #: dashboards/project/images/templates/images/images/update.html:6
 msgid "Update Image"
 msgstr "上传镜像"
 
 #: dashboards/admin/images/templates/images/_update.html:19
-#: dashboards/project/images/templates/images/images/_update.html:18
+#: dashboards/project/images/templates/images/images/_update.html:12
 msgid "Edit the image details."
 msgstr "编辑镜像详情"
 
@@ -1873,14 +1953,14 @@ msgid "System Information"
 msgstr "系统信息"
 
 #: dashboards/admin/info/tables.py:26 dashboards/admin/info/tables.py:156
-#: dashboards/admin/networks/agents/tables.py:78
+#: dashboards/admin/networks/agents/tables.py:79
 #: dashboards/identity/domains/tables.py:202
 #: dashboards/identity/domains/workflows.py:39
 #: dashboards/identity/groups/tables.py:195
-#: dashboards/identity/projects/tables.py:224
-#: dashboards/identity/projects/tables.py:226
-#: dashboards/identity/projects/workflows.py:147
-#: dashboards/identity/projects/workflows.py:507
+#: dashboards/identity/projects/tables.py:232
+#: dashboards/identity/projects/tables.py:234
+#: dashboards/identity/projects/workflows.py:150
+#: dashboards/identity/projects/workflows.py:522
 #: dashboards/identity/users/tables.py:178
 #: dashboards/project/firewalls/forms.py:70
 #: dashboards/project/firewalls/tables.py:216
@@ -1891,7 +1971,7 @@ msgid "Enabled"
 msgstr "激活"
 
 #: dashboards/admin/info/tables.py:27 dashboards/admin/info/tables.py:158
-#: dashboards/admin/networks/agents/tables.py:79
+#: dashboards/admin/networks/agents/tables.py:80
 #: dashboards/project/stacks/templates/stacks/_detail_overview.html:65
 msgid "Disabled"
 msgstr "已关闭"
@@ -1922,12 +2002,12 @@ msgid "Block Storage Services"
 msgstr "块存储服务"
 
 #: dashboards/admin/info/tables.py:163
-#: dashboards/admin/networks/agents/tables.py:84
+#: dashboards/admin/networks/agents/tables.py:85
 msgid "Up"
 msgstr "向上"
 
 #: dashboards/admin/info/tables.py:165
-#: dashboards/admin/networks/agents/tables.py:85
+#: dashboards/admin/networks/agents/tables.py:86
 msgid "Down"
 msgstr "向下"
 
@@ -2013,13 +2093,13 @@ msgstr "实例热迁移"
 #: dashboards/admin/metering/tables.py:41
 #: dashboards/admin/metering/templates/metering/stats.html:84
 #: dashboards/admin/networks/forms.py:40
-#: dashboards/admin/networks/tables.py:86
+#: dashboards/admin/networks/tables.py:93
 #: dashboards/admin/routers/tables.py:39
 #: dashboards/admin/volumes/snapshots/tables.py:65
 #: dashboards/admin/volumes/volumes/tables.py:44
 #: dashboards/project/dashboard.py:75
 #: dashboards/project/images/images/tables.py:151
-#: dashboards/project/instances/workflows/create_instance.py:51
+#: dashboards/project/instances/workflows/create_instance.py:52
 #: dashboards/router/nexus1000v/forms.py:119
 #: dashboards/router/nexus1000v/forms.py:177
 #: dashboards/router/nexus1000v/tables.py:73
@@ -2040,12 +2120,12 @@ msgid "IPv6 Address ="
 msgstr "IPv6 地址 ="
 
 #: dashboards/admin/instances/tables.py:99
-#: dashboards/project/instances/tables.py:929
+#: dashboards/project/instances/tables.py:947
 msgid "Image ID ="
 msgstr "镜像ID ="
 
 #: dashboards/admin/instances/tables.py:100
-#: dashboards/project/instances/tables.py:930
+#: dashboards/project/instances/tables.py:948
 msgid "Flavor ID ="
 msgstr "实例类型ID ="
 
@@ -2053,7 +2133,7 @@ msgstr "实例类型ID ="
 #: dashboards/project/access_and_security/floating_ips/tables.py:192
 #: dashboards/project/access_and_security/floating_ips/workflows.py:33
 #: dashboards/project/access_and_security/floating_ips/workflows.py:40
-#: dashboards/project/instances/tables.py:953
+#: dashboards/project/instances/tables.py:971
 #: dashboards/project/loadbalancers/tables.py:302
 msgid "IP Address"
 msgstr "IP 地址"
@@ -2066,28 +2146,28 @@ msgstr "IP 地址"
 #: dashboards/project/databases/tables.py:255
 #: dashboards/project/images/images/tables.py:247
 #: dashboards/project/images/templates/images/images/_detail_overview.html:46
-#: dashboards/project/instances/tables.py:956
+#: dashboards/project/instances/tables.py:974
 #: dashboards/project/instances/templates/instances/_instance_flavor.html:6
 #: dashboards/project/volumes/backups/tables.py:112
 #: dashboards/project/volumes/templates/volumes/backups/_detail_overview.html:37
 #: dashboards/project/volumes/templates/volumes/snapshots/_detail_overview.html:37
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:27
-#: dashboards/project/volumes/volumes/tables.py:329
+#: dashboards/project/volumes/volumes/tables.py:322
 msgid "Size"
 msgstr "配置"
 
 #: dashboards/admin/instances/tables.py:146
-#: dashboards/project/instances/tables.py:968
+#: dashboards/project/instances/tables.py:986
 msgid "Task"
 msgstr "任务"
 
 #: dashboards/admin/instances/tables.py:153
-#: dashboards/project/instances/tables.py:975
+#: dashboards/project/instances/tables.py:993
 msgid "Power State"
 msgstr "电源状态"
 
 #: dashboards/admin/instances/tables.py:156
-#: dashboards/project/instances/tables.py:978 usage/tables.py:78
+#: dashboards/project/instances/tables.py:996 usage/tables.py:78
 msgid "Time since created"
 msgstr "从创建以来"
 
@@ -2117,9 +2197,9 @@ msgid "Unable to retrieve host information."
 msgstr "无法获取主机信息。"
 
 #: dashboards/admin/instances/views.py:177
-#: dashboards/project/databases/views.py:146
-#: dashboards/project/instances/views.py:208
-#: dashboards/project/instances/views.py:330
+#: dashboards/project/databases/views.py:149
+#: dashboards/project/instances/views.py:209
+#: dashboards/project/instances/views.py:351
 msgid "Unable to retrieve instance details."
 msgstr "无法获取云主机详情。"
 
@@ -2223,8 +2303,8 @@ msgstr "计量"
 #: dashboards/identity/groups/forms.py:33
 #: dashboards/identity/groups/forms.py:59
 #: dashboards/identity/groups/tables.py:117
-#: dashboards/identity/projects/tables.py:218
-#: dashboards/identity/projects/workflows.py:145
+#: dashboards/identity/projects/tables.py:226
+#: dashboards/identity/projects/workflows.py:148
 #: dashboards/project/access_and_security/security_groups/forms.py:44
 #: dashboards/project/access_and_security/security_groups/forms.py:73
 #: dashboards/project/access_and_security/security_groups/tables.py:133
@@ -2278,9 +2358,9 @@ msgstr "计量"
 #: dashboards/project/volumes/templates/volumes/snapshots/_detail_overview.html:15
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:15
 #: dashboards/project/volumes/volumes/forms.py:52
-#: dashboards/project/volumes/volumes/forms.py:476
-#: dashboards/project/volumes/volumes/forms.py:517
-#: dashboards/project/volumes/volumes/tables.py:326
+#: dashboards/project/volumes/volumes/forms.py:487
+#: dashboards/project/volumes/volumes/forms.py:528
+#: dashboards/project/volumes/volumes/tables.py:319
 #: dashboards/project/vpn/forms.py:36 dashboards/project/vpn/forms.py:70
 #: dashboards/project/vpn/forms.py:142 dashboards/project/vpn/forms.py:213
 #: dashboards/project/vpn/tables.py:262 dashboards/project/vpn/workflows.py:28
@@ -2511,13 +2591,57 @@ msgstr "物理网络上的虚拟网络的实现的名称。"
 msgid "Segmentation ID"
 msgstr "段ID"
 
+#: dashboards/admin/networks/forms.py:77
+#: dashboards/admin/networks/forms.py:236
+#: dashboards/admin/networks/ports/forms.py:42
+#: dashboards/project/firewalls/forms.py:131
+#: dashboards/project/firewalls/workflows.py:241
+#: dashboards/project/loadbalancers/forms.py:38
+#: dashboards/project/loadbalancers/forms.py:93
+#: dashboards/project/loadbalancers/forms.py:176
+#: dashboards/project/loadbalancers/forms.py:238
+#: dashboards/project/loadbalancers/workflows.py:46
+#: dashboards/project/loadbalancers/workflows.py:193
+#: dashboards/project/loadbalancers/workflows.py:345
+#: dashboards/project/loadbalancers/workflows.py:548
+#: dashboards/project/networks/forms.py:37
+#: dashboards/project/networks/workflows.py:47
+#: dashboards/project/networks/ports/forms.py:36
+#: dashboards/project/routers/forms.py:86 dashboards/project/vpn/forms.py:37
+#: dashboards/project/vpn/forms.py:261 dashboards/project/vpn/workflows.py:31
+#: dashboards/project/vpn/workflows.py:417
+msgid "UP"
+msgstr ""
+
+#: dashboards/admin/networks/forms.py:78
+#: dashboards/admin/networks/forms.py:237
+#: dashboards/admin/networks/ports/forms.py:43
+#: dashboards/project/firewalls/forms.py:132
+#: dashboards/project/firewalls/workflows.py:242
+#: dashboards/project/loadbalancers/forms.py:39
+#: dashboards/project/loadbalancers/forms.py:94
+#: dashboards/project/loadbalancers/forms.py:177
+#: dashboards/project/loadbalancers/forms.py:239
+#: dashboards/project/loadbalancers/workflows.py:47
+#: dashboards/project/loadbalancers/workflows.py:194
+#: dashboards/project/loadbalancers/workflows.py:346
+#: dashboards/project/loadbalancers/workflows.py:549
+#: dashboards/project/networks/forms.py:38
+#: dashboards/project/networks/workflows.py:48
+#: dashboards/project/networks/ports/forms.py:37
+#: dashboards/project/routers/forms.py:87 dashboards/project/vpn/forms.py:38
+#: dashboards/project/vpn/forms.py:262 dashboards/project/vpn/workflows.py:32
+#: dashboards/project/vpn/workflows.py:418
+msgid "DOWN"
+msgstr ""
+
 #: dashboards/admin/networks/forms.py:79
 #: dashboards/admin/networks/forms.py:238
-#: dashboards/admin/networks/tables.py:97
-#: dashboards/admin/networks/agents/tables.py:92
+#: dashboards/admin/networks/tables.py:104
+#: dashboards/admin/networks/agents/tables.py:93
 #: dashboards/admin/networks/ports/forms.py:44
-#: dashboards/admin/networks/ports/tables.py:99
-#: dashboards/admin/routers/ports/tables.py:34
+#: dashboards/admin/networks/ports/tables.py:106
+#: dashboards/admin/routers/ports/tables.py:41
 #: dashboards/admin/routers/templates/routers/_detail_overview.html:15
 #: dashboards/project/firewalls/forms.py:133
 #: dashboards/project/firewalls/workflows.py:243
@@ -2530,14 +2654,14 @@ msgstr "段ID"
 #: dashboards/project/loadbalancers/workflows.py:347
 #: dashboards/project/loadbalancers/workflows.py:550
 #: dashboards/project/networks/forms.py:39
-#: dashboards/project/networks/tables.py:155
+#: dashboards/project/networks/tables.py:162
 #: dashboards/project/networks/workflows.py:49
 #: dashboards/project/networks/ports/forms.py:38
-#: dashboards/project/networks/ports/tables.py:61
+#: dashboards/project/networks/ports/tables.py:68
 #: dashboards/project/networks/templates/networks/_detail_overview.html:15
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:34
 #: dashboards/project/routers/forms.py:88
-#: dashboards/project/routers/ports/tables.py:102
+#: dashboards/project/routers/ports/tables.py:109
 #: dashboards/project/routers/templates/routers/_detail_overview.html:15
 #: dashboards/project/vpn/forms.py:39 dashboards/project/vpn/forms.py:263
 #: dashboards/project/vpn/workflows.py:33
@@ -2549,7 +2673,7 @@ msgstr "管理员状态"
 
 #: dashboards/admin/networks/forms.py:80
 #: dashboards/admin/networks/forms.py:239
-#: dashboards/admin/networks/tables.py:93
+#: dashboards/admin/networks/tables.py:100
 #: dashboards/project/firewalls/forms.py:69
 #: dashboards/project/firewalls/forms.py:101
 #: dashboards/project/firewalls/workflows.py:65
@@ -2557,7 +2681,7 @@ msgstr "管理员状态"
 #: dashboards/project/firewalls/workflows.py:238
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:31
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:50
-#: dashboards/project/networks/tables.py:150
+#: dashboards/project/networks/tables.py:157
 #: dashboards/project/networks/templates/networks/_detail_overview.html:17
 msgid "Shared"
 msgstr "共享的"
@@ -2586,13 +2710,13 @@ msgid ""
 msgstr "对于VLAN网络，VLAN VID是虚拟网络在物理网络上的实现。有效的VLAN VID范围是从%(vlan_min)s 到 %(vlan_max)s。对于GRE 或者VXLAN网络，GRE的隧道ID有效范围从%(gre_min)s 到 %(gre_max)s；而对于VXLAN网络，这个范围是从%(vxlan_min)s 到 %(vxlan_max)s"
 
 #: dashboards/admin/networks/forms.py:145
-#: dashboards/project/instances/workflows/create_instance.py:697
+#: dashboards/project/instances/workflows/create_instance.py:744
 #: dashboards/project/networks/workflows.py:61
 msgid "Select a profile"
 msgstr "选择一个配置概要"
 
 #: dashboards/admin/networks/forms.py:155
-#: dashboards/project/instances/workflows/create_instance.py:707
+#: dashboards/project/instances/workflows/create_instance.py:754
 #: dashboards/project/networks/workflows.py:71
 #: dashboards/router/nexus1000v/views.py:52
 msgid "Network Profiles could not be retrieved."
@@ -2636,73 +2760,89 @@ msgid "Failed to update network %s"
 msgstr "网络 %s 更新失败。"
 
 #: dashboards/admin/networks/panel.py:23
-#: dashboards/admin/networks/tables.py:101
+#: dashboards/admin/networks/tables.py:109
 #: dashboards/admin/networks/templates/networks/index.html:3
 #: dashboards/admin/networks/templates/networks/index.html:6
-#: dashboards/identity/projects/workflows.py:71
+#: dashboards/identity/projects/workflows.py:74
 #: dashboards/project/databases/workflows/create_instance.py:131
-#: dashboards/project/instances/workflows/create_instance.py:650
+#: dashboards/project/instances/workflows/create_instance.py:697
 #: dashboards/project/networks/panel.py:23
-#: dashboards/project/networks/tables.py:159
+#: dashboards/project/networks/tables.py:167
 #: dashboards/project/networks/templates/networks/index.html:3
 #: dashboards/project/networks/templates/networks/index.html:6
 #: usage/quotas.py:77
 msgid "Networks"
 msgstr "网络"
 
-#: dashboards/admin/networks/tables.py:37
-#: dashboards/project/networks/tables.py:48
+#: dashboards/admin/networks/tables.py:38
+#: dashboards/project/networks/tables.py:49
 msgid "Delete Network"
 msgid_plural "Delete Networks"
 msgstr[0] "删除网络"
 
-#: dashboards/admin/networks/tables.py:45
-#: dashboards/project/networks/tables.py:56
+#: dashboards/admin/networks/tables.py:46
+#: dashboards/project/networks/tables.py:57
 msgid "Deleted Network"
 msgid_plural "Deleted Networks"
 msgstr[0] "已删除的网络"
 
-#: dashboards/admin/networks/tables.py:56
-#: dashboards/project/networks/tables.py:78
+#: dashboards/admin/networks/tables.py:57
+#: dashboards/project/networks/tables.py:79
 #, python-format
 msgid "Failed to delete network %s"
 msgstr "网络 %s 删除失败。"
 
-#: dashboards/admin/networks/tables.py:64
+#: dashboards/admin/networks/tables.py:65
 #: dashboards/admin/networks/templates/networks/_create.html:9
 #: dashboards/admin/networks/templates/networks/_create.html:26
 #: dashboards/admin/networks/templates/networks/create.html:3
 #: dashboards/admin/networks/templates/networks/create.html:6
 #: dashboards/project/network_topology/templates/network_topology/index.html:31
-#: dashboards/project/networks/tables.py:86
-#: dashboards/project/networks/tables.py:99
+#: dashboards/project/networks/tables.py:87
+#: dashboards/project/networks/tables.py:100
 #: dashboards/project/networks/workflows.py:334
 #: dashboards/project/networks/templates/networks/_create.html:8
 #: dashboards/project/networks/templates/networks/_create.html:23
 msgid "Create Network"
 msgstr "创建网络"
 
-#: dashboards/admin/networks/tables.py:73
+#: dashboards/admin/networks/tables.py:74
 #: dashboards/admin/networks/templates/networks/_update.html:8
-#: dashboards/project/networks/tables.py:108
+#: dashboards/project/networks/tables.py:109
 #: dashboards/project/networks/templates/networks/_update.html:8
 msgid "Edit Network"
 msgstr "编辑网络"
 
 #: dashboards/admin/networks/tables.py:87
+#: dashboards/admin/networks/ports/tables.py:91
+#: dashboards/admin/routers/ports/tables.py:26
+#: dashboards/project/networks/tables.py:146
+msgctxt "Admin state of a Network"
+msgid "UP"
+msgstr ""
+
+#: dashboards/admin/networks/tables.py:88
+#: dashboards/admin/networks/ports/tables.py:92
+#: dashboards/admin/routers/ports/tables.py:27
+#: dashboards/project/networks/tables.py:147
+msgctxt "Admin state of a Network"
+msgid "DOWN"
+msgstr ""
+
+#: dashboards/admin/networks/tables.py:94
 #: dashboards/admin/networks/agents/forms.py:32
 #: dashboards/admin/networks/ports/forms.py:33
 #: dashboards/project/networks/workflows.py:37
 msgid "Network Name"
 msgstr "网络名称"
 
-#: dashboards/admin/networks/tables.py:90
-#: dashboards/project/networks/tables.py:149
+#: dashboards/admin/networks/tables.py:97
+#: dashboards/project/networks/tables.py:156
 msgid "Subnets Associated"
 msgstr "子网已连接"
 
-#: dashboards/admin/networks/tables.py:92
-#: dashboards/admin/networks/agents/tables.py:100
+#: dashboards/admin/networks/tables.py:99
+#: dashboards/admin/networks/agents/tables.py:101
 msgid "DHCP Agents"
 msgstr "DHCP Agents"
 
@@ -2838,7 +2978,7 @@ msgid "Device owner attached to the port"
 msgstr "连接到端口的设备所有人"
 
 #: dashboards/admin/networks/ports/forms.py:57
-#: dashboards/project/networks/ports/tables.py:63
+#: dashboards/project/networks/ports/tables.py:71
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:37
 msgid "MAC Learning State"
 msgstr "MAC学习状态"
@@ -2865,22 +3005,22 @@ msgstr "端口%s更新成功"
 msgid "Failed to update port %s"
 msgstr "更新端口%s失败"
 
-#: dashboards/admin/networks/ports/tables.py:36
+#: dashboards/admin/networks/ports/tables.py:37
 msgid "Delete Port"
 msgid_plural "Delete Ports"
 msgstr[0] "删除端口"
 
-#: dashboards/admin/networks/ports/tables.py:44
+#: dashboards/admin/networks/ports/tables.py:45
 msgid "Deleted Port"
 msgid_plural "Deleted Ports"
 msgstr[0] "已删除的端口"
 
-#: dashboards/admin/networks/ports/tables.py:55
+#: dashboards/admin/networks/ports/tables.py:56
 #, python-format
 msgid "Failed to delete port: %s"
 msgstr "删除端口: %s 失败"
 
-#: dashboards/admin/networks/ports/tables.py:65
+#: dashboards/admin/networks/ports/tables.py:66
 #: dashboards/admin/networks/templates/networks/ports/_create.html:9
 #: dashboards/admin/networks/templates/networks/ports/_create.html:24
 #: dashboards/admin/networks/templates/networks/ports/create.html:3
@@ -2888,25 +3028,25 @@ msgstr "删除端口: %s 失败"
 msgid "Create Port"
 msgstr "创建端口"
 
-#: dashboards/admin/networks/ports/tables.py:78
+#: dashboards/admin/networks/ports/tables.py:79
 #: dashboards/admin/networks/templates/networks/ports/_update.html:8
-#: dashboards/project/networks/ports/tables.py:42
+#: dashboards/project/networks/ports/tables.py:43
 #: dashboards/project/networks/templates/networks/ports/_update.html:8
 msgid "Edit Port"
 msgstr "编辑端口"
 
-#: dashboards/admin/networks/ports/tables.py:96
+#: dashboards/admin/networks/ports/tables.py:103
 msgid "Device Attached"
 msgstr "设备已连接"
 
-#: dashboards/admin/networks/ports/tables.py:101
+#: dashboards/admin/networks/ports/tables.py:109
 #: dashboards/project/networks/ports/forms.py:45
 msgid "Mac Learning State"
 msgstr "Mac学习状态"
 
-#: dashboards/admin/networks/ports/tables.py:105
-#: dashboards/identity/projects/workflows.py:72
-#: dashboards/project/networks/ports/tables.py:70 usage/quotas.py:79
+#: dashboards/admin/networks/ports/tables.py:113
+#: dashboards/identity/projects/workflows.py:75
+#: dashboards/project/networks/ports/tables.py:78 usage/quotas.py:79
 msgid "Ports"
 msgstr "端口"
 
@@ -2990,7 +3130,7 @@ msgid "Gateway IP"
 msgstr "网关IP"
 
 #: dashboards/admin/networks/subnets/tables.py:116
-#: dashboards/identity/projects/workflows.py:74
+#: dashboards/identity/projects/workflows.py:77
 #: dashboards/project/networks/subnets/tables.py:150 usage/quotas.py:78
 msgid "Subnets"
 msgstr "子网"
@@ -3077,8 +3217,8 @@ msgstr "更新端口"
 #: dashboards/admin/networks/templates/networks/subnets/index.html:3
 #: dashboards/admin/networks/templates/networks/subnets/index.html:6
 #: dashboards/project/networks/templates/networks/detail.html:3
-msgid "Network Detail"
-msgstr "网络详情"
+msgid "Network Details"
+msgstr ""
 
 #: dashboards/admin/overview/views.py:34
 #: dashboards/project/overview/views.py:33
@@ -3135,7 +3275,7 @@ msgstr "监控："
 #: dashboards/admin/routers/panel.py:24 dashboards/admin/routers/tables.py:46
 #: dashboards/admin/routers/templates/routers/index.html:3
 #: dashboards/admin/routers/templates/routers/index.html:6
-#: dashboards/identity/projects/workflows.py:73
+#: dashboards/identity/projects/workflows.py:76
 #: dashboards/project/network_topology/routers/tables.py:27
 #: dashboards/project/routers/panel.py:24
 #: dashboards/project/routers/tables.py:219
@@ -3183,10 +3323,10 @@ msgstr "下一跳"
 msgid "Router Rules"
 msgstr "路由规则"
 
-#: dashboards/admin/routers/ports/tables.py:41
+#: dashboards/admin/routers/ports/tables.py:49
 #: dashboards/project/network_topology/ports/tables.py:28
 #: dashboards/project/routers/tabs.py:27
-#: dashboards/project/routers/ports/tables.py:109
+#: dashboards/project/routers/ports/tables.py:117
 msgid "Interfaces"
 msgstr "接口"
 
@@ -3197,7 +3337,7 @@ msgid "Router Overview: %(router_name)s"
 msgstr "路由概览：%(router_name)s"
 
 #: dashboards/admin/routers/templates/routers/_detail_overview.html:8
-#: dashboards/admin/volumes/volume_types/forms.py:50
+#: dashboards/admin/volumes/volume_types/forms.py:87
 #: dashboards/project/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:11
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/_details.html:11
 #: dashboards/project/data_processing/data_sources/templates/data_processing.data_sources/_details.html:14
@@ -3210,8 +3350,8 @@ msgstr "路由概览：%(router_name)s"
 #: dashboards/project/images/templates/images/images/_detail_overview.html:16
 #: dashboards/project/images/templates/images/images/_detail_overview.html:49
 #: dashboards/project/images/templates/images/images/_detail_overview.html:51
-#: dashboards/project/instances/templates/instances/_detail_overview.html:100
-#: dashboards/project/instances/templates/instances/_detail_overview.html:109
+#: dashboards/project/instances/templates/instances/_detail_overview.html:108
+#: dashboards/project/instances/templates/instances/_detail_overview.html:117
 #: dashboards/project/loadbalancers/templates/loadbalancers/_monitor_details.html:45
 #: dashboards/project/loadbalancers/templates/loadbalancers/_vip_details.html:51
 #: dashboards/project/networks/templates/networks/_detail_overview.html:8
@@ -3246,7 +3386,7 @@ msgid "None"
 msgstr "无"
 
 #: dashboards/admin/routers/templates/routers/_detail_overview.html:11
-#: dashboards/identity/projects/tables.py:223
+#: dashboards/identity/projects/tables.py:231
 #: dashboards/project/access_and_security/templates/access_and_security/api_access/_credentials.html:22
 #: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:16
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:16
@@ -3303,13 +3443,10 @@ msgid "You may update the editable properties of your router here."
 msgstr "你可以在这里更新路由的属性"
 
 #: dashboards/admin/routers/templates/routers/detail.html:3
+#: dashboards/admin/routers/templates/routers/detail.html:6
 #: dashboards/project/routers/templates/routers/detail.html:3
 #: dashboards/project/routers/templates/routers/detail.html:6
 msgid "Router Details"
-msgstr "路由详情"
-
-#: dashboards/admin/routers/templates/routers/detail.html:6
-msgid "Router Detail"
 msgstr "路由详情"
 
 #: dashboards/admin/routers/templates/routers/update.html:3
@@ -3319,26 +3456,30 @@ msgstr "路由详情"
 msgid "Update Router"
 msgstr "更新路由"
 
-#: dashboards/admin/volumes/tabs.py:50 dashboards/admin/volumes/tabs.py:119
+#: dashboards/admin/volumes/tabs.py:53 dashboards/admin/volumes/tabs.py:141
 #: dashboards/admin/volumes/snapshots/tables.py:52
 msgid "Unable to retrieve volume project information."
 msgstr "无法获取云硬盘项目信息。"
 
-#: dashboards/admin/volumes/tabs.py:65
-#: dashboards/admin/volumes/volume_types/tables.py:84
+#: dashboards/admin/volumes/tabs.py:68
+#: dashboards/admin/volumes/volume_types/tables.py:124
 msgid "Volume Types"
 msgstr "云硬盘类型"
 
-#: dashboards/admin/volumes/tabs.py:77
+#: dashboards/admin/volumes/tabs.py:80
 msgid "Unable to retrieve volume types"
 msgstr "无法获得云硬盘类型"
 
-#: dashboards/admin/volumes/tabs.py:87
+#: dashboards/admin/volumes/tabs.py:88
+msgid "Unable to retrieve volume type encryption information."
+msgstr ""
+
+#: dashboards/admin/volumes/tabs.py:109
 msgid "Unable to retrieve QoS specs"
 msgstr "无法获取QoS规格"
 
-#: dashboards/admin/volumes/tabs.py:111 dashboards/project/volumes/tabs.py:90
-#: dashboards/project/volumes/volumes/forms.py:204
+#: dashboards/admin/volumes/tabs.py:133 dashboards/project/volumes/tabs.py:113
+#: dashboards/project/volumes/volumes/forms.py:200
 msgid "Unable to retrieve volume snapshots."
 msgstr "找不到云硬盘快照。"
 
@@ -3381,10 +3522,10 @@ msgstr "更新状态"
 #: dashboards/project/volumes/backups/tables.py:120
 #: dashboards/project/volumes/snapshots/tables.py:142
 #: dashboards/project/volumes/volumes/forms.py:48
-#: dashboards/project/volumes/volumes/forms.py:513
-#: dashboards/project/volumes/volumes/forms.py:537
-#: dashboards/project/volumes/volumes/forms.py:597
-#: dashboards/project/volumes/volumes/forms.py:645
+#: dashboards/project/volumes/volumes/forms.py:524
+#: dashboards/project/volumes/volumes/forms.py:548
+#: dashboards/project/volumes/volumes/forms.py:608
+#: dashboards/project/volumes/volumes/forms.py:656
 msgid "Volume Name"
 msgstr "云硬盘名称"
 
@@ -3414,22 +3555,22 @@ msgid "Information"
 msgstr "基本信息"
 
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:20
-#: dashboards/project/instances/templates/instances/_detail_overview.html:134
-#: dashboards/project/instances/workflows/create_instance.py:99
-#: dashboards/project/instances/workflows/create_instance.py:373
+#: dashboards/project/instances/templates/instances/_detail_overview.html:142
+#: dashboards/project/instances/workflows/create_instance.py:100
+#: dashboards/project/instances/workflows/create_instance.py:415
 #: dashboards/project/volumes/templates/volumes/backups/_detail_overview.html:23
 #: dashboards/project/volumes/templates/volumes/snapshots/_detail_overview.html:20
-#: dashboards/project/volumes/volumes/forms.py:221
+#: dashboards/project/volumes/volumes/forms.py:217
 msgid "Volume"
 msgstr "云硬盘"
 
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:30
 #: dashboards/admin/volumes/templates/volumes/volume_types/qos_specs/_index.html:7
-#: dashboards/admin/volumes/volume_types/tables.py:150
+#: dashboards/admin/volumes/volume_types/tables.py:191
 #: dashboards/admin/volumes/volume_types/qos_specs/tables.py:36
 #: dashboards/project/databases/templates/databases/_detail_overview.html:23
 #: dashboards/project/images/templates/images/images/_detail_overview.html:43
-#: dashboards/project/instances/templates/instances/_detail_overview.html:43
+#: dashboards/project/instances/templates/instances/_detail_overview.html:45
 #: dashboards/project/volumes/templates/volumes/backups/_detail_overview.html:34
 #: dashboards/project/volumes/templates/volumes/snapshots/_detail_overview.html:34
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:24
@@ -3438,8 +3579,8 @@ msgstr "规格"
 
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:34
 #: dashboards/project/database_backups/templates/database_backups/details.html:35
-#: dashboards/project/instances/templates/instances/_detail_overview.html:53
 #: dashboards/project/instances/templates/instances/_detail_overview.html:56
+#: dashboards/project/instances/templates/instances/_detail_overview.html:59
 #: dashboards/project/instances/templates/instances/_flavors_and_quotas.html:11
 #: dashboards/project/instances/templates/instances/_flavors_and_quotas.html:12
 #: dashboards/project/instances/templates/instances/_flavors_and_quotas.html:13
@@ -3456,15 +3597,15 @@ msgstr "GB"
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:35
 #: dashboards/project/data_processing/cluster_templates/workflows/create.py:82
 #: dashboards/project/data_processing/jobs/workflows/launch.py:407
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:319
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:320
 #: dashboards/project/database_backups/tables.py:150
 #: dashboards/project/database_backups/templates/database_backups/details.html:36
 #: dashboards/project/databases/tables.py:315
 #: dashboards/project/databases/templates/databases/_detail_overview.html:34
 #: dashboards/project/images/templates/images/images/_detail_overview.html:27
 #: dashboards/project/instances/templates/instances/_detail_overview.html:18
-#: dashboards/project/instances/templates/instances/_detail_overview.html:36
-#: dashboards/project/stacks/tables.py:104
+#: dashboards/project/instances/templates/instances/_detail_overview.html:38
+#: dashboards/project/stacks/tables.py:108
 #: dashboards/project/stacks/templates/stacks/_detail_overview.html:22
 #: dashboards/project/volumes/templates/volumes/backups/_detail_overview.html:39
 #: dashboards/project/volumes/templates/volumes/snapshots/_detail_overview.html:39
@@ -3516,7 +3657,7 @@ msgstr "关联"
 
 #: dashboards/admin/volumes/templates/volumes/volume_types/_create_qos_spec.html:9
 #: dashboards/admin/volumes/templates/volumes/volume_types/create_qos_spec.html:3
-#: dashboards/admin/volumes/volume_types/tables.py:108
+#: dashboards/admin/volumes/volume_types/tables.py:149
 msgid "Create QoS Spec"
 msgstr "创建QoS规格"
 
@@ -3549,8 +3690,8 @@ msgstr "\nQoS规格可以与云硬盘类型关联。\n它用于映射到一组�
 #: dashboards/project/data_processing/job_binaries/templates/data_processing.job_binaries/_create.html:25
 #: dashboards/project/data_processing/jobs/workflows/create.py:119
 #: dashboards/project/data_processing/jobs/workflows/launch.py:406
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:189
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:318
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:190
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:319
 #: dashboards/project/networks/workflows.py:335
 #: dashboards/project/networks/subnets/workflows.py:57
 msgid "Create"
@@ -3559,7 +3700,7 @@ msgstr "已创建"
 #: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type.html:9
 #: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type.html:33
 #: dashboards/admin/volumes/templates/volumes/volume_types/create_volume_type.html:3
-#: dashboards/admin/volumes/volume_types/tables.py:24
+#: dashboards/admin/volumes/volume_types/tables.py:25
 msgid "Create Volume Type"
 msgstr "创建云硬盘类型"
 
@@ -3575,6 +3716,45 @@ msgid ""
 "      pair(s) for that volume type.\n"
 "     "
 msgstr "\n云硬盘类型标签可以在创建云硬盘的时候指定。\n它通常映射到用来创建这些云硬盘的存储后端\n驱动的特性集合。例如“性能”、“SSD”、“备份”等。\n这等同于<tt>cinder type-create</tt>命令。\n一旦云硬盘类型被创建，点击\"查看扩展规格\"按钮\n去设置云硬盘类型的扩展规格键值对。"
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type_encryption.html:9
+#: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type_encryption.html:38
+msgid "Create Volume Type Encryption"
+msgstr ""
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type_encryption.html:20
+msgid ""
+"Creating encryption for a volume type causes all volumes with that volume "
+"type to be encrypted.  Encryption information cannot be added to a volume "
+"type if volumes are currently in use with that volume type."
+msgstr ""
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type_encryption.html:23
+msgid ""
+"The <strong>Provider</strong> is the class providing encryption support "
+"(e.g. LuksEncryptor)."
+msgstr ""
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type_encryption.html:26
+msgid ""
+"The <strong>Control Location</strong> is the notional service where "
+"encryption is performed (e.g., front-end=Nova). The default value is 'front-"
+"end.'"
+msgstr ""
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type_encryption.html:29
+msgid ""
+"The <strong>Cipher</strong> is the encryption algorithm/mode to use (e.g., "
+"aes-xts-plain64). If the field is left empty, the provider default will be "
+"used."
+msgstr ""
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/_create_volume_type_encryption.html:32
+msgid ""
+"The <strong>Key Size</strong> is the size of the encryption key, in bits "
+"(e.g., 128, 256). If the field is left empty, the provider default will be "
+"used."
+msgstr ""
 
 #: dashboards/admin/volumes/templates/volumes/volume_types/_edit_qos_spec_consumer.html:9
 msgid "Edit Consumer of QoS Spec"
@@ -3593,6 +3773,41 @@ msgstr "\n每个QoS规格实体都有一个\"消费者\"的值，指明管理员
 msgid "Modify Consumer"
 msgstr "更改消费者"
 
+#: dashboards/admin/volumes/templates/volumes/volume_types/_volume_encryption_type_detail.html:4
+msgid "Volume Type Encryption Overview"
+msgstr ""
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/_volume_encryption_type_detail.html:8
+msgid "Info"
+msgstr "信息"
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/_volume_encryption_type_detail.html:13
+#: dashboards/admin/volumes/volume_types/forms.py:27
+#: dashboards/project/loadbalancers/tables.py:273
+#: dashboards/project/loadbalancers/workflows.py:42
+#: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:26
+msgid "Provider"
+msgstr "提供者"
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/_volume_encryption_type_detail.html:15
+#: dashboards/admin/volumes/volume_types/forms.py:28
+msgid "Control Location"
+msgstr ""
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/_volume_encryption_type_detail.html:17
+#: dashboards/admin/volumes/volume_types/forms.py:34
+msgid "Cipher"
+msgstr ""
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/_volume_encryption_type_detail.html:19
+#: dashboards/admin/volumes/volume_types/forms.py:35
+msgid "Key Size (bits)"
+msgstr ""
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/_volume_encryption_type_detail.html:25
+msgid "Volume Type is Unencrypted."
+msgstr ""
+
 #: dashboards/admin/volumes/templates/volumes/volume_types/associate_qos_spec.html:3
 msgid "Associate QoS Spec"
 msgstr "关联QoS规格"
@@ -3605,10 +3820,23 @@ msgstr "创建QoS规格"
 msgid "Create a Volume Type"
 msgstr "创建云硬盘类型"
 
+#: dashboards/admin/volumes/templates/volumes/volume_types/create_volume_type_encryption.html:3
+msgid "Create Encrypted Volume Type"
+msgstr ""
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/create_volume_type_encryption.html:6
+msgid "Create an Encrypted Volume Type"
+msgstr ""
+
 #: dashboards/admin/volumes/templates/volumes/volume_types/edit_qos_spec_consumer.html:3
 #: dashboards/admin/volumes/templates/volumes/volume_types/edit_qos_spec_consumer.html:6
 msgid "Edit QoS Spec Consumer"
 msgstr "编辑QoS规格的消费者"
+
+#: dashboards/admin/volumes/templates/volumes/volume_types/volume_encryption_type_detail.html:3
+#: dashboards/admin/volumes/templates/volumes/volume_types/volume_encryption_type_detail.html:6
+msgid "Volume Type Encryption Details"
+msgstr ""
 
 #: dashboards/admin/volumes/templates/volumes/volume_types/extras/_create.html:10
 #: dashboards/admin/volumes/templates/volumes/volume_types/extras/create.html:4
@@ -3716,122 +3944,141 @@ msgstr "\n云硬盘状态通常是自动管理的。 在某些特定的环境下
 msgid "Volume Details"
 msgstr "云硬盘详情"
 
-#: dashboards/admin/volumes/templates/volumes/volumes/detail.html:6
-#: dashboards/project/volumes/templates/volumes/volumes/detail.html:6
-msgid "Volume Details: "
-msgstr "云硬盘详情："
+#: dashboards/admin/volumes/volume_types/forms.py:51
+#, python-format
+msgid "Successfully created encryption for volume type: %s"
+msgstr ""
 
-#: dashboards/admin/volumes/templates/volumes/volumes/detail.html:6
-#: dashboards/project/volumes/templates/volumes/volumes/detail.html:6
-msgid "Volume Details:"
-msgstr "云硬盘详情："
+#: dashboards/admin/volumes/volume_types/forms.py:56
+msgid "Unable to create encrypted volume type."
+msgstr ""
 
-#: dashboards/admin/volumes/volume_types/forms.py:25
+#: dashboards/admin/volumes/volume_types/forms.py:62
 msgid "QoS Spec to be associated"
 msgstr "要关联的QoS规格"
 
-#: dashboards/admin/volumes/volume_types/forms.py:26
+#: dashboards/admin/volumes/volume_types/forms.py:63
 msgid "Choose associated QoS Spec."
 msgstr "选择关联的QoS规格。"
 
-#: dashboards/admin/volumes/volume_types/forms.py:71
+#: dashboards/admin/volumes/volume_types/forms.py:108
 msgid ""
 "New associated QoS Spec must be different than the current associated QoS "
 "Spec."
 msgstr "新关联的QoS规格必须不同于目前关联的QoS规格。"
 
-#: dashboards/admin/volumes/volume_types/forms.py:103
+#: dashboards/admin/volumes/volume_types/forms.py:140
 msgid "Successfully updated QoS Spec association."
 msgstr "成功更新QoS规格关联。"
 
-#: dashboards/admin/volumes/volume_types/forms.py:107
+#: dashboards/admin/volumes/volume_types/forms.py:144
 msgid "Error updating QoS Spec association."
 msgstr "更新QoS规格关联失败。"
 
-#: dashboards/admin/volumes/volume_types/forms.py:113
+#: dashboards/admin/volumes/volume_types/forms.py:150
 msgid "QoS Spec Consumer"
 msgstr "QoS规格消费者"
 
-#: dashboards/admin/volumes/volume_types/forms.py:115
+#: dashboards/admin/volumes/volume_types/forms.py:152
 msgid "Choose consumer for this QoS Spec."
 msgstr "为此QoS规格选择消费者。"
 
-#: dashboards/admin/volumes/volume_types/forms.py:131
+#: dashboards/admin/volumes/volume_types/forms.py:168
 msgid ""
 "QoS Spec consumer value must be different than the current consumer value."
 msgstr "QoS规格消费者的值必须与当前消费者不同。"
 
-#: dashboards/admin/volumes/volume_types/forms.py:145
+#: dashboards/admin/volumes/volume_types/forms.py:182
 msgid "Successfully modified QoS Spec consumer."
 msgstr "成功更改QoS规格消费者。"
 
-#: dashboards/admin/volumes/volume_types/forms.py:148
+#: dashboards/admin/volumes/volume_types/forms.py:185
 msgid "Error editing QoS Spec consumer."
 msgstr "编辑QoS规格消费者时出错。"
 
-#: dashboards/admin/volumes/volume_types/tables.py:33
+#: dashboards/admin/volumes/volume_types/tables.py:34
 msgid "View Extra Specs"
 msgstr "查看特别设定"
 
-#: dashboards/admin/volumes/volume_types/tables.py:41
+#: dashboards/admin/volumes/volume_types/tables.py:42
 msgid "Manage QoS Spec Association"
 msgstr "管理QoS规格关联"
 
-#: dashboards/admin/volumes/volume_types/tables.py:52
+#: dashboards/admin/volumes/volume_types/tables.py:53
 msgid "Delete Volume Type"
 msgid_plural "Delete Volume Types"
 msgstr[0] "删除云硬盘类型"
 
-#: dashboards/admin/volumes/volume_types/tables.py:60
+#: dashboards/admin/volumes/volume_types/tables.py:61
 msgid "Deleted Volume Type"
 msgid_plural "Deleted Volume Types"
 msgstr[0] "已删除的云硬盘类型"
 
 #: dashboards/admin/volumes/volume_types/tables.py:73
+msgid "Create Encryption"
+msgstr ""
+
+#: dashboards/admin/volumes/volume_types/tables.py:92
+msgid "Unable to determine if volume type encryption is supported."
+msgstr ""
+
+#: dashboards/admin/volumes/volume_types/tables.py:109
 msgid "Associated QoS Spec"
 msgstr "已关联的QoS规格"
 
-#: dashboards/admin/volumes/volume_types/tables.py:94
+#: dashboards/admin/volumes/volume_types/tables.py:111
+msgid "Encryption"
+msgstr "jiami"
+
+#: dashboards/admin/volumes/volume_types/tables.py:135
 msgid "Manage Specs"
 msgstr "管理规格"
 
-#: dashboards/admin/volumes/volume_types/tables.py:119
+#: dashboards/admin/volumes/volume_types/tables.py:160
 msgid "Delete QoS Spec"
 msgid_plural "Delete QoS Specs"
 msgstr[0] "删除QoS规格"
 
-#: dashboards/admin/volumes/volume_types/tables.py:127
+#: dashboards/admin/volumes/volume_types/tables.py:168
 msgid "Deleted QoS Spec"
 msgid_plural "Deleted QoS Specs"
 msgstr[0] "已删除的QoS规格"
 
-#: dashboards/admin/volumes/volume_types/tables.py:139
+#: dashboards/admin/volumes/volume_types/tables.py:180
 msgid "Edit Consumer"
 msgstr "编辑消费者"
 
-#: dashboards/admin/volumes/volume_types/tables.py:148
+#: dashboards/admin/volumes/volume_types/tables.py:189
 #: dashboards/admin/volumes/volumes/forms.py:89
 msgid "Consumer"
 msgstr "消费者"
 
-#: dashboards/admin/volumes/volume_types/tables.py:163
+#: dashboards/admin/volumes/volume_types/tables.py:204
 msgid "QoS Specs"
 msgstr "QoS规格"
 
-#: dashboards/admin/volumes/volume_types/views.py:69
+#: dashboards/admin/volumes/volume_types/views.py:66
+msgid "Unable to retrieve volume type encryption details."
+msgstr ""
+
+#: dashboards/admin/volumes/volume_types/views.py:88
+msgid "Unable to retrieve volume type name."
+msgstr ""
+
+#: dashboards/admin/volumes/volume_types/views.py:134
 msgid "Unable to retrieve QoS Spec details."
 msgstr "无法获取QoS规格的详细信息。"
 
-#: dashboards/admin/volumes/volume_types/views.py:101
+#: dashboards/admin/volumes/volume_types/views.py:166
 #: dashboards/admin/volumes/volume_types/extras/views.py:36
 msgid "Unable to retrieve volume type details."
 msgstr "无法获取云硬盘类型的详细信息。"
 
-#: dashboards/admin/volumes/volume_types/views.py:111
+#: dashboards/admin/volumes/volume_types/views.py:176
 msgid "Unable to retrieve QoS Specs."
 msgstr "无法获取QoS规格。"
 
-#: dashboards/admin/volumes/volume_types/views.py:131
+#: dashboards/admin/volumes/volume_types/views.py:196
 msgid "Unable to retrieve QoS Spec association."
 msgstr "无法获取QoS规格关联。"
 
@@ -3981,8 +4228,14 @@ msgstr "成功创建QoS规格：%s"
 msgid "Unable to create QoS Spec."
 msgstr "无法创建QoS规格。"
 
-#: dashboards/admin/volumes/volumes/views.py:61
-#: dashboards/project/volumes/volumes/views.py:66
+#: dashboards/admin/volumes/volumes/views.py:34
+#: dashboards/project/volumes/volumes/views.py:53
+#, python-format
+msgid "Volume Details: %(volume_name)s"
+msgstr ""
+
+#: dashboards/admin/volumes/volumes/views.py:69
+#: dashboards/project/volumes/volumes/views.py:70
 msgid "Unable to retrieve volume details."
 msgstr "无法获取云硬盘详情"
 
@@ -3999,12 +4252,12 @@ msgstr "域"
 
 #: dashboards/identity/domains/tables.py:38
 #: dashboards/identity/groups/tables.py:91
-#: dashboards/identity/projects/tables.py:51
-msgid "Modify Users"
-msgstr "修改用户"
+#: dashboards/identity/projects/tables.py:53
+msgid "Manage Members"
+msgstr ""
 
 #: dashboards/identity/domains/tables.py:54
-#: dashboards/identity/projects/tables.py:67
+#: dashboards/identity/projects/tables.py:69
 msgid "Modify Groups"
 msgstr "修改组"
 
@@ -4051,7 +4304,7 @@ msgid "Domain Context cleared."
 msgstr "域上下文已清除。"
 
 #: dashboards/identity/domains/tables.py:201
-#: dashboards/identity/projects/workflows.py:135
+#: dashboards/identity/projects/workflows.py:138
 #: dashboards/identity/users/forms.py:75
 #: dashboards/identity/users/forms.py:154
 msgid "Domain ID"
@@ -4086,8 +4339,8 @@ msgstr "域提供了用户和不同组织使用的基础设施之间的分离."
 
 #: dashboards/identity/domains/workflows.py:72
 #: dashboards/identity/domains/workflows.py:171
-#: dashboards/identity/projects/workflows.py:195
-#: dashboards/identity/projects/workflows.py:293
+#: dashboards/identity/projects/workflows.py:198
+#: dashboards/identity/projects/workflows.py:296
 #, python-format
 msgid "Could not find default role \"%s\" in Keystone"
 msgstr "在keystone中无法找到默认角色\"%s\""
@@ -4097,7 +4350,7 @@ msgid "Unable to find default role."
 msgstr "无法获取默认角色"
 
 #: dashboards/identity/domains/workflows.py:89
-#: dashboards/identity/projects/workflows.py:265
+#: dashboards/identity/projects/workflows.py:268
 #: dashboards/identity/users/views.py:56
 msgid "Unable to retrieve user list."
 msgstr "无法获取用户列表."
@@ -4105,7 +4358,7 @@ msgstr "无法获取用户列表."
 #: dashboards/identity/domains/workflows.py:98
 #: dashboards/identity/domains/workflows.py:145
 #: dashboards/identity/domains/workflows.py:242
-#: dashboards/identity/projects/workflows.py:363
+#: dashboards/identity/projects/workflows.py:366
 msgid "Unable to retrieve role list."
 msgstr "无法获取角色列表。"
 
@@ -4119,22 +4372,22 @@ msgid "Domain Members"
 msgstr "域成员"
 
 #: dashboards/identity/domains/workflows.py:133
-#: dashboards/identity/projects/workflows.py:254
+#: dashboards/identity/projects/workflows.py:257
 msgid "All Users"
 msgstr "全部用户"
 
 #: dashboards/identity/domains/workflows.py:135
-#: dashboards/identity/projects/workflows.py:256
+#: dashboards/identity/projects/workflows.py:259
 msgid "No users found."
 msgstr "没有找到用户"
 
 #: dashboards/identity/domains/workflows.py:136
-#: dashboards/identity/projects/workflows.py:257
+#: dashboards/identity/projects/workflows.py:260
 msgid "No users."
 msgstr "没有用户"
 
 #: dashboards/identity/domains/workflows.py:161
-#: dashboards/identity/projects/workflows.py:279
+#: dashboards/identity/projects/workflows.py:282
 msgid "Unable to retrieve group list. Please try again later."
 msgstr "无法获取组列表。稍后请重试。"
 
@@ -4144,17 +4397,17 @@ msgid "Domain Groups"
 msgstr "域组"
 
 #: dashboards/identity/domains/workflows.py:230
-#: dashboards/identity/projects/workflows.py:352
+#: dashboards/identity/projects/workflows.py:355
 msgid "All Groups"
 msgstr "全部组"
 
 #: dashboards/identity/domains/workflows.py:232
-#: dashboards/identity/projects/workflows.py:354
+#: dashboards/identity/projects/workflows.py:357
 msgid "No groups found."
 msgstr "无法找到组。"
 
 #: dashboards/identity/domains/workflows.py:233
-#: dashboards/identity/projects/workflows.py:355
+#: dashboards/identity/projects/workflows.py:358
 msgid "No groups."
 msgstr "没有组。"
 
@@ -4323,11 +4576,16 @@ msgstr "查看组信息权限不足。"
 msgid "Unable to update group."
 msgstr "无法更新组。"
 
-#: dashboards/identity/groups/views.py:126
+#: dashboards/identity/groups/views.py:119
+#, python-format
+msgid "Group Management: %(group_name)s"
+msgstr ""
+
+#: dashboards/identity/groups/views.py:130
 msgid "Unable to retrieve group users."
 msgstr "无法获取组成员。"
 
-#: dashboards/identity/groups/views.py:147
+#: dashboards/identity/groups/views.py:151
 msgid "Unable to retrieve users."
 msgstr "无法获取用户。"
 
@@ -4362,52 +4620,48 @@ msgstr "向组中添加用户"
 msgid "Group Management"
 msgstr "组管理"
 
-#: dashboards/identity/groups/templates/groups/manage.html:6
-msgid "Group Management: "
-msgstr "组管理："
-
 #: dashboards/identity/projects/panel.py:27
-#: dashboards/identity/projects/tables.py:232
+#: dashboards/identity/projects/tables.py:240
 #: dashboards/identity/projects/templates/projects/index.html:3
 #: dashboards/identity/projects/templates/projects/index.html:6
 #: templates/403.html:25 templates/404.html:24
 msgid "Projects"
 msgstr "项目"
 
-#: dashboards/identity/projects/tables.py:30
+#: dashboards/identity/projects/tables.py:32
 msgid "Set as Active Project"
 msgstr "设置为当前项目"
 
-#: dashboards/identity/projects/tables.py:85
+#: dashboards/identity/projects/tables.py:87
 msgid "View Usage"
 msgstr "查看使用情况"
 
-#: dashboards/identity/projects/tables.py:96
-#: dashboards/identity/projects/workflows.py:374
-#: dashboards/identity/projects/workflows.py:375
+#: dashboards/identity/projects/tables.py:98
+#: dashboards/identity/projects/workflows.py:377
+#: dashboards/identity/projects/workflows.py:378
 msgid "Create Project"
 msgstr "创建项目"
 
-#: dashboards/identity/projects/tables.py:108
-#: dashboards/identity/projects/workflows.py:527
+#: dashboards/identity/projects/tables.py:110
+#: dashboards/identity/projects/workflows.py:542
 msgid "Edit Project"
 msgstr "编辑项目"
 
-#: dashboards/identity/projects/tables.py:120
+#: dashboards/identity/projects/tables.py:122
 msgid "Modify Quotas"
 msgstr "修改配额"
 
-#: dashboards/identity/projects/tables.py:137
+#: dashboards/identity/projects/tables.py:139
 msgid "Delete Project"
 msgid_plural "Delete Projects"
 msgstr[0] "删除项目"
 
-#: dashboards/identity/projects/tables.py:145
+#: dashboards/identity/projects/tables.py:147
 msgid "Deleted Project"
 msgid_plural "Deleted Projects"
 msgstr[0] "已删除的项目"
 
-#: dashboards/identity/projects/tables.py:205
+#: dashboards/identity/projects/tables.py:213
 msgid "This name is already taken."
 msgstr "这个名字已经被使用"
 
@@ -4434,129 +4688,129 @@ msgstr "无法获取项目域信息。"
 msgid "Unable to retrieve project details."
 msgstr "无法获取项目详情"
 
-#: dashboards/identity/projects/workflows.py:44
+#: dashboards/identity/projects/workflows.py:47
 msgid "Injected File Content (Bytes)"
 msgstr "已注入文件内容(Bytes)"
 
-#: dashboards/identity/projects/workflows.py:97
+#: dashboards/identity/projects/workflows.py:100
 #, python-format
 msgid "%(used)s %(key)s used"
 msgstr "%(used)s %(key)s 已使用"
 
-#: dashboards/identity/projects/workflows.py:102
+#: dashboards/identity/projects/workflows.py:105
 #, python-format
 msgid "Quota value(s) cannot be less than the current usage value(s): %s."
 msgstr "配额的值不能小于当前使用的值: %s."
 
-#: dashboards/identity/projects/workflows.py:109
-#: dashboards/identity/projects/workflows.py:116
+#: dashboards/identity/projects/workflows.py:112
+#: dashboards/identity/projects/workflows.py:119
 msgid "Quota"
 msgstr "配额"
 
-#: dashboards/identity/projects/workflows.py:111
-#: dashboards/identity/projects/workflows.py:118
+#: dashboards/identity/projects/workflows.py:114
+#: dashboards/identity/projects/workflows.py:121
 msgid "Set maximum quotas for the project."
 msgstr "为项目设置最大配额"
 
-#: dashboards/identity/projects/workflows.py:138
+#: dashboards/identity/projects/workflows.py:141
 #: dashboards/identity/users/forms.py:78
 #: dashboards/identity/users/forms.py:157
 msgid "Domain Name"
 msgstr "域名"
 
-#: dashboards/identity/projects/workflows.py:162
-#: dashboards/identity/projects/workflows.py:510
+#: dashboards/identity/projects/workflows.py:165
+#: dashboards/identity/projects/workflows.py:525
 msgid "Project Information"
 msgstr "项目信息"
 
-#: dashboards/identity/projects/workflows.py:163
+#: dashboards/identity/projects/workflows.py:166
 msgid "Create a project to organize users."
 msgstr "为组织用户创建一个项目"
 
-#: dashboards/identity/projects/workflows.py:181
+#: dashboards/identity/projects/workflows.py:184
 msgid "Unable to retrieve user list. Please try again later."
 msgstr "无法得到用户信息列表.请稍后重试."
 
-#: dashboards/identity/projects/workflows.py:248
-#: dashboards/identity/projects/workflows.py:255
+#: dashboards/identity/projects/workflows.py:251
+#: dashboards/identity/projects/workflows.py:258
 msgid "Project Members"
 msgstr "项目成员"
 
-#: dashboards/identity/projects/workflows.py:346
-#: dashboards/identity/projects/workflows.py:353
+#: dashboards/identity/projects/workflows.py:349
+#: dashboards/identity/projects/workflows.py:356
 msgid "Project Groups"
 msgstr "项目组"
 
-#: dashboards/identity/projects/workflows.py:376
+#: dashboards/identity/projects/workflows.py:379
 #, python-format
 msgid "Created new project \"%s\"."
 msgstr "创建项目\"%s\""
 
-#: dashboards/identity/projects/workflows.py:377
+#: dashboards/identity/projects/workflows.py:380
 #, python-format
 msgid "Unable to create project \"%s\"."
 msgstr "无法创建项目\"%s\""
 
-#: dashboards/identity/projects/workflows.py:439
+#: dashboards/identity/projects/workflows.py:441
 msgid ", add project groups"
 msgstr "，添加项目组"
 
-#: dashboards/identity/projects/workflows.py:443
+#: dashboards/identity/projects/workflows.py:445
 #, python-format
 msgid ""
 "Failed to add %(users_to_add)s project members%(group_msg)s and set project "
 "quotas."
 msgstr "无法添加 %(users_to_add)s 项目成员%(group_msg)s 并设定项目配额。"
 
-#: dashboards/identity/projects/workflows.py:474
+#: dashboards/identity/projects/workflows.py:478
 #, python-format
 msgid "Failed to add %s project groups and update project quotas."
 msgstr "无法添加 %s 项目组并更新项目配额。"
 
-#: dashboards/identity/projects/workflows.py:502
+#: dashboards/identity/projects/workflows.py:507
 msgid "Unable to set project quotas."
 msgstr "无法设置项目配额"
 
-#: dashboards/identity/projects/workflows.py:512
+#: dashboards/identity/projects/workflows.py:527
 msgid "Edit the project details."
 msgstr "编辑项目详情"
 
-#: dashboards/identity/projects/workflows.py:529
+#: dashboards/identity/projects/workflows.py:544
 #, python-format
 msgid "Modified project \"%s\"."
 msgstr "已修改的项目\"%s\"。"
 
-#: dashboards/identity/projects/workflows.py:530
+#: dashboards/identity/projects/workflows.py:545
 #, python-format
 msgid "Unable to modify project \"%s\"."
 msgstr "无法修改项目\"%s\""
 
-#: dashboards/identity/projects/workflows.py:625
+#: dashboards/identity/projects/workflows.py:634
 msgid ""
 "You cannot revoke your administrative privileges from the project you are "
 "currently logged into. Please switch to another project with administrative "
 "privileges or remove the administrative role manually via the CLI."
 msgstr "你无法从你目前登录的项目中撤销你的管理员权限。请切换至其他有管理员权限的项目，或通过命令行（CLI）手工移除管理员角色。"
 
-#: dashboards/identity/projects/workflows.py:660
+#: dashboards/identity/projects/workflows.py:694
 msgid ", update project groups"
 msgstr "，更新项目组"
 
-#: dashboards/identity/projects/workflows.py:664
+#: dashboards/identity/projects/workflows.py:698
 #, python-format
 msgid ""
 "Failed to modify %(users_to_modify)s project members%(group_msg)s and update"
 " project quotas."
 msgstr "无法修改 %(users_to_modify)s 项目成员%(group_msg)s 并更新项目配额。"
 
-#: dashboards/identity/projects/workflows.py:737
+#: dashboards/identity/projects/workflows.py:775
 #, python-format
 msgid ""
 "Failed to modify %s project members, update project groups and update "
 "project quotas."
 msgstr "无法修改 %s 项目成员，更新项目组和项目配额。"
 
-#: dashboards/identity/projects/workflows.py:770
+#: dashboards/identity/projects/workflows.py:809
 msgid ""
 "Modified project information and members, but unable to modify project "
 "quotas."
@@ -4649,7 +4903,7 @@ msgstr "没有可用项目"
 
 #: dashboards/identity/users/forms.py:66
 #: dashboards/project/instances/forms.py:92
-#: dashboards/project/instances/workflows/create_instance.py:548
+#: dashboards/project/instances/workflows/create_instance.py:593
 #: dashboards/settings/password/forms.py:50
 msgid "Passwords do not match."
 msgstr "密码不匹配。"
@@ -4828,12 +5082,12 @@ msgid "Data Processing"
 msgstr "数据处理"
 
 #: dashboards/project/access_and_security/panel.py:24
-#: dashboards/project/instances/workflows/create_instance.py:506
+#: dashboards/project/instances/workflows/create_instance.py:551
 msgid "Access & Security"
 msgstr "访问 & 安全"
 
 #: dashboards/project/access_and_security/tabs.py:57
-#: dashboards/project/access_and_security/security_groups/views.py:120
+#: dashboards/project/access_and_security/security_groups/views.py:124
 #: usage/base.py:116
 msgid "Unable to retrieve security groups."
 msgstr "无法获取安全组。"
@@ -4902,7 +5156,7 @@ msgid "Unable to get EC2 credentials"
 msgstr "无法获取EC2凭证"
 
 #: dashboards/project/access_and_security/floating_ips/forms.py:31
-#: dashboards/project/access_and_security/floating_ips/tables.py:199
+#: dashboards/project/access_and_security/floating_ips/tables.py:198
 #: dashboards/project/loadbalancers/forms.py:79
 #: dashboards/project/loadbalancers/forms.py:172
 #: dashboards/project/loadbalancers/tables.py:310
@@ -4933,8 +5187,8 @@ msgstr "分配IP给项目"
 #: dashboards/project/access_and_security/floating_ips/tables.py:57
 #: dashboards/project/access_and_security/keypairs/tables.py:73
 #: dashboards/project/instances/tables.py:331
-#: dashboards/project/volumes/volumes/tables.py:124
-#: dashboards/project/volumes/volumes/tables.py:192
+#: dashboards/project/volumes/volumes/tables.py:117
+#: dashboards/project/volumes/volumes/tables.py:185
 msgid "(Quota exceeded)"
 msgstr "(配额用尽)"
 
@@ -4998,7 +5252,7 @@ msgstr "没有可用的浮动IP池"
 
 #: dashboards/project/access_and_security/floating_ips/workflows.py:37
 #: dashboards/project/network_topology/templates/network_topology/_svg_element.html:196
-#: dashboards/project/volumes/volumes/tables.py:421
+#: dashboards/project/volumes/volumes/tables.py:413
 msgid "Instance"
 msgstr "云主机"
 
@@ -5028,7 +5282,7 @@ msgid "Select a port"
 msgstr "选择端口"
 
 #: dashboards/project/access_and_security/floating_ips/workflows.py:110
-#: dashboards/project/volumes/volumes/forms.py:441
+#: dashboards/project/volumes/volumes/forms.py:452
 msgid "Select an instance"
 msgstr "请选择一个云主机"
 
@@ -5037,7 +5291,7 @@ msgid "No ports available"
 msgstr "无可用端口"
 
 #: dashboards/project/access_and_security/floating_ips/workflows.py:116
-#: dashboards/project/volumes/volumes/forms.py:443
+#: dashboards/project/volumes/volumes/forms.py:454
 msgid "No instances available"
 msgstr "无可用云主机"
 
@@ -5221,7 +5475,7 @@ msgstr "请输入ICMP类型值范围 (-1: 255)"
 
 #: dashboards/project/access_and_security/security_groups/forms.py:184
 #: dashboards/project/access_and_security/security_groups/forms.py:191
-#: dashboards/project/instances/templates/instances/_detail_overview.html:32
+#: dashboards/project/instances/templates/instances/_detail_overview.html:34
 msgid "Code"
 msgstr "编码"
 
@@ -5295,50 +5549,50 @@ msgstr "入口"
 msgid "Egress"
 msgstr "出口"
 
-#: dashboards/project/access_and_security/security_groups/forms.py:297
+#: dashboards/project/access_and_security/security_groups/forms.py:286
 msgid "The ICMP type is invalid."
 msgstr "无效的ICMP类型。"
 
-#: dashboards/project/access_and_security/security_groups/forms.py:300
+#: dashboards/project/access_and_security/security_groups/forms.py:289
 msgid "The ICMP code is invalid."
 msgstr "无效的ICMP代码。"
 
-#: dashboards/project/access_and_security/security_groups/forms.py:303
+#: dashboards/project/access_and_security/security_groups/forms.py:292
 msgid "The ICMP type not in range (-1, 255)"
 msgstr "ICMP类型不在(-1, 255)范围内"
 
-#: dashboards/project/access_and_security/security_groups/forms.py:306
+#: dashboards/project/access_and_security/security_groups/forms.py:295
 msgid "The ICMP code not in range (-1, 255)"
 msgstr "ICMP 代码不在(-1, 255)范围内 "
 
-#: dashboards/project/access_and_security/security_groups/forms.py:319
+#: dashboards/project/access_and_security/security_groups/forms.py:314
 msgid "The specified port is invalid."
 msgstr "指定端口不可用。"
 
-#: dashboards/project/access_and_security/security_groups/forms.py:324
+#: dashboards/project/access_and_security/security_groups/forms.py:319
 msgid "The \"from\" port number is invalid."
 msgstr "起始端口号不合法。"
 
-#: dashboards/project/access_and_security/security_groups/forms.py:327
+#: dashboards/project/access_and_security/security_groups/forms.py:322
 msgid "The \"to\" port number is invalid."
 msgstr "终止端口号不合法。"
 
-#: dashboards/project/access_and_security/security_groups/forms.py:330
+#: dashboards/project/access_and_security/security_groups/forms.py:325
 msgid ""
 "The \"to\" port number must be greater than or equal to the \"from\" port "
 "number."
 msgstr "终止端口号必须大于或者等于起始端口号。"
 
-#: dashboards/project/access_and_security/security_groups/forms.py:363
+#: dashboards/project/access_and_security/security_groups/forms.py:374
 msgid "CIDR must be specified."
 msgstr "必须指定CIDR。"
 
-#: dashboards/project/access_and_security/security_groups/forms.py:386
+#: dashboards/project/access_and_security/security_groups/forms.py:397
 #, python-format
 msgid "Successfully added rule: %s"
 msgstr "添加规则：%s成功"
 
-#: dashboards/project/access_and_security/security_groups/forms.py:392
+#: dashboards/project/access_and_security/security_groups/forms.py:403
 msgid "Unable to add rule to security group."
 msgstr "无法为安全组添加规则。"
 
@@ -5402,11 +5656,16 @@ msgid "Any"
 msgstr "任何"
 
 #: dashboards/project/access_and_security/security_groups/views.py:52
-#: dashboards/project/access_and_security/security_groups/views.py:79
+#: dashboards/project/access_and_security/security_groups/views.py:83
 msgid "Unable to retrieve security group."
 msgstr "找不到安全组"
 
-#: dashboards/project/access_and_security/security_groups/views.py:127
+#: dashboards/project/access_and_security/security_groups/views.py:66
+#, python-format
+msgid "Manage Security Group Rules: %(security_group)s"
+msgstr ""
+
+#: dashboards/project/access_and_security/security_groups/views.py:131
 #, python-format
 msgid "%s (current)"
 msgstr "%s(当前)"
@@ -5595,10 +5854,6 @@ msgstr "安全组是IP过滤规则的集合，可被应用到虚拟机的网络�
 msgid "Manage Security Group Rules"
 msgstr "管理安全组规则"
 
-#: dashboards/project/access_and_security/templates/access_and_security/security_groups/detail.html:6
-msgid "Manage Security Group Rules: "
-msgstr "管理安全组规则："
-
 #: dashboards/project/containers/browsers.py:24
 #: dashboards/project/data_processing/job_binaries/templates/data_processing.job_binaries/_create_job_binary_help.html:11
 msgid "Swift"
@@ -5643,7 +5898,7 @@ msgid "Unable to create container."
 msgstr "无法创建容器。"
 
 #: dashboards/project/containers/forms.py:84
-#: dashboards/project/instances/workflows/create_instance.py:575
+#: dashboards/project/instances/workflows/create_instance.py:621
 #: dashboards/project/stacks/forms.py:57
 msgid "File"
 msgstr "文件"
@@ -6149,7 +6404,6 @@ msgstr "节点配置"
 #: dashboards/project/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:59
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/_details.html:68
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:62
-#: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_service_confs.html:12
 #, python-format
 msgid "%(conf_name)s: %(conf_value)s"
 msgstr "%(conf_name)s: %(conf_value)s"
@@ -6181,8 +6435,8 @@ msgstr "节点数量"
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:14
 #: dashboards/project/databases/templates/databases/_detail_overview.html:26
 #: dashboards/project/databases/workflows/create_instance.py:36
-#: dashboards/project/instances/templates/instances/_detail_overview.html:46
-#: dashboards/project/instances/workflows/create_instance.py:84
+#: dashboards/project/instances/templates/instances/_detail_overview.html:48
+#: dashboards/project/instances/workflows/create_instance.py:85
 msgid "Flavor"
 msgstr "云主机类型"
 
@@ -6276,7 +6530,7 @@ msgstr "为集群模板选择一个插件和一个Hadoop版本"
 
 #: dashboards/project/data_processing/cluster_templates/workflows/create.py:83
 #: dashboards/project/data_processing/jobs/workflows/launch.py:408
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:320
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:321
 msgid "Could not create"
 msgstr "不能创建"
 
@@ -6289,8 +6543,8 @@ msgstr "模板名称"
 #: dashboards/project/data_processing/data_plugins/tabs.py:26
 #: dashboards/project/database_backups/workflows/create_backup.py:43
 #: dashboards/project/databases/workflows/create_instance.py:47
-#: dashboards/project/instances/templates/instances/_detail_overview.html:34
-#: dashboards/project/instances/workflows/create_instance.py:135
+#: dashboards/project/instances/templates/instances/_detail_overview.html:36
+#: dashboards/project/instances/workflows/create_instance.py:136
 #: dashboards/project/loadbalancers/tables.py:337
 msgid "Details"
 msgstr "详情"
@@ -6327,6 +6581,7 @@ msgid_plural "Deleted Clusters"
 msgstr[0] "已删除的集群"
 
 #: dashboards/project/data_processing/clusters/tables.py:81
+#: dashboards/project/data_processing/job_executions/tables.py:117
 msgid "Unable to update row"
 msgstr "无法更新行"
 
@@ -6340,23 +6595,23 @@ msgstr "设置集群"
 msgid "Instances Count"
 msgstr "实例数量"
 
-#: dashboards/project/data_processing/clusters/tabs.py:111
+#: dashboards/project/data_processing/clusters/tabs.py:112
 msgid "Unable to get node group details."
 msgstr "无法获取节点组详细信息。"
 
-#: dashboards/project/data_processing/clusters/tabs.py:137
+#: dashboards/project/data_processing/clusters/tabs.py:138
 msgid "Internal IP"
 msgstr "内网IP"
 
-#: dashboards/project/data_processing/clusters/tabs.py:140
+#: dashboards/project/data_processing/clusters/tabs.py:141
 msgid "Management IP"
 msgstr "管理网络IP"
 
-#: dashboards/project/data_processing/clusters/tabs.py:145
+#: dashboards/project/data_processing/clusters/tabs.py:146
 msgid " "
 msgstr "？"
 
-#: dashboards/project/data_processing/clusters/tabs.py:174
+#: dashboards/project/data_processing/clusters/tabs.py:175
 msgid "Unable to fetch instance details."
 msgstr "无法获取云主机实例详情。"
 
@@ -6523,14 +6778,14 @@ msgstr "更新镜像失败。"
 #: dashboards/project/data_processing/data_image_registry/forms.py:59
 #: dashboards/project/data_processing/data_image_registry/tables.py:73
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:58
-#: dashboards/project/volumes/volumes/forms.py:209
+#: dashboards/project/volumes/volumes/forms.py:205
 msgid "Image"
 msgstr "镜像"
 
 #: dashboards/project/data_processing/data_image_registry/forms.py:71
 #: dashboards/project/instances/forms.py:39
 #: dashboards/project/instances/forms.py:64
-#: dashboards/project/instances/workflows/create_instance.py:395
+#: dashboards/project/instances/workflows/create_instance.py:437
 msgid "Select Image"
 msgstr "选择镜像"
 
@@ -6924,23 +7179,23 @@ msgid "Job Binary Details"
 msgstr "任务二进制文件详情"
 
 #: dashboards/project/data_processing/job_executions/panel.py:22
-#: dashboards/project/data_processing/job_executions/tables.py:159
+#: dashboards/project/data_processing/job_executions/tables.py:167
 #: dashboards/project/data_processing/job_executions/templates/data_processing.job_executions/job_executions.html:6
 msgid "Job Executions"
 msgstr "任务执行"
 
-#: dashboards/project/data_processing/job_executions/tables.py:34
+#: dashboards/project/data_processing/job_executions/tables.py:38
 msgid "Delete Job Execution"
 msgid_plural "Delete Job Executions"
 msgstr[0] "删除正在执行的任务"
 
-#: dashboards/project/data_processing/job_executions/tables.py:42
+#: dashboards/project/data_processing/job_executions/tables.py:46
 msgid "Deleted Job Execution"
 msgid_plural "Deleted Job Executions"
 msgstr[0] "已删除的执行中任务"
 
-#: dashboards/project/data_processing/job_executions/tables.py:55
-#: dashboards/project/data_processing/job_executions/tables.py:84
+#: dashboards/project/data_processing/job_executions/tables.py:59
+#: dashboards/project/data_processing/job_executions/tables.py:88
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/launch.html:3
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/launch.html:6
 #: dashboards/project/data_processing/jobs/workflows/launch.py:330
@@ -6950,21 +7205,21 @@ msgid "Launch Job"
 msgid_plural "Launch Jobs"
 msgstr[0] "启动任务"
 
-#: dashboards/project/data_processing/job_executions/tables.py:63
-#: dashboards/project/data_processing/job_executions/tables.py:92
+#: dashboards/project/data_processing/job_executions/tables.py:67
+#: dashboards/project/data_processing/job_executions/tables.py:96
 msgid "Launched Job"
 msgid_plural "Launched Jobs"
 msgstr[0] "已启动的任务"
 
-#: dashboards/project/data_processing/job_executions/tables.py:69
+#: dashboards/project/data_processing/job_executions/tables.py:73
 msgid "Relaunch On Existing Cluster"
 msgstr "在现有的集群上重新启动"
 
-#: dashboards/project/data_processing/job_executions/tables.py:98
+#: dashboards/project/data_processing/job_executions/tables.py:102
 msgid "Relaunch On New Cluster"
 msgstr "在新的集群的重新启动"
 
-#: dashboards/project/data_processing/job_executions/tables.py:141
+#: dashboards/project/data_processing/job_executions/tables.py:149
 #: dashboards/project/data_processing/job_executions/templates/data_processing.job_executions/_details.html:10
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/_details.html:3
 #: dashboards/project/data_processing/jobs/workflows/launch.py:56
@@ -6973,7 +7228,7 @@ msgstr "在新的集群的重新启动"
 msgid "Job"
 msgstr "任务"
 
-#: dashboards/project/data_processing/job_executions/tables.py:145
+#: dashboards/project/data_processing/job_executions/tables.py:153
 #: dashboards/project/data_processing/job_executions/templates/data_processing.job_executions/_details.html:16
 #: dashboards/project/data_processing/jobs/workflows/launch.py:104
 msgid "Cluster"
@@ -7277,7 +7532,7 @@ msgstr "任务退出后保留集群"
 #: dashboards/project/data_processing/jobs/workflows/launch.py:416
 #: dashboards/project/databases/workflows/create_instance.py:273
 #: dashboards/project/images/images/tables.py:35
-#: dashboards/project/instances/workflows/create_instance.py:793
+#: dashboards/project/instances/workflows/create_instance.py:840
 #: dashboards/project/stacks/templates/stacks/_create.html:24
 msgid "Launch"
 msgstr "运行"
@@ -7411,12 +7666,17 @@ msgstr "显示所有配置项"
 msgid "Hide full configuration"
 msgstr "隐藏所有配置项"
 
+#: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_service_confs.html:12
+#, python-format
+msgid "%(conf_name)s: %(conf_val)s"
+msgstr ""
+
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/configure.html:3
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/configure.html:6
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/create.html:3
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/create.html:6
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:188
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:317
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:189
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:318
 msgid "Create Node Group Template"
 msgstr "创建节点组模板"
 
@@ -7433,7 +7693,7 @@ msgstr "节点组模板详细信息"
 msgid "Node Group Template copy %s created"
 msgstr "节点组模板复制 %s 已创建"
 
-#: dashboards/project/data_processing/nodegroup_templates/workflows/copy.py:78
+#: dashboards/project/data_processing/nodegroup_templates/workflows/copy.py:83
 msgid "Unable to fetch plugin details."
 msgstr "无法获取插件详情"
 
@@ -7465,32 +7725,32 @@ msgstr "无法生成处理选项。"
 msgid "Create security group for this Node Group."
 msgstr "为该节点组创建安全组"
 
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:117
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:118
 msgid "Launch instances in these security groups."
 msgstr "在这些安全组下启动实例"
 
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:122
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:123
 msgid "Processes"
 msgstr "处理"
 
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:124
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:125
 msgid "Processes to be launched in node group"
 msgstr "结点群组上启动的任务进程"
 
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:149
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:150
 msgid "No availability zone specified"
 msgstr "未指定可用域"
 
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:164
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:165
 msgid "Configure Node Group Template"
 msgstr "配置结点群组模板"
 
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:190
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:191
 #, python-format
 msgid "Created Node Group Template %s"
 msgstr "创建结点群组模板%s"
 
-#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:298
+#: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:299
 msgid "Select plugin and hadoop version"
 msgstr "选择插件和hadoop 版本"
 
@@ -7508,7 +7768,7 @@ msgstr "无法填充anti-affinity processes."
 
 #: dashboards/project/data_processing/utils/neutron_support.py:32
 #: dashboards/project/databases/workflows/create_instance.py:161
-#: dashboards/project/instances/workflows/create_instance.py:693
+#: dashboards/project/instances/workflows/create_instance.py:740
 msgid "Unable to retrieve networks."
 msgstr "无法获取网络"
 
@@ -7534,7 +7794,7 @@ msgstr "备份"
 
 #: dashboards/project/database_backups/tables.py:38
 #: dashboards/project/databases/tables.py:148
-#: dashboards/project/volumes/volumes/tables.py:198
+#: dashboards/project/volumes/volumes/tables.py:191
 msgid "Create Backup"
 msgstr "创建备份"
 
@@ -7563,8 +7823,11 @@ msgstr[0] "已删除的备份"
 #: dashboards/project/databases/tables.py:199
 #: dashboards/project/databases/tables.py:216
 #: dashboards/project/databases/tables.py:222
-#: dashboards/project/instances/tables.py:796
-#: dashboards/project/instances/tables.py:803
+#: dashboards/project/instances/tables.py:804
+#: dashboards/project/instances/tables.py:811
+#: dashboards/project/instances/views.py:365
+#: dashboards/project/instances/templates/instances/_detail_overview.html:62
+#: dashboards/project/instances/templates/instances/_detail_overview.html:98
 msgid "Not available"
 msgstr "不可用"
 
@@ -7606,6 +7869,11 @@ msgstr "无法获取备份%s的详细信息"
 msgid "Unable to retrieve details for parent backup: %s"
 msgstr "无法获取父备份 %s 的详细信息"
 
+#: dashboards/project/database_backups/views.py:106
+#, python-format
+msgid "Backup Details: %(backup_name)s"
+msgstr ""
+
 #: dashboards/project/database_backups/templates/database_backups/_backup_details_help.html:3
 msgid "Specify the details for the database backup."
 msgstr "指定数据库备份详情。"
@@ -7627,10 +7895,6 @@ msgstr "备份数据库"
 msgid "Backup Details"
 msgstr "备份详细信息"
 
-#: dashboards/project/database_backups/templates/database_backups/details.html:6
-msgid "Backup Details: "
-msgstr "备份详细信息："
-
 #: dashboards/project/database_backups/templates/database_backups/details.html:12
 msgid "Backup Overview"
 msgstr "备份概况"
@@ -7646,7 +7910,7 @@ msgstr "初始云硬盘大小"
 #: dashboards/project/database_backups/templates/database_backups/details.html:38
 #: dashboards/project/databases/templates/databases/_detail_overview.html:36
 #: dashboards/project/images/templates/images/images/_detail_overview.html:33
-#: dashboards/project/stacks/tables.py:108
+#: dashboards/project/stacks/tables.py:112
 msgid "Updated"
 msgstr "已更新"
 
@@ -7712,14 +7976,14 @@ msgstr "已为备份\"%(name)s\"排期."
 
 #: dashboards/project/database_backups/workflows/create_backup.py:85
 #: dashboards/project/databases/workflows/create_instance.py:275
-#: dashboards/project/instances/workflows/create_instance.py:795
+#: dashboards/project/instances/workflows/create_instance.py:842
 #, python-format
 msgid "Unable to launch %(count)s named \"%(name)s\"."
 msgstr "无法启动%(count)s 名字 \"%(name)s\"."
 
 #: dashboards/project/database_backups/workflows/create_backup.py:95
 #: dashboards/project/databases/workflows/create_instance.py:291
-#: dashboards/project/instances/workflows/create_instance.py:812
+#: dashboards/project/instances/workflows/create_instance.py:859
 msgid "instance"
 msgstr "云主机"
 
@@ -7728,12 +7992,12 @@ msgid "Error creating database backup."
 msgstr "创建数据库备份错误"
 
 #: dashboards/project/databases/forms.py:28
-#: dashboards/project/volumes/volumes/forms.py:602
+#: dashboards/project/volumes/volumes/forms.py:613
 msgid "Current Size (GB)"
 msgstr "当前大小(GB)"
 
 #: dashboards/project/databases/forms.py:32
-#: dashboards/project/volumes/volumes/forms.py:606
+#: dashboards/project/volumes/volumes/forms.py:617
 msgid "New Size (GB)"
 msgstr "新大小(GB)"
 
@@ -7796,7 +8060,7 @@ msgstr "删除数据库实例错误"
 #: dashboards/project/databases/workflows/create_instance.py:272
 #: dashboards/project/instances/tables.py:305
 #: dashboards/project/instances/tables.py:333
-#: dashboards/project/instances/workflows/create_instance.py:792
+#: dashboards/project/instances/workflows/create_instance.py:839
 #: dashboards/project/network_topology/templates/network_topology/index.html:28
 msgid "Launch Instance"
 msgstr "启动云主机"
@@ -7818,27 +8082,6 @@ msgstr "没有分配"
 #, python-format
 msgid "%(name)s | %(RAM)s RAM"
 msgstr "%(name)s | %(RAM)s 内存"
-
-#: dashboards/project/databases/tables.py:230
-#: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:8
-#: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:11
-#: dashboards/project/firewalls/templates/firewalls/_policy_details.html:8
-#: dashboards/project/firewalls/templates/firewalls/_policy_details.html:11
-#: dashboards/project/firewalls/templates/firewalls/_policy_details.html:27
-#: dashboards/project/firewalls/templates/firewalls/_rule_details.html:8
-#: dashboards/project/firewalls/templates/firewalls/_rule_details.html:11
-#: dashboards/project/firewalls/templates/firewalls/_rule_details.html:43
-#: dashboards/project/firewalls/templates/firewalls/_rule_details.html:48
-#: dashboards/project/loadbalancers/tables.py:327
-#: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:10
-#: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:13
-#: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:23
-#: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:47
-#: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:59
-#: dashboards/project/loadbalancers/templates/loadbalancers/_vip_details.html:10
-#: dashboards/project/loadbalancers/templates/loadbalancers/_vip_details.html:13
-msgid "-"
-msgstr "-"
 
 #: dashboards/project/databases/tables.py:258
 #: dashboards/project/databases/templates/databases/_detail_overview.html:31
@@ -7884,7 +8127,13 @@ msgstr "无法获取数据库大小信息。"
 msgid "Unable to retrieve database instances."
 msgstr "无法获取数据库实例。"
 
-#: dashboards/project/databases/views.py:114
+#: dashboards/project/databases/views.py:104
+#: dashboards/project/instances/views.py:262
+#, python-format
+msgid "Instance Details: %(instance_name)s"
+msgstr ""
+
+#: dashboards/project/databases/views.py:117
 #, python-format
 msgid "Unable to retrieve details for database instance: %s"
 msgstr "无法获取数据库实例%s的详细信息。"
@@ -8031,11 +8280,6 @@ msgstr "<strong>请记住</strong>：新卷容量必须大于现在的卷容量�
 msgid "Instance Details"
 msgstr "云主机详情"
 
-#: dashboards/project/databases/templates/databases/detail.html:6
-#: dashboards/project/instances/templates/instances/detail.html:6
-msgid "Instance Details: "
-msgstr "云主机详情："
-
 #: dashboards/project/databases/templates/databases/launch.html:6
 msgid "Launch Database"
 msgstr "启动数据库"
@@ -8048,7 +8292,7 @@ msgid "Edit Instance"
 msgstr "编辑云主机"
 
 #: dashboards/project/databases/workflows/create_instance.py:37
-#: dashboards/project/instances/workflows/create_instance.py:85
+#: dashboards/project/instances/workflows/create_instance.py:86
 msgid "Size of image to launch."
 msgstr "要启动的镜像大小"
 
@@ -8073,22 +8317,22 @@ msgid "Select datastore type and version"
 msgstr "选择数据存储类型和版本"
 
 #: dashboards/project/databases/workflows/create_instance.py:135
-#: dashboards/project/instances/workflows/create_instance.py:654
+#: dashboards/project/instances/workflows/create_instance.py:701
 msgid "At least one network must be specified."
 msgstr "至少选择一个网络"
 
 #: dashboards/project/databases/workflows/create_instance.py:137
-#: dashboards/project/instances/workflows/create_instance.py:656
+#: dashboards/project/instances/workflows/create_instance.py:703
 msgid "Launch instance with these networks"
 msgstr "使用这些网络启动云主机"
 
 #: dashboards/project/databases/workflows/create_instance.py:147
-#: dashboards/project/instances/workflows/create_instance.py:678
+#: dashboards/project/instances/workflows/create_instance.py:725
 msgid "Networking"
 msgstr "网络"
 
 #: dashboards/project/databases/workflows/create_instance.py:149
-#: dashboards/project/instances/workflows/create_instance.py:680
+#: dashboards/project/instances/workflows/create_instance.py:727
 msgid "Select networks for your instance."
 msgstr "选择网络"
 
@@ -8133,7 +8377,7 @@ msgid "Unable to find backup!"
 msgstr "无法找到备份！"
 
 #: dashboards/project/databases/workflows/create_instance.py:274
-#: dashboards/project/instances/workflows/create_instance.py:794
+#: dashboards/project/instances/workflows/create_instance.py:841
 #, python-format
 msgid "Launched %(count)s named \"%(name)s\"."
 msgstr "启动了%(count)s 名称\"%(name)s\"."
@@ -8369,18 +8613,21 @@ msgid_plural "Scheduled deletion of Firewalls"
 msgstr[0] "已安排防火墙的删除"
 
 #: dashboards/project/firewalls/tables.py:119
+#: dashboards/project/firewalls/views.py:129
 #: dashboards/project/firewalls/templates/firewalls/_updaterule.html:8
 #: dashboards/project/firewalls/templates/firewalls/updaterule.html:3
 msgid "Edit Rule"
 msgstr "编辑规则"
 
 #: dashboards/project/firewalls/tables.py:131
+#: dashboards/project/firewalls/views.py:168
 #: dashboards/project/firewalls/templates/firewalls/_updatepolicy.html:8
 #: dashboards/project/firewalls/templates/firewalls/updatepolicy.html:3
 msgid "Edit Policy"
 msgstr "编辑策略"
 
 #: dashboards/project/firewalls/tables.py:143
+#: dashboards/project/firewalls/views.py:202
 #: dashboards/project/firewalls/templates/firewalls/_updatefirewall.html:8
 #: dashboards/project/firewalls/templates/firewalls/updatefirewall.html:3
 msgid "Edit Firewall"
@@ -8445,7 +8692,7 @@ msgid "Firewall Rule Details"
 msgstr "防火墙规则详情"
 
 #: dashboards/project/firewalls/tabs.py:105
-#: dashboards/project/firewalls/views.py:142
+#: dashboards/project/firewalls/views.py:146
 msgid "Unable to retrieve rule details."
 msgstr "无法获取规则详情。"
 
@@ -8454,9 +8701,9 @@ msgid "Firewall Policy Details"
 msgstr "防火墙策略详情"
 
 #: dashboards/project/firewalls/tabs.py:122
-#: dashboards/project/firewalls/views.py:177
-#: dashboards/project/firewalls/views.py:243
-#: dashboards/project/firewalls/views.py:277
+#: dashboards/project/firewalls/views.py:183
+#: dashboards/project/firewalls/views.py:251
+#: dashboards/project/firewalls/views.py:285
 msgid "Unable to retrieve policy details."
 msgstr "无法获取策略详情。"
 
@@ -8465,7 +8712,7 @@ msgid "Firewall Details"
 msgstr "防火墙详情"
 
 #: dashboards/project/firewalls/tabs.py:139
-#: dashboards/project/firewalls/views.py:210
+#: dashboards/project/firewalls/views.py:218
 msgid "Unable to retrieve firewall details."
 msgstr "无法获取防火墙详情。"
 
@@ -8498,6 +8745,21 @@ msgstr "删除防火墙%s"
 #, python-format
 msgid "Unable to delete firewall. %s"
 msgstr "无法删除防火墙  %s"
+
+#: dashboards/project/firewalls/views.py:132
+#, python-format
+msgid "Edit Rule %(rule_name)s"
+msgstr ""
+
+#: dashboards/project/firewalls/views.py:171
+#, python-format
+msgid "Edit Policy %s"
+msgstr ""
+
+#: dashboards/project/firewalls/views.py:205
+#, python-format
+msgid "Edit Firewall %s"
+msgstr ""
 
 #: dashboards/project/firewalls/workflows.py:73
 msgid "AddRule"
@@ -8683,18 +8945,6 @@ msgstr "添加新的策略"
 msgid "Add New Rule"
 msgstr "添加新的规则"
 
-#: dashboards/project/firewalls/templates/firewalls/updatefirewall.html:6
-msgid "Edit Firewall "
-msgstr "编辑防火墙"
-
-#: dashboards/project/firewalls/templates/firewalls/updatepolicy.html:6
-msgid "Edit Policy "
-msgstr "编辑策略"
-
-#: dashboards/project/firewalls/templates/firewalls/updaterule.html:6
-msgid "Edit Rule "
-msgstr "编辑规则"
-
 #: dashboards/project/images/utils.py:43
 msgid "Unable to retrieve public images."
 msgstr "无法获取公共镜像。"
@@ -8822,8 +9072,8 @@ msgstr[0] "已删除的镜像"
 #: dashboards/project/volumes/templates/volumes/volumes/_create.html:9
 #: dashboards/project/volumes/templates/volumes/volumes/_create.html:24
 #: dashboards/project/volumes/templates/volumes/volumes/create.html:3
-#: dashboards/project/volumes/volumes/tables.py:101
-#: dashboards/project/volumes/volumes/tables.py:126
+#: dashboards/project/volumes/volumes/tables.py:94
+#: dashboards/project/volumes/volumes/tables.py:119
 msgid "Create Volume"
 msgstr "创建云硬盘"
 
@@ -8835,13 +9085,18 @@ msgstr "与我共享"
 msgid "Unable to retrieve image."
 msgstr "无法检索到镜像。"
 
-#: dashboards/project/images/images/views.py:106
+#: dashboards/project/images/images/views.py:94
+#, python-format
+msgid "Image Details: %(image_name)s"
+msgstr ""
+
+#: dashboards/project/images/images/views.py:109
 msgid "Unable to retrieve image details."
 msgstr "无法检索到镜像细节。"
 
 #: dashboards/project/images/snapshots/forms.py:33
 #: dashboards/project/volumes/snapshots/forms.py:25
-#: dashboards/project/volumes/volumes/forms.py:473
+#: dashboards/project/volumes/volumes/forms.py:484
 msgid "Snapshot Name"
 msgstr "快照名称"
 
@@ -8858,13 +9113,13 @@ msgstr "无法创建快照。"
 msgid "Unable to retrieve instance."
 msgstr "无法获取云主机。"
 
-#: dashboards/project/images/templates/images/images/_create.html:22
+#: dashboards/project/images/templates/images/images/_create.html:16
 msgid ""
 "Images can be provided via an HTTP URL or be uploaded from your local file "
 "system. Compressed image binaries are supported (.zip and .tar.gz.)"
 msgstr "镜像可以通过HTTP URL或从您的本地文件系统上传。支持压缩的二进制镜像文件(.zip 和.tar.gz.)"
 
-#: dashboards/project/images/templates/images/images/_create.html:30
+#: dashboards/project/images/templates/images/images/_create.html:24
 msgid ""
 "If you select an image via an HTTP URL, the Image Location field MUST be a "
 "valid and direct URL to the image binary; it must also be accessible to the "
@@ -8893,7 +9148,7 @@ msgid "Container Format"
 msgstr "容器格式"
 
 #: dashboards/project/images/templates/images/images/_detail_overview.html:50
-#: dashboards/project/volumes/volumes/forms.py:541
+#: dashboards/project/volumes/volumes/forms.py:552
 msgid "Disk Format"
 msgstr "磁盘格式"
 
@@ -8913,19 +9168,11 @@ msgstr "定制属性"
 msgid "Image Details"
 msgstr "镜像详情 "
 
-#: dashboards/project/images/templates/images/images/detail.html:7
-msgid "Image Details: "
-msgstr "镜像详情 ："
-
-#: dashboards/project/images/templates/images/images/detail.html:7
-msgid "Image Details:"
-msgstr "镜像详情 ："
-
 #: dashboards/project/images/templates/images/snapshots/_create.html:9
 #: dashboards/project/images/templates/images/snapshots/_create.html:24
 #: dashboards/project/images/templates/images/snapshots/create.html:3
 #: dashboards/project/instances/tables.py:385
-#: dashboards/project/volumes/volumes/tables.py:173
+#: dashboards/project/volumes/volumes/tables.py:166
 msgid "Create Snapshot"
 msgstr "创建快照"
 
@@ -8946,7 +9193,7 @@ msgid "Start Time"
 msgstr "开始时间"
 
 #: dashboards/project/instances/audit_tables.py:29
-#: dashboards/project/instances/templates/instances/_detail_overview.html:30
+#: dashboards/project/instances/templates/instances/_detail_overview.html:32
 msgid "Message"
 msgstr "消息"
 
@@ -8972,28 +9219,28 @@ msgid "Confirm Rebuild Password"
 msgstr "确认重建密码"
 
 #: dashboards/project/instances/forms.py:53
-#: dashboards/project/instances/workflows/create_instance.py:739
+#: dashboards/project/instances/workflows/create_instance.py:786
 msgid "Disk Partition"
 msgstr "磁盘分区"
 
 #: dashboards/project/instances/forms.py:66
-#: dashboards/project/instances/workflows/create_instance.py:397
+#: dashboards/project/instances/workflows/create_instance.py:439
 msgid "No images available"
 msgstr "没有可用镜像。"
 
 #: dashboards/project/instances/forms.py:78
-#: dashboards/project/instances/workflows/create_instance.py:757
+#: dashboards/project/instances/workflows/create_instance.py:804
 msgid "Automatic"
 msgstr "自动"
 
 #: dashboards/project/instances/forms.py:79
-#: dashboards/project/instances/workflows/create_instance.py:758
+#: dashboards/project/instances/workflows/create_instance.py:805
 msgid "Manual"
 msgstr "手动"
 
 #: dashboards/project/instances/forms.py:82
-#: dashboards/project/instances/workflows/create_instance.py:165
-#: dashboards/project/instances/workflows/create_instance.py:767
+#: dashboards/project/instances/workflows/create_instance.py:166
+#: dashboards/project/instances/workflows/create_instance.py:814
 msgid "Unable to retrieve extensions information."
 msgstr "无法获取扩展信息"
 
@@ -9100,7 +9347,7 @@ msgid "View Log"
 msgstr "查看日志"
 
 #: dashboards/project/instances/tables.py:435
-#: dashboards/project/instances/workflows/resize_instance.py:88
+#: dashboards/project/instances/workflows/resize_instance.py:89
 msgid "Resize Instance"
 msgstr "调整云主机大小"
 
@@ -9125,20 +9372,20 @@ msgid "Retrieve Password"
 msgstr "取回密码"
 
 #: dashboards/project/instances/tables.py:525
-#: dashboards/project/instances/tables.py:549
+#: dashboards/project/instances/tables.py:550
 msgid "Associate Floating IP"
 msgstr "绑定浮动IP"
 
-#: dashboards/project/instances/tables.py:568
+#: dashboards/project/instances/tables.py:569
 #, python-format
 msgid "Successfully associated floating IP: %s"
 msgstr "浮动IP绑定成功: %s"
 
-#: dashboards/project/instances/tables.py:572
+#: dashboards/project/instances/tables.py:573
 msgid "Unable to associate floating IP."
 msgstr "无法绑定浮动ip"
 
-#: dashboards/project/instances/tables.py:578
+#: dashboards/project/instances/tables.py:579
 msgid "Disassociate Floating IP"
 msgstr "解除浮动IP的绑定"
 
@@ -9167,387 +9414,418 @@ msgstr "在选定的可用域中没有足够的空间来匹配这个主机类型
 msgid "Failed to launch instance \"%s\""
 msgstr "创建实例 \"%s\" 失败"
 
-#: dashboards/project/instances/tables.py:660
+#: dashboards/project/instances/tables.py:650
+#: dashboards/project/instances/views.py:362
+#, python-format
+msgid "Unable to retrieve flavor information for instance \"%s\"."
+msgstr ""
+
+#: dashboards/project/instances/tables.py:667
 msgid "Start Instance"
 msgid_plural "Start Instances"
 msgstr[0] "启动实例"
 
-#: dashboards/project/instances/tables.py:668
+#: dashboards/project/instances/tables.py:675
 msgid "Started Instance"
 msgid_plural "Started Instances"
 msgstr[0] "已启动的实例"
 
-#: dashboards/project/instances/tables.py:689
+#: dashboards/project/instances/tables.py:697
 msgctxt "Action to perform (the instance is currently running)"
 msgid "Shut Off Instance"
 msgid_plural "Shut Off Instances"
 msgstr[0] "关闭实例"
 
-#: dashboards/project/instances/tables.py:698
+#: dashboards/project/instances/tables.py:706
 msgctxt "Past action (the instance is currently already Shut Off)"
 msgid "Shut Off Instance"
 msgid_plural "Shut Off Instances"
 msgstr[0] "已关闭的实例"
 
-#: dashboards/project/instances/tables.py:719
+#: dashboards/project/instances/tables.py:727
 msgid "Lock Instance"
 msgid_plural "Lock Instances"
 msgstr[0] "锁定实例"
 
-#: dashboards/project/instances/tables.py:727
+#: dashboards/project/instances/tables.py:735
 msgid "Locked Instance"
 msgid_plural "Locked Instances"
 msgstr[0] "已锁定的实例"
 
-#: dashboards/project/instances/tables.py:750
+#: dashboards/project/instances/tables.py:758
 msgid "Unlock Instance"
 msgid_plural "Unlock Instances"
 msgstr[0] "解锁实例"
 
-#: dashboards/project/instances/tables.py:758
+#: dashboards/project/instances/tables.py:766
 msgid "Unlocked Instance"
 msgid_plural "Unlocked Instances"
 msgstr[0] "已解锁的实例"
 
-#: dashboards/project/instances/tables.py:787
+#: dashboards/project/instances/tables.py:795
 #, python-format
 msgid "%s GB"
 msgstr "%s GB"
 
-#: dashboards/project/instances/tables.py:811
-#: dashboards/project/instances/tables.py:833
+#: dashboards/project/instances/tables.py:819
+#: dashboards/project/instances/tables.py:841
 msgctxt "Current status of an Instance"
 msgid "Deleted"
 msgstr "删除"
 
-#: dashboards/project/instances/tables.py:812
+#: dashboards/project/instances/tables.py:820
 msgctxt "Current status of an Instance"
 msgid "Active"
 msgstr "运行中"
 
-#: dashboards/project/instances/tables.py:813
+#: dashboards/project/instances/tables.py:821
 msgctxt "Current status of an Instance"
 msgid "Shutoff"
 msgstr "关机"
 
-#: dashboards/project/instances/tables.py:815
+#: dashboards/project/instances/tables.py:823
 msgctxt "Current status of an Instance"
 msgid "Suspended"
 msgstr "已挂起"
 
-#: dashboards/project/instances/tables.py:816
+#: dashboards/project/instances/tables.py:824
 msgctxt "Current status of an Instance"
 msgid "Paused"
 msgstr "已暂停"
 
-#: dashboards/project/instances/tables.py:817
+#: dashboards/project/instances/tables.py:825
 msgctxt "Current status of an Instance"
 msgid "Error"
 msgstr "错误"
 
-#: dashboards/project/instances/tables.py:819
+#: dashboards/project/instances/tables.py:827
 msgctxt "Current status of an Instance"
 msgid "Resize/Migrate"
 msgstr "重建/迁移"
 
-#: dashboards/project/instances/tables.py:821
+#: dashboards/project/instances/tables.py:829
 msgctxt "Current status of an Instance"
 msgid "Confirm or Revert Resize/Migrate"
 msgstr "确认或者回退 重建/迁移"
 
-#: dashboards/project/instances/tables.py:823
+#: dashboards/project/instances/tables.py:831
 msgctxt "Current status of an Instance"
 msgid "Revert Resize/Migrate"
 msgstr "恢复修改尺寸/移植"
 
-#: dashboards/project/instances/tables.py:824
+#: dashboards/project/instances/tables.py:832
 msgctxt "Current status of an Instance"
 msgid "Reboot"
 msgstr "重启"
 
-#: dashboards/project/instances/tables.py:826
+#: dashboards/project/instances/tables.py:834
 msgctxt "Current status of an Instance"
 msgid "Hard Reboot"
 msgstr "硬重启"
 
-#: dashboards/project/instances/tables.py:827
+#: dashboards/project/instances/tables.py:835
 msgctxt "Current status of an Instance"
 msgid "Password"
 msgstr "密码"
 
-#: dashboards/project/instances/tables.py:828
+#: dashboards/project/instances/tables.py:836
 msgctxt "Current status of an Instance"
 msgid "Rebuild"
 msgstr "重建"
 
-#: dashboards/project/instances/tables.py:830
+#: dashboards/project/instances/tables.py:838
 msgctxt "Current status of an Instance"
 msgid "Migrating"
 msgstr "正在迁移"
 
-#: dashboards/project/instances/tables.py:831
+#: dashboards/project/instances/tables.py:839
 msgctxt "Current status of an Instance"
 msgid "Build"
 msgstr "创建"
 
-#: dashboards/project/instances/tables.py:832
+#: dashboards/project/instances/tables.py:840
 msgctxt "Current status of an Instance"
 msgid "Rescue"
 msgstr "恢复"
 
-#: dashboards/project/instances/tables.py:835
+#: dashboards/project/instances/tables.py:843
 msgctxt "Current status of an Instance"
 msgid "Soft Deleted"
 msgstr "软删除"
 
-#: dashboards/project/instances/tables.py:836
+#: dashboards/project/instances/tables.py:844
 msgctxt "Current status of an Instance"
 msgid "Shelved"
 msgstr "搁置的"
 
-#: dashboards/project/instances/tables.py:838
+#: dashboards/project/instances/tables.py:846
 msgctxt "Current status of an Instance"
 msgid "Shelved Offloaded"
 msgstr "搁置卸载"
 
-#: dashboards/project/instances/tables.py:844
+#: dashboards/project/instances/tables.py:849
+msgctxt "Task status of an Instance"
+msgid "None"
+msgstr "无"
+
+#: dashboards/project/instances/tables.py:854
 msgctxt "Task status of an Instance"
 msgid "Scheduling"
 msgstr "调度"
 
-#: dashboards/project/instances/tables.py:846
+#: dashboards/project/instances/tables.py:856
 msgctxt "Task status of an Instance"
 msgid "Block Device Mapping"
 msgstr "块设备映射"
 
-#: dashboards/project/instances/tables.py:848
+#: dashboards/project/instances/tables.py:858
 msgctxt "Task status of an Instance"
 msgid "Networking"
 msgstr "网络"
 
-#: dashboards/project/instances/tables.py:849
+#: dashboards/project/instances/tables.py:859
 msgctxt "Task status of an Instance"
 msgid "Spawning"
 msgstr "孵化中"
 
-#: dashboards/project/instances/tables.py:851
+#: dashboards/project/instances/tables.py:861
 msgctxt "Task status of an Instance"
 msgid "Snapshotting"
 msgstr "快照中"
 
-#: dashboards/project/instances/tables.py:853
+#: dashboards/project/instances/tables.py:863
 msgctxt "Task status of an Instance"
 msgid "Image Snapshot Pending"
 msgstr "镜像快照等待中"
 
-#: dashboards/project/instances/tables.py:855
+#: dashboards/project/instances/tables.py:865
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
 msgstr "等待上传镜像"
 
-#: dashboards/project/instances/tables.py:857
+#: dashboards/project/instances/tables.py:867
 msgctxt "Task status of an Instance"
 msgid "Image Uploading"
 msgstr "镜像上传中"
 
-#: dashboards/project/instances/tables.py:859
+#: dashboards/project/instances/tables.py:869
 msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "镜像备份"
 
-#: dashboards/project/instances/tables.py:861
+#: dashboards/project/instances/tables.py:871
 msgctxt "Task status of an Instance"
 msgid "Updating Password"
 msgstr "密码更新中"
 
-#: dashboards/project/instances/tables.py:863
+#: dashboards/project/instances/tables.py:873
 msgctxt "Task status of an Instance"
 msgid "Preparing Resize or Migrate"
 msgstr "准备重建或者迁移"
 
-#: dashboards/project/instances/tables.py:865
+#: dashboards/project/instances/tables.py:875
 msgctxt "Task status of an Instance"
 msgid "Resizing or Migrating"
 msgstr "正在重建或者迁移中"
 
-#: dashboards/project/instances/tables.py:867
+#: dashboards/project/instances/tables.py:877
 msgctxt "Task status of an Instance"
 msgid "Resized or Migrated"
 msgstr "已经重建或者迁移"
 
-#: dashboards/project/instances/tables.py:869
+#: dashboards/project/instances/tables.py:879
 msgctxt "Task status of an Instance"
 msgid "Finishing Resize or Migrate"
 msgstr "正在完成重建或者迁移"
 
-#: dashboards/project/instances/tables.py:871
+#: dashboards/project/instances/tables.py:881
 msgctxt "Task status of an Instance"
 msgid "Reverting Resize or Migrate"
 msgstr "正在回退重建或者迁移"
 
-#: dashboards/project/instances/tables.py:873
+#: dashboards/project/instances/tables.py:883
 msgctxt "Task status of an Instance"
 msgid "Confirming Resize or Migrate"
 msgstr "正在确认 重建/迁移"
 
-#: dashboards/project/instances/tables.py:874
+#: dashboards/project/instances/tables.py:884
 msgctxt "Task status of an Instance"
 msgid "Rebooting"
 msgstr "正在重启"
 
-#: dashboards/project/instances/tables.py:876
+#: dashboards/project/instances/tables.py:886
+msgctxt "Task status of an Instance"
+msgid "Reboot Pending"
+msgstr ""
+
+#: dashboards/project/instances/tables.py:888
+msgctxt "Task status of an Instance"
+msgid "Reboot Started"
+msgstr ""
+
+#: dashboards/project/instances/tables.py:890
 msgctxt "Task status of an Instance"
 msgid "Rebooting Hard"
 msgstr "正在硬重启"
 
-#: dashboards/project/instances/tables.py:877
+#: dashboards/project/instances/tables.py:892
+msgctxt "Task status of an Instance"
+msgid "Reboot Pending Hard"
+msgstr ""
+
+#: dashboards/project/instances/tables.py:894
+msgctxt "Task status of an Instance"
+msgid "Reboot Started Hard"
+msgstr ""
+
+#: dashboards/project/instances/tables.py:895
 msgctxt "Task status of an Instance"
 msgid "Pausing"
 msgstr "正在暂停"
 
-#: dashboards/project/instances/tables.py:878
-#: dashboards/project/instances/tables.py:881
+#: dashboards/project/instances/tables.py:896
+#: dashboards/project/instances/tables.py:899
 msgctxt "Task status of an Instance"
 msgid "Resuming"
 msgstr "正在进行恢复"
 
-#: dashboards/project/instances/tables.py:880
+#: dashboards/project/instances/tables.py:898
 msgctxt "Task status of an Instance"
 msgid "Suspending"
 msgstr "正在挂起"
 
-#: dashboards/project/instances/tables.py:883
+#: dashboards/project/instances/tables.py:901
 msgctxt "Task status of an Instance"
 msgid "Powering Off"
 msgstr "正在关闭电源"
 
-#: dashboards/project/instances/tables.py:885
+#: dashboards/project/instances/tables.py:903
 msgctxt "Task status of an Instance"
 msgid "Powering On"
 msgstr "正在打开电源"
 
-#: dashboards/project/instances/tables.py:886
+#: dashboards/project/instances/tables.py:904
 msgctxt "Task status of an Instance"
 msgid "Rescuing"
 msgstr "正在进行拯救"
 
-#: dashboards/project/instances/tables.py:888
+#: dashboards/project/instances/tables.py:906
 msgctxt "Task status of an Instance"
 msgid "Unrescuing"
 msgstr "正在取消拯救"
 
-#: dashboards/project/instances/tables.py:890
+#: dashboards/project/instances/tables.py:908
 msgctxt "Task status of an Instance"
 msgid "Rebuilding"
 msgstr "正在重建"
 
-#: dashboards/project/instances/tables.py:892
+#: dashboards/project/instances/tables.py:910
 msgctxt "Task status of an Instance"
 msgid "Rebuild Block Device Mapping"
 msgstr "重建块设备映射"
 
-#: dashboards/project/instances/tables.py:894
+#: dashboards/project/instances/tables.py:912
 msgctxt "Task status of an Instance"
 msgid "Rebuild Spawning"
 msgstr "重建孵化中"
 
-#: dashboards/project/instances/tables.py:895
+#: dashboards/project/instances/tables.py:913
 msgctxt "Task status of an Instance"
 msgid "Migrating"
 msgstr "正在迁移"
 
-#: dashboards/project/instances/tables.py:896
+#: dashboards/project/instances/tables.py:914
 msgctxt "Task status of an Instance"
 msgid "Deleting"
 msgstr "删除中"
 
-#: dashboards/project/instances/tables.py:898
+#: dashboards/project/instances/tables.py:916
 msgctxt "Task status of an Instance"
 msgid "Soft Deleting"
 msgstr "软重启中"
 
-#: dashboards/project/instances/tables.py:899
+#: dashboards/project/instances/tables.py:917
 msgctxt "Task status of an Instance"
 msgid "Restoring"
 msgstr "恢复中"
 
-#: dashboards/project/instances/tables.py:900
+#: dashboards/project/instances/tables.py:918
 msgctxt "Task status of an Instance"
 msgid "Shelving"
 msgstr "搁置中"
 
-#: dashboards/project/instances/tables.py:902
+#: dashboards/project/instances/tables.py:920
 msgctxt "Task status of an Instance"
 msgid "Shelving Image Pending Upload"
 msgstr "搁置等待上传的镜像"
 
-#: dashboards/project/instances/tables.py:904
+#: dashboards/project/instances/tables.py:922
 msgctxt "Task status of an Instance"
 msgid "Shelving Image Uploading"
 msgstr "搁置镜像上传"
 
-#: dashboards/project/instances/tables.py:906
+#: dashboards/project/instances/tables.py:924
 msgctxt "Task status of an Instance"
 msgid "Shelving Offloading"
 msgstr "搁置卸载中"
 
-#: dashboards/project/instances/tables.py:908
+#: dashboards/project/instances/tables.py:926
 msgctxt "Task status of an Instance"
 msgid "Unshelving"
 msgstr "取消搁置中"
 
-#: dashboards/project/instances/tables.py:912
+#: dashboards/project/instances/tables.py:930
 msgctxt "Power state of an Instance"
 msgid "No State"
 msgstr "无状态"
 
-#: dashboards/project/instances/tables.py:913
+#: dashboards/project/instances/tables.py:931
 msgctxt "Power state of an Instance"
 msgid "Running"
 msgstr "运行中"
 
-#: dashboards/project/instances/tables.py:914
+#: dashboards/project/instances/tables.py:932
 msgctxt "Power state of an Instance"
 msgid "Blocked"
 msgstr "不通"
 
-#: dashboards/project/instances/tables.py:915
+#: dashboards/project/instances/tables.py:933
 msgctxt "Power state of an Instance"
 msgid "Paused"
 msgstr "已暂停"
 
-#: dashboards/project/instances/tables.py:916
+#: dashboards/project/instances/tables.py:934
 msgctxt "Power state of an Instance"
 msgid "Shut Down"
 msgstr "关闭"
 
-#: dashboards/project/instances/tables.py:917
+#: dashboards/project/instances/tables.py:935
 msgctxt "Power state of an Instance"
 msgid "Shut Off"
 msgstr "关机"
 
-#: dashboards/project/instances/tables.py:918
+#: dashboards/project/instances/tables.py:936
 msgctxt "Power state of an Instance"
 msgid "Crashed"
 msgstr "崩溃"
 
-#: dashboards/project/instances/tables.py:919
+#: dashboards/project/instances/tables.py:937
 msgctxt "Power state of an Instance"
 msgid "Suspended"
 msgstr "已挂起"
 
-#: dashboards/project/instances/tables.py:920
+#: dashboards/project/instances/tables.py:938
 msgctxt "Power state of an Instance"
 msgid "Failed"
 msgstr "失败"
 
-#: dashboards/project/instances/tables.py:921
+#: dashboards/project/instances/tables.py:939
 msgctxt "Power state of an Instance"
 msgid "Building"
 msgstr "建立中"
 
-#: dashboards/project/instances/tables.py:958
-#: dashboards/project/instances/workflows/create_instance.py:484
+#: dashboards/project/instances/tables.py:976
+#: dashboards/project/instances/workflows/create_instance.py:529
 msgid "Key Pair"
 msgstr "值对"
 
@@ -9556,7 +9834,7 @@ msgid "Log"
 msgstr "日志"
 
 #: dashboards/project/instances/tabs.py:51
-#: dashboards/project/instances/views.py:151
+#: dashboards/project/instances/views.py:152
 #, python-format
 msgid "Unable to get log for instance \"%s\"."
 msgstr "无法获得云主机 \"%s\" 的日志。"
@@ -9585,32 +9863,49 @@ msgstr "无法获取Nova可用域。"
 msgid "Unable to retrieve instances."
 msgstr "无法获取云主机。"
 
-#: dashboards/project/instances/views.py:166
+#: dashboards/project/instances/views.py:167
 #, python-format
 msgid "Unable to get VNC console for instance \"%s\"."
 msgstr "无法获得云主机 \"%s\" 的VNC控制台"
 
-#: dashboards/project/instances/views.py:177
+#: dashboards/project/instances/views.py:178
 #, python-format
 msgid "Unable to get SPICE console for instance \"%s\"."
 msgstr "无法获得云主机 \"%s\"SPICE控制台"
 
-#: dashboards/project/instances/views.py:188
+#: dashboards/project/instances/views.py:189
 #, python-format
 msgid "Unable to get RDP console for instance \"%s\"."
 msgstr "无法获得云主机 \"%s\"RDP控制台"
 
-#: dashboards/project/instances/views.py:287
+#: dashboards/project/instances/views.py:276
 #, python-format
 msgid "Unable to retrieve details for instance \"%s\"."
 msgstr "无法获取云主机 \"%s\" 的详情。"
 
-#: dashboards/project/instances/views.py:298
+#: dashboards/project/instances/views.py:297
 #, python-format
-msgid "Unable to retrieve IP addresses from Neutron for instance \"%s\"."
-msgstr "无法从Neutron获取云主机 \"%s\" 的IP地址。"
+msgid "Unable to retrieve volume list for instance \"%(name)s\" (%(id)s)."
+msgstr ""
 
-#: dashboards/project/instances/views.py:342
+#: dashboards/project/instances/views.py:306
+#, python-format
+msgid "Unable to retrieve flavor information for instance \"%(name)s\" (%(id)s)."
+msgstr ""
+
+#: dashboards/project/instances/views.py:315
+#, python-format
+msgid "Unable to retrieve security groups for instance \"%(name)s\" (%(id)s)."
+msgstr ""
+
+#: dashboards/project/instances/views.py:323
+#, python-format
+msgid ""
+"Unable to retrieve IP addresses from Neutron for instance \"%(name)s\" "
+"(%(id)s)."
+msgstr ""
+
+#: dashboards/project/instances/views.py:376
 msgid "Unable to retrieve flavors."
 msgstr "无法获取云主机类型列表。"
 
@@ -9687,49 +9982,49 @@ msgstr "查看完整日志"
 msgid "Uptime"
 msgstr "正常运行时间"
 
-#: dashboards/project/instances/templates/instances/_detail_overview.html:27
+#: dashboards/project/instances/templates/instances/_detail_overview.html:29
 msgid "Fault"
 msgstr "故障"
 
-#: dashboards/project/instances/templates/instances/_detail_overview.html:51
+#: dashboards/project/instances/templates/instances/_detail_overview.html:54
 msgid "VCPU"
 msgstr "虚拟内核"
 
-#: dashboards/project/instances/templates/instances/_detail_overview.html:52
+#: dashboards/project/instances/templates/instances/_detail_overview.html:55
 #: usage/tables.py:34
 msgid "Disk"
 msgstr "磁盘"
 
-#: dashboards/project/instances/templates/instances/_detail_overview.html:62
+#: dashboards/project/instances/templates/instances/_detail_overview.html:68
 msgid "IP Addresses"
 msgstr "IP地址"
 
-#: dashboards/project/instances/templates/instances/_detail_overview.html:87
+#: dashboards/project/instances/templates/instances/_detail_overview.html:93
 msgid "No rules defined."
 msgstr "未定义规则。"
 
-#: dashboards/project/instances/templates/instances/_detail_overview.html:99
+#: dashboards/project/instances/templates/instances/_detail_overview.html:107
 msgid "Key Name"
 msgstr "键名称"
 
-#: dashboards/project/instances/templates/instances/_detail_overview.html:112
+#: dashboards/project/instances/templates/instances/_detail_overview.html:120
 #: dashboards/project/loadbalancers/tables.py:274
 #: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:27
 msgid "N/A"
 msgstr "无"
 
-#: dashboards/project/instances/templates/instances/_detail_overview.html:122
+#: dashboards/project/instances/templates/instances/_detail_overview.html:130
 msgid "Volumes Attached"
 msgstr "云硬盘已连接"
 
-#: dashboards/project/instances/templates/instances/_detail_overview.html:126
+#: dashboards/project/instances/templates/instances/_detail_overview.html:134
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:39
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:47
-#: dashboards/project/volumes/volumes/tables.py:358
+#: dashboards/project/volumes/volumes/tables.py:350
 msgid "Attached To"
 msgstr "连接到"
 
-#: dashboards/project/instances/templates/instances/_detail_overview.html:129
+#: dashboards/project/instances/templates/instances/_detail_overview.html:137
 #, python-format
 msgid ""
 "\n"
@@ -9737,7 +10032,7 @@ msgid ""
 "            "
 msgstr "\n<a href=\"%(volume_url)s\">%(volume_label)s</a> 位于 %(volume_device)s 之上"
 
-#: dashboards/project/instances/templates/instances/_detail_overview.html:135
+#: dashboards/project/instances/templates/instances/_detail_overview.html:143
 msgid "No volumes attached."
 msgstr "未连接云硬盘。"
 
@@ -9834,90 +10129,90 @@ msgstr "在重建云主机时你可以选择设定密码。"
 msgid "Instance Admin Password"
 msgstr "云主机管理员密码"
 
-#: dashboards/project/instances/workflows/create_instance.py:52
+#: dashboards/project/instances/workflows/create_instance.py:53
 msgid "User"
 msgstr "用户"
 
-#: dashboards/project/instances/workflows/create_instance.py:66
+#: dashboards/project/instances/workflows/create_instance.py:67
 msgid "Project & User"
 msgstr "项目 & 用户"
 
-#: dashboards/project/instances/workflows/create_instance.py:87
+#: dashboards/project/instances/workflows/create_instance.py:88
 msgid "Instance Count"
 msgstr "云主机数量"
 
-#: dashboards/project/instances/workflows/create_instance.py:90
+#: dashboards/project/instances/workflows/create_instance.py:91
 msgid "Number of instances to launch."
 msgstr "启动云主机的个数"
 
-#: dashboards/project/instances/workflows/create_instance.py:92
+#: dashboards/project/instances/workflows/create_instance.py:93
 msgid "Instance Boot Source"
 msgstr "云主机启动源 "
 
-#: dashboards/project/instances/workflows/create_instance.py:93
+#: dashboards/project/instances/workflows/create_instance.py:94
 msgid "Choose Your Boot Source Type."
 msgstr "选择你的启动源的类型"
 
-#: dashboards/project/instances/workflows/create_instance.py:96
+#: dashboards/project/instances/workflows/create_instance.py:97
 msgid "Instance Snapshot"
 msgstr "云主机快照"
 
-#: dashboards/project/instances/workflows/create_instance.py:101
+#: dashboards/project/instances/workflows/create_instance.py:102
 msgid "Volume Snapshot"
 msgstr "云硬盘快照"
 
-#: dashboards/project/instances/workflows/create_instance.py:112
+#: dashboards/project/instances/workflows/create_instance.py:113
 msgid "Device size (GB)"
 msgstr "设备大小(GB)"
 
-#: dashboards/project/instances/workflows/create_instance.py:116
+#: dashboards/project/instances/workflows/create_instance.py:117
 msgid "Volume size in gigabytes (integer value)."
 msgstr "云硬盘大小 (GB, 整数)。"
 
-#: dashboards/project/instances/workflows/create_instance.py:119
-#: dashboards/project/volumes/volumes/forms.py:406
+#: dashboards/project/instances/workflows/create_instance.py:120
+#: dashboards/project/volumes/volumes/forms.py:417
 msgid "Device Name"
 msgstr "设备名称"
 
-#: dashboards/project/instances/workflows/create_instance.py:122
+#: dashboards/project/instances/workflows/create_instance.py:123
 msgid ""
 "Volume mount point (e.g. 'vda' mounts at '/dev/vda'). Leave this field blank"
 " to let the system choose a device name for you."
 msgstr "云硬盘挂载点 (例如，设备'vda'挂载于'/dev/vda'路径上)。如果此处不填，则系统将为您自动选择设备名。"
 
-#: dashboards/project/instances/workflows/create_instance.py:128
+#: dashboards/project/instances/workflows/create_instance.py:129
 msgid "Delete on Terminate"
 msgstr "终止后删除"
 
-#: dashboards/project/instances/workflows/create_instance.py:131
+#: dashboards/project/instances/workflows/create_instance.py:132
 msgid "Delete volume on instance terminate"
 msgstr "终止云主机后删除云硬盘"
 
-#: dashboards/project/instances/workflows/create_instance.py:151
+#: dashboards/project/instances/workflows/create_instance.py:152
 msgid "Select source"
 msgstr "选择源"
 
-#: dashboards/project/instances/workflows/create_instance.py:152
+#: dashboards/project/instances/workflows/create_instance.py:153
 msgid "Boot from image"
 msgstr "从镜像启动"
 
-#: dashboards/project/instances/workflows/create_instance.py:153
+#: dashboards/project/instances/workflows/create_instance.py:154
 msgid "Boot from snapshot"
 msgstr "从快照启动"
 
-#: dashboards/project/instances/workflows/create_instance.py:156
+#: dashboards/project/instances/workflows/create_instance.py:157
 msgid "Boot from volume"
 msgstr "从云硬盘启动"
 
-#: dashboards/project/instances/workflows/create_instance.py:163
+#: dashboards/project/instances/workflows/create_instance.py:164
 msgid "Boot from image (creates a new volume)"
 msgstr "从镜像启动 (创建一个新卷)"
 
-#: dashboards/project/instances/workflows/create_instance.py:170
+#: dashboards/project/instances/workflows/create_instance.py:171
 msgid "Boot from volume snapshot (creates a new volume)"
 msgstr "从云硬盘快照启动(创建一个新卷)"
 
-#: dashboards/project/instances/workflows/create_instance.py:181
+#: dashboards/project/instances/workflows/create_instance.py:211
 #, python-format
 msgid ""
 "The requested instance cannot be launched as you only have %(avail)i of your"
@@ -9927,240 +10222,245 @@ msgid_plural ""
 "%(avail)i of your quota available."
 msgstr[0] "申请的 %(req)i 实例无法启动，因为您只剩 %(avail)i 的实例配额。"
 
-#: dashboards/project/instances/workflows/create_instance.py:208
+#: dashboards/project/instances/workflows/create_instance.py:227
 #, python-format
 msgid "Cores(Available: %(avail)s, Requested: %(req)s)"
 msgstr "核(可用: %(avail)s, 已请求: %(req)s)"
 
-#: dashboards/project/instances/workflows/create_instance.py:215
+#: dashboards/project/instances/workflows/create_instance.py:234
 #, python-format
 msgid "RAM(Available: %(avail)s, Requested: %(req)s)"
 msgstr "RAM(可用: %(avail)s, 已请求: %(req)s)"
 
-#: dashboards/project/instances/workflows/create_instance.py:222
+#: dashboards/project/instances/workflows/create_instance.py:241
 #, python-format
 msgid ""
 "The requested instance cannot be launched. The following requested "
 "resource(s) exceed quota(s): %s."
 msgstr "请求的实例无法启动。如下的请求资源超过配额: %s."
 
-#: dashboards/project/instances/workflows/create_instance.py:237
-msgid "You must set volume size"
-msgstr "你必须设置云硬盘的大小"
-
-#: dashboards/project/instances/workflows/create_instance.py:240
-msgid "Volume size must be greater than 0"
-msgstr "卷大小必须大于0"
-
-#: dashboards/project/instances/workflows/create_instance.py:243
-msgid "You must select an image."
-msgstr "你必须选择一个镜像。"
-
-#: dashboards/project/instances/workflows/create_instance.py:266
+#: dashboards/project/instances/workflows/create_instance.py:261
 #, python-format
 msgid ""
 "The flavor '%(flavor)s' is too small for requested image.\n"
 "Minimum requirements: %(min_ram)s MB of RAM and %(min_disk)s GB of Root Disk."
 msgstr "对请求的镜像来说，该类型 '%(flavor)s'太小了。\n最小需求：内存 %(min_ram)s MB，根硬盘 %(min_disk)s GB。"
 
-#: dashboards/project/instances/workflows/create_instance.py:283
+#: dashboards/project/instances/workflows/create_instance.py:282
 #, python-format
 msgid ""
 "The Volume size is too small for the '%(image_name)s' image and has to be "
 "greater than or equal to '%(smallest_size)d' GB."
 msgstr "对于镜像 '%(image_name)s' 来说，卷太小了，必须大于或等于'%(smallest_size)d' GB。"
 
-#: dashboards/project/instances/workflows/create_instance.py:296
-#: dashboards/project/instances/workflows/create_instance.py:313
+#: dashboards/project/instances/workflows/create_instance.py:292
+#: dashboards/project/instances/workflows/create_instance.py:306
+msgid "You must select an image."
+msgstr "你必须选择一个镜像。"
+
+#: dashboards/project/instances/workflows/create_instance.py:300
+msgid "You must set volume size"
+msgstr "你必须设置云硬盘的大小"
+
+#: dashboards/project/instances/workflows/create_instance.py:303
+msgid "Volume size must be greater than 0"
+msgstr "卷大小必须大于0"
+
+#: dashboards/project/instances/workflows/create_instance.py:317
+#: dashboards/project/instances/workflows/create_instance.py:335
 msgid "You must select a snapshot."
 msgstr "你必须选择一个快照"
 
-#: dashboards/project/instances/workflows/create_instance.py:301
+#: dashboards/project/instances/workflows/create_instance.py:322
 msgid "You must select a volume."
 msgstr "你必须选择一个云硬盘。"
 
-#: dashboards/project/instances/workflows/create_instance.py:307
+#: dashboards/project/instances/workflows/create_instance.py:329
 msgid ""
 "Launching multiple instances is only supported for images and instance "
 "snapshots."
 msgstr "只支持从镜像和云主机快照同时创建多个云主机"
 
-#: dashboards/project/instances/workflows/create_instance.py:330
-#: dashboards/project/volumes/volumes/forms.py:273
+#: dashboards/project/instances/workflows/create_instance.py:372
+#: dashboards/project/volumes/volumes/forms.py:285
 msgid "Unable to retrieve availability zones."
 msgstr "无法获取可用域。"
 
-#: dashboards/project/instances/workflows/create_instance.py:336
-#: dashboards/project/volumes/volumes/forms.py:276
+#: dashboards/project/instances/workflows/create_instance.py:378
+#: dashboards/project/volumes/volumes/forms.py:288
 msgid "No availability zones found"
 msgstr "找不到可用域。"
 
-#: dashboards/project/instances/workflows/create_instance.py:338
-#: dashboards/project/volumes/volumes/forms.py:278
+#: dashboards/project/instances/workflows/create_instance.py:380
+#: dashboards/project/volumes/volumes/forms.py:290
 msgid "Any Availability Zone"
 msgstr "任何可用域"
 
-#: dashboards/project/instances/workflows/create_instance.py:360
-#: dashboards/project/instances/workflows/resize_instance.py:76
+#: dashboards/project/instances/workflows/create_instance.py:402
+#: dashboards/project/instances/workflows/resize_instance.py:77
 #: usage/base.py:237
 msgid "Unable to retrieve quota information."
 msgstr "无法获取配额信息。"
 
-#: dashboards/project/instances/workflows/create_instance.py:370
-#: dashboards/project/volumes/volumes/forms.py:196
+#: dashboards/project/instances/workflows/create_instance.py:412
+#: dashboards/project/volumes/volumes/forms.py:192
 msgid "Snapshot"
 msgstr "快照"
 
-#: dashboards/project/instances/workflows/create_instance.py:375
+#: dashboards/project/instances/workflows/create_instance.py:417
 #, python-format
 msgid "%(name)s - %(size)s GB (%(label)s)"
 msgstr "%(name)s - %(size)s GB (%(label)s)"
 
-#: dashboards/project/instances/workflows/create_instance.py:409
+#: dashboards/project/instances/workflows/create_instance.py:451
 msgid "Select Instance Snapshot"
 msgstr "选择云主机快照"
 
-#: dashboards/project/instances/workflows/create_instance.py:411
+#: dashboards/project/instances/workflows/create_instance.py:453
 msgid "No snapshots available"
 msgstr "无可用快照"
 
-#: dashboards/project/instances/workflows/create_instance.py:423
-#: dashboards/project/volumes/volumes/forms.py:291
+#: dashboards/project/instances/workflows/create_instance.py:466
+#: dashboards/project/volumes/volumes/forms.py:302
 msgid "Unable to retrieve list of volumes."
 msgstr "无法取回云硬盘列表。"
 
-#: dashboards/project/instances/workflows/create_instance.py:425
+#: dashboards/project/instances/workflows/create_instance.py:468
 #: dashboards/project/volumes/backups/forms.py:69
 msgid "Select Volume"
 msgstr "选择云硬盘"
 
-#: dashboards/project/instances/workflows/create_instance.py:427
+#: dashboards/project/instances/workflows/create_instance.py:470
 msgid "No volumes available"
 msgstr "没有可用云硬盘。"
 
-#: dashboards/project/instances/workflows/create_instance.py:438
+#: dashboards/project/instances/workflows/create_instance.py:483
 msgid "Unable to retrieve list of volume snapshots."
 msgstr "无法取回云硬盘快照列表。"
 
-#: dashboards/project/instances/workflows/create_instance.py:441
+#: dashboards/project/instances/workflows/create_instance.py:486
 msgid "Select Volume Snapshot"
 msgstr "选择云硬盘快照"
 
-#: dashboards/project/instances/workflows/create_instance.py:443
+#: dashboards/project/instances/workflows/create_instance.py:488
 msgid "No volume snapshots available"
 msgstr "没有可用的云硬盘快照。"
 
-#: dashboards/project/instances/workflows/create_instance.py:486
+#: dashboards/project/instances/workflows/create_instance.py:531
 msgid "Key pair to use for authentication."
 msgstr "认证使用密钥对"
 
-#: dashboards/project/instances/workflows/create_instance.py:490
+#: dashboards/project/instances/workflows/create_instance.py:535
 msgid "Admin Password"
 msgstr "管理员密码"
 
-#: dashboards/project/instances/workflows/create_instance.py:496
+#: dashboards/project/instances/workflows/create_instance.py:541
 msgid "Confirm Admin Password"
 msgstr "确认管理员密码"
 
-#: dashboards/project/instances/workflows/create_instance.py:502
+#: dashboards/project/instances/workflows/create_instance.py:547
 msgid "Launch instance in these security groups."
 msgstr "在这些安全组中启动云主机。"
 
-#: dashboards/project/instances/workflows/create_instance.py:507
+#: dashboards/project/instances/workflows/create_instance.py:552
 msgid ""
 "Control access to your instance via key pairs, security groups, and other "
 "mechanisms."
 msgstr "通过密钥对、防火墙、和其它机制控制你的云主机权限"
 
-#: dashboards/project/instances/workflows/create_instance.py:523
+#: dashboards/project/instances/workflows/create_instance.py:568
 msgid "Unable to retrieve key pairs."
 msgstr "找不到密钥对。"
 
-#: dashboards/project/instances/workflows/create_instance.py:527
+#: dashboards/project/instances/workflows/create_instance.py:572
 msgid "Select a key pair"
 msgstr "选择一个密钥对"
 
-#: dashboards/project/instances/workflows/create_instance.py:529
+#: dashboards/project/instances/workflows/create_instance.py:574
 msgid "No key pairs available"
 msgstr "没有有效的密钥对"
 
-#: dashboards/project/instances/workflows/create_instance.py:538
+#: dashboards/project/instances/workflows/create_instance.py:583
 msgid "Unable to retrieve list of security groups"
 msgstr "无法获取安全组列表"
 
-#: dashboards/project/instances/workflows/create_instance.py:570
+#: dashboards/project/instances/workflows/create_instance.py:615
 msgid "Post-Creation"
 msgstr "创建后"
 
-#: dashboards/project/instances/workflows/create_instance.py:574
+#: dashboards/project/instances/workflows/create_instance.py:619
+msgid "Select Script Source"
+msgstr ""
+
+#: dashboards/project/instances/workflows/create_instance.py:620
 #: dashboards/project/stacks/forms.py:58
 msgid "Direct Input"
 msgstr "直接输入"
 
-#: dashboards/project/instances/workflows/create_instance.py:578
+#: dashboards/project/instances/workflows/create_instance.py:624
 msgid "Customization Script Source"
 msgstr "定制脚本源"
 
-#: dashboards/project/instances/workflows/create_instance.py:582
+#: dashboards/project/instances/workflows/create_instance.py:629
 msgid ""
 "A script or set of commands to be executed after the instance has been built"
 " (max 16kb)."
 msgstr "在云主机创建后执行的一段脚本或者一组命令(最大16KB)。"
 
-#: dashboards/project/instances/workflows/create_instance.py:586
-#: dashboards/project/instances/workflows/create_instance.py:591
+#: dashboards/project/instances/workflows/create_instance.py:633
+#: dashboards/project/instances/workflows/create_instance.py:638
 msgid "Script File"
 msgstr "脚本文件"
 
-#: dashboards/project/instances/workflows/create_instance.py:595
-#: dashboards/project/instances/workflows/create_instance.py:600
+#: dashboards/project/instances/workflows/create_instance.py:642
+#: dashboards/project/instances/workflows/create_instance.py:647
 msgid "Script Data"
 msgstr "脚本数据"
 
-#: dashboards/project/instances/workflows/create_instance.py:627
+#: dashboards/project/instances/workflows/create_instance.py:674
 msgid "File exceeds maximum size (16kb)"
 msgstr "文件超出最大值 (16kb)"
 
-#: dashboards/project/instances/workflows/create_instance.py:635
+#: dashboards/project/instances/workflows/create_instance.py:682
 #: dashboards/project/stacks/forms.py:187
 #, python-format
 msgid "There was a problem parsing the %(prefix)s: %(error)s"
 msgstr "解析%(prefix)s遇到问题: %(error)s"
 
-#: dashboards/project/instances/workflows/create_instance.py:662
+#: dashboards/project/instances/workflows/create_instance.py:709
 msgid "Policy Profiles"
 msgstr "策略概要"
 
-#: dashboards/project/instances/workflows/create_instance.py:665
+#: dashboards/project/instances/workflows/create_instance.py:712
 msgid "Launch instance with this policy profile"
 msgstr "使用这个策略概要来启动云主机"
 
-#: dashboards/project/instances/workflows/create_instance.py:740
+#: dashboards/project/instances/workflows/create_instance.py:787
 msgid ""
 "Automatic: The entire disk is a single partition and automatically resizes. "
 "Manual: Results in faster build times but requires manual partitioning."
 msgstr "自动：整个磁盘是一个独立分区，并且自动调整大小。手动：更快创建时间，但需要手动分区。"
 
-#: dashboards/project/instances/workflows/create_instance.py:744
+#: dashboards/project/instances/workflows/create_instance.py:791
 msgid "Configuration Drive"
 msgstr "配置驱动器"
 
-#: dashboards/project/instances/workflows/create_instance.py:745
+#: dashboards/project/instances/workflows/create_instance.py:792
 msgid ""
 "Configure OpenStack to write metadata to a special configuration drive that "
 "attaches to the instance when it boots."
 msgstr "配置OpenStack，将元数据写入某个指定的配置驱动器中，在实例启动时附加到实例上。"
 
-#: dashboards/project/instances/workflows/create_instance.py:771
+#: dashboards/project/instances/workflows/create_instance.py:818
 msgid "Advanced Options"
 msgstr "高级选项"
 
-#: dashboards/project/instances/workflows/create_instance.py:809
+#: dashboards/project/instances/workflows/create_instance.py:856
 #, python-format
 msgid "%s instances"
 msgstr "%s 云主机"
 
-#: dashboards/project/instances/workflows/create_instance.py:869
+#: dashboards/project/instances/workflows/create_instance.py:916
 #, python-format
 msgid "Port not created for profile-id (%s)."
 msgstr "无法为概要(标识符为%s)创建端口"
@@ -10193,16 +10493,16 @@ msgstr "选择一个新的云主机类型"
 msgid "No flavors available"
 msgstr "没有可用的云主机类型。"
 
-#: dashboards/project/instances/workflows/resize_instance.py:89
+#: dashboards/project/instances/workflows/resize_instance.py:90
 msgid "Resize"
 msgstr "调整大小"
 
-#: dashboards/project/instances/workflows/resize_instance.py:90
+#: dashboards/project/instances/workflows/resize_instance.py:91
 #, python-format
 msgid "Scheduled resize of instance \"%s\"."
 msgstr "定期调整实例\"%s\"."
 
-#: dashboards/project/instances/workflows/resize_instance.py:91
+#: dashboards/project/instances/workflows/resize_instance.py:92
 #, python-format
 msgid "Unable to resize instance \"%s\"."
 msgstr "无法为云主机 \"%s\" 调整大小。"
@@ -10491,12 +10791,6 @@ msgstr "无法获取健康监控。"
 #: dashboards/project/loadbalancers/workflows.py:729
 msgid "Disassociate Monitor"
 msgstr "解除监控关联"
-
-#: dashboards/project/loadbalancers/tables.py:273
-#: dashboards/project/loadbalancers/workflows.py:42
-#: dashboards/project/loadbalancers/templates/loadbalancers/_pool_details.html:26
-msgid "Provider"
-msgstr "提供者"
 
 #: dashboards/project/loadbalancers/tables.py:275
 #: dashboards/project/loadbalancers/workflows.py:43
@@ -11097,7 +11391,7 @@ msgid "Launch Instance (Quota exceeded)"
 msgstr "启动实例 (配额用尽)"
 
 #: dashboards/project/network_topology/templates/network_topology/index.html:31
-#: dashboards/project/networks/tables.py:97
+#: dashboards/project/networks/tables.py:98
 msgid "Create Network (Quota exceeded)"
 msgstr "创建网络 (配额用尽)"
 
@@ -11110,18 +11404,23 @@ msgstr "创建路由 (配额用尽)"
 msgid "There are no networks, routers, or connected instances to display."
 msgstr "没有可以显示的网络，路由或者连接的云主机。"
 
-#: dashboards/project/networks/tables.py:118
-#: dashboards/project/networks/tables.py:132
+#: dashboards/project/networks/tables.py:119
+#: dashboards/project/networks/tables.py:133
 msgid "Add Subnet"
 msgstr "增加子网"
 
-#: dashboards/project/networks/tables.py:130
+#: dashboards/project/networks/tables.py:131
 msgid "Add Subnet (Quota exceeded)"
 msgstr "添加子网 (配额用尽)"
 
 #: dashboards/project/networks/views.py:85
 msgid "Unable to retrieve network details."
 msgstr "无法获取wangluo详情"
+
+#: dashboards/project/networks/views.py:145
+#, python-format
+msgid "Network Details: %(network_name)s"
+msgstr ""
 
 #: dashboards/project/networks/workflows.py:50
 msgid "The state to start the network in."
@@ -11240,8 +11539,8 @@ msgstr "主机增加额外的路由. 每条记录是：目的CIDR, 下一跳(例
 #: dashboards/project/networks/subnets/workflows.py:150
 #: dashboards/project/networks/templates/networks/subnets/detail.html:3
 #: dashboards/project/networks/templates/networks/subnets/detail.html:6
-msgid "Subnet Detail"
-msgstr "子网详情"
+msgid "Subnet Details"
+msgstr ""
 
 #: dashboards/project/networks/workflows.py:256
 #: dashboards/project/networks/subnets/workflows.py:151
@@ -11320,15 +11619,27 @@ msgstr "创建子网时删除网络\"%s\"失败"
 msgid "Failed to delete network \"%s\""
 msgstr "删除网络失败\"%s\""
 
-#: dashboards/project/networks/ports/tables.py:35
+#: dashboards/project/networks/ports/tables.py:36
 msgid "Attached"
 msgstr "连接"
 
-#: dashboards/project/networks/ports/tables.py:37
+#: dashboards/project/networks/ports/tables.py:38
 msgid "Detached"
 msgstr "断开"
 
-#: dashboards/project/networks/ports/tables.py:58
+#: dashboards/project/networks/ports/tables.py:55
+#: dashboards/project/routers/ports/tables.py:94
+msgctxt "Admin state of a Port"
+msgid "UP"
+msgstr ""
+
+#: dashboards/project/networks/ports/tables.py:56
+#: dashboards/project/routers/ports/tables.py:95
+msgctxt "Admin state of a Port"
+msgid "DOWN"
+msgstr ""
+
+#: dashboards/project/networks/ports/tables.py:65
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:40
 msgid "Attached Device"
 msgstr "连接设备"
@@ -11374,8 +11685,8 @@ msgstr "指定“网络地址”"
 #: dashboards/project/networks/subnets/workflows.py:39
 msgid ""
 "Create a subnet associated with the network. Advanced configuration is "
-"available by clicking on the \"Subnet Detail\" tab."
-msgstr "创建网络关联的子网。点击\"子网详情\"选项卡可以进行高级配置。"
+"available by clicking on the \"Subnet Details\" tab."
+msgstr ""
 
 #: dashboards/project/networks/subnets/workflows.py:58
 #, python-format
@@ -11405,8 +11716,8 @@ msgstr "网关IP地址(例如 192.168.0.254)。为网关指定明确的地址。
 #: dashboards/project/networks/subnets/workflows.py:117
 msgid ""
 "Update a subnet associated with the network. Advanced configuration are "
-"available at \"Subnet Detail\" tab."
-msgstr "更新网络关联的子网。点击\"子网详情\"选项卡可以进行高级配置。"
+"available at \"Subnet Details\" tab."
+msgstr ""
 
 #: dashboards/project/networks/subnets/workflows.py:162
 #, python-format
@@ -11462,10 +11773,6 @@ msgstr "返回"
 msgid "Next"
 msgstr "下一步"
 
-#: dashboards/project/networks/templates/networks/detail.html:6
-msgid "Network Detail: "
-msgstr "网络详情:"
-
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:4
 msgid "Port Overview"
 msgstr "端口概览"
@@ -11493,8 +11800,8 @@ msgstr "没有挂载设备"
 
 #: dashboards/project/networks/templates/networks/ports/detail.html:3
 #: dashboards/project/networks/templates/networks/ports/detail.html:6
-msgid "Port Detail"
-msgstr "端口详情"
+msgid "Port Details"
+msgstr ""
 
 #: dashboards/project/networks/templates/networks/subnets/_detail_overview.html:4
 msgid "Subnet Overview"
@@ -11800,32 +12107,32 @@ msgstr "已新增网关接口"
 msgid "Failed to set gateway %s"
 msgstr "设置网关%s失败"
 
-#: dashboards/project/routers/ports/tables.py:33
+#: dashboards/project/routers/ports/tables.py:34
 msgid "External Gateway"
 msgstr "外部网关"
 
-#: dashboards/project/routers/ports/tables.py:35
+#: dashboards/project/routers/ports/tables.py:36
 msgid "Internal Interface"
 msgstr "内部接口"
 
-#: dashboards/project/routers/ports/tables.py:42
+#: dashboards/project/routers/ports/tables.py:43
 #: dashboards/project/routers/templates/routers/ports/_create.html:9
 #: dashboards/project/routers/templates/routers/ports/create.html:3
 #: dashboards/project/routers/templates/routers/ports/create.html:6
 msgid "Add Interface"
 msgstr "增加接口"
 
-#: dashboards/project/routers/ports/tables.py:57
+#: dashboards/project/routers/ports/tables.py:58
 msgid "Delete Interface"
 msgid_plural "Delete Interfaces"
 msgstr[0] "删除接口"
 
-#: dashboards/project/routers/ports/tables.py:65
+#: dashboards/project/routers/ports/tables.py:66
 msgid "Deleted Interface"
 msgid_plural "Deleted Interfaces"
 msgstr[0] "已删除接口"
 
-#: dashboards/project/routers/ports/tables.py:84
+#: dashboards/project/routers/ports/tables.py:85
 #, python-format
 msgid "Failed to delete interface %s"
 msgstr "删除接口%s失败"
@@ -11906,11 +12213,11 @@ msgstr "动作"
 #: dashboards/project/routers/templates/routers/extensions/routerrules/grid.html:123
 msgid ""
 "The color and icon of an intersection indicates whether or not traffic is permitted from the source (row) to the destination (column).\n"
-"     Clicking the <i class=\"icon-random\"></i> button in the intersection will install a rule to switch the traffic behavior.<br/>\n"
+"     Clicking the <i class=\"fa fa-random\"></i> button in the intersection will install a rule to switch the traffic behavior.<br/>\n"
 "\n"
 "     <b>Note:</b> Rules only affect one direction of traffic. The opposite direction is outlined when hovering over an intersection.\n"
 " "
-msgstr "交叉点的颜色和图标指示了从来源(行)到目标(列)的流量是否允许。\n点击交叉点的<i class=\"icon-random\"></i>按钮，将安装一个规则，用于改变流量行为。<br/>\n\n<b>注意：</b>规则只影响一个方向的流量。当鼠标悬停在交叉点上时，反方向的流量行为将被展示。\n "
+msgstr ""
 
 #: dashboards/project/routers/templates/routers/ports/_create.html:20
 msgid "You can connect a specified subnet to the router."
@@ -12030,7 +12337,7 @@ msgstr "栈ID"
 #: dashboards/project/stacks/forms.py:233
 #: dashboards/project/stacks/forms.py:257
 #: dashboards/project/stacks/forms.py:382
-#: dashboards/project/stacks/tables.py:101
+#: dashboards/project/stacks/tables.py:105
 msgid "Stack Name"
 msgstr "栈名"
 
@@ -12090,7 +12397,7 @@ msgid "Stack update started."
 msgstr "开始更新栈。"
 
 #: dashboards/project/stacks/panel.py:21
-#: dashboards/project/stacks/tables.py:122
+#: dashboards/project/stacks/tables.py:126
 #: dashboards/project/stacks/templates/stacks/index.html:3
 #: dashboards/project/stacks/templates/stacks/index.html:6
 msgid "Stacks"
@@ -12117,39 +12424,39 @@ msgid "Deleted Stack"
 msgid_plural "Deleted Stacks"
 msgstr[0] "已删除堆栈"
 
-#: dashboards/project/stacks/tables.py:139
-#: dashboards/project/stacks/tables.py:184
+#: dashboards/project/stacks/tables.py:143
+#: dashboards/project/stacks/tables.py:188
 msgid "Stack Resource"
 msgstr "栈资源"
 
-#: dashboards/project/stacks/tables.py:142
-#: dashboards/project/stacks/tables.py:187
+#: dashboards/project/stacks/tables.py:146
+#: dashboards/project/stacks/tables.py:191
 msgid "Resource"
 msgstr "资源"
 
-#: dashboards/project/stacks/tables.py:145
+#: dashboards/project/stacks/tables.py:149
 msgid "Time Since Event"
 msgstr "事件后时间"
 
-#: dashboards/project/stacks/tables.py:153
-#: dashboards/project/stacks/tables.py:202
+#: dashboards/project/stacks/tables.py:157
+#: dashboards/project/stacks/tables.py:206
 msgid "Status Reason"
 msgstr "状态原因"
 
-#: dashboards/project/stacks/tables.py:157
+#: dashboards/project/stacks/tables.py:161
 msgid "Stack Events"
 msgstr "栈事件"
 
-#: dashboards/project/stacks/tables.py:190
+#: dashboards/project/stacks/tables.py:194
 #: dashboards/project/stacks/templates/stacks/_resource_overview.html:25
 msgid "Stack Resource Type"
 msgstr "栈资源类型"
 
-#: dashboards/project/stacks/tables.py:192
+#: dashboards/project/stacks/tables.py:196
 msgid "Date Updated"
 msgstr "日期已更新"
 
-#: dashboards/project/stacks/tables.py:215
+#: dashboards/project/stacks/tables.py:219
 msgid "Stack Resources"
 msgstr "栈资源"
 
@@ -12181,19 +12488,29 @@ msgstr "无法获取栈列表。"
 
 #: dashboards/project/stacks/views.py:113
 #: dashboards/project/stacks/views.py:190
-#: dashboards/project/stacks/views.py:218
+#: dashboards/project/stacks/views.py:221
 msgid "Unable to retrieve stack."
 msgstr "无法获取栈。"
 
-#: dashboards/project/stacks/views.py:229
+#: dashboards/project/stacks/views.py:207
+#, python-format
+msgid "Stack Details: %(stack_name)s"
+msgstr ""
+
+#: dashboards/project/stacks/views.py:232
 msgid "Unable to retrieve stack template."
 msgstr "无法获取栈模板。"
 
-#: dashboards/project/stacks/views.py:262
+#: dashboards/project/stacks/views.py:255
+#, python-format
+msgid "Resource Details: %s"
+msgstr ""
+
+#: dashboards/project/stacks/views.py:267
 msgid "Unable to retrieve resource."
 msgstr "无法获取资源。"
 
-#: dashboards/project/stacks/views.py:275
+#: dashboards/project/stacks/views.py:280
 msgid "Unable to retrieve metadata."
 msgstr "无法获取元数据。"
 
@@ -12279,20 +12596,12 @@ msgid "Change Template"
 msgstr "更改模板"
 
 #: dashboards/project/stacks/templates/stacks/detail.html:3
-msgid "Stack Detail"
-msgstr "栈详情"
-
-#: dashboards/project/stacks/templates/stacks/detail.html:6
-msgid "Stack Detail: "
-msgstr "栈详情："
+msgid "Stack Details"
+msgstr ""
 
 #: dashboards/project/stacks/templates/stacks/resource.html:3
-msgid "Resource Detail"
-msgstr "资源详情"
-
-#: dashboards/project/stacks/templates/stacks/resource.html:6
-msgid "Resource Detail: "
-msgstr "资源详情："
+msgid "Resource Details"
+msgstr ""
 
 #: dashboards/project/stacks/templates/stacks/update.html:6
 msgid "Update Stack"
@@ -12306,13 +12615,17 @@ msgstr "无法获取云硬盘列表"
 msgid "Unable to retrieve volume/instance attachment information"
 msgstr "无法获取云硬盘/云主机附加信息"
 
-#: dashboards/project/volumes/tabs.py:104
+#: dashboards/project/volumes/tabs.py:62
+msgid "Unable to retrieve snapshot list."
+msgstr ""
+
+#: dashboards/project/volumes/tabs.py:127
 #: dashboards/project/volumes/backups/tables.py:48
 #: dashboards/project/volumes/backups/tables.py:126
 msgid "Volume Backups"
 msgstr "卷备份"
 
-#: dashboards/project/volumes/tabs.py:121
+#: dashboards/project/volumes/tabs.py:144
 msgid "Unable to retrieve volume backups."
 msgstr "无法获取卷备份。"
 
@@ -12358,9 +12671,14 @@ msgid "Scheduled deletion of %(data_type)s"
 msgstr "已计划删除%(data_type)s"
 
 #: dashboards/project/volumes/backups/tabs.py:41
-#: dashboards/project/volumes/backups/views.py:67
+#: dashboards/project/volumes/backups/views.py:70
 msgid "Unable to retrieve backup details."
 msgstr "无法获取卷备份详细信息。"
+
+#: dashboards/project/volumes/backups/views.py:56
+#, python-format
+msgid "Volume Backup Details: %(backup_name)s"
+msgstr ""
 
 #: dashboards/project/volumes/snapshots/forms.py:39
 #, python-format
@@ -12390,9 +12708,14 @@ msgid "Edit Snapshot"
 msgstr "编辑快照"
 
 #: dashboards/project/volumes/snapshots/tabs.py:36
-#: dashboards/project/volumes/snapshots/views.py:83
+#: dashboards/project/volumes/snapshots/views.py:86
 msgid "Unable to retrieve snapshot details."
 msgstr "无法获取快照详情"
+
+#: dashboards/project/volumes/snapshots/views.py:72
+#, python-format
+msgid "Volume Snapshot Details: %(snapshot_name)s"
+msgstr ""
 
 #: dashboards/project/volumes/templates/volumes/backups/_create_backup.html:9
 #: dashboards/project/volumes/templates/volumes/backups/_create_backup.html:24
@@ -12451,14 +12774,6 @@ msgstr "创建一个卷备份"
 msgid "Volume Backup Details"
 msgstr "卷备份详情"
 
-#: dashboards/project/volumes/templates/volumes/backups/detail.html:6
-msgid "Volume Backup Details: "
-msgstr "卷备份详情："
-
-#: dashboards/project/volumes/templates/volumes/backups/detail.html:6
-msgid "Volume Backup Details:"
-msgstr "卷备份详情："
-
 #: dashboards/project/volumes/templates/volumes/backups/restore_backup.html:6
 msgid "Restore a Volume Backup"
 msgstr "还原一个卷备份"
@@ -12470,14 +12785,6 @@ msgstr "编辑快照的名称和描述"
 #: dashboards/project/volumes/templates/volumes/snapshots/detail.html:3
 msgid "Volume Snapshot Details"
 msgstr "云硬盘快照详情"
-
-#: dashboards/project/volumes/templates/volumes/snapshots/detail.html:6
-msgid "Volume Snapshot Details: "
-msgstr "云硬盘快照详情："
-
-#: dashboards/project/volumes/templates/volumes/snapshots/detail.html:6
-msgid "Volume Snapshot Details:"
-msgstr "云硬盘快照详情："
 
 #: dashboards/project/volumes/templates/volumes/volumes/_attach.html:10
 #: dashboards/project/volumes/templates/volumes/volumes/attach.html:3
@@ -12508,7 +12815,7 @@ msgid "Volume Overview"
 msgstr "云硬盘概览"
 
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:35
-#: dashboards/project/volumes/volumes/tables.py:442
+#: dashboards/project/volumes/volumes/tables.py:434
 msgid "Attachments"
 msgstr "连接的设备"
 
@@ -12533,7 +12840,7 @@ msgstr "云硬盘源自"
 #: dashboards/project/volumes/templates/volumes/volumes/_extend.html:24
 #: dashboards/project/volumes/templates/volumes/volumes/extend.html:3
 #: dashboards/project/volumes/templates/volumes/volumes/extend.html:6
-#: dashboards/project/volumes/volumes/tables.py:138
+#: dashboards/project/volumes/volumes/tables.py:131
 msgid "Extend Volume"
 msgstr "扩展云硬盘"
 
@@ -12563,7 +12870,7 @@ msgstr "云硬盘数量"
 #: dashboards/project/volumes/templates/volumes/volumes/_retype.html:39
 #: dashboards/project/volumes/templates/volumes/volumes/retype.html:3
 #: dashboards/project/volumes/templates/volumes/volumes/retype.html:6
-#: dashboards/project/volumes/volumes/tables.py:238
+#: dashboards/project/volumes/volumes/tables.py:231
 msgid "Change Volume Type"
 msgstr "修改卷类型"
 
@@ -12608,7 +12915,7 @@ msgstr "快照数量"
 #: dashboards/project/volumes/templates/volumes/volumes/_update.html:24
 #: dashboards/project/volumes/templates/volumes/volumes/update.html:3
 #: dashboards/project/volumes/templates/volumes/volumes/update.html:6
-#: dashboards/project/volumes/volumes/tables.py:226
+#: dashboards/project/volumes/volumes/tables.py:219
 msgid "Edit Volume"
 msgstr "编辑卷"
 
@@ -12670,233 +12977,233 @@ msgstr "将云硬盘作为源"
 msgid "Size (GB)"
 msgstr "大小(GB)"
 
-#: dashboards/project/volumes/volumes/forms.py:101
-msgid "No volume type"
-msgstr "未设置卷类型"
-
-#: dashboards/project/volumes/volumes/forms.py:121
+#: dashboards/project/volumes/volumes/forms.py:114
 #, python-format
 msgid "Volume size must be equal to or greater than the snapshot size (%sGB)"
 msgstr "云硬盘大小必须大于等于快照大小(%sGB)"
 
-#: dashboards/project/volumes/volumes/forms.py:129
+#: dashboards/project/volumes/volumes/forms.py:122
 msgid "Unable to load the specified snapshot."
 msgstr "无法读取指定kuaiz"
 
-#: dashboards/project/volumes/volumes/forms.py:140
+#: dashboards/project/volumes/volumes/forms.py:134
 #, python-format
 msgid "Volume size must be equal to or greater than the image size (%s)"
 msgstr "云硬盘大小必须等于或大于镜像大小(%s)"
 
-#: dashboards/project/volumes/volumes/forms.py:148
+#: dashboards/project/volumes/volumes/forms.py:142
 #, python-format
 msgid ""
 "Volume size must be equal to or greater than the image minimum disk size "
 "(%sGB)"
 msgstr "云硬盘大小必须大于等于快照大小(%sGB)"
 
-#: dashboards/project/volumes/volumes/forms.py:159
+#: dashboards/project/volumes/volumes/forms.py:153
 #, python-format
 msgid "Unable to load the specified image. %s"
 msgstr "无法加载指定的镜像。%s"
 
-#: dashboards/project/volumes/volumes/forms.py:168
+#: dashboards/project/volumes/volumes/forms.py:163
 #, python-format
 msgid "Unable to load the specified volume. %s"
 msgstr "无法加载指定云硬盘. %s"
 
-#: dashboards/project/volumes/volumes/forms.py:175
+#: dashboards/project/volumes/volumes/forms.py:170
 #, python-format
 msgid ""
 "Volume size must be equal to or greater than the origin volume size (%s)"
 msgstr "云硬盘大小必须大于等于原始大小(%s)"
 
-#: dashboards/project/volumes/volumes/forms.py:197
+#: dashboards/project/volumes/volumes/forms.py:193
 msgid "Choose a snapshot"
 msgstr "选择快照"
 
-#: dashboards/project/volumes/volumes/forms.py:210
+#: dashboards/project/volumes/volumes/forms.py:206
 msgid "Choose an image"
 msgstr "选择一个镜像"
 
-#: dashboards/project/volumes/volumes/forms.py:222
+#: dashboards/project/volumes/volumes/forms.py:218
 msgid "Choose a volume"
 msgstr "选择云硬盘"
 
-#: dashboards/project/volumes/volumes/forms.py:231
+#: dashboards/project/volumes/volumes/forms.py:227
 msgid "No source, empty volume"
 msgstr "没有源，空白云硬盘。"
 
-#: dashboards/project/volumes/volumes/forms.py:242
+#: dashboards/project/volumes/volumes/forms.py:236
+msgid "No volume type"
+msgstr "未设置卷类型"
+
+#: dashboards/project/volumes/volumes/forms.py:254
 msgid "Image source must be specified"
 msgstr "镜像源必须被指定"
 
-#: dashboards/project/volumes/volumes/forms.py:246
+#: dashboards/project/volumes/volumes/forms.py:258
 msgid "Snapshot source must be specified"
 msgstr "快照源必须被指定"
 
-#: dashboards/project/volumes/volumes/forms.py:250
+#: dashboards/project/volumes/volumes/forms.py:262
 msgid "Volume source must be specified"
 msgstr "卷的源必须被指定"
 
-#: dashboards/project/volumes/volumes/forms.py:259
+#: dashboards/project/volumes/volumes/forms.py:271
 msgid "Unable to determine if availability zones extension is supported."
 msgstr "无法确定可用域是否支持扩展"
 
-#: dashboards/project/volumes/volumes/forms.py:313
+#: dashboards/project/volumes/volumes/forms.py:324
 #, python-format
 msgid "The volume size cannot be less than the snapshot size (%sGB)"
 msgstr "云硬盘大小不能小于快照(%sGB)"
 
-#: dashboards/project/volumes/volumes/forms.py:326
+#: dashboards/project/volumes/volumes/forms.py:337
 #, python-format
 msgid "The volume size cannot be less than the image size (%s)"
 msgstr "云硬盘大小不得小于镜像大小 (%s)"
 
-#: dashboards/project/volumes/volumes/forms.py:334
+#: dashboards/project/volumes/volumes/forms.py:345
 #, python-format
 msgid "The volume size cannot be less than the image minimum disk size (%sGB)"
 msgstr "云硬盘大小不能小于镜像最小磁盘要求(%sGB)"
 
-#: dashboards/project/volumes/volumes/forms.py:345
+#: dashboards/project/volumes/volumes/forms.py:356
 #, python-format
 msgid "The volume size cannot be less than the source volume size (%sGB)"
 msgstr "云硬盘大小不得小于原始云硬盘大小 (%sGB)"
 
-#: dashboards/project/volumes/volumes/forms.py:354
+#: dashboards/project/volumes/volumes/forms.py:365
 #, python-format
 msgid ""
 "A volume of %(req)iGB cannot be created as you only have %(avail)iGB of your"
 " quota available."
 msgstr "申请容量%(req)iGB的云硬盘无法创建，因为您只剩%(avail)iGB的容量配额。"
 
-#: dashboards/project/volumes/volumes/forms.py:361
+#: dashboards/project/volumes/volumes/forms.py:372
 msgid "You are already using all of your available volumes."
 msgstr "所有可用云硬盘已使用完"
 
-#: dashboards/project/volumes/volumes/forms.py:377
+#: dashboards/project/volumes/volumes/forms.py:388
 #, python-format
 msgid "Creating volume \"%s\""
 msgstr "正在创建云硬盘 \"%s\""
 
-#: dashboards/project/volumes/volumes/forms.py:385
+#: dashboards/project/volumes/volumes/forms.py:396
 msgid "Unable to create volume."
 msgstr "不能创建云硬盘。"
 
-#: dashboards/project/volumes/volumes/forms.py:402
+#: dashboards/project/volumes/volumes/forms.py:413
 msgid "Attach to Instance"
 msgstr "连接到云主机"
 
-#: dashboards/project/volumes/volumes/forms.py:403
+#: dashboards/project/volumes/volumes/forms.py:414
 msgid "Select an instance to attach to."
 msgstr "选择要连接到的云主机。"
 
-#: dashboards/project/volumes/volumes/forms.py:410
+#: dashboards/project/volumes/volumes/forms.py:421
 msgid ""
 "Actual device name may differ due to hypervisor settings. If not specified, "
 "then hypervisor will select a device name."
 msgstr "由于管理程序配置，实际设备名称可能不同。如果没有指定，那么管理程序会选择一个设备名称。"
 
-#: dashboards/project/volumes/volumes/forms.py:449
+#: dashboards/project/volumes/volumes/forms.py:460
 msgid "Unknown instance (None)"
 msgstr "未知的云主机名(None)"
 
-#: dashboards/project/volumes/volumes/forms.py:459
+#: dashboards/project/volumes/volumes/forms.py:470
 #, python-format
 msgid "Attaching volume %(vol)s to instance %(inst)s on %(dev)s."
 msgstr "正在设备 %(dev)s上为主机 %(inst)s 连接云硬盘%(vol)s"
 
-#: dashboards/project/volumes/volumes/forms.py:468
+#: dashboards/project/volumes/volumes/forms.py:479
 msgid "Unable to attach volume."
 msgstr "无法连接云硬盘"
 
-#: dashboards/project/volumes/volumes/forms.py:492
+#: dashboards/project/volumes/volumes/forms.py:503
 #, python-format
 msgid "Creating volume snapshot \"%s\"."
 msgstr "正在创建快照 \"%s\"。"
 
-#: dashboards/project/volumes/volumes/forms.py:495
+#: dashboards/project/volumes/volumes/forms.py:506
 #, python-format
 msgid "Forcing to create snapshot \"%s\" from attached volume."
 msgstr "正在强制从一个挂载的卷创建快照 \"%s\""
 
-#: dashboards/project/volumes/volumes/forms.py:508
+#: dashboards/project/volumes/volumes/forms.py:519
 msgid "Unable to create volume snapshot."
 msgstr "无法创建云硬盘快照"
 
-#: dashboards/project/volumes/volumes/forms.py:526
+#: dashboards/project/volumes/volumes/forms.py:537
 #, python-format
 msgid "Updating volume \"%s\""
 msgstr "正在更新卷\"%s\""
 
-#: dashboards/project/volumes/volumes/forms.py:532
+#: dashboards/project/volumes/volumes/forms.py:543
 msgid "Unable to update volume."
 msgstr "不能更新卷"
 
-#: dashboards/project/volumes/volumes/forms.py:546
+#: dashboards/project/volumes/volumes/forms.py:557
 msgctxt "Force upload volume in in-use status to image"
 msgid "Force"
 msgstr "强制"
 
-#: dashboards/project/volumes/volumes/forms.py:581
+#: dashboards/project/volumes/volumes/forms.py:592
 #, python-format
 msgid "Successfully sent the request to upload volume to image for volume: \"%s\""
 msgstr "为卷 \"%s\"成功发送上传卷到镜像的请求。"
 
-#: dashboards/project/volumes/volumes/forms.py:588
+#: dashboards/project/volumes/volumes/forms.py:599
 #, python-format
 msgid "Unable to upload volume to image for volume: \"%s\""
 msgstr "无法为卷: \"%s\"上传卷到镜像"
 
-#: dashboards/project/volumes/volumes/forms.py:614
+#: dashboards/project/volumes/volumes/forms.py:625
 msgid "New size must be greater than current size."
 msgstr "新大小必须大于当前设置"
 
-#: dashboards/project/volumes/volumes/forms.py:620
+#: dashboards/project/volumes/volumes/forms.py:631
 #, python-format
 msgid ""
 "Volume cannot be extended to %(req)iGB as you only have %(avail)iGB of your "
 "quota available."
 msgstr "云硬盘不能扩展到%(req)iGB，因为你的可用配置只有%(avail)iGB。"
 
-#: dashboards/project/volumes/volumes/forms.py:634
+#: dashboards/project/volumes/volumes/forms.py:645
 #, python-format
 msgid "Extending volume: \"%s\""
 msgstr "扩展硬盘大小: \"%s\""
 
-#: dashboards/project/volumes/volumes/forms.py:640
+#: dashboards/project/volumes/volumes/forms.py:651
 msgid "Unable to extend volume."
 msgstr "无法扩展云硬盘"
 
-#: dashboards/project/volumes/volumes/forms.py:649
+#: dashboards/project/volumes/volumes/forms.py:660
 msgid "Never"
 msgstr "从不"
 
-#: dashboards/project/volumes/volumes/forms.py:650
+#: dashboards/project/volumes/volumes/forms.py:661
 msgid "On Demand"
 msgstr "需求"
 
-#: dashboards/project/volumes/volumes/forms.py:651
+#: dashboards/project/volumes/volumes/forms.py:662
 msgid "Migration Policy"
 msgstr "迁移策略"
 
-#: dashboards/project/volumes/volumes/forms.py:668
+#: dashboards/project/volumes/volumes/forms.py:679
 msgid "Unable to retrieve the volume type list."
 msgstr "无法获取卷类型列表"
 
-#: dashboards/project/volumes/volumes/forms.py:677
+#: dashboards/project/volumes/volumes/forms.py:688
 #, python-format
 msgid "New volume type must be different from the original volume type \"%s\"."
 msgstr "新卷类型必须不同于原卷类型\"%s\"."
 
-#: dashboards/project/volumes/volumes/forms.py:693
+#: dashboards/project/volumes/volumes/forms.py:704
 #, python-format
 msgid ""
 "Successfully sent the request to change the volume type to \"%(vtype)s\" for"
 " volume: \"%(name)s\""
 msgstr "为卷\"%(name)s\"成功发送更改卷类型到\"%(vtype)s\"的请求。"
 
-#: dashboards/project/volumes/volumes/forms.py:702
+#: dashboards/project/volumes/volumes/forms.py:713
 #, python-format
 msgid "Unable to change the volume type for volume: \"%s\""
 msgstr "无法更改卷: \"%s\"的类型"
@@ -12915,87 +13222,82 @@ msgid "Scheduled deletion of Volume"
 msgid_plural "Scheduled deletion of Volumes"
 msgstr[0] "已安排云硬盘的删除"
 
-#: dashboards/project/volumes/volumes/tables.py:88
-#, python-format
-msgid "Unable to delete volume \"%s\". One or more snapshots depend on it."
-msgstr "无法删除云硬盘\"%s\".一个或多个快照存储在上面"
-
-#: dashboards/project/volumes/volumes/tables.py:149
+#: dashboards/project/volumes/volumes/tables.py:142
 msgid "Manage Attachments"
 msgstr "管理已挂载的云硬盘"
 
-#: dashboards/project/volumes/volumes/tables.py:183
+#: dashboards/project/volumes/volumes/tables.py:176
 msgid "Unable to retrieve tenant limits."
 msgstr "无法获取租户范围"
 
-#: dashboards/project/volumes/volumes/tables.py:210
+#: dashboards/project/volumes/volumes/tables.py:203
 msgid "Upload to Image"
 msgstr "上传镜像"
 
-#: dashboards/project/volumes/volumes/tables.py:270
-#: dashboards/project/volumes/volumes/views.py:248
+#: dashboards/project/volumes/volumes/tables.py:263
+#: dashboards/project/volumes/volumes/views.py:252
 msgid "Unable to retrieve attachment information."
 msgstr "无法获取附加信息"
 
-#: dashboards/project/volumes/volumes/tables.py:288
+#: dashboards/project/volumes/volumes/tables.py:281
 #, python-format
 msgid "Attached to %(instance)s on %(dev)s"
 msgstr "在设备%(dev)s上连接到%(instance)s"
 
-#: dashboards/project/volumes/volumes/tables.py:309
+#: dashboards/project/volumes/volumes/tables.py:302
 msgid "No"
 msgstr "不"
 
-#: dashboards/project/volumes/volumes/tables.py:311
+#: dashboards/project/volumes/volumes/tables.py:304
 msgid "Yes"
 msgstr "是"
 
-#: dashboards/project/volumes/volumes/tables.py:362
+#: dashboards/project/volumes/volumes/tables.py:354
 msgid "Bootable"
 msgstr "可启动"
 
-#: dashboards/project/volumes/volumes/tables.py:365
+#: dashboards/project/volumes/volumes/tables.py:357
 msgid "Encrypted"
 msgstr "加密的"
 
-#: dashboards/project/volumes/volumes/tables.py:386
+#: dashboards/project/volumes/volumes/tables.py:378
 msgid "Detach Volume"
 msgid_plural "Detach Volumes"
 msgstr[0] "卸载云硬盘"
 
-#: dashboards/project/volumes/volumes/tables.py:395
+#: dashboards/project/volumes/volumes/tables.py:387
 msgid "Detaching Volume"
 msgid_plural "Detaching Volumes"
 msgstr[0] "正在卸载云硬盘"
 
-#: dashboards/project/volumes/volumes/tables.py:423
+#: dashboards/project/volumes/volumes/tables.py:415
 msgid "Device"
 msgstr "设备"
 
-#: dashboards/project/volumes/volumes/tables.py:432
+#: dashboards/project/volumes/volumes/tables.py:424
 #, python-format
 msgid "Volume %(volume_name)s on instance %(instance_name)s"
 msgstr "实例%(instance_name)s的附加卷%(volume_name)s"
 
-#: dashboards/project/volumes/volumes/views.py:105
-#: dashboards/project/volumes/volumes/views.py:148
-#: dashboards/project/volumes/volumes/views.py:231
+#: dashboards/project/volumes/volumes/views.py:109
+#: dashboards/project/volumes/volumes/views.py:152
+#: dashboards/project/volumes/volumes/views.py:235
 msgid "Unable to retrieve volume information."
 msgstr "无法获取云硬盘信息"
 
-#: dashboards/project/volumes/volumes/views.py:139
+#: dashboards/project/volumes/volumes/views.py:143
 msgid ""
 "This volume is currently attached to an instance. In some cases, creating a "
 "snapshot from an attached volume can result in a corrupted snapshot."
 msgstr "这个卷已经被挂载到一个实例了。从某种程度上来说，从一个已挂载的卷上创建快照可能会导致快照失败"
 
-#: dashboards/project/volumes/volumes/views.py:167
-#: dashboards/project/volumes/volumes/views.py:297
+#: dashboards/project/volumes/volumes/views.py:171
+#: dashboards/project/volumes/volumes/views.py:301
 #, python-format
 msgid "Unable to retrieve volume information for volume: \"%s\""
 msgstr "无法获取卷: \"%s\" 的信息"
 
-#: dashboards/project/volumes/volumes/views.py:200
+#: dashboards/project/volumes/volumes/views.py:204
 msgid "Unable to retrieve volume."
 msgstr "无法取回卷"
 
@@ -13894,7 +14196,7 @@ msgstr "Cisco Nexus 1000V"
 msgid "Update Network Profile"
 msgstr "更新网络配置概要"
 
-#: dashboards/settings/dashboard.py:22 templates/_header.html:37
+#: dashboards/settings/dashboard.py:22 templates/_header.html:39
 msgid "Settings"
 msgstr "设置"
 
@@ -14017,15 +14319,15 @@ msgid ""
 "help, contact your local administrator."
 msgstr "报错.请刷新,如需帮助请联系管理员."
 
-#: templates/500.html:74 templates/_header.html:44
+#: templates/500.html:74 templates/_header.html:46
 msgid "Help"
 msgstr "帮助"
 
-#: templates/_header.html:20
+#: templates/_header.html:21
 msgid "More Projects"
 msgstr "更多项目"
 
-#: templates/_header.html:52
+#: templates/_header.html:54
 msgid "Sign Out"
 msgstr "退出"
 
@@ -14049,7 +14351,7 @@ msgstr "无效的日期格式：默认为今天。"
 msgid "Unable to retrieve network quota information."
 msgstr "无法获取网络配额信息。"
 
-#: usage/base.py:186 usage/quotas.py:367
+#: usage/base.py:186 usage/quotas.py:382
 msgid "Unable to retrieve volume limit information."
 msgstr "无法获取云硬盘限制信息。"
 
@@ -14076,7 +14378,7 @@ msgstr "无效的时间范围。你正在查询未来的、尚不存在的数据
 msgid "Injected File Path Bytes"
 msgstr "注入的文件目录字节数"
 
-#: usage/quotas.py:353
+#: usage/quotas.py:368
 msgid "Unable to retrieve compute limit information."
 msgstr "无法获取计算限制信息。"
 

@@ -33,7 +33,8 @@ class BaseTestCase(testtools.TestCase):
             self.driver = webdriver.WebDriverWrapper()
             self.driver.maximize_window()
             self.conf = config.get_config()
-            self.driver.implicitly_wait(self.conf.dashboard.page_timeout)
+            self.driver.implicitly_wait(self.conf.selenium.implicit_wait)
+            self.driver.set_page_load_timeout(self.conf.selenium.page_timeout)
         else:
             msg = "The INTEGRATION_TESTS env variable is not set."
             raise self.skipException(msg)
@@ -64,3 +65,17 @@ class TestCase(BaseTestCase):
         self.home_pg.go_to_home_page()
         self.home_pg.log_out()
         super(TestCase, self).tearDown()
+
+
+class AdminTestCase(BaseTestCase):
+    def setUp(self):
+        super(AdminTestCase, self).setUp()
+        self.login_pg = loginpage.LoginPage(self.driver, self.conf)
+        self.login_pg.go_to_login_page()
+        self.home_pg = self.login_pg.login(
+            user=self.conf.identity.admin_username,
+            password=self.conf.identity.admin_password)
+
+    def tearDown(self):
+        self.home_pg.log_out()
+        super(AdminTestCase, self).tearDown()

@@ -14,11 +14,13 @@
     <dt>{% trans "Status" %}</dt>
     <dd>{{ instance.status_label|title }}</dd>
     <dt>{% trans "Availability Zone" %}</dt>
-    <dd>{{ instance.availability_zone|default:"-" }}</dd>
+    <dd>{{ instance.availability_zone|default:_("-") }}</dd>
     <dt>{% trans "Created" %}</dt>
     <dd>{{ instance.created|parse_isotime }}</dd>
     <dt>{% trans "Uptime" %}</dt>
     <dd>{{ instance.created|parse_isotime|timesince }}</dd>
+    <dt>{% trans "Host" %}</dt>
+    <dd>{{ instance.host_server|default:_("-") }}</dd>
   </dl>
 </div>
 
@@ -47,7 +49,7 @@
     {% if instance.full_flavor %}
       <dd>{{ instance.full_flavor.name }}</dd>
       <dt>{% trans "RAM" %}</dt>
-      <dd>{{ instance.full_flavor.ram|mbformat }}</dd>
+      <dd>{{ instance.full_flavor.ram|mb_float_format }}</dd>
       <dt>{% trans "VCPUs" %}</dt>
       <dd>{{ instance.full_flavor.vcpus }} {% trans "VCPU" %}</dd>
       <dt>{% trans "Disk" %}</dt>

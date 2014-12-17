@@ -80,19 +80,12 @@ class DeleteVolume(VolumePolicyTargetMixin, tables.DeleteAction):
     policy_rules = (("volume", "volume:delete"),)
 
     def delete(self, request, obj_id):
-        obj = self.table.get_object_by_id(obj_id)
-        name = self.table.get_object_display(obj)
-        try:
-            cinder.volume_delete(request, obj_id)
-        except Exception:
-            msg = _('Unable to delete volume "%s". One or more snapshots '
-                    'depend on it.')
-            exceptions.check_message(["snapshots", "dependent"], msg % name)
-            raise
+        cinder.volume_delete(request, obj_id)
 
     def allowed(self, request, volume=None):
         if volume:
-            return volume.status in DELETABLE_STATES
+            return (volume.status in DELETABLE_STATES and
+                    not getattr(volume, 'has_snapshot', False))
         return True
 
 
@@ -304,7 +297,7 @@ def get_volume_type(volume):
 
 def get_encrypted_value(volume):
     if not hasattr(volume, 'encrypted') or volume.encrypted is None:
-        return "-"
+        return _("-")
     elif volume.encrypted is False:
         return _("No")
     else:
@@ -352,8 +345,7 @@ class VolumesTable(VolumesTableBase):
                          verbose_name=_("Name"),
                          link="horizon:project:volumes:volumes:detail")
     volume_type = tables.Column(get_volume_type,
-                                verbose_name=_("Type"),
-                                empty_value="-")
+                                verbose_name=_("Type"))
     attachments = AttachmentColumn("attachments",
                                    verbose_name=_("Attached To"))
     availability_zone = tables.Column("availability_zone",

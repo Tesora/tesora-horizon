@@ -152,7 +152,6 @@ class FloatingIpViewTests(test.TestCase):
                                       'tenant_floating_ip_list',)})
     def test_disassociate_post(self):
         floating_ip = self.floating_ips.first()
-        server = self.servers.first()
 
         api.nova.server_list(IsA(http.HttpRequest)) \
             .AndReturn([self.servers.list(), False])
@@ -161,8 +160,7 @@ class FloatingIpViewTests(test.TestCase):
         api.network.tenant_floating_ip_list(IsA(http.HttpRequest)) \
             .AndReturn(self.floating_ips.list())
         api.network.floating_ip_disassociate(IsA(http.HttpRequest),
-                                             floating_ip.id,
-                                             server.id)
+                                             floating_ip.id)
         self.mox.ReplayAll()
 
         action = "floating_ips__disassociate__%s" % floating_ip.id
@@ -177,7 +175,6 @@ class FloatingIpViewTests(test.TestCase):
                                       'tenant_floating_ip_list',)})
     def test_disassociate_post_with_exception(self):
         floating_ip = self.floating_ips.first()
-        server = self.servers.first()
 
         api.nova.server_list(IsA(http.HttpRequest)) \
             .AndReturn([self.servers.list(), False])
@@ -187,8 +184,7 @@ class FloatingIpViewTests(test.TestCase):
             .AndReturn(self.floating_ips.list())
 
         api.network.floating_ip_disassociate(IsA(http.HttpRequest),
-                                             floating_ip.id,
-                                             server.id) \
+                                             floating_ip.id) \
             .AndRaise(self.exceptions.nova)
         self.mox.ReplayAll()
 
@@ -256,7 +252,7 @@ class FloatingIpViewTests(test.TestCase):
                                  "Quota exceeded")
         expected_string = ("<a href='%s' title='%s' class='%s disabled' "
                            "id='floating_ips__action_allocate'>"
-                           "<span class='glyphicon glyphicon-download-alt'>"
+                           "<span class='fa fa-link'>"
                            "</span>%s</a>"
                            % (url, link_name, " ".join(classes), link_name))
         self.assertContains(res, expected_string, html=True,
@@ -298,7 +294,9 @@ class FloatingIpNeutronViewTests(FloatingIpViewTests):
             .AndReturn(self.quotas.first())
         api.nova.flavor_list(IsA(http.HttpRequest)) \
             .AndReturn(self.flavors.list())
-        api.nova.server_list(IsA(http.HttpRequest)) \
+        search_opts = {'tenant_id': self.request.user.tenant_id}
+        api.nova.server_list(IsA(http.HttpRequest), search_opts=search_opts,
+                             all_tenants=True) \
             .AndReturn([servers, False])
         api.neutron.is_extension_supported(
             IsA(http.HttpRequest), 'security-group').AndReturn(True)

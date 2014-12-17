@@ -42,7 +42,7 @@ class AllocateIP(tables.LinkAction):
     name = "allocate"
     verbose_name = _("Allocate IP To Project")
     classes = ("ajax-modal",)
-    icon = "download-alt"
+    icon = "link"
     url = "horizon:project:access_and_security:floating_ips:allocate"
 
     def single(self, data_table, request, *args):
@@ -72,7 +72,7 @@ class AllocateIP(tables.LinkAction):
 class ReleaseIPs(tables.BatchAction):
     name = "release"
     classes = ('btn-danger',)
-    icon = "arrow-up"
+    icon = "unlink"
 
     @staticmethod
     def action_present(count):
@@ -129,6 +129,7 @@ class DisassociateIP(tables.Action):
     name = "disassociate"
     verbose_name = _("Disassociate")
     classes = ("btn-disassociate", "btn-danger")
+    icon = "unlink"
 
     def allowed(self, request, fip):
         if api.base.is_service_enabled(request, "network"):
@@ -142,8 +143,7 @@ class DisassociateIP(tables.Action):
     def single(self, table, request, obj_id):
         try:
             fip = table.get_object_by_id(filters.get_int_or_uuid(obj_id))
-            api.network.floating_ip_disassociate(request, fip.id,
-                                                 fip.port_id)
+            api.network.floating_ip_disassociate(request, fip.id)
             LOG.info('Disassociating Floating IP "%s".' % obj_id)
             messages.success(request,
                              _('Successfully disassociated Floating IP: %s')
@@ -193,11 +193,9 @@ class FloatingIPsTable(tables.DataTable):
                        attrs={'data-type': "ip"})
     fixed_ip = tables.Column(get_instance_info,
                              link=get_instance_link,
-                             verbose_name=_("Mapped Fixed IP Address"),
-                             empty_value="-")
+                             verbose_name=_("Mapped Fixed IP Address"))
     pool = tables.Column("pool_name",
-                         verbose_name=_("Pool"),
-                         empty_value="-")
+                         verbose_name=_("Pool"))
     status = tables.Column("status",
                            verbose_name=_("Status"),
                            status=True,
