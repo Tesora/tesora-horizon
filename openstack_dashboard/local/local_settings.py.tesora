@@ -52,8 +52,6 @@ ALLOWED_HOSTS = ['*', ]
 
 # Default OpenStack Dashboard configuration.
 HORIZON_CONFIG = {
-    'dashboards': ('project', 'admin', 'settings',),
-    'default_dashboard': 'project',
     'user_home': 'openstack_dashboard.views.get_user_home',
     'ajax_queue_limit': 10,
     'auto_fade_alerts': {
@@ -65,6 +63,7 @@ HORIZON_CONFIG = {
     'exceptions': {'recoverable': exceptions.RECOVERABLE,
                    'not_found': exceptions.NOT_FOUND,
                    'unauthorized': exceptions.UNAUTHORIZED},
+    'modal_backdrop': 'static',
     'angular_modules': [],
     'js_files': [],
 }
@@ -182,7 +181,8 @@ OPENSTACK_NEUTRON_NETWORK = {
     'enable_router': True,
     'enable_quotas': True,
     'enable_ipv6': True,
-    'enable_distributed_router': True,
+    'enable_distributed_router': False,
+    'enable_ha_router': False,
     'enable_lb': True,
     'enable_firewall': True,
     'enable_vpn': True,
@@ -248,6 +248,9 @@ IMAGE_RESERVED_CUSTOM_PROPERTIES = []
 # to paginate results.
 API_RESULT_LIMIT = 1000
 API_RESULT_PAGE_SIZE = 20
+
+# Specify a maximum number of items to display in a dropdown.
+DROPDOWN_MAX_ITEMS = 30
 
 # The timezone of the server. This should correspond with the timezone
 # of your entire OpenStack installation, and hopefully be in UTC.
@@ -507,22 +510,19 @@ SECURITY_GROUP_RULES = {
     },
 }
 
-FLAVOR_EXTRA_KEYS = {
-    'flavor_keys': [
-        ('quota:disk_read_bytes_sec', _('Quota: Read bytes')),
-        ('quota:disk_write_bytes_sec', _('Quota: Write bytes')),
-        ('quota:cpu_quota', _('Quota: CPU')),
-        ('quota:cpu_period', _('Quota: CPU period')),
-        ('quota:vif_inbound_average', _('Quota: Inbound average')),
-        ('quota:vif_outbound_average', _('Quota: Outbound average')),
-        ('hw:cpu_sockets', _('Quota: CPU sockets')),
-        ('hw:cpu_cores', _('Quota: CPU cores')),
-        ('hw:cpu_threads', _('Quota: CPU threads')),
-        ('hw:cpu_max_sockets', _('Quota: Max CPU sockets')),
-        ('hw:cpu_max_cores', _('Quota: Max CPU cores')),
-        ('hw:cpu_max_threads', _('Quota: Max CPU threads')),
-    ]
-}
+# Deprecation Notice:
+#
+# The setting FLAVOR_EXTRA_KEYS has been deprecated.
+# Please load extra spec metadata into the Glance Metadata Definition Catalog.
+#
+# The sample quota definitions can be found in:
+# <glance_source>/etc/metadefs/compute-quota.json
+#
+# The metadata definition catalog supports CLI and API:
+#  $glance --os-image-api-version 2 help md-namespace-import
+#  $glance-manage db_load_metadefs <directory_with_definition_files>
+#
+# See Metadata Definitions on: http://docs.openstack.org/developer/glance/
 
 # Indicate to the Sahara data processing service whether or not
 # automatic floating IP allocation is in effect.  If it is not
@@ -531,3 +531,10 @@ FLAVOR_EXTRA_KEYS = {
 # to set this to True if you were running Nova Networking with
 # auto_assign_floating_ip = True.
 # SAHARA_AUTO_IP_ALLOCATION_ENABLED = False
+
+# The hash algorithm to use for authentication tokens. This must
+# match the hash algorithm that the identity server and the
+# auth_token middleware are using. Allowed values are the
+# algorithms supported by Python's hashlib library.
+# OPENSTACK_TOKEN_HASH_ALGORITHM = 'md5'
+
