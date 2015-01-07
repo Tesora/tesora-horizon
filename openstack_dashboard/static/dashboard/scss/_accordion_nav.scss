@@ -1,4 +1,6 @@
 $accordionBorderColor: #aeb0b2;
+$tesora-orange: #f18530;
+$tesora-gray: #b5b5b5;
 
 @mixin sidebar_toggle_icon {
   & > span {
@@ -18,7 +20,6 @@ $accordionBorderColor: #aeb0b2;
 }
 
 .nav_accordion {
-  color: #6e6e6e;
   margin: 0px 0px;
   dt, dd {
     line-height: 18px;
@@ -59,12 +60,12 @@ $accordionBorderColor: #aeb0b2;
         text-align: right;
         transition: all .3s ease 0s;
         &.active, &:hover {
-          color: #d93c27;
+          color: $tesora-orange;
         }
         &.active {
           background: white;
           border-top: 1px solid $accordionBorderColor;
-          border-left: 4px solid #d93c27;
+          border-left: 4px solid $tesora-orange;
           border-bottom: 1px solid $accordionBorderColor;
           -webkit-box-shadow: -3px 2px 6px -3px #C7C7C7;
           box-shadow: -3px 3px 6px -3px #C7C7C7;
@@ -93,10 +94,10 @@ $accordionBorderColor: #aeb0b2;
     @include sidebar_toggle_icon();
     transition: all .3s ease 0s;
     &.active {
-      background-color: #e3e4e6;
+      background-color: $tesora-gray;
     }
     &:hover{
-      background-color: darken(#e3e4e6, 3%)
+      background-color: darken($tesora-gray, 3%)
     }
   }
 }

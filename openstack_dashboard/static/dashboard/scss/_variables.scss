@@ -1,17 +1,35 @@
 @import "/bootstrap/scss/bootstrap/variables";
 
+$tesora-orange: #f18530;
+$tesora-light-blue: #96b3c6;
+$tesora-dark-blue: #1377a8;
+$tesora-lighter-gray: #ebebeb;
+$tesora-light-gray: #e0e0e0;
+$tesora-gray: #b5b5b5;
+$tesora-dark-gray: #a1a1a1;
+$tesora-darker-gray: #6c6c6c;
+
+$gray-darker: $tesora-darker-gray;
+$gray-dark: $tesora-dark-gray;
+$gray: $tesora-gray;
+$gray-light: $tesora-light-gray;
+$gray-lighter: $tesora-lighter-gray;
+
+$text-color: $gray-darker;
+$link-color: $tesora-dark-blue;
+
 /* Bootstrap variables overrides */
 
 $icon-font-path: "../../bootstrap/fonts/bootstrap/";
 $font-size-base: 13px;
 $modal-md: 732px;
-$gray-light: #cccccc;
+$gray-light: $tesora-light-gray;
 
 /* Horizon Custom Variables */
 
 $sidebar-background-color: #f9f9f9;
 $sidebar-width: 220px;
-$border-color: #dddddd;
+$border-color: $gray;
 $table-bg-odd: #f9f9f9;
 
 /* Workflows */

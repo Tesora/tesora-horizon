@@ -96,6 +96,7 @@ dt {
   width: 100%;
   h1 {
     margin: 0;
+    color: $tesora-orange;
   }
 }
 
@@ -103,6 +104,10 @@ h2 {
   color: $headings-color;
   font-size: 30px;
   font-weight: normal;
+}
+
+h3 {
+  color: $tesora-dark-blue;
 }
 
 
