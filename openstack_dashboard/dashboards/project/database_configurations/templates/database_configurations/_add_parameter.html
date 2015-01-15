@@ -1,0 +1,26 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block form_id %}add_parameter_form{% endblock %}
+{% block form_action %}{% url "horizon:project:database_configurations:add" configuration_id%}{% endblock %}
+
+{% block modal_id %}add_parameter_modal{% endblock %}
+{% block modal-header %}{% trans "Add Parameter" %}{% endblock %}
+
+{% block modal-body %}
+<div class="left">
+  <fieldset>
+  {% include "horizon/common/_form_fields.html" %}
+  </fieldset>
+</div>
+<div class="right">
+  <p>{% blocktrans %}Select a name and provide a value for the configuration parameter.{% endblocktrans %}</p>
+</div>
+{% endblock %}
+
+{% block modal-footer %}
+  <input class="btn btn-primary pull-right" type="submit" value="{% trans "Add Parameter" %}" />
+  <a href="{% url "horizon:project:database_configurations:index" %}" class="btn btn-default secondary cancel close">{% trans "Cancel" %}</a>
+{% endblock %}
+

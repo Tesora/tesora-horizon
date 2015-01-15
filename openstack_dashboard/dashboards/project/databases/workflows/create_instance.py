@@ -224,6 +224,10 @@ class InitializeDatabase(workflows.Step):
 
 
 class AdvancedAction(workflows.Action):
+    config = forms.ChoiceField(
+        label=_("Configuration Group"),
+        required=False,
+        help_text=_('Select a configuration group'))
     initial_state = forms.ChoiceField(
         label=_('Source for Initial State'),
         required=False,
@@ -259,6 +263,19 @@ class AdvancedAction(workflows.Action):
         name = _("Advanced")
         help_text_template = "project/databases/_launch_advanced_help.html"
 
+    def populate_config_choices(self, request, context):
+        try:
+            configs = api.trove.configuration_list(request)
+            choices = [(c.id, c.name) for c in configs]
+        except Exception:
+            choices = []
+
+        if choices:
+            choices.insert(0, ("", _("Select configuration")))
+        else:
+            choices.insert(0, ("", _("No configurations available")))
+        return choices
+
     def populate_backup_choices(self, request, context):
         try:
             backups = api.trove.backup_list(request)
@@ -289,6 +306,17 @@ class AdvancedAction(workflows.Action):
 
     def clean(self):
         cleaned_data = super(AdvancedAction, self).clean()
+
+        config = self.cleaned_data['config']
+        if config:
+            try:
+                # Make sure the user is not "hacking" the form
+                # and that they have access to this configuration
+                cfg = api.trove.configuration_get(self.request, config)
+                self.cleaned_data['config'] = cfg.id
+            except Exception:
+                raise forms.ValidationError(_("Unable to find configuration "
+                                              "group!"))
 
         initial_state = cleaned_data.get("initial_state")
 
@@ -326,7 +354,7 @@ class AdvancedAction(workflows.Action):
 
 class Advanced(workflows.Step):
     action_class = AdvancedAction
-    contributes = ['backup', 'master']
+    contributes = ['config', 'backup', 'master']
 
 
 class LaunchInstance(workflows.Workflow):
@@ -393,6 +421,12 @@ class LaunchInstance(workflows.Workflow):
         else:
             return None
 
+    def _get_config(self, context):
+        config = None
+        if context.get('config'):
+            config = context['config']
+        return config
+
     def handle(self, request, context):
         try:
             datastore = self.context['datastore'].split(',')[0]
@@ -401,12 +435,13 @@ class LaunchInstance(workflows.Workflow):
                      "{name=%s, volume=%s, flavor=%s, "
                      "datastore=%s, datastore_version=%s, "
                      "dbs=%s, users=%s, "
-                     "backups=%s, nics=%s, replica_of=%s}",
+                     "backups=%s, nics=%s, "
+                     "replica_of=%s, configuration=%s}",
                      context['name'], context['volume'], context['flavor'],
                      datastore, datastore_version,
                      self._get_databases(context), self._get_users(context),
                      self._get_backup(context), self._get_nics(context),
-                     self._get_master(context))
+                     self._get_master(context), self._get_config(context))
             api.trove.instance_create(request,
                                       context['name'],
                                       context['volume'],
@@ -417,7 +452,8 @@ class LaunchInstance(workflows.Workflow):
                                       users=self._get_users(context),
                                       restore_point=self._get_backup(context),
                                       nics=self._get_nics(context),
-                                      replica_of=self._get_master(context))
+                                      replica_of=self._get_master(context),
+                                      configuration=self._get_config(context))
             return True
         except Exception:
             exceptions.handle(request)

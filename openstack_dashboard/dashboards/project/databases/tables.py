@@ -77,7 +77,8 @@ class RestartInstance(tables.BatchAction):
 
     def allowed(self, request, instance=None):
         return ((instance.status in ACTIVE_STATES
-                 or instance.status == 'SHUTDOWN'))
+                 or instance.status == 'SHUTDOWN'
+                 or instance.status == 'RESTART_REQUIRED'))
 
     def action(self, request, obj_id):
         api.trove.instance_restart(request, obj_id)
@@ -216,6 +217,45 @@ class ResizeInstance(tables.LinkAction):
         return urlresolvers.reverse(self.url, args=[instance_id])
 
 
+class AttachConfiguration(tables.LinkAction):
+    name = "attach_configuration"
+    verbose_name = _("Attach Configuration Group")
+    url = "horizon:project:databases:attach_config"
+    classes = ("btn-attach-config", "ajax-modal")
+
+    def allowed(self, request, instance=None):
+        return (instance.status in ACTIVE_STATES
+                and not hasattr(instance, 'configuration'))
+
+
+class DetachConfiguration(tables.BatchAction):
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Detach Configuration Group",
+            u"Detach Configuration Groups",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Detached Configuration Group",
+            u"Detached Configuration Groups",
+            count
+        )
+
+    name = "detach_configuration"
+    classes = ('btn-danger', 'btn-detach-config')
+
+    def _allowed(self, request, instance=None):
+        return (instance.status in ACTIVE_STATES
+                and hasattr(instance, 'configuration'))
+
+    def action(self, request, obj_id):
+        api.trove.instance_detach_configuration(request, obj_id)
+
+
 class UpdateRow(tables.Row):
     ajax = True
 
@@ -316,6 +356,8 @@ class InstancesTable(tables.DataTable):
         row_actions = (CreateBackup,
                        ResizeVolume,
                        ResizeInstance,
+                       AttachConfiguration,
+                       DetachConfiguration,
                        RestartInstance,
                        DetachReplica,
                        TerminateInstance)

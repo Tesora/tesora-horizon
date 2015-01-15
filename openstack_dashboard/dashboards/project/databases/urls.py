@@ -17,17 +17,21 @@ from django.conf.urls import url
 
 from openstack_dashboard.dashboards.project.databases import views
 
-
 INSTANCES = r'^(?P<instance_id>[^/]+)/%s$'
 
 
 urlpatterns = patterns(
     '',
-    url(r'^$', views.IndexView.as_view(), name='index'),
-    url(r'^launch$', views.LaunchInstanceView.as_view(), name='launch'),
-    url(INSTANCES % '', views.DetailView.as_view(), name='detail'),
+    url(r'^$', views.IndexView.as_view(),
+        name='index'),
+    url(r'^launch$', views.LaunchInstanceView.as_view(),
+        name='launch'),
+    url(INSTANCES % '', views.DetailView.as_view(),
+        name='detail'),
     url(INSTANCES % 'resize_volume', views.ResizeVolumeView.as_view(),
         name='resize_volume'),
     url(INSTANCES % 'resize_instance', views.ResizeInstanceView.as_view(),
-        name='resize_instance')
+        name='resize_instance'),
+    url(INSTANCES % 'attach_config', views.AttachConfigurationView.as_view(),
+        name='attach_config'),
 )

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Add Parameter" %}{% endblock %}
+
+{% block page_header %}
+  {% include "horizon/common/_page_header.html" with title=_("Add Parameter") %}
+{% endblock page_header %}
+
+{% block main %}
+  {% include "project/database_configurations/_add_parameter.html" %}
+{% endblock %}

@@ -26,8 +26,9 @@ from horizon import exceptions
 from horizon import forms as horizon_forms
 from horizon import tables as horizon_tables
 from horizon import tabs as horizon_tabs
-from horizon.utils import memoized
 from horizon import workflows as horizon_workflows
+
+from horizon.utils import memoized
 
 from openstack_dashboard import api
 from openstack_dashboard.dashboards.project.databases import forms
@@ -91,6 +92,34 @@ class LaunchInstanceView(horizon_workflows.WorkflowView):
         initial['project_id'] = self.request.user.project_id
         initial['user_id'] = self.request.user.id
         return initial
+
+
+class AttachConfigurationView(horizon_forms.ModalFormView):
+    form_class = forms.AttachConfigurationForm
+    template_name = 'project/databases/attach_config.html'
+    success_url = reverse_lazy('horizon:project:databases:index')
+
+    @memoized.memoized_method
+    def get_object(self, *args, **kwargs):
+        instance_id = self.kwargs['instance_id']
+
+        try:
+            return api.trove.instance_get(self.request, instance_id)
+        except Exception:
+            msg = _('Unable to retrieve instance details.')
+            redirect = reverse('horizon:project:databases:index')
+            exceptions.handle(self.request, msg, redirect=redirect)
+
+    def get_context_data(self, **kwargs):
+        context = super(AttachConfigurationView,
+                        self).get_context_data(**kwargs)
+        context['instance_id'] = self.kwargs['instance_id']
+        return context
+
+    def get_initial(self):
+        instance = self.get_object()
+        return {'instance_id': self.kwargs['instance_id'],
+                'orig_size': instance.volume.get('size', 0)}
 
 
 class DetailView(horizon_tabs.TabbedTableView):

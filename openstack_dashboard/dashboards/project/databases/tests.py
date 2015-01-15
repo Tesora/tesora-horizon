@@ -84,7 +84,7 @@ class DatabaseTests(test.TestCase):
     def test_index_pagination(self):
         # Mock database instances
         databases = self.databases.list()
-        last_record = databases[1]
+        last_record = databases[len(databases) - 1]
         databases = common.Paginated(databases, next_marker="foo")
         api.trove.instance_list(IsA(http.HttpRequest), marker=None)\
             .AndReturn(databases)
@@ -222,6 +222,7 @@ class DatabaseTests(test.TestCase):
             datastore_version=IsA(unicode),
             restore_point=None,
             replica_of=None,
+            configuration=None,
             users=None,
             nics=nics).AndReturn(self.databases.first())
 
@@ -283,6 +284,7 @@ class DatabaseTests(test.TestCase):
             datastore_version=IsA(unicode),
             restore_point=None,
             replica_of=None,
+            configuration=None,
             users=None,
             nics=nics).AndRaise(trove_exception)
 
@@ -492,6 +494,7 @@ class DatabaseTests(test.TestCase):
             datastore_version=IsA(unicode),
             restore_point=None,
             replica_of=self.databases.first().id,
+            configuration=None,
             users=None,
             nics=nics).AndReturn(self.databases.first())
 
@@ -507,4 +510,118 @@ class DatabaseTests(test.TestCase):
         }
 
         res = self.client.post(LAUNCH_URL, post)
+        self.assertRedirectsNoFollow(res, INDEX_URL)
+
+    @test.create_stubs({
+        api.trove: ('instance_get',
+                    'configuration_list',
+                    'instance_attach_configuration'),
+    })
+    def test_attach_configuration(self):
+        database = self.databases.first()
+        configuration = self.database_configurations.first()
+
+        api.trove.instance_get(IsA(http.HttpRequest), IsA(unicode))\
+            .AndReturn(database)
+
+        api.trove.configuration_list(IsA(http.HttpRequest))\
+            .AndReturn(self.database_configurations.list())
+
+        api.trove.instance_attach_configuration(
+            IsA(http.HttpRequest), database.id, configuration.id)\
+            .AndReturn(None)
+
+        self.mox.ReplayAll()
+        url = reverse('horizon:project:databases:attach_config',
+                      args=[database.id])
+        form = {
+            'instance_id': database.id,
+            'configuration': configuration.id,
+        }
+        res = self.client.post(url, form)
+        self.assertNoFormErrors(res)
+        self.assertRedirectsNoFollow(res, INDEX_URL)
+
+    @test.create_stubs({
+        api.trove: ('instance_get',
+                    'configuration_list',
+                    'instance_attach_configuration'),
+    })
+    def test_attach_configuration_exception(self):
+        database = self.databases.first()
+        configuration = self.database_configurations.first()
+
+        api.trove.instance_get(IsA(http.HttpRequest), IsA(unicode))\
+            .AndReturn(database)
+
+        api.trove.configuration_list(IsA(http.HttpRequest))\
+            .AndReturn(self.database_configurations.list())
+
+        api.trove.instance_attach_configuration(
+            IsA(http.HttpRequest), database.id, configuration.id)\
+            .AndRaise(self.exceptions.trove)
+
+        self.mox.ReplayAll()
+        url = reverse('horizon:project:databases:attach_config',
+                      args=[database.id])
+        form = {
+            'instance_id': database.id,
+            'configuration': configuration.id,
+        }
+        res = self.client.post(url, form)
+        self.assertEqual(res.status_code, 302)
+        self.assertRedirectsNoFollow(res, INDEX_URL)
+
+    @test.create_stubs({
+        api.trove: ('instance_list',
+                    'flavor_list',
+                    'instance_detach_configuration',),
+    })
+    def test_detach_configuration(self):
+        databases = common.Paginated(self.databases.list())
+        database = databases[2]
+
+        api.trove.instance_list(IsA(http.HttpRequest), marker=None)\
+            .AndReturn(databases)
+
+        api.trove.flavor_list(IsA(http.HttpRequest))\
+            .AndReturn(self.flavors.list())
+
+        api.trove.instance_detach_configuration(
+            IsA(http.HttpRequest), database.id)\
+            .AndReturn(None)
+
+        self.mox.ReplayAll()
+
+        res = self.client.post(
+            INDEX_URL,
+            {'action': 'databases__detach_configuration__%s' % database.id})
+
+        self.assertRedirectsNoFollow(res, INDEX_URL)
+
+    @test.create_stubs({
+        api.trove: ('instance_list',
+                    'flavor_list',
+                    'instance_detach_configuration',),
+    })
+    def test_detach_configuration_exception(self):
+        databases = common.Paginated(self.databases.list())
+        database = databases[2]
+
+        api.trove.instance_list(IsA(http.HttpRequest), marker=None)\
+            .AndReturn(databases)
+
+        api.trove.flavor_list(IsA(http.HttpRequest))\
+            .AndReturn(self.flavors.list())
+
+        api.trove.instance_detach_configuration(
+            IsA(http.HttpRequest), database.id)\
+            .AndRaise(self.exceptions.trove)
+
+        self.mox.ReplayAll()
+
+        res = self.client.post(
+            INDEX_URL,
+            {'action': 'databases__detach_configuration__%s' % database.id})
+
         self.assertRedirectsNoFollow(res, INDEX_URL)

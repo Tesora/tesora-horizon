@@ -13,6 +13,7 @@
 #    under the License.
 
 from troveclient.v1 import backups
+from troveclient.v1 import configurations
 from troveclient.v1 import databases
 from troveclient.v1 import datastores
 from troveclient.v1 import flavors
@@ -68,6 +69,35 @@ DATABASE_DATA_TWO = {
     "id": "4d7b3f57-44f5-41d2-8e86-36b88cad572a",
 }
 
+DATABASE_DATA_THREE = {
+    "status": "ACTIVE",
+    "updated": "2015-01-12T22:00:09",
+    "name": "Test Database with Config",
+    "links": [],
+    "created": "2015-01-12T22:00:03",
+    "ip": [
+        "10.0.0.3",
+    ],
+    "volume": {
+        "used": 0.13,
+        "size": 1,
+    },
+    "flavor": {
+        "id": "1",
+        "links": [],
+    },
+    "datastore": {
+        "type": "mysql",
+        "version": "5.5"
+    },
+    "id": "c3369597-b53a-4bd4-bf54-41957c1291b8",
+    "configuration": {
+        "id": "0ef978d3-7c83-4192-ab86-b7a0a5010fa0",
+        "links": [],
+        "name": "config1"
+    },
+}
+
 BACKUP_ONE = {
     "instance_id": "6ddc36d9-73db-4e23-b52e-368937d72719",
     "status": "COMPLETED",
@@ -80,7 +110,6 @@ BACKUP_ONE = {
     "description": "Long description of backup",
 }
 
-
 BACKUP_TWO = {
     "instance_id": "4d7b3f57-44f5-41d2-8e86-36b88cad572a",
     "status": "COMPLETED",
@@ -92,7 +121,6 @@ BACKUP_TWO = {
     "id": "e4602a3c-2bca-478f-b059-b6c215510fb4",
     "description": "Longer description of backup",
 }
-
 
 BACKUP_TWO_INC = {
     "instance_id": "4d7b3f57-44f5-41d2-8e86-36b88cad572a",
@@ -107,12 +135,80 @@ BACKUP_TWO_INC = {
     "parent_id": "e4602a3c-2bca-478f-b059-b6c215510fb4",
 }
 
+CONFIG_ONE = {
+    "updated": "2014-07-11T14:33:35",
+    "name": "config1",
+    "created": "2014-07-11T14:33:35",
+    "instance_count": 1,
+    "values": {
+        "collation_server": "latin1_swedish_ci",
+        "max_connections": 6000
+    },
+    "id": "0ef978d3-7c83-4192-ab86-b7a0a5010fa0",
+    "description": "Long description of configuration one",
+    "datastore_name": "mysql",
+    "datastore_version_name": "5.5"
+}
+
+CONFIG_TWO = {
+    "updated": "2014-08-11T14:33:35",
+    "name": "config2",
+    "created": "2014-08-11T14:33:35",
+    "instance_count": 0,
+    "values": {
+        "collation_server": "latin1_swedish_ci",
+        "max_connections": 5000
+    },
+    "id": "87948232-10e7-4636-a3d3-a5e1593b7d16",
+    "description": "Long description of configuration two",
+    "datastore_name": "mysql",
+    "datastore_version_name": "5.6"
+}
+
+CONFIG_INSTANCE_ONE = {
+    "id": "c3369597-b53a-4bd4-bf54-41957c1291b8",
+    "name": "Test Database with Config",
+}
+
+CONFIG_PARAMS_ONE = [
+    {
+        "name": "autocommit",
+        "restart_required": False,
+        "max": 1,
+        "min": 0,
+        "type": "integer",
+    },
+    {
+        "name": "connect_timeout",
+        "restart_required": False,
+        "max": 65535,
+        "min": 1,
+        "type": "integer",
+    },
+    {
+        "name": "sort_buffer_size",
+        "restart_required": False,
+        "max": 18446744073709547520,
+        "min": 32768,
+        "type": "integer",
+    },
+    {
+        "name": "character_set_client",
+        "restart_required": False,
+        "type": "string",
+    },
+    {
+        "name": "character_set_connection",
+        "restart_required": False,
+        "type": "string",
+    },
+]
+
 USER_ONE = {
     "name": "Test_User",
     "host": "%",
     "databases": [DATABASE_DATA_ONE["name"]],
 }
-
 
 USER_DB_ONE = {
     "name": "db1",
@@ -177,9 +273,18 @@ def data(TEST):
                                    DATABASE_DATA_ONE)
     database2 = instances.Instance(instances.Instances(None),
                                    DATABASE_DATA_TWO)
+    database3 = instances.Instance(instances.Instances(None),
+                                   DATABASE_DATA_THREE)
+
     bkup1 = backups.Backup(backups.Backups(None), BACKUP_ONE)
     bkup2 = backups.Backup(backups.Backups(None), BACKUP_TWO)
     bkup3 = backups.Backup(backups.Backups(None), BACKUP_TWO_INC)
+
+    cfg1 = configurations.Configuration(configurations.Configurations(None),
+                                        CONFIG_ONE)
+    cfg2 = configurations.Configuration(configurations.Configurations(None),
+                                        CONFIG_TWO)
+
     user1 = users.User(users.Users(None), USER_ONE)
     user_db1 = databases.Database(databases.Databases(None),
                                   USER_DB_ONE)
@@ -200,15 +305,32 @@ def data(TEST):
 
     TEST.databases = utils.TestDataContainer()
     TEST.database_backups = utils.TestDataContainer()
+    TEST.database_configurations = utils.TestDataContainer()
     TEST.database_users = utils.TestDataContainer()
     TEST.database_user_dbs = utils.TestDataContainer()
     TEST.database_flavors = utils.TestDataContainer()
 
     TEST.databases.add(database1)
     TEST.databases.add(database2)
+    TEST.databases.add(database3)
     TEST.database_backups.add(bkup1)
     TEST.database_backups.add(bkup2)
     TEST.database_backups.add(bkup3)
+
+    TEST.database_configurations.add(cfg1)
+    TEST.database_configurations.add(cfg2)
+
+    TEST.configuration_parameters = utils.TestDataContainer()
+    for parameter in CONFIG_PARAMS_ONE:
+        TEST.configuration_parameters.add(
+            configurations.ConfigurationParameter(
+                configurations.ConfigurationParameters(None), parameter))
+
+    TEST.configuration_instances = utils.TestDataContainer()
+    TEST.configuration_instances.add(
+        configurations.Configuration(
+            configurations.Configurations(None), CONFIG_INSTANCE_ONE))
+
     TEST.database_users.add(user1)
     TEST.database_user_dbs.add(user_db1)
     TEST.datastores = utils.TestDataContainer()

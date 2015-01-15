@@ -1,0 +1,27 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block form_id %}attach_config_form{% endblock %}
+{% block form_action %}{% url "horizon:project:databases:attach_config" instance_id %}{% endblock %}
+
+{% block modal_id %}attach_config_modal{% endblock %}
+{% block modal-header %}{% trans "Attach Configuration Group" %}{% endblock %}
+
+{% block modal-body %}
+<div class="left">
+  <fieldset>
+  {% include "horizon/common/_form_fields.html" %}
+  </fieldset>
+</div>
+<div class="right">
+  <p>{% blocktrans %}Select a configuration group to attach to the database instance.{% endblocktrans %}</p>
+  <p>{% blocktrans %}<strong>Please note:</strong> It may be necessary to reboot the database instance for this new configuration group to take effect.{% endblocktrans %}</p>
+</div>
+{% endblock %}
+
+{% block modal-footer %}
+  <input class="btn btn-primary pull-right" type="submit" value="{% trans "Attach Configuration" %}" />
+  <a href="{% url "horizon:project:databases:index" %}" class="btn secondary cancel close">{% trans "Cancel" %}</a>
+{% endblock %}
+

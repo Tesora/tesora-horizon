@@ -58,7 +58,7 @@ def instance_delete(request, instance_id):
 def instance_create(request, name, volume, flavor, databases=None,
                     users=None, restore_point=None, nics=None,
                     datastore=None, datastore_version=None,
-                    replica_of=None):
+                    replica_of=None, configuration=None):
     # TODO(dklyle): adding conditional to support trove without volume
     # support for now until API supports checking for volume support
     if volume > 0:
@@ -75,7 +75,8 @@ def instance_create(request, name, volume, flavor, databases=None,
         nics=nics,
         datastore=datastore,
         datastore_version=datastore_version,
-        replica_of=replica_of)
+        replica_of=replica_of,
+        configuration=configuration)
 
 
 def instance_resize_volume(request, instance_id, size):
@@ -98,6 +99,15 @@ def instance_restart(request, instance_id):
 def instance_detach_replica(request, instance_id):
     return troveclient(request).instances.edit(instance_id,
                                                detach_replica_source=True)
+
+
+def instance_attach_configuration(request, instance_id, configuration):
+    return troveclient(request).instances.modify(instance_id,
+                                                 configuration=configuration)
+
+
+def instance_detach_configuration(request, instance_id):
+    return troveclient(request).instances.modify(instance_id)
 
 
 def database_list(request, instance_id):
@@ -152,3 +162,41 @@ def datastore_list(request):
 
 def datastore_version_list(request, datastore):
     return troveclient(request).datastore_versions.list(datastore)
+
+
+def configuration_list(request):
+    return troveclient(request).configurations.list()
+
+
+def configuration_get(request, group_id):
+    return troveclient(request).configurations.get(group_id)
+
+
+def configuration_parameters_list(request, datastore, datastore_version):
+    return troveclient(request).configuration_parameters.\
+        parameters(datastore, datastore_version)
+
+
+def configuration_create(request,
+                         name,
+                         values,
+                         description=None,
+                         datastore=None,
+                         datastore_version=None):
+    return troveclient(request).configurations.create(name,
+                                                      values,
+                                                      description,
+                                                      datastore,
+                                                      datastore_version)
+
+
+def configuration_delete(request, group_id):
+    return troveclient(request).configurations.delete(group_id)
+
+
+def configuration_instances(request, group_id):
+    return troveclient(request).configurations.instances(group_id)
+
+
+def configuration_update(request, group_id, values):
+    return troveclient(request).configurations.update(group_id, values)
