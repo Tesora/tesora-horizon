@@ -24,6 +24,7 @@ from horizon.utils import memoized
 from horizon import workflows
 from openstack_dashboard import api
 
+from openstack_dashboard.dashboards.project.databases import db_capability
 from openstack_dashboard.dashboards.project.instances \
     import utils as instance_utils
 
@@ -211,10 +212,12 @@ class AddDatabasesAction(workflows.Action):
             if not cleaned_data.get('password'):
                 msg = _('You must specify a password if you create a user.')
                 self._errors["password"] = self.error_class([msg])
-            if not cleaned_data.get('databases'):
-                msg = _('You must specify at least one database if '
-                        'you create a user.')
-                self._errors["databases"] = self.error_class([msg])
+            if db_capability.db_required_when_creating_user(
+                    self.data[u'datastore']):
+                if not cleaned_data.get('databases'):
+                    msg = _('You must specify at least one database if '
+                            'you create a user.')
+                    self._errors["databases"] = self.error_class([msg])
         return cleaned_data
 
 
@@ -307,6 +310,8 @@ class AdvancedAction(workflows.Action):
     def clean(self):
         cleaned_data = super(AdvancedAction, self).clean()
 
+        datastore = self.data[u'datastore']
+
         config = self.cleaned_data['config']
         if config:
             try:
@@ -317,34 +322,50 @@ class AdvancedAction(workflows.Action):
             except Exception:
                 raise forms.ValidationError(_("Unable to find configuration "
                                               "group!"))
+        else:
+            if db_capability.require_configuration_group(datastore):
+                msg = _('This datastore requires a configuration group.')
+                self._errors["config"] = self.error_class([msg])
 
         initial_state = cleaned_data.get("initial_state")
 
         if initial_state == 'backup':
-            backup = self.cleaned_data['backup']
-            if backup:
-                try:
-                    bkup = api.trove.backup_get(self.request, backup)
-                    self.cleaned_data['backup'] = bkup.id
-                except Exception:
-                    raise forms.ValidationError(_("Unable to find backup!"))
+            if not db_capability.can_backup(datastore):
+                msg = _('You cannot specify a backup for the initial state '
+                        'for this datastore.')
+                self._errors["initial_state"] = self.error_class([msg])
             else:
-                raise forms.ValidationError(_("A backup must be selected!"))
+                backup = self.cleaned_data['backup']
+                if backup:
+                    try:
+                        bkup = api.trove.backup_get(self.request, backup)
+                        self.cleaned_data['backup'] = bkup.id
+                    except Exception:
+                        raise forms.ValidationError(
+                            _("Unable to find backup!"))
+                else:
+                    msg = _("A backup must be selected!")
+                    self._errors["backup"] = self.error_class([msg])
 
-            cleaned_data['master'] = None
+                cleaned_data['master'] = None
         elif initial_state == 'master':
-            master = self.cleaned_data['master']
-            if master:
-                try:
-                    api.trove.instance_get(self.request, master)
-                except Exception:
-                    raise forms.ValidationError(
-                        _("Unable to find master instance!"))
+            if not db_capability.can_launch_from_master(datastore):
+                msg = _('You cannot specify a master for the initial state '
+                        'for this datastore.')
+                self._errors["initial_state"] = self.error_class([msg])
             else:
-                raise forms.ValidationError(
-                    _("A master instance must be selected!"))
+                master = self.cleaned_data['master']
+                if master:
+                    try:
+                        api.trove.instance_get(self.request, master)
+                    except Exception:
+                        raise forms.ValidationError(
+                            _("Unable to find master instance!"))
+                else:
+                    msg = _("A master instance must be selected!")
+                    self._errors["master"] = self.error_class([msg])
 
-            cleaned_data['backup'] = None
+                cleaned_data['backup'] = None
         else:
             cleaned_data['master'] = None
             cleaned_data['backup'] = None
@@ -383,7 +404,8 @@ class LaunchInstance(workflows.Workflow):
     def _get_databases(self, context):
         """Returns the initial databases for this instance."""
         databases = None
-        if context.get('databases'):
+        db_value = context.get('databases')
+        if db_value and db_value != u'':
             dbs = context['databases']
             databases = [{'name': d.strip()} for d in dbs.split(',')]
         return databases
@@ -394,8 +416,10 @@ class LaunchInstance(workflows.Workflow):
             user = {
                 'name': context['user'],
                 'password': context['password'],
-                'databases': self._get_databases(context),
             }
+            dbs = self._get_databases(context)
+            if dbs is not None:
+                user['databases'] = dbs
             if context['host']:
                 user['host'] = context['host']
             users = [user]

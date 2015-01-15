@@ -19,6 +19,7 @@ from django.utils.translation import ugettext_lazy as _
 from horizon import exceptions
 from horizon import tabs
 from openstack_dashboard import api
+from openstack_dashboard.dashboards.project.databases import db_capability
 from openstack_dashboard.dashboards.project.databases import tables
 
 
@@ -118,7 +119,14 @@ class BackupsTab(tabs.TableTab):
         return data
 
     def allowed(self, request):
-        return request.user.has_perm('openstack.services.object-store')
+        return (request.user.has_perm('openstack.services.object-store')) \
+            and (self._has_backup_capability(self.tab_group.kwargs))
+
+    def _has_backup_capability(self, kwargs):
+        instance = kwargs['instance']
+        if (instance is not None):
+            return db_capability.can_backup(instance.datastore['type'])
+        return True
 
 
 class InstanceDetailTabs(tabs.TabGroup):
