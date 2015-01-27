@@ -12,27 +12,51 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+
+from django.core import cache
+
 from openstack_dashboard import api
 
 from oslo.serialization import jsonutils
 
-_configuration_group_managers = {}
 
-
-def get(configuration_group_id):
+def get(request, configuration_group_id):
     if not has_config(configuration_group_id):
-        _configuration_group_managers[configuration_group_id] = \
-            ConfigParamManager(configuration_group_id)
+        manager = ConfigParamManager(configuration_group_id)
+        manager.configuration_get(request)
+        cache.cache.set(configuration_group_id, manager)
 
-    return _configuration_group_managers[configuration_group_id]
+    return cache.cache.get(configuration_group_id)
 
 
 def delete(configuration_group_id):
-    del _configuration_group_managers[configuration_group_id]
+    cache.cache.delete(configuration_group_id)
+
+
+def update(configuration_group_id, manager):
+    cache.cache.set(configuration_group_id, manager)
 
 
 def has_config(configuration_group_id):
-    return configuration_group_id in _configuration_group_managers
+    if cache.cache.get(configuration_group_id):
+        return True
+    else:
+        return False
+
+
+def dict_has_changes(original, other):
+    if len(other) != len(original):
+        return True
+
+    diffs = (set(original.keys()) - set(other.keys()))
+    if len(diffs).__nonzero__():
+        return True
+
+    for key in original:
+        if original[key] != other[key]:
+            return True
+
+    return False
 
 
 class ConfigParamManager(object):
@@ -45,10 +69,22 @@ class ConfigParamManager(object):
 
     def configuration_get(self, request):
         if self.configuration is None:
-            self.configuration = api.trove.configuration_get(
+            configuration = api.trove.configuration_get(
                 request, self.configuration_id)
+            # need to make one that can be cached
+            self.configuration = Configuration(
+                self.configuration_id,
+                configuration.name,
+                configuration.description,
+                configuration.datastore_name,
+                configuration.datastore_version_name,
+                configuration.created,
+                configuration.updated)
+            self.configuration.values = \
+                dict.copy(configuration.values)
             self.original_configuration_values = \
                 dict.copy(self.configuration.values)
+
         return self.get_configuration()
 
     def get_configuration(self):
@@ -66,9 +102,11 @@ class ConfigParamManager(object):
 
     def update_param(self, name, value):
         self.configuration.values[name] = value
+        update(self.configuration_id, self)
 
     def delete_param(self, name):
         del self.configuration.values[name]
+        update(self.configuration_id, self)
 
     def add_param(self, name, value):
         self.update_param(name, value)
@@ -77,21 +115,8 @@ class ConfigParamManager(object):
         return jsonutils.dumps(self.configuration.values)
 
     def has_changes(self):
-        if len(self.configuration.values) != \
-                len(self.original_configuration_values):
-            return True
-
-        diffs = (set(self.original_configuration_values.keys()) -
-                 set(self.configuration.values.keys()))
-        if len(diffs).__nonzero__():
-            return True
-
-        for key in self.original_configuration_values:
-            if self.original_configuration_values[key] != \
-                    self.configuration.values[key]:
-                return True
-
-        return False
+        return dict_has_changes(self.original_configuration_values,
+                                self.configuration.values)
 
 
 class ConfigParam:
@@ -99,3 +124,15 @@ class ConfigParam:
         self.configuration_id = configuration_id
         self.name = name
         self.value = value
+
+
+class Configuration:
+    def __init__(self, id, name, description, datastore_name,
+                 datastore_version_name, created, updated):
+        self.id = id
+        self.name = name
+        self.description = description
+        self.datastore_name = datastore_name
+        self.datastore_version_name = datastore_version_name
+        self.created = created
+        self.updated = updated

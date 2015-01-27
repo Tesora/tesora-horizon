@@ -60,7 +60,7 @@ class DetailView(horizon_tabs.TabbedTableView):
     def get_data(self):
         try:
             configuration_id = self.kwargs['configuration_id']
-            return config_param_manager.get(configuration_id) \
+            return config_param_manager.get(self.request, configuration_id) \
                 .configuration_get(self.request)
         except Exception:
             redirect = reverse('horizon:project:database_configurations:index')

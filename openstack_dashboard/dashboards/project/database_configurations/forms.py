@@ -125,7 +125,8 @@ class AddParameterForm(forms.SelfHandlingForm):
         super(AddParameterForm, self).__init__(request, *args, **kwargs)
 
         configuration = config_param_manager \
-            .get(kwargs["initial"]["configuration_id"]).get_configuration()
+            .get(request, kwargs["initial"]["configuration_id"]) \
+            .get_configuration()
 
         self.fields['name'].choices = self.get_parameters(
             request, configuration.datastore_name,
@@ -190,7 +191,8 @@ class AddParameterForm(forms.SelfHandlingForm):
 
     def handle(self, request, data):
         try:
-            config_param_manager.get(self.initial["configuration_id"]) \
+            config_param_manager.get(
+                request, self.initial["configuration_id"]) \
                 .add_param(data["name"], self._adjust_type(data["value"]))
             messages.success(request, _('Successfully added parameter'))
         except Exception as e:

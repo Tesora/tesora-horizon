@@ -42,7 +42,7 @@ class ValuesTab(tabs.TableTab):
     def get_values_data(self):
         values_data = []
         manager = config_param_manager.get(
-            self.tab_group.kwargs['configuration_id'])
+            self.request, self.tab_group.kwargs['configuration_id'])
         for k, v in manager.get_configuration().values.items():
             manager.add_param(k, v)
             values_data.append(manager.create_config_value(k, v))

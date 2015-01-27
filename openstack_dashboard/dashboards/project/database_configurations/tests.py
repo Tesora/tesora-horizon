@@ -164,11 +164,12 @@ class DatabaseConfigurationsTests(test.TestCase):
 
     @test.create_stubs({api.trove: ('configuration_get',)})
     def test_details_tab(self):
+        config = self.database_configurations.first()
         api.trove.configuration_get(IsA(http.HttpRequest),
-                                    IsA(unicode)) \
-            .AndReturn(self.database_configurations.first())
+                                    config.id) \
+            .AndReturn(config)
         self.mox.ReplayAll()
-        details_url = self._get_url_with_arg(DETAIL_URL, 'id')
+        details_url = self._get_url_with_arg(DETAIL_URL, config.id)
         url = details_url + '?tab=configuration_details__details'
         res = self.client.get(url)
         self.assertTemplateUsed(res,
@@ -188,10 +189,15 @@ class DatabaseConfigurationsTests(test.TestCase):
 
     @test.create_stubs({
         api.trove: ('configuration_get', 'configuration_parameters_list',),
-        config_param_manager.ConfigParamManager: ('get_configuration',)})
+        config_param_manager.ConfigParamManager:
+            ('get_configuration', 'configuration_get',)})
     def test_add_parameter(self):
-        config_param_manager.ConfigParamManager.get_configuration() \
+        config = config_param_manager.ConfigParamManager.get_configuration() \
             .AndReturn(self.database_configurations.first())
+
+        config_param_manager.ConfigParamManager \
+            .configuration_get(IsA(http.HttpRequest)) \
+            .AndReturn(config)
 
         api.trove.configuration_parameters_list(
             IsA(http.HttpRequest),
@@ -205,12 +211,17 @@ class DatabaseConfigurationsTests(test.TestCase):
 
     @test.create_stubs({
         api.trove: ('configuration_get', 'configuration_parameters_list',),
-        config_param_manager.ConfigParamManager: ('get_configuration',)})
+        config_param_manager.ConfigParamManager:
+            ('get_configuration', 'configuration_get',)})
     def test_add_parameter_exception_on_parameters(self):
         try:
             config = (config_param_manager.ConfigParamManager
                       .get_configuration()
                       .AndReturn(self.database_configurations.first()))
+
+            config_param_manager.ConfigParamManager \
+                .configuration_get(IsA(http.HttpRequest)) \
+                .AndReturn(config)
 
             api.trove.configuration_parameters_list(
                 IsA(http.HttpRequest),
@@ -243,12 +254,16 @@ class DatabaseConfigurationsTests(test.TestCase):
     @test.create_stubs({
         api.trove: ('configuration_get', 'configuration_parameters_list',),
         config_param_manager.ConfigParamManager:
-            ('get_configuration', 'add_param')})
+            ('get_configuration', 'add_param', 'configuration_get',)})
     def test_add_new_parameter(self):
         try:
             config = (config_param_manager.ConfigParamManager
                       .get_configuration()
                       .AndReturn(self.database_configurations.first()))
+
+            config_param_manager.ConfigParamManager \
+                .configuration_get(IsA(http.HttpRequest)) \
+                .AndReturn(config)
 
             api.trove.configuration_parameters_list(
                 IsA(http.HttpRequest),
@@ -277,12 +292,20 @@ class DatabaseConfigurationsTests(test.TestCase):
 
     @test.create_stubs({
         api.trove: ('configuration_get', 'configuration_parameters_list',),
-        config_param_manager.ConfigParamManager: ('get_configuration',)})
+        config_param_manager: ('get',)})
     def test_add_parameter_invalid_value(self):
         try:
-            config = (config_param_manager.ConfigParamManager
-                      .get_configuration()
-                      .AndReturn(self.database_configurations.first()))
+            config = self.database_configurations.first()
+
+            # setup the configuration parameter manager
+            config_param_mgr = config_param_manager.ConfigParamManager(
+                config.id)
+            config_param_mgr.configuration = config
+            config_param_mgr.original_configuration_values = \
+                dict.copy(config.values)
+
+            config_param_manager.get(IsA(http.HttpRequest), config.id) \
+                .MultipleTimes().AndReturn(config_param_mgr)
 
             api.trove.configuration_parameters_list(
                 IsA(http.HttpRequest),
@@ -306,56 +329,93 @@ class DatabaseConfigurationsTests(test.TestCase):
         finally:
             config_param_manager.delete(config.id)
 
+    # @test.create_stubs({config_param_manager: ('get',)})
+    @test.create_stubs({api.trove: ('configuration_get',)})
     def test_values_tab_discard_action(self):
-        config = copy.deepcopy(self.database_configurations.first())
+        config = self.database_configurations.first()
+
+        api.trove.configuration_get(IsA(http.HttpRequest), config.id) \
+            .MultipleTimes().AndReturn(config)
+        self.mox.ReplayAll()
 
         details_url = self._get_url_with_arg(DETAIL_URL, config.id)
         url = details_url + '?tab=configuration_details__value'
 
         self._test_create_altered_config_params(config, url)
 
-        self.assertTrue(config_param_manager.has_config(config.id))
+        # get the state of the configuration before discard action
+        changed_configuration_values = \
+            dict.copy(config_param_manager.get(self.request, config.id)
+                      .get_configuration().values)
 
         res = self.client.post(url, {'action': u"values__discard_changes"})
         self.assertRedirectsNoFollow(res, url)
 
-        # discard deletes the configuration group from the config manager
-        self.assertFalse(config_param_manager.has_config(config.id))
+        # get the state of the configuration after discard action
+        restored_configuration_values = \
+            dict.copy(config_param_manager.get(self.request, config.id)
+                      .get_configuration().values)
 
-    @test.create_stubs({api.trove: ('configuration_update',)})
+        self.assertTrue(config_param_manager.dict_has_changes(
+            changed_configuration_values, restored_configuration_values))
+
+    @test.create_stubs({api.trove: ('configuration_update',),
+                        config_param_manager: ('get',)})
     def test_values_tab_apply_action(self):
         config = copy.deepcopy(self.database_configurations.first())
+
+        # setup the configuration parameter manager
+        config_param_mgr = config_param_manager.ConfigParamManager(
+            config.id)
+        config_param_mgr.configuration = config
+        config_param_mgr.original_configuration_values = \
+            dict.copy(config.values)
+
+        config_param_manager.get(IsA(http.HttpRequest), config.id) \
+            .MultipleTimes().AndReturn(config_param_mgr)
+
+        api.trove.configuration_update(
+            IsA(http.HttpRequest),
+            config.id,
+            config_param_mgr.to_json()) \
+            .AndReturn(None)
+        self.mox.ReplayAll()
 
         details_url = self._get_url_with_arg(DETAIL_URL, config.id)
         url = details_url + '?tab=configuration_details__value'
 
         self._test_create_altered_config_params(config, url)
-
-        api.trove.configuration_update(
-            IsA(http.HttpRequest),
-            config.id,
-            config_param_manager.get(config.id).to_json()).AndReturn(None)
-        self.mox.ReplayAll()
 
         # apply changes
         res = self.client.post(url, {'action': u"values__apply_changes"})
         self.assertRedirectsNoFollow(res, url)
 
-    @test.create_stubs({api.trove: ('configuration_update',)})
+    @test.create_stubs({api.trove: ('configuration_update',),
+                        config_param_manager: ('get',)})
     def test_values_tab_apply_action_exception(self):
         config = copy.deepcopy(self.database_configurations.first())
+
+        # setup the configuration parameter manager
+        config_param_mgr = config_param_manager.ConfigParamManager(
+            config.id)
+        config_param_mgr.configuration = config
+        config_param_mgr.original_configuration_values = \
+            dict.copy(config.values)
+
+        config_param_manager.get(IsA(http.HttpRequest), config.id) \
+            .MultipleTimes().AndReturn(config_param_mgr)
+
+        api.trove.configuration_update(
+            IsA(http.HttpRequest),
+            config.id,
+            config_param_mgr.to_json())\
+            .AndRaise(self.exceptions.trove)
+        self.mox.ReplayAll()
 
         details_url = self._get_url_with_arg(DETAIL_URL, config.id)
         url = details_url + '?tab=configuration_details__value'
 
         self._test_create_altered_config_params(config, url)
-
-        api.trove.configuration_update(
-            IsA(http.HttpRequest),
-            config.id,
-            config_param_manager.get(config.id).to_json())\
-            .AndRaise(self.exceptions.trove)
-        self.mox.ReplayAll()
 
         # apply changes
         res = self.client.post(url, {'action': u"values__apply_changes"})
@@ -364,10 +424,10 @@ class DatabaseConfigurationsTests(test.TestCase):
 
     def _test_create_altered_config_params(self, config, url):
         # setup the configuration parameter manager
-        config_param_mgr = config_param_manager.get(config.id)
-        config_param_mgr.configuration = config
-        config_param_mgr.original_configuration_values = \
-            dict.copy(config.values)
+        # config_param_mgr = config_param_manager.get(self.request, config.id)
+        # config_param_mgr.configuration = config
+        # config_param_mgr.original_configuration_values = \
+        #     dict.copy(config.values)
 
         # determine the number of configuration group parameters in the list
         res = self.client.get(url)
@@ -389,15 +449,21 @@ class DatabaseConfigurationsTests(test.TestCase):
 
         self.assertEqual((number_params - 1), new_number_params)
 
-    @test.create_stubs({api.trove: ('configuration_instances',)})
+    @test.create_stubs({api.trove: ('configuration_instances',),
+                        config_param_manager: ('get',)})
     def test_instances_tab(self):
         try:
             config = self.database_configurations.first()
+
             # setup the configuration parameter manager
-            config_param_mgr = config_param_manager.get(config.id)
+            config_param_mgr = config_param_manager.ConfigParamManager(
+                config.id)
             config_param_mgr.configuration = config
             config_param_mgr.original_configuration_values = \
                 dict.copy(config.values)
+
+            config_param_manager.get(IsA(http.HttpRequest), config.id) \
+                .MultipleTimes().AndReturn(config_param_mgr)
 
             api.trove.configuration_instances(IsA(http.HttpRequest),
                                               config.id)\
@@ -416,15 +482,21 @@ class DatabaseConfigurationsTests(test.TestCase):
         finally:
             config_param_manager.delete(config.id)
 
-    @test.create_stubs({api.trove: ('configuration_instances',)})
+    @test.create_stubs({api.trove: ('configuration_instances',),
+                        config_param_manager: ('get',)})
     def test_instances_tab_exception(self):
         try:
             config = self.database_configurations.first()
+
             # setup the configuration parameter manager
-            config_param_mgr = config_param_manager.get(config.id)
+            config_param_mgr = config_param_manager.ConfigParamManager(
+                config.id)
             config_param_mgr.configuration = config
             config_param_mgr.original_configuration_values = \
                 dict.copy(config.values)
+
+            config_param_manager.get(IsA(http.HttpRequest), config.id) \
+                .MultipleTimes().AndReturn(config_param_mgr)
 
             api.trove.configuration_instances(IsA(http.HttpRequest),
                                               config.id) \

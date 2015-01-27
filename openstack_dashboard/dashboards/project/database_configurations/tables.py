@@ -87,16 +87,15 @@ class ApplyChanges(tables.Action):
 
     def handle(self, table, request, obj_ids):
         configuration_id = table.kwargs['configuration_id']
-        if config_param_manager.get(configuration_id).has_changes():
+        if config_param_manager.get(request, configuration_id).has_changes():
             try:
                 api.trove.configuration_update(
                     request, configuration_id,
-                    config_param_manager.get(configuration_id).to_json())
+                    config_param_manager.get(
+                        request, configuration_id).to_json())
                 messages.success(request, _('Applied changes to server'))
-            except Exception as ex:
-                messages.error(
-                    request,
-                    _('Error applying changes: %s') % ex.message)
+            except Exception:
+                messages.error(request, _('Error applying changes'))
             finally:
                 config_param_manager.delete(configuration_id)
 
@@ -114,7 +113,7 @@ class DiscardChanges(tables.Action):
 
     def handle(self, table, request, obj_ids):
         configuration_id = table.kwargs['configuration_id']
-        if config_param_manager.get(configuration_id).has_changes():
+        if config_param_manager.get(request, configuration_id).has_changes():
             try:
                 config_param_manager.delete(configuration_id)
                 messages.success(request, _('Reset Parameters'))
@@ -132,13 +131,14 @@ class DeleteParameter(tables.DeleteAction):
 
     def delete(self, request, obj_ids):
         configuration_id = self.table.kwargs['configuration_id']
-        config_param_manager.get(configuration_id).delete_param(obj_ids)
+        config_param_manager.get(request, configuration_id) \
+            .delete_param(obj_ids)
 
 
 class UpdateRow(tables.Row):
     def get_data(self, request, name):
         return config_param_manager.get(
-            self.table.kwargs["configuration_id"]).get_param(name)
+            request, self.table.kwargs["configuration_id"]).get_param(name)
 
 
 class UpdateCell(tables.UpdateAction):
@@ -155,7 +155,7 @@ class UpdateCell(tables.UpdateAction):
 
         setattr(datum, cell_name, value)
 
-        config_param_manager.get(config_param.configuration_id) \
+        config_param_manager.get(request, config_param.configuration_id) \
             .update_param(name, value)
 
         return True
