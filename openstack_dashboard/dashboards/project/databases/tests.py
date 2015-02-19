@@ -225,7 +225,8 @@ class DatabaseTests(test.TestCase):
             replica_of=None,
             configuration=None,
             users=None,
-            nics=nics).AndReturn(self.databases.first())
+            nics=nics,
+            replica_count=None).AndReturn(self.databases.first())
 
         self.mox.ReplayAll()
         post = {
@@ -287,7 +288,8 @@ class DatabaseTests(test.TestCase):
             replica_of=None,
             configuration=None,
             users=None,
-            nics=nics).AndRaise(trove_exception)
+            nics=nics,
+            replica_count=None).AndRaise(trove_exception)
 
         self.mox.ReplayAll()
         post = {
@@ -497,7 +499,8 @@ class DatabaseTests(test.TestCase):
             replica_of=self.databases.first().id,
             configuration=None,
             users=None,
-            nics=nics).AndReturn(self.databases.first())
+            nics=nics,
+            replica_count=2).AndReturn(self.databases.first())
 
         self.mox.ReplayAll()
         post = {
@@ -507,7 +510,8 @@ class DatabaseTests(test.TestCase):
             'network': self.networks.first().id,
             'datastore': 'mysql,5.5',
             'initial_state': 'master',
-            'master': self.databases.first().id
+            'master': self.databases.first().id,
+            'replica_count': 2
         }
 
         res = self.client.post(LAUNCH_URL, post)
