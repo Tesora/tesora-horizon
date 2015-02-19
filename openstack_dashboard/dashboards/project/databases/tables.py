@@ -112,6 +112,21 @@ class DetachReplica(tables.BatchAction):
         api.trove.instance_detach_replica(request, obj_id)
 
 
+class PromoteToReplicaSource(tables.LinkAction):
+    name = "promote_to_replica_source"
+    verbose_name = _("Promote to Replica Source")
+    url = "horizon:project:databases:promote_to_replica_source"
+    classes = ("ajax-modal", "btn-promote-to-replica-source")
+
+    def allowed(self, request, instance=None):
+        return (instance.status in ACTIVE_STATES
+                and hasattr(instance, 'replica_of'))
+
+    def get_link_url(self, datum):
+        instance_id = self.table.get_object_id(datum)
+        return urlresolvers.reverse(self.url, args=[instance_id])
+
+
 class DeleteUser(tables.DeleteAction):
     @staticmethod
     def action_present(count):
@@ -358,6 +373,7 @@ class InstancesTable(tables.DataTable):
                        ResizeInstance,
                        AttachConfiguration,
                        DetachConfiguration,
+                       PromoteToReplicaSource,
                        RestartInstance,
                        DetachReplica,
                        TerminateInstance)

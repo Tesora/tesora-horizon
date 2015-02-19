@@ -110,6 +110,11 @@ def instance_detach_configuration(request, instance_id):
     return troveclient(request).instances.modify(instance_id)
 
 
+def promote_to_replica_source(request, instance_id):
+    return troveclient(request).instances.promote_to_replica_source(
+        instance_id)
+
+
 def database_list(request, instance_id):
     return troveclient(request).databases.list(instance_id)
 

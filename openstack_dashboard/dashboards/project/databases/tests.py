@@ -22,6 +22,7 @@ from mox import IsA  # noqa
 
 from horizon import exceptions
 from openstack_dashboard import api
+from openstack_dashboard.dashboards.project.databases import views
 from openstack_dashboard.test import helpers as test
 
 from troveclient import common
@@ -510,6 +511,57 @@ class DatabaseTests(test.TestCase):
         }
 
         res = self.client.post(LAUNCH_URL, post)
+        self.assertRedirectsNoFollow(res, INDEX_URL)
+
+    @test.create_stubs({
+        api.trove: ('promote_to_replica_source',),
+        views.PromoteToReplicaSourceView: ('get_initial',)})
+    def test_promote_replica_instance(self):
+        replica_source = self.databases.first()
+        replica = self.databases.list()[1]
+
+        initial = {'instance_id': replica_source.id,
+                   'replica': replica,
+                   'replica_source': replica_source}
+        views.PromoteToReplicaSourceView.get_initial().AndReturn(initial)
+
+        api.trove.promote_to_replica_source(
+            IsA(http.HttpRequest), replica_source.id)
+
+        self.mox.ReplayAll()
+        url = reverse('horizon:project:databases:promote_to_replica_source',
+                      args=[replica_source.id])
+        form = {
+            'instance_id': replica_source.id
+        }
+        res = self.client.post(url, form)
+        self.assertNoFormErrors(res)
+        self.assertRedirectsNoFollow(res, INDEX_URL)
+
+    @test.create_stubs({
+        api.trove: ('promote_to_replica_source',),
+        views.PromoteToReplicaSourceView: ('get_initial',)})
+    def test_promote_replica_instance_exception(self):
+        replica_source = self.databases.first()
+        replica = self.databases.list()[1]
+
+        initial = {'instance_id': replica_source.id,
+                   'replica': replica,
+                   'replica_source': replica_source}
+        views.PromoteToReplicaSourceView.get_initial().AndReturn(initial)
+
+        api.trove.promote_to_replica_source(
+            IsA(http.HttpRequest), replica_source.id).\
+            AndRaise(self.exceptions.trove)
+
+        self.mox.ReplayAll()
+        url = reverse('horizon:project:databases:promote_to_replica_source',
+                      args=[replica_source.id])
+        form = {
+            'instance_id': replica_source.id
+        }
+        res = self.client.post(url, form)
+        self.assertEqual(res.status_code, 302)
         self.assertRedirectsNoFollow(res, INDEX_URL)
 
     @test.create_stubs({

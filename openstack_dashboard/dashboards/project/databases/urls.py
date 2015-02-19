@@ -34,4 +34,7 @@ urlpatterns = patterns(
         name='resize_instance'),
     url(INSTANCES % 'attach_config', views.AttachConfigurationView.as_view(),
         name='attach_config'),
+    url(INSTANCES % 'promote_to_replica_source',
+        views.PromoteToReplicaSourceView.as_view(),
+        name='promote_to_replica_source'),
 )

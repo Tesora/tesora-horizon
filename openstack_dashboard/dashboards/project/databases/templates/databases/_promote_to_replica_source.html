@@ -1,0 +1,46 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block form_id %}promote_to_replica_source_form{% endblock %}
+{% block form_action %}{% url "horizon:project:databases:promote_to_replica_source" instance_id %}{% endblock %}
+
+{% block modal_id %}promote_to_replica_source_modal{% endblock %}
+{% block modal-header %}{% trans "Promote to Replica Source" %}{% endblock %}
+
+{% block modal-body %}
+<div class="row">
+  <p class="col-md-12">{% blocktrans %}Confirm the current replica is to be promoted as the new replica source.{% endblocktrans %}</p>
+  <p class="col-md-12">{% blocktrans %}This action cannot be undone.{% endblocktrans %}</p>
+  <fieldset>
+  {% include "horizon/common/_form_fields.html" %}
+  </fieldset>
+</div>
+<div class="row">
+    <div class="left">
+        <div class="well">
+            <h4>{% trans "Current Replica" %}</h4>
+            <table class='table table-bordered'>
+              <tr><th>{% trans 'Name' %}</th><td>{{ replica.name|default:_("None") }}</td></tr>
+              <tr><th>{% trans 'Host' %}</th><td>{{ replica.ip|default:_("Unknown") }}</td></tr>
+              <tr><th>{% trans 'Status' %}</th><td>{{ replica.status|default:_("Unknown") }}</td></tr>
+            </table>
+        </div>
+    </div>
+    <div class="right">
+        <div class="well">
+            <h4>{% trans "Current Replica Source" %}</h4>
+            <table class='table table-bordered'>
+              <tr><th>{% trans 'Name' %}</th><td>{{ replica_source.name|default:_("None") }}</td></tr>
+              <tr><th>{% trans 'Host' %}</th><td>{{ replica_source.ip|default:_("Unknown") }}</td></tr>
+              <tr><th>{% trans 'Status' %}</th><td>{{ replica_source.status|default:_("Unknown") }}</td></tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block modal-footer %}
+  <input class="btn btn-primary pull-right" type="submit" value="{% trans "Promote" %}" />
+  <a href="{% url "horizon:project:databases:index" %}" class="btn btn-default secondary cancel close">{% trans "Cancel" %}</a>
+{% endblock %}
