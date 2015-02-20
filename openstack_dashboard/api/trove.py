@@ -117,6 +117,10 @@ def promote_to_replica_source(request, instance_id):
         instance_id)
 
 
+def eject_replica_source(request, instance_id):
+    return troveclient(request).instances.eject_replica_source(instance_id)
+
+
 def database_list(request, instance_id):
     return troveclient(request).databases.list(instance_id)
 

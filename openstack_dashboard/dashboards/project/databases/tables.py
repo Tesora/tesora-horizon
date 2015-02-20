@@ -127,6 +127,33 @@ class PromoteToReplicaSource(tables.LinkAction):
         return urlresolvers.reverse(self.url, args=[instance_id])
 
 
+class EjectReplicaSource(tables.BatchAction):
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Eject Replica Source",
+            u"Eject Replica Sources",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Ejected Replica Source",
+            u"Ejected Replica Sources",
+            count
+        )
+
+    name = "eject_replica_source"
+    classes = ('btn-danger', 'btn-eject-replica-source')
+
+    def _allowed(self, request, instance=None):
+        return (hasattr(instance, 'replicas'))
+
+    def action(self, request, obj_id):
+        api.trove.eject_replica_source(request, obj_id)
+
+
 class DeleteUser(tables.DeleteAction):
     @staticmethod
     def action_present(count):
@@ -374,6 +401,7 @@ class InstancesTable(tables.DataTable):
                        AttachConfiguration,
                        DetachConfiguration,
                        PromoteToReplicaSource,
+                       EjectReplicaSource,
                        RestartInstance,
                        DetachReplica,
                        TerminateInstance)

@@ -569,6 +569,53 @@ class DatabaseTests(test.TestCase):
         self.assertRedirectsNoFollow(res, INDEX_URL)
 
     @test.create_stubs({
+        api.trove: ('instance_list',
+                    'eject_replica_source',),
+    })
+    def test_eject_replica_source(self):
+        databases = common.Paginated(self.databases.list())
+        database = databases[2]
+
+        api.trove.eject_replica_source(
+            IsA(http.HttpRequest), database.id)
+
+        databases = common.Paginated(self.databases.list())
+        api.trove.instance_list(IsA(http.HttpRequest), marker=None)\
+            .AndReturn(databases)
+
+        self.mox.ReplayAll()
+
+        res = self.client.post(
+            INDEX_URL,
+            {'action': 'databases__eject_replica_source__%s' % database.id})
+
+        self.assertRedirectsNoFollow(res, INDEX_URL)
+
+    @test.create_stubs({
+        api.trove: ('instance_list',
+                    'eject_replica_source',),
+    })
+    def test_eject_replica_source_exception(self):
+        databases = common.Paginated(self.databases.list())
+        database = databases[2]
+
+        api.trove.eject_replica_source(
+            IsA(http.HttpRequest), database.id)\
+            .AndRaise(self.exceptions.trove)
+
+        databases = common.Paginated(self.databases.list())
+        api.trove.instance_list(IsA(http.HttpRequest), marker=None)\
+            .AndReturn(databases)
+
+        self.mox.ReplayAll()
+
+        res = self.client.post(
+            INDEX_URL,
+            {'action': 'databases__eject_replica_source__%s' % database.id})
+
+        self.assertRedirectsNoFollow(res, INDEX_URL)
+
+    @test.create_stubs({
         api.trove: ('instance_get',
                     'configuration_list',
                     'instance_attach_configuration'),
