@@ -69,7 +69,7 @@ class AddRuleAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(AddRuleAction, self).__init__(request, *args, **kwargs)
 
-    class Meta:
+    class Meta(object):
         name = _("AddRule")
         permissions = ('openstack.services.network',)
         help_text = _("Create a firewall rule.\n\n"
@@ -133,7 +133,7 @@ class SelectRulesAction(workflows.Action):
         widget=forms.CheckboxSelectMultiple(),
         help_text=_("Create a policy with selected rules."))
 
-    class Meta:
+    class Meta(object):
         name = _("Rules")
         permissions = ('openstack.services.network',)
         help_text = _("Select rules for your policy.")
@@ -141,7 +141,7 @@ class SelectRulesAction(workflows.Action):
     def populate_rule_choices(self, request, context):
         try:
             tenant_id = self.request.user.tenant_id
-            rules = api.fwaas.rule_list(request, tenant_id=tenant_id)
+            rules = api.fwaas.rule_list_for_tenant(request, tenant_id)
             rules = sorted(rules,
                            key=lambda rule: rule.name_or_id)
             rule_list = [(rule.id, rule.name_or_id) for rule in rules
@@ -184,7 +184,7 @@ class AddPolicyAction(workflows.Action):
     def __init__(self, request, *args, **kwargs):
         super(AddPolicyAction, self).__init__(request, *args, **kwargs)
 
-    class Meta:
+    class Meta(object):
         name = _("AddPolicy")
         permissions = ('openstack.services.network',)
         help_text = _("Create a firewall policy with an ordered list "
@@ -246,7 +246,7 @@ class AddFirewallAction(workflows.Action):
         firewall_policy_id_choices = [('', _("Select a Policy"))]
         try:
             tenant_id = self.request.user.tenant_id
-            policies = api.fwaas.policy_list(request, tenant_id=tenant_id)
+            policies = api.fwaas.policy_list_for_tenant(request, tenant_id)
             policies = sorted(policies, key=lambda policy: policy.name)
         except Exception as e:
             exceptions.handle(
@@ -261,7 +261,7 @@ class AddFirewallAction(workflows.Action):
         if not request.user.is_superuser:
             self.fields['shared'].widget.attrs['disabled'] = 'disabled'
 
-    class Meta:
+    class Meta(object):
         name = _("AddFirewall")
         permissions = ('openstack.services.network',)
         help_text = _("Create a firewall based on a policy.\n\n"

@@ -29,10 +29,14 @@ from openstack_dashboard.dashboards.project.networks.ports \
 from openstack_dashboard.dashboards.project.networks.ports \
     import tabs as project_tabs
 
+STATE_DICT = dict(project_tables.DISPLAY_CHOICES)
+STATUS_DICT = dict(project_tables.STATUS_DISPLAY_CHOICES)
+
 
 class DetailView(tabs.TabView):
     tab_group_class = project_tabs.PortDetailTabs
     template_name = 'project/networks/ports/detail.html'
+    page_title = _("Port Details")
 
     @memoized.memoized_method
     def get_data(self):
@@ -40,6 +44,10 @@ class DetailView(tabs.TabView):
 
         try:
             port = api.neutron.port_get(self.request, port_id)
+            port.admin_state_label = STATE_DICT.get(port.admin_state,
+                                                    port.admin_state)
+            port.status_label = STATUS_DICT.get(port.status,
+                                                port.status)
         except Exception:
             port = []
             redirect = self.get_redirect_url()
@@ -73,9 +81,14 @@ class DetailView(tabs.TabView):
 
 class UpdateView(forms.ModalFormView):
     form_class = project_forms.UpdatePort
+    form_id = "update_port_form"
+    modal_header = _("Edit Port")
     template_name = 'project/networks/ports/update.html'
     context_object_name = 'port'
+    submit_label = _("Save Changes")
+    submit_url = "horizon:project:networks:editport"
     success_url = 'horizon:project:networks:detail'
+    page_title = _("Update Port")
 
     def get_success_url(self):
         return reverse(self.success_url,
@@ -97,6 +110,8 @@ class UpdateView(forms.ModalFormView):
         port = self._get_object()
         context['port_id'] = port['id']
         context['network_id'] = port['network_id']
+        args = (self.kwargs['network_id'], self.kwargs['port_id'],)
+        context['submit_url'] = reverse(self.submit_url, args=args)
         return context
 
     def get_initial(self):

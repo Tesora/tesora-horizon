@@ -13,12 +13,11 @@
 #    under the License.
 
 from django.core.urlresolvers import reverse
-from django.template.defaultfilters import title  # noqa
+from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
 from horizon import tables
-from horizon.utils import filters
 
 
 forbid_updates = set(["PENDING_CREATE", "PENDING_UPDATE", "PENDING_DELETE"])
@@ -226,6 +225,14 @@ class IPSecSiteConnectionsTable(tables.DataTable):
         ("Down", True),
         ("Error", False),
     )
+    STATUS_DISPLAY_CHOICES = (
+        ("Active", pgettext_lazy("Current status of an IPSec Site Connection",
+                                 u"Active")),
+        ("Down", pgettext_lazy("Current status of an IPSec Site Connection",
+                               u"Down")),
+        ("Error", pgettext_lazy("Current status of an IPSec Site Connection",
+                                u"Error")),
+    )
     id = tables.Column('id', hidden=True)
     name = tables.Column('name_or_id', verbose_name=_('Name'),
                          link="horizon:project:vpn:ipsecsiteconnectiondetails")
@@ -236,12 +243,12 @@ class IPSecSiteConnectionsTable(tables.DataTable):
     ipsecpolicy_name = tables.Column('ipsecpolicy_name',
                                      verbose_name=_('IPSec Policy'))
     status = tables.Column("status",
-                           filters=(title, filters.replace_underscores),
                            verbose_name=_("Status"),
                            status=True,
-                           status_choices=STATUS_CHOICES)
+                           status_choices=STATUS_CHOICES,
+                           display_choices=STATUS_DISPLAY_CHOICES)
 
-    class Meta:
+    class Meta(object):
         name = "ipsecsiteconnectionstable"
         verbose_name = _("IPSec Site Connections")
         table_actions = (AddIPSecSiteConnectionLink,
@@ -256,6 +263,24 @@ class VPNServicesTable(tables.DataTable):
         ("Down", True),
         ("Error", False),
     )
+    STATUS_DISPLAY_CHOICES = (
+        ("Active", pgettext_lazy("Current status of a VPN Service",
+                                 u"Active")),
+        ("Down", pgettext_lazy("Current status of a VPN Service",
+                               u"Down")),
+        ("Error", pgettext_lazy("Current status of a VPN Service",
+                                u"Error")),
+        ("Created", pgettext_lazy("Current status of a VPN Service",
+                                  u"Created")),
+        ("Pending_Create", pgettext_lazy("Current status of a VPN Service",
+                                         u"Pending Create")),
+        ("Pending_Update", pgettext_lazy("Current status of a VPN Service",
+                                         u"Pending Update")),
+        ("Pending_Delete", pgettext_lazy("Current status of a VPN Service",
+                                         u"Pending Delete")),
+        ("Inactive", pgettext_lazy("Current status of a VPN Service",
+                                   u"Inactive")),
+    )
     id = tables.Column('id', hidden=True)
     name = tables.Column("name_or_id", verbose_name=_('Name'),
                          link="horizon:project:vpn:vpnservicedetails")
@@ -263,12 +288,12 @@ class VPNServicesTable(tables.DataTable):
     subnet_name = tables.Column('subnet_name', verbose_name=_('Subnet'))
     router_name = tables.Column('router_name', verbose_name=_('Router'))
     status = tables.Column("status",
-                           filters=(title, filters.replace_underscores),
                            verbose_name=_("Status"),
                            status=True,
-                           status_choices=STATUS_CHOICES)
+                           status_choices=STATUS_CHOICES,
+                           display_choices=STATUS_DISPLAY_CHOICES)
 
-    class Meta:
+    class Meta(object):
         name = "vpnservicestable"
         verbose_name = _("VPN Services")
         table_actions = (AddVPNServiceLink, DeleteVPNServiceLink)
@@ -286,7 +311,7 @@ class IKEPoliciesTable(tables.DataTable):
         verbose_name=_('Encryption algorithm'))
     pfs = tables.Column("pfs", verbose_name=_('PFS'))
 
-    class Meta:
+    class Meta(object):
         name = "ikepoliciestable"
         verbose_name = _("IKE Policies")
         table_actions = (AddIKEPolicyLink, DeleteIKEPolicyLink)
@@ -304,7 +329,7 @@ class IPSecPoliciesTable(tables.DataTable):
         verbose_name=_('Encryption algorithm'))
     pfs = tables.Column("pfs", verbose_name=_('PFS'))
 
-    class Meta:
+    class Meta(object):
         name = "ipsecpoliciestable"
         verbose_name = _("IPSec Policies")
         table_actions = (AddIPSecPolicyLink, DeleteIPSecPolicyLink,)

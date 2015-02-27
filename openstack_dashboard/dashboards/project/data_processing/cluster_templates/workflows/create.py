@@ -65,7 +65,7 @@ class SelectPluginAction(workflows.Action):
             )
             self.fields[field_name] = choice_field
 
-    class Meta:
+    class Meta(object):
         name = _("Select plugin and hadoop version for cluster template")
         help_text_template = ("project/data_processing.cluster_templates/"
                               "_create_general_help.html")
@@ -78,7 +78,7 @@ class SelectPlugin(workflows.Step):
 class CreateClusterTemplate(workflows.Workflow):
     slug = "create_cluster_template"
     name = _("Create Cluster Template")
-    finalize_button_name = _("Create")
+    finalize_button_name = _("Next")
     success_message = _("Created")
     failure_message = _("Could not create")
     success_url = "horizon:project:data_processing.cluster_templates:index"
@@ -134,7 +134,7 @@ class GeneralConfigAction(workflows.Action):
             self._errors = dict()
         return cleaned_data
 
-    class Meta:
+    class Meta(object):
         name = _("Details")
         help_text_template = ("project/data_processing.cluster_templates/"
                               "_configure_general_help.html")
@@ -202,7 +202,7 @@ class ConfigureNodegroupsAction(workflows.Action):
             self._errors = dict()
         return cleaned_data
 
-    class Meta:
+    class Meta(object):
         name = _("Node Groups")
 
 

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-18 20:37-0500\n"
-"PO-Revision-Date: 2014-10-18 14:31+0000\n"
+"POT-Creation-Date: 2015-02-26 21:50-0600\n"
+"PO-Revision-Date: 2015-02-25 13:50+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Hebrew (http://www.transifex.com/projects/p/horizon/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -17,8 +17,69 @@ msgstr ""
 "Language: he\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: static/horizon/js/horizon.accordion_nav.js:83
-#: static/horizon/js/horizon.modals.js:309
+#: static/angular/modal/modal.js:83
+msgid "Submit"
+msgstr "שליחה"
+
+#: static/angular/modal/modal.js:84 static/angular/wizard/wizard.js:7
+#: static/horizon/js/horizon.modals.js:33
+msgid "Cancel"
+msgstr "ביטול"
+
+#: static/angular/transfer-table/transfer-table.js:37
+msgid "Allocated"
+msgstr ""
+
+#: static/angular/transfer-table/transfer-table.js:38
+msgid "Available"
+msgstr "זמין"
+
+#: static/angular/transfer-table/transfer-table.js:39
+msgid "Select one"
+msgstr ""
+
+#: static/angular/transfer-table/transfer-table.js:40
+msgid "Select an item from Available items below"
+msgstr ""
+
+#: static/angular/transfer-table/transfer-table.js:41
+msgid "No available items"
+msgstr ""
+
+#: static/angular/transfer-table/transfer-table.js:42
+msgid "Expand to see allocated items"
+msgstr ""
+
+#: static/angular/transfer-table/transfer-table.js:43
+msgid "Expand to see available items"
+msgstr ""
+
+#: static/angular/transfer-table/transfer-table.js:44
+msgid "Click to show or hide"
+msgstr ""
+
+#: static/angular/transfer-table/transfer-table.js:45
+msgid "Click to see more details"
+msgstr ""
+
+#: static/angular/transfer-table/transfer-table.js:93
+msgid "Found %(found)s of %(available)s"
+msgstr ""
+
+#: static/angular/wizard/wizard.js:8
+msgid "Back"
+msgstr ""
+
+#: static/angular/wizard/wizard.js:9
+msgid "Next"
+msgstr "הבא"
+
+#: static/angular/wizard/wizard.js:10
+msgid "Finish"
+msgstr ""
+
+#: static/horizon/js/horizon.accordion_nav.js:84
+#: static/horizon/js/horizon.modals.js:313
 #: static/horizon/js/horizon.tabs.js:21
 msgid "Loading"
 msgstr "בטעינה"
@@ -29,27 +90,27 @@ msgid "No data available."
 msgstr "אין מידע זמין."
 
 #: static/horizon/js/horizon.d3linechart.js:410
-#: static/horizon/js/horizon.modals.js:328
+#: static/horizon/js/horizon.modals.js:332
 #: static/horizon/js/horizon.tables_inline_edit.js:94
-#: static/horizon/js/horizon.tables_inline_edit.js:175
+#: static/horizon/js/horizon.tables_inline_edit.js:157
 msgid "An error occurred. Please try again later."
 msgstr "אירעה שגיאה. נא לנסות שוב מאוחר יותר."
 
 #: static/horizon/js/horizon.firewalls.js:30
-#: static/horizon/js/horizon.instances.js:30
+#: static/horizon/js/horizon.instances.js:31
 msgid "There was a problem communicating with the server, please try again."
 msgstr "אירעה שגיאה ביצירת קשר עם השרת, נא לנסות שוב מאוחר יותר."
 
-#: static/horizon/js/horizon.forms.js:195
+#: static/horizon/js/horizon.forms.js:184
 msgid "Filter"
 msgstr "מסנן"
 
-#: static/horizon/js/horizon.instances.js:248
+#: static/horizon/js/horizon.instances.js:272
 msgid "Could not read the file"
 msgstr "לא ניתן לקרוא את הקובץ"
 
-#: static/horizon/js/horizon.instances.js:254
-#: static/horizon/js/horizon.instances.js:281
+#: static/horizon/js/horizon.instances.js:278
+#: static/horizon/js/horizon.instances.js:307
 msgid "Could not decrypt the password"
 msgstr "לא ניתן לפענח את הססמה"
 
@@ -81,74 +142,70 @@ msgstr "הצלחה:"
 msgid "Error: "
 msgstr "שגיאה:"
 
-#: static/horizon/js/horizon.modals.js:33
-msgid "Cancel"
-msgstr "ביטול"
-
-#: static/horizon/js/horizon.modals.js:225
-#: static/horizon/js/horizon.tables.js:223
+#: static/horizon/js/horizon.modals.js:227
+#: static/horizon/js/horizon.tables.js:218
 msgid "Working"
 msgstr "בפעולה"
 
-#: static/horizon/js/horizon.modals.js:259
+#: static/horizon/js/horizon.modals.js:261
 msgid "There was an error submitting the form. Please try again."
 msgstr "אירעה שגיאה בעת שליחת הטופס. נא לנסות שוב."
 
-#: static/horizon/js/horizon.networktopology.js:511
-#: static/horizon/js/horizon.networktopology.js:517
+#: static/horizon/js/horizon.networktopology.js:530
+#: static/horizon/js/horizon.networktopology.js:536
 msgid "None"
 msgstr "ללא"
 
-#: static/horizon/js/horizon.networktopology.js:530
+#: static/horizon/js/horizon.networktopology.js:549
 msgid "Delete"
 msgstr "מחיקה"
 
-#: static/horizon/js/horizon.networktopology.js:533
+#: static/horizon/js/horizon.networktopology.js:552
 msgid "STATUS"
 msgstr "מצב"
 
-#: static/horizon/js/horizon.networktopology.js:534
+#: static/horizon/js/horizon.networktopology.js:553
 msgid "ID"
 msgstr "מזהה"
 
-#: static/horizon/js/horizon.networktopology.js:535
+#: static/horizon/js/horizon.networktopology.js:554
 msgid "Interfaces"
 msgstr "מנשקים"
 
-#: static/horizon/js/horizon.networktopology.js:536
+#: static/horizon/js/horizon.networktopology.js:555
 msgid "Delete Interface"
 msgstr ""
 
-#: static/horizon/js/horizon.networktopology.js:537
+#: static/horizon/js/horizon.networktopology.js:556
 msgid "Open Console"
 msgstr ""
 
-#: static/horizon/js/horizon.networktopology.js:538
+#: static/horizon/js/horizon.networktopology.js:557
 msgid "View Details"
 msgstr ""
 
-#: static/horizon/js/horizon.networktopology.js:541
+#: static/horizon/js/horizon.networktopology.js:560
 msgid "Delete Router"
 msgstr ""
 
-#: static/horizon/js/horizon.networktopology.js:542
+#: static/horizon/js/horizon.networktopology.js:561
 msgid "View Router Details"
 msgstr ""
 
-#: static/horizon/js/horizon.networktopology.js:545
+#: static/horizon/js/horizon.networktopology.js:564
 msgid "Add Interface"
 msgstr "הוספת מנשק"
 
-#: static/horizon/js/horizon.networktopology.js:551
+#: static/horizon/js/horizon.networktopology.js:570
 msgid "Terminate Instance"
 msgstr ""
 
-#: static/horizon/js/horizon.networktopology.js:552
+#: static/horizon/js/horizon.networktopology.js:571
 msgid "View Instance Details"
 msgstr ""
 
 #: static/horizon/js/horizon.tables.js:39
-#: static/horizon/js/horizon.tables.js:379
+#: static/horizon/js/horizon.tables.js:374
 msgid "No items to display."
 msgstr "אין פריטים להצגה."
 
@@ -157,21 +214,21 @@ msgstr "אין פריטים להצגה."
 msgid "An error occurred while updating."
 msgstr "אירעה שגיאה בעת העדכון."
 
-#: static/horizon/js/horizon.tables.js:206
+#: static/horizon/js/horizon.tables.js:200
 #, c-format
 msgid "You have selected %s. "
 msgstr "בחרת %s."
 
-#: static/horizon/js/horizon.tables.js:208
+#: static/horizon/js/horizon.tables.js:203
 #, c-format
 msgid "Confirm %s"
 msgstr "אישור ה%s."
 
-#: static/horizon/js/horizon.tables.js:209
-msgid "Please confirm your selection. This action cannot be undone."
-msgstr "נא לאשר את הבחירה שלך. לא ניתן לבטל פעולה זו."
+#: static/horizon/js/horizon.tables.js:204
+msgid "Please confirm your selection. "
+msgstr ""
 
-#: static/horizon/js/horizon.tables.js:366
+#: static/horizon/js/horizon.tables.js:361
 #, c-format
 msgid "Displaying %s item"
 msgid_plural "Displaying %s items"
@@ -179,10 +236,191 @@ msgstr[0] ""
 msgstr[1] ""
 
 #: static/horizon/js/horizon.tables_inline_edit.js:88
-#: static/horizon/js/horizon.tables_inline_edit.js:169
+#: static/horizon/js/horizon.tables_inline_edit.js:151
 msgid "Not authorized to do this operation."
 msgstr "אין לך הרשאה לביצוע פעולה זו."
 
 #: static/horizon/js/horizon.users.js:18
 msgid "Passwords do not match."
 msgstr "הססמאות אינן תואמות."
+
+#: static/horizon/js/angular/directives/serialConsole.js:23
+msgid "Connecting"
+msgstr ""
+
+#: static/horizon/js/angular/directives/serialConsole.js:23
+msgid "Open"
+msgstr ""
+
+#: static/horizon/js/angular/directives/serialConsole.js:23
+msgid "Closing"
+msgstr ""
+
+#: static/horizon/js/angular/directives/serialConsole.js:23
+msgid "Closed"
+msgstr ""
+
+#: static/horizon/js/angular/directives/serialConsole.js:85
+#, c-format
+msgid "Status: %s"
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.cinder.js:47
+msgid "Unable to retrieve volumes."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.cinder.js:74
+msgid "Unable to retrieve volume snapshots."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.config.js:42
+msgid "Unable to retrieve user configuration."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.config.js:61
+msgid "Unable to retrieve admin configuration."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.glance.js:38
+msgid "Unable to retrieve image."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.glance.js:81
+msgid "Unable to retrieve images."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.glance.js:133
+msgid "Unable to retrieve namespaces."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.glance.js:147
+msgid "Unable to retrieve namespace."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:24
+msgid "Unable to retrieve users"
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:31
+msgid "Unable to create the user."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:38
+msgid "Unable to delete the users."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:45
+msgid "Unable to retrieve the user"
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:53
+msgid "Unable to edit the user."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:60
+msgid "Unable to delete the user."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:68
+msgid "Unable to retrieve role"
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:75
+msgid "Unable to create the role."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:82
+msgid "Unable to delete the roles."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:89
+msgid "Unable to retrieve the role"
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:97
+msgid "Unable to edit the role."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:104
+msgid "Unable to delete the role."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:112
+msgid "Unable to retrieve domains"
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:119
+msgid "Unable to create the domain."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:126
+msgid "Unable to delete the domains."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:133
+msgid "Unable to retrieve the domain"
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:141
+msgid "Unable to edit the domain."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:148
+msgid "Unable to delete the domain."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:156
+msgid "Unable to retrieve projects"
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:163
+msgid "Unable to create the project."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:170
+msgid "Unable to delete the projects."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:177
+msgid "Unable to retrieve the project"
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:185
+msgid "Unable to edit the project."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:192
+msgid "Unable to delete the project."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:200
+msgid "Unable to grant the role."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.keystone.js:207
+msgid "Unable to fetch the service catalog."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.nova.js:40
+msgid "Unable to retrieve keypairs."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.nova.js:61
+msgid "Unable to create the keypair."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.nova.js:79
+msgid "Unable to retrieve availability zones."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.nova.js:117
+msgid "Unable to retrieve limits."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.nova.js:144
+msgid "Unable to create the server."
+msgstr ""
+
+#: static/horizon/js/angular/services/hz.api.security-group.js:64
+msgid "Unable to retrieve security groups."
+msgstr ""

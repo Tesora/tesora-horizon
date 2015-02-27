@@ -16,6 +16,7 @@ import logging
 
 from django.core.urlresolvers import reverse
 from django.template import defaultfilters as filters
+from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 from neutronclient.common import exceptions as q_ext
@@ -182,14 +183,28 @@ def get_external_network(router):
         return _("-")
 
 
+class RoutersFilterAction(tables.FilterAction):
+
+    def filter(self, table, routers, filter_string):
+        """Naive case-insensitive search."""
+        query = filter_string.lower()
+        return [router for router in routers
+                if query in router.name.lower()]
+
+
 class RoutersTable(tables.DataTable):
+    STATUS_DISPLAY_CHOICES = (
+        ("active", pgettext_lazy("current status of router", u"Active")),
+        ("error", pgettext_lazy("current status of router", u"Error")),
+    )
+
     name = tables.Column("name",
                          verbose_name=_("Name"),
                          link="horizon:project:routers:detail")
     status = tables.Column("status",
-                           filters=(filters.title,),
                            verbose_name=_("Status"),
-                           status=True)
+                           status=True,
+                           display_choices=STATUS_DISPLAY_CHOICES)
     distributed = tables.Column("distributed",
                                 filters=(filters.yesno, filters.capfirst),
                                 verbose_name=_("Distributed"))
@@ -214,10 +229,11 @@ class RoutersTable(tables.DataTable):
     def get_object_display(self, obj):
         return obj.name
 
-    class Meta:
+    class Meta(object):
         name = "Routers"
         verbose_name = _("Routers")
         status_columns = ["status"]
         row_class = UpdateRow
-        table_actions = (CreateRouter, DeleteRouter)
+        table_actions = (CreateRouter, DeleteRouter,
+                         RoutersFilterAction)
         row_actions = (SetGateway, ClearGateway, EditRouter, DeleteRouter)

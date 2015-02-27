@@ -14,7 +14,6 @@
 
 import django
 from django.conf import settings
-from django.core.urlresolvers import NoReverseMatch  # noqa
 from django.core.urlresolvers import reverse
 from django import http
 from django.utils.six.moves.urllib.parse import urlsplit  # noqa
@@ -54,24 +53,6 @@ class ChangePasswordTests(test.TestCase):
         res = self.client.post(INDEX_URL, formData)
 
         self.assertFormError(res, "form", None, ['Passwords do not match.'])
-
-    # TODO(jpichon): Temporarily disabled, see bug #1333144
-    @unittest.skip("Temporarily disabled, see bug #1333144")
-    @test.create_stubs({api.keystone: ('user_update_own_password', )})
-    def test_change_password_shows_message_on_login_page(self):
-        api.keystone.user_update_own_password(IsA(http.HttpRequest),
-                                              'oldpwd',
-                                              'normalpwd').AndReturn(None)
-        self.mox.ReplayAll()
-
-        formData = {'method': 'PasswordForm',
-                    'current_password': 'oldpwd',
-                    'new_password': 'normalpwd',
-                    'confirm_password': 'normalpwd'}
-        res = self.client.post(INDEX_URL, formData, follow=True)
-
-        info_msg = "Password changed. Please log in again to continue."
-        self.assertContains(res, info_msg)
 
     @unittest.skipUnless(django.VERSION[0] >= 1 and django.VERSION[1] >= 6,
                          "'HttpResponseRedirect' object has no attribute "

@@ -14,6 +14,7 @@
 
 from django.core.urlresolvers import reverse
 from django.template import defaultfilters as filters
+from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
@@ -194,6 +195,10 @@ def get_policy_link(datum):
 
 
 class RulesTable(tables.DataTable):
+    ACTION_DISPLAY_CHOICES = (
+        ("Allow", pgettext_lazy("Action Name of a Firewall Rule", u"ALLOW")),
+        ("Deny", pgettext_lazy("Action Name of a Firewall Rule", u"DENY")),
+    )
     name = tables.Column("name_or_id",
                          verbose_name=_("Name"),
                          link="horizon:project:firewalls:ruledetails")
@@ -210,15 +215,16 @@ class RulesTable(tables.DataTable):
     destination_port = tables.Column("destination_port",
                                      verbose_name=_("Destination Port"))
     action = tables.Column("action",
-                           filters=(filters.upper,),
+                           display_choices=ACTION_DISPLAY_CHOICES,
                            verbose_name=_("Action"))
     enabled = tables.Column("enabled",
-                            verbose_name=_("Enabled"))
+                            verbose_name=_("Enabled"),
+                            filters=(filters.yesno, filters.capfirst))
     firewall_policy_id = tables.Column(get_policy_name,
                                        link=get_policy_link,
                                        verbose_name=_("In Policy"))
 
-    class Meta:
+    class Meta(object):
         name = "rulestable"
         verbose_name = _("Rules")
         table_actions = (AddRuleLink, DeleteRuleLink)
@@ -232,9 +238,10 @@ class PoliciesTable(tables.DataTable):
     firewall_rules = tables.Column(get_rules_name,
                                    verbose_name=_("Rules"))
     audited = tables.Column("audited",
-                            verbose_name=_("Audited"))
+                            verbose_name=_("Audited"),
+                            filters=(filters.yesno, filters.capfirst))
 
-    class Meta:
+    class Meta(object):
         name = "policiestable"
         verbose_name = _("Policies")
         table_actions = (AddPolicyLink, DeletePolicyLink)
@@ -243,6 +250,24 @@ class PoliciesTable(tables.DataTable):
 
 
 class FirewallsTable(tables.DataTable):
+    STATUS_DISPLAY_CHOICES = (
+        ("Active", pgettext_lazy("Current status of a Firewall",
+                                 u"Active")),
+        ("Down", pgettext_lazy("Current status of a Firewall",
+                               u"Down")),
+        ("Error", pgettext_lazy("Current status of a Firewall",
+                                u"Error")),
+        ("Created", pgettext_lazy("Current status of a Firewall",
+                                  u"Created")),
+        ("Pending_Create", pgettext_lazy("Current status of a Firewall",
+                                         u"Pending Create")),
+        ("Pending_Update", pgettext_lazy("Current status of a Firewall",
+                                         u"Pending Update")),
+        ("Pending_Delete", pgettext_lazy("Current status of a Firewall",
+                                         u"Pending Delete")),
+        ("Inactive", pgettext_lazy("Current status of a Firewall",
+                                   u"Inactive")),
+    )
     name = tables.Column("name_or_id",
                          verbose_name=_("Name"),
                          link="horizon:project:firewalls:firewalldetails")
@@ -250,9 +275,10 @@ class FirewallsTable(tables.DataTable):
                                        link=get_policy_link,
                                        verbose_name=_("Policy"))
     status = tables.Column("status",
-                           verbose_name=_("Status"))
+                           verbose_name=_("Status"),
+                           display_choices=STATUS_DISPLAY_CHOICES)
 
-    class Meta:
+    class Meta(object):
         name = "firewallstable"
         verbose_name = _("Firewalls")
         table_actions = (AddFirewallLink, DeleteFirewallLink)

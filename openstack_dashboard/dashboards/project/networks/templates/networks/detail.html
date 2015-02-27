@@ -2,22 +2,22 @@
 {% load i18n %}
 {% block title %}{% trans "Network Details"%}{% endblock %}
 
-{% block page_header %}
-  {% include "horizon/common/_page_header.html" with title=page_title %}
-{% endblock page_header %}
-
 {% block main %}
-  {% include "project/networks/_detail_overview.html" %}
-  <hr>
-  <div id="subnets">
-    {{ subnets_table.render }}
-  </div>
-  <div id="ports">
-    {{ ports_table.render }}
-  </div>
-  {% if dhcp_agent_support %}
-    <div id="agents">
-      {{ agents_table.render }}
+<div class="row">
+  <div class="col-sm-12">
+    {% include "project/networks/_detail_overview.html" %}
+    <hr>
+    <div id="subnets">
+      {{ subnets_table.render }}
     </div>
-  {% endif %}
+    <div id="ports">
+      {{ ports_table.render }}
+    </div>
+    {% if dhcp_agent_support %}
+      <div id="agents">
+        {{ agents_table.render }}
+      </div>
+    {% endif %}
+  </div>
+</div>
 {% endblock %}

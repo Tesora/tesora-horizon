@@ -2,11 +2,10 @@
 {% load i18n %}
 {% block title %}{% trans "Object Details" %}{% endblock %}
 
-{% block page_header %}
-  {% include "horizon/common/_page_header.html" with title=_("Object Details") %}
-{% endblock page_header %}
-
 {% block main %}
+  <div class="row">
+    <div class="col-sm-12">
     {% include 'project/containers/_object_detail.html' %}
+    </div>
+  </div>
 {% endblock %}
-

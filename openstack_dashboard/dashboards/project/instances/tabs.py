@@ -17,6 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
 from horizon import tabs
+from horizon.utils import functions as utils
 
 from openstack_dashboard.dashboards.project.instances \
     import audit_tables as a_tables
@@ -43,15 +44,17 @@ class LogTab(tabs.Tab):
 
     def get_context_data(self, request):
         instance = self.tab_group.kwargs['instance']
+        log_length = utils.get_log_length(request)
         try:
             data = api.nova.server_console_output(request,
                                                   instance.id,
-                                                  tail_length=35)
+                                                  tail_length=log_length)
         except Exception:
             data = _('Unable to get log for instance "%s".') % instance.id
             exceptions.handle(request, ignore=True)
         return {"instance": instance,
-                "console_log": data}
+                "console_log": data,
+                "log_length": log_length}
 
 
 class ConsoleTab(tabs.Tab):
@@ -65,11 +68,17 @@ class ConsoleTab(tabs.Tab):
         console_type = getattr(settings, 'CONSOLE_TYPE', 'AUTO')
         console_url = None
         try:
-            console_url = console.get_console(request, console_type, instance)
+            console_type, console_url = console.get_console(
+                request, console_type, instance)
+            # For serial console, the url is different from VNC, etc.
+            # because it does not include parms for title and token
+            if console_type == "SERIAL":
+                console_url = "/project/instances/%s/serial" % (instance.id)
         except exceptions.NotAvailable:
             exceptions.handle(request, ignore=True, force_log=True)
 
-        return {'console_url': console_url, 'instance_id': instance.id}
+        return {'console_url': console_url, 'instance_id': instance.id,
+                'console_type': console_type}
 
     def allowed(self, request):
         # The ConsoleTab is available if settings.CONSOLE_TYPE is not set at

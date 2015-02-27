@@ -47,7 +47,8 @@ class ObjectStorePanels(horizon.PanelGroup):
 class OrchestrationPanels(horizon.PanelGroup):
     name = _("Orchestration")
     slug = "orchestration"
-    panels = ('stacks',)
+    panels = ('stacks',
+              'stacks.resource_types',)
 
 
 class DatabasePanels(horizon.PanelGroup):
@@ -83,7 +84,6 @@ class Project(horizon.Dashboard):
         DatabasePanels,
         DataProcessingPanels,)
     default_panel = 'overview'
-    supports_tenants = True
 
 
 horizon.register(Project)

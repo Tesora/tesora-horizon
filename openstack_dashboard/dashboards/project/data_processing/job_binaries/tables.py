@@ -77,13 +77,13 @@ class JobBinariesTable(tables.DataTable):
     name = tables.Column(
         "name",
         verbose_name=_("Name"),
-        link=("horizon:project:data_processing.job_binaries:details"))
+        link="horizon:project:data_processing.job_binaries:details")
     type = tables.Column("url",
                          verbose_name=_("Url"))
     description = tables.Column("description",
                                 verbose_name=_("Description"))
 
-    class Meta:
+    class Meta(object):
         name = "job_binaries"
         verbose_name = _("Job Binaries")
         table_actions = (CreateJobBinary,

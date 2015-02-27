@@ -419,6 +419,31 @@ class DatabaseTests(test.TestCase):
 
     @test.create_stubs(
         {api.trove: ('instance_get',
+                     'flavor_list')})
+    def test_resize_instance_get(self):
+        database = self.databases.first()
+
+        # views.py: DetailView.get_data
+        api.trove.instance_get(IsA(http.HttpRequest), database.id)\
+            .AndReturn(database)
+        api.trove.flavor_list(IsA(http.HttpRequest)).\
+            AndReturn(self.database_flavors.list())
+
+        self.mox.ReplayAll()
+        url = reverse('horizon:project:databases:resize_instance',
+                      args=[database.id])
+
+        res = self.client.get(url)
+        self.assertTemplateUsed(res, 'project/databases/resize_instance.html')
+        option = '<option value="%s">%s</option>'
+        for flavor in self.database_flavors.list():
+            if flavor.id == database.flavor['id']:
+                self.assertNotContains(res, option % (flavor.id, flavor.name))
+            else:
+                self.assertContains(res, option % (flavor.id, flavor.name))
+
+    @test.create_stubs(
+        {api.trove: ('instance_get',
                      'flavor_list',
                      'instance_resize')})
     def test_resize_instance(self):

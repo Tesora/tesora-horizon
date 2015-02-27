@@ -1014,7 +1014,7 @@ class InstanceTests(helpers.TestCase):
         api.nova.server_get(IsA(http.HttpRequest), server.id) \
             .AndReturn(server)
         console.get_console(IgnoreArg(), 'VNC', server) \
-            .AndReturn(CONSOLE_URL)
+            .AndReturn(('VNC', CONSOLE_URL))
 
         self.mox.ReplayAll()
 
@@ -1055,7 +1055,7 @@ class InstanceTests(helpers.TestCase):
         api.nova.server_get(IsA(http.HttpRequest), server.id) \
             .AndReturn(server)
         console.get_console(IgnoreArg(), 'SPICE', server) \
-            .AndReturn(CONSOLE_URL)
+            .AndReturn(('SPICE', CONSOLE_URL))
 
         self.mox.ReplayAll()
 
@@ -1096,7 +1096,7 @@ class InstanceTests(helpers.TestCase):
         api.nova.server_get(IsA(http.HttpRequest), server.id) \
             .AndReturn(server)
         console.get_console(IgnoreArg(), 'RDP', server) \
-            .AndReturn(CONSOLE_URL)
+            .AndReturn(('RDP', CONSOLE_URL))
 
         self.mox.ReplayAll()
 
@@ -1682,7 +1682,8 @@ class InstanceTests(helpers.TestCase):
     def test_launch_instance_post(self,
                                   disk_config=True,
                                   config_drive=True,
-                                  test_with_profile=False):
+                                  test_with_profile=False,
+                                  test_with_multi_nics=False):
         flavor = self.flavors.first()
         image = self.images.first()
         keypair = self.keypairs.first()
@@ -1723,15 +1724,24 @@ class InstanceTests(helpers.TestCase):
         if test_with_profile:
             policy_profiles = self.policy_profiles.list()
             policy_profile_id = self.policy_profiles.first().id
-            port = self.ports.first()
+            port_one = self.ports.first()
+            nics = [{"port-id": port_one.id}]
             api.neutron.profile_list(
                 IsA(http.HttpRequest),
                 'policy').AndReturn(policy_profiles)
-            api.neutron.port_create(
-                IsA(http.HttpRequest),
-                self.networks.first().id,
-                policy_profile_id=policy_profile_id).AndReturn(port)
-            nics = [{"port-id": port.id}]
+            api.neutron.port_create(IsA(http.HttpRequest),
+                                    self.networks.first().id,
+                                    policy_profile_id=policy_profile_id) \
+                .AndReturn(port_one)
+            if test_with_multi_nics:
+                port_two = self.ports.get(name="port5")
+                nics = [{"port-id": port_one.id},
+                        {"port-id": port_two.id}]
+                # Add a second port to test multiple nics
+                api.neutron.port_create(IsA(http.HttpRequest),
+                                        self.networks.get(name="net4")['id'],
+                                        policy_profile_id=policy_profile_id) \
+                    .AndReturn(port_two)
         api.nova.extension_supported('DiskConfig',
                                      IsA(http.HttpRequest)) \
             .AndReturn(disk_config)
@@ -1793,6 +1803,9 @@ class InstanceTests(helpers.TestCase):
             form_data['config_drive'] = True
         if test_with_profile:
             form_data['profile'] = self.policy_profiles.first().id
+            if test_with_multi_nics:
+                form_data['network'] = [self.networks.first().id,
+                                        self.networks.get(name="net4")['id']]
         url = reverse('horizon:project:instances:launch')
         res = self.client.post(url, form_data)
 
@@ -1809,6 +1822,158 @@ class InstanceTests(helpers.TestCase):
         OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
     def test_launch_instance_post_with_profile(self):
         self.test_launch_instance_post(test_with_profile=True)
+
+    @helpers.update_settings(
+        OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
+    def test_launch_instance_post_with_profile_and_multi_nics(self):
+        self.test_launch_instance_post(test_with_profile=True,
+                                       test_with_multi_nics=True)
+
+    def _test_launch_instance_post_with_profile_and_port_error(
+        self,
+        test_with_multi_nics=False,
+    ):
+        flavor = self.flavors.first()
+        image = self.images.first()
+        keypair = self.keypairs.first()
+        server = self.servers.first()
+        sec_group = self.security_groups.first()
+        avail_zone = self.availability_zones.first()
+        customization_script = 'user data'
+        quota_usages = self.quota_usages.first()
+
+        api.nova.extension_supported('BlockDeviceMappingV2Boot',
+                                     IsA(http.HttpRequest)) \
+                .AndReturn(True)
+        api.nova.flavor_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.flavors.list())
+        api.nova.keypair_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.keypairs.list())
+        api.network.security_group_list(IsA(http.HttpRequest)) \
+            .AndReturn(self.security_groups.list())
+        api.nova.availability_zone_list(IsA(http.HttpRequest)) \
+                .AndReturn(self.availability_zones.list())
+        api.glance.image_list_detailed(IsA(http.HttpRequest),
+                                       filters={'is_public': True,
+                                                'status': 'active'}) \
+                  .AndReturn([self.images.list(), False, False])
+        api.glance.image_list_detailed(
+            IsA(http.HttpRequest),
+            filters={'property-owner_id': self.tenant.id,
+                     'status': 'active'}) \
+            .AndReturn([[], False, False])
+        api.neutron.network_list(IsA(http.HttpRequest),
+                                 tenant_id=self.tenant.id,
+                                 shared=False) \
+            .AndReturn(self.networks.list()[:1])
+        api.neutron.network_list(IsA(http.HttpRequest),
+                                 shared=True) \
+            .AndReturn(self.networks.list()[1:])
+
+        policy_profiles = self.policy_profiles.list()
+        policy_profile_id = self.policy_profiles.first().id
+        port_one = self.ports.first()
+        api.neutron.profile_list(
+            IsA(http.HttpRequest),
+            'policy').AndReturn(policy_profiles)
+        if test_with_multi_nics:
+            api.neutron.port_create(IsA(http.HttpRequest),
+                                    self.networks.first().id,
+                                    policy_profile_id=policy_profile_id) \
+               .AndReturn(port_one)
+            # Add a second port which has the exception to test multiple nics
+            api.neutron.port_create(IsA(http.HttpRequest),
+                                    self.networks.get(name="net4")['id'],
+                                    policy_profile_id=policy_profile_id) \
+               .AndRaise(self.exceptions.neutron)
+            # Delete the first port
+            api.neutron.port_delete(IsA(http.HttpRequest),
+                                    port_one.id)
+        else:
+            api.neutron.port_create(IsA(http.HttpRequest),
+                                    self.networks.first().id,
+                                    policy_profile_id=policy_profile_id) \
+               .AndRaise(self.exceptions.neutron)
+        api.nova.extension_supported('DiskConfig',
+                                     IsA(http.HttpRequest)) \
+                .AndReturn(True)
+        api.nova.extension_supported('ConfigDrive',
+                                     IsA(http.HttpRequest)).AndReturn(True)
+        cinder.volume_list(IsA(http.HttpRequest),
+                           search_opts=VOLUME_SEARCH_OPTS) \
+              .AndReturn([])
+        cinder.volume_snapshot_list(IsA(http.HttpRequest),
+                                    search_opts=SNAPSHOT_SEARCH_OPTS) \
+              .AndReturn([])
+        quotas.tenant_quota_usages(IsA(http.HttpRequest)) \
+              .AndReturn(quota_usages)
+        api.nova.flavor_list(IsA(http.HttpRequest)) \
+            .AndReturn(self.flavors.list())
+
+        self.mox.ReplayAll()
+
+        form_data = {'flavor': flavor.id,
+                     'source_type': 'image_id',
+                     'image_id': image.id,
+                     'keypair': keypair.name,
+                     'name': server.name,
+                     'script_source': 'raw',
+                     'script_data': customization_script,
+                     'project_id': self.tenants.first().id,
+                     'user_id': self.user.id,
+                     'groups': sec_group.name,
+                     'availability_zone': avail_zone.zoneName,
+                     'volume_type': '',
+                     'network': self.networks.first().id,
+                     'count': 1,
+                     'disk_config': 'AUTO',
+                     'config_drive': True,
+                     'profile': self.policy_profiles.first().id}
+        if test_with_multi_nics:
+            form_data['network'] = [self.networks.first().id,
+                                    self.networks.get(name="net4")['id']]
+        url = reverse('horizon:project:instances:launch')
+        res = self.client.post(url, form_data)
+
+        self.assertNoFormErrors(res)
+        self.assertRedirectsNoFollow(res, INDEX_URL)
+
+    @helpers.update_settings(
+        OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
+    @helpers.create_stubs({api.glance: ('image_list_detailed',),
+                           api.neutron: ('network_list',
+                                         'profile_list',
+                                         'port_create',
+                                         'port_delete',),
+                           api.nova: ('extension_supported',
+                                      'flavor_list',
+                                      'keypair_list',
+                                      'availability_zone_list',),
+                           api.network: ('security_group_list',),
+                           cinder: ('volume_list',
+                                    'volume_snapshot_list',),
+                           quotas: ('tenant_quota_usages',)})
+    def test_launch_instance_post_with_profile_and_port_error(self):
+        self._test_launch_instance_post_with_profile_and_port_error()
+
+    @helpers.update_settings(
+        OPENSTACK_NEUTRON_NETWORK={'profile_support': 'cisco'})
+    @helpers.create_stubs({api.glance: ('image_list_detailed',),
+                           api.neutron: ('network_list',
+                                         'profile_list',
+                                         'port_create',
+                                         'port_delete',),
+                           api.nova: ('extension_supported',
+                                      'flavor_list',
+                                      'keypair_list',
+                                      'availability_zone_list',),
+                           api.network: ('security_group_list',),
+                           cinder: ('volume_list',
+                                    'volume_snapshot_list',),
+                           quotas: ('tenant_quota_usages',)})
+    def test_lnch_inst_post_w_profile_and_multi_nics_w_port_error(self):
+        self._test_launch_instance_post_with_profile_and_port_error(
+            test_with_multi_nics=True)
 
     @helpers.create_stubs({api.glance: ('image_list_detailed',),
                            api.neutron: ('network_list',
@@ -3474,6 +3639,13 @@ class InstanceTests(helpers.TestCase):
         config_drive_field_label = 'Configuration Drive'
         self.assertNotContains(res, config_drive_field_label)
 
+        option = '<option value="%s">%s</option>'
+        for flavor in self.flavors.list():
+            if flavor.id == server.flavor['id']:
+                self.assertNotContains(res, option % (flavor.id, flavor.name))
+            else:
+                self.assertContains(res, option % (flavor.id, flavor.name))
+
     @helpers.create_stubs({api.nova: ('server_get',
                                       'flavor_list',)})
     def test_instance_resize_get_server_get_exception(self):
@@ -3552,7 +3724,9 @@ class InstanceTests(helpers.TestCase):
     @helpers.create_stubs(instance_resize_post_stubs)
     def test_instance_resize_post(self):
         server = self.servers.first()
-        flavor = self.flavors.first()
+        flavors = [flavor for flavor in self.flavors.list()
+                   if flavor.id != server.flavor['id']]
+        flavor = flavors[0]
 
         api.nova.server_get(IsA(http.HttpRequest), server.id) \
             .AndReturn(server)
@@ -3573,7 +3747,9 @@ class InstanceTests(helpers.TestCase):
     @helpers.create_stubs(instance_resize_post_stubs)
     def test_instance_resize_post_api_exception(self):
         server = self.servers.first()
-        flavor = self.flavors.first()
+        flavors = [flavor for flavor in self.flavors.list()
+                   if flavor.id != server.flavor['id']]
+        flavor = flavors[0]
 
         api.nova.server_get(IsA(http.HttpRequest), server.id) \
             .AndReturn(server)
@@ -4076,10 +4252,10 @@ class ConsoleManagerTests(helpers.TestCase):
         console.CONSOLES = SortedDict([
             ('VNC', api.nova.server_vnc_console),
             ('SPICE', api.nova.server_spice_console),
-            ('RDP', api.nova.server_rdp_console)])
+            ('RDP', api.nova.server_rdp_console),
+            ('SERIAL', api.nova.server_serial_console)])
 
-    def test_get_console_vnc(self):
-        server = self.servers.first()
+    def _get_console_vnc(self, server):
         console_mock = self.mox.CreateMock(api.nova.VNCConsole)
         console_mock.url = '/VNC'
 
@@ -4090,12 +4266,14 @@ class ConsoleManagerTests(helpers.TestCase):
         self.mox.ReplayAll()
         self.setup_consoles()
 
+    def test_get_console_vnc(self):
+        server = self.servers.first()
+        self._get_console_vnc(server)
         url = '/VNC&title=%s(%s)' % (server.name, server.id)
-        data = console.get_console(self.request, 'VNC', server)
+        data = console.get_console(self.request, 'VNC', server)[1]
         self.assertEqual(data, url)
 
-    def test_get_console_spice(self):
-        server = self.servers.first()
+    def _get_console_spice(self, server):
         console_mock = self.mox.CreateMock(api.nova.SPICEConsole)
         console_mock.url = '/SPICE'
 
@@ -4106,12 +4284,14 @@ class ConsoleManagerTests(helpers.TestCase):
         self.mox.ReplayAll()
         self.setup_consoles()
 
+    def test_get_console_spice(self):
+        server = self.servers.first()
+        self._get_console_spice(server)
         url = '/SPICE&title=%s(%s)' % (server.name, server.id)
-        data = console.get_console(self.request, 'SPICE', server)
+        data = console.get_console(self.request, 'SPICE', server)[1]
         self.assertEqual(data, url)
 
-    def test_get_console_rdp(self):
-        server = self.servers.first()
+    def _get_console_rdp(self, server):
         console_mock = self.mox.CreateMock(api.nova.RDPConsole)
         console_mock.url = '/RDP'
 
@@ -4122,8 +4302,29 @@ class ConsoleManagerTests(helpers.TestCase):
         self.mox.ReplayAll()
         self.setup_consoles()
 
+    def test_get_console_rdp(self):
+        server = self.servers.first()
+        self._get_console_rdp(server)
         url = '/RDP&title=%s(%s)' % (server.name, server.id)
-        data = console.get_console(self.request, 'RDP', server)
+        data = console.get_console(self.request, 'RDP', server)[1]
+        self.assertEqual(data, url)
+
+    def _get_console_serial(self, server):
+        console_mock = self.mox.CreateMock(api.nova.SerialConsole)
+        console_mock.url = '/SERIAL'
+
+        self.mox.StubOutWithMock(api.nova, 'server_serial_console')
+        api.nova.server_serial_console(IgnoreArg(), server.id) \
+            .AndReturn(console_mock)
+
+        self.mox.ReplayAll()
+        self.setup_consoles()
+
+    def test_get_console_serial(self):
+        server = self.servers.first()
+        self._get_console_serial(server)
+        url = '/SERIAL'
+        data = console.get_console(self.request, 'SERIAL', server)[1]
         self.assertEqual(data, url)
 
     def test_get_console_auto_iterate_available(self):
@@ -4148,7 +4349,36 @@ class ConsoleManagerTests(helpers.TestCase):
         self.setup_consoles()
 
         url = '/RDP&title=%s(%s)' % (server.name, server.id)
-        data = console.get_console(self.request, 'AUTO', server)
+        data = console.get_console(self.request, 'AUTO', server)[1]
+        self.assertEqual(data, url)
+
+    def test_get_console_auto_iterate_serial_available(self):
+        server = self.servers.first()
+
+        console_mock = self.mox.CreateMock(api.nova.SerialConsole)
+        console_mock.url = '/SERIAL'
+
+        self.mox.StubOutWithMock(api.nova, 'server_vnc_console')
+        api.nova.server_vnc_console(IgnoreArg(), server.id) \
+            .AndRaise(self.exceptions.nova)
+
+        self.mox.StubOutWithMock(api.nova, 'server_spice_console')
+        api.nova.server_spice_console(IgnoreArg(), server.id) \
+            .AndRaise(self.exceptions.nova)
+
+        self.mox.StubOutWithMock(api.nova, 'server_rdp_console')
+        api.nova.server_rdp_console(IgnoreArg(), server.id) \
+            .AndRaise(self.exceptions.nova)
+
+        self.mox.StubOutWithMock(api.nova, 'server_serial_console')
+        api.nova.server_serial_console(IgnoreArg(), server.id) \
+            .AndReturn(console_mock)
+
+        self.mox.ReplayAll()
+        self.setup_consoles()
+
+        url = '/SERIAL'
+        data = console.get_console(self.request, 'AUTO', server)[1]
         self.assertEqual(data, url)
 
     def test_invalid_console_type_raise_value_error(self):

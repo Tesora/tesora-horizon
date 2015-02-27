@@ -44,7 +44,7 @@ class SetInstanceDetailsAction(workflows.Action):
                                   help_text=_(
                                       "Type and version of datastore."))
 
-    class Meta:
+    class Meta(object):
         name = _("Details")
         help_text_template = "project/databases/_launch_details_help.html"
 
@@ -144,7 +144,7 @@ class SetNetworkAction(workflows.Action):
         if len(network_list) == 1:
             self.fields['network'].initial = [network_list[0][0]]
 
-    class Meta:
+    class Meta(object):
         name = _("Networking")
         permissions = ('openstack.services.network',)
         help_text = _("Select networks for your instance.")
@@ -201,7 +201,7 @@ class AddDatabasesAction(workflows.Action):
                            help_text=_("Host or IP that the user is allowed "
                                        "to connect through."))
 
-    class Meta:
+    class Meta(object):
         name = _("Initialize Databases")
         permissions = TROVE_ADD_PERMS
         help_text_template = "project/databases/_launch_initialize_help.html"
@@ -273,7 +273,7 @@ class AdvancedAction(workflows.Action):
             'data-initial_state-master': _('Replica Count')
         }))
 
-    class Meta:
+    class Meta(object):
         name = _("Advanced")
         help_text_template = "project/databases/_launch_advanced_help.html"
 
@@ -444,12 +444,6 @@ class LaunchInstance(workflows.Workflow):
             backup = {'backupRef': context['backup']}
         return backup
 
-    def _get_master(self, context):
-        master = None
-        if context.get('master'):
-            master = context['master']
-        return master
-
     def _get_nics(self, context):
         netids = context.get('network_id', None)
         if netids:
@@ -478,7 +472,7 @@ class LaunchInstance(workflows.Workflow):
                      datastore, datastore_version,
                      self._get_databases(context), self._get_users(context),
                      self._get_backup(context), self._get_nics(context),
-                     self._get_master(context), self._get_config(context),
+                     context.get('master'), self._get_config(context),
                      context['replica_count'])
             api.trove.instance_create(request,
                                       context['name'],
@@ -490,7 +484,7 @@ class LaunchInstance(workflows.Workflow):
                                       users=self._get_users(context),
                                       restore_point=self._get_backup(context),
                                       nics=self._get_nics(context),
-                                      replica_of=self._get_master(context),
+                                      replica_of=context.get('master'),
                                       configuration=self._get_config(context),
                                       replica_count=context['replica_count'])
             return True

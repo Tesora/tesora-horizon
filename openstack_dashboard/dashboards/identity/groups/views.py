@@ -35,6 +35,7 @@ from openstack_dashboard.dashboards.identity.groups \
 class IndexView(tables.DataTableView):
     table_class = project_tables.GroupsTable
     template_name = constants.GROUPS_INDEX_VIEW_TEMPLATE
+    page_title = _("Groups")
 
     def get_data(self):
         groups = []
@@ -54,15 +55,25 @@ class IndexView(tables.DataTableView):
 
 
 class CreateView(forms.ModalFormView):
-    form_class = project_forms.CreateGroupForm
     template_name = constants.GROUPS_CREATE_VIEW_TEMPLATE
+    modal_header = _("Create Group")
+    form_id = "create_group_form"
+    form_class = project_forms.CreateGroupForm
+    submit_url = "horizon:identity:groups:create"
+    submit_label = _("Create Group")
     success_url = reverse_lazy(constants.GROUPS_INDEX_URL)
+    page_title = _("Create Group")
 
 
 class UpdateView(forms.ModalFormView):
-    form_class = project_forms.UpdateGroupForm
     template_name = constants.GROUPS_UPDATE_VIEW_TEMPLATE
+    modal_header = _("Update Group")
+    form_id = "update_group_form"
+    form_class = project_forms.UpdateGroupForm
+    submit_url = "horizon:identity:groups:update"
+    submit_label = _("Update Group")
     success_url = reverse_lazy(constants.GROUPS_INDEX_URL)
+    page_title = _("Update Group")
 
     @memoized.memoized_method
     def get_object(self):
@@ -77,7 +88,8 @@ class UpdateView(forms.ModalFormView):
 
     def get_context_data(self, **kwargs):
         context = super(UpdateView, self).get_context_data(**kwargs)
-        context['group'] = self.get_object()
+        args = (self.get_object().id,)
+        context['submit_url'] = reverse(self.submit_url, args=args)
         return context
 
     def get_initial(self):
@@ -111,14 +123,11 @@ class GroupManageMixin(object):
 class ManageMembersView(GroupManageMixin, tables.DataTableView):
     table_class = project_tables.GroupMembersTable
     template_name = constants.GROUPS_MANAGE_VIEW_TEMPLATE
+    page_title = _("Group Management: {{ group.name }}")
 
     def get_context_data(self, **kwargs):
         context = super(ManageMembersView, self).get_context_data(**kwargs)
-        group = self._get_group()
-        context['group'] = group
-        context['page_title'] = _("Group Management: "
-                                  "%(group_name)s") % {'group_name':
-                                                       group.name}
+        context['group'] = self._get_group()
         return context
 
     def get_data(self):

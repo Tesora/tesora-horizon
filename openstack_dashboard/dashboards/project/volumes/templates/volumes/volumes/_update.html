@@ -16,11 +16,14 @@
   </div>
   <div class="right">
     <h3>{% trans "Description:" %}</h3>
-    <p>{% trans "Modify name and description of a volume." %}</p>
+    <p>{% trans "Modify name and description of a volume." %}
+    </p>
+    <p>{% trans 'The "Bootable" flag specifies that this volume can be used to launch an instance.' %}
+    </p>
   </div>
 {% endblock %}
 
 {% block modal-footer %}
-  <input class="btn btn-primary pull-right" type="submit" value="{% trans "Edit Volume" %}" />
+  <input class="btn btn-primary pull-right" type="submit" value="{% trans "Save" %}" />
   <a href="{% url 'horizon:project:volumes:index' %}" class="btn btn-default secondary cancel close">{% trans "Cancel" %}</a>
 {% endblock %}

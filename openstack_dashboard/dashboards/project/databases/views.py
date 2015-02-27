@@ -46,6 +46,7 @@ LOG = logging.getLogger(__name__)
 class IndexView(horizon_tables.DataTableView):
     table_class = tables.InstancesTable
     template_name = 'project/databases/index.html'
+    page_title = _("Instances")
 
     def has_more_data(self, table):
         return self._more
@@ -86,6 +87,7 @@ class IndexView(horizon_tables.DataTableView):
 class LaunchInstanceView(horizon_workflows.WorkflowView):
     workflow_class = workflows.LaunchInstance
     template_name = "project/databases/launch.html"
+    page_title = _("Launch Database")
 
     def get_initial(self):
         initial = super(LaunchInstanceView, self).get_initial()
@@ -125,6 +127,7 @@ class AttachConfigurationView(horizon_forms.ModalFormView):
 class DetailView(horizon_tabs.TabbedTableView):
     tab_group_class = tabs.InstanceDetailTabs
     template_name = 'project/databases/detail.html'
+    page_title = _("Instance Details: {{ instance.name }}")
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)
@@ -133,9 +136,6 @@ class DetailView(horizon_tabs.TabbedTableView):
         context["instance"] = instance
         context["url"] = self.get_redirect_url()
         context["actions"] = table.render_row_actions(instance)
-        context["page_title"] = _("Instance Details: "
-                                  "%(instance_name)s") % {'instance_name':
-                                                          instance.name}
         return context
 
     @memoized.memoized_method
@@ -171,6 +171,7 @@ class ResizeVolumeView(horizon_forms.ModalFormView):
     form_class = forms.ResizeVolumeForm
     template_name = 'project/databases/resize_volume.html'
     success_url = reverse_lazy('horizon:project:databases:index')
+    page_title = _("Resize Database Volume")
 
     @memoized.memoized_method
     def get_object(self, *args, **kwargs):
@@ -197,6 +198,7 @@ class ResizeInstanceView(horizon_forms.ModalFormView):
     form_class = forms.ResizeInstanceForm
     template_name = 'project/databases/resize_instance.html'
     success_url = reverse_lazy('horizon:project:databases:index')
+    page_title = _("Resize Database Instance")
 
     @memoized.memoized_method
     def get_object(self, *args, **kwargs):

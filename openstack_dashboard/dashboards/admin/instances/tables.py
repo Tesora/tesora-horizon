@@ -112,6 +112,7 @@ class AdminInstancesTable(tables.DataTable):
         ("paused", True),
         ("error", False),
         ("rescue", True),
+        ("shelved", True),
         ("shelved_offloaded", True),
     )
     tenant = tables.Column("tenant_name", verbose_name=_("Project"))
@@ -124,7 +125,7 @@ class AdminInstancesTable(tables.DataTable):
                          verbose_name=_("Host"),
                          classes=('nowrap-col',))
     name = tables.Column("name",
-                         link=("horizon:admin:instances:detail"),
+                         link="horizon:admin:instances:detail",
                          verbose_name=_("Name"))
     image_name = tables.Column("image_name",
                                verbose_name=_("Image Name"))
@@ -133,7 +134,6 @@ class AdminInstancesTable(tables.DataTable):
                        attrs={'data-type': "ip"})
     size = tables.Column(project_tables.get_size,
                          verbose_name=_("Size"),
-                         classes=('nowrap-col',),
                          attrs={'data-type': 'size'})
     status = tables.Column(
         "status",
@@ -158,7 +158,7 @@ class AdminInstancesTable(tables.DataTable):
                                      filters.timesince_sortable),
                             attrs={'data-type': 'timesince'})
 
-    class Meta:
+    class Meta(object):
         name = "instances"
         verbose_name = _("Instances")
         status_columns = ["status", "task"]

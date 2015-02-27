@@ -20,6 +20,7 @@ import os
 import django
 from django.core.urlresolvers import reverse
 from django import http
+from django.test.utils import override_settings
 from django.utils import timezone
 from django.utils import unittest
 
@@ -31,6 +32,7 @@ from horizon.workflows import views
 
 from openstack_dashboard import api
 from openstack_dashboard.dashboards.identity.projects import workflows
+from openstack_dashboard import policy_backend
 from openstack_dashboard.test import helpers as test
 from openstack_dashboard import usage
 from openstack_dashboard.usage import quotas
@@ -46,6 +48,7 @@ from socket import timeout as socket_timeout  # noqa
 INDEX_URL = reverse('horizon:identity:projects:index')
 USER_ROLE_PREFIX = workflows.PROJECT_GROUP_MEMBER_SLUG + "_role_"
 GROUP_ROLE_PREFIX = workflows.PROJECT_USER_MEMBER_SLUG + "_role_"
+PROJECT_DETAIL_URL = reverse('horizon:identity:projects:detail', args=[1])
 
 
 class TenantsViewTests(test.BaseAdminViewTests):
@@ -83,6 +86,7 @@ class TenantsViewTests(test.BaseAdminViewTests):
 
 
 class ProjectsViewNonAdminTests(test.TestCase):
+    @override_settings(POLICY_CHECK_FUNCTION=policy_backend.check)
     @test.create_stubs({api.keystone: ('tenant_list',)})
     def test_index(self):
         api.keystone.tenant_list(IsA(http.HttpRequest),
@@ -1637,6 +1641,36 @@ class UsageViewTests(test.BaseAdminViewTests):
         hdr = ('Instance Name,VCPUs,RAM (MB),Disk (GB),Usage (Hours),'
                'Uptime (Seconds),State')
         self.assertContains(res, '%s\r\n' % hdr)
+
+
+class DetailProjectViewTests(test.BaseAdminViewTests):
+    @test.create_stubs({api.keystone: ('tenant_get',)})
+    def test_detail_view(self):
+        project = self.tenants.first()
+
+        api.keystone.tenant_get(IsA(http.HttpRequest), self.tenant.id) \
+            .AndReturn(project)
+        self.mox.ReplayAll()
+
+        res = self.client.get(PROJECT_DETAIL_URL, args=[project.id])
+
+        self.assertTemplateUsed(res, 'identity/projects/detail.html')
+        self.assertEqual(res.context['project'].name, project.name)
+        self.assertEqual(res.context['project'].id, project.id)
+        self.assertContains(res, "Project Details: %s" % project.name,
+                            1, 200)
+
+    @test.create_stubs({api.keystone: ('tenant_get',)})
+    def test_detail_view_with_exception(self):
+        project = self.tenants.first()
+
+        api.keystone.tenant_get(IsA(http.HttpRequest), self.tenant.id) \
+            .AndRaise(self.exceptions.keystone)
+        self.mox.ReplayAll()
+
+        res = self.client.get(PROJECT_DETAIL_URL, args=[project.id])
+
+        self.assertRedirectsNoFollow(res, INDEX_URL)
 
 
 @unittest.skipUnless(os.environ.get('WITH_SELENIUM', False),

@@ -31,6 +31,9 @@ from openstack_dashboard.test import helpers as test
 USERS_INDEX_URL = reverse('horizon:identity:users:index')
 USER_CREATE_URL = reverse('horizon:identity:users:create')
 USER_UPDATE_URL = reverse('horizon:identity:users:update', args=[1])
+USER_DETAIL_URL = reverse('horizon:identity:users:detail', args=[1])
+USER_CHANGE_PASSWORD_URL = reverse('horizon:identity:users:change_password',
+                                   args=[1])
 
 
 class UsersViewTests(test.BaseAdminViewTests):
@@ -280,11 +283,10 @@ class UsersViewTests(test.BaseAdminViewTests):
                                        'user_update_password',
                                        'user_update',
                                        'roles_for_user', )})
-    def _update(self, user):
+    def test_update(self):
         user = self.users.get(id="1")
         domain_id = user.domain_id
         domain = self.domains.get(id=domain_id)
-        test_password = 'normalpwd'
         email = getattr(user, 'email', '')
 
         api.keystone.user_get(IsA(http.HttpRequest), '1',
@@ -299,7 +301,6 @@ class UsersViewTests(test.BaseAdminViewTests):
                                  user.id,
                                  email=email,
                                  name=u'test_user',
-                                 password=test_password,
                                  project=self.tenant.id).AndReturn(None)
 
         self.mox.ReplayAll()
@@ -308,9 +309,7 @@ class UsersViewTests(test.BaseAdminViewTests):
                     'id': user.id,
                     'name': user.name,
                     'email': email,
-                    'password': test_password,
-                    'project': self.tenant.id,
-                    'confirm_password': test_password}
+                    'project': self.tenant.id}
 
         res = self.client.post(USER_UPDATE_URL, formData)
 
@@ -320,7 +319,6 @@ class UsersViewTests(test.BaseAdminViewTests):
                                        'domain_get',
                                        'tenant_list',
                                        'user_update_tenant',
-                                       'user_update_password',
                                        'user_update',
                                        'roles_for_user', )})
     def test_update_with_no_email_attribute(self):
@@ -340,7 +338,6 @@ class UsersViewTests(test.BaseAdminViewTests):
                                  user.id,
                                  email=user.email,
                                  name=user.name,
-                                 password=user.password,
                                  project=self.tenant.id).AndReturn(None)
 
         self.mox.ReplayAll()
@@ -349,9 +346,7 @@ class UsersViewTests(test.BaseAdminViewTests):
                     'id': user.id,
                     'name': user.name,
                     'email': "",
-                    'password': user.password,
-                    'project': self.tenant.id,
-                    'confirm_password': user.password}
+                    'project': self.tenant.id}
 
         res = self.client.post(USER_UPDATE_URL, formData)
 
@@ -390,63 +385,67 @@ class UsersViewTests(test.BaseAdminViewTests):
         self.assertNoFormErrors(res)
         self.assertMessageCount(error=1)
 
-    @test.create_stubs({api.keystone: ('domain_get',
-                                       'user_get',
-                                       'tenant_list')})
-    def test_update_validation_for_password_too_short(self):
-        user = self.users.get(id="1")
-        domain_id = user.domain_id
-        domain = self.domains.get(id=domain_id)
+    @test.create_stubs({api.keystone: ('user_get',
+                                       'user_update_password')})
+    def test_change_password(self):
+        user = self.users.get(id="5")
+        test_password = 'normalpwd'
 
         api.keystone.user_get(IsA(http.HttpRequest), '1',
                               admin=True).AndReturn(user)
-        api.keystone.domain_get(IsA(http.HttpRequest), domain_id) \
-            .AndReturn(domain)
-        api.keystone.tenant_list(IgnoreArg(), domain=domain_id, user=user.id) \
-            .AndReturn([self.tenants.list(), False])
+        api.keystone.user_update_password(IsA(http.HttpRequest),
+                                          user.id,
+                                          test_password).AndReturn(None)
 
         self.mox.ReplayAll()
 
-        formData = {'method': 'UpdateUserForm',
+        formData = {'method': 'ChangePasswordForm',
                     'id': user.id,
                     'name': user.name,
-                    'email': user.email,
+                    'password': test_password,
+                    'confirm_password': test_password}
+
+        res = self.client.post(USER_CHANGE_PASSWORD_URL, formData)
+
+        self.assertNoFormErrors(res)
+
+    @test.create_stubs({api.keystone: ('user_get',)})
+    def test_update_validation_for_password_too_short(self):
+        user = self.users.get(id="1")
+
+        api.keystone.user_get(IsA(http.HttpRequest), '1',
+                              admin=True).AndReturn(user)
+
+        self.mox.ReplayAll()
+
+        formData = {'method': 'ChangePasswordForm',
+                    'id': user.id,
+                    'name': user.name,
                     'password': 't',
-                    'project': self.tenant.id,
                     'confirm_password': 't'}
 
-        res = self.client.post(USER_UPDATE_URL, formData)
+        res = self.client.post(USER_CHANGE_PASSWORD_URL, formData)
 
         self.assertFormError(
             res, "form", 'password',
             ['Password must be between 8 and 18 characters.'])
 
-    @test.create_stubs({api.keystone: ('domain_get',
-                                       'user_get',
-                                       'tenant_list')})
+    @test.create_stubs({api.keystone: ('user_get',)})
     def test_update_validation_for_password_too_long(self):
         user = self.users.get(id="1")
-        domain_id = user.domain_id
-        domain = self.domains.get(id=domain_id)
 
         api.keystone.user_get(IsA(http.HttpRequest), '1',
                               admin=True).AndReturn(user)
-        api.keystone.domain_get(IsA(http.HttpRequest), domain_id) \
-            .AndReturn(domain)
-        api.keystone.tenant_list(IgnoreArg(), domain=domain_id, user=user.id) \
-            .AndReturn([self.tenants.list(), False])
 
         self.mox.ReplayAll()
 
-        formData = {'method': 'UpdateUserForm',
+        formData = {'method': 'ChangePasswordForm',
                     'id': user.id,
                     'name': user.name,
-                    'email': user.email,
                     'password': 'ThisIsASuperLongPassword',
-                    'project': self.tenant.id,
                     'confirm_password': 'ThisIsASuperLongPassword'}
 
-        res = self.client.post(USER_UPDATE_URL, formData)
+        res = self.client.post(USER_CHANGE_PASSWORD_URL, formData)
 
         self.assertFormError(
             res, "form", 'password',
@@ -549,6 +548,33 @@ class UsersViewTests(test.BaseAdminViewTests):
                          u'You are not allowed to delete user: %s'
                          % self.request.user.username)
 
+    @test.create_stubs({api.keystone: ('user_get',)})
+    def test_detail_view(self):
+        user = self.users.get(id="1")
+
+        api.keystone.user_get(IsA(http.HttpRequest), '1').AndReturn(user)
+        self.mox.ReplayAll()
+
+        res = self.client.get(USER_DETAIL_URL, args=[user.id])
+
+        self.assertTemplateUsed(res, 'identity/users/detail.html')
+        self.assertEqual(res.context['user'].name, user.name)
+        self.assertEqual(res.context['user'].id, user.id)
+        self.assertContains(res, "<h1>User Details: %s</h1>" % user.name,
+                            1, 200)
+
+    @test.create_stubs({api.keystone: ('user_get',)})
+    def test_detail_view_with_exception(self):
+        user = self.users.get(id="1")
+
+        api.keystone.user_get(IsA(http.HttpRequest), '1').\
+            AndRaise(self.exceptions.keystone)
+        self.mox.ReplayAll()
+
+        res = self.client.get(USER_DETAIL_URL, args=[user.id])
+
+        self.assertRedirectsNoFollow(res, USERS_INDEX_URL)
+
 
 class SeleniumTests(test.SeleniumAdminTestCase):
     def _get_default_domain(self):
@@ -583,39 +609,35 @@ class SeleniumTests(test.SeleniumAdminTestCase):
                                      ignored_exceptions=[socket_timeout])
         wait.until(lambda x: self.selenium.find_element_by_id("id_name"))
 
-        body = self.selenium.find_element_by_tag_name("body")
-        self.assertFalse("Passwords do not match" in body.text,
-                         "Error message should not be visible at loading time")
+        self.assertFalse(self._is_element_present("id_confirm_password_error"),
+                         "Password error element shouldn't yet exist.")
         self.selenium.find_element_by_id("id_name").send_keys("Test User")
         self.selenium.find_element_by_id("id_password").send_keys("test")
         self.selenium.find_element_by_id("id_confirm_password").send_keys("te")
         self.selenium.find_element_by_id("id_email").send_keys("a@b.com")
-        body = self.selenium.find_element_by_tag_name("body")
-        self.assertTrue("Passwords do not match" in body.text,
-                        "Error message not found in body")
+        self.assertTrue(self._is_element_present("id_confirm_password_error"),
+                        "Couldn't find password error element.")
 
-    @test.create_stubs({api.keystone: ('tenant_list',
-                                       'user_get',
-                                       'domain_get')})
+    @test.create_stubs({api.keystone: ('user_get',)})
     def test_update_user_with_passwords_not_matching(self):
         api.keystone.user_get(IsA(http.HttpRequest), '1',
                               admin=True).AndReturn(self.user)
-        api.keystone.domain_get(IsA(http.HttpRequest), '1') \
-            .AndReturn(self.domain)
-        api.keystone.tenant_list(IgnoreArg(),
-                                 domain=self.user.domain_id,
-                                 user=self.user.id) \
-            .AndReturn([self.tenants.list(), False])
         self.mox.ReplayAll()
 
-        self.selenium.get("%s%s" % (self.live_server_url, USER_UPDATE_URL))
+        self.selenium.get("%s%s" % (self.live_server_url,
+                                    USER_CHANGE_PASSWORD_URL))
 
-        body = self.selenium.find_element_by_tag_name("body")
-        self.assertFalse("Passwords do not match" in body.text,
-                         "Error message should not be visible at loading time")
+        self.assertFalse(self._is_element_present("id_confirm_password_error"),
+                         "Password error element shouldn't yet exist.")
         self.selenium.find_element_by_id("id_password").send_keys("test")
         self.selenium.find_element_by_id("id_confirm_password").send_keys("te")
-        self.selenium.find_element_by_id("id_email").clear()
-        body = self.selenium.find_element_by_tag_name("body")
-        self.assertTrue("Passwords do not match" in body.text,
-                        "Error message not found in body")
+        self.selenium.find_element_by_id("id_name").click()
+        self.assertTrue(self._is_element_present("id_confirm_password_error"),
+                        "Couldn't find password error element.")
+
+    def _is_element_present(self, element_id):
+        try:
+            self.selenium.find_element_by_id(element_id)
+            return True
+        except Exception:
+            return False

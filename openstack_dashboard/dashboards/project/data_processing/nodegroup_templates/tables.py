@@ -23,6 +23,13 @@ from openstack_dashboard.api import sahara as saharaclient
 LOG = logging.getLogger(__name__)
 
 
+class NodeGroupTemplatesFilterAction(tables.FilterAction):
+    filter_type = "server"
+    filter_choices = (('name', _("Name"), True),
+                      ('plugin', _("Plugin"), True),
+                      ('hadoop_version', _("Version"), True))
+
+
 class CreateNodegroupTemplate(tables.LinkAction):
     name = "create"
     verbose_name = _("Create Template")
@@ -74,7 +81,7 @@ class NodegroupTemplatesTable(tables.DataTable):
     name = tables.Column(
         "name",
         verbose_name=_("Name"),
-        link=("horizon:project:data_processing.nodegroup_templates:details"))
+        link="horizon:project:data_processing.nodegroup_templates:details")
     plugin_name = tables.Column("plugin_name",
                                 verbose_name=_("Plugin"))
     hadoop_version = tables.Column("hadoop_version",
@@ -84,11 +91,12 @@ class NodegroupTemplatesTable(tables.DataTable):
                                    wrap_list=True,
                                    filters=(filters.unordered_list,))
 
-    class Meta:
+    class Meta(object):
         name = "nodegroup_templates"
         verbose_name = _("Node Group Templates")
         table_actions = (CreateNodegroupTemplate,
                          ConfigureNodegroupTemplate,
-                         DeleteTemplate)
+                         DeleteTemplate,
+                         NodeGroupTemplatesFilterAction,)
         row_actions = (CopyTemplate,
                        DeleteTemplate,)

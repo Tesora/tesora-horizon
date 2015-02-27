@@ -41,7 +41,7 @@ that Horizon supports in DevStack when `stack.sh` is run.
     enable_service q-svc
     enable_service q-agt
     enable_service q-dhcp
-    enable_service q-13
+    enable_service q-l3
     enable_service q-meta
     enable_service q-metering
     enable_service neutron
@@ -49,9 +49,6 @@ that Horizon supports in DevStack when `stack.sh` is run.
     enable_service q-fwaas
     enable_service q-vpn
     # end group
-
-    # enable Heat (orchestration) Service
-    enable_service heat h-api h-api-cfn h-api-cw h-eng
 
     # enable Sahara (data_processing) Service
     enable_service sahara

@@ -24,11 +24,9 @@ import os
 from ceilometerclient.v2 import client as ceilometer_client
 from cinderclient import client as cinder_client
 from django.conf import settings
-from django.contrib.auth.middleware import AuthenticationMiddleware  # noqa
 from django.contrib.messages.storage import default_storage  # noqa
 from django.core.handlers import wsgi
 from django.core import urlresolvers
-from django import http
 from django.test.client import RequestFactory  # noqa
 from django.test import utils as django_test_utils
 from django.utils.importlib import import_module  # noqa
@@ -49,7 +47,6 @@ from troveclient import client as trove_client
 
 from horizon import base
 from horizon import conf
-from horizon import middleware
 from horizon.test import helpers as horizon_helpers
 from openstack_dashboard import api
 from openstack_dashboard import context_processors
@@ -151,11 +148,6 @@ class TestCase(horizon_helpers.TestCase):
       * Several handy additional assertion methods.
     """
     def setUp(self):
-        test_utils.load_test_data(self)
-        self.mox = mox.Mox()
-        self.factory = RequestFactoryWithMessages()
-        self.context = {'authorized_tenants': self.tenants.list()}
-
         def fake_conn_request(*args, **kwargs):
             raise Exception("An external URI request tried to escape through "
                             "an httplib2 client. Args: %s, kwargs: %s"
@@ -167,6 +159,21 @@ class TestCase(horizon_helpers.TestCase):
         self._real_context_processor = context_processors.openstack
         context_processors.openstack = lambda request: self.context
 
+        self.patchers = {}
+        self.add_panel_mocks()
+
+        super(TestCase, self).setUp()
+
+    def _setup_test_data(self):
+        super(TestCase, self)._setup_test_data()
+        test_utils.load_test_data(self)
+        self.context = {'authorized_tenants': self.tenants.list()}
+
+    def _setup_factory(self):
+        # For some magical reason we need a copy of this here.
+        self.factory = RequestFactoryWithMessages()
+
+    def _setup_user(self):
         self._real_get_user = utils.get_user
         tenants = self.context['authorized_tenants']
         self.setActiveUser(id=self.user.id,
@@ -176,14 +183,10 @@ class TestCase(horizon_helpers.TestCase):
                            tenant_id=self.tenant.id,
                            service_catalog=self.service_catalog,
                            authorized_tenants=tenants)
-        self.request = http.HttpRequest()
-        self.request.session = self.client._session()
+
+    def _setup_request(self):
+        super(TestCase, self)._setup_request()
         self.request.session['token'] = self.token.id
-        middleware.HorizonMiddleware().process_request(self.request)
-        AuthenticationMiddleware().process_request(self.request)
-        self.patchers = {}
-        self.add_panel_mocks()
-        os.environ["HORIZON_TEST_RUN"] = "True"
 
     def add_panel_mocks(self):
         """Global mocks on panels that get called on all views."""
@@ -194,13 +197,11 @@ class TestCase(horizon_helpers.TestCase):
         self.patchers['aggregates'].start()
 
     def tearDown(self):
-        self.mox.UnsetStubs()
         httplib2.Http._conn_request = self._real_conn_request
         context_processors.openstack = self._real_context_processor
         utils.get_user = self._real_get_user
         mock.patch.stopall()
-        self.mox.VerifyAll()
-        del os.environ["HORIZON_TEST_RUN"]
+        super(TestCase, self).tearDown()
 
     def setActiveUser(self, id=None, token=None, username=None, tenant_id=None,
                       service_catalog=None, tenant_name=None, roles=None,
@@ -265,6 +266,28 @@ class TestCase(horizon_helpers.TestCase):
                              (key, field_errors) in errors.items()])
         else:
             assert len(errors) > 0, "No errors were found on the form"
+
+    def assertStatusCode(self, response, expected_code):
+        """Validates an expected status code.
+
+        Matches camel case of other assert functions
+        """
+        if response.status_code == expected_code:
+            return
+        self.fail('status code %r != %r: %s' % (response.status_code,
+                                                expected_code,
+                                                response.content))
+
+    @staticmethod
+    def mock_rest_request(**args):
+        mock_args = {
+            'user.is_authenticated.return_value': True,
+            'is_ajax.return_value': True,
+            'policy.check.return_value': True,
+            'body': ''
+        }
+        mock_args.update(args)
+        return mock.Mock(**mock_args)
 
 
 class BaseAdminViewTests(TestCase):

@@ -75,6 +75,14 @@ class RDPConsole(base.APIDictWrapper):
     _attrs = ['url', 'type']
 
 
+class SerialConsole(base.APIDictWrapper):
+    """Wrapper for the "console" dictionary.
+
+    Returned by the novaclient.servers.get_serial_console method.
+    """
+    _attrs = ['url', 'type']
+
+
 class Server(base.APIResourceWrapper):
     """Simple wrapper around novaclient.server.Server.
 
@@ -155,7 +163,8 @@ class NovaUsage(base.APIResourceWrapper):
                 'vcpus': getattr(self, "total_vcpus_usage", 0),
                 'vcpu_hours': self.vcpu_hours,
                 'local_gb': self.local_gb,
-                'disk_gb_hours': self.disk_gb_hours}
+                'disk_gb_hours': self.disk_gb_hours,
+                'memory_mb_hours': self.memory_mb_hours}
 
     @property
     def total_active_instances(self):
@@ -184,6 +193,10 @@ class NovaUsage(base.APIResourceWrapper):
     def disk_gb_hours(self):
         return getattr(self, "total_local_gb_usage", 0)
 
+    @property
+    def memory_mb_hours(self):
+        return getattr(self, "total_memory_mb_usage", 0)
+
 
 class SecurityGroup(base.APIResourceWrapper):
     """Wrapper around novaclient.security_groups.SecurityGroup.
@@ -200,6 +213,9 @@ class SecurityGroup(base.APIResourceWrapper):
         rule_objs = [nova_rules.SecurityGroupRule(manager, rule)
                      for rule in self._apiresource.rules]
         return [SecurityGroupRule(rule) for rule in rule_objs]
+
+    def to_dict(self):
+        return self._apiresource.to_dict()
 
 
 class SecurityGroupRule(base.APIResourceWrapper):
@@ -450,6 +466,11 @@ def server_rdp_console(request, instance_id, console_type='rdp-html5'):
         instance_id, console_type)['console'])
 
 
+def server_serial_console(request, instance_id, console_type='serial'):
+    return SerialConsole(novaclient(request).servers.get_serial_console(
+        instance_id, console_type)['console'])
+
+
 def flavor_create(request, name, memory, vcpu, disk, flavorid='auto',
                   ephemeral=0, swap=0, metadata=None, is_public=True):
     flavor = novaclient(request).flavors.create(name, memory, vcpu, disk,
@@ -535,6 +556,10 @@ def keypair_delete(request, keypair_id):
 
 def keypair_list(request):
     return novaclient(request).keypairs.list()
+
+
+def keypair_get(request, keypair_id):
+    return novaclient(request).keypairs.get(keypair_id)
 
 
 def server_create(request, name, image, flavor, key_name, user_data,

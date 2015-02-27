@@ -22,12 +22,15 @@ import collections
 import itertools
 import json
 import logging
+import os
 
 
 from django.conf import settings
+
 import glanceclient as glance_client
 from six.moves import _thread as thread
 
+from horizon import exceptions
 from horizon.utils import functions as utils
 from horizon.utils.memoized import memoized  # noqa
 from openstack_dashboard.api import base
@@ -102,7 +105,21 @@ def image_list_detailed(request, marker=None, sort_dir='desc',
 
 
 def image_update(request, image_id, **kwargs):
-    return glanceclient(request).images.update(image_id, **kwargs)
+    image_data = kwargs.get('data', None)
+    try:
+        image = glanceclient(request).images.update(image_id, **kwargs)
+    except Exception:
+        exceptions.handle(request, ignore=True)
+    finally:
+        if image_data:
+            try:
+                os.remove(image_data.file.name)
+            except Exception as e:
+                msg = (('Failed to remove temporary image file '
+                        '%(file)s (%(e)s)') %
+                       dict(file=image_data.file.name, e=str(e)))
+                LOG.warn(msg)
+    return image
 
 
 def image_create(request, **kwargs):
@@ -150,6 +167,9 @@ class BaseGlanceMetadefAPIResourceWrapper(base.APIResourceWrapper):
             if hasattr(self, attr):
                 result[attr] = getattr(self, attr)
         return json.dumps(result, indent=indent)
+
+    def to_dict(self):
+        return self._apiresource
 
 
 class Namespace(BaseGlanceMetadefAPIResourceWrapper):
@@ -205,7 +225,8 @@ def metadefs_namespace_list(request,
              typically at first deployment is done in a single transaction
              giving them a potentially unpredictable sort result when using
              create_at.
-    :param filters: specifies addition fields to filter on such as name.
+    :param filters: specifies addition fields to filter on such as
+             resource_types.
     :returns A tuple of three values:
              1) Current page results
              2) A boolean of whether or not there are previous page(s).

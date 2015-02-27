@@ -105,6 +105,9 @@ class NodeGroupsTab(tabs.Tab):
                     ng["node_group_template"] = helpers.safe_call(
                         sahara.node_group_templates.get,
                         ng["node_group_template_id"])
+
+                ng["security_groups_full"] = helpers.get_security_groups(
+                    request, ng["security_groups"])
         except Exception:
             cluster = {}
             exceptions.handle(request,
@@ -130,7 +133,7 @@ class Instance(object):
 
 class InstancesTable(tables.DataTable):
     name = tables.Column("name",
-                         link=("horizon:project:instances:detail"),
+                         link="horizon:project:instances:detail",
                          verbose_name=_("Name"))
 
     internal_ip = tables.Column("internal_ip",
@@ -139,10 +142,9 @@ class InstancesTable(tables.DataTable):
     management_ip = tables.Column("management_ip",
                                   verbose_name=_("Management IP"))
 
-    class Meta:
+    class Meta(object):
         name = "cluster_instances"
-        # Just ignoring the name.
-        verbose_name = _(" ")
+        verbose_name = _("Cluster Instances")
 
 
 class InstancesTab(tabs.TableTab):

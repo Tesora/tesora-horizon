@@ -40,7 +40,7 @@ class BackupDetailsAction(workflows.Action):
                                required=False,
                                help_text=_("Optional parent backup"))
 
-    class Meta:
+    class Meta(object):
         name = _("Details")
         help_text_template = \
             "project/database_backups/_backup_details_help.html"

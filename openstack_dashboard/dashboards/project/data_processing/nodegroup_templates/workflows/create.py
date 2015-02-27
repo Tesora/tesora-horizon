@@ -28,6 +28,8 @@ from openstack_dashboard.dashboards.project.data_processing.utils \
     import workflow_helpers
 from openstack_dashboard.dashboards.project.instances \
     import utils as nova_utils
+from openstack_dashboard.dashboards.project.volumes \
+    import utils as cinder_utils
 
 
 LOG = logging.getLogger(__name__)
@@ -54,20 +56,42 @@ class GeneralConfigAction(workflows.Action):
         help_text=_("Choose a storage location"),
         choices=[("ephemeral_drive", "Ephemeral Drive"),
                  ("cinder_volume", "Cinder Volume")],
-        widget=forms.Select(attrs={"class": "storage_field"}))
+        widget=forms.Select(attrs={
+            "class": "storage_field switchable",
+            'data-slug': 'storage_loc'
+        }))
 
     volumes_per_node = forms.IntegerField(
         label=_("Volumes per node"),
         required=False,
         initial=1,
-        widget=forms.TextInput(attrs={"class": "volume_per_node_field"})
+        widget=forms.TextInput(attrs={
+            "class": "volume_per_node_field switched",
+            "data-switch-on": "storage_loc",
+            "data-storage_loc-cinder_volume": _('Volumes per node')
+        })
     )
 
     volumes_size = forms.IntegerField(
         label=_("Volumes size (GB)"),
         required=False,
         initial=10,
-        widget=forms.TextInput(attrs={"class": "volume_size_field"})
+        widget=forms.TextInput(attrs={
+            "class": "volume_size_field switched",
+            "data-switch-on": "storage_loc",
+            "data-storage_loc-cinder_volume": _('Volumes size (GB)')
+        })
+    )
+
+    volumes_availability_zone = forms.ChoiceField(
+        label=_("Volumes Availability Zone"),
+        help_text=_("Create volumes in this availability zone."),
+        required=False,
+        widget=forms.Select(attrs={
+            "class": "volumes_availability_zone_field switched",
+            "data-switch-on": "storage_loc",
+            "data-storage_loc-cinder_volume": _('Volumes Availability Zone')
+        })
     )
 
     hidden_configure_field = forms.CharField(
@@ -103,22 +127,6 @@ class GeneralConfigAction(workflows.Action):
                 choices=pool_choices,
                 required=False)
 
-        self.fields["autogroup"] = forms.BooleanField(
-            label=_("Auto Security Group"),
-            widget=forms.CheckboxInput(),
-            help_text=_("Create security group for this Node Group."),
-            required=False,
-            initial=True)
-
-        groups = network.security_group_list(request)
-        security_group_list = [(sg.id, sg.name) for sg in groups]
-        self.fields["groups"] = forms.MultipleChoiceField(
-            label=_("Security Groups"),
-            widget=forms.CheckboxSelectMultiple(),
-            help_text=_("Launch instances in these security groups."),
-            choices=security_group_list,
-            required=False)
-
         self.fields["processes"] = forms.MultipleChoiceField(
             label=_("Processes"),
             widget=forms.CheckboxSelectMultiple(),
@@ -153,6 +161,13 @@ class GeneralConfigAction(workflows.Action):
                         if az.zoneState['available']])
         return az_list
 
+    def populate_volumes_availability_zone_choices(self, request, context):
+        az_list = [(None, _('No availability zone specified'))]
+        az_list.extend([(az.zoneName, az.zoneName)
+                        for az in cinder_utils.availability_zone_list(request)
+                        if az.zoneState['available']])
+        return az_list
+
     def get_help_text(self):
         extra = dict()
         plugin, hadoop_version = (
@@ -161,11 +176,42 @@ class GeneralConfigAction(workflows.Action):
         extra["hadoop_version"] = hadoop_version
         return super(GeneralConfigAction, self).get_help_text(extra)
 
-    class Meta:
+    class Meta(object):
         name = _("Configure Node Group Template")
         help_text_template = (
             "project/data_processing.nodegroup_templates"
             "/_configure_general_help.html")
+
+
+class SecurityConfigAction(workflows.Action):
+    def __init__(self, request, *args, **kwargs):
+        super(SecurityConfigAction, self).__init__(request, *args, **kwargs)
+
+        self.fields["security_autogroup"] = forms.BooleanField(
+            label=_("Auto Security Group"),
+            widget=forms.CheckboxInput(),
+            help_text=_("Create security group for this Node Group."),
+            required=False,
+            initial=True)
+
+        try:
+            groups = network.security_group_list(request)
+        except Exception:
+            exceptions.handle(request,
+                              _("Unable to get security group list."))
+            raise
+
+        security_group_list = [(sg.id, sg.name) for sg in groups]
+        self.fields["security_groups"] = forms.MultipleChoiceField(
+            label=_("Security Groups"),
+            widget=forms.CheckboxSelectMultiple(),
+            help_text=_("Launch instances in these security groups."),
+            choices=security_group_list,
+            required=False)
+
+    class Meta(object):
+        name = _("Security")
+        help_text = _("Control access to instances of the node group.")
 
 
 class GeneralConfig(workflows.Step):
@@ -183,6 +229,11 @@ class GeneralConfig(workflows.Step):
         return context
 
 
+class SecurityConfig(workflows.Step):
+    action_class = SecurityConfigAction
+    contributes = ("security_autogroup", "security_groups")
+
+
 class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
                                  workflow_helpers.StatusFormatMixin):
     slug = "configure_nodegroup_template"
@@ -191,7 +242,7 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
     success_message = _("Created Node Group Template %s")
     name_property = "general_nodegroup_name"
     success_url = "horizon:project:data_processing.nodegroup_templates:index"
-    default_steps = (GeneralConfig,)
+    default_steps = (GeneralConfig, SecurityConfig)
 
     def __init__(self, request, context_seed, entry_point, *args, **kwargs):
         hlps = helpers.Helpers(request)
@@ -255,10 +306,13 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
 
             volumes_per_node = None
             volumes_size = None
+            volumes_availability_zone = None
 
             if context["general_storage"] == "cinder_volume":
                 volumes_per_node = context["general_volumes_per_node"]
                 volumes_size = context["general_volumes_size"]
+                volumes_availability_zone = \
+                    context["general_volumes_availability_zone"]
 
             saharaclient.nodegroup_template_create(
                 request,
@@ -269,11 +323,12 @@ class ConfigureNodegroupTemplate(workflow_helpers.ServiceParametersWorkflow,
                 flavor_id=context["general_flavor"],
                 volumes_per_node=volumes_per_node,
                 volumes_size=volumes_size,
+                volumes_availability_zone=volumes_availability_zone,
                 node_processes=processes,
                 node_configs=configs_dict,
                 floating_ip_pool=context.get("general_floating_ip_pool"),
-                security_groups=context["general_groups"],
-                auto_security_group=context["general_autogroup"],
+                security_groups=context["security_groups"],
+                auto_security_group=context["security_autogroup"],
                 availability_zone=context["general_availability_zone"])
             return True
         except api_base.APIException as e:
@@ -295,7 +350,7 @@ class SelectPluginAction(workflows.Action,
         sahara = saharaclient.client(request)
         self._generate_plugin_version_fields(sahara)
 
-    class Meta:
+    class Meta(object):
         name = _("Select plugin and hadoop version")
         help_text_template = ("project/data_processing.nodegroup_templates"
                               "/_create_general_help.html")
@@ -316,7 +371,7 @@ class SelectPlugin(workflows.Step):
 class CreateNodegroupTemplate(workflows.Workflow):
     slug = "create_nodegroup_template"
     name = _("Create Node Group Template")
-    finalize_button_name = _("Create")
+    finalize_button_name = _("Next")
     success_message = _("Created")
     failure_message = _("Could not create")
     success_url = "horizon:project:data_processing.nodegroup_templates:index"

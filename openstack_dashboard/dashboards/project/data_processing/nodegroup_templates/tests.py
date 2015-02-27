@@ -35,7 +35,7 @@ CREATE_URL = reverse(
 class DataProcessingNodeGroupTests(test.TestCase):
     @test.create_stubs({api.sahara: ('nodegroup_template_list',)})
     def test_index(self):
-        api.sahara.nodegroup_template_list(IsA(http.HttpRequest)) \
+        api.sahara.nodegroup_template_list(IsA(http.HttpRequest), {}) \
             .AndReturn(self.nodegroup_templates.list())
         self.mox.ReplayAll()
         res = self.client.get(INDEX_URL)
@@ -67,7 +67,7 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                      'nodegroup_template_delete')})
     def test_delete(self):
         ngt = self.nodegroup_templates.first()
-        api.sahara.nodegroup_template_list(IsA(http.HttpRequest)) \
+        api.sahara.nodegroup_template_list(IsA(http.HttpRequest), {}) \
             .AndReturn(self.nodegroup_templates.list())
         api.sahara.nodegroup_template_delete(IsA(http.HttpRequest), ngt.id)
         self.mox.ReplayAll()
@@ -143,6 +143,7 @@ class DataProcessingNodeGroupTests(test.TestCase):
                'flavor_id': flavor.id,
                'volumes_per_node': None,
                'volumes_size': None,
+               'volumes_availability_zone': None,
                'node_processes': ['namenode'],
                'node_configs': {},
                'floating_ip_pool': None,
@@ -165,8 +166,9 @@ class DataProcessingNodeGroupTests(test.TestCase):
              'storage': 'ephemeral_drive',
              'volumes_per_node': 0,
              'volumes_size': 0,
+             'volumes_availability_zone': None,
              'floating_ip_pool': None,
-             'autogroup': True,
+             'security_autogroup': True,
              'processes': 'HDFS:namenode'})
 
         self.assertNoFormErrors(res)

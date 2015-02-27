@@ -148,6 +148,15 @@ DISPLAY_CHOICES = (
 )
 
 
+class NetworksFilterAction(tables.FilterAction):
+
+    def filter(self, table, networks, filter_string):
+        """Naive case-insensitive search."""
+        query = filter_string.lower()
+        return [network for network in networks
+                if query in network.name.lower()]
+
+
 class NetworksTable(tables.DataTable):
     name = tables.Column("name_or_id",
                          verbose_name=_("Name"),
@@ -162,8 +171,9 @@ class NetworksTable(tables.DataTable):
                                 verbose_name=_("Admin State"),
                                 display_choices=DISPLAY_CHOICES)
 
-    class Meta:
+    class Meta(object):
         name = "networks"
         verbose_name = _("Networks")
-        table_actions = (CreateNetwork, DeleteNetwork)
+        table_actions = (CreateNetwork, DeleteNetwork,
+                         NetworksFilterAction)
         row_actions = (EditNetwork, CreateSubnet, DeleteNetwork)

@@ -14,6 +14,7 @@
 
 from django.core import urlresolvers
 from django.template import defaultfilters as d_filters
+from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
@@ -336,7 +337,7 @@ def get_size(instance):
     if hasattr(instance, "full_flavor"):
         size_string = _("%(name)s | %(RAM)s RAM")
         vals = {'name': instance.full_flavor.name,
-                'RAM': sizeformat.mbformat(instance.full_flavor.ram)}
+                'RAM': sizeformat.mb_float_format(instance.full_flavor.ram)}
         return size_string % vals
     return _("Not available")
 
@@ -368,8 +369,31 @@ class InstancesTable(tables.DataTable):
         ("ERROR", False),
         ("RESTART_REQUIRED", None),
     )
+    STATUS_DISPLAY_CHOICES = (
+        ("ACTIVE", pgettext_lazy("Current status of a Database Instance",
+                                 u"Active")),
+        ("BLOCKED", pgettext_lazy("Current status of a Database Instance",
+                                  u"Blocked")),
+        ("BUILD", pgettext_lazy("Current status of a Database Instance",
+                                u"Build")),
+        ("FAILED", pgettext_lazy("Current status of a Database Instance",
+                                 u"Failed")),
+        ("REBOOT", pgettext_lazy("Current status of a Database Instance",
+                                 u"Reboot")),
+        ("RESIZE", pgettext_lazy("Current status of a Database Instance",
+                                 u"Resize")),
+        ("BACKUP", pgettext_lazy("Current status of a Database Instance",
+                                 u"Backup")),
+        ("SHUTDOWN", pgettext_lazy("Current status of a Database Instance",
+                                   u"Shutdown")),
+        ("ERROR", pgettext_lazy("Current status of a Database Instance",
+                                u"Error")),
+        ("RESTART_REQUIRED",
+         pgettext_lazy("Current status of a Database Instance",
+                       u"Restart Required")),
+    )
     name = tables.Column("name",
-                         link=("horizon:project:databases:detail"),
+                         link="horizon:project:databases:detail",
                          verbose_name=_("Instance Name"))
     datastore = tables.Column(get_datastore,
                               verbose_name=_("Datastore"))
@@ -383,13 +407,12 @@ class InstancesTable(tables.DataTable):
                            verbose_name=_("Volume Size"),
                            attrs={'data-type': 'size'})
     status = tables.Column("status",
-                           filters=(d_filters.title,
-                                    filters.replace_underscores),
                            verbose_name=_("Status"),
                            status=True,
-                           status_choices=STATUS_CHOICES)
+                           status_choices=STATUS_CHOICES,
+                           display_choices=STATUS_DISPLAY_CHOICES)
 
-    class Meta:
+    class Meta(object):
         name = "databases"
         verbose_name = _("Instances")
         status_columns = ["status"]
@@ -412,7 +435,7 @@ class UsersTable(tables.DataTable):
     host = tables.Column("host", verbose_name=_("Allowed Host"))
     databases = tables.Column(get_databases, verbose_name=_("Databases"))
 
-    class Meta:
+    class Meta(object):
         name = "users"
         verbose_name = _("Users")
         table_actions = [DeleteUser]
@@ -425,7 +448,7 @@ class UsersTable(tables.DataTable):
 class DatabaseTable(tables.DataTable):
     name = tables.Column("name", verbose_name=_("Database Name"))
 
-    class Meta:
+    class Meta(object):
         name = "databases"
         verbose_name = _("Databases")
         table_actions = [DeleteDatabase]
@@ -441,7 +464,7 @@ def is_incremental(obj):
 
 class InstanceBackupsTable(tables.DataTable):
     name = tables.Column("name",
-                         link=("horizon:project:database_backups:detail"),
+                         link="horizon:project:database_backups:detail",
                          verbose_name=_("Name"))
     created = tables.Column("created", verbose_name=_("Created"),
                             filters=[filters.parse_isotime])
@@ -452,14 +475,14 @@ class InstanceBackupsTable(tables.DataTable):
                                 verbose_name=_("Incremental"),
                                 filters=(d_filters.yesno,
                                          d_filters.capfirst))
-    status = tables.Column("status",
-                           filters=(d_filters.title,
-                                    filters.replace_underscores),
-                           verbose_name=_("Status"),
-                           status=True,
-                           status_choices=backup_tables.STATUS_CHOICES)
+    status = tables.Column(
+        "status",
+        verbose_name=_("Status"),
+        status=True,
+        status_choices=backup_tables.STATUS_CHOICES,
+        display_choices=backup_tables.STATUS_DISPLAY_CHOICES)
 
-    class Meta:
+    class Meta(object):
         name = "backups"
         verbose_name = _("Backups")
         status_columns = ["status"]

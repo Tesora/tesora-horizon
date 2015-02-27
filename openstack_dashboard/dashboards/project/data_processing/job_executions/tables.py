@@ -16,6 +16,7 @@ import logging
 from django.core.urlresolvers import reverse
 from django.http import Http404  # noqa
 from django.utils import http
+from django.utils.translation import pgettext_lazy
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
@@ -29,6 +30,14 @@ from openstack_dashboard.dashboards.project.data_processing. \
     jobs import tables as j_t
 
 LOG = logging.getLogger(__name__)
+
+
+class JobExecutionsFilterAction(tables.FilterAction):
+    filter_type = "server"
+    filter_choices = (('id', _("ID"), True),
+                      ('job', _("Job"), True),
+                      ('cluster', _("Cluster"), True),
+                      ('status', _("Status"), True))
 
 
 class DeleteJobExecution(tables.DeleteAction):
@@ -138,10 +147,21 @@ class JobExecutionsTable(tables.DataTable):
         ("KILLED", False),
         ("SUCCEEDED", True),
     )
+    STATUS_DISPLAY_CHOICES = (
+        ("DONEWITHERROR", pgettext_lazy("Current status of a Job Execution",
+                                        u"Done with Error")),
+        ("FAILED", pgettext_lazy("Current status of a Job Execution",
+                                 u"Failed")),
+        ("KILLED", pgettext_lazy("Current status of a Job Execution",
+                                 u"Killed")),
+        ("SUCCEEDED", pgettext_lazy("Current status of a Job Execution",
+                                    u"Succeeded")),
+    )
 
     name = tables.Column("id",
                          verbose_name=_("ID"),
-                         display_choices=(("id", "ID"), ("name", "Name")),
+                         display_choices=(("id", "ID"),
+                                          ("name", pgettext_lazy("Name")),),
                          link=("horizon:project:data_processing."
                                "job_executions:details"))
     job_name = tables.Column(
@@ -155,17 +175,19 @@ class JobExecutionsTable(tables.DataTable):
     status = StatusColumn("info",
                           status=True,
                           status_choices=STATUS_CHOICES,
+                          display_choices=STATUS_DISPLAY_CHOICES,
                           verbose_name=_("Status"))
 
     def get_object_display(self, datum):
         return datum.id
 
-    class Meta:
+    class Meta(object):
         name = "job_executions"
         row_class = UpdateRow
         status_columns = ["status"]
         verbose_name = _("Job Executions")
-        table_actions = [DeleteJobExecution]
+        table_actions = [DeleteJobExecution,
+                         JobExecutionsFilterAction]
         row_actions = [DeleteJobExecution,
                        ReLaunchJobExistingCluster,
                        ReLaunchJobNewCluster]
