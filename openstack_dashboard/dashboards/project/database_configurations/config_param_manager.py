@@ -119,14 +119,14 @@ class ConfigParamManager(object):
                                 self.configuration.values)
 
 
-class ConfigParam:
+class ConfigParam(object):
     def __init__(self, configuration_id, name, value):
         self.configuration_id = configuration_id
         self.name = name
         self.value = value
 
 
-class Configuration:
+class Configuration(object):
     def __init__(self, id, name, description, datastore_name,
                  datastore_version_name, created, updated):
         self.id = id

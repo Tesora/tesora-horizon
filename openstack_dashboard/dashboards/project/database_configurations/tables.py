@@ -56,7 +56,7 @@ class ConfigurationsTable(tables.DataTable):
     datastore_version = tables.Column('datastore_version_name',
                                       verbose_name=_('Datastore Version'))
 
-    class Meta:
+    class Meta(object):
         name = "configurations"
         verbose_name = _("Configuration Groups")
         table_actions = [CreateConfiguration, DeleteConfiguration]
@@ -167,7 +167,7 @@ class ValuesTable(tables.DataTable):
                           form_field=forms.CharField(required=False),
                           update_action=UpdateCell)
 
-    class Meta:
+    class Meta(object):
         name = "values"
         verbose_name = _("Configuration Group Values")
         table_actions = [ApplyChanges, DiscardChanges,
@@ -208,7 +208,7 @@ class InstancesTable(tables.DataTable):
                          link="horizon:project:databases:detail",
                          verbose_name=_("Name"))
 
-    class Meta:
+    class Meta(object):
         name = "instances"
         verbose_name = _("Configuration Group Instances")
         multi_select = False
