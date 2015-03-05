@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-26 21:50-0600\n"
-"PO-Revision-Date: 2015-02-25 14:41+0000\n"
+"POT-Creation-Date: 2015-03-03 18:13-0600\n"
+"PO-Revision-Date: 2015-03-03 17:24+0000\n"
 "Last-Translator: Rob Cresswell <robert.cresswell@outlook.com>\n"
 "Language-Team: English (United Kingdom) (http://www.transifex.com/projects/p/horizon/language/en_GB/)\n"
 "MIME-Version: 1.0\n"
@@ -81,7 +81,7 @@ msgid "Finish"
 msgstr "Finish"
 
 #: static/horizon/js/horizon.accordion_nav.js:84
-#: static/horizon/js/horizon.modals.js:313
+#: static/horizon/js/horizon.modals.js:315
 #: static/horizon/js/horizon.tabs.js:21
 msgid "Loading"
 msgstr "Loading"
@@ -92,7 +92,7 @@ msgid "No data available."
 msgstr "No data available."
 
 #: static/horizon/js/horizon.d3linechart.js:410
-#: static/horizon/js/horizon.modals.js:332
+#: static/horizon/js/horizon.modals.js:334
 #: static/horizon/js/horizon.tables_inline_edit.js:94
 #: static/horizon/js/horizon.tables_inline_edit.js:157
 msgid "An error occurred. Please try again later."
@@ -144,12 +144,12 @@ msgstr "Success: "
 msgid "Error: "
 msgstr "Error: "
 
-#: static/horizon/js/horizon.modals.js:227
+#: static/horizon/js/horizon.modals.js:229
 #: static/horizon/js/horizon.tables.js:218
 msgid "Working"
 msgstr "Working"
 
-#: static/horizon/js/horizon.modals.js:261
+#: static/horizon/js/horizon.modals.js:263
 msgid "There was an error submitting the form. Please try again."
 msgstr "There was an error submitting the form. Please try again."
 
@@ -422,6 +422,30 @@ msgstr "Unable to retrieve limits."
 #: static/horizon/js/angular/services/hz.api.nova.js:144
 msgid "Unable to create the server."
 msgstr "Unable to create the server."
+
+#: static/horizon/js/angular/services/hz.api.nova.js:158
+msgid "Unable to retrieve server."
+msgstr "Unable to retrieve server."
+
+#: static/horizon/js/angular/services/hz.api.nova.js:188
+msgid "Unable to retrieve extensions."
+msgstr "Unable to retrieve extensions."
+
+#: static/horizon/js/angular/services/hz.api.nova.js:214
+msgid "Unable to retrieve flavors."
+msgstr "Unable to retrieve flavours."
+
+#: static/horizon/js/angular/services/hz.api.nova.js:232
+msgid "Unable to retrieve flavor."
+msgstr "Unable to retrieve flavour."
+
+#: static/horizon/js/angular/services/hz.api.nova.js:246
+msgid "Unable to retrieve flavor extra specs."
+msgstr "Unable to retrieve flavour extra specs."
+
+#: static/horizon/js/angular/services/hz.api.policy.js:65
+msgid "Policy check failed."
+msgstr "Policy check failed."
 
 #: static/horizon/js/angular/services/hz.api.security-group.js:64
 msgid "Unable to retrieve security groups."

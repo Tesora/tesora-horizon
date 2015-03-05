@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-26 21:50-0600\n"
-"PO-Revision-Date: 2015-02-25 13:50+0000\n"
+"POT-Creation-Date: 2015-03-03 18:13-0600\n"
+"PO-Revision-Date: 2015-03-03 19:54+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/horizon/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -433,7 +433,7 @@ msgstr "The 'operation' parameter for get_feature_permission '%(feature)s' is in
 msgid "Failed to check Neutron '%s' extension is not supported"
 msgstr "Fallo al verificar la extension \"%s\" de Neutron, no esta soportada"
 
-#: api/nova.py:110 api/nova.py:120 dashboards/project/databases/tables.py:274
+#: api/nova.py:110 api/nova.py:120 dashboards/project/databases/tables.py:279
 #: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:8
 #: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:11
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:8
@@ -460,7 +460,7 @@ msgstr "Fallo al verificar la extension \"%s\" de Neutron, no esta soportada"
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:43
 #: dashboards/project/networks/templates/networks/subnets/_detail_overview.html:18
 #: dashboards/project/networks/templates/networks/subnets/_detail_overview.html:29
-#: dashboards/project/routers/tables.py:183
+#: dashboards/project/routers/tables.py:186
 #: dashboards/project/volumes/volumes/tables.py:355
 msgid "-"
 msgstr "-"
@@ -495,12 +495,12 @@ msgstr "Error al modificar %(num_groups_to_modify)d grupos de seguridad de la in
 msgid "Failed to modify %d instance security groups"
 msgstr "Fallo al modificar la instancia de seguridad de grupos %d"
 
-#: api/nova.py:787
+#: api/nova.py:795
 #, python-format
 msgid "Name: %(name)s ID: %(uuid)s"
 msgstr "Nombre: %(name)s ID: %(uuid)s"
 
-#: api/nova.py:792
+#: api/nova.py:800
 #, python-format
 msgid "Failed to evacuate instances: %s"
 msgstr "Fallo al evacuar las instancias: %s"
@@ -527,8 +527,8 @@ msgstr "Administrador"
 #: dashboards/admin/flavors/workflows.py:36 dashboards/admin/info/tables.py:64
 #: dashboards/admin/info/tables.py:94 dashboards/admin/info/tables.py:118
 #: dashboards/admin/info/tables.py:169 dashboards/admin/info/tables.py:207
-#: dashboards/admin/instances/tables.py:95
-#: dashboards/admin/instances/tables.py:129
+#: dashboards/admin/instances/tables.py:96
+#: dashboards/admin/instances/tables.py:130
 #: dashboards/admin/metadata_defs/tables.py:128
 #: dashboards/admin/networks/forms.py:38
 #: dashboards/admin/networks/forms.py:234
@@ -536,7 +536,7 @@ msgstr "Administrador"
 #: dashboards/admin/networks/ports/tables.py:91
 #: dashboards/admin/networks/subnets/tables.py:92
 #: dashboards/admin/routers/tables.py:41
-#: dashboards/admin/routers/ports/tables.py:33
+#: dashboards/admin/routers/ports/tables.py:24
 #: dashboards/admin/routers/templates/routers/_detail_overview.html:7
 #: dashboards/admin/volumes/snapshots/tables.py:59
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:10
@@ -587,14 +587,14 @@ msgstr "Administrador"
 #: dashboards/project/database_backups/templates/database_backups/details.html:14
 #: dashboards/project/database_backups/templates/database_backups/details.html:60
 #: dashboards/project/database_backups/workflows/create_backup.py:32
-#: dashboards/project/databases/tables.py:382
+#: dashboards/project/databases/tables.py:387
 #: dashboards/project/databases/templates/databases/_detail_overview.html:10
 #: dashboards/project/firewalls/forms.py:33
 #: dashboards/project/firewalls/forms.py:98
 #: dashboards/project/firewalls/forms.py:125
-#: dashboards/project/firewalls/tables.py:199
-#: dashboards/project/firewalls/tables.py:232
-#: dashboards/project/firewalls/tables.py:268
+#: dashboards/project/firewalls/tables.py:203
+#: dashboards/project/firewalls/tables.py:236
+#: dashboards/project/firewalls/tables.py:272
 #: dashboards/project/firewalls/workflows.py:30
 #: dashboards/project/firewalls/workflows.py:173
 #: dashboards/project/firewalls/workflows.py:230
@@ -623,7 +623,7 @@ msgstr "Administrador"
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:10
 #: dashboards/project/networks/templates/networks/subnets/_detail_overview.html:10
 #: dashboards/project/routers/forms.py:117
-#: dashboards/project/routers/tables.py:202
+#: dashboards/project/routers/tables.py:205
 #: dashboards/project/routers/ports/tables.py:107
 #: dashboards/project/routers/templates/routers/_detail_overview.html:9
 #: dashboards/project/stacks/templates/stacks/_detail_overview.html:9
@@ -658,12 +658,12 @@ msgstr "Nombre"
 #: dashboards/project/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:22
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:19
 #: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:48
-#: dashboards/project/instances/tables.py:1002
+#: dashboards/project/instances/tables.py:1006
 #: dashboards/project/instances/templates/instances/_detail_overview.html:16
-#: dashboards/project/instances/workflows/create_instance.py:79
-#: dashboards/project/volumes/volumes/forms.py:120
-#: dashboards/project/volumes/volumes/forms.py:125
-#: dashboards/project/volumes/volumes/forms.py:126
+#: dashboards/project/instances/workflows/create_instance.py:81
+#: dashboards/project/volumes/volumes/forms.py:122
+#: dashboards/project/volumes/volumes/forms.py:127
+#: dashboards/project/volumes/volumes/forms.py:128
 #: dashboards/project/volumes/volumes/tables.py:417
 msgid "Availability Zone"
 msgstr "Zona de Disponibilidad "
@@ -1123,17 +1123,17 @@ msgstr "VCPU"
 #: dashboards/admin/defaults/workflows.py:42
 #: dashboards/admin/hypervisors/tables.py:57
 #: dashboards/admin/instances/panel.py:27
-#: dashboards/admin/instances/tables.py:163
+#: dashboards/admin/instances/tables.py:164
 #: dashboards/admin/instances/views.py:67
 #: dashboards/admin/instances/templates/instances/index.html:3
 #: dashboards/identity/projects/workflows.py:51
 #: dashboards/project/data_processing/clusters/tabs.py:151
 #: dashboards/project/databases/panel.py:23
-#: dashboards/project/databases/tables.py:335
+#: dashboards/project/databases/tables.py:340
 #: dashboards/project/databases/views.py:48
 #: dashboards/project/databases/templates/databases/index.html:3
 #: dashboards/project/instances/panel.py:23
-#: dashboards/project/instances/tables.py:1021
+#: dashboards/project/instances/tables.py:1025
 #: dashboards/project/instances/views.py:55
 #: dashboards/project/instances/templates/instances/index.html:3
 #: dashboards/project/network_topology/instances/tables.py:23
@@ -1192,7 +1192,7 @@ msgstr "RAM (MB)"
 #: dashboards/identity/projects/workflows.py:61
 #: dashboards/identity/projects/workflows.py:73
 #: dashboards/project/access_and_security/tabs.py:80
-#: dashboards/project/access_and_security/floating_ips/tables.py:220
+#: dashboards/project/access_and_security/floating_ips/tables.py:222
 #: usage/quotas.py:68 usage/quotas.py:81
 msgid "Floating IPs"
 msgstr "IPs flotantes"
@@ -1208,7 +1208,7 @@ msgstr "IPs flotantes"
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:42
 #: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:206
 #: dashboards/project/instances/templates/instances/_detail_overview.html:85
-#: dashboards/project/instances/workflows/create_instance.py:545
+#: dashboards/project/instances/workflows/create_instance.py:544
 #: dashboards/project/instances/workflows/update_instance.py:80
 #: usage/quotas.py:70 usage/quotas.py:82
 msgid "Security Groups"
@@ -1233,7 +1233,6 @@ msgstr "Pares de claves"
 
 #: dashboards/admin/defaults/tables.py:56
 #: dashboards/admin/networks/ports/tables.py:94
-#: dashboards/admin/routers/ports/tables.py:36
 #: dashboards/identity/projects/workflows.py:62
 #: dashboards/project/networks/ports/tables.py:69
 #: dashboards/project/routers/ports/tables.py:110 usage/quotas.py:69
@@ -1608,7 +1607,6 @@ msgstr "Nombre del host"
 
 #: dashboards/admin/hypervisors/tables.py:28
 #: dashboards/admin/info/tables.py:168
-#: dashboards/admin/routers/ports/tables.py:39
 #: dashboards/project/access_and_security/security_groups/forms.py:173
 #: dashboards/project/access_and_security/security_groups/forms.py:180
 #: dashboards/project/data_processing/data_sources/tables.py:61
@@ -1618,10 +1616,10 @@ msgstr "Nombre del host"
 #: dashboards/project/loadbalancers/templates/loadbalancers/_monitor_details.html:12
 #: dashboards/project/routers/ports/tables.py:115
 #: dashboards/project/stacks/resource_types/tables.py:31
-#: dashboards/project/volumes/volumes/forms.py:111
-#: dashboards/project/volumes/volumes/forms.py:116
-#: dashboards/project/volumes/volumes/forms.py:117
-#: dashboards/project/volumes/volumes/forms.py:739
+#: dashboards/project/volumes/volumes/forms.py:113
+#: dashboards/project/volumes/volumes/forms.py:118
+#: dashboards/project/volumes/volumes/forms.py:119
+#: dashboards/project/volumes/volumes/forms.py:741
 #: dashboards/project/volumes/volumes/tables.py:413
 msgid "Type"
 msgstr "Tipo"
@@ -1651,11 +1649,11 @@ msgid "Local Storage (total)"
 msgstr "Almacenamiento local (total)"
 
 #: dashboards/admin/hypervisors/tables.py:70
-#: dashboards/project/databases/tables.py:315
+#: dashboards/project/databases/tables.py:320
 #: dashboards/project/databases/workflows/create_instance.py:35
-#: dashboards/project/instances/tables.py:962
-#: dashboards/project/instances/tables.py:985
-#: dashboards/project/instances/workflows/create_instance.py:82
+#: dashboards/project/instances/tables.py:966
+#: dashboards/project/instances/tables.py:989
+#: dashboards/project/instances/workflows/create_instance.py:84
 #: dashboards/project/overview/views.py:32 usage/tables.py:80
 msgid "Instance Name"
 msgstr "Nombre de la instancia"
@@ -1736,13 +1734,13 @@ msgstr "Fallo al evacuar el host: %s."
 #: dashboards/admin/info/tables.py:66 dashboards/admin/info/tables.py:95
 #: dashboards/admin/info/tables.py:119 dashboards/admin/info/tables.py:170
 #: dashboards/admin/info/tables.py:209
-#: dashboards/admin/instances/tables.py:125
+#: dashboards/admin/instances/tables.py:126
 #: dashboards/admin/networks/agents/tables.py:91
 #: dashboards/admin/volumes/snapshots/tables.py:64
 #: dashboards/admin/volumes/volumes/forms.py:54
 #: dashboards/admin/volumes/volumes/forms.py:140
 #: dashboards/admin/volumes/volumes/tables.py:81
-#: dashboards/project/databases/tables.py:320
+#: dashboards/project/databases/tables.py:325
 #: dashboards/project/databases/templates/databases/_detail_overview_cassandra.html:10
 #: dashboards/project/databases/templates/databases/_detail_overview_couchbase.html:10
 #: dashboards/project/databases/templates/databases/_detail_overview_mongodb.html:10
@@ -1803,16 +1801,15 @@ msgstr "Zona"
 #: dashboards/admin/info/tables.py:68 dashboards/admin/info/tables.py:97
 #: dashboards/admin/info/tables.py:121 dashboards/admin/info/tables.py:171
 #: dashboards/admin/info/tables.py:217
-#: dashboards/admin/instances/tables.py:141
+#: dashboards/admin/instances/tables.py:142
 #: dashboards/admin/networks/tables.py:102
 #: dashboards/admin/networks/agents/tables.py:92
 #: dashboards/admin/networks/ports/tables.py:99
-#: dashboards/admin/routers/ports/tables.py:37
 #: dashboards/admin/routers/templates/routers/_detail_overview.html:13
 #: dashboards/admin/volumes/snapshots/forms.py:33
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:18
 #: dashboards/admin/volumes/volumes/forms.py:183
-#: dashboards/project/access_and_security/floating_ips/tables.py:200
+#: dashboards/project/access_and_security/floating_ips/tables.py:202
 #: dashboards/project/data_processing/clusters/tables.py:36
 #: dashboards/project/data_processing/clusters/tables.py:146
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/_details.html:12
@@ -1822,14 +1819,14 @@ msgstr "Zona"
 #: dashboards/project/database_backups/tables.py:174
 #: dashboards/project/database_backups/templates/database_backups/details.html:26
 #: dashboards/project/database_backups/templates/database_backups/details.html:67
-#: dashboards/project/databases/tables.py:328
-#: dashboards/project/databases/tables.py:394
+#: dashboards/project/databases/tables.py:333
+#: dashboards/project/databases/tables.py:399
 #: dashboards/project/databases/templates/databases/_detail_overview.html:18
-#: dashboards/project/firewalls/tables.py:274
+#: dashboards/project/firewalls/tables.py:278
 #: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:25
 #: dashboards/project/images/images/tables.py:247
 #: dashboards/project/images/templates/images/images/_detail_overview.html:19
-#: dashboards/project/instances/tables.py:997
+#: dashboards/project/instances/tables.py:1001
 #: dashboards/project/instances/templates/instances/_detail_overview.html:14
 #: dashboards/project/loadbalancers/tables.py:277
 #: dashboards/project/loadbalancers/tables.py:311
@@ -1840,7 +1837,7 @@ msgstr "Zona"
 #: dashboards/project/networks/ports/tables.py:72
 #: dashboards/project/networks/templates/networks/_detail_overview.html:13
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:32
-#: dashboards/project/routers/tables.py:205
+#: dashboards/project/routers/tables.py:208
 #: dashboards/project/routers/ports/tables.py:112
 #: dashboards/project/routers/templates/routers/_detail_overview.html:13
 #: dashboards/project/stacks/tables.py:267
@@ -1923,7 +1920,7 @@ msgid "Unable to update the image metadata."
 msgstr "No ha sido posible actualizar los medatados de la imagen."
 
 #: dashboards/admin/images/panel.py:27 dashboards/admin/images/tables.py:77
-#: dashboards/admin/images/views.py:45
+#: dashboards/admin/images/views.py:47
 #: dashboards/admin/images/templates/images/index.html:3
 #: dashboards/project/images/panel.py:24 dashboards/project/images/views.py:38
 #: dashboards/project/images/images/tables.py:269
@@ -1936,8 +1933,8 @@ msgid "Image Name ="
 msgstr "Nombre de imagen ="
 
 #: dashboards/admin/images/tables.py:62
-#: dashboards/admin/instances/tables.py:98
-#: dashboards/project/instances/tables.py:963
+#: dashboards/admin/instances/tables.py:99
+#: dashboards/project/instances/tables.py:967
 msgid "Status ="
 msgstr "Estado ="
 
@@ -1954,20 +1951,20 @@ msgid "Max. Size (MB)"
 msgstr "Tamaño máx. (MB)"
 
 #: dashboards/admin/images/tables.py:71
-#: dashboards/admin/instances/tables.py:131
+#: dashboards/admin/instances/tables.py:132
 #: dashboards/project/images/images/tables.py:242
-#: dashboards/project/instances/tables.py:987
+#: dashboards/project/instances/tables.py:991
 #: dashboards/project/instances/templates/instances/_detail_overview.html:114
-#: dashboards/project/instances/workflows/create_instance.py:106
-#: dashboards/project/volumes/volumes/forms.py:631
+#: dashboards/project/instances/workflows/create_instance.py:108
+#: dashboards/project/volumes/volumes/forms.py:633
 msgid "Image Name"
 msgstr "Nombre de la imagen"
 
-#: dashboards/admin/images/views.py:81
+#: dashboards/admin/images/views.py:83
 msgid "Unable to retrieve image list."
 msgstr "No ha sido posible obtener la lista de imágenes."
 
-#: dashboards/admin/images/views.py:112
+#: dashboards/admin/images/views.py:114
 #: dashboards/admin/images/templates/images/_create.html:10
 #: dashboards/admin/images/templates/images/create.html:3
 #: dashboards/project/images/images/views.py:46
@@ -1976,7 +1973,7 @@ msgstr "No ha sido posible obtener la lista de imágenes."
 msgid "Create An Image"
 msgstr "Crear una imagen"
 
-#: dashboards/admin/images/views.py:119
+#: dashboards/admin/images/views.py:121
 #: dashboards/admin/images/templates/images/_update.html:9
 #: dashboards/admin/images/templates/images/_update.html:24
 #: dashboards/admin/images/templates/images/update.html:4
@@ -1987,18 +1984,18 @@ msgstr "Crear una imagen"
 msgid "Update Image"
 msgstr "Actualizar imagen"
 
-#: dashboards/admin/images/views.py:131
+#: dashboards/admin/images/views.py:133
 #: dashboards/admin/images/templates/images/_update_metadata.html:4
 #: dashboards/admin/images/templates/images/_update_metadata.html:7
 #: dashboards/admin/images/templates/images/update_metadata.html:3
 msgid "Update Image Metadata"
 msgstr "Actualizar metadatos de imagen"
 
-#: dashboards/admin/images/views.py:182
+#: dashboards/admin/images/views.py:184
 msgid "Unable to retrieve available properties for image."
 msgstr "No ha sido posible recuperar las propiedades disponibles para la imagen."
 
-#: dashboards/admin/images/views.py:195
+#: dashboards/admin/images/views.py:197
 msgid "Unable to retrieve the image to be updated."
 msgstr "No ha sido posible recuperar la imagen a actualizar."
 
@@ -2056,7 +2053,7 @@ msgstr "Información del Sistema"
 #: dashboards/identity/users/tables.py:236
 #: dashboards/identity/users/templates/users/_detail_overview.html:23
 #: dashboards/project/firewalls/forms.py:70
-#: dashboards/project/firewalls/tables.py:217
+#: dashboards/project/firewalls/tables.py:221
 #: dashboards/project/firewalls/workflows.py:67
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:53
 #: dashboards/project/stacks/templates/stacks/_detail_overview.html:65
@@ -2187,25 +2184,29 @@ msgstr "La instancia se está preparando para una migración en vivo al host \"%
 msgid "Failed to live migrate instance to host \"%s\"."
 msgstr "Ha ocurrido un fallo en la migración en vivo de la instancia al host \"%s\"."
 
-#: dashboards/admin/instances/tables.py:41
+#: dashboards/admin/instances/tables.py:37
+msgid "Migrating instances may cause some unrecoverable results."
+msgstr ""
+
+#: dashboards/admin/instances/tables.py:42
 msgid "Migrate Instance"
 msgid_plural "Migrate Instances"
 msgstr[0] "Instancia cambiada"
 msgstr[1] "Instancias cambiadas"
 
-#: dashboards/admin/instances/tables.py:49
+#: dashboards/admin/instances/tables.py:50
 msgid "Scheduled migration (pending confirmation) of Instance"
 msgid_plural "Scheduled migration (pending confirmation) of Instances"
 msgstr[0] "Cronograma de migración de instancia (pendiente de confirmación)"
 msgstr[1] "Cronograma de migración de instancias (pendientes de confirmación)"
 
-#: dashboards/admin/instances/tables.py:66
+#: dashboards/admin/instances/tables.py:67
 #: dashboards/admin/instances/templates/instances/_live_migrate.html:23
 msgid "Live Migrate Instance"
 msgstr "Migrar en vivo instancia"
 
-#: dashboards/admin/instances/tables.py:93
-#: dashboards/admin/instances/tables.py:118
+#: dashboards/admin/instances/tables.py:94
+#: dashboards/admin/instances/tables.py:119
 #: dashboards/admin/metering/tables.py:41
 #: dashboards/admin/metering/templates/metering/stats.html:94
 #: dashboards/admin/networks/forms.py:40
@@ -2215,7 +2216,7 @@ msgstr "Migrar en vivo instancia"
 #: dashboards/admin/volumes/volumes/tables.py:82
 #: dashboards/project/dashboard.py:76
 #: dashboards/project/images/images/tables.py:156
-#: dashboards/project/instances/workflows/create_instance.py:52
+#: dashboards/project/instances/workflows/create_instance.py:54
 #: dashboards/router/nexus1000v/forms.py:119
 #: dashboards/router/nexus1000v/forms.py:177
 #: dashboards/router/nexus1000v/tables.py:73
@@ -2223,46 +2224,46 @@ msgstr "Migrar en vivo instancia"
 msgid "Project"
 msgstr "Proyecto"
 
-#: dashboards/admin/instances/tables.py:94
+#: dashboards/admin/instances/tables.py:95
 msgid "Host ="
 msgstr "Anfitrión = "
 
-#: dashboards/admin/instances/tables.py:96
+#: dashboards/admin/instances/tables.py:97
 msgid "IPv4 Address ="
 msgstr "Dirección IPv4 ="
 
-#: dashboards/admin/instances/tables.py:97
+#: dashboards/admin/instances/tables.py:98
 msgid "IPv6 Address ="
 msgstr "Dirección IPv6 ="
 
-#: dashboards/admin/instances/tables.py:99
-#: dashboards/project/instances/tables.py:964
+#: dashboards/admin/instances/tables.py:100
+#: dashboards/project/instances/tables.py:968
 msgid "Image ID ="
 msgstr "ID de imagen ="
 
-#: dashboards/admin/instances/tables.py:100
-#: dashboards/project/instances/tables.py:965
+#: dashboards/admin/instances/tables.py:101
+#: dashboards/project/instances/tables.py:969
 msgid "Flavor ID ="
 msgstr "ID del sabor = "
 
-#: dashboards/admin/instances/tables.py:133
-#: dashboards/project/access_and_security/floating_ips/tables.py:192
+#: dashboards/admin/instances/tables.py:134
+#: dashboards/project/access_and_security/floating_ips/tables.py:194
 #: dashboards/project/access_and_security/floating_ips/workflows.py:33
 #: dashboards/project/access_and_security/floating_ips/workflows.py:40
-#: dashboards/project/instances/tables.py:989
+#: dashboards/project/instances/tables.py:993
 #: dashboards/project/loadbalancers/tables.py:302
 msgid "IP Address"
 msgstr "Dirección IP"
 
-#: dashboards/admin/instances/tables.py:136
+#: dashboards/admin/instances/tables.py:137
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:33
 #: dashboards/project/containers/tables.py:446
 #: dashboards/project/containers/templates/containers/_container_detail.html:22
 #: dashboards/project/containers/templates/containers/_object_detail.html:18
-#: dashboards/project/databases/tables.py:322
+#: dashboards/project/databases/tables.py:327
 #: dashboards/project/images/images/tables.py:263
 #: dashboards/project/images/templates/images/images/_detail_overview.html:46
-#: dashboards/project/instances/tables.py:992
+#: dashboards/project/instances/tables.py:996
 #: dashboards/project/instances/templates/instances/_instance_flavor.html:7
 #: dashboards/project/volumes/backups/tables.py:123
 #: dashboards/project/volumes/templates/volumes/backups/_detail_overview.html:37
@@ -2272,23 +2273,22 @@ msgstr "Dirección IP"
 msgid "Size"
 msgstr "Tamaño"
 
-#: dashboards/admin/instances/tables.py:146
-#: dashboards/project/instances/tables.py:1004
+#: dashboards/admin/instances/tables.py:147
+#: dashboards/project/instances/tables.py:1008
 msgid "Task"
 msgstr "Tarea"
 
-#: dashboards/admin/instances/tables.py:153
-#: dashboards/project/instances/tables.py:1011
+#: dashboards/admin/instances/tables.py:154
+#: dashboards/project/instances/tables.py:1015
 msgid "Power State"
 msgstr "Estado de energía"
 
-#: dashboards/admin/instances/tables.py:156
-#: dashboards/project/instances/tables.py:1014 usage/tables.py:83
+#: dashboards/admin/instances/tables.py:157
+#: dashboards/project/instances/tables.py:1018 usage/tables.py:83
 msgid "Time since created"
 msgstr "Tiempo desde su creación"
 
 #: dashboards/admin/instances/views.py:82
-#: dashboards/admin/networks/views.py:50
 msgid "Unable to retrieve instance project information."
 msgstr "No ha sido posible obtener la información del proyecto de la instancia."
 
@@ -2341,8 +2341,8 @@ msgid "Metadata Definition File"
 msgstr ""
 
 #: dashboards/admin/metadata_defs/forms.py:41
-#: dashboards/project/instances/workflows/create_instance.py:622
-#: dashboards/project/stacks/forms.py:58
+#: dashboards/project/instances/workflows/create_instance.py:611
+#: dashboards/project/stacks/forms.py:62
 msgid "Direct Input"
 msgstr "Entrada Directa"
 
@@ -2500,9 +2500,9 @@ msgstr "Actualizar asociaciones"
 #: dashboards/project/volumes/templates/volumes/backups/_detail_overview.html:17
 #: dashboards/project/volumes/templates/volumes/snapshots/_detail_overview.html:15
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:15
-#: dashboards/project/volumes/volumes/forms.py:82
-#: dashboards/project/volumes/volumes/forms.py:489
-#: dashboards/project/volumes/volumes/forms.py:593
+#: dashboards/project/volumes/volumes/forms.py:84
+#: dashboards/project/volumes/volumes/forms.py:491
+#: dashboards/project/volumes/volumes/forms.py:595
 #: dashboards/project/volumes/volumes/tables.py:384
 #: dashboards/project/vpn/forms.py:36 dashboards/project/vpn/forms.py:70
 #: dashboards/project/vpn/forms.py:142 dashboards/project/vpn/forms.py:213
@@ -2666,7 +2666,7 @@ msgstr ""
 #: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:375
 #: dashboards/project/database_backups/tables.py:165
 #: dashboards/project/database_backups/templates/database_backups/details.html:32
-#: dashboards/project/databases/tables.py:383
+#: dashboards/project/databases/tables.py:388
 #: dashboards/project/databases/templates/databases/_detail_overview.html:35
 #: dashboards/project/images/templates/images/images/_detail_overview.html:27
 #: dashboards/project/instances/templates/instances/_detail_overview.html:18
@@ -2679,11 +2679,11 @@ msgid "Created"
 msgstr "Creada"
 
 #: dashboards/admin/metadata_defs/templates/metadata_defs/_detail_overview.html:23
-#: dashboards/admin/networks/views.py:58
+#: dashboards/admin/networks/views.py:59
 #: dashboards/admin/routers/templates/routers/_detail_overview.html:16
 #: dashboards/project/images/templates/images/images/_detail_overview.html:20
 #: dashboards/project/images/templates/images/images/_detail_overview.html:31
-#: dashboards/project/instances/tables.py:619
+#: dashboards/project/instances/tables.py:622
 #: dashboards/project/networks/templates/networks/_detail_overview.html:14
 #: dashboards/project/networks/templates/networks/_detail_overview.html:16
 #: dashboards/project/networks/templates/networks/_detail_overview.html:23
@@ -3127,7 +3127,6 @@ msgstr ""
 #: dashboards/admin/networks/agents/tables.py:93
 #: dashboards/admin/networks/ports/forms.py:44
 #: dashboards/admin/networks/ports/tables.py:102
-#: dashboards/admin/routers/ports/tables.py:41
 #: dashboards/admin/routers/templates/routers/_detail_overview.html:15
 #: dashboards/project/firewalls/forms.py:133
 #: dashboards/project/firewalls/workflows.py:241
@@ -3179,7 +3178,7 @@ msgstr "Compartido"
 #: dashboards/project/network_topology/templates/network_topology/_svg_element.html:220
 #: dashboards/project/networks/templates/networks/_detail_overview.html:19
 #: dashboards/project/routers/forms.py:40
-#: dashboards/project/routers/tables.py:216
+#: dashboards/project/routers/tables.py:219
 #: dashboards/project/routers/ports/forms.py:146
 msgid "External Network"
 msgstr "Red externa"
@@ -3200,13 +3199,13 @@ msgid ""
 msgstr "Para redes VLAN, el VLAN VID realiza la red virtual en la red física. Son VLAN VID válidas %(vlan_min)s  hasta %(vlan_max)s. Para redes GRE o VXLAN, el ID de túnel. Son ID de túnel validos para redes GRE %(gre_min)s hasta %(gre_max)s. Para redes VXLAN, %(vxlan_min)s hasta %(vxlan_max)s. "
 
 #: dashboards/admin/networks/forms.py:145
-#: dashboards/project/instances/workflows/create_instance.py:745
+#: dashboards/project/instances/workflows/create_instance.py:724
 #: dashboards/project/networks/workflows.py:61
 msgid "Select a profile"
 msgstr "Seleccionar un perfil"
 
 #: dashboards/admin/networks/forms.py:155
-#: dashboards/project/instances/workflows/create_instance.py:755
+#: dashboards/project/instances/workflows/create_instance.py:734
 #: dashboards/project/networks/workflows.py:71
 #: dashboards/router/nexus1000v/views.py:53
 msgid "Network Profiles could not be retrieved."
@@ -3255,7 +3254,7 @@ msgstr "Ha habido un fallo al actualizar la red %s"
 #: dashboards/admin/networks/templates/networks/index.html:3
 #: dashboards/identity/projects/workflows.py:74
 #: dashboards/project/databases/workflows/create_instance.py:131
-#: dashboards/project/instances/workflows/create_instance.py:699
+#: dashboards/project/instances/workflows/create_instance.py:688
 #: dashboards/project/networks/panel.py:23
 #: dashboards/project/networks/tables.py:176
 #: dashboards/project/networks/views.py:45
@@ -3285,7 +3284,7 @@ msgid "Failed to delete network %s"
 msgstr "Ha habido un fallo al eliminar red %s"
 
 #: dashboards/admin/networks/tables.py:65
-#: dashboards/admin/networks/views.py:98
+#: dashboards/admin/networks/views.py:99
 #: dashboards/admin/networks/templates/networks/_create.html:9
 #: dashboards/admin/networks/templates/networks/_create.html:26
 #: dashboards/admin/networks/templates/networks/create.html:3
@@ -3305,14 +3304,12 @@ msgid "Edit Network"
 msgstr "Editar red"
 
 #: dashboards/admin/networks/tables.py:87
-#: dashboards/admin/routers/ports/tables.py:26
 #: dashboards/project/networks/tables.py:146
 msgctxt "Admin state of a Network"
 msgid "UP"
 msgstr ""
 
 #: dashboards/admin/networks/tables.py:88
-#: dashboards/admin/routers/ports/tables.py:27
 #: dashboards/project/networks/tables.py:147
 msgctxt "Admin state of a Network"
 msgid "DOWN"
@@ -3335,33 +3332,37 @@ msgstr "Subredes asociadas"
 msgid "DHCP Agents"
 msgstr "Agentes DHCP"
 
-#: dashboards/admin/networks/views.py:77
+#: dashboards/admin/networks/views.py:50
+msgid "Unable to retrieve information about the networks' projects."
+msgstr ""
+
+#: dashboards/admin/networks/views.py:78
 #: dashboards/project/networks/views.py:54
 msgid "Network list can not be retrieved."
 msgstr "No ha sido posible obtener la lista de redes."
 
-#: dashboards/admin/networks/views.py:89
-#: dashboards/admin/networks/views.py:136
+#: dashboards/admin/networks/views.py:90
+#: dashboards/admin/networks/views.py:137
 #: dashboards/admin/networks/agents/forms.py:62
 msgid "Unable to list dhcp agents hosting network."
 msgstr "No ha sido posible enumerar los agentes dhcp del segmento de red."
 
-#: dashboards/admin/networks/views.py:106
+#: dashboards/admin/networks/views.py:107
 #: dashboards/project/networks/views.py:103
 msgid "Network Details: {{ network.name }}"
 msgstr ""
 
-#: dashboards/admin/networks/views.py:115
+#: dashboards/admin/networks/views.py:116
 #: dashboards/project/networks/views.py:112
 msgid "Subnet list can not be retrieved."
 msgstr "No ha sido posible obtener la lista de subredes."
 
-#: dashboards/admin/networks/views.py:125
+#: dashboards/admin/networks/views.py:126
 #: dashboards/project/networks/views.py:122
 msgid "Port list can not be retrieved."
 msgstr "No ha sido posible obtener la lista de puertos."
 
-#: dashboards/admin/networks/views.py:148
+#: dashboards/admin/networks/views.py:149
 #: dashboards/admin/networks/subnets/tables.py:109
 #: dashboards/project/networks/views.py:133
 #: dashboards/project/networks/subnets/tables.py:143
@@ -3738,7 +3739,7 @@ msgstr "Monitoreo:"
 #: dashboards/identity/projects/workflows.py:76
 #: dashboards/project/network_topology/routers/tables.py:27
 #: dashboards/project/routers/panel.py:24
-#: dashboards/project/routers/tables.py:234
+#: dashboards/project/routers/tables.py:237
 #: dashboards/project/routers/views.py:42
 #: dashboards/project/routers/templates/routers/index.html:3
 #: usage/quotas.py:80
@@ -3763,7 +3764,7 @@ msgstr "CIDR destino"
 
 #: dashboards/admin/routers/extensions/routerrules/tables.py:24
 #: dashboards/project/firewalls/forms.py:43
-#: dashboards/project/firewalls/tables.py:215
+#: dashboards/project/firewalls/tables.py:219
 #: dashboards/project/firewalls/workflows.py:43
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:19
 #: dashboards/project/instances/audit_tables.py:25
@@ -3783,7 +3784,7 @@ msgstr "Siguientes saltos"
 msgid "Router Rules"
 msgstr "Reglas de router"
 
-#: dashboards/admin/routers/ports/tables.py:49
+#: dashboards/admin/routers/ports/tables.py:29
 #: dashboards/project/network_topology/ports/tables.py:28
 #: dashboards/project/routers/tabs.py:27
 #: dashboards/project/routers/ports/tables.py:125
@@ -3822,7 +3823,7 @@ msgstr "ID del proyecto"
 #: dashboards/project/routers/forms.py:53
 #: dashboards/project/routers/forms.py:138
 #: dashboards/project/routers/forms.py:144
-#: dashboards/project/routers/tables.py:210
+#: dashboards/project/routers/tables.py:213
 #: dashboards/project/routers/templates/routers/_detail_overview.html:18
 msgid "Distributed"
 msgstr "Distribuido.¡"
@@ -3879,7 +3880,7 @@ msgid "Unable to retrieve QoS specs"
 msgstr "No se pueden obtener las especificaciones QoS"
 
 #: dashboards/admin/volumes/tabs.py:133 dashboards/project/volumes/tabs.py:113
-#: dashboards/project/volumes/volumes/forms.py:230
+#: dashboards/project/volumes/volumes/forms.py:232
 msgid "Unable to retrieve volume snapshots."
 msgstr "No ha sido posible obtener las snapshots de volúmenes."
 
@@ -3923,11 +3924,11 @@ msgstr "Actualizar estado"
 #: dashboards/admin/volumes/volumes/forms.py:136
 #: dashboards/project/volumes/backups/tables.py:131
 #: dashboards/project/volumes/snapshots/tables.py:151
-#: dashboards/project/volumes/volumes/forms.py:78
-#: dashboards/project/volumes/volumes/forms.py:589
-#: dashboards/project/volumes/volumes/forms.py:628
-#: dashboards/project/volumes/volumes/forms.py:688
-#: dashboards/project/volumes/volumes/forms.py:736
+#: dashboards/project/volumes/volumes/forms.py:80
+#: dashboards/project/volumes/volumes/forms.py:591
+#: dashboards/project/volumes/volumes/forms.py:630
+#: dashboards/project/volumes/volumes/forms.py:690
+#: dashboards/project/volumes/volumes/forms.py:738
 msgid "Volume Name"
 msgstr "Nombre del volumen"
 
@@ -3967,11 +3968,11 @@ msgstr "Información"
 
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:20
 #: dashboards/project/instances/templates/instances/_detail_overview.html:144
-#: dashboards/project/instances/workflows/create_instance.py:100
-#: dashboards/project/instances/workflows/create_instance.py:416
+#: dashboards/project/instances/workflows/create_instance.py:102
+#: dashboards/project/instances/workflows/create_instance.py:415
 #: dashboards/project/volumes/templates/volumes/backups/_detail_overview.html:23
 #: dashboards/project/volumes/templates/volumes/snapshots/_detail_overview.html:20
-#: dashboards/project/volumes/volumes/forms.py:247
+#: dashboards/project/volumes/volumes/forms.py:249
 msgid "Volume"
 msgstr "Volumen"
 
@@ -4035,7 +4036,7 @@ msgid ""
 msgstr ""
 
 #: dashboards/admin/volumes/templates/volumes/volume_types/_associate_qos_spec.html:34
-#: dashboards/project/access_and_security/floating_ips/tables.py:108
+#: dashboards/project/access_and_security/floating_ips/tables.py:110
 #: dashboards/project/access_and_security/floating_ips/workflows.py:137
 #: dashboards/project/loadbalancers/workflows.py:667
 msgid "Associate"
@@ -4589,7 +4590,7 @@ msgstr "Especif. adicionales"
 msgid "Unable to retrieve extra spec list."
 msgstr "No ha sido posible obtener la lista de especificaciones adicionales."
 
-#: dashboards/admin/volumes/volume_types/extras/views.py:90
+#: dashboards/admin/volumes/volume_types/extras/views.py:91
 msgid "Unable to retrieve volume type extra spec details."
 msgstr "No es posible obtener los detalles de las especificaciones adicionales del volumen"
 
@@ -4670,7 +4671,7 @@ msgid "Volume Type"
 msgstr "Tipo de volumen"
 
 #: dashboards/admin/volumes/volumes/forms.py:78
-#: dashboards/project/volumes/volumes/forms.py:595
+#: dashboards/project/volumes/volumes/forms.py:597
 #: dashboards/project/volumes/volumes/tables.py:419
 msgid "Bootable"
 msgstr "Arrancable"
@@ -4680,7 +4681,7 @@ msgid "Specifies that the newly created volume should be marked as bootable"
 msgstr ""
 
 #: dashboards/admin/volumes/volumes/forms.py:88
-#: dashboards/project/volumes/volumes/forms.py:266
+#: dashboards/project/volumes/volumes/forms.py:268
 msgid "No volume type"
 msgstr "Sin tipo de volumen"
 
@@ -5064,7 +5065,7 @@ msgstr "Añadir Usuarios"
 #: dashboards/identity/users/templates/users/_detail_overview.html:17
 #: dashboards/project/access_and_security/templates/access_and_security/api_access/_credentials.html:14
 #: dashboards/project/data_processing/data_image_registry/forms.py:28
-#: dashboards/project/databases/tables.py:348
+#: dashboards/project/databases/tables.py:353
 msgid "User Name"
 msgstr "Usuario"
 
@@ -5476,7 +5477,7 @@ msgstr "Confirme la contraseña"
 
 #: dashboards/identity/users/forms.py:55
 #: dashboards/project/instances/forms.py:92
-#: dashboards/project/instances/workflows/create_instance.py:595
+#: dashboards/project/instances/workflows/create_instance.py:584
 #: dashboards/settings/password/forms.py:50
 msgid "Passwords do not match."
 msgstr "Las contraseñas no coinciden."
@@ -5537,7 +5538,7 @@ msgstr ""
 #: dashboards/identity/users/tables.py:245
 #: dashboards/identity/users/views.py:46
 #: dashboards/identity/users/templates/users/index.html:3
-#: dashboards/project/databases/tables.py:354
+#: dashboards/project/databases/tables.py:359
 #: dashboards/project/databases/tabs.py:47
 msgid "Users"
 msgstr "Usuarios"
@@ -5590,14 +5591,14 @@ msgid "You cannot disable the user you are currently logged in as."
 msgstr "No puede deshabilitar el usuario que está utilizando actualmente."
 
 #: dashboards/identity/users/tables.py:143
-#: dashboards/project/databases/tables.py:119
+#: dashboards/project/databases/tables.py:124
 msgid "Delete User"
 msgid_plural "Delete Users"
 msgstr[0] ""
 msgstr[1] ""
 
 #: dashboards/identity/users/tables.py:151
-#: dashboards/project/databases/tables.py:127
+#: dashboards/project/databases/tables.py:132
 msgid "Deleted User"
 msgid_plural "Deleted Users"
 msgstr[0] ""
@@ -5691,7 +5692,7 @@ msgstr "Procesamiento de datos"
 
 #: dashboards/project/access_and_security/panel.py:24
 #: dashboards/project/access_and_security/views.py:35
-#: dashboards/project/instances/workflows/create_instance.py:553
+#: dashboards/project/instances/workflows/create_instance.py:552
 msgid "Access & Security"
 msgstr "Acceso y seguridad"
 
@@ -5769,7 +5770,7 @@ msgid "Unable to get EC2 credentials"
 msgstr ""
 
 #: dashboards/project/access_and_security/floating_ips/forms.py:31
-#: dashboards/project/access_and_security/floating_ips/tables.py:198
+#: dashboards/project/access_and_security/floating_ips/tables.py:200
 #: dashboards/project/loadbalancers/forms.py:79
 #: dashboards/project/loadbalancers/forms.py:172
 #: dashboards/project/loadbalancers/tables.py:310
@@ -5799,65 +5800,71 @@ msgstr "Asignar IP al proyecto"
 
 #: dashboards/project/access_and_security/floating_ips/tables.py:57
 #: dashboards/project/access_and_security/keypairs/tables.py:73
-#: dashboards/project/instances/tables.py:331
+#: dashboards/project/instances/tables.py:334
 #: dashboards/project/volumes/volumes/tables.py:119
 #: dashboards/project/volumes/volumes/tables.py:187
 msgid "(Quota exceeded)"
 msgstr "(Cuota superada)"
 
-#: dashboards/project/access_and_security/floating_ips/tables.py:80
+#: dashboards/project/access_and_security/floating_ips/tables.py:76
+msgid ""
+"Once a floating IP is released, there is no guarantee the same IP can be "
+"allocated again."
+msgstr ""
+
+#: dashboards/project/access_and_security/floating_ips/tables.py:82
 msgid "Release Floating IP"
 msgid_plural "Release Floating IPs"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/access_and_security/floating_ips/tables.py:88
+#: dashboards/project/access_and_security/floating_ips/tables.py:90
 msgid "Released Floating IP"
 msgid_plural "Released Floating IPs"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/access_and_security/floating_ips/tables.py:130
+#: dashboards/project/access_and_security/floating_ips/tables.py:132
 #: dashboards/project/loadbalancers/workflows.py:730
 msgid "Disassociate"
 msgstr "Desasociar"
 
-#: dashboards/project/access_and_security/floating_ips/tables.py:149
+#: dashboards/project/access_and_security/floating_ips/tables.py:151
 #, python-format
 msgid "Successfully disassociated Floating IP: %s"
 msgstr "La IP flotante %s fue desasociada correctamente"
 
-#: dashboards/project/access_and_security/floating_ips/tables.py:153
-#: dashboards/project/instances/tables.py:613
+#: dashboards/project/access_and_security/floating_ips/tables.py:155
+#: dashboards/project/instances/tables.py:616
 msgid "Unable to disassociate floating IP."
 msgstr "No ha sido posible desasociar la IP flotante."
 
-#: dashboards/project/access_and_security/floating_ips/tables.py:159
+#: dashboards/project/access_and_security/floating_ips/tables.py:161
 #, python-format
 msgid "%(instance_name)s %(fixed_ip)s"
 msgstr "%(instance_name)s %(fixed_ip)s"
 
-#: dashboards/project/access_and_security/floating_ips/tables.py:163
+#: dashboards/project/access_and_security/floating_ips/tables.py:165
 #, python-format
 msgid "Load Balancer VIP %s"
 msgstr "VIP balanceador de carga %s"
 
-#: dashboards/project/access_and_security/floating_ips/tables.py:179
+#: dashboards/project/access_and_security/floating_ips/tables.py:181
 msgctxt "Current status of a Floating IP"
 msgid "Active"
 msgstr "Activo"
 
-#: dashboards/project/access_and_security/floating_ips/tables.py:180
+#: dashboards/project/access_and_security/floating_ips/tables.py:182
 msgctxt "Current status of a Floating IP"
 msgid "Down"
 msgstr "Abajo"
 
-#: dashboards/project/access_and_security/floating_ips/tables.py:181
+#: dashboards/project/access_and_security/floating_ips/tables.py:183
 msgctxt "Current status of a Floating IP"
 msgid "Error"
 msgstr "Error"
 
-#: dashboards/project/access_and_security/floating_ips/tables.py:196
+#: dashboards/project/access_and_security/floating_ips/tables.py:198
 msgid "Mapped Fixed IP Address"
 msgstr "Dirección de IP fija asignada"
 
@@ -5876,7 +5883,7 @@ msgstr "No hay IP flotantes disponibles"
 
 #: dashboards/project/access_and_security/floating_ips/workflows.py:37
 #: dashboards/project/network_topology/templates/network_topology/_svg_element.html:202
-#: dashboards/project/volumes/volumes/tables.py:482
+#: dashboards/project/volumes/volumes/tables.py:485
 msgid "Instance"
 msgstr "Instancia"
 
@@ -5907,7 +5914,7 @@ msgid "Select a port"
 msgstr "Seleccione un puerto"
 
 #: dashboards/project/access_and_security/floating_ips/workflows.py:110
-#: dashboards/project/volumes/volumes/forms.py:454
+#: dashboards/project/volumes/volumes/forms.py:456
 msgid "Select an instance"
 msgstr "Seleccione una instancia"
 
@@ -5917,7 +5924,7 @@ msgstr "No hay puertos disponibles"
 
 #: dashboards/project/access_and_security/floating_ips/workflows.py:116
 #: dashboards/project/databases/workflows/create_instance.py:287
-#: dashboards/project/volumes/volumes/forms.py:456
+#: dashboards/project/volumes/volumes/forms.py:458
 msgid "No instances available"
 msgstr "No hay instancias disponibles"
 
@@ -6529,8 +6536,8 @@ msgid "Unable to create container."
 msgstr "No ha sido posible crear el contenedor."
 
 #: dashboards/project/containers/forms.py:84
-#: dashboards/project/instances/workflows/create_instance.py:623
-#: dashboards/project/stacks/forms.py:57
+#: dashboards/project/instances/workflows/create_instance.py:612
+#: dashboards/project/stacks/forms.py:61
 msgid "File"
 msgstr "Fichero"
 
@@ -6691,7 +6698,7 @@ msgid "Copy"
 msgstr "Copiar"
 
 #: dashboards/project/containers/tables.py:381
-#: dashboards/project/databases/tables.py:385
+#: dashboards/project/databases/tables.py:390
 msgid "Download"
 msgstr "Descargar"
 
@@ -7077,7 +7084,7 @@ msgstr "Conteo de nodos"
 #: dashboards/project/databases/templates/databases/_detail_overview.html:27
 #: dashboards/project/databases/workflows/create_instance.py:36
 #: dashboards/project/instances/templates/instances/_detail_overview.html:48
-#: dashboards/project/instances/workflows/create_instance.py:85
+#: dashboards/project/instances/workflows/create_instance.py:87
 msgid "Flavor"
 msgstr "Sabor"
 
@@ -7193,7 +7200,7 @@ msgstr "Nombre de plantilla"
 #: dashboards/project/database_backups/workflows/create_backup.py:43
 #: dashboards/project/databases/workflows/create_instance.py:47
 #: dashboards/project/instances/templates/instances/_detail_overview.html:36
-#: dashboards/project/instances/workflows/create_instance.py:136
+#: dashboards/project/instances/workflows/create_instance.py:138
 #: dashboards/project/loadbalancers/tables.py:337
 msgid "Details"
 msgstr "Detalles"
@@ -7391,7 +7398,7 @@ msgstr ""
 #: dashboards/project/data_processing/jobs/workflows/launch.py:416
 #: dashboards/project/databases/workflows/create_instance.py:335
 #: dashboards/project/images/images/tables.py:36
-#: dashboards/project/instances/workflows/create_instance.py:841
+#: dashboards/project/instances/workflows/create_instance.py:820
 #: dashboards/project/stacks/templates/stacks/_create.html:24
 msgid "Launch"
 msgstr "Lanzar"
@@ -7436,14 +7443,15 @@ msgstr "Fallo al actualizar imagen."
 #: dashboards/project/data_processing/data_image_registry/forms.py:59
 #: dashboards/project/data_processing/data_image_registry/tables.py:73
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:58
-#: dashboards/project/volumes/volumes/forms.py:235
+#: dashboards/project/volumes/volumes/forms.py:237
 msgid "Image"
 msgstr "Imagen"
 
 #: dashboards/project/data_processing/data_image_registry/forms.py:71
+#: dashboards/project/images/utils.py:97
 #: dashboards/project/instances/forms.py:39
 #: dashboards/project/instances/forms.py:64
-#: dashboards/project/instances/workflows/create_instance.py:438
+#: dashboards/project/instances/workflows/create_instance.py:437
 msgid "Select Image"
 msgstr "Seleccionar imagen"
 
@@ -7659,7 +7667,7 @@ msgstr "Resumen Source Overview"
 #: dashboards/project/loadbalancers/workflows.py:526
 #: dashboards/project/loadbalancers/workflows.py:530
 #: dashboards/project/loadbalancers/workflows.py:531
-#: dashboards/project/stacks/forms.py:59
+#: dashboards/project/stacks/forms.py:63
 msgid "URL"
 msgstr "URL"
 
@@ -8491,7 +8499,6 @@ msgstr "No se pueden rellenar procesos anti afinidad"
 
 #: dashboards/project/data_processing/utils/neutron_support.py:31
 #: dashboards/project/databases/workflows/create_instance.py:160
-#: dashboards/project/instances/workflows/create_instance.py:741
 msgid "Unable to retrieve networks."
 msgstr "No ha sido posible obtener las redes."
 
@@ -8515,7 +8522,7 @@ msgstr "Nombre del plugin"
 #: dashboards/project/database_backups/panel.py:23
 #: dashboards/project/database_backups/tables.py:181
 #: dashboards/project/database_backups/views.py:35
-#: dashboards/project/databases/tables.py:401
+#: dashboards/project/databases/tables.py:406
 #: dashboards/project/databases/tabs.py:104
 msgid "Backups"
 msgstr "Copias de seguridad"
@@ -8551,7 +8558,7 @@ msgid "Saving"
 msgstr ""
 
 #: dashboards/project/database_backups/tables.py:53
-#: dashboards/project/databases/tables.py:177
+#: dashboards/project/databases/tables.py:182
 #: dashboards/project/volumes/volumes/tables.py:204
 msgid "Create Backup"
 msgstr "Crear copia de seguridad"
@@ -8579,12 +8586,12 @@ msgstr[1] ""
 
 #: dashboards/project/database_backups/tables.py:144
 #: dashboards/project/database_backups/tables.py:150
-#: dashboards/project/databases/tables.py:237
-#: dashboards/project/databases/tables.py:243
-#: dashboards/project/databases/tables.py:260
-#: dashboards/project/databases/tables.py:266
-#: dashboards/project/instances/tables.py:821
-#: dashboards/project/instances/tables.py:828
+#: dashboards/project/databases/tables.py:242
+#: dashboards/project/databases/tables.py:248
+#: dashboards/project/databases/tables.py:265
+#: dashboards/project/databases/tables.py:271
+#: dashboards/project/instances/tables.py:825
+#: dashboards/project/instances/tables.py:832
 #: dashboards/project/instances/views.py:398
 #: dashboards/project/instances/templates/instances/_detail_overview.html:64
 #: dashboards/project/instances/templates/instances/_detail_overview.html:100
@@ -8593,7 +8600,7 @@ msgstr "No disponible"
 
 #: dashboards/project/database_backups/tables.py:162
 #: dashboards/project/database_backups/templates/database_backups/details.html:21
-#: dashboards/project/databases/tables.py:317
+#: dashboards/project/databases/tables.py:322
 #: dashboards/project/databases/templates/databases/_detail_overview.html:14
 #: dashboards/project/databases/workflows/create_instance.py:42
 msgid "Datastore"
@@ -8601,13 +8608,13 @@ msgstr "Almacén de datos"
 
 #: dashboards/project/database_backups/tables.py:164
 #: dashboards/project/database_backups/templates/database_backups/details.html:23
-#: dashboards/project/databases/tables.py:319
+#: dashboards/project/databases/tables.py:324
 #: dashboards/project/databases/templates/databases/_detail_overview.html:16
 msgid "Datastore Version"
 msgstr "Versión de almacén de datos"
 
 #: dashboards/project/database_backups/tables.py:170
-#: dashboards/project/databases/tables.py:389
+#: dashboards/project/databases/tables.py:394
 msgid "Incremental"
 msgstr "Incremental"
 
@@ -8727,14 +8734,14 @@ msgstr "Programada copia de seguridad \"%(name)s\"."
 
 #: dashboards/project/database_backups/workflows/create_backup.py:85
 #: dashboards/project/databases/workflows/create_instance.py:337
-#: dashboards/project/instances/workflows/create_instance.py:843
+#: dashboards/project/instances/workflows/create_instance.py:822
 #, python-format
 msgid "Unable to launch %(count)s named \"%(name)s\"."
 msgstr "No ha sido posible lanzar %(count)s de nombre \"%(name)s\"."
 
 #: dashboards/project/database_backups/workflows/create_backup.py:95
 #: dashboards/project/databases/workflows/create_instance.py:353
-#: dashboards/project/instances/workflows/create_instance.py:860
+#: dashboards/project/instances/workflows/create_instance.py:839
 msgid "instance"
 msgstr "instancia"
 
@@ -8743,12 +8750,12 @@ msgid "Error creating database backup."
 msgstr "Error al crear la copia de seguridad de la base de datos."
 
 #: dashboards/project/databases/forms.py:28
-#: dashboards/project/volumes/volumes/forms.py:693
+#: dashboards/project/volumes/volumes/forms.py:695
 msgid "Current Size (GB)"
 msgstr "Tamaño actual (GB)"
 
 #: dashboards/project/databases/forms.py:32
-#: dashboards/project/volumes/volumes/forms.py:697
+#: dashboards/project/volumes/volumes/forms.py:699
 msgid "New Size (GB)"
 msgstr "Nuevo tamaño (GB)"
 
@@ -8785,6 +8792,7 @@ msgid "Select a new flavor"
 msgstr ""
 
 #: dashboards/project/databases/forms.py:79
+#: dashboards/project/instances/utils.py:155
 #: dashboards/project/instances/workflows/resize_instance.py:58
 msgid "No flavors available"
 msgstr "No hay sabores disponibles"
@@ -8799,85 +8807,96 @@ msgstr ""
 msgid "Unable to resize instance. %s"
 msgstr ""
 
-#: dashboards/project/databases/tables.py:38
-#: dashboards/project/instances/tables.py:90
+#: dashboards/project/databases/tables.py:35
+#: dashboards/project/instances/tables.py:86
+msgid "Terminated instances are not recoverable."
+msgstr ""
+
+#: dashboards/project/databases/tables.py:40
+#: dashboards/project/instances/tables.py:91
 msgid "Terminate Instance"
 msgid_plural "Terminate Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/databases/tables.py:46
-#: dashboards/project/instances/tables.py:98
+#: dashboards/project/databases/tables.py:48
+#: dashboards/project/instances/tables.py:99
 msgid "Scheduled termination of Instance"
 msgid_plural "Scheduled termination of Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/databases/tables.py:63
+#: dashboards/project/databases/tables.py:62
+#: dashboards/project/instances/tables.py:116
+msgid ""
+"Restarted instances will lose any data not saved in persistent storage."
+msgstr ""
+
+#: dashboards/project/databases/tables.py:68
 msgid "Restart Instance"
 msgid_plural "Restart Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/databases/tables.py:71
+#: dashboards/project/databases/tables.py:76
 msgid "Restarted Instance"
 msgid_plural "Restarted Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/databases/tables.py:91
+#: dashboards/project/databases/tables.py:96
 msgid "Detach Replica"
 msgid_plural "Detach Replicas"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/databases/tables.py:99
+#: dashboards/project/databases/tables.py:104
 msgid "Replica Detached"
 msgid_plural "Replicas Detached"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/databases/tables.py:137
+#: dashboards/project/databases/tables.py:142
 msgid "Error deleting database user."
 msgstr "Error al borrar el usuario de la base de datos."
 
-#: dashboards/project/databases/tables.py:145
+#: dashboards/project/databases/tables.py:150
 msgid "Delete Database"
 msgid_plural "Delete Databases"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/databases/tables.py:153
+#: dashboards/project/databases/tables.py:158
 msgid "Deleted Database"
 msgid_plural "Deleted Databases"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/databases/tables.py:163
+#: dashboards/project/databases/tables.py:168
 msgid "Error deleting database on instance."
 msgstr "Error al borrar la base de datos en la instancia."
 
-#: dashboards/project/databases/tables.py:169
+#: dashboards/project/databases/tables.py:174
 #: dashboards/project/databases/templates/databases/launch.html:3
 #: dashboards/project/databases/workflows/create_instance.py:334
-#: dashboards/project/instances/tables.py:305
-#: dashboards/project/instances/tables.py:333
-#: dashboards/project/instances/workflows/create_instance.py:840
+#: dashboards/project/instances/tables.py:308
+#: dashboards/project/instances/tables.py:336
+#: dashboards/project/instances/workflows/create_instance.py:819
 #: dashboards/project/network_topology/templates/network_topology/index.html:31
 msgid "Launch Instance"
 msgstr "Lanzar instancia"
 
-#: dashboards/project/databases/tables.py:193
+#: dashboards/project/databases/tables.py:198
 msgid "Resize Volume"
 msgstr "Redimensionar Volumen"
 
-#: dashboards/project/databases/tables.py:207
-#: dashboards/project/instances/tables.py:435
+#: dashboards/project/databases/tables.py:212
+#: dashboards/project/instances/tables.py:438
 #: dashboards/project/instances/workflows/resize_instance.py:84
 msgid "Resize Instance"
 msgstr "Redimensionar instancia"
 
-#: dashboards/project/databases/tables.py:251
+#: dashboards/project/databases/tables.py:256
 #: dashboards/project/databases/templates/databases/_detail_overview_cassandra.html:12
 #: dashboards/project/databases/templates/databases/_detail_overview_couchbase.html:12
 #: dashboards/project/databases/templates/databases/_detail_overview_mongodb.html:12
@@ -8886,82 +8905,82 @@ msgstr "Redimensionar instancia"
 msgid "Not Assigned"
 msgstr "No asignada"
 
-#: dashboards/project/databases/tables.py:256
+#: dashboards/project/databases/tables.py:261
 #, python-format
 msgid "%(name)s | %(RAM)s RAM"
 msgstr "%(name)s | %(RAM)s RAM"
 
-#: dashboards/project/databases/tables.py:292
+#: dashboards/project/databases/tables.py:297
 msgctxt "Current status of a Database Instance"
 msgid "Active"
 msgstr "Activo"
 
-#: dashboards/project/databases/tables.py:294
+#: dashboards/project/databases/tables.py:299
 msgctxt "Current status of a Database Instance"
 msgid "Blocked"
 msgstr "Bloqueado"
 
-#: dashboards/project/databases/tables.py:296
+#: dashboards/project/databases/tables.py:301
 msgctxt "Current status of a Database Instance"
 msgid "Build"
 msgstr "Construir"
 
-#: dashboards/project/databases/tables.py:298
+#: dashboards/project/databases/tables.py:303
 msgctxt "Current status of a Database Instance"
 msgid "Failed"
 msgstr "Erróneo"
 
-#: dashboards/project/databases/tables.py:300
+#: dashboards/project/databases/tables.py:305
 msgctxt "Current status of a Database Instance"
 msgid "Reboot"
 msgstr "Reinicio"
 
-#: dashboards/project/databases/tables.py:302
+#: dashboards/project/databases/tables.py:307
 msgctxt "Current status of a Database Instance"
 msgid "Resize"
 msgstr "Redimensionar"
 
-#: dashboards/project/databases/tables.py:304
+#: dashboards/project/databases/tables.py:309
 msgctxt "Current status of a Database Instance"
 msgid "Backup"
 msgstr "Copia de seguridad"
 
-#: dashboards/project/databases/tables.py:306
+#: dashboards/project/databases/tables.py:311
 msgctxt "Current status of a Database Instance"
 msgid "Shutdown"
 msgstr ""
 
-#: dashboards/project/databases/tables.py:308
+#: dashboards/project/databases/tables.py:313
 msgctxt "Current status of a Database Instance"
 msgid "Error"
 msgstr "Error"
 
-#: dashboards/project/databases/tables.py:311
+#: dashboards/project/databases/tables.py:316
 msgctxt "Current status of a Database Instance"
 msgid "Restart Required"
 msgstr ""
 
-#: dashboards/project/databases/tables.py:325
+#: dashboards/project/databases/tables.py:330
 #: dashboards/project/databases/templates/databases/_detail_overview.html:32
 #: dashboards/project/databases/workflows/create_instance.py:38
 msgid "Volume Size"
 msgstr "Tamaño del volumen"
 
-#: dashboards/project/databases/tables.py:349
+#: dashboards/project/databases/tables.py:354
 msgid "Allowed Host"
 msgstr "Anfitrión permitido"
 
-#: dashboards/project/databases/tables.py:350
-#: dashboards/project/databases/tables.py:367
+#: dashboards/project/databases/tables.py:355
+#: dashboards/project/databases/tables.py:372
 #: dashboards/project/databases/tabs.py:77
 msgid "Databases"
 msgstr "Bases de datos"
 
-#: dashboards/project/databases/tables.py:363
+#: dashboards/project/databases/tables.py:368
 msgid "Database Name"
 msgstr "Nombre de la base de datos"
 
-#: dashboards/project/databases/tables.py:387
+#: dashboards/project/databases/tables.py:392
 msgid "Backup File"
 msgstr "Fichero de copia de seguridad"
 
@@ -9173,13 +9192,13 @@ msgstr "Detalles de la instancia"
 
 #: dashboards/project/databases/templates/databases/update.html:3
 #: dashboards/project/databases/templates/databases/update.html:6
-#: dashboards/project/instances/tables.py:349
+#: dashboards/project/instances/tables.py:352
 #: dashboards/project/instances/workflows/update_instance.py:132
 msgid "Edit Instance"
 msgstr "Editar instancia"
 
 #: dashboards/project/databases/workflows/create_instance.py:37
-#: dashboards/project/instances/workflows/create_instance.py:86
+#: dashboards/project/instances/workflows/create_instance.py:88
 msgid "Size of image to launch."
 msgstr "Tamaño de la imagen a lanzar."
 
@@ -9204,22 +9223,22 @@ msgid "Select datastore type and version"
 msgstr "Seleccionar un tipo y una versión de almacén de datos"
 
 #: dashboards/project/databases/workflows/create_instance.py:135
-#: dashboards/project/instances/workflows/create_instance.py:703
+#: dashboards/project/instances/workflows/create_instance.py:692
 msgid "At least one network must be specified."
 msgstr "Debe especificar al menos una red."
 
 #: dashboards/project/databases/workflows/create_instance.py:137
-#: dashboards/project/instances/workflows/create_instance.py:705
+#: dashboards/project/instances/workflows/create_instance.py:694
 msgid "Launch instance with these networks"
 msgstr "Lanzar instancia con estas redes"
 
 #: dashboards/project/databases/workflows/create_instance.py:147
-#: dashboards/project/instances/workflows/create_instance.py:727
+#: dashboards/project/instances/workflows/create_instance.py:716
 msgid "Networking"
 msgstr "Redes"
 
 #: dashboards/project/databases/workflows/create_instance.py:149
-#: dashboards/project/instances/workflows/create_instance.py:729
+#: dashboards/project/instances/workflows/create_instance.py:718
 msgid "Select networks for your instance."
 msgstr "Seleccione las redes para su instancia."
 
@@ -9311,13 +9330,13 @@ msgid "A master instance must be selected!"
 msgstr ""
 
 #: dashboards/project/databases/workflows/create_instance.py:336
-#: dashboards/project/instances/workflows/create_instance.py:842
+#: dashboards/project/instances/workflows/create_instance.py:821
 #, python-format
 msgid "Launched %(count)s named \"%(name)s\"."
 msgstr "Lanzadas %(count)s de nombre \"%(name)s\"."
 
 #: dashboards/project/firewalls/forms.py:38
-#: dashboards/project/firewalls/tables.py:204
+#: dashboards/project/firewalls/tables.py:208
 #: dashboards/project/firewalls/workflows.py:37
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:22
 #: dashboards/project/loadbalancers/tables.py:276
@@ -9345,7 +9364,7 @@ msgid "ICMP"
 msgstr "ICMP"
 
 #: dashboards/project/firewalls/forms.py:40
-#: dashboards/project/firewalls/tables.py:202
+#: dashboards/project/firewalls/tables.py:206
 #: dashboards/project/firewalls/workflows.py:41
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:23
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:26
@@ -9420,7 +9439,7 @@ msgid "Failed to update rule %(name)s: %(reason)s"
 msgstr "Ha ocurrido un error al actualizar la regla %(name)s: %(reason)s"
 
 #: dashboards/project/firewalls/forms.py:102
-#: dashboards/project/firewalls/tables.py:237
+#: dashboards/project/firewalls/tables.py:241
 #: dashboards/project/firewalls/workflows.py:180
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:34
 msgid "Audited"
@@ -9437,7 +9456,7 @@ msgid "Failed to update policy %(name)s: %(reason)s"
 msgstr "Ha habido un fallo al actualizar la política %(name)s: %(reason)s"
 
 #: dashboards/project/firewalls/forms.py:130
-#: dashboards/project/firewalls/tables.py:272
+#: dashboards/project/firewalls/tables.py:276
 #: dashboards/project/firewalls/workflows.py:235
 msgid "Policy"
 msgstr "Política"
@@ -9505,7 +9524,7 @@ msgid "Failed to remove rule from policy %(name)s: %(reason)s"
 msgstr "Ha ocurrido un fallo al eliminar la regla de la política %(name)s: %(reason)s"
 
 #: dashboards/project/firewalls/panel.py:26
-#: dashboards/project/firewalls/tables.py:279
+#: dashboards/project/firewalls/tables.py:283
 #: dashboards/project/firewalls/tabs.py:69
 #: dashboards/project/firewalls/views.py:110
 #: dashboards/project/firewalls/templates/firewalls/details_tabs.html:3
@@ -9569,76 +9588,86 @@ msgstr "Editar política"
 msgid "Edit Firewall"
 msgstr "Editar cortafuegos"
 
-#: dashboards/project/firewalls/tables.py:206
+#: dashboards/project/firewalls/tables.py:199
+msgctxt "Action Name of a Firewall Rule"
+msgid "ALLOW"
+msgstr "PERMITIR"
+
+#: dashboards/project/firewalls/tables.py:200
+msgctxt "Action Name of a Firewall Rule"
+msgid "DENY"
+msgstr "DENEGAR"
+
+#: dashboards/project/firewalls/tables.py:210
 msgid "Source IP"
 msgstr "IP origen"
 
-#: dashboards/project/firewalls/tables.py:208
+#: dashboards/project/firewalls/tables.py:212
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:28
 msgid "Source Port"
 msgstr "Puerto origen"
 
-#: dashboards/project/firewalls/tables.py:210
+#: dashboards/project/firewalls/tables.py:214
 msgid "Destination IP"
 msgstr "IP destino"
 
-#: dashboards/project/firewalls/tables.py:212
+#: dashboards/project/firewalls/tables.py:216
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:34
 msgid "Destination Port"
 msgstr "Puerto destino"
 
-#: dashboards/project/firewalls/tables.py:221
+#: dashboards/project/firewalls/tables.py:225
 msgid "In Policy"
 msgstr "Dentro de la política"
 
-#: dashboards/project/firewalls/tables.py:225
-#: dashboards/project/firewalls/tables.py:235
+#: dashboards/project/firewalls/tables.py:229
+#: dashboards/project/firewalls/tables.py:239
 #: dashboards/project/firewalls/workflows.py:131
 #: dashboards/project/firewalls/workflows.py:137
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:19
 msgid "Rules"
 msgstr "Reglas"
 
-#: dashboards/project/firewalls/tables.py:242
+#: dashboards/project/firewalls/tables.py:246
 msgid "Policies"
 msgstr "Políticas"
 
-#: dashboards/project/firewalls/tables.py:251
+#: dashboards/project/firewalls/tables.py:255
 msgctxt "Current status of a Firewall"
 msgid "Active"
 msgstr "Activo"
 
-#: dashboards/project/firewalls/tables.py:253
+#: dashboards/project/firewalls/tables.py:257
 msgctxt "Current status of a Firewall"
 msgid "Down"
 msgstr "Abajo"
 
-#: dashboards/project/firewalls/tables.py:255
+#: dashboards/project/firewalls/tables.py:259
 msgctxt "Current status of a Firewall"
 msgid "Error"
 msgstr "Error"
 
-#: dashboards/project/firewalls/tables.py:257
+#: dashboards/project/firewalls/tables.py:261
 msgctxt "Current status of a Firewall"
 msgid "Created"
 msgstr "Creada"
 
-#: dashboards/project/firewalls/tables.py:259
+#: dashboards/project/firewalls/tables.py:263
 msgctxt "Current status of a Firewall"
 msgid "Pending Create"
 msgstr ""
 
-#: dashboards/project/firewalls/tables.py:261
+#: dashboards/project/firewalls/tables.py:265
 msgctxt "Current status of a Firewall"
 msgid "Pending Update"
 msgstr ""
 
-#: dashboards/project/firewalls/tables.py:263
+#: dashboards/project/firewalls/tables.py:267
 msgctxt "Current status of a Firewall"
 msgid "Pending Delete"
 msgstr ""
 
-#: dashboards/project/firewalls/tables.py:265
+#: dashboards/project/firewalls/tables.py:269
 msgctxt "Current status of a Firewall"
 msgid "Inactive"
 msgstr ""
@@ -9938,13 +9967,23 @@ msgstr "Aquí puede actualizar los detalles de la política. Utilice los enlaces
 msgid "You may update rule details here."
 msgstr "Aquí puede actualizar los detalles de la regla."
 
-#: dashboards/project/images/utils.py:43
+#: dashboards/project/images/utils.py:44
 msgid "Unable to retrieve public images."
 msgstr "No ha sido posible obtener las imágenes públicas."
 
-#: dashboards/project/images/utils.py:59
+#: dashboards/project/images/utils.py:60
 msgid "Unable to retrieve images for the current project."
 msgstr "No ha sido posible obtener imágenes para el proyecto actual."
+
+#: dashboards/project/images/utils.py:95
+msgid "Unable to retrieve images"
+msgstr ""
+
+#: dashboards/project/images/utils.py:104
+#: dashboards/project/instances/forms.py:66
+#: dashboards/project/instances/workflows/create_instance.py:439
+msgid "No images available"
+msgstr "No hay imágenes disponibles"
 
 #: dashboards/project/images/views.py:55
 msgid "Unable to retrieve images."
@@ -10122,7 +10161,7 @@ msgstr "No ha sido posible obtener los detalles de la imagen."
 
 #: dashboards/project/images/snapshots/forms.py:33
 #: dashboards/project/volumes/snapshots/forms.py:25
-#: dashboards/project/volumes/volumes/forms.py:486
+#: dashboards/project/volumes/volumes/forms.py:488
 msgid "Snapshot Name"
 msgstr "Nombre de la instantánea"
 
@@ -10178,7 +10217,7 @@ msgid "Container Format"
 msgstr "Formato de contenedor"
 
 #: dashboards/project/images/templates/images/images/_detail_overview.html:54
-#: dashboards/project/volumes/volumes/forms.py:632
+#: dashboards/project/volumes/volumes/forms.py:634
 msgid "Disk Format"
 msgstr "Formato de disco"
 
@@ -10201,7 +10240,7 @@ msgstr "Detalles de la imagen"
 #: dashboards/project/images/templates/images/snapshots/_create.html:9
 #: dashboards/project/images/templates/images/snapshots/_create.html:24
 #: dashboards/project/images/templates/images/snapshots/create.html:3
-#: dashboards/project/instances/tables.py:385
+#: dashboards/project/instances/tables.py:388
 #: dashboards/project/volumes/volumes/tables.py:168
 msgid "Create Snapshot"
 msgstr "Crear instantánea"
@@ -10246,28 +10285,23 @@ msgid "Confirm Rebuild Password"
 msgstr "Confirmar reconstrucción de contraseña"
 
 #: dashboards/project/instances/forms.py:53
-#: dashboards/project/instances/workflows/create_instance.py:787
+#: dashboards/project/instances/workflows/create_instance.py:766
 msgid "Disk Partition"
 msgstr "Partición de disco"
 
-#: dashboards/project/instances/forms.py:66
-#: dashboards/project/instances/workflows/create_instance.py:440
-msgid "No images available"
-msgstr "No hay imágenes disponibles"
-
 #: dashboards/project/instances/forms.py:78
-#: dashboards/project/instances/workflows/create_instance.py:805
+#: dashboards/project/instances/workflows/create_instance.py:784
 msgid "Automatic"
 msgstr "Automático"
 
 #: dashboards/project/instances/forms.py:79
-#: dashboards/project/instances/workflows/create_instance.py:806
+#: dashboards/project/instances/workflows/create_instance.py:785
 msgid "Manual"
 msgstr "Manual"
 
 #: dashboards/project/instances/forms.py:82
-#: dashboards/project/instances/workflows/create_instance.py:166
-#: dashboards/project/instances/workflows/create_instance.py:815
+#: dashboards/project/instances/workflows/create_instance.py:168
+#: dashboards/project/instances/workflows/create_instance.py:794
 msgid "Unable to retrieve extensions information."
 msgstr "No ha sido posible obtener la información de las extensiones."
 
@@ -10308,90 +10342,90 @@ msgstr "O copie y pegue su clave privada"
 msgid "Unable to retrieve instance password."
 msgstr "No ha sido posible obtener la contraseña de la instancia."
 
-#: dashboards/project/instances/tables.py:119
+#: dashboards/project/instances/tables.py:122
 msgid "Hard Reboot Instance"
 msgid_plural "Hard Reboot Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:127
+#: dashboards/project/instances/tables.py:130
 msgid "Hard Rebooted Instance"
 msgid_plural "Hard Rebooted Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:150
+#: dashboards/project/instances/tables.py:153
 msgid "Soft Reboot Instance"
 msgid_plural "Soft Reboot Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:158
+#: dashboards/project/instances/tables.py:161
 msgid "Soft Rebooted Instance"
 msgid_plural "Soft Rebooted Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:175
+#: dashboards/project/instances/tables.py:178
 msgid "Pause Instance"
 msgid_plural "Pause Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:180
-#: dashboards/project/instances/tables.py:248
+#: dashboards/project/instances/tables.py:183
+#: dashboards/project/instances/tables.py:251
 msgid "Resume Instance"
 msgid_plural "Resume Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:190
+#: dashboards/project/instances/tables.py:193
 msgid "Paused Instance"
 msgid_plural "Paused Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:195
-#: dashboards/project/instances/tables.py:263
+#: dashboards/project/instances/tables.py:198
+#: dashboards/project/instances/tables.py:266
 msgid "Resumed Instance"
 msgid_plural "Resumed Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:243
+#: dashboards/project/instances/tables.py:246
 msgid "Suspend Instance"
 msgid_plural "Suspend Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:258
+#: dashboards/project/instances/tables.py:261
 msgid "Suspended Instance"
 msgid_plural "Suspended Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:372
+#: dashboards/project/instances/tables.py:375
 msgid "Edit Security Groups"
 msgstr "Editar grupos de seguridad"
 
-#: dashboards/project/instances/tables.py:398
+#: dashboards/project/instances/tables.py:401
 #: dashboards/project/instances/tabs.py:61
 msgid "Console"
 msgstr "Consola"
 
-#: dashboards/project/instances/tables.py:418
+#: dashboards/project/instances/tables.py:421
 msgid "View Log"
 msgstr "Ver log"
 
-#: dashboards/project/instances/tables.py:459
+#: dashboards/project/instances/tables.py:462
 msgid "Confirm Resize/Migrate"
 msgstr "Confirmar redimensionar/migrar"
 
-#: dashboards/project/instances/tables.py:472
+#: dashboards/project/instances/tables.py:475
 msgid "Revert Resize/Migrate"
 msgstr "Revertir redimensionar/migrar"
 
-#: dashboards/project/instances/tables.py:485
+#: dashboards/project/instances/tables.py:488
 #: dashboards/project/instances/views.py:256
 #: dashboards/project/instances/templates/instances/_rebuild.html:9
 #: dashboards/project/instances/templates/instances/_rebuild.html:27
@@ -10399,473 +10433,477 @@ msgstr "Revertir redimensionar/migrar"
 msgid "Rebuild Instance"
 msgstr "Reconstruir instancia"
 
-#: dashboards/project/instances/tables.py:502
+#: dashboards/project/instances/tables.py:505
 msgid "Retrieve Password"
 msgstr "Obtener contraseña"
 
-#: dashboards/project/instances/tables.py:525
-#: dashboards/project/instances/tables.py:550
+#: dashboards/project/instances/tables.py:528
+#: dashboards/project/instances/tables.py:553
 msgid "Associate Floating IP"
 msgstr "Asociar IP flotante"
 
-#: dashboards/project/instances/tables.py:569
+#: dashboards/project/instances/tables.py:572
 #, python-format
 msgid "Successfully associated floating IP: %s"
 msgstr "Asociada correctamente la IP flotante: %s"
 
-#: dashboards/project/instances/tables.py:573
+#: dashboards/project/instances/tables.py:576
 msgid "Unable to associate floating IP."
 msgstr "No ha sido posible asociar la IP flotante."
 
-#: dashboards/project/instances/tables.py:579
+#: dashboards/project/instances/tables.py:582
 msgid "Disassociate Floating IP"
 msgstr "Desasociar IP flotante"
 
-#: dashboards/project/instances/tables.py:607
+#: dashboards/project/instances/tables.py:610
 #, python-format
 msgid "Successfully disassociated floating IP: %s"
 msgstr "Se ha desasociado correctamente la IP flotante: %s"
 
-#: dashboards/project/instances/tables.py:610
+#: dashboards/project/instances/tables.py:613
 msgid "No floating IPs to disassociate."
 msgstr "No hay IPs flotantes que desasociar."
 
-#: dashboards/project/instances/tables.py:620
+#: dashboards/project/instances/tables.py:623
 #, python-format
 msgid "Please try again later [Error: %s]."
 msgstr "Por favor inténtelo de nuevo más tarde [Error: %s]."
 
-#: dashboards/project/instances/tables.py:622
+#: dashboards/project/instances/tables.py:625
 msgid ""
 "There is not enough capacity for this flavor in the selected availability "
 "zone. Try again later or select a different availability zone."
 msgstr "No hay suficiente capacidad para este sabor en la zona de disponibilidad seleccionada. Inténtelo de nuevo más tarde o seleccione otra zona de disponibilidad."
 
-#: dashboards/project/instances/tables.py:634
+#: dashboards/project/instances/tables.py:637
 #, python-format
 msgid "Failed to launch instance \"%s\""
 msgstr "Ha ocurrido un fallo en el lanzamiento de la instancia \"%s\""
 
-#: dashboards/project/instances/tables.py:650
+#: dashboards/project/instances/tables.py:653
 #: dashboards/project/instances/views.py:395
 #, python-format
 msgid "Unable to retrieve flavor information for instance \"%s\"."
 msgstr ""
 
-#: dashboards/project/instances/tables.py:667
+#: dashboards/project/instances/tables.py:670
 msgid "Start Instance"
 msgid_plural "Start Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:675
+#: dashboards/project/instances/tables.py:678
 msgid "Started Instance"
 msgid_plural "Started Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:697
+#: dashboards/project/instances/tables.py:695
+msgid "To power off a specific instance."
+msgstr ""
+
+#: dashboards/project/instances/tables.py:701
 msgctxt "Action to perform (the instance is currently running)"
 msgid "Shut Off Instance"
 msgid_plural "Shut Off Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:706
+#: dashboards/project/instances/tables.py:710
 msgctxt "Past action (the instance is currently already Shut Off)"
 msgid "Shut Off Instance"
 msgid_plural "Shut Off Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:727
+#: dashboards/project/instances/tables.py:731
 msgid "Lock Instance"
 msgid_plural "Lock Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:735
+#: dashboards/project/instances/tables.py:739
 msgid "Locked Instance"
 msgid_plural "Locked Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:758
+#: dashboards/project/instances/tables.py:762
 msgid "Unlock Instance"
 msgid_plural "Unlock Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:766
+#: dashboards/project/instances/tables.py:770
 msgid "Unlocked Instance"
 msgid_plural "Unlocked Instances"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/tables.py:811
+#: dashboards/project/instances/tables.py:815
 #, python-format
 msgid "%s GB"
 msgstr "%s GB"
 
-#: dashboards/project/instances/tables.py:836
-#: dashboards/project/instances/tables.py:858
+#: dashboards/project/instances/tables.py:840
+#: dashboards/project/instances/tables.py:862
 msgctxt "Current status of an Instance"
 msgid "Deleted"
 msgstr "Eliminado"
 
-#: dashboards/project/instances/tables.py:837
+#: dashboards/project/instances/tables.py:841
 msgctxt "Current status of an Instance"
 msgid "Active"
 msgstr "Activo"
 
-#: dashboards/project/instances/tables.py:838
+#: dashboards/project/instances/tables.py:842
 msgctxt "Current status of an Instance"
 msgid "Shutoff"
 msgstr "Apagada"
 
-#: dashboards/project/instances/tables.py:840
+#: dashboards/project/instances/tables.py:844
 msgctxt "Current status of an Instance"
 msgid "Suspended"
 msgstr "Suspendida"
 
-#: dashboards/project/instances/tables.py:841
+#: dashboards/project/instances/tables.py:845
 msgctxt "Current status of an Instance"
 msgid "Paused"
 msgstr "Pausada"
 
-#: dashboards/project/instances/tables.py:842
+#: dashboards/project/instances/tables.py:846
 msgctxt "Current status of an Instance"
 msgid "Error"
 msgstr "Error"
 
-#: dashboards/project/instances/tables.py:844
+#: dashboards/project/instances/tables.py:848
 msgctxt "Current status of an Instance"
 msgid "Resize/Migrate"
 msgstr "Redimensionar/Migrar"
 
-#: dashboards/project/instances/tables.py:846
+#: dashboards/project/instances/tables.py:850
 msgctxt "Current status of an Instance"
 msgid "Confirm or Revert Resize/Migrate"
 msgstr "Confirmar o revertir redimensionar/migrar"
 
-#: dashboards/project/instances/tables.py:848
+#: dashboards/project/instances/tables.py:852
 msgctxt "Current status of an Instance"
 msgid "Revert Resize/Migrate"
 msgstr "Revertir redimensionar/migrar"
 
-#: dashboards/project/instances/tables.py:849
+#: dashboards/project/instances/tables.py:853
 msgctxt "Current status of an Instance"
 msgid "Reboot"
 msgstr "Reinicio"
 
-#: dashboards/project/instances/tables.py:851
+#: dashboards/project/instances/tables.py:855
 msgctxt "Current status of an Instance"
 msgid "Hard Reboot"
 msgstr "Reinicio brusco"
 
-#: dashboards/project/instances/tables.py:852
+#: dashboards/project/instances/tables.py:856
 msgctxt "Current status of an Instance"
 msgid "Password"
 msgstr "Contraseña"
 
-#: dashboards/project/instances/tables.py:853
+#: dashboards/project/instances/tables.py:857
 msgctxt "Current status of an Instance"
 msgid "Rebuild"
 msgstr "Reconstruir"
 
-#: dashboards/project/instances/tables.py:855
+#: dashboards/project/instances/tables.py:859
 msgctxt "Current status of an Instance"
 msgid "Migrating"
 msgstr "Migrando"
 
-#: dashboards/project/instances/tables.py:856
+#: dashboards/project/instances/tables.py:860
 msgctxt "Current status of an Instance"
 msgid "Build"
 msgstr "Construir"
 
-#: dashboards/project/instances/tables.py:857
+#: dashboards/project/instances/tables.py:861
 msgctxt "Current status of an Instance"
 msgid "Rescue"
 msgstr "Rescate"
 
-#: dashboards/project/instances/tables.py:860
+#: dashboards/project/instances/tables.py:864
 msgctxt "Current status of an Instance"
 msgid "Soft Deleted"
 msgstr "Borrado no definitivo"
 
-#: dashboards/project/instances/tables.py:861
+#: dashboards/project/instances/tables.py:865
 msgctxt "Current status of an Instance"
 msgid "Shelved"
 msgstr "Pospuesta"
 
-#: dashboards/project/instances/tables.py:863
+#: dashboards/project/instances/tables.py:867
 msgctxt "Current status of an Instance"
 msgid "Shelved Offloaded"
 msgstr "Pospuesta descargada"
 
-#: dashboards/project/instances/tables.py:866
+#: dashboards/project/instances/tables.py:870
 msgctxt "Task status of an Instance"
 msgid "None"
 msgstr "Ninguno"
 
-#: dashboards/project/instances/tables.py:871
+#: dashboards/project/instances/tables.py:875
 msgctxt "Task status of an Instance"
 msgid "Scheduling"
 msgstr "Programando"
 
-#: dashboards/project/instances/tables.py:873
+#: dashboards/project/instances/tables.py:877
 msgctxt "Task status of an Instance"
 msgid "Block Device Mapping"
 msgstr "Mapeando el dispositivo de bloques"
 
-#: dashboards/project/instances/tables.py:875
+#: dashboards/project/instances/tables.py:879
 msgctxt "Task status of an Instance"
 msgid "Networking"
 msgstr "Redes"
 
-#: dashboards/project/instances/tables.py:876
+#: dashboards/project/instances/tables.py:880
 msgctxt "Task status of an Instance"
 msgid "Spawning"
 msgstr "Generando"
 
-#: dashboards/project/instances/tables.py:878
+#: dashboards/project/instances/tables.py:882
 msgctxt "Task status of an Instance"
 msgid "Snapshotting"
 msgstr "Realizar instantáneas"
 
-#: dashboards/project/instances/tables.py:880
+#: dashboards/project/instances/tables.py:884
 msgctxt "Task status of an Instance"
 msgid "Image Snapshot Pending"
 msgstr "Instantánea de imagen pendiente"
 
-#: dashboards/project/instances/tables.py:882
+#: dashboards/project/instances/tables.py:886
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
 msgstr "Imagen pendiente de cargar"
 
-#: dashboards/project/instances/tables.py:884
+#: dashboards/project/instances/tables.py:888
 msgctxt "Task status of an Instance"
 msgid "Image Uploading"
 msgstr "Subiendo imagen"
 
-#: dashboards/project/instances/tables.py:886
+#: dashboards/project/instances/tables.py:890
 msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "Copia de seguridad de la imagen"
 
-#: dashboards/project/instances/tables.py:888
+#: dashboards/project/instances/tables.py:892
 msgctxt "Task status of an Instance"
 msgid "Updating Password"
 msgstr "Actualizando contraseña"
 
-#: dashboards/project/instances/tables.py:890
+#: dashboards/project/instances/tables.py:894
 msgctxt "Task status of an Instance"
 msgid "Preparing Resize or Migrate"
 msgstr "Preparándose para redimensionar o migrar"
 
-#: dashboards/project/instances/tables.py:892
+#: dashboards/project/instances/tables.py:896
 msgctxt "Task status of an Instance"
 msgid "Resizing or Migrating"
 msgstr "Redimensionando o migrando"
 
-#: dashboards/project/instances/tables.py:894
+#: dashboards/project/instances/tables.py:898
 msgctxt "Task status of an Instance"
 msgid "Resized or Migrated"
 msgstr "Redimensionada o migrada"
 
-#: dashboards/project/instances/tables.py:896
+#: dashboards/project/instances/tables.py:900
 msgctxt "Task status of an Instance"
 msgid "Finishing Resize or Migrate"
 msgstr "Terminando redimensionar o migrar"
 
-#: dashboards/project/instances/tables.py:898
+#: dashboards/project/instances/tables.py:902
 msgctxt "Task status of an Instance"
 msgid "Reverting Resize or Migrate"
 msgstr "Revertiendo redimensionar o migrar"
 
-#: dashboards/project/instances/tables.py:900
+#: dashboards/project/instances/tables.py:904
 msgctxt "Task status of an Instance"
 msgid "Confirming Resize or Migrate"
 msgstr "Confirmando redimensionar o migrar"
 
-#: dashboards/project/instances/tables.py:901
+#: dashboards/project/instances/tables.py:905
 msgctxt "Task status of an Instance"
 msgid "Rebooting"
 msgstr "Reiniciando"
 
-#: dashboards/project/instances/tables.py:903
+#: dashboards/project/instances/tables.py:907
 msgctxt "Task status of an Instance"
 msgid "Reboot Pending"
 msgstr ""
 
-#: dashboards/project/instances/tables.py:905
+#: dashboards/project/instances/tables.py:909
 msgctxt "Task status of an Instance"
 msgid "Reboot Started"
 msgstr ""
 
-#: dashboards/project/instances/tables.py:907
+#: dashboards/project/instances/tables.py:911
 msgctxt "Task status of an Instance"
 msgid "Rebooting Hard"
 msgstr "Reiniciando desde cero"
 
-#: dashboards/project/instances/tables.py:909
+#: dashboards/project/instances/tables.py:913
 msgctxt "Task status of an Instance"
 msgid "Reboot Pending Hard"
 msgstr ""
 
-#: dashboards/project/instances/tables.py:911
+#: dashboards/project/instances/tables.py:915
 msgctxt "Task status of an Instance"
 msgid "Reboot Started Hard"
 msgstr ""
 
-#: dashboards/project/instances/tables.py:912
+#: dashboards/project/instances/tables.py:916
 msgctxt "Task status of an Instance"
 msgid "Pausing"
 msgstr "Poniéndose en pausa"
 
-#: dashboards/project/instances/tables.py:913
-#: dashboards/project/instances/tables.py:916
+#: dashboards/project/instances/tables.py:917
+#: dashboards/project/instances/tables.py:920
 msgctxt "Task status of an Instance"
 msgid "Resuming"
 msgstr "Reanudando"
 
-#: dashboards/project/instances/tables.py:915
+#: dashboards/project/instances/tables.py:919
 msgctxt "Task status of an Instance"
 msgid "Suspending"
 msgstr "Suspendiendo"
 
-#: dashboards/project/instances/tables.py:918
+#: dashboards/project/instances/tables.py:922
 msgctxt "Task status of an Instance"
 msgid "Powering Off"
 msgstr "Apagando"
 
-#: dashboards/project/instances/tables.py:920
+#: dashboards/project/instances/tables.py:924
 msgctxt "Task status of an Instance"
 msgid "Powering On"
 msgstr "Encendiendo"
 
-#: dashboards/project/instances/tables.py:921
+#: dashboards/project/instances/tables.py:925
 msgctxt "Task status of an Instance"
 msgid "Rescuing"
 msgstr "Rescatando"
 
-#: dashboards/project/instances/tables.py:923
+#: dashboards/project/instances/tables.py:927
 msgctxt "Task status of an Instance"
 msgid "Unrescuing"
 msgstr "Cancelando rescate"
 
-#: dashboards/project/instances/tables.py:925
+#: dashboards/project/instances/tables.py:929
 msgctxt "Task status of an Instance"
 msgid "Rebuilding"
 msgstr "Reconstruyendo"
 
-#: dashboards/project/instances/tables.py:927
+#: dashboards/project/instances/tables.py:931
 msgctxt "Task status of an Instance"
 msgid "Rebuild Block Device Mapping"
 msgstr "Reconstruyendo el mapeo del dispositivo de bloques"
 
-#: dashboards/project/instances/tables.py:929
+#: dashboards/project/instances/tables.py:933
 msgctxt "Task status of an Instance"
 msgid "Rebuild Spawning"
 msgstr "Reconstruyendo la semilla"
 
-#: dashboards/project/instances/tables.py:930
+#: dashboards/project/instances/tables.py:934
 msgctxt "Task status of an Instance"
 msgid "Migrating"
 msgstr "Migrando"
 
-#: dashboards/project/instances/tables.py:931
+#: dashboards/project/instances/tables.py:935
 msgctxt "Task status of an Instance"
 msgid "Deleting"
 msgstr "Borrando"
 
-#: dashboards/project/instances/tables.py:933
+#: dashboards/project/instances/tables.py:937
 msgctxt "Task status of an Instance"
 msgid "Soft Deleting"
 msgstr "Borrado no definitivo"
 
-#: dashboards/project/instances/tables.py:934
+#: dashboards/project/instances/tables.py:938
 msgctxt "Task status of an Instance"
 msgid "Restoring"
 msgstr "Restaurando"
 
-#: dashboards/project/instances/tables.py:935
+#: dashboards/project/instances/tables.py:939
 msgctxt "Task status of an Instance"
 msgid "Shelving"
 msgstr "Posponiendo"
 
-#: dashboards/project/instances/tables.py:937
+#: dashboards/project/instances/tables.py:941
 msgctxt "Task status of an Instance"
 msgid "Shelving Image Pending Upload"
 msgstr "Imagen pospuesta pendiente de cargar"
 
-#: dashboards/project/instances/tables.py:939
+#: dashboards/project/instances/tables.py:943
 msgctxt "Task status of an Instance"
 msgid "Shelving Image Uploading"
 msgstr "Posponiendo carga de imagen"
 
-#: dashboards/project/instances/tables.py:941
+#: dashboards/project/instances/tables.py:945
 msgctxt "Task status of an Instance"
 msgid "Shelving Offloading"
 msgstr "Posponiendo descarga"
 
-#: dashboards/project/instances/tables.py:943
+#: dashboards/project/instances/tables.py:947
 msgctxt "Task status of an Instance"
 msgid "Unshelving"
 msgstr "Desunir"
 
-#: dashboards/project/instances/tables.py:947
+#: dashboards/project/instances/tables.py:951
 msgctxt "Power state of an Instance"
 msgid "No State"
 msgstr "Sin estado"
 
-#: dashboards/project/instances/tables.py:948
+#: dashboards/project/instances/tables.py:952
 msgctxt "Power state of an Instance"
 msgid "Running"
 msgstr "Ejecutando"
 
-#: dashboards/project/instances/tables.py:949
+#: dashboards/project/instances/tables.py:953
 msgctxt "Power state of an Instance"
 msgid "Blocked"
 msgstr "Bloqueado"
 
-#: dashboards/project/instances/tables.py:950
+#: dashboards/project/instances/tables.py:954
 msgctxt "Power state of an Instance"
 msgid "Paused"
 msgstr "Pausada"
 
-#: dashboards/project/instances/tables.py:951
+#: dashboards/project/instances/tables.py:955
 msgctxt "Power state of an Instance"
 msgid "Shut Down"
 msgstr "Cerrar"
 
-#: dashboards/project/instances/tables.py:952
+#: dashboards/project/instances/tables.py:956
 msgctxt "Power state of an Instance"
 msgid "Shut Off"
 msgstr "Apagado"
 
-#: dashboards/project/instances/tables.py:953
+#: dashboards/project/instances/tables.py:957
 msgctxt "Power state of an Instance"
 msgid "Crashed"
 msgstr "Estrellado"
 
-#: dashboards/project/instances/tables.py:954
+#: dashboards/project/instances/tables.py:958
 msgctxt "Power state of an Instance"
 msgid "Suspended"
 msgstr "Suspendida"
 
-#: dashboards/project/instances/tables.py:955
+#: dashboards/project/instances/tables.py:959
 msgctxt "Power state of an Instance"
 msgid "Failed"
 msgstr "Erróneo"
 
-#: dashboards/project/instances/tables.py:956
+#: dashboards/project/instances/tables.py:960
 msgctxt "Power state of an Instance"
 msgid "Building"
 msgstr "Construyendo"
 
-#: dashboards/project/instances/tables.py:994
-#: dashboards/project/instances/workflows/create_instance.py:530
+#: dashboards/project/instances/tables.py:998
+#: dashboards/project/instances/workflows/create_instance.py:529
 msgid "Key Pair"
 msgstr "Par de claves"
 
@@ -10887,16 +10925,45 @@ msgstr "Registro de acciones"
 msgid "Unable to retrieve instance action list."
 msgstr "No fue posible obtener el listado de acciones de la instancia."
 
-#: dashboards/project/instances/utils.py:31
+#: dashboards/project/instances/utils.py:32
 msgid "Unable to retrieve instance flavors."
 msgstr "No ha sido posible obtener los sabores de las instancias."
 
-#: dashboards/project/instances/utils.py:62
+#: dashboards/project/instances/utils.py:63
 msgid "Unable to sort instance flavors."
 msgstr "No ha sido posible ordenar los sabores de instancia."
 
-#: dashboards/project/instances/utils.py:72
+#: dashboards/project/instances/utils.py:73
 msgid "Unable to retrieve Nova availability zones."
+msgstr ""
+
+#: dashboards/project/instances/utils.py:94
+msgid "Failed to get network list {0}"
+msgstr ""
+
+#: dashboards/project/instances/utils.py:99
+#: dashboards/project/routers/ports/forms.py:176
+msgid "No networks available"
+msgstr "No hay redes disponibles"
+
+#: dashboards/project/instances/utils.py:103
+msgid "Select Network"
+msgstr ""
+
+#: dashboards/project/instances/utils.py:123
+msgid "Unable to retrieve key pairs."
+msgstr "No ha sido posible obtener los pares de claves."
+
+#: dashboards/project/instances/utils.py:128
+msgid "No key pairs available"
+msgstr "No hay pares de claves disponibles"
+
+#: dashboards/project/instances/utils.py:132
+msgid "Select a key pair"
+msgstr "Seleccione un par de claves"
+
+#: dashboards/project/instances/utils.py:151
+msgid "Select Flavor"
 msgstr ""
 
 #: dashboards/project/instances/views.py:73
@@ -11187,90 +11254,90 @@ msgstr "Opcionalmente, puede configurar una contraseña en la instancia reconstr
 msgid "Instance Admin Password"
 msgstr "Contraseña de admin de la instancia"
 
-#: dashboards/project/instances/workflows/create_instance.py:53
+#: dashboards/project/instances/workflows/create_instance.py:55
 msgid "User"
 msgstr "Usuario"
 
-#: dashboards/project/instances/workflows/create_instance.py:67
+#: dashboards/project/instances/workflows/create_instance.py:69
 msgid "Project & User"
 msgstr "Proyecto y usuario"
 
-#: dashboards/project/instances/workflows/create_instance.py:88
+#: dashboards/project/instances/workflows/create_instance.py:90
 msgid "Instance Count"
 msgstr "Recuento de instancias"
 
-#: dashboards/project/instances/workflows/create_instance.py:91
+#: dashboards/project/instances/workflows/create_instance.py:93
 msgid "Number of instances to launch."
 msgstr "Número de instancias a lanzar."
 
-#: dashboards/project/instances/workflows/create_instance.py:93
+#: dashboards/project/instances/workflows/create_instance.py:95
 msgid "Instance Boot Source"
 msgstr "Origen de arranque de la instancia"
 
-#: dashboards/project/instances/workflows/create_instance.py:94
+#: dashboards/project/instances/workflows/create_instance.py:96
 msgid "Choose Your Boot Source Type."
 msgstr "Elija el tipo de origen de arranque."
 
-#: dashboards/project/instances/workflows/create_instance.py:97
+#: dashboards/project/instances/workflows/create_instance.py:99
 msgid "Instance Snapshot"
 msgstr "Instantánea de Instancia"
 
-#: dashboards/project/instances/workflows/create_instance.py:102
+#: dashboards/project/instances/workflows/create_instance.py:104
 msgid "Volume Snapshot"
 msgstr "Instantánea de volumen"
 
-#: dashboards/project/instances/workflows/create_instance.py:113
+#: dashboards/project/instances/workflows/create_instance.py:115
 msgid "Device size (GB)"
 msgstr "Tamaño del dispositivo (GB)"
 
-#: dashboards/project/instances/workflows/create_instance.py:117
+#: dashboards/project/instances/workflows/create_instance.py:119
 msgid "Volume size in gigabytes (integer value)."
 msgstr "Tamaño del volumen en gigabytes (valor entero)."
 
-#: dashboards/project/instances/workflows/create_instance.py:120
-#: dashboards/project/volumes/volumes/forms.py:419
+#: dashboards/project/instances/workflows/create_instance.py:122
+#: dashboards/project/volumes/volumes/forms.py:421
 msgid "Device Name"
 msgstr "Nombre de dispositivo"
 
-#: dashboards/project/instances/workflows/create_instance.py:123
+#: dashboards/project/instances/workflows/create_instance.py:125
 msgid ""
 "Volume mount point (e.g. 'vda' mounts at '/dev/vda'). Leave this field blank"
 " to let the system choose a device name for you."
 msgstr ""
 
-#: dashboards/project/instances/workflows/create_instance.py:129
+#: dashboards/project/instances/workflows/create_instance.py:131
 msgid "Delete on Terminate"
 msgstr "Borrar al terminar"
 
-#: dashboards/project/instances/workflows/create_instance.py:132
+#: dashboards/project/instances/workflows/create_instance.py:134
 msgid "Delete volume on instance terminate"
 msgstr "Borrar volumen al terminar la instancia"
 
-#: dashboards/project/instances/workflows/create_instance.py:152
+#: dashboards/project/instances/workflows/create_instance.py:154
 msgid "Select source"
 msgstr "Escoger origen"
 
-#: dashboards/project/instances/workflows/create_instance.py:153
+#: dashboards/project/instances/workflows/create_instance.py:155
 msgid "Boot from image"
 msgstr "Arrancar desde una imagen"
 
-#: dashboards/project/instances/workflows/create_instance.py:154
+#: dashboards/project/instances/workflows/create_instance.py:156
 msgid "Boot from snapshot"
 msgstr "Arrancar desde una instantánea"
 
-#: dashboards/project/instances/workflows/create_instance.py:157
+#: dashboards/project/instances/workflows/create_instance.py:159
 msgid "Boot from volume"
 msgstr "Arrancar desde un volumen"
 
-#: dashboards/project/instances/workflows/create_instance.py:164
+#: dashboards/project/instances/workflows/create_instance.py:166
 msgid "Boot from image (creates a new volume)"
 msgstr "Arrancar desde imagen (crea un nuevo volumen)"
 
-#: dashboards/project/instances/workflows/create_instance.py:171
+#: dashboards/project/instances/workflows/create_instance.py:173
 msgid "Boot from volume snapshot (creates a new volume)"
 msgstr "Arrancar desde una instantánea de volumen (crea un nuevo volumen)"
 
-#: dashboards/project/instances/workflows/create_instance.py:211
+#: dashboards/project/instances/workflows/create_instance.py:213
 #, python-format
 msgid ""
 "The requested instance cannot be launched as you only have %(avail)i of your"
@@ -11281,245 +11348,233 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/instances/workflows/create_instance.py:227
+#: dashboards/project/instances/workflows/create_instance.py:229
 #, python-format
 msgid "Cores(Available: %(avail)s, Requested: %(req)s)"
 msgstr "Cores(Disponible: %(avail)s, Solicitados: %(req)s)"
 
-#: dashboards/project/instances/workflows/create_instance.py:234
+#: dashboards/project/instances/workflows/create_instance.py:236
 #, python-format
 msgid "RAM(Available: %(avail)s, Requested: %(req)s)"
 msgstr "RAM(Disponible: %(avail)s, Solicitada: %(req)s)"
 
-#: dashboards/project/instances/workflows/create_instance.py:241
+#: dashboards/project/instances/workflows/create_instance.py:243
 #, python-format
 msgid ""
 "The requested instance cannot be launched. The following requested "
 "resource(s) exceed quota(s): %s."
 msgstr "La instancia solicitada no puede ser ejecutada. Los siguientes recursos solicitados exceden la quota(s): %s."
 
-#: dashboards/project/instances/workflows/create_instance.py:261
+#: dashboards/project/instances/workflows/create_instance.py:263
 #, python-format
 msgid ""
 "The flavor '%(flavor)s' is too small for requested image.\n"
 "Minimum requirements: %(min_ram)s MB of RAM and %(min_disk)s GB of Root Disk."
 msgstr "El sabor '%(flavor)s' es demasiado pequeño para la imagen solicitada.\nRequisitos mínimos:  %(min_ram)s MB de RAM y %(min_disk)s GB de disco raiz."
 
-#: dashboards/project/instances/workflows/create_instance.py:282
+#: dashboards/project/instances/workflows/create_instance.py:284
 #, python-format
 msgid ""
 "The Volume size is too small for the '%(image_name)s' image and has to be "
 "greater than or equal to '%(smallest_size)d' GB."
 msgstr "El tamaño del volumen es demasiado pequeño para la imagen '%(image_name)s' y debe ser mayor o igual que '%(smallest_size)d' GB."
 
-#: dashboards/project/instances/workflows/create_instance.py:292
-#: dashboards/project/instances/workflows/create_instance.py:306
+#: dashboards/project/instances/workflows/create_instance.py:294
+#: dashboards/project/instances/workflows/create_instance.py:308
 msgid "You must select an image."
 msgstr "Debe seleccionar una imagen. "
 
-#: dashboards/project/instances/workflows/create_instance.py:300
+#: dashboards/project/instances/workflows/create_instance.py:302
 msgid "You must set volume size"
 msgstr "Debe establecer el tamaño del volumen"
 
-#: dashboards/project/instances/workflows/create_instance.py:303
+#: dashboards/project/instances/workflows/create_instance.py:305
 msgid "Volume size must be greater than 0"
 msgstr "El tamaño del volumen debe ser mayor que 0"
 
-#: dashboards/project/instances/workflows/create_instance.py:317
-#: dashboards/project/instances/workflows/create_instance.py:335
+#: dashboards/project/instances/workflows/create_instance.py:319
+#: dashboards/project/instances/workflows/create_instance.py:337
 msgid "You must select a snapshot."
 msgstr "Debe seleccionar una instantánea. "
 
-#: dashboards/project/instances/workflows/create_instance.py:322
+#: dashboards/project/instances/workflows/create_instance.py:324
 msgid "You must select a volume."
 msgstr "Debe seleccionar un volumen."
 
-#: dashboards/project/instances/workflows/create_instance.py:329
+#: dashboards/project/instances/workflows/create_instance.py:331
 msgid ""
 "Launching multiple instances is only supported for images and instance "
 "snapshots."
 msgstr "Lanzar múltiples instancias es posible solo para imágenes e instantáneas de instancias."
 
-#: dashboards/project/instances/workflows/create_instance.py:372
-#: dashboards/project/volumes/volumes/forms.py:67
+#: dashboards/project/instances/workflows/create_instance.py:371
+#: dashboards/project/volumes/volumes/forms.py:69
 msgid "Unable to retrieve availability zones."
 msgstr "No ha sido posible obtener las zonas de disponibilidad."
 
-#: dashboards/project/instances/workflows/create_instance.py:378
-#: dashboards/project/volumes/volumes/forms.py:70
+#: dashboards/project/instances/workflows/create_instance.py:377
+#: dashboards/project/volumes/volumes/forms.py:72
 msgid "No availability zones found"
 msgstr "No se han encontrado zonas de disponibilidad"
 
-#: dashboards/project/instances/workflows/create_instance.py:380
-#: dashboards/project/volumes/volumes/forms.py:72
+#: dashboards/project/instances/workflows/create_instance.py:379
+#: dashboards/project/volumes/volumes/forms.py:74
 msgid "Any Availability Zone"
 msgstr "Cualquier zona de disponibilidad"
 
-#: dashboards/project/instances/workflows/create_instance.py:403
+#: dashboards/project/instances/workflows/create_instance.py:402
 #: dashboards/project/instances/workflows/resize_instance.py:72
 #: usage/base.py:237
 msgid "Unable to retrieve quota information."
 msgstr "No ha sido posible obtener información de cuotas."
 
-#: dashboards/project/instances/workflows/create_instance.py:413
-#: dashboards/project/volumes/volumes/forms.py:222
+#: dashboards/project/instances/workflows/create_instance.py:412
+#: dashboards/project/volumes/volumes/forms.py:224
 msgid "Snapshot"
 msgstr "Instantánea"
 
-#: dashboards/project/instances/workflows/create_instance.py:418
+#: dashboards/project/instances/workflows/create_instance.py:417
 #, python-format
 msgid "%(name)s - %(size)s GB (%(label)s)"
 msgstr "%(name)s - %(size)s GB (%(label)s)"
 
-#: dashboards/project/instances/workflows/create_instance.py:452
+#: dashboards/project/instances/workflows/create_instance.py:451
 msgid "Select Instance Snapshot"
 msgstr "Seleccionar instantánea de instancia"
 
-#: dashboards/project/instances/workflows/create_instance.py:454
+#: dashboards/project/instances/workflows/create_instance.py:453
 msgid "No snapshots available"
 msgstr "No hay instantáneas disponibles"
 
-#: dashboards/project/instances/workflows/create_instance.py:467
-#: dashboards/project/volumes/volumes/forms.py:304
+#: dashboards/project/instances/workflows/create_instance.py:466
+#: dashboards/project/volumes/volumes/forms.py:306
 msgid "Unable to retrieve list of volumes."
 msgstr "No ha sido posible obtener la lista de volúmenes."
 
-#: dashboards/project/instances/workflows/create_instance.py:469
+#: dashboards/project/instances/workflows/create_instance.py:468
 #: dashboards/project/volumes/backups/forms.py:69
 msgid "Select Volume"
 msgstr "Seleccionar volumen"
 
-#: dashboards/project/instances/workflows/create_instance.py:471
+#: dashboards/project/instances/workflows/create_instance.py:470
 msgid "No volumes available"
 msgstr "No hay volúmenes disponibles"
 
-#: dashboards/project/instances/workflows/create_instance.py:484
+#: dashboards/project/instances/workflows/create_instance.py:483
 msgid "Unable to retrieve list of volume snapshots."
 msgstr "No ha sido posible obtener la lista de instantáneas de volúmenes."
 
-#: dashboards/project/instances/workflows/create_instance.py:487
+#: dashboards/project/instances/workflows/create_instance.py:486
 msgid "Select Volume Snapshot"
 msgstr "Seleccionar Instantánea de volumen"
 
-#: dashboards/project/instances/workflows/create_instance.py:489
+#: dashboards/project/instances/workflows/create_instance.py:488
 msgid "No volume snapshots available"
 msgstr "No hay instantáneas de volúmenes disponibles"
 
-#: dashboards/project/instances/workflows/create_instance.py:532
+#: dashboards/project/instances/workflows/create_instance.py:531
 msgid "Key pair to use for authentication."
 msgstr "Pareja de claves a utilizar para la autentificación."
 
-#: dashboards/project/instances/workflows/create_instance.py:536
+#: dashboards/project/instances/workflows/create_instance.py:535
 msgid "Admin Password"
 msgstr ""
 
-#: dashboards/project/instances/workflows/create_instance.py:542
+#: dashboards/project/instances/workflows/create_instance.py:541
 msgid "Confirm Admin Password"
 msgstr ""
 
-#: dashboards/project/instances/workflows/create_instance.py:549
+#: dashboards/project/instances/workflows/create_instance.py:548
 msgid "Launch instance in these security groups."
 msgstr "Lanzar la instancia en estos grupos de seguridad."
 
-#: dashboards/project/instances/workflows/create_instance.py:554
+#: dashboards/project/instances/workflows/create_instance.py:553
 msgid ""
 "Control access to your instance via key pairs, security groups, and other "
 "mechanisms."
 msgstr "Controle el acceso a sus instancias a través de pares de claves, grupos de seguridad y otros mecanismos."
 
-#: dashboards/project/instances/workflows/create_instance.py:570
-msgid "Unable to retrieve key pairs."
-msgstr "No ha sido posible obtener los pares de claves."
-
 #: dashboards/project/instances/workflows/create_instance.py:574
-msgid "Select a key pair"
-msgstr "Seleccione un par de claves"
-
-#: dashboards/project/instances/workflows/create_instance.py:576
-msgid "No key pairs available"
-msgstr "No hay pares de claves disponibles"
-
-#: dashboards/project/instances/workflows/create_instance.py:585
 msgid "Unable to retrieve list of security groups"
 msgstr "No ha sido posible obtener la lista de grupos de seguridad"
 
-#: dashboards/project/instances/workflows/create_instance.py:617
+#: dashboards/project/instances/workflows/create_instance.py:606
 msgid "Post-Creation"
 msgstr "Pos-creación"
 
-#: dashboards/project/instances/workflows/create_instance.py:621
+#: dashboards/project/instances/workflows/create_instance.py:610
 msgid "Select Script Source"
 msgstr ""
 
-#: dashboards/project/instances/workflows/create_instance.py:626
+#: dashboards/project/instances/workflows/create_instance.py:615
 msgid "Customization Script Source"
 msgstr "Contenidos del guión de personalización"
 
-#: dashboards/project/instances/workflows/create_instance.py:631
+#: dashboards/project/instances/workflows/create_instance.py:620
 msgid ""
 "A script or set of commands to be executed after the instance has been built"
 " (max 16kb)."
 msgstr "Un script es un conjunto de instrucciones que se ejecutarán una vez la instancia haya sido generada (max 16kb)."
 
-#: dashboards/project/instances/workflows/create_instance.py:635
-#: dashboards/project/instances/workflows/create_instance.py:640
+#: dashboards/project/instances/workflows/create_instance.py:624
+#: dashboards/project/instances/workflows/create_instance.py:629
 msgid "Script File"
 msgstr "Archivo de guión"
 
-#: dashboards/project/instances/workflows/create_instance.py:644
-#: dashboards/project/instances/workflows/create_instance.py:649
+#: dashboards/project/instances/workflows/create_instance.py:633
+#: dashboards/project/instances/workflows/create_instance.py:638
 msgid "Script Data"
 msgstr "Datos del guión"
 
-#: dashboards/project/instances/workflows/create_instance.py:676
+#: dashboards/project/instances/workflows/create_instance.py:665
 msgid "File exceeds maximum size (16kb)"
 msgstr "El archivo excede el tamaño máximo (16kb)"
 
-#: dashboards/project/instances/workflows/create_instance.py:684
-#: dashboards/project/stacks/forms.py:187
+#: dashboards/project/instances/workflows/create_instance.py:673
+#: dashboards/project/stacks/forms.py:189
 #, python-format
 msgid "There was a problem parsing the %(prefix)s: %(error)s"
 msgstr "Hubo un problema analizando el %(prefix)s:%(error)s "
 
-#: dashboards/project/instances/workflows/create_instance.py:711
+#: dashboards/project/instances/workflows/create_instance.py:700
 msgid "Policy Profiles"
 msgstr "Perfiles de la política."
 
-#: dashboards/project/instances/workflows/create_instance.py:714
+#: dashboards/project/instances/workflows/create_instance.py:703
 msgid "Launch instance with this policy profile"
 msgstr "Lanzar instancia con este perfil de política"
 
-#: dashboards/project/instances/workflows/create_instance.py:788
+#: dashboards/project/instances/workflows/create_instance.py:767
 msgid ""
 "Automatic: The entire disk is a single partition and automatically resizes. "
 "Manual: Results in faster build times but requires manual partitioning."
 msgstr "Automático: El disco es una única partición que se redimensiona automáticamente. Manual: Tiempos de creacion más rápidos pero requiere particionado manual."
 
-#: dashboards/project/instances/workflows/create_instance.py:792
+#: dashboards/project/instances/workflows/create_instance.py:771
 msgid "Configuration Drive"
 msgstr "Disco de configuración"
 
-#: dashboards/project/instances/workflows/create_instance.py:793
+#: dashboards/project/instances/workflows/create_instance.py:772
 msgid ""
 "Configure OpenStack to write metadata to a special configuration drive that "
 "attaches to the instance when it boots."
 msgstr "Configura OpenStack para escribir metadatos en un disco de configuración que se anexa a la instancia en el arranque."
 
-#: dashboards/project/instances/workflows/create_instance.py:819
+#: dashboards/project/instances/workflows/create_instance.py:798
 msgid "Advanced Options"
 msgstr "Opciones avanzadas"
 
-#: dashboards/project/instances/workflows/create_instance.py:857
+#: dashboards/project/instances/workflows/create_instance.py:836
 #, python-format
 msgid "%s instances"
 msgstr "instancias %s"
 
-#: dashboards/project/instances/workflows/create_instance.py:941
+#: dashboards/project/instances/workflows/create_instance.py:920
 #, python-format
 msgid "Unable to create port for profile \"%(profile_id)s\": %(reason)s"
 msgstr ""
 
-#: dashboards/project/instances/workflows/create_instance.py:951
+#: dashboards/project/instances/workflows/create_instance.py:930
 #, python-format
 msgid " Also failed to delete port %s"
 msgstr ""
@@ -13004,35 +13059,41 @@ msgstr "Editar enrutador"
 msgid "Set Gateway"
 msgstr "Establecer puerta de enlace"
 
-#: dashboards/project/routers/tables.py:131
+#: dashboards/project/routers/tables.py:128
+msgid ""
+"You may reset the gateway later by using the set gateway action, but the "
+"gateway IP may change."
+msgstr ""
+
+#: dashboards/project/routers/tables.py:134
 msgid "Clear Gateway"
 msgid_plural "Clear Gateways"
 msgstr[0] ""
 msgstr[1] "Borrar puertas de enlace"
 
-#: dashboards/project/routers/tables.py:139
+#: dashboards/project/routers/tables.py:142
 msgid "Cleared Gateway"
 msgid_plural "Cleared Gateways"
 msgstr[0] ""
 msgstr[1] "Puertas de enlace borradas"
 
-#: dashboards/project/routers/tables.py:155
+#: dashboards/project/routers/tables.py:158
 #, python-format
 msgid "Unable to clear gateway for router \"%(name)s\": \"%(msg)s\""
 msgstr "No ha sido posible borrar la puerta de enlace del router \"%(name)s\": \"%(msg)s\""
 
-#: dashboards/project/routers/tables.py:197
+#: dashboards/project/routers/tables.py:200
 msgctxt "current status of router"
 msgid "Active"
 msgstr "Activo"
 
-#: dashboards/project/routers/tables.py:198
+#: dashboards/project/routers/tables.py:201
 msgctxt "current status of router"
 msgid "Error"
 msgstr "Error"
 
 #. Translators: High Availability mode of Neutron router
-#: dashboards/project/routers/tables.py:214
+#: dashboards/project/routers/tables.py:217
 msgid "HA mode"
 msgstr "Modo HA"
 
@@ -13174,10 +13235,6 @@ msgstr "No se ha podido agregar la interfaz: %s"
 #, python-format
 msgid "Failed to delete port %s"
 msgstr "Ha ocurrido un fallo al eliminar el puerto %s"
-
-#: dashboards/project/routers/ports/forms.py:176
-msgid "No networks available"
-msgstr "No hay redes disponibles"
 
 #: dashboards/project/routers/ports/forms.py:184
 msgid "Gateway interface is added"
@@ -13353,156 +13410,156 @@ msgid ""
 "a gateway for external connectivity."
 msgstr "Puede conectar una red exterior concreta al encaminador. Se considera la red exterior como la ruta por defecto del encaminador que actúa como puerta de enlace para la conexión exterior."
 
-#: dashboards/project/stacks/forms.py:52 dashboards/project/stacks/views.py:91
+#: dashboards/project/stacks/forms.py:56 dashboards/project/stacks/views.py:91
 #: dashboards/project/stacks/templates/stacks/_change_template.html:9
 #: dashboards/project/stacks/templates/stacks/_select_template.html:9
 #: dashboards/project/stacks/templates/stacks/select_template.html:3
 msgid "Select Template"
 msgstr "Seleccionar plantilla"
 
-#: dashboards/project/stacks/forms.py:53
+#: dashboards/project/stacks/forms.py:57
 msgid "Select a template to launch a stack."
 msgstr "Selecciona una plantilla para lanzar una pila."
 
-#: dashboards/project/stacks/forms.py:61
+#: dashboards/project/stacks/forms.py:65
 msgid "Template Source"
 msgstr "Origen de la plantilla"
 
-#: dashboards/project/stacks/forms.py:68 dashboards/project/stacks/forms.py:70
+#: dashboards/project/stacks/forms.py:72 dashboards/project/stacks/forms.py:74
 msgid "Template File"
 msgstr "Fichero de plantilla"
 
-#: dashboards/project/stacks/forms.py:71
+#: dashboards/project/stacks/forms.py:75
 msgid "A local template to upload."
 msgstr "Plantilla local a cargar."
 
-#: dashboards/project/stacks/forms.py:78 dashboards/project/stacks/forms.py:80
+#: dashboards/project/stacks/forms.py:82 dashboards/project/stacks/forms.py:84
 msgid "Template URL"
 msgstr "URL de plantilla"
 
-#: dashboards/project/stacks/forms.py:81
+#: dashboards/project/stacks/forms.py:85
 msgid "An external (HTTP) URL to load the template from."
 msgstr "Una URL externa (HTTP) a cargar desde la plantilla."
 
-#: dashboards/project/stacks/forms.py:88 dashboards/project/stacks/forms.py:90
+#: dashboards/project/stacks/forms.py:92 dashboards/project/stacks/forms.py:94
 msgid "Template Data"
 msgstr "Plantilla de datos"
 
-#: dashboards/project/stacks/forms.py:91
+#: dashboards/project/stacks/forms.py:95
 msgid "The raw contents of the template."
 msgstr "El contenido en bruto de la plantilla"
 
-#: dashboards/project/stacks/forms.py:97
+#: dashboards/project/stacks/forms.py:101
 msgid "Environment Source"
 msgstr "Fuente de Entorno"
 
-#: dashboards/project/stacks/forms.py:105
-#: dashboards/project/stacks/forms.py:107
+#: dashboards/project/stacks/forms.py:109
+#: dashboards/project/stacks/forms.py:111
 msgid "Environment File"
 msgstr "Archivo de Entorno"
 
-#: dashboards/project/stacks/forms.py:108
+#: dashboards/project/stacks/forms.py:112
 msgid "A local environment to upload."
 msgstr "Entorno local a cargar"
 
-#: dashboards/project/stacks/forms.py:115
-#: dashboards/project/stacks/forms.py:117
+#: dashboards/project/stacks/forms.py:119
+#: dashboards/project/stacks/forms.py:121
 msgid "Environment Data"
 msgstr "Datos de Entorno"
 
-#: dashboards/project/stacks/forms.py:118
+#: dashboards/project/stacks/forms.py:122
 msgid "The raw contents of the environment file."
 msgstr "Los contenidos planos de el archivo de entorno."
 
-#: dashboards/project/stacks/forms.py:130
+#: dashboards/project/stacks/forms.py:134
 msgid "template"
 msgstr "plantilla"
 
-#: dashboards/project/stacks/forms.py:132
+#: dashboards/project/stacks/forms.py:135
 msgid "environment"
 msgstr "Entorno"
 
-#: dashboards/project/stacks/forms.py:195
+#: dashboards/project/stacks/forms.py:197
 #, python-format
 msgid "Please specify a %s using only one source method."
 msgstr "Por favor especifique una %s utilizando solo un método origen"
 
-#: dashboards/project/stacks/forms.py:202
+#: dashboards/project/stacks/forms.py:204
 msgid "You must specify a template via one of the available sources."
 msgstr "Debe especificar una plantilla mediante una de los orígenes disponibles."
 
-#: dashboards/project/stacks/forms.py:227
+#: dashboards/project/stacks/forms.py:229
 msgid "Edit Template"
 msgstr "Editar plantilla"
 
-#: dashboards/project/stacks/forms.py:228
+#: dashboards/project/stacks/forms.py:230
 msgid "Select a new template to re-launch a stack."
 msgstr "Seleccione una nueva plantilla para relanzar una pila."
 
-#: dashboards/project/stacks/forms.py:230
-#: dashboards/project/stacks/forms.py:379
+#: dashboards/project/stacks/forms.py:231
+#: dashboards/project/stacks/forms.py:396
 msgid "Stack ID"
 msgstr "ID de pila"
 
 #: dashboards/project/stacks/forms.py:233
-#: dashboards/project/stacks/forms.py:257
-#: dashboards/project/stacks/forms.py:382
+#: dashboards/project/stacks/forms.py:258
+#: dashboards/project/stacks/forms.py:399
 #: dashboards/project/stacks/tables.py:251
 msgid "Stack Name"
 msgstr "Nombre de la pila"
 
-#: dashboards/project/stacks/forms.py:242
+#: dashboards/project/stacks/forms.py:243
 msgid "Create Stack"
 msgstr "Crear pila"
 
-#: dashboards/project/stacks/forms.py:258
+#: dashboards/project/stacks/forms.py:259
 msgid "Name of the stack to create."
 msgstr "Nombre de la pila a crear."
 
-#: dashboards/project/stacks/forms.py:261
+#: dashboards/project/stacks/forms.py:262
 msgid ""
 "Name must start with a letter and may only contain letters, numbers, "
 "underscores, periods and hyphens."
 msgstr "El nombre debe comenzar con una letra y sólo puede incluir letras, números, guiones bajos, puntos y guiones."
 
-#: dashboards/project/stacks/forms.py:266
+#: dashboards/project/stacks/forms.py:267
 msgid "Creation Timeout (minutes)"
 msgstr "Tiempo de espera de creación (minutos)"
 
-#: dashboards/project/stacks/forms.py:267
+#: dashboards/project/stacks/forms.py:268
 msgid "Stack creation timeout in minutes."
 msgstr "Tiempo de espera de la creación de la pila en minutos."
 
-#: dashboards/project/stacks/forms.py:269
+#: dashboards/project/stacks/forms.py:270
 msgid "Rollback On Failure"
 msgstr "Restauración tras fallo"
 
-#: dashboards/project/stacks/forms.py:270
+#: dashboards/project/stacks/forms.py:271
 msgid "Enable rollback on create/update failure."
 msgstr "Habilitar restauración tras fallo de creación/actualización."
 
-#: dashboards/project/stacks/forms.py:283
+#: dashboards/project/stacks/forms.py:284
 #, python-format
 msgid "Password for user \"%s\""
 msgstr "Contraseña para usuario \"%s\""
 
-#: dashboards/project/stacks/forms.py:284
+#: dashboards/project/stacks/forms.py:285
 msgid ""
 "This is required for operations to be performed throughout the lifecycle of "
 "the stack"
 msgstr "Esto es indispensable para operaciones que se ejecuten durante el ciclo de vida de la pila."
 
-#: dashboards/project/stacks/forms.py:367
+#: dashboards/project/stacks/forms.py:373
 msgid "Stack creation started."
 msgstr "Se ha iniciado la creación de pila."
 
-#: dashboards/project/stacks/forms.py:376
+#: dashboards/project/stacks/forms.py:393
 #: dashboards/project/stacks/templates/stacks/_update.html:8
 #: dashboards/project/stacks/templates/stacks/update.html:3
 msgid "Update Stack Parameters"
 msgstr "Actualizar parámetros de la pila"
 
-#: dashboards/project/stacks/forms.py:411
+#: dashboards/project/stacks/forms.py:428
 msgid "Stack update started."
 msgstr "Comenzado actualización de la pila"
 
@@ -14188,7 +14245,7 @@ msgid "Volume Overview"
 msgstr "Vista general de volúmenes"
 
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:35
-#: dashboards/project/volumes/volumes/tables.py:503
+#: dashboards/project/volumes/volumes/tables.py:506
 msgid "Attachments"
 msgstr "Asociaciones"
 
@@ -14205,7 +14262,7 @@ msgid "Not attached"
 msgstr "No asociado"
 
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:55
-#: dashboards/project/volumes/volumes/forms.py:83
+#: dashboards/project/volumes/volumes/forms.py:85
 msgid "Volume Source"
 msgstr "Origen del volumen"
 
@@ -14395,294 +14452,294 @@ msgstr ""
 msgid "Volume Transfer Details"
 msgstr ""
 
-#: dashboards/project/volumes/volumes/forms.py:53
+#: dashboards/project/volumes/volumes/forms.py:55
 msgid "Unable to determine if availability zones extension is supported."
 msgstr "No ha sido posible determinar si la extensión de zonas de disponibilidad está soportada."
 
-#: dashboards/project/volumes/volumes/forms.py:89
+#: dashboards/project/volumes/volumes/forms.py:91
 msgid "Use snapshot as a source"
 msgstr "Utilizar una instantánea como origen"
 
-#: dashboards/project/volumes/volumes/forms.py:96
+#: dashboards/project/volumes/volumes/forms.py:98
 msgid "Use image as a source"
 msgstr "Utilizar una imagen como origen"
 
-#: dashboards/project/volumes/volumes/forms.py:103
+#: dashboards/project/volumes/volumes/forms.py:105
 msgid "Use a volume as source"
 msgstr "Usar un volumen como origen"
 
-#: dashboards/project/volumes/volumes/forms.py:118
+#: dashboards/project/volumes/volumes/forms.py:120
 msgid "Size (GB)"
 msgstr "Tamaño (GB)"
 
-#: dashboards/project/volumes/volumes/forms.py:144
+#: dashboards/project/volumes/volumes/forms.py:146
 #, python-format
 msgid "Volume size must be equal to or greater than the snapshot size (%sGB)"
 msgstr "El tamaño del volumen debe ser igual o mayor que el de la instancia (%sGB)"
 
-#: dashboards/project/volumes/volumes/forms.py:152
+#: dashboards/project/volumes/volumes/forms.py:154
 msgid "Unable to load the specified snapshot."
 msgstr "No ha sido posible cargar la instantánea especificada."
 
-#: dashboards/project/volumes/volumes/forms.py:164
+#: dashboards/project/volumes/volumes/forms.py:166
 #, python-format
 msgid "Volume size must be equal to or greater than the image size (%s)"
 msgstr "El tamaño del volumen debe ser igual o mayor que el de la imagen (%s)"
 
-#: dashboards/project/volumes/volumes/forms.py:172
+#: dashboards/project/volumes/volumes/forms.py:174
 #, python-format
 msgid ""
 "Volume size must be equal to or greater than the image minimum disk size "
 "(%sGB)"
 msgstr "El tamaño del volumen debe ser igual o mayor que el tamaño de disco mínimo de la imagen (%sGB)"
 
-#: dashboards/project/volumes/volumes/forms.py:183
+#: dashboards/project/volumes/volumes/forms.py:185
 #, python-format
 msgid "Unable to load the specified image. %s"
 msgstr "No ha sido posible cargar la imagen especificada. %s"
 
-#: dashboards/project/volumes/volumes/forms.py:193
+#: dashboards/project/volumes/volumes/forms.py:195
 #, python-format
 msgid "Unable to load the specified volume. %s"
 msgstr "No ha sido posible cargar el volumen especificado. %s"
 
-#: dashboards/project/volumes/volumes/forms.py:200
+#: dashboards/project/volumes/volumes/forms.py:202
 #, python-format
 msgid ""
 "Volume size must be equal to or greater than the origin volume size (%s)"
 msgstr "El tamaño del volumen debe ser igual o mayor que el tamaño original (%s)"
 
-#: dashboards/project/volumes/volumes/forms.py:223
+#: dashboards/project/volumes/volumes/forms.py:225
 msgid "Choose a snapshot"
 msgstr "Seleccione una instantánea"
 
-#: dashboards/project/volumes/volumes/forms.py:236
+#: dashboards/project/volumes/volumes/forms.py:238
 msgid "Choose an image"
 msgstr "Seleccione una imagen"
 
-#: dashboards/project/volumes/volumes/forms.py:248
+#: dashboards/project/volumes/volumes/forms.py:250
 msgid "Choose a volume"
 msgstr "Seleccione un volumen"
 
-#: dashboards/project/volumes/volumes/forms.py:257
+#: dashboards/project/volumes/volumes/forms.py:259
 msgid "No source, empty volume"
 msgstr "Sin origen, volumen vacío"
 
-#: dashboards/project/volumes/volumes/forms.py:284
+#: dashboards/project/volumes/volumes/forms.py:286
 msgid "Image source must be specified"
 msgstr "El recurso de la imagen debe ser especificado"
 
-#: dashboards/project/volumes/volumes/forms.py:288
+#: dashboards/project/volumes/volumes/forms.py:290
 msgid "Snapshot source must be specified"
 msgstr "El recurso de la instantánea debe ser especificado"
 
-#: dashboards/project/volumes/volumes/forms.py:292
+#: dashboards/project/volumes/volumes/forms.py:294
 msgid "Volume source must be specified"
 msgstr "El recurso del volumen debe ser especificado"
 
-#: dashboards/project/volumes/volumes/forms.py:326
+#: dashboards/project/volumes/volumes/forms.py:328
 #, python-format
 msgid "The volume size cannot be less than the snapshot size (%sGB)"
 msgstr "El tamaño del volumen no puede ser inferior al tamaño de la instantánea (%s GB)"
 
-#: dashboards/project/volumes/volumes/forms.py:339
+#: dashboards/project/volumes/volumes/forms.py:341
 #, python-format
 msgid "The volume size cannot be less than the image size (%s)"
 msgstr "El tamaño del volumen no puede ser inferior al tamaño de la imagen (%s)"
 
-#: dashboards/project/volumes/volumes/forms.py:347
+#: dashboards/project/volumes/volumes/forms.py:349
 #, python-format
 msgid "The volume size cannot be less than the image minimum disk size (%sGB)"
 msgstr "El tamaño del volumen no puede ser menor que el tamaño mínimo de disco de la imagen (%sGB)"
 
-#: dashboards/project/volumes/volumes/forms.py:358
+#: dashboards/project/volumes/volumes/forms.py:360
 #, python-format
 msgid "The volume size cannot be less than the source volume size (%sGB)"
 msgstr "El tamaño del volumen no puede ser menor que el tamaño del volumen original (%sGB)"
 
-#: dashboards/project/volumes/volumes/forms.py:367
+#: dashboards/project/volumes/volumes/forms.py:369
 #, python-format
 msgid ""
 "A volume of %(req)iGB cannot be created as you only have %(avail)iGB of your"
 " quota available."
 msgstr "No se puede crear un volumen de %(req)iGB porque solo quedan %(avail)iGB de su cuota."
 
-#: dashboards/project/volumes/volumes/forms.py:374
+#: dashboards/project/volumes/volumes/forms.py:376
 msgid "You are already using all of your available volumes."
 msgstr "Ya está utilizando todos los volúmenes disponibles."
 
-#: dashboards/project/volumes/volumes/forms.py:390
+#: dashboards/project/volumes/volumes/forms.py:392
 #, python-format
 msgid "Creating volume \"%s\""
 msgstr "Creando volumen \"%s\""
 
-#: dashboards/project/volumes/volumes/forms.py:398
+#: dashboards/project/volumes/volumes/forms.py:400
 msgid "Unable to create volume."
 msgstr "No ha sido posible crear el volumen."
 
-#: dashboards/project/volumes/volumes/forms.py:415
+#: dashboards/project/volumes/volumes/forms.py:417
 msgid "Attach to Instance"
 msgstr "Asociar a instancia"
 
-#: dashboards/project/volumes/volumes/forms.py:416
+#: dashboards/project/volumes/volumes/forms.py:418
 msgid "Select an instance to attach to."
 msgstr "Seleccionar una instancia a la que asociar."
 
-#: dashboards/project/volumes/volumes/forms.py:423
+#: dashboards/project/volumes/volumes/forms.py:425
 msgid ""
 "Actual device name may differ due to hypervisor settings. If not specified, "
 "then hypervisor will select a device name."
 msgstr "El nombre del dispositivo actual puede ser diferente debido a la configuración del hipervisor. En caso de no ser especificado, el hipervisor seleccionará un nombre para el dispositivo."
 
-#: dashboards/project/volumes/volumes/forms.py:462
+#: dashboards/project/volumes/volumes/forms.py:464
 msgid "Unknown instance (None)"
 msgstr "Instancia desconocida (Ninguna)"
 
-#: dashboards/project/volumes/volumes/forms.py:472
+#: dashboards/project/volumes/volumes/forms.py:474
 #, python-format
 msgid "Attaching volume %(vol)s to instance %(inst)s on %(dev)s."
 msgstr "Asociando el volumen %(vol)s a la instancia %(inst)s en %(dev)s"
 
-#: dashboards/project/volumes/volumes/forms.py:481
+#: dashboards/project/volumes/volumes/forms.py:483
 msgid "Unable to attach volume."
 msgstr "No ha sido posible asociar el volumen."
 
-#: dashboards/project/volumes/volumes/forms.py:505
+#: dashboards/project/volumes/volumes/forms.py:507
 #, python-format
 msgid "Creating volume snapshot \"%s\"."
 msgstr "Creando instantánea de volumen \"%s\"."
 
-#: dashboards/project/volumes/volumes/forms.py:508
+#: dashboards/project/volumes/volumes/forms.py:510
 #, python-format
 msgid "Forcing to create snapshot \"%s\" from attached volume."
 msgstr "Forzando la creación de la instantánea \"%s\" desde volumen asociado."
 
-#: dashboards/project/volumes/volumes/forms.py:520
+#: dashboards/project/volumes/volumes/forms.py:522
 msgid "Unable to create volume snapshot."
 msgstr "No ha sido posible crear la instantánea del volumen."
 
-#: dashboards/project/volumes/volumes/forms.py:522
+#: dashboards/project/volumes/volumes/forms.py:524
 msgid "Requested snapshot would exceed the allowed quota."
 msgstr ""
 
-#: dashboards/project/volumes/volumes/forms.py:529
-#: dashboards/project/volumes/volumes/forms.py:571
+#: dashboards/project/volumes/volumes/forms.py:531
+#: dashboards/project/volumes/volumes/forms.py:573
 msgid "Transfer Name"
 msgstr ""
 
-#: dashboards/project/volumes/volumes/forms.py:538
+#: dashboards/project/volumes/volumes/forms.py:540
 #, python-format
 msgid "Created volume transfer: \"%s\"."
 msgstr ""
 
-#: dashboards/project/volumes/volumes/forms.py:540
+#: dashboards/project/volumes/volumes/forms.py:542
 msgid "Created volume transfer."
 msgstr ""
 
-#: dashboards/project/volumes/volumes/forms.py:547
+#: dashboards/project/volumes/volumes/forms.py:549
 msgid "Unable to create volume transfer."
 msgstr ""
 
-#: dashboards/project/volumes/volumes/forms.py:552
-#: dashboards/project/volumes/volumes/forms.py:575
+#: dashboards/project/volumes/volumes/forms.py:554
+#: dashboards/project/volumes/volumes/forms.py:577
 msgid "Transfer ID"
 msgstr ""
 
-#: dashboards/project/volumes/volumes/forms.py:553
-#: dashboards/project/volumes/volumes/forms.py:579
+#: dashboards/project/volumes/volumes/forms.py:555
+#: dashboards/project/volumes/volumes/forms.py:581
 msgid "Authorization Key"
 msgstr ""
 
-#: dashboards/project/volumes/volumes/forms.py:561
+#: dashboards/project/volumes/volumes/forms.py:563
 #, python-format
 msgid "Successfully accepted volume transfer: \"%s\""
 msgstr ""
 
-#: dashboards/project/volumes/volumes/forms.py:566
+#: dashboards/project/volumes/volumes/forms.py:568
 msgid "Unable to accept volume transfer."
 msgstr ""
 
-#: dashboards/project/volumes/volumes/forms.py:597
+#: dashboards/project/volumes/volumes/forms.py:599
 msgid "Specifies that the volume can be used to launch an instance"
 msgstr ""
 
-#: dashboards/project/volumes/volumes/forms.py:608
+#: dashboards/project/volumes/volumes/forms.py:610
 msgid "Unable to update volume."
 msgstr "No ha sido posible modificar el volumen."
 
-#: dashboards/project/volumes/volumes/forms.py:619
+#: dashboards/project/volumes/volumes/forms.py:621
 msgid "Unable to set bootable flag on volume."
 msgstr ""
 
-#: dashboards/project/volumes/volumes/forms.py:622
+#: dashboards/project/volumes/volumes/forms.py:624
 #, python-format
 msgid "Updating volume \"%s\""
 msgstr "Modificando volumen \"%s\""
 
-#: dashboards/project/volumes/volumes/forms.py:637
+#: dashboards/project/volumes/volumes/forms.py:639
 msgctxt "Force upload volume in in-use status to image"
 msgid "Force"
 msgstr "Forzar"
 
-#: dashboards/project/volumes/volumes/forms.py:672
+#: dashboards/project/volumes/volumes/forms.py:674
 #, python-format
 msgid "Successfully sent the request to upload volume to image for volume: \"%s\""
 msgstr "Se ha enviado correctamente la petición para cargar el volumen a la imagen para el volumen: \"%s\""
 
-#: dashboards/project/volumes/volumes/forms.py:679
+#: dashboards/project/volumes/volumes/forms.py:681
 #, python-format
 msgid "Unable to upload volume to image for volume: \"%s\""
 msgstr "No ha sido posible cargar el volumen a la imagen para el volumen: \"%s\""
 
-#: dashboards/project/volumes/volumes/forms.py:705
+#: dashboards/project/volumes/volumes/forms.py:707
 msgid "New size must be greater than current size."
 msgstr "Nuevo tamaño debe ser mayor al actual."
 
-#: dashboards/project/volumes/volumes/forms.py:711
+#: dashboards/project/volumes/volumes/forms.py:713
 #, python-format
 msgid ""
 "Volume cannot be extended to %(req)iGB as you only have %(avail)iGB of your "
 "quota available."
 msgstr "El volumen no se puede extender a %(req)iGB ya que solo dispones de %(avail)iGB en tu cuota"
 
-#: dashboards/project/volumes/volumes/forms.py:725
+#: dashboards/project/volumes/volumes/forms.py:727
 #, python-format
 msgid "Extending volume: \"%s\""
 msgstr "Extendiendo volumen: \"%s\""
 
-#: dashboards/project/volumes/volumes/forms.py:731
+#: dashboards/project/volumes/volumes/forms.py:733
 msgid "Unable to extend volume."
 msgstr "No ha sido posible extender el volumen."
 
-#: dashboards/project/volumes/volumes/forms.py:740
+#: dashboards/project/volumes/volumes/forms.py:742
 msgid "Never"
 msgstr "Nunca"
 
-#: dashboards/project/volumes/volumes/forms.py:741
+#: dashboards/project/volumes/volumes/forms.py:743
 msgid "On Demand"
 msgstr "Bajo demanda"
 
-#: dashboards/project/volumes/volumes/forms.py:742
+#: dashboards/project/volumes/volumes/forms.py:744
 msgid "Migration Policy"
 msgstr "Política de migración"
 
-#: dashboards/project/volumes/volumes/forms.py:759
+#: dashboards/project/volumes/volumes/forms.py:761
 msgid "Unable to retrieve the volume type list."
 msgstr "No ha sido posible obtener el listado de tipos de volumen."
 
-#: dashboards/project/volumes/volumes/forms.py:768
+#: dashboards/project/volumes/volumes/forms.py:770
 #, python-format
 msgid "New volume type must be different from the original volume type \"%s\"."
 msgstr "El nuevo tipo de volumen debe ser distinto al tipo de volumen original \"%s\"."
 
-#: dashboards/project/volumes/volumes/forms.py:784
+#: dashboards/project/volumes/volumes/forms.py:786
 #, python-format
 msgid ""
 "Successfully sent the request to change the volume type to \"%(vtype)s\" for"
 " volume: \"%(name)s\""
 msgstr "Se ha enviado correctamente la petición de cambio de tipo de volument a \"%(vtype)s\" para el volumen \"%(name)s\""
 
-#: dashboards/project/volumes/volumes/forms.py:793
+#: dashboards/project/volumes/volumes/forms.py:795
 #, python-format
 msgid "Unable to change the volume type for volume: \"%s\""
 msgstr "No ha sido posible cambiar el tipo de volumen para el volumen: \"%s\""
@@ -14787,23 +14844,29 @@ msgstr ""
 msgid "Encrypted"
 msgstr "Cifrado"
 
-#: dashboards/project/volumes/volumes/tables.py:447
+#: dashboards/project/volumes/volumes/tables.py:443
+msgid ""
+"The data will remain in the volume and another instance will be able to "
+"access the data if you attach this volume to it."
+msgstr ""
+
+#: dashboards/project/volumes/volumes/tables.py:450
 msgid "Detach Volume"
 msgid_plural "Detach Volumes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/volumes/volumes/tables.py:456
+#: dashboards/project/volumes/volumes/tables.py:459
 msgid "Detaching Volume"
 msgid_plural "Detaching Volumes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: dashboards/project/volumes/volumes/tables.py:484
+#: dashboards/project/volumes/volumes/tables.py:487
 msgid "Device"
 msgstr "Dispositivo"
 
-#: dashboards/project/volumes/volumes/tables.py:493
+#: dashboards/project/volumes/volumes/tables.py:496
 #, python-format
 msgid "Volume %(volume_name)s on instance %(instance_name)s"
 msgstr "Volumen %(volume_name)s en instancia %(instance_name)s"

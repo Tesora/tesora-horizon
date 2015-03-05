@@ -117,6 +117,12 @@ class APIResourceWrapper(object):
                                   for attr in self._attrs
                                   if hasattr(self, attr)))
 
+    def to_dict(self):
+        obj = {}
+        for key in self._attrs:
+            obj[key] = getattr(self._apiresource, key, None)
+        return obj
+
 
 class APIDictWrapper(object):
     """Simple wrapper for api dictionaries
@@ -163,6 +169,9 @@ class APIDictWrapper(object):
 
     def __repr__(self):
         return "<%s: %s>" % (self.__class__.__name__, self._apidict)
+
+    def to_dict(self):
+        return self._apidict
 
 
 class Quota(object):
