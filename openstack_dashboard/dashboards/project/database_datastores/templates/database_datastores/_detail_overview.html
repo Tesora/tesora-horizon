@@ -1,0 +1,20 @@
+{% load i18n sizeformat %}
+{% load url from future %}
+
+<div class="status row detail">
+  <h4>{% trans "Information" %}</h4>
+  <hr class="header_rule">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Name" %}</dt>
+    <dd>{{ datastore.name }}</dd>
+    <dt>{% trans "ID" %}</dt>
+    <dd>{{ datastore.id }}</dd>
+
+    {% if datastore.default_version %}
+      <dt>{% trans "Default version" %}</dt>
+      <dd>{{ datastore.default_version_name }}</dd>
+      <dt>{% trans "Default version ID" %}</dt>
+      <dd>{{ datastore.default_version }}</dd>
+    {% endif %}
+  </dl>
+</div>

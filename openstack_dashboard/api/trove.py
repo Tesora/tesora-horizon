@@ -220,8 +220,12 @@ def datastore_list(request):
     return troveclient(request).datastores.list()
 
 
-def datastore_version_list(request, datastore):
-    return troveclient(request).datastore_versions.list(datastore)
+def datastore_version_list(request, datastore_id):
+    return troveclient(request).datastore_versions.list(datastore_id)
+
+
+def datastore_get(request, datastore_id):
+    return troveclient(request).datastores.get(datastore_id)
 
 
 def configuration_list(request):

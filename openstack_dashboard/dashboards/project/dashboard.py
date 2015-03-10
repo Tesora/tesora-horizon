@@ -56,6 +56,7 @@ class DatabasePanels(horizon.PanelGroup):
     name = _("Database")
     panels = ('databases',
               'database_backups',
+              'database_datastores',
               'database_configurations',)
 
 
