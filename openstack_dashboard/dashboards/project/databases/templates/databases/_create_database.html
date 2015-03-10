@@ -1,0 +1,27 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block form_id %}create_database_form{% endblock %}
+{% block form_action %}{% url "horizon:project:databases:create_database" instance_id %}{% endblock %}
+
+{% block modal_id %}create_database_modal{% endblock %}
+{% block modal-header %}{% trans "Create Database" %}{% endblock %}
+
+{% block modal-body %}
+<div class="left">
+  <fieldset>
+  {% include "horizon/common/_form_fields.html" %}
+  </fieldset>
+</div>
+<div class="right">
+  <p>{% blocktrans %}Specify the name of the new database.{% endblocktrans %}</p>
+  <p>{% blocktrans %}Optionally provide a character set and collation for the database.{% endblocktrans %}</p>
+</div>
+{% endblock %}
+
+{% block modal-footer %}
+  <input class="btn btn-primary pull-right" type="submit" value="{% trans "Create Database" %}" />
+  <a href="{% url "horizon:project:databases:index" %}" class="btn btn-default secondary cancel close">{% trans "Cancel" %}</a>
+{% endblock %}
+

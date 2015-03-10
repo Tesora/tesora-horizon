@@ -22,6 +22,33 @@ from horizon import messages
 from openstack_dashboard import api
 
 
+class CreateDatabaseForm(forms.SelfHandlingForm):
+    instance_id = forms.CharField(widget=forms.HiddenInput())
+    name = forms.CharField(max_length=80, label=_("Name"))
+    character_set = forms.CharField(
+        max_length=80, label=_("Character Set"), required=False,
+        help_text=_("Optional character set for the database."))
+    collation = forms.CharField(
+        max_length=80, label=_("Collation"), required=False,
+        help_text=_("Optional collation type for the database."))
+
+    def handle(self, request, data):
+        instance = data.get('instance_id')
+        try:
+            api.trove.database_create(request, instance, data['name'],
+                                      data['character_set'],
+                                      data['collation'])
+
+            messages.success(request,
+                             _('Created database "%s"') % data['name'])
+        except Exception as e:
+            redirect = reverse("horizon:project:databases:detail",
+                               args=(instance,))
+            exceptions.handle(request, _('Unable to create database. %s') %
+                              e.message, redirect=redirect)
+        return True
+
+
 class ResizeVolumeForm(forms.SelfHandlingForm):
     instance_id = forms.CharField(widget=forms.HiddenInput())
     orig_size = forms.IntegerField(

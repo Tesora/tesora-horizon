@@ -28,6 +28,8 @@ urlpatterns = patterns(
         name='launch'),
     url(INSTANCES % '', views.DetailView.as_view(),
         name='detail'),
+    url(INSTANCES % 'create_database', views.CreateDatabaseView.as_view(),
+        name='create_database'),
     url(INSTANCES % 'resize_volume', views.ResizeVolumeView.as_view(),
         name='resize_volume'),
     url(INSTANCES % 'resize_instance', views.ResizeInstanceView.as_view(),

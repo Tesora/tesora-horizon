@@ -167,6 +167,25 @@ class DetailView(horizon_tabs.TabbedTableView):
         return reverse('horizon:project:databases:index')
 
 
+class CreateDatabaseView(horizon_forms.ModalFormView):
+    form_class = forms.CreateDatabaseForm
+    template_name = 'project/databases/create_database.html'
+    success_url = 'horizon:project:databases:detail'
+
+    def get_success_url(self):
+        return reverse(self.success_url,
+                       args=(self.kwargs['instance_id'],))
+
+    def get_context_data(self, **kwargs):
+        context = super(CreateDatabaseView, self).get_context_data(**kwargs)
+        context['instance_id'] = self.kwargs['instance_id']
+        return context
+
+    def get_initial(self):
+        instance_id = self.kwargs['instance_id']
+        return {'instance_id': instance_id}
+
+
 class ResizeVolumeView(horizon_forms.ModalFormView):
     form_class = forms.ResizeVolumeForm
     template_name = 'project/databases/resize_volume.html'
