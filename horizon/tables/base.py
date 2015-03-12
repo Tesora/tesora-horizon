@@ -234,6 +234,15 @@ class Column(html.HTMLElement):
         ``link_attrs={"target": "_blank", "class": "link-foo link-bar"}``.
         Defaults to ``None``.
 
+    .. attribute:: permissions
+
+        A list of permission names which this column requires in order to be
+        processed and displayed. ``None`` or an empty list (``[]``) mean no
+        restrictions.
+        Example:
+        ``permissions=['openstack.roles.admin']``.
+        Defaults to ``None``.
+
     .. attribute:: help_text
 
         A string of simple help text displayed in a tooltip when you hover
@@ -273,7 +282,7 @@ class Column(html.HTMLElement):
                  empty_value=None, filters=None, classes=None, summation=None,
                  auto=None, truncate=None, link_classes=None, wrap_list=False,
                  form_field=None, form_field_attributes=None,
-                 update_action=None, link_attrs=None,
+                 update_action=None, link_attrs=None, permissions=None,
                  cell_attributes_getter=None, help_text=None):
 
         self.classes = list(classes or getattr(self, "classes", []))
@@ -310,6 +319,7 @@ class Column(html.HTMLElement):
         self.form_field_attributes = form_field_attributes or {}
         self.update_action = update_action
         self.link_attrs = link_attrs or {}
+        self.permissions = permissions or []
         self.help_text = help_text
         if link_classes:
             self.link_attrs['class'] = ' '.join(link_classes)
@@ -1158,10 +1168,12 @@ class DataTable(object):
 
         # Create a new set
         columns = []
+        user_has_perms = request.user.has_perms
         for key, _column in self._columns.items():
-            column = copy.copy(_column)
-            column.table = self
-            columns.append((key, column))
+            if user_has_perms(_column.permissions):
+                column = copy.copy(_column)
+                column.table = self
+                columns.append((key, column))
         self.columns = SortedDict(columns)
         self._populate_data_cache()
 
