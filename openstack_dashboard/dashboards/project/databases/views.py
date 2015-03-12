@@ -124,6 +124,102 @@ class AttachConfigurationView(horizon_forms.ModalFormView):
                 'orig_size': instance.volume.get('size', 0)}
 
 
+class DBAccess(object):
+    def __init__(self, name, access):
+        self.name = name
+        self.access = access
+
+
+class CreateUserView(horizon_forms.ModalFormView):
+    form_class = forms.CreateUserForm
+    template_name = 'project/databases/create_user.html'
+    success_url = 'horizon:project:databases:detail'
+
+    def get_success_url(self):
+        return reverse(self.success_url,
+                       args=(self.kwargs['instance_id'],))
+
+    def get_context_data(self, **kwargs):
+        context = super(CreateUserView, self).get_context_data(**kwargs)
+        context['instance_id'] = self.kwargs['instance_id']
+        return context
+
+    def get_initial(self):
+        instance_id = self.kwargs['instance_id']
+        return {'instance_id': instance_id}
+
+
+class EditUserView(horizon_forms.ModalFormView):
+    form_class = forms.EditUserForm
+    template_name = 'project/databases/edit_user.html'
+    success_url = 'horizon:project:databases:detail'
+
+    def get_success_url(self):
+        return reverse(self.success_url,
+                       args=(self.kwargs['instance_id'],))
+
+    def get_context_data(self, **kwargs):
+        context = super(EditUserView, self).get_context_data(**kwargs)
+        context['instance_id'] = self.kwargs['instance_id']
+        context['user_name'] = self.kwargs['user_name']
+        return context
+
+    def get_initial(self):
+        instance_id = self.kwargs['instance_id']
+        user_name = self.kwargs['user_name']
+        return {'instance_id': instance_id, 'user_name': user_name}
+
+
+class AccessDetailView(horizon_tables.DataTableView):
+    table_class = tables.AccessTable
+    template_name = 'project/databases/access_detail.html'
+    page_title = _("Database Access for: {{ user_name }}")
+
+    @memoized.memoized_method
+    def _get_data(self):
+        instance_id = self.kwargs['instance_id']
+        user_name = self.kwargs['user_name']
+        try:
+            databases = api.trove.database_list(self.request, instance_id)
+        except Exception:
+            redirect = reverse('horizon:project:databases:detail',
+                               args=[instance_id])
+            exceptions.handle(self.request,
+                              _('Unable to retrieve databases.'),
+                              redirect=redirect)
+        try:
+            granted = api.trove.user_show_access(
+                self.request, instance_id, user_name)
+        except Exception:
+            redirect = reverse('horizon:project:databases:detail',
+                               args=[instance_id])
+            exceptions.handle(self.request,
+                              _('Unable to retrieve accessible databases.'),
+                              redirect=redirect)
+
+        db_access_list = []
+        for database in databases:
+            if database in granted:
+                access = True
+            else:
+                access = False
+
+            db_access = DBAccess(database.name, access)
+            db_access_list.append(db_access)
+        return db_access_list
+
+    def get_data(self):
+        data = self._get_data()
+        if data is None:
+            return []
+        return sorted(data, key=lambda data: (data.name))
+
+    def get_context_data(self, **kwargs):
+        context = super(AccessDetailView, self).get_context_data(**kwargs)
+        context["db_access"] = self._get_data()
+        return context
+
+
 class DetailView(horizon_tabs.TabbedTableView):
     tab_group_class = tabs.InstanceDetailTabs
     template_name = 'project/databases/detail.html'

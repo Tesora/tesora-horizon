@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block title %}{% trans "Manage Database Access" %}{% endblock %}
+
+{% block main %}
+<div class="row">
+  <div class="col-sm-12">
+  {{ table.render }}
+  </div>
+</div>
+{% endblock %}
