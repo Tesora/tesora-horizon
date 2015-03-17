@@ -13,6 +13,9 @@
 #    under the License.
 
 
+_mysql_compatible_datastores = ('mysql', 'maria', 'percona')
+
+
 def can_backup(datastore):
     if is_oracle_datastore(datastore):
         return False
@@ -40,4 +43,13 @@ def require_configuration_group(datastore):
 def is_oracle_datastore(datastore):
     if (datastore is not None) and ("oracle" in datastore.lower()):
         return True
+    return False
+
+
+def is_mysql_compatible(datastore):
+    if (datastore is not None):
+        for ds in _mysql_compatible_datastores:
+            if ds in datastore.lower():
+                return True
+
     return False
