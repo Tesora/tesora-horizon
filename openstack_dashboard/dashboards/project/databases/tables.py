@@ -306,6 +306,23 @@ class DeleteUser(tables.DeleteAction):
         api.trove.user_delete(request, datum.instance.id, datum.name)
 
 
+class CreateDatabase(tables.LinkAction):
+    name = "create_database"
+    verbose_name = _("Create Database")
+    url = "horizon:project:databases:create_database"
+    classes = ("ajax-modal",)
+    icon = "plus"
+
+    def allowed(self, request, instance=None):
+        instance = self.table.kwargs['instance']
+        return (instance.status in ACTIVE_STATES and
+                request.user.has_perm('openstack.services.object-store'))
+
+    def get_link_url(self, datum=None):
+        instance_id = self.table.kwargs['instance_id']
+        return urlresolvers.reverse(self.url, args=[instance_id])
+
+
 class DeleteDatabase(tables.DeleteAction):
     @staticmethod
     def action_present(count):
@@ -576,7 +593,7 @@ class DatabaseTable(tables.DataTable):
     class Meta(object):
         name = "databases"
         verbose_name = _("Databases")
-        table_actions = [DeleteDatabase]
+        table_actions = [CreateDatabase, DeleteDatabase]
         row_actions = [DeleteDatabase]
 
     def get_object_id(self, datum):
