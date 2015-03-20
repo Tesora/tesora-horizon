@@ -160,6 +160,130 @@ class EjectReplicaSource(tables.BatchAction):
         api.trove.eject_replica_source(request, obj_id)
 
 
+class GrantAccess(tables.BatchAction):
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Grant Access",
+            u"Grant Access",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Granted Access",
+            u"Granted Access",
+            count
+        )
+
+    name = "grant_access"
+    classes = ('btn-grant-access')
+
+    def allowed(self, request, instance=None):
+        if instance and instance.access:
+            return False
+        return True
+
+    def action(self, request, obj_id):
+        instance_id = self.table.kwargs['instance_id']
+        user_name = self.table.kwargs['user_name']
+
+        api.trove.user_grant_access(
+            request, instance_id, user_name, [obj_id], None)
+
+
+class RevokeAccess(tables.BatchAction):
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Revoke Access",
+            u"Revoke Access",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Access Revoked",
+            u"Access Revoked",
+            count
+        )
+
+    name = "revoke_access"
+    classes = ('btn-revoke-access')
+
+    def allowed(self, request, instance=None):
+        if instance and not instance.access:
+            return False
+        return True
+
+    def action(self, request, obj_id):
+        instance_id = self.table.kwargs['instance_id']
+        user_name = self.table.kwargs['user_name']
+
+        api.trove.user_revoke_access(
+            request, instance_id, user_name, obj_id, None)
+
+
+class AccessTable(tables.DataTable):
+    dbname = tables.Column("name", verbose_name=_("Name"))
+    access = tables.Column("access", verbose_name=_("Access"))
+
+    class Meta(object):
+        name = "access"
+        verbose_name = _("Database Access")
+        row_actions = (GrantAccess, RevokeAccess)
+
+    def get_object_id(self, datum):
+        return datum.name
+
+
+class ManageAccess(tables.LinkAction):
+    name = "manage_access"
+    verbose_name = _("Manage Access")
+    url = "horizon:project:databases:access_detail"
+    icon = "pencil"
+
+    def get_link_url(self, datum):
+        user = datum
+        return urlresolvers.reverse(self.url, args=[user.instance.id,
+                                                    user.name])
+
+
+class CreateUser(tables.LinkAction):
+    name = "create_user"
+    verbose_name = _("Create User")
+    url = "horizon:project:databases:create_user"
+    classes = ("ajax-modal",)
+    icon = "plus"
+
+    def allowed(self, request, instance=None):
+        instance = self.table.kwargs['instance']
+        return (instance.status in ACTIVE_STATES)
+
+    def get_link_url(self, datum=None):
+        instance_id = self.table.kwargs['instance_id']
+        return urlresolvers.reverse(self.url, args=[instance_id])
+
+
+class EditUser(tables.LinkAction):
+    name = "edit_user"
+    verbose_name = _("Edit User")
+    url = "horizon:project:databases:edit_user"
+    classes = ("ajax-modal",)
+    icon = "pencil"
+
+    def allowed(self, request, instance=None):
+        instance = self.table.kwargs['instance']
+        return (instance.status in ACTIVE_STATES)
+
+    def get_link_url(self, datum):
+        user = datum
+        return urlresolvers.reverse(self.url, args=[user.instance.id,
+                                                    user.name])
+
+
 class DeleteUser(tables.DeleteAction):
     @staticmethod
     def action_present(count):
@@ -179,11 +303,7 @@ class DeleteUser(tables.DeleteAction):
 
     def delete(self, request, obj_id):
         datum = self.table.get_object_by_id(obj_id)
-        try:
-            api.trove.user_delete(request, datum.instance.id, datum.name)
-        except Exception:
-            msg = _('Error deleting database user.')
-            exceptions.handle(request, msg)
+        api.trove.user_delete(request, datum.instance.id, datum.name)
 
 
 class DeleteDatabase(tables.DeleteAction):
@@ -443,8 +563,8 @@ class UsersTable(tables.DataTable):
     class Meta(object):
         name = "users"
         verbose_name = _("Users")
-        table_actions = [DeleteUser]
-        row_actions = [DeleteUser]
+        table_actions = [CreateUser, DeleteUser]
+        row_actions = [EditUser, ManageAccess, DeleteUser]
 
     def get_object_id(self, datum):
         return datum.name

@@ -18,6 +18,7 @@ from django.conf.urls import url
 from openstack_dashboard.dashboards.project.databases import views
 
 INSTANCES = r'^(?P<instance_id>[^/]+)/%s$'
+USERS = r'^(?P<instance_id>[^/]+)/(?P<user_name>[^/]+)/%s$'
 
 
 urlpatterns = patterns(
@@ -32,6 +33,12 @@ urlpatterns = patterns(
         name='resize_volume'),
     url(INSTANCES % 'resize_instance', views.ResizeInstanceView.as_view(),
         name='resize_instance'),
+    url(INSTANCES % 'create_user', views.CreateUserView.as_view(),
+        name='create_user'),
+    url(USERS % 'edit_user', views.EditUserView.as_view(),
+        name='edit_user'),
+    url(USERS % 'access_detail', views.AccessDetailView.as_view(),
+        name='access_detail'),
     url(INSTANCES % 'attach_config', views.AttachConfigurationView.as_view(),
         name='attach_config'),
     url(INSTANCES % 'promote_to_replica_source',

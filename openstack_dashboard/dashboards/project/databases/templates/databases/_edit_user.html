@@ -1,0 +1,27 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+{% load url from future %}
+
+{% block form_id %}edit_user_form{% endblock %}
+{% block form_action %}{% url "horizon:project:databases:edit_user" instance_id user_name %}{% endblock %}
+
+{% block modal_id %}edit_user_modal{% endblock %}
+{% block modal-header %}{% trans "Edit User" %}{% endblock %}
+
+{% block modal-body %}
+<div class="left">
+  <fieldset>
+  {% include "horizon/common/_form_fields.html" %}
+  </fieldset>
+</div>
+<div class="right">
+  <p>{% blocktrans %}Specify the name of the new user, new password and new host.{% endblocktrans %}</p>
+  <p>{% blocktrans %}At least one of the name, password and host must be changed.{% endblocktrans %}</p>
+</div>
+{% endblock %}
+
+{% block modal-footer %}
+  <input class="btn btn-primary pull-right" type="submit" value="{% trans "Edit User" %}" />
+  <a href="{% url "horizon:project:databases:index" %}" class="btn btn-default secondary cancel close">{% trans "Cancel" %}</a>
+{% endblock %}
+
