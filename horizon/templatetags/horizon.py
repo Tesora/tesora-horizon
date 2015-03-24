@@ -49,6 +49,7 @@ def horizon_nav(context):
     if 'request' not in context:
         return {}
     current_dashboard = context['request'].horizon.get('dashboard', None)
+    current_panel_group = None
     current_panel = context['request'].horizon.get('panel', None)
     dashboards = []
     for dash in Horizon.get_dashboards():
@@ -63,6 +64,8 @@ def horizon_nav(context):
                 elif (not callable(panel.nav) and panel.nav and
                         panel.can_access(context)):
                     allowed_panels.append(panel)
+                if panel == current_panel:
+                    current_panel_group = group.name
             if allowed_panels:
                 non_empty_groups.append((group.name, allowed_panels))
         if (callable(dash.nav) and dash.nav(context) and
@@ -74,6 +77,7 @@ def horizon_nav(context):
     return {'components': dashboards,
             'user': context['request'].user,
             'current': current_dashboard,
+            'current_panel_group': current_panel_group,
             'current_panel': current_panel.slug if current_panel else '',
             'request': context['request']}
 
@@ -146,6 +150,16 @@ def quotainf(val, units=None):
         return "%s %s" % (val, units)
     else:
         return val
+
+
+@register.simple_tag
+def quotapercent(used, limit):
+    if used >= limit or limit == 0:
+        return 100
+    elif limit == float("inf"):
+        return 0
+    else:
+        return round((float(used) / float(limit)) * 100)
 
 
 class JSTemplateNode(template.Node):
