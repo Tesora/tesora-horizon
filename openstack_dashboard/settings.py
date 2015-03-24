@@ -21,6 +21,7 @@ import os
 import sys
 import warnings
 
+import django
 from django.utils.translation import ugettext_lazy as _
 
 from openstack_dashboard import exceptions
@@ -41,12 +42,11 @@ TEMPLATE_DEBUG = DEBUG
 
 SITE_BRANDING = 'OpenStack Dashboard'
 
-LOGIN_URL = '/auth/login/'
-LOGOUT_URL = '/auth/logout/'
-# LOGIN_REDIRECT_URL can be used as an alternative for
-# HORIZON_CONFIG.user_home, if user_home is not set.
-# Do not set it to '/home/', as this will cause circular redirect loop
-LOGIN_REDIRECT_URL = '/'
+WEBROOT = '/'
+LOGIN_URL = None
+LOGOUT_URL = None
+LOGIN_REDIRECT_URL = None
+
 
 MEDIA_ROOT = os.path.abspath(os.path.join(ROOT_PATH, '..', 'media'))
 MEDIA_URL = '/media/'
@@ -102,8 +102,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+)
+if django.VERSION >= (1, 8, 0):
+    MIDDLEWARE_CLASSES += (
+        'django.contrib.auth.middleware.SessionAuthenticationMiddleware',)
+else:
+    MIDDLEWARE_CLASSES += ('django.middleware.doc.XViewMiddleware',)
+MIDDLEWARE_CLASSES += (
     'horizon.middleware.HorizonMiddleware',
-    'django.middleware.doc.XViewMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -165,6 +171,7 @@ INSTALLED_APPS = [
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 AUTHENTICATION_BACKENDS = ('openstack_auth.backend.KeystoneBackend',)
+AUTHENTICATION_URLS = ['openstack_auth.urls']
 MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
@@ -252,10 +259,30 @@ SECURITY_GROUP_RULES = {
 }
 
 ADD_INSTALLED_APPS = []
+
+# STATIC directory for custom theme, set as default.
+# It can be overridden in local_settings.py
+CUSTOM_THEME_PATH = 'static/themes/default'
+
 try:
     from local.local_settings import *  # noqa
 except ImportError:
     logging.warning("No local_settings file found.")
+
+CUSTOM_THEME = os.path.join(ROOT_PATH, CUSTOM_THEME_PATH)
+STATICFILES_DIRS.append(
+    ('custom', CUSTOM_THEME),
+)
+
+if not WEBROOT.endswith('/'):
+    WEBROOT += '/'
+if LOGIN_URL is None:
+    LOGIN_URL = WEBROOT + 'auth/login/'
+if LOGOUT_URL is None:
+    LOGOUT_URL = WEBROOT + 'auth/logout/'
+if LOGIN_REDIRECT_URL is None:
+    LOGIN_REDIRECT_URL = WEBROOT
+
 
 # Load the pluggable dashboard settings
 import openstack_dashboard.enabled

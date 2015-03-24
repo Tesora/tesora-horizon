@@ -27,12 +27,12 @@ from django.utils.functional import cached_property  # noqa
 from django.utils.translation import ugettext_lazy as _
 
 from novaclient import exceptions as nova_exceptions
-from novaclient.v1_1 import client as nova_client
-from novaclient.v1_1.contrib import instance_action as nova_instance_action
-from novaclient.v1_1.contrib import list_extensions as nova_list_extensions
-from novaclient.v1_1 import security_group_rules as nova_rules
-from novaclient.v1_1 import security_groups as nova_security_groups
-from novaclient.v1_1 import servers as nova_servers
+from novaclient.v2 import client as nova_client
+from novaclient.v2.contrib import instance_action as nova_instance_action
+from novaclient.v2.contrib import list_extensions as nova_list_extensions
+from novaclient.v2 import security_group_rules as nova_rules
+from novaclient.v2 import security_groups as nova_security_groups
+from novaclient.v2 import servers as nova_servers
 
 from horizon import conf
 from horizon.utils import functions as utils
@@ -798,6 +798,42 @@ def evacuate_host(request, host, target=None, on_shared_storage=False):
 
     if err_code:
         msg = _('Failed to evacuate instances: %s') % ', '.join(response)
+        raise nova_exceptions.ClientException(err_code, msg)
+
+    return True
+
+
+def migrate_host(request, host, live_migrate=False, disk_over_commit=False,
+                 block_migration=False):
+    hypervisors = novaclient(request).hypervisors.search(host, True)
+    response = []
+    err_code = None
+    for hyper in hypervisors:
+        for server in getattr(hyper, "servers", []):
+            try:
+                if live_migrate:
+                    instance = server_get(request, server['uuid'])
+
+                    # Checking that instance can be live-migrated
+                    if instance.status in ["ACTIVE", "PAUSED"]:
+                        novaclient(request).servers.live_migrate(
+                            server['uuid'],
+                            None,
+                            block_migration,
+                            disk_over_commit
+                        )
+                    else:
+                        novaclient(request).servers.migrate(server['uuid'])
+                else:
+                    novaclient(request).servers.migrate(server['uuid'])
+            except nova_exceptions.ClientException as err:
+                err_code = err.code
+                msg = _("Name: %(name)s ID: %(uuid)s")
+                msg = msg % {'name': server['name'], 'uuid': server['uuid']}
+                response.append(msg)
+
+    if err_code:
+        msg = _('Failed to migrate instances: %s') % ', '.join(response)
         raise nova_exceptions.ClientException(err_code, msg)
 
     return True

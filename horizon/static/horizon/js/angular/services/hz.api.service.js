@@ -17,40 +17,6 @@ limitations under the License.
 (function () {
   'use strict';
   function ApiService($http, $log) {
-    var ApiPromise = function (default_error) {
-      var self = this;
-
-      // set up default hanlers
-      self.successHandler = function (data, status, headers, config) {
-        $log.error('no success handler for' + status + ' response with data',
-                   data);
-      };
-
-      self.errorHandler = function (data, status, headers, config) {
-        $log.error('no error handler for ' + status + ' response with data',
-                   data);
-      };
-
-      // have the $http callbacks invoke those handlers
-      self.handleSuccess = function (data, status, headers, config) {
-        return self.successHandler(data, status, headers, config);
-      };
-
-      self.handleError = function (data, status, headers, config) {
-        return self.errorHandler(data, status, headers, config);
-      };
-
-      // provide mechanism to override the default handlers
-      self.success = function (callable) {
-        self.successHandler = callable;
-        return self;
-      };
-
-      self.error = function(callable) {
-        self.errorHandler = callable;
-        return self;
-      };
-    };
 
     var httpCall = function (method, url, data, config) {
       if (!angular.isDefined(config)) {
@@ -62,9 +28,13 @@ limitations under the License.
       if (angular.isDefined(data)) {
         config.data = data;
       }
-      var r = new ApiPromise();
-      $http(config).success(r.handleSuccess).error(r.handleError);
-      return r;
+
+      //
+      // TODO: need discussion with Richard for this change.
+      // The reason for this change is to get a promise object compatible
+      // to $q.defer().promise.
+      //
+      return $http(config);
     };
 
     this.get = function(url, config) {

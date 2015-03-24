@@ -34,10 +34,10 @@
           formName: 'launchInstanceAccessAndSecurityForm'
         },
         {
-          title: gettext('Post Creation'),
-          templateUrl: path + 'launch-instance/post-creation/post-creation.html',
-          helpUrl: path + 'launch-instance/post-creation/post-creation.help.html',
-          formName: 'launchInstancePostCreationForm'
+          title: gettext('Configuration'),
+          templateUrl: path + 'launch-instance/configuration/configuration.html',
+          helpUrl: path + 'launch-instance/configuration/configuration.help.html',
+          formName: 'launchInstanceConfigurationForm'
         }
       ],
 
@@ -61,7 +61,7 @@
 
   module.controller('LaunchInstanceWizardCtrl', [
     '$scope',
-    '$q', // temporary, should call api access services
+    'launchInstanceModel',
     'launchInstanceWorkflow',
     LaunchInstanceWizardCtrl
   ]);
@@ -69,34 +69,36 @@
   module.controller('LaunchInstanceModalCtrl', [
     '$scope',
     '$modal',
+    '$window',
     'launchInstanceWizardModalSpec',
     LaunchInstanceModalCtrl
   ]);
 
-  function LaunchInstanceWizardCtrl($scope, $q, launchInstanceWorkflow) {
+  function LaunchInstanceWizardCtrl($scope, launchInstanceModel, launchInstanceWorkflow) {
     $scope.workflow = launchInstanceWorkflow;
-    $scope.model = {
-      source: {},
-      flavor: {},
-      network: {},
-      accessAndSecurity: {},
-      postCreation: {}
-    };
-    $scope.submit = function () {
-      return $q(function (resolve) {
-        //
-        // emulating server side process
-        //
-        setTimeout(function () {
-          resolve();
-        }, 1000);
-      });
-    };
+    $scope.model = launchInstanceModel;
+    $scope.model.initialize(true);
+    $scope.submit = $scope.model.createInstance;
   }
 
-  function LaunchInstanceModalCtrl($scope, $modal, modalSpec) {
-    $scope.openLaunchInstanceWizard = function () {
-      $modal.open(modalSpec);
+  function LaunchInstanceModalCtrl($scope, $modal, $window, modalSpec) {
+    $scope.openLaunchInstanceWizard = function (launchContext) {
+     var localSpec = {
+        resolve: {
+          launchContext: function() { return launchContext; }
+        }
+      };
+
+      angular.extend(localSpec, modalSpec);
+
+      var launchInstanceModal = $modal.open(localSpec);
+
+      launchInstanceModal.result.then(function () {
+        if (launchContext && launchContext.successUrl) {
+          $window.location.href = launchContext.successUrl;
+        }
+      });
+
     };
   }
 
