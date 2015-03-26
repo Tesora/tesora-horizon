@@ -1,6 +1,6 @@
 .topbar {
-  background: $gray-light;
-  border-bottom: 1px solid $gray;
+  background: $gray-lighter;
+  border-bottom: 1px solid $gray-light;
   padding-right: 15px;
   h1.brand {
     display: inline-block;
@@ -20,7 +20,7 @@
 
     .btn.btn-topnav{
       @include button-size(8px, $padding-base-horizontal, $font-size-base, $line-height-base, 0);
-      @include button-variant($btn-default-color, $gray-light, $gray-light);
+      @include button-variant($btn-default-color, $gray-lighter, $gray-lighter);
       &:hover, &:active {
         @include box-shadow(none);
       }

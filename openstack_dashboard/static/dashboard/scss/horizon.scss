@@ -114,7 +114,6 @@ dt {
   width: 100%;
   h1 {
     margin: 0;
-    color: $tesora-orange;
   }
 }
 
@@ -122,10 +121,6 @@ h2 {
   color: $headings-color;
   font-size: 30px;
   font-weight: normal;
-}
-
-h3 {
-  color: $tesora-dark-blue;
 }
 
 
@@ -157,16 +152,6 @@ h3 {
       width: 360px;
     }
   }
-}
-
-#splash-version {
-  position: absolute;
-  top: -100px;
-  left: 20px;
-  right: 20px;
-  text-align: center;
-  color: $border-color;
-  font-weight: bold;
 }
 
 #splash p.help-block {

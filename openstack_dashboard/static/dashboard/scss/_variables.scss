@@ -2,31 +2,16 @@
 to our variables */
 @import "/bootstrap/scss/bootstrap/variables";
 
-$tesora-orange: #f18530;
-$tesora-light-blue: #96b3c6;
-$tesora-dark-blue: #1377a8;
-$tesora-lighter-gray: #ebebeb;
-$tesora-light-gray: #e0e0e0;
-$tesora-gray: #b5b5b5;
-$tesora-dark-gray: #a1a1a1;
-$tesora-darker-gray: #6c6c6c;
-
-$gray-darker: $tesora-darker-gray;
-$gray-dark: $tesora-dark-gray;
-$gray: $tesora-gray;
-$gray-light: $tesora-light-gray;
-$gray-lighter: $tesora-lighter-gray;
-
-$text-color: $gray-darker;
-$link-color: $tesora-dark-blue;
-
+/* This variable can be used to change the web root of horizon
+default value is already '/' */
+$webroot: "" !default;
 
 /* Bootstrap variables overrides */
 
 $icon-font-path: "../../bootstrap/fonts/bootstrap/";
 $font-size-base: 13px;
 $modal-md: 732px;
-$gray-light: $tesora-light-gray;
+$gray-light: #cccccc;
 
 
 /* Horizon Custom Variables */
@@ -80,7 +65,7 @@ $rbrowser-footer-background-color: #f1f1f1;
 //       .table-striped-datatable styles.
 
 // Font-awesome path to the icon fonts
-$fa-font-path: "/static/horizon/lib/font-awesome/fonts";
+$fa-font-path: $webroot + "/static/horizon/lib/font-awesome/fonts";
 
 /* Charts */
 
@@ -93,7 +78,7 @@ $accordionBaseFontColor: #6e6e6e !default;
 $accordionBorderColor: #e5e5e5 !default;
 $accordionBoxShadowColor: #c7c7c7 !default;
 $accordionHighlightColor: #d93c27 !default;
-$accordionHeaderActiveColor: $tesora-orange !default;
+$accordionHeaderActiveColor: #e3e4e6 !default;
 $accordionHeaderBorderColor: #bbbbbb !default;
 $accordionItemActiveBgColor: #ffffff !default;
 $accordionItemFontColor: #6e6e6e !default;
@@ -140,11 +125,15 @@ $wizard-textarea-border-color: #eee;
 
 // layout
 $wizardTopPadding: 40px !default;
-$wizardBottomPadding: 40px !default;
+$wizardBottomPadding: $wizardTopPadding !default;
+$wizardLeftPadding: $wizardTopPadding !default;
+$wizardRightPadding: $wizardLeftPadding !default;
 $wizardHeight: 100% !default;
 $wizardWidth: 100% !default;
 $wizardMinHeight: 460px !default;
 $wizardMinWidth: 1024px !default;
+$wizardMaxHeight: 900px !default;
+$wizardMaxWidth: 1440px !default;
 $wizardTitleBarHeight: 70px !default;
 $wizardToolBarHeight: 65px !default;
 $wizardNavWidth: 290px !default;
