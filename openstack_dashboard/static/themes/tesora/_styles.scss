@@ -1,0 +1,34 @@
+// Override horizon.scss
+
+.page-header {
+  h1 {
+    color: $tesora-orange;
+  }
+}
+
+h3 {
+  color: $tesora-dark-blue;
+}
+
+#splash .login {
+  background-image: url(/static/themes/tesora/img/logo-splash.png);
+}
+
+#splash-version {
+  position: absolute;
+  top: -100px;
+  left: 20px;
+  right: 20px;
+  text-align: center;
+  color: $border-color;
+  font-weight: bold;
+}
+
+
+// Override _topbar.scss
+
+.topbar {
+  h1.brand a {
+    background-image: url(/static/themes/tesora/img/logo.png);
+  }
+}
