@@ -1,0 +1,28 @@
+// Tesora theme
+
+$tesora-orange: #f18530;
+$tesora-light-orange: #f1b317;
+$tesora-light-blue: #96b3c6;
+$tesora-dark-blue: #1377a8;
+$tesora-lightest-gray: #f0f0f0;
+$tesora-lighter-gray: #ebebeb;
+$tesora-light-gray: #e0e0e0;
+$tesora-gray: #b5b5b5;
+$tesora-dark-gray: #a1a1a1;
+$tesora-darker-gray: #6c6c6c;
+$tesora-white: #efefef;
+
+$gray-darker: $tesora-darker-gray;
+$gray-dark: $tesora-dark-gray;
+$gray: $tesora-gray;
+$gray-light: $tesora-light-gray;
+$gray-lighter: $tesora-lighter-gray;
+
+$text-color: $gray-darker;
+$link-color: $tesora-dark-blue;
+
+$accordionBaseFontColor: $tesora-darker-gray !default;
+$accordionHeaderActiveColor: $tesora-orange !default;
+$accordionSubHeaderFontColor: $tesora-dark-blue !default;
+$accordionItemFontColor: $tesora-dark-blue !default;
+$accordionHighlightColor: $tesora-orange !default;
