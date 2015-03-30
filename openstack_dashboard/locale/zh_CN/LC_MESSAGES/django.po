@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-03-23 21:49-0500\n"
-"PO-Revision-Date: 2015-03-23 11:24+0000\n"
-"Last-Translator: Alfred <alfredhuang211@qq.com>\n"
+"POT-Creation-Date: 2015-03-29 10:30-0500\n"
+"PO-Revision-Date: 2015-03-29 20:44+0000\n"
+"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/horizon/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,59 +23,59 @@ msgstr ""
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: settings.py:85
+#: settings.py:80
 msgid "Select format"
 msgstr "选择镜像格式"
 
-#: settings.py:86
+#: settings.py:81
 msgid "AKI - Amazon Kernel Image"
 msgstr "AKI - 亚马逊内核镜像"
 
-#: settings.py:87
+#: settings.py:82
 msgid "AMI - Amazon Machine Image"
 msgstr "AMI - Amazon  Machine 镜像"
 
-#: settings.py:88
+#: settings.py:83
 msgid "ARI - Amazon Ramdisk Image"
 msgstr "ARI - Amazon Ramdisk 镜像"
 
-#: settings.py:89
+#: settings.py:84
 msgid "ISO - Optical Disk Image"
 msgstr "ISO - 光盘镜像"
 
-#: settings.py:90
+#: settings.py:85
 msgid "OVA - Open Virtual Appliance"
 msgstr "OVA - 开源虚拟化应用"
 
-#: settings.py:91
+#: settings.py:86
 msgid "QCOW2 - QEMU Emulator"
 msgstr "QCOW2 - QEMU 模拟器"
 
-#: settings.py:92
+#: settings.py:87
 msgid "Raw"
 msgstr "Raw"
 
-#: settings.py:93
+#: settings.py:88
 msgid "VDI - Virtual Disk Image"
 msgstr "VDI - 虚拟磁盘镜像"
 
-#: settings.py:94
+#: settings.py:89
 msgid "VHD - Virtual Hard Disk"
 msgstr "VHD - 虚拟硬盘"
 
-#: settings.py:95
+#: settings.py:90
 msgid "VMDK - Virtual Machine Disk"
 msgstr "VMDK - 虚拟机磁盘"
 
-#: settings.py:242
+#: settings.py:237
 msgid "All TCP"
 msgstr "所有TCP协议"
 
-#: settings.py:248
+#: settings.py:243
 msgid "All UDP"
 msgstr "所有UDP协议"
 
-#: settings.py:254
+#: settings.py:249
 msgid "All ICMP"
 msgstr "所有ICMP协议"
 
@@ -374,31 +374,31 @@ msgstr "在这一项目中用户 %s 尚未定义角色。"
 
 #: api/keystone.py:391
 msgid "Identity service does not allow editing user password."
-msgstr ""
+msgstr "认证服务不允许编辑用户密码。"
 
 #: api/lbaas.py:152
 #, python-format
 msgid "Unable to get VIP for pool %(pool)s."
-msgstr ""
+msgstr "无法获取资源池 %(pool)s 的VIP。"
 
 #: api/lbaas.py:191
 msgid "Unable to get pool detail."
-msgstr ""
+msgstr "无法获得资源池详情。"
 
 #: api/lbaas.py:203
 #, python-format
 msgid "Unable to get subnet for pool %(pool)s."
-msgstr ""
+msgstr "无法获取资源池 %(pool)s 的子网 。"
 
 #: api/lbaas.py:211
 #, python-format
 msgid "Unable to get members for pool %(pool)s."
-msgstr ""
+msgstr "无法获得资源池 %(pool)s 的成员。"
 
 #: api/lbaas.py:218
 #, python-format
 msgid "Unable to get health monitors for pool %(pool)s."
-msgstr ""
+msgstr "无法获得资源池 %(pool)s 的健康状况监控。"
 
 #: api/neutron.py:225
 #, python-format
@@ -440,6 +440,7 @@ msgstr "检查Neutron '%s'失败，扩展不被支持。"
 #: dashboards/project/databases/tables.py:279
 #: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:8
 #: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:11
+#: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:39
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:8
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:11
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:27
@@ -519,7 +520,7 @@ msgstr "由于此容器非空，因此不能被删除。"
 
 #: api/swift.py:320
 msgid "The pseudo folder cannot be deleted since it is not empty."
-msgstr ""
+msgstr "由于此虚拟文件夹非空，因此不能被删除。"
 
 #: dashboards/admin/dashboard.py:22
 msgid "System"
@@ -546,7 +547,6 @@ msgstr "管理员"
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:6
 #: dashboards/admin/routers/tables.py:41
 #: dashboards/admin/routers/ports/tables.py:24
-#: dashboards/admin/routers/templates/routers/_detail_overview.html:7
 #: dashboards/admin/volumes/snapshots/tables.py:59
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:10
 #: dashboards/admin/volumes/templates/volumes/volume_types/_volume_encryption_type_detail.html:11
@@ -573,7 +573,7 @@ msgstr "管理员"
 #: dashboards/project/data_processing/cluster_templates/templates/data_processing.cluster_templates/_details.html:6
 #: dashboards/project/data_processing/clusters/tables.py:35
 #: dashboards/project/data_processing/clusters/tables.py:146
-#: dashboards/project/data_processing/clusters/tabs.py:137
+#: dashboards/project/data_processing/clusters/tabs.py:136
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/_details.html:6
 #: dashboards/project/data_processing/data_plugins/templates/data_processing.data_plugins/_details.html:9
 #: dashboards/project/data_processing/data_sources/tables.py:57
@@ -597,15 +597,15 @@ msgstr "管理员"
 #: dashboards/project/database_backups/workflows/create_backup.py:32
 #: dashboards/project/databases/tables.py:387
 #: dashboards/project/databases/templates/databases/_detail_overview.html:10
-#: dashboards/project/firewalls/forms.py:33
-#: dashboards/project/firewalls/forms.py:98
-#: dashboards/project/firewalls/forms.py:125
-#: dashboards/project/firewalls/tables.py:211
-#: dashboards/project/firewalls/tables.py:244
-#: dashboards/project/firewalls/tables.py:280
+#: dashboards/project/firewalls/forms.py:34
+#: dashboards/project/firewalls/forms.py:99
+#: dashboards/project/firewalls/forms.py:126
+#: dashboards/project/firewalls/tables.py:265
+#: dashboards/project/firewalls/tables.py:298
+#: dashboards/project/firewalls/tables.py:339
 #: dashboards/project/firewalls/workflows.py:30
-#: dashboards/project/firewalls/workflows.py:173
-#: dashboards/project/firewalls/workflows.py:230
+#: dashboards/project/firewalls/workflows.py:218
+#: dashboards/project/firewalls/workflows.py:275
 #: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:7
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:7
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:7
@@ -633,7 +633,7 @@ msgstr "管理员"
 #: dashboards/project/routers/forms.py:117
 #: dashboards/project/routers/tables.py:209
 #: dashboards/project/routers/ports/tables.py:107
-#: dashboards/project/routers/templates/routers/_detail_overview.html:9
+#: dashboards/project/routers/templates/routers/_detail_overview.html:5
 #: dashboards/project/stacks/templates/stacks/_detail_overview.html:9
 #: dashboards/project/volumes/backups/tables.py:117
 #: dashboards/project/volumes/snapshots/tables.py:147
@@ -971,7 +971,9 @@ msgstr "增加或删除主机时错误"
 #: dashboards/project/containers/templates/containers/_create_pseudo_folder.html:19
 #: dashboards/project/containers/templates/containers/_update.html:20
 #: dashboards/project/containers/templates/containers/_upload.html:21
+#: dashboards/project/firewalls/templates/firewalls/_add_router_to_firewall.html:5
 #: dashboards/project/firewalls/templates/firewalls/_insert_rule_to_policy.html:5
+#: dashboards/project/firewalls/templates/firewalls/_remove_router_from_firewall.html:5
 #: dashboards/project/firewalls/templates/firewalls/_remove_rule_from_policy.html:5
 #: dashboards/project/firewalls/templates/firewalls/_updatefirewall.html:5
 #: dashboards/project/firewalls/templates/firewalls/_updatepolicy.html:5
@@ -1113,10 +1115,10 @@ msgstr "虚拟内核"
 #: dashboards/admin/hypervisors/tables.py:57
 #: dashboards/admin/instances/panel.py:27
 #: dashboards/admin/instances/tables.py:164
-#: dashboards/admin/instances/views.py:67
+#: dashboards/admin/instances/views.py:68
 #: dashboards/admin/instances/templates/instances/index.html:3
 #: dashboards/identity/projects/workflows.py:52
-#: dashboards/project/data_processing/clusters/tabs.py:151
+#: dashboards/project/data_processing/clusters/tabs.py:150
 #: dashboards/project/databases/panel.py:23
 #: dashboards/project/databases/tables.py:340
 #: dashboards/project/databases/views.py:48
@@ -1368,7 +1370,6 @@ msgstr "交换盘空间"
 #: dashboards/admin/flavors/workflows.py:41
 #: dashboards/admin/networks/agents/tables.py:90
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:8
-#: dashboards/admin/routers/templates/routers/_detail_overview.html:9
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:12
 #: dashboards/admin/volumes/volumes/forms.py:87
 #: dashboards/admin/volumes/volumes/forms.py:146
@@ -1381,7 +1382,7 @@ msgstr "交换盘空间"
 #: dashboards/project/data_processing/data_sources/templates/data_processing.data_sources/_details.html:7
 #: dashboards/project/data_processing/job_binaries/templates/data_processing.job_binaries/_details.html:7
 #: dashboards/project/data_processing/job_executions/tables.py:37
-#: dashboards/project/data_processing/job_executions/tables.py:168
+#: dashboards/project/data_processing/job_executions/tables.py:186
 #: dashboards/project/data_processing/job_executions/templates/data_processing.job_executions/_details.html:8
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/_details.html:8
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:8
@@ -1407,7 +1408,7 @@ msgstr "交换盘空间"
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:8
 #: dashboards/project/networks/templates/networks/subnets/_detail_overview.html:12
 #: dashboards/project/routers/forms.py:121
-#: dashboards/project/routers/templates/routers/_detail_overview.html:11
+#: dashboards/project/routers/templates/routers/_detail_overview.html:7
 #: dashboards/project/stacks/templates/stacks/_detail_overview.html:11
 #: dashboards/project/volumes/templates/volumes/backups/_detail_overview.html:14
 #: dashboards/project/volumes/templates/volumes/snapshots/_detail_overview.html:12
@@ -1746,19 +1747,19 @@ msgstr "原因"
 #: dashboards/admin/hypervisors/compute/forms.py:86
 #, python-format
 msgid "Disabled compute service for host: %s."
-msgstr ""
+msgstr "关闭主机：%s 上的计算服务。"
 
 #: dashboards/admin/hypervisors/compute/forms.py:91
 #, python-format
 msgid "Failed to disable compute service for host: %s."
-msgstr ""
+msgstr "关闭主机：%s 上的计算服务失败。"
 
 #: dashboards/admin/hypervisors/compute/forms.py:106
 msgid "Running Instance Migration Type"
-msgstr ""
+msgstr "运行实例迁移类型"
 
 #: dashboards/admin/hypervisors/compute/forms.py:108
-#: dashboards/admin/instances/views.py:156
+#: dashboards/admin/instances/views.py:157
 #: dashboards/admin/instances/templates/instances/_live_migrate.html:8
 #: dashboards/admin/instances/templates/instances/live_migrate.html:3
 msgid "Live Migrate"
@@ -1766,7 +1767,7 @@ msgstr "热迁移"
 
 #: dashboards/admin/hypervisors/compute/forms.py:109
 msgid "Cold Migrate"
-msgstr ""
+msgstr "冷迁移"
 
 #: dashboards/admin/hypervisors/compute/forms.py:120
 #: dashboards/admin/hypervisors/compute/forms.py:127
@@ -1783,12 +1784,12 @@ msgstr "块迁移"
 #: dashboards/admin/hypervisors/compute/forms.py:159
 #, python-format
 msgid "Starting to migrate host: %(current)s"
-msgstr ""
+msgstr "开始迁移主机：%(current)s"
 
 #: dashboards/admin/hypervisors/compute/forms.py:164
 #, python-format
 msgid "Failed to migrate host \"%s\"."
-msgstr ""
+msgstr "迁移主机 \"%s\" 失败。"
 
 #: dashboards/admin/hypervisors/compute/tables.py:26
 #: dashboards/admin/hypervisors/compute/views.py:30
@@ -1809,12 +1810,12 @@ msgstr "关闭服务"
 #: dashboards/admin/hypervisors/compute/tables.py:63
 msgid "Enable Service"
 msgid_plural "Enable Services"
-msgstr[0] ""
+msgstr[0] "开启服务"
 
 #: dashboards/admin/hypervisors/compute/tables.py:71
 msgid "Enabled Service"
 msgid_plural "Enabled Services"
-msgstr[0] ""
+msgstr[0] "已开启服务"
 
 #: dashboards/admin/hypervisors/compute/tables.py:90
 #: dashboards/admin/hypervisors/compute/tables.py:96
@@ -1824,12 +1825,12 @@ msgstr[0] ""
 #: dashboards/admin/hypervisors/templates/hypervisors/compute/migrate_host.html:6
 msgid "Migrate Host"
 msgid_plural "Migrate Hosts"
-msgstr[0] ""
+msgstr[0] "迁移主机"
 
 #: dashboards/admin/hypervisors/compute/tables.py:104
 msgid "Migrated Host"
 msgid_plural "Migrated Hosts"
-msgstr[0] ""
+msgstr[0] "已迁移主机"
 
 #: dashboards/admin/hypervisors/compute/tables.py:125
 #: dashboards/admin/info/tables.py:96 dashboards/admin/info/tables.py:120
@@ -1844,7 +1845,6 @@ msgstr "域"
 #: dashboards/admin/networks/tables.py:102
 #: dashboards/admin/networks/agents/tables.py:92
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:17
-#: dashboards/admin/routers/templates/routers/_detail_overview.html:13
 #: dashboards/admin/volumes/snapshots/forms.py:34
 #: dashboards/admin/volumes/templates/volumes/snapshots/_detail_overview.html:18
 #: dashboards/admin/volumes/volumes/forms.py:187
@@ -1853,7 +1853,7 @@ msgstr "域"
 #: dashboards/project/data_processing/clusters/tables.py:152
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/_details.html:12
 #: dashboards/project/data_processing/job_executions/tables.py:40
-#: dashboards/project/data_processing/job_executions/tables.py:185
+#: dashboards/project/data_processing/job_executions/tables.py:205
 #: dashboards/project/data_processing/job_executions/templates/data_processing.job_executions/_details.html:6
 #: dashboards/project/database_backups/tables.py:174
 #: dashboards/project/database_backups/templates/database_backups/details.html:26
@@ -1861,7 +1861,7 @@ msgstr "域"
 #: dashboards/project/databases/tables.py:333
 #: dashboards/project/databases/tables.py:399
 #: dashboards/project/databases/templates/databases/_detail_overview.html:18
-#: dashboards/project/firewalls/tables.py:286
+#: dashboards/project/firewalls/tables.py:347
 #: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:25
 #: dashboards/project/images/images/tables.py:247
 #: dashboards/project/images/templates/images/images/_detail_overview.html:19
@@ -1878,7 +1878,7 @@ msgstr "域"
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:17
 #: dashboards/project/routers/tables.py:212
 #: dashboards/project/routers/ports/tables.py:112
-#: dashboards/project/routers/templates/routers/_detail_overview.html:13
+#: dashboards/project/routers/templates/routers/_detail_overview.html:11
 #: dashboards/project/stacks/tables.py:275
 #: dashboards/project/stacks/tables.py:320
 #: dashboards/project/stacks/tables.py:371
@@ -1947,7 +1947,7 @@ msgstr "本地磁盘使用"
 
 #: dashboards/admin/hypervisors/templates/hypervisors/compute/_disable_service.html:18
 msgid "Disable the compute service."
-msgstr ""
+msgstr "关闭计算服务。"
 
 #: dashboards/admin/hypervisors/templates/hypervisors/compute/_evacuate_host.html:18
 msgid ""
@@ -1960,7 +1960,7 @@ msgid ""
 "Optionally you can choose type of migration. All running instances of the "
 "host can be Live Migrated. Cold Migration is trying to use 'nova migrate' on"
 " each instance of migrated host."
-msgstr ""
+msgstr "迁移一个主机上的所有实例将会关闭nova-compute服务。您可以选择迁移类型。所有主机上运行中的实例会是热迁移。冷迁移将会在迁移主机上的每个实例上尝试使用'nova migrate'。"
 
 #: dashboards/admin/images/forms.py:65
 msgid "Unable to update the image metadata."
@@ -2031,18 +2031,18 @@ msgstr "创建一个镜像"
 msgid "Update Image"
 msgstr "上传镜像"
 
-#: dashboards/admin/images/views.py:133
+#: dashboards/admin/images/views.py:138
 #: dashboards/admin/images/templates/images/_update_metadata.html:4
 #: dashboards/admin/images/templates/images/_update_metadata.html:7
 #: dashboards/admin/images/templates/images/update_metadata.html:3
 msgid "Update Image Metadata"
 msgstr "更新镜像元数据"
 
-#: dashboards/admin/images/views.py:184
+#: dashboards/admin/images/views.py:189
 msgid "Unable to retrieve available properties for image."
 msgstr "无法获取镜像的有效属性"
 
-#: dashboards/admin/images/views.py:197
+#: dashboards/admin/images/views.py:202
 msgid "Unable to retrieve the image to be updated."
 msgstr "无法获取要更新的镜像"
 
@@ -2099,10 +2099,11 @@ msgstr "系统信息"
 #: dashboards/identity/projects/templates/projects/_detail_overview.html:13
 #: dashboards/identity/users/tables.py:236
 #: dashboards/identity/users/templates/users/_detail_overview.html:23
-#: dashboards/project/firewalls/forms.py:70
-#: dashboards/project/firewalls/tables.py:229
+#: dashboards/project/firewalls/forms.py:71
+#: dashboards/project/firewalls/tables.py:283
 #: dashboards/project/firewalls/workflows.py:67
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:53
+#: dashboards/project/routers/templates/routers/_detail_overview.html:48
 #: dashboards/project/stacks/templates/stacks/_detail_overview.html:65
 msgid "Enabled"
 msgstr "激活"
@@ -2110,6 +2111,7 @@ msgstr "激活"
 #: dashboards/admin/info/tables.py:27 dashboards/admin/info/tables.py:157
 #: dashboards/admin/info/templates/info/_cell_status.html:3
 #: dashboards/admin/networks/agents/tables.py:80
+#: dashboards/project/routers/templates/routers/_detail_overview.html:50
 #: dashboards/project/stacks/templates/stacks/_detail_overview.html:65
 msgid "Disabled"
 msgstr "已关闭"
@@ -2155,15 +2157,15 @@ msgstr "网络代理"
 
 #: dashboards/admin/info/tables.py:208
 msgid "Engine Id"
-msgstr ""
+msgstr "Engine Id"
 
 #: dashboards/admin/info/tables.py:210
 msgid "Topic"
-msgstr ""
+msgstr "主题"
 
 #: dashboards/admin/info/tables.py:225
 msgid "Orchestration Services"
-msgstr ""
+msgstr "Orchestration 服务"
 
 #: dashboards/admin/info/tabs.py:74
 msgid "Unable to get cinder services list."
@@ -2179,11 +2181,11 @@ msgstr "无法获取网络代理列表。"
 
 #: dashboards/admin/info/tabs.py:116
 msgid "Orchestration service is disabled."
-msgstr ""
+msgstr "Orchestration 服务已关闭。"
 
 #: dashboards/admin/info/tabs.py:123
 msgid "Unable to get Orchestration service list."
-msgstr ""
+msgstr "无法获取 Orchestration 服务列表。"
 
 #: dashboards/admin/info/views.py:40
 msgid "Unable to retrieve version information."
@@ -2225,7 +2227,7 @@ msgstr "实例热迁移到主机\"%s\"失败"
 
 #: dashboards/admin/instances/tables.py:37
 msgid "Migrating instances may cause some unrecoverable results."
-msgstr ""
+msgstr "迁移实例可能会引起一些不可恢复的结果。"
 
 #: dashboards/admin/instances/tables.py:42
 msgid "Migrate Instance"
@@ -2244,7 +2246,7 @@ msgstr "实例热迁移"
 
 #: dashboards/admin/instances/tables.py:94
 msgid "Project ="
-msgstr ""
+msgstr "项目 ="
 
 #: dashboards/admin/instances/tables.py:95
 msgid "Host ="
@@ -2294,6 +2296,7 @@ msgstr "项目"
 #: dashboards/project/instances/tables.py:1013
 #: dashboards/project/loadbalancers/tables.py:367
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:29
+#: dashboards/project/routers/templates/routers/_detail_overview.html:40
 msgid "IP Address"
 msgstr "IP 地址"
 
@@ -2330,31 +2333,31 @@ msgstr "电源状态"
 msgid "Time since created"
 msgstr "从创建以来"
 
-#: dashboards/admin/instances/views.py:82
+#: dashboards/admin/instances/views.py:83
 msgid "Unable to retrieve instance project information."
 msgstr "无法获取云主机项目信息。"
 
-#: dashboards/admin/instances/views.py:103
+#: dashboards/admin/instances/views.py:104
 #: dashboards/project/access_and_security/tabs.py:112
 #: dashboards/project/access_and_security/floating_ips/workflows.py:91
 msgid "Unable to retrieve instance list."
 msgstr "无法查询云主机列表。"
 
-#: dashboards/admin/instances/views.py:111
+#: dashboards/admin/instances/views.py:112
 #: dashboards/project/instances/views.py:81
 msgid "Unable to retrieve IP addresses from Neutron."
 msgstr "无法从Neutron获取IP地址。"
 
-#: dashboards/admin/instances/views.py:135
+#: dashboards/admin/instances/views.py:136
 #: dashboards/project/instances/views.py:122
 msgid "Unable to retrieve instance size information."
 msgstr "无法查询云主机配置信息。"
 
-#: dashboards/admin/instances/views.py:169
+#: dashboards/admin/instances/views.py:170
 msgid "Unable to retrieve host information."
 msgstr "无法获取主机信息。"
 
-#: dashboards/admin/instances/views.py:179
+#: dashboards/admin/instances/views.py:180
 #: dashboards/project/databases/views.py:153
 #: dashboards/project/databases/views.py:193
 #: dashboards/project/instances/views.py:242
@@ -2368,13 +2371,13 @@ msgstr "动态迁移一个实例到特定的主机"
 
 #: dashboards/admin/metadata_defs/forms.py:38
 msgid "Namespace Definition Source"
-msgstr ""
+msgstr "命名空间定义源"
 
 #: dashboards/admin/metadata_defs/forms.py:40
 #: dashboards/admin/metadata_defs/forms.py:46
 #: dashboards/admin/metadata_defs/forms.py:50
 msgid "Metadata Definition File"
-msgstr ""
+msgstr "元数据定义文件"
 
 #: dashboards/admin/metadata_defs/forms.py:41
 #: dashboards/project/instances/workflows/create_instance.py:611
@@ -2384,7 +2387,7 @@ msgstr "直接输入"
 
 #: dashboards/admin/metadata_defs/forms.py:47
 msgid "A local metadata definition file to upload."
-msgstr ""
+msgstr "上传本地元数据定义文件。"
 
 #: dashboards/admin/metadata_defs/forms.py:54
 #: dashboards/admin/metadata_defs/forms.py:58
@@ -2393,7 +2396,7 @@ msgstr "命名空间JSON"
 
 #: dashboards/admin/metadata_defs/forms.py:55
 msgid "The JSON formatted contents of a namespace."
-msgstr ""
+msgstr "命名空间的JSON格式内容"
 
 #: dashboards/admin/metadata_defs/forms.py:62
 #: dashboards/admin/metadata_defs/tables.py:149
@@ -2407,21 +2410,21 @@ msgstr "受保护的"
 
 #: dashboards/admin/metadata_defs/forms.py:77
 msgid "Cannot specify both file and direct input."
-msgstr ""
+msgstr "无法同时指定文件和直接输入。"
 
 #: dashboards/admin/metadata_defs/forms.py:80
 msgid "No input was provided for the namespace content."
-msgstr ""
+msgstr "未为命名空间内容提供输入。"
 
 #: dashboards/admin/metadata_defs/forms.py:100
 #, python-format
 msgid "There was a problem loading the namespace: %s."
-msgstr ""
+msgstr "命名空间加载时出错：%s。"
 
 #: dashboards/admin/metadata_defs/forms.py:110
 #, python-format
 msgid "Namespace %s has been created."
-msgstr ""
+msgstr "命名空间 %s 已经被创建。"
 
 #: dashboards/admin/metadata_defs/forms.py:114
 #, python-format
@@ -2442,13 +2445,13 @@ msgstr ""
 #: dashboards/admin/metadata_defs/views.py:40
 #: dashboards/admin/metadata_defs/templates/metadata_defs/index.html:3
 msgid "Metadata Definitions"
-msgstr ""
+msgstr "元数据定义"
 
 #: dashboards/admin/metadata_defs/tables.py:30
 #: dashboards/admin/metadata_defs/templates/metadata_defs/_create.html:9
 #: dashboards/admin/metadata_defs/templates/metadata_defs/_create.html:35
 msgid "Import Namespace"
-msgstr ""
+msgstr "导入命名空间"
 
 #: dashboards/admin/metadata_defs/tables.py:41
 msgid "Delete Namespace"
@@ -2458,7 +2461,7 @@ msgstr[0] "删除名称空间"
 #: dashboards/admin/metadata_defs/tables.py:49
 msgid "Deleted Namespace"
 msgid_plural "Deleted Namespaces"
-msgstr[0] ""
+msgstr[0] "删除命名空间"
 
 #: dashboards/admin/metadata_defs/tables.py:69
 msgid "Update Associations"
@@ -2505,12 +2508,12 @@ msgstr ""
 #: dashboards/project/data_processing/nodegroup_templates/workflows/create.py:43
 #: dashboards/project/database_backups/templates/database_backups/details.html:16
 #: dashboards/project/database_backups/workflows/create_backup.py:34
-#: dashboards/project/firewalls/forms.py:36
-#: dashboards/project/firewalls/forms.py:100
-#: dashboards/project/firewalls/forms.py:128
+#: dashboards/project/firewalls/forms.py:37
+#: dashboards/project/firewalls/forms.py:101
+#: dashboards/project/firewalls/forms.py:129
 #: dashboards/project/firewalls/workflows.py:34
-#: dashboards/project/firewalls/workflows.py:175
-#: dashboards/project/firewalls/workflows.py:233
+#: dashboards/project/firewalls/workflows.py:220
+#: dashboards/project/firewalls/workflows.py:278
 #: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:10
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:10
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:10
@@ -2642,7 +2645,6 @@ msgstr ""
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:51
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:53
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:66
-#: dashboards/admin/routers/templates/routers/_detail_overview.html:8
 #: dashboards/admin/volumes/volume_types/forms.py:89
 #: dashboards/identity/projects/templates/projects/_detail_overview.html:16
 #: dashboards/identity/users/templates/users/_detail_overview.html:22
@@ -2685,9 +2687,10 @@ msgstr ""
 #: dashboards/project/networks/templates/networks/subnets/_detail_overview.html:20
 #: dashboards/project/networks/templates/networks/subnets/_detail_overview.html:48
 #: dashboards/project/networks/templates/networks/subnets/_detail_overview.html:56
-#: dashboards/project/routers/templates/routers/_detail_overview.html:4
-#: dashboards/project/routers/templates/routers/_detail_overview.html:10
-#: dashboards/project/routers/templates/routers/_detail_overview.html:12
+#: dashboards/project/routers/templates/routers/_detail_overview.html:6
+#: dashboards/project/routers/templates/routers/_detail_overview.html:30
+#: dashboards/project/routers/templates/routers/_detail_overview.html:42
+#: dashboards/project/routers/templates/routers/_detail_overview.html:54
 #: dashboards/project/volumes/templates/volumes/volumes/_detail_overview.html:77
 #: dashboards/project/vpn/templates/vpn/_ikepolicy_details.html:7
 #: dashboards/project/vpn/templates/vpn/_ikepolicy_details.html:10
@@ -2726,7 +2729,6 @@ msgstr "已创建"
 
 #: dashboards/admin/metadata_defs/templates/metadata_defs/_detail_overview.html:23
 #: dashboards/admin/networks/views.py:59
-#: dashboards/admin/routers/templates/routers/_detail_overview.html:16
 #: dashboards/project/images/templates/images/images/_detail_overview.html:20
 #: dashboards/project/images/templates/images/images/_detail_overview.html:31
 #: dashboards/project/instances/tables.py:642
@@ -2734,7 +2736,8 @@ msgstr "已创建"
 #: dashboards/project/networks/templates/networks/_detail_overview.html:16
 #: dashboards/project/networks/templates/networks/_detail_overview.html:23
 #: dashboards/project/routers/templates/routers/_detail_overview.html:14
-#: dashboards/project/routers/templates/routers/_detail_overview.html:16
+#: dashboards/project/routers/templates/routers/_detail_overview.html:33
+#: dashboards/project/routers/templates/routers/_detail_overview.html:39
 #: dashboards/project/volumes/backups/tables.py:37
 #: dashboards/project/volumes/snapshots/tables.py:126
 msgid "Unknown"
@@ -2907,7 +2910,7 @@ msgstr "值(平均)"
 #: dashboards/admin/metering/tables.py:49
 #: dashboards/admin/metering/views.py:107
 msgid "Unit"
-msgstr ""
+msgstr "单元"
 
 #: dashboards/admin/metering/tables.py:56
 msgid "Daily Usage Report"
@@ -3124,8 +3127,8 @@ msgstr "段ID"
 #: dashboards/admin/networks/forms.py:77
 #: dashboards/admin/networks/forms.py:236
 #: dashboards/admin/networks/ports/forms.py:45
-#: dashboards/project/firewalls/forms.py:131
-#: dashboards/project/firewalls/workflows.py:239
+#: dashboards/project/firewalls/forms.py:132
+#: dashboards/project/firewalls/workflows.py:284
 #: dashboards/project/loadbalancers/forms.py:38
 #: dashboards/project/loadbalancers/forms.py:93
 #: dashboards/project/loadbalancers/forms.py:176
@@ -3147,8 +3150,8 @@ msgstr ""
 #: dashboards/admin/networks/forms.py:78
 #: dashboards/admin/networks/forms.py:237
 #: dashboards/admin/networks/ports/forms.py:46
-#: dashboards/project/firewalls/forms.py:132
-#: dashboards/project/firewalls/workflows.py:240
+#: dashboards/project/firewalls/forms.py:133
+#: dashboards/project/firewalls/workflows.py:285
 #: dashboards/project/loadbalancers/forms.py:39
 #: dashboards/project/loadbalancers/forms.py:94
 #: dashboards/project/loadbalancers/forms.py:177
@@ -3173,9 +3176,9 @@ msgstr ""
 #: dashboards/admin/networks/agents/tables.py:93
 #: dashboards/admin/networks/ports/forms.py:47
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:19
-#: dashboards/admin/routers/templates/routers/_detail_overview.html:15
-#: dashboards/project/firewalls/forms.py:133
-#: dashboards/project/firewalls/workflows.py:241
+#: dashboards/project/firewalls/forms.py:134
+#: dashboards/project/firewalls/tables.py:350
+#: dashboards/project/firewalls/workflows.py:286
 #: dashboards/project/loadbalancers/forms.py:40
 #: dashboards/project/loadbalancers/forms.py:95
 #: dashboards/project/loadbalancers/forms.py:178
@@ -3195,7 +3198,7 @@ msgstr ""
 #: dashboards/project/routers/forms.py:120
 #: dashboards/project/routers/tables.py:225
 #: dashboards/project/routers/ports/tables.py:117
-#: dashboards/project/routers/templates/routers/_detail_overview.html:15
+#: dashboards/project/routers/templates/routers/_detail_overview.html:13
 #: dashboards/project/vpn/forms.py:39 dashboards/project/vpn/forms.py:263
 #: dashboards/project/vpn/workflows.py:33
 #: dashboards/project/vpn/workflows.py:419
@@ -3207,11 +3210,11 @@ msgstr "管理员状态"
 #: dashboards/admin/networks/forms.py:80
 #: dashboards/admin/networks/forms.py:239
 #: dashboards/admin/networks/tables.py:100
-#: dashboards/project/firewalls/forms.py:69
-#: dashboards/project/firewalls/forms.py:101
+#: dashboards/project/firewalls/forms.py:70
+#: dashboards/project/firewalls/forms.py:102
 #: dashboards/project/firewalls/workflows.py:65
-#: dashboards/project/firewalls/workflows.py:177
-#: dashboards/project/firewalls/workflows.py:236
+#: dashboards/project/firewalls/workflows.py:222
+#: dashboards/project/firewalls/workflows.py:281
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:31
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:50
 #: dashboards/project/networks/tables.py:172
@@ -3364,6 +3367,7 @@ msgstr ""
 #: dashboards/admin/networks/agents/forms.py:32
 #: dashboards/admin/networks/ports/forms.py:36
 #: dashboards/project/networks/workflows.py:37
+#: dashboards/project/routers/templates/routers/_detail_overview.html:29
 msgid "Network Name"
 msgstr "网络名称"
 
@@ -3492,6 +3496,7 @@ msgstr ""
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:11
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:11
 #: dashboards/project/networks/templates/networks/subnets/_detail_overview.html:15
+#: dashboards/project/routers/templates/routers/_detail_overview.html:32
 msgid "Network ID"
 msgstr "网络ID"
 
@@ -3704,7 +3709,6 @@ msgid ""
 msgstr "你可以为网络创建端口.如果指定要连接的设备ID该设备将连接到已建立的端口上."
 
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:13
-#: dashboards/admin/routers/templates/routers/_detail_overview.html:11
 #: dashboards/identity/projects/tables.py:236
 #: dashboards/identity/projects/templates/projects/_detail_overview.html:11
 #: dashboards/identity/users/templates/users/_detail_overview.html:25
@@ -3719,6 +3723,7 @@ msgstr "你可以为网络创建端口.如果指定要连接的设备ID该设备
 #: dashboards/project/networks/templates/networks/_detail_overview.html:11
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:13
 #: dashboards/project/overview/templates/overview/usage.csv:2
+#: dashboards/project/routers/templates/routers/_detail_overview.html:9
 #: dashboards/project/vpn/templates/vpn/_ikepolicy_details.html:15
 #: dashboards/project/vpn/templates/vpn/_ipsecpolicy_details.html:15
 #: dashboards/project/vpn/templates/vpn/_ipsecsiteconnection_details.html:16
@@ -3742,6 +3747,7 @@ msgstr "固定IP"
 
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:32
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:32
+#: dashboards/project/routers/templates/routers/_detail_overview.html:39
 #: dashboards/project/vpn/templates/vpn/_vpnservice_details.html:23
 msgid "Subnet ID"
 msgstr "子网ID"
@@ -3768,16 +3774,16 @@ msgstr ""
 
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:54
 msgid "VIF Type"
-msgstr ""
+msgstr "VIF类型"
 
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:56
 msgid "VIF Details"
-msgstr ""
+msgstr "VIF详情"
 
 #: dashboards/admin/networks/templates/networks/ports/_detail_overview.html:69
 #: dashboards/project/networks/templates/networks/ports/_detail_overview.html:51
 msgid "VNIC Type"
-msgstr ""
+msgstr "VNIC类型"
 
 #: dashboards/admin/networks/templates/networks/ports/_update.html:6
 #: dashboards/project/networks/templates/networks/ports/_update.html:6
@@ -3794,7 +3800,7 @@ msgstr "更新端口"
 #: dashboards/admin/networks/templates/networks/subnets/index.html:6
 #: dashboards/project/networks/templates/networks/detail.html:3
 msgid "Network Details"
-msgstr ""
+msgstr "网络详情"
 
 #: dashboards/admin/overview/panel.py:27
 #: dashboards/admin/volumes/snapshots/tabs.py:23
@@ -3804,6 +3810,7 @@ msgstr ""
 #: dashboards/project/networks/ports/tabs.py:21
 #: dashboards/project/networks/subnets/tabs.py:21
 #: dashboards/project/overview/panel.py:27
+#: dashboards/project/routers/tabs.py:25
 #: dashboards/project/routers/ports/tabs.py:24
 #: dashboards/project/stacks/tabs.py:53 dashboards/project/stacks/tabs.py:67
 #: dashboards/project/stacks/resource_types/tabs.py:21
@@ -3850,7 +3857,7 @@ msgstr "运行内存总计 (MB)"
 #: dashboards/admin/overview/templates/overview/usage.csv:5
 #: dashboards/project/overview/templates/overview/usage.csv:6
 msgid "Total Memory Usage (Hours)"
-msgstr ""
+msgstr "内存总使用量 (Hours)"
 
 #: dashboards/admin/overview/templates/overview/usage.csv:6
 #: dashboards/project/overview/templates/overview/usage.csv:7
@@ -3873,6 +3880,9 @@ msgstr "监控："
 #: dashboards/admin/routers/panel.py:24 dashboards/admin/routers/tables.py:46
 #: dashboards/admin/routers/templates/routers/index.html:3
 #: dashboards/identity/projects/workflows.py:77
+#: dashboards/project/firewalls/workflows.py:173
+#: dashboards/project/firewalls/workflows.py:179
+#: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:31
 #: dashboards/project/network_topology/routers/tables.py:27
 #: dashboards/project/routers/panel.py:24
 #: dashboards/project/routers/tables.py:244
@@ -3886,77 +3896,12 @@ msgstr "路由"
 msgid "Unable to retrieve router list."
 msgstr "无法获取路优列表"
 
-#: dashboards/admin/routers/extensions/routerrules/tables.py:21
-#: dashboards/project/routers/extensions/routerrules/forms.py:48
-#: dashboards/project/routers/extensions/routerrules/tables.py:70
-msgid "Source CIDR"
-msgstr "源CIDR"
-
-#: dashboards/admin/routers/extensions/routerrules/tables.py:23
-#: dashboards/project/routers/extensions/routerrules/forms.py:50
-#: dashboards/project/routers/extensions/routerrules/tables.py:72
-msgid "Destination CIDR"
-msgstr "目的CIDR"
-
-#: dashboards/admin/routers/extensions/routerrules/tables.py:24
-#: dashboards/project/firewalls/forms.py:43
-#: dashboards/project/firewalls/tables.py:227
-#: dashboards/project/firewalls/workflows.py:43
-#: dashboards/project/firewalls/templates/firewalls/_rule_details.html:19
-#: dashboards/project/instances/audit_tables.py:25
-#: dashboards/project/routers/extensions/routerrules/forms.py:52
-#: dashboards/project/routers/extensions/routerrules/tables.py:73
-msgid "Action"
-msgstr "动作"
-
-#: dashboards/admin/routers/extensions/routerrules/tables.py:25
-#: dashboards/project/routers/extensions/routerrules/tables.py:74
-msgid "Next Hops"
-msgstr "下一跳"
-
-#: dashboards/admin/routers/extensions/routerrules/tables.py:29
-#: dashboards/project/routers/extensions/routerrules/tables.py:81
-#: dashboards/project/routers/extensions/routerrules/tabs.py:32
-msgid "Router Rules"
-msgstr "路由规则"
-
 #: dashboards/admin/routers/ports/tables.py:29
 #: dashboards/project/network_topology/ports/tables.py:28
-#: dashboards/project/routers/tabs.py:27
+#: dashboards/project/routers/tabs.py:35
 #: dashboards/project/routers/ports/tables.py:125
 msgid "Interfaces"
 msgstr "接口"
-
-#: dashboards/admin/routers/templates/routers/_detail_overview.html:3
-#: dashboards/project/routers/templates/routers/_detail_overview.html:4
-#, python-format
-msgid "Router Overview: %(router_name)s"
-msgstr "路由概览：%(router_name)s"
-
-#: dashboards/admin/routers/templates/routers/_detail_overview.html:18
-#: dashboards/project/routers/forms.py:53
-#: dashboards/project/routers/forms.py:138
-#: dashboards/project/routers/forms.py:144
-#: dashboards/project/routers/tables.py:217
-#: dashboards/project/routers/templates/routers/_detail_overview.html:18
-msgid "Distributed"
-msgstr "分布式的"
-
-#: dashboards/admin/routers/templates/routers/_detail_overview.html:22
-#: dashboards/project/routers/forms.py:43
-#: dashboards/project/routers/forms.py:125
-#: dashboards/project/routers/templates/routers/_detail_overview.html:22
-msgid "High Availability Mode"
-msgstr "高可用模式"
-
-#: dashboards/admin/routers/templates/routers/_detail_overview.html:26
-msgid "External Gateway Information"
-msgstr "外部网关信息"
-
-#: dashboards/admin/routers/templates/routers/_detail_overview.html:28
-#, python-format
-msgid "Connected External Network: %(router_gw_info_network)s"
-msgstr "已连接的外部网络：%(router_gw_info_network)s"
 
 #: dashboards/admin/routers/templates/routers/detail.html:3
 #: dashboards/project/routers/views.py:102
@@ -3965,7 +3910,7 @@ msgid "Router Details"
 msgstr "路由详情"
 
 #: dashboards/admin/routers/templates/routers/update.html:3
-#: dashboards/project/routers/views.py:166
+#: dashboards/project/routers/views.py:178
 #: dashboards/project/routers/templates/routers/update.html:3
 msgid "Update Router"
 msgstr "更新路由"
@@ -4028,7 +3973,7 @@ msgstr "不能更新卷快照状态。"
 
 #: dashboards/admin/volumes/snapshots/tables.py:29
 #: dashboards/admin/volumes/snapshots/views.py:36
-#: dashboards/admin/volumes/volumes/views.py:98
+#: dashboards/admin/volumes/volumes/views.py:107
 msgid "Update Status"
 msgstr "更新状态"
 
@@ -4397,7 +4342,7 @@ msgstr "云硬盘详情"
 
 #: dashboards/admin/volumes/templates/volumes/volumes/manage_volume.html:3
 #: dashboards/admin/volumes/volumes/tables.py:33
-#: dashboards/admin/volumes/volumes/views.py:38
+#: dashboards/admin/volumes/volumes/views.py:47
 msgid "Manage Volume"
 msgstr ""
 
@@ -4416,8 +4361,8 @@ msgstr ""
 
 #: dashboards/admin/volumes/templates/volumes/volumes/update_status.html:3
 #: dashboards/admin/volumes/volumes/tables.py:69
-#: dashboards/admin/volumes/volumes/views.py:95
-#: dashboards/admin/volumes/volumes/views.py:101
+#: dashboards/admin/volumes/volumes/views.py:104
+#: dashboards/admin/volumes/volumes/views.py:110
 msgid "Update Volume Status"
 msgstr "更新云硬盘状态"
 
@@ -4853,20 +4798,20 @@ msgstr "无法创建QoS规格。"
 msgid "Unable to retrieve snapshot data."
 msgstr ""
 
-#: dashboards/admin/volumes/volumes/views.py:40
+#: dashboards/admin/volumes/volumes/views.py:49
 msgid "Manage"
 msgstr ""
 
-#: dashboards/admin/volumes/volumes/views.py:53
+#: dashboards/admin/volumes/volumes/views.py:62
 msgid "Confirm Unmanage Volume"
 msgstr ""
 
-#: dashboards/admin/volumes/volumes/views.py:55
+#: dashboards/admin/volumes/volumes/views.py:64
 msgid "Unmanage"
 msgstr ""
 
-#: dashboards/admin/volumes/volumes/views.py:73
-#: dashboards/admin/volumes/volumes/views.py:117
+#: dashboards/admin/volumes/volumes/views.py:82
+#: dashboards/admin/volumes/volumes/views.py:126
 #: dashboards/project/volumes/volumes/views.py:68
 #: dashboards/project/volumes/volumes/views.py:457
 msgid "Unable to retrieve volume details."
@@ -6373,13 +6318,13 @@ msgstr "管理规则"
 #: dashboards/project/access_and_security/security_groups/views.py:108
 #: dashboards/project/access_and_security/security_groups/views.py:113
 #: dashboards/project/access_and_security/templates/access_and_security/security_groups/add_rule.html:3
-#: dashboards/project/firewalls/tables.py:27
+#: dashboards/project/firewalls/tables.py:33
 #: dashboards/project/firewalls/workflows.py:103
 msgid "Add Rule"
 msgstr "添加规则"
 
 #: dashboards/project/access_and_security/security_groups/tables.py:177
-#: dashboards/project/firewalls/tables.py:58
+#: dashboards/project/firewalls/tables.py:64
 msgid "Delete Rule"
 msgid_plural "Delete Rules"
 msgstr[0] "删除规则"
@@ -6416,8 +6361,8 @@ msgstr "找不到安全组"
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/config_template.html:59
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/config_template.html:69
 #: dashboards/project/firewalls/workflows.py:104
-#: dashboards/project/firewalls/workflows.py:209
-#: dashboards/project/firewalls/workflows.py:286
+#: dashboards/project/firewalls/workflows.py:254
+#: dashboards/project/firewalls/workflows.py:331
 #: dashboards/project/loadbalancers/workflows.py:136
 #: dashboards/project/loadbalancers/workflows.py:260
 #: dashboards/project/loadbalancers/workflows.py:426
@@ -7000,7 +6945,7 @@ msgstr "插件"
 #: dashboards/project/data_processing/nodegroup_templates/tables.py:88
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_configure_general_help.html:8
 #: dashboards/project/data_processing/nodegroup_templates/templates/data_processing.nodegroup_templates/_details.html:32
-#: dashboards/project/data_processing/utils/workflow_helpers.py:200
+#: dashboards/project/data_processing/utils/workflow_helpers.py:193
 #: dashboards/project/data_processing/wizard/forms.py:64
 msgid "Version"
 msgstr "版本"
@@ -7055,13 +7000,13 @@ msgstr "配置集群模板"
 #: dashboards/project/data_processing/cluster_templates/tabs.py:48
 #: dashboards/project/data_processing/cluster_templates/templates/data_processing.cluster_templates/_nodegroups_details.html:3
 #: dashboards/project/data_processing/cluster_templates/workflows/create.py:217
-#: dashboards/project/data_processing/clusters/tabs.py:85
+#: dashboards/project/data_processing/clusters/tabs.py:84
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/_nodegroups_details.html:6
 msgid "Node Groups"
 msgstr "节点组"
 
 #: dashboards/project/data_processing/cluster_templates/tabs.py:31
-#: dashboards/project/data_processing/clusters/tabs.py:37
+#: dashboards/project/data_processing/clusters/tabs.py:36
 #: dashboards/project/data_processing/data_sources/tabs.py:27
 #: dashboards/project/data_processing/job_binaries/tabs.py:27
 #: dashboards/project/data_processing/job_executions/tabs.py:26
@@ -7343,24 +7288,24 @@ msgstr "设置集群"
 msgid "Instances Count"
 msgstr "实例数量"
 
-#: dashboards/project/data_processing/clusters/tabs.py:114
+#: dashboards/project/data_processing/clusters/tabs.py:113
 msgid "Unable to get node group details."
 msgstr "无法获取节点组详细信息。"
 
-#: dashboards/project/data_processing/clusters/tabs.py:140
+#: dashboards/project/data_processing/clusters/tabs.py:139
 msgid "Internal IP"
 msgstr "内网IP"
 
-#: dashboards/project/data_processing/clusters/tabs.py:143
+#: dashboards/project/data_processing/clusters/tabs.py:142
 msgid "Management IP"
 msgstr "管理网络IP"
 
-#: dashboards/project/data_processing/clusters/tabs.py:147
+#: dashboards/project/data_processing/clusters/tabs.py:146
 #: dashboards/project/data_processing/clusters/templates/data_processing.clusters/_instances_details.html:2
 msgid "Cluster Instances"
 msgstr "集群实例"
 
-#: dashboards/project/data_processing/clusters/tabs.py:176
+#: dashboards/project/data_processing/clusters/tabs.py:175
 msgid "Unable to fetch instance details."
 msgstr "无法获取云主机实例详情。"
 
@@ -7942,7 +7887,7 @@ msgid "Download job binary"
 msgstr "下载任务二进制文件"
 
 #: dashboards/project/data_processing/job_executions/panel.py:22
-#: dashboards/project/data_processing/job_executions/tables.py:194
+#: dashboards/project/data_processing/job_executions/tables.py:214
 #: dashboards/project/data_processing/job_executions/templates/data_processing.job_executions/job_executions.html:6
 #: dashboards/project/data_processing/jobs/views.py:41
 msgid "Jobs"
@@ -7956,7 +7901,7 @@ msgid "Job"
 msgstr "任务"
 
 #: dashboards/project/data_processing/job_executions/tables.py:39
-#: dashboards/project/data_processing/job_executions/tables.py:179
+#: dashboards/project/data_processing/job_executions/tables.py:198
 #: dashboards/project/data_processing/job_executions/templates/data_processing.job_executions/_details.html:16
 #: dashboards/project/data_processing/jobs/workflows/launch.py:104
 msgid "Cluster"
@@ -8003,27 +7948,43 @@ msgstr "在现有的集群上重新启动"
 msgid "Relaunch On New Cluster"
 msgstr "在新的集群的重新启动"
 
-#: dashboards/project/data_processing/job_executions/tables.py:158
+#: dashboards/project/data_processing/job_executions/tables.py:151
+#: dashboards/project/data_processing/job_executions/tables.py:166
+#: dashboards/project/database_backups/tables.py:144
+#: dashboards/project/database_backups/tables.py:150
+#: dashboards/project/databases/tables.py:242
+#: dashboards/project/databases/tables.py:248
+#: dashboards/project/databases/tables.py:265
+#: dashboards/project/databases/tables.py:271
+#: dashboards/project/instances/tables.py:845
+#: dashboards/project/instances/tables.py:852
+#: dashboards/project/instances/views.py:398
+#: dashboards/project/instances/templates/instances/_detail_overview.html:64
+#: dashboards/project/instances/templates/instances/_detail_overview.html:100
+msgid "Not available"
+msgstr "不可用"
+
+#: dashboards/project/data_processing/job_executions/tables.py:176
 msgctxt "Current status of a Job"
 msgid "Done with Error"
 msgstr ""
 
-#: dashboards/project/data_processing/job_executions/tables.py:160
+#: dashboards/project/data_processing/job_executions/tables.py:178
 msgctxt "Current status of a Job"
 msgid "Failed"
 msgstr "失败"
 
-#: dashboards/project/data_processing/job_executions/tables.py:162
+#: dashboards/project/data_processing/job_executions/tables.py:180
 msgctxt "Current status of a Job"
 msgid "Killed"
 msgstr "已杀死"
 
-#: dashboards/project/data_processing/job_executions/tables.py:164
+#: dashboards/project/data_processing/job_executions/tables.py:182
 msgctxt "Current status of a Job"
 msgid "Succeeded"
 msgstr ""
 
-#: dashboards/project/data_processing/job_executions/tables.py:175
+#: dashboards/project/data_processing/job_executions/tables.py:193
 #: dashboards/project/data_processing/job_executions/templates/data_processing.job_executions/_details.html:10
 #: dashboards/project/data_processing/jobs/templates/data_processing.jobs/_details.html:3
 msgid "Job Template"
@@ -8618,12 +8579,12 @@ msgstr "节点组集群"
 msgid "Count"
 msgstr "计数"
 
-#: dashboards/project/data_processing/utils/workflow_helpers.py:158
+#: dashboards/project/data_processing/utils/workflow_helpers.py:151
 #, python-format
 msgid "Unable to retrieve security group %(group)s."
 msgstr ""
 
-#: dashboards/project/data_processing/utils/workflow_helpers.py:193
+#: dashboards/project/data_processing/utils/workflow_helpers.py:186
 #: dashboards/project/data_processing/wizard/forms.py:56
 msgid "Plugin Name"
 msgstr "插件名称"
@@ -8998,20 +8959,6 @@ msgstr[0] "删除备份"
 msgid "Deleted Backup"
 msgid_plural "Deleted Backups"
 msgstr[0] "已删除的备份"
-
-#: dashboards/project/database_backups/tables.py:144
-#: dashboards/project/database_backups/tables.py:150
-#: dashboards/project/databases/tables.py:242
-#: dashboards/project/databases/tables.py:248
-#: dashboards/project/databases/tables.py:265
-#: dashboards/project/databases/tables.py:271
-#: dashboards/project/instances/tables.py:845
-#: dashboards/project/instances/tables.py:852
-#: dashboards/project/instances/views.py:398
-#: dashboards/project/instances/templates/instances/_detail_overview.html:64
-#: dashboards/project/instances/templates/instances/_detail_overview.html:100
-msgid "Not available"
-msgstr "不可用"
 
 #: dashboards/project/database_backups/tables.py:162
 #: dashboards/project/database_backups/templates/database_backups/details.html:21
@@ -9742,8 +9689,8 @@ msgstr ""
 msgid "Launched %(count)s named \"%(name)s\"."
 msgstr "启动了%(count)s 名称\"%(name)s\"."
 
-#: dashboards/project/firewalls/forms.py:38
-#: dashboards/project/firewalls/tables.py:216
+#: dashboards/project/firewalls/forms.py:39
+#: dashboards/project/firewalls/tables.py:270
 #: dashboards/project/firewalls/workflows.py:37
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:22
 #: dashboards/project/loadbalancers/tables.py:322
@@ -9754,24 +9701,24 @@ msgstr "启动了%(count)s 名称\"%(name)s\"."
 msgid "Protocol"
 msgstr "协议"
 
-#: dashboards/project/firewalls/forms.py:39
+#: dashboards/project/firewalls/forms.py:40
 #: dashboards/project/firewalls/workflows.py:38
 #: dashboards/project/loadbalancers/workflows.py:488
 msgid "TCP"
 msgstr "TCP"
 
-#: dashboards/project/firewalls/forms.py:39
+#: dashboards/project/firewalls/forms.py:40
 #: dashboards/project/firewalls/workflows.py:39
 msgid "UDP"
 msgstr "UDP"
 
-#: dashboards/project/firewalls/forms.py:39
+#: dashboards/project/firewalls/forms.py:40
 #: dashboards/project/firewalls/workflows.py:40
 msgid "ICMP"
 msgstr "ICMP"
 
-#: dashboards/project/firewalls/forms.py:40
-#: dashboards/project/firewalls/tables.py:214
+#: dashboards/project/firewalls/forms.py:41
+#: dashboards/project/firewalls/tables.py:268
 #: dashboards/project/firewalls/workflows.py:41
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:23
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:26
@@ -9781,297 +9728,380 @@ msgstr "ICMP"
 msgid "ANY"
 msgstr "任何"
 
-#: dashboards/project/firewalls/forms.py:41
+#: dashboards/project/firewalls/forms.py:42
 msgid "Protocol for the firewall rule"
 msgstr "防火墙规则的协议"
 
 #: dashboards/project/firewalls/forms.py:44
+#: dashboards/project/firewalls/tables.py:281
+#: dashboards/project/firewalls/workflows.py:43
+#: dashboards/project/firewalls/templates/firewalls/_rule_details.html:19
+#: dashboards/project/instances/audit_tables.py:25
+#: dashboards/project/routers/extensions/routerrules/forms.py:52
+#: dashboards/project/routers/extensions/routerrules/tables.py:73
+msgid "Action"
+msgstr "动作"
+
+#: dashboards/project/firewalls/forms.py:45
 #: dashboards/project/firewalls/workflows.py:44
 msgid "ALLOW"
 msgstr "允许"
 
-#: dashboards/project/firewalls/forms.py:44
+#: dashboards/project/firewalls/forms.py:45
 #: dashboards/project/firewalls/workflows.py:45
 msgid "DENY"
 msgstr "拒绝"
 
-#: dashboards/project/firewalls/forms.py:45
+#: dashboards/project/firewalls/forms.py:46
 msgid "Action for the firewall rule"
 msgstr "防火墙规则的动作"
 
-#: dashboards/project/firewalls/forms.py:47
+#: dashboards/project/firewalls/forms.py:48
 #: dashboards/project/firewalls/workflows.py:47
 msgid "Source IP Address/Subnet"
 msgstr "源IP地址/子网"
 
-#: dashboards/project/firewalls/forms.py:50
+#: dashboards/project/firewalls/forms.py:51
 msgid "Source IP address or subnet"
 msgstr "源IP地址或子网"
 
-#: dashboards/project/firewalls/forms.py:52
+#: dashboards/project/firewalls/forms.py:53
 #: dashboards/project/firewalls/workflows.py:51
 msgid "Destination IP Address/Subnet"
 msgstr "目的IP地址/子网"
 
-#: dashboards/project/firewalls/forms.py:55
+#: dashboards/project/firewalls/forms.py:56
 msgid "Destination IP address or subnet"
 msgstr "目的IP地址或子网"
 
-#: dashboards/project/firewalls/forms.py:58
+#: dashboards/project/firewalls/forms.py:59
 #: dashboards/project/firewalls/workflows.py:56
 msgid "Source Port/Port Range"
 msgstr "源端口/端口范围"
 
-#: dashboards/project/firewalls/forms.py:61
+#: dashboards/project/firewalls/forms.py:62
 msgid "Source port (integer in [1, 65535] or range in a:b)"
 msgstr "源端口([1, 65535]区间内的整数或者以a:b形式表示的范围)"
 
-#: dashboards/project/firewalls/forms.py:64
+#: dashboards/project/firewalls/forms.py:65
 #: dashboards/project/firewalls/workflows.py:61
 msgid "Destination Port/Port Range"
 msgstr "目的端口/端口范围"
 
-#: dashboards/project/firewalls/forms.py:67
+#: dashboards/project/firewalls/forms.py:68
 msgid "Destination port (integer in [1, 65535] or range in a:b)"
 msgstr "目的端口 ([1, 65535]区间内的整数或者以a:b形式表示的范围)"
 
-#: dashboards/project/firewalls/forms.py:85
+#: dashboards/project/firewalls/forms.py:86
 #, python-format
 msgid "Rule %s was successfully updated."
 msgstr "规则 %s 被成功更新。"
 
-#: dashboards/project/firewalls/forms.py:90
+#: dashboards/project/firewalls/forms.py:91
 #, python-format
 msgid "Failed to update rule %(name)s: %(reason)s"
 msgstr "无法更新规则 %(name)s: %(reason)s"
 
-#: dashboards/project/firewalls/forms.py:102
-#: dashboards/project/firewalls/tables.py:249
-#: dashboards/project/firewalls/workflows.py:180
+#: dashboards/project/firewalls/forms.py:103
+#: dashboards/project/firewalls/tables.py:303
+#: dashboards/project/firewalls/workflows.py:225
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:34
 msgid "Audited"
 msgstr "已审计"
 
-#: dashboards/project/firewalls/forms.py:111
+#: dashboards/project/firewalls/forms.py:112
 #, python-format
 msgid "Policy %s was successfully updated."
 msgstr "策略 %s 被成功更新。"
 
-#: dashboards/project/firewalls/forms.py:116
+#: dashboards/project/firewalls/forms.py:117
 #, python-format
 msgid "Failed to update policy %(name)s: %(reason)s"
 msgstr "无法更新策略 %(name)s: %(reason)s"
 
-#: dashboards/project/firewalls/forms.py:130
-#: dashboards/project/firewalls/tables.py:284
-#: dashboards/project/firewalls/workflows.py:235
+#: dashboards/project/firewalls/forms.py:131
+#: dashboards/project/firewalls/tables.py:343
+#: dashboards/project/firewalls/workflows.py:280
 msgid "Policy"
 msgstr "策略"
 
-#: dashboards/project/firewalls/forms.py:146
+#: dashboards/project/firewalls/forms.py:147
 msgid "Unable to retrieve policy list."
 msgstr "无法获取策略列表。"
 
-#: dashboards/project/firewalls/forms.py:166
+#: dashboards/project/firewalls/forms.py:167
 #, python-format
 msgid "Firewall %s was successfully updated."
 msgstr "防火墙 %s 被成功更新。"
 
-#: dashboards/project/firewalls/forms.py:171
+#: dashboards/project/firewalls/forms.py:172
 #, python-format
 msgid "Failed to update firewall %(name)s: %(reason)s"
 msgstr "无法更新防火墙 %(name)s: %(reason)s"
 
-#: dashboards/project/firewalls/forms.py:179
-#: dashboards/project/firewalls/tables.py:165
+#: dashboards/project/firewalls/forms.py:180
+#: dashboards/project/firewalls/tables.py:171
 msgid "Insert Rule"
 msgstr "插入规则"
 
-#: dashboards/project/firewalls/forms.py:180
+#: dashboards/project/firewalls/forms.py:181
 msgid "Before"
 msgstr "前于"
 
-#: dashboards/project/firewalls/forms.py:182
+#: dashboards/project/firewalls/forms.py:183
 msgid "After"
 msgstr "后于"
 
-#: dashboards/project/firewalls/forms.py:207
+#: dashboards/project/firewalls/forms.py:208
 #, python-format
 msgid "Failed to retrieve available rules: %s"
 msgstr "无法获取可用的规则: %s"
 
-#: dashboards/project/firewalls/forms.py:226
+#: dashboards/project/firewalls/forms.py:227
 #, python-format
 msgid "Rule %(rule)s was successfully inserted to policy %(policy)s."
 msgstr "规则 %(rule)s 被成功插入至策略 %(policy)s。"
 
-#: dashboards/project/firewalls/forms.py:234
+#: dashboards/project/firewalls/forms.py:235
 #, python-format
 msgid "Failed to insert rule to policy %(name)s: %(reason)s"
 msgstr "无法插入规则至策略 %(name)s: %(reason)s"
 
-#: dashboards/project/firewalls/forms.py:242
-#: dashboards/project/firewalls/tables.py:179
+#: dashboards/project/firewalls/forms.py:243
+#: dashboards/project/firewalls/tables.py:185
 msgid "Remove Rule"
 msgstr "移除规则"
 
-#: dashboards/project/firewalls/forms.py:260
+#: dashboards/project/firewalls/forms.py:261
 #, python-format
 msgid "Failed to retrieve current rules in policy %(name)s: %(reason)s"
 msgstr "无法获取策略中的当前规则 %(name)s: %(reason)s"
 
-#: dashboards/project/firewalls/forms.py:276
+#: dashboards/project/firewalls/forms.py:277
 #, python-format
 msgid "Rule %(rule)s was successfully removed from policy %(policy)s."
 msgstr "规则 %(rule)s 被从策略 %(policy)s 中成功移除。"
 
-#: dashboards/project/firewalls/forms.py:284
+#: dashboards/project/firewalls/forms.py:285
 #, python-format
 msgid "Failed to remove rule from policy %(name)s: %(reason)s"
 msgstr "无法从策略中移除规则 %(name)s: %(reason)s"
 
+#: dashboards/project/firewalls/forms.py:334
+msgid "Add Routers"
+msgstr ""
+
+#: dashboards/project/firewalls/forms.py:337
+msgid "Add selected router(s) to the firewall."
+msgstr ""
+
+#: dashboards/project/firewalls/forms.py:340
+#, python-format
+msgid "Router(s) was/were successfully added to firewall %(firewall)s."
+msgstr ""
+
+#: dashboards/project/firewalls/forms.py:342
+#, python-format
+msgid "Failed to add router(s) to firewall %(name)s: %(reason)s"
+msgstr ""
+
+#: dashboards/project/firewalls/forms.py:343
+#, python-format
+msgid "Failed to retrieve available routers: %(reason)s"
+msgstr ""
+
+#: dashboards/project/firewalls/forms.py:359
+msgid "Remove Routers"
+msgstr ""
+
+#: dashboards/project/firewalls/forms.py:362
+msgid "Unselect the router(s) to be removed from firewall."
+msgstr ""
+
+#: dashboards/project/firewalls/forms.py:365
+#, python-format
+msgid "Router(s)  was successfully removed from firewall %(firewall)s."
+msgstr ""
+
+#: dashboards/project/firewalls/forms.py:367
+#, python-format
+msgid "Failed to remove router(s) from firewall %(name)s: %(reason)s"
+msgstr ""
+
+#: dashboards/project/firewalls/forms.py:369
+#, python-format
+msgid "Failed to retrieve current routers in firewall %(name)s: %(reason)s"
+msgstr ""
+
 #: dashboards/project/firewalls/panel.py:26
-#: dashboards/project/firewalls/tables.py:291
+#: dashboards/project/firewalls/tables.py:355
 #: dashboards/project/firewalls/tabs.py:69
-#: dashboards/project/firewalls/views.py:110
+#: dashboards/project/firewalls/views.py:119
 #: dashboards/project/firewalls/templates/firewalls/details_tabs.html:3
 msgid "Firewalls"
 msgstr "防火墙"
 
-#: dashboards/project/firewalls/tables.py:36
-#: dashboards/project/firewalls/workflows.py:208
+#: dashboards/project/firewalls/tables.py:42
+#: dashboards/project/firewalls/workflows.py:253
 msgid "Add Policy"
 msgstr "增加策略"
 
-#: dashboards/project/firewalls/tables.py:45
+#: dashboards/project/firewalls/tables.py:51
 msgid "Create Firewall"
 msgstr "创建防火墙"
 
-#: dashboards/project/firewalls/tables.py:66
+#: dashboards/project/firewalls/tables.py:72
 msgid "Scheduled deletion of Rule"
 msgid_plural "Scheduled deletion of Rules"
 msgstr[0] "已安排规则的删除"
 
-#: dashboards/project/firewalls/tables.py:80
+#: dashboards/project/firewalls/tables.py:86
 msgid "Delete Policy"
 msgid_plural "Delete Policies"
 msgstr[0] "删除策略"
 
-#: dashboards/project/firewalls/tables.py:88
+#: dashboards/project/firewalls/tables.py:94
 msgid "Scheduled deletion of Policy"
 msgid_plural "Scheduled deletion of Policies"
 msgstr[0] "已安排策略的删除"
 
-#: dashboards/project/firewalls/tables.py:103
+#: dashboards/project/firewalls/tables.py:109
 msgid "Delete Firewall"
 msgid_plural "Delete Firewalls"
 msgstr[0] "删除防火墙"
 
-#: dashboards/project/firewalls/tables.py:111
+#: dashboards/project/firewalls/tables.py:117
 msgid "Scheduled deletion of Firewall"
 msgid_plural "Scheduled deletion of Firewalls"
 msgstr[0] "已安排防火墙的删除"
 
-#: dashboards/project/firewalls/tables.py:121
-#: dashboards/project/firewalls/views.py:130
+#: dashboards/project/firewalls/tables.py:127
+#: dashboards/project/firewalls/views.py:139
 #: dashboards/project/firewalls/templates/firewalls/updaterule.html:3
 msgid "Edit Rule"
 msgstr "编辑规则"
 
-#: dashboards/project/firewalls/tables.py:133
-#: dashboards/project/firewalls/views.py:171
+#: dashboards/project/firewalls/tables.py:139
+#: dashboards/project/firewalls/views.py:180
 #: dashboards/project/firewalls/templates/firewalls/updatepolicy.html:3
 msgid "Edit Policy"
 msgstr "编辑策略"
 
-#: dashboards/project/firewalls/tables.py:145
-#: dashboards/project/firewalls/views.py:209
+#: dashboards/project/firewalls/tables.py:151
+#: dashboards/project/firewalls/views.py:218
 #: dashboards/project/firewalls/templates/firewalls/updatefirewall.html:3
 msgid "Edit Firewall"
 msgstr "编辑防火墙"
 
-#: dashboards/project/firewalls/tables.py:207
+#: dashboards/project/firewalls/tables.py:199
+msgid "Add Router"
+msgstr ""
+
+#: dashboards/project/firewalls/tables.py:222
+msgid "Remove Router"
+msgstr ""
+
+#: dashboards/project/firewalls/tables.py:261
 msgctxt "Action Name of a Firewall Rule"
 msgid "ALLOW"
 msgstr "允许"
 
-#: dashboards/project/firewalls/tables.py:208
+#: dashboards/project/firewalls/tables.py:262
 msgctxt "Action Name of a Firewall Rule"
 msgid "DENY"
 msgstr "拒绝"
 
-#: dashboards/project/firewalls/tables.py:218
+#: dashboards/project/firewalls/tables.py:272
 msgid "Source IP"
 msgstr "源IP"
 
-#: dashboards/project/firewalls/tables.py:220
+#: dashboards/project/firewalls/tables.py:274
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:28
 msgid "Source Port"
 msgstr "源端口"
 
-#: dashboards/project/firewalls/tables.py:222
+#: dashboards/project/firewalls/tables.py:276
 msgid "Destination IP"
 msgstr "目的IP"
 
-#: dashboards/project/firewalls/tables.py:224
+#: dashboards/project/firewalls/tables.py:278
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:34
 msgid "Destination Port"
 msgstr "目的端口"
 
-#: dashboards/project/firewalls/tables.py:233
+#: dashboards/project/firewalls/tables.py:287
 msgid "In Policy"
 msgstr "在策略"
 
-#: dashboards/project/firewalls/tables.py:237
-#: dashboards/project/firewalls/tables.py:247
+#: dashboards/project/firewalls/tables.py:291
+#: dashboards/project/firewalls/tables.py:301
 #: dashboards/project/firewalls/workflows.py:131
 #: dashboards/project/firewalls/workflows.py:137
 #: dashboards/project/firewalls/templates/firewalls/_policy_details.html:19
 msgid "Rules"
 msgstr "规则"
 
-#: dashboards/project/firewalls/tables.py:254
+#: dashboards/project/firewalls/tables.py:308
 msgid "Policies"
 msgstr "策略"
 
-#: dashboards/project/firewalls/tables.py:263
+#: dashboards/project/firewalls/tables.py:317
 msgctxt "Current status of a Firewall"
 msgid "Active"
 msgstr "运行中"
 
-#: dashboards/project/firewalls/tables.py:265
+#: dashboards/project/firewalls/tables.py:319
 msgctxt "Current status of a Firewall"
 msgid "Down"
 msgstr "停止"
 
-#: dashboards/project/firewalls/tables.py:267
+#: dashboards/project/firewalls/tables.py:321
 msgctxt "Current status of a Firewall"
 msgid "Error"
 msgstr "错误"
 
-#: dashboards/project/firewalls/tables.py:269
+#: dashboards/project/firewalls/tables.py:323
 msgctxt "Current status of a Firewall"
 msgid "Created"
 msgstr "已创建"
 
-#: dashboards/project/firewalls/tables.py:271
+#: dashboards/project/firewalls/tables.py:325
 msgctxt "Current status of a Firewall"
 msgid "Pending Create"
 msgstr ""
 
-#: dashboards/project/firewalls/tables.py:273
+#: dashboards/project/firewalls/tables.py:327
 msgctxt "Current status of a Firewall"
 msgid "Pending Update"
 msgstr ""
 
-#: dashboards/project/firewalls/tables.py:275
+#: dashboards/project/firewalls/tables.py:329
 msgctxt "Current status of a Firewall"
 msgid "Pending Delete"
 msgstr ""
 
-#: dashboards/project/firewalls/tables.py:277
+#: dashboards/project/firewalls/tables.py:331
 msgctxt "Current status of a Firewall"
 msgid "Inactive"
+msgstr ""
+
+#: dashboards/project/firewalls/tables.py:334
+msgctxt "Admin state of a Firewall"
+msgid "UP"
+msgstr ""
+
+#: dashboards/project/firewalls/tables.py:335
+msgctxt "Admin state of a Firewall"
+msgid "DOWN"
+msgstr ""
+
+#: dashboards/project/firewalls/tables.py:345
+msgid "Associated Routers"
+msgstr ""
+
+#: dashboards/project/firewalls/tables.py:369
+#, python-format
+msgid "Failed to verify extension support %(reason)s"
 msgstr ""
 
 #: dashboards/project/firewalls/tabs.py:31
@@ -10090,96 +10120,98 @@ msgstr "防火墙策略"
 msgid "Unable to retrieve policies list."
 msgstr "无法获取策略列表。"
 
-#: dashboards/project/firewalls/tabs.py:81
+#: dashboards/project/firewalls/tabs.py:91
 msgid "Unable to retrieve firewall list."
 msgstr "无法获取防火墙列表。"
 
-#: dashboards/project/firewalls/tabs.py:87
+#: dashboards/project/firewalls/tabs.py:97
 msgid "Firewall Rule Details"
 msgstr "防火墙规则详情"
 
-#: dashboards/project/firewalls/tabs.py:98
-#: dashboards/project/firewalls/views.py:154
+#: dashboards/project/firewalls/tabs.py:108
+#: dashboards/project/firewalls/views.py:163
 msgid "Unable to retrieve rule details."
 msgstr "无法获取规则详情。"
 
-#: dashboards/project/firewalls/tabs.py:104
+#: dashboards/project/firewalls/tabs.py:114
 msgid "Firewall Policy Details"
 msgstr "防火墙策略详情"
 
-#: dashboards/project/firewalls/tabs.py:115
-#: dashboards/project/firewalls/views.py:195
-#: dashboards/project/firewalls/views.py:273
-#: dashboards/project/firewalls/views.py:313
+#: dashboards/project/firewalls/tabs.py:125
+#: dashboards/project/firewalls/views.py:204
+#: dashboards/project/firewalls/views.py:282
+#: dashboards/project/firewalls/views.py:322
 msgid "Unable to retrieve policy details."
 msgstr "无法获取策略详情。"
 
-#: dashboards/project/firewalls/tabs.py:121
+#: dashboards/project/firewalls/tabs.py:131
 msgid "Firewall Details"
 msgstr "防火墙详情"
 
-#: dashboards/project/firewalls/tabs.py:132
-#: dashboards/project/firewalls/views.py:234
+#: dashboards/project/firewalls/tabs.py:152
+#: dashboards/project/firewalls/views.py:243
+#: dashboards/project/firewalls/views.py:357
 msgid "Unable to retrieve firewall details."
 msgstr "无法获取防火墙详情。"
 
-#: dashboards/project/firewalls/views.py:66
+#: dashboards/project/firewalls/views.py:68
 #, python-format
 msgid "Deleted rule %s"
 msgstr "删除规则%s"
 
-#: dashboards/project/firewalls/views.py:69
+#: dashboards/project/firewalls/views.py:71
 #, python-format
 msgid "Unable to delete rule. %s"
 msgstr "无法删除规则  %s"
 
-#: dashboards/project/firewalls/views.py:74
+#: dashboards/project/firewalls/views.py:76
 #, python-format
 msgid "Deleted policy %s"
 msgstr "删除策略%s"
 
-#: dashboards/project/firewalls/views.py:77
+#: dashboards/project/firewalls/views.py:79
 #, python-format
 msgid "Unable to delete policy. %s"
 msgstr "无法删除策略  %s"
 
-#: dashboards/project/firewalls/views.py:83
+#: dashboards/project/firewalls/views.py:85
 #, python-format
 msgid "Deleted firewall %s"
 msgstr "删除防火墙%s"
 
-#: dashboards/project/firewalls/views.py:86
+#: dashboards/project/firewalls/views.py:88
 #, python-format
 msgid "Unable to delete firewall. %s"
 msgstr "无法删除防火墙  %s"
 
-#: dashboards/project/firewalls/views.py:93
+#: dashboards/project/firewalls/views.py:95
 #: dashboards/project/firewalls/templates/firewalls/addrule.html:3
 msgid "Add New Rule"
 msgstr "添加新的规则"
 
-#: dashboards/project/firewalls/views.py:99
+#: dashboards/project/firewalls/views.py:101
 #: dashboards/project/firewalls/templates/firewalls/addpolicy.html:3
 msgid "Add New Policy"
 msgstr "添加新的策略"
 
-#: dashboards/project/firewalls/views.py:105
+#: dashboards/project/firewalls/views.py:107
 #: dashboards/project/firewalls/templates/firewalls/addfirewall.html:3
 msgid "Add New Firewall"
 msgstr "添加新的防火墙"
 
-#: dashboards/project/firewalls/views.py:131
-#: dashboards/project/firewalls/views.py:172
-#: dashboards/project/firewalls/views.py:210
-#: dashboards/project/firewalls/views.py:250
-#: dashboards/project/firewalls/views.py:289
+#: dashboards/project/firewalls/views.py:140
+#: dashboards/project/firewalls/views.py:181
+#: dashboards/project/firewalls/views.py:219
+#: dashboards/project/firewalls/views.py:259
+#: dashboards/project/firewalls/views.py:298
+#: dashboards/project/firewalls/views.py:335
 #: dashboards/project/loadbalancers/views.py:234
 #: dashboards/project/loadbalancers/views.py:271
 #: dashboards/project/loadbalancers/views.py:322
 #: dashboards/project/loadbalancers/views.py:358
 #: dashboards/project/networks/views.py:69
 #: dashboards/project/networks/ports/views.py:88
-#: dashboards/project/routers/views.py:167
+#: dashboards/project/routers/views.py:179
 #: dashboards/project/volumes/snapshots/views.py:37
 #: dashboards/project/vpn/views.py:274 dashboards/project/vpn/views.py:310
 #: dashboards/project/vpn/views.py:353 dashboards/project/vpn/views.py:395
@@ -10187,32 +10219,44 @@ msgstr "添加新的防火墙"
 msgid "Save Changes"
 msgstr "保存"
 
-#: dashboards/project/firewalls/views.py:134
+#: dashboards/project/firewalls/views.py:143
 msgid "Edit Rule {{ name }}"
 msgstr ""
 
-#: dashboards/project/firewalls/views.py:175
+#: dashboards/project/firewalls/views.py:184
 msgid "Edit Policy {{ name }}"
 msgstr ""
 
-#: dashboards/project/firewalls/views.py:213
+#: dashboards/project/firewalls/views.py:222
 msgid "Edit Firewall {{ name }}"
 msgstr ""
 
-#: dashboards/project/firewalls/views.py:246
+#: dashboards/project/firewalls/views.py:255
 msgid "Insert Rule into Policy"
 msgstr ""
 
-#: dashboards/project/firewalls/views.py:252
+#: dashboards/project/firewalls/views.py:261
 #: dashboards/project/firewalls/templates/firewalls/insert_rule_to_policy.html:3
 msgid "Insert Rule to Policy"
 msgstr "向策略中添加规则"
 
-#: dashboards/project/firewalls/views.py:286
-#: dashboards/project/firewalls/views.py:292
+#: dashboards/project/firewalls/views.py:295
+#: dashboards/project/firewalls/views.py:301
 #: dashboards/project/firewalls/templates/firewalls/remove_rule_from_policy.html:3
 msgid "Remove Rule from Policy"
 msgstr "从策略中移除规则"
+
+#: dashboards/project/firewalls/views.py:368
+#: dashboards/project/firewalls/views.py:371
+#: dashboards/project/firewalls/templates/firewalls/add_router_to_firewall.html:3
+msgid "Add Router to Firewall"
+msgstr ""
+
+#: dashboards/project/firewalls/views.py:376
+#: dashboards/project/firewalls/views.py:379
+#: dashboards/project/firewalls/templates/firewalls/remove_router_from_firewall.html:3
+msgid "Remove Router from Firewall"
+msgstr ""
 
 #: dashboards/project/firewalls/workflows.py:73
 msgid "AddRule"
@@ -10248,60 +10292,77 @@ msgstr "为你的策略选择规则。"
 msgid "Unable to retrieve rules (%(error)s)."
 msgstr "无法获取规则 (%(error)s).。"
 
-#: dashboards/project/firewalls/workflows.py:188
+#: dashboards/project/firewalls/workflows.py:176
+msgid "Create a firewall with selected routers."
+msgstr ""
+
+#: dashboards/project/firewalls/workflows.py:181
+msgid "Select routers for your firewall."
+msgstr ""
+
+#: dashboards/project/firewalls/workflows.py:192
+#, python-format
+msgid "Unable to retrieve routers (%(error)s)."
+msgstr ""
+
+#: dashboards/project/firewalls/workflows.py:233
 msgid "AddPolicy"
 msgstr "增加策略"
 
-#: dashboards/project/firewalls/workflows.py:190
+#: dashboards/project/firewalls/workflows.py:235
 msgid ""
 "Create a firewall policy with an ordered list of firewall rules.\n"
 "\n"
 "A name must be given. Firewall rules are added in the order placed under the Rules tab."
 msgstr "使用一个按序的防火墙规则列表来创建防火墙策略。\n\n此处必须指定一个策略名称。在\"规则\"选项卡下按顺序添加防火墙规则。"
 
-#: dashboards/project/firewalls/workflows.py:210
+#: dashboards/project/firewalls/workflows.py:255
 #, python-format
 msgid "Added Policy \"%s\"."
 msgstr "添加策略 \"%s\"。"
 
-#: dashboards/project/firewalls/workflows.py:211
+#: dashboards/project/firewalls/workflows.py:256
 #, python-format
 msgid "Unable to add Policy \"%s\"."
 msgstr "无法添加策略 \"%s\"。"
 
-#: dashboards/project/firewalls/workflows.py:246
+#: dashboards/project/firewalls/workflows.py:291
 msgid "Select a Policy"
 msgstr "选择一个策略"
 
-#: dashboards/project/firewalls/workflows.py:254
+#: dashboards/project/firewalls/workflows.py:299
 #, python-format
 msgid "Unable to retrieve policy list (%(error)s)."
 msgstr "无法获取策略列表 (%(error)s)。"
 
-#: dashboards/project/firewalls/workflows.py:265
+#: dashboards/project/firewalls/workflows.py:310
 msgid "AddFirewall"
 msgstr "添加防火墙"
 
-#: dashboards/project/firewalls/workflows.py:267
+#: dashboards/project/firewalls/workflows.py:312
 msgid ""
 "Create a firewall based on a policy.\n"
 "\n"
 "A policy must be selected. Other fields are optional."
 msgstr "基于策略创建防火墙。\n\n策略必须被选定。其他域为可选。"
 
-#: dashboards/project/firewalls/workflows.py:285
+#: dashboards/project/firewalls/workflows.py:330
 msgid "Add Firewall"
 msgstr "添加防火墙"
 
-#: dashboards/project/firewalls/workflows.py:287
+#: dashboards/project/firewalls/workflows.py:332
 #, python-format
 msgid "Added Firewall \"%s\"."
 msgstr "防火墙 \"%s\" 已添加。"
 
-#: dashboards/project/firewalls/workflows.py:288
+#: dashboards/project/firewalls/workflows.py:333
 #, python-format
 msgid "Unable to add Firewall \"%s\"."
 msgstr "无法添加防火墙 \"%s\"。"
+
+#: dashboards/project/firewalls/templates/firewalls/_add_router_to_firewall.html:6
+msgid "Choose the router(s) you want to add."
+msgstr ""
 
 #: dashboards/project/firewalls/templates/firewalls/_firewall_details.html:19
 msgid "Policy ID"
@@ -10320,6 +10381,10 @@ msgid ""
 "Choose the rule you want to insert. Specify either the rule you want to "
 "insert immediately before, or the rule to insert immediately after. If both "
 "are specified, the prior takes precedence."
+msgstr ""
+
+#: dashboards/project/firewalls/templates/firewalls/_remove_router_from_firewall.html:6
+msgid "Unselect the routers you want to disassociate from the firewall."
 msgstr ""
 
 #: dashboards/project/firewalls/templates/firewalls/_remove_rule_from_policy.html:6
@@ -10341,6 +10406,20 @@ msgstr "已使用在策略"
 #: dashboards/project/firewalls/templates/firewalls/_rule_details.html:47
 msgid "Position in Policy"
 msgstr "在策略中的位置"
+
+#: dashboards/project/firewalls/templates/firewalls/_update_router_help.html:3
+msgid ""
+"Choose router(s) from Available Routers to Selected Routers by push button "
+"or drag and drop. "
+msgstr ""
+
+#: dashboards/project/firewalls/templates/firewalls/_update_routers.html:8
+msgid "Selected Routers"
+msgstr ""
+
+#: dashboards/project/firewalls/templates/firewalls/_update_routers.html:11
+msgid "Available Routers"
+msgstr ""
 
 #: dashboards/project/firewalls/templates/firewalls/_update_rule_help.html:3
 msgid ""
@@ -12886,19 +12965,15 @@ msgstr "网络拓扑"
 msgid "Create a Router"
 msgstr "新建路由"
 
-#: dashboards/project/network_topology/views.py:173
-msgid "No console available."
-msgstr ""
-
 #: dashboards/project/network_topology/templates/network_topology/_create_router.html:9
 #: dashboards/project/network_topology/templates/network_topology/_create_router.html:20
 #: dashboards/project/network_topology/templates/network_topology/create_router.html:3
 #: dashboards/project/network_topology/templates/network_topology/index.html:37
 #: dashboards/project/routers/tables.py:85
 #: dashboards/project/routers/tables.py:98
-#: dashboards/project/routers/views.py:152
-#: dashboards/project/routers/views.py:155
-#: dashboards/project/routers/views.py:156
+#: dashboards/project/routers/views.py:164
+#: dashboards/project/routers/views.py:167
+#: dashboards/project/routers/views.py:168
 #: dashboards/project/routers/templates/routers/create.html:3
 msgid "Create Router"
 msgstr "新建路由"
@@ -13216,6 +13291,7 @@ msgid "Port Details"
 msgstr "端口详情"
 
 #: dashboards/project/networks/ports/views.py:54
+#: dashboards/project/routers/views.py:135
 #: dashboards/project/routers/ports/tabs.py:35
 msgid "Unable to retrieve port details."
 msgstr "无法获取端口详情"
@@ -13411,6 +13487,12 @@ msgstr "路由名称"
 msgid "Router Type"
 msgstr "路由类型"
 
+#: dashboards/project/routers/forms.py:43
+#: dashboards/project/routers/forms.py:125
+#: dashboards/project/routers/templates/routers/_detail_overview.html:20
+msgid "High Availability Mode"
+msgstr "高可用模式"
+
 #: dashboards/project/routers/forms.py:51
 #: dashboards/project/routers/forms.py:61
 msgid "Use Server Default"
@@ -13420,6 +13502,14 @@ msgstr "使用默认服务"
 #: dashboards/project/routers/forms.py:143
 msgid "Centralized"
 msgstr "集中"
+
+#: dashboards/project/routers/forms.py:53
+#: dashboards/project/routers/forms.py:138
+#: dashboards/project/routers/forms.py:144
+#: dashboards/project/routers/tables.py:217
+#: dashboards/project/routers/templates/routers/_detail_overview.html:16
+msgid "Distributed"
+msgstr "分布式的"
 
 #: dashboards/project/routers/forms.py:62
 msgid "Enable HA mode"
@@ -13479,7 +13569,7 @@ msgid "Unable to delete router \"%s\""
 msgstr "无法删除路由\"%s\""
 
 #: dashboards/project/routers/tables.py:106
-#: dashboards/project/routers/views.py:163
+#: dashboards/project/routers/views.py:175
 msgid "Edit Router"
 msgstr "编辑路由"
 
@@ -13537,11 +13627,6 @@ msgstr ""
 msgid "HA mode"
 msgstr "HA模式"
 
-#: dashboards/project/routers/tabs.py:52
-#: dashboards/project/routers/views.py:183
-msgid "Unable to retrieve router details."
-msgstr "无法获取路由详情"
-
 #: dashboards/project/routers/views.py:74
 #, python-format
 msgid "Unable to retrieve a list of external networks \"%s\"."
@@ -13571,9 +13656,23 @@ msgstr "无法获取路由\"%s\"详情"
 msgid "Unable to retrieve an external network \"%s\"."
 msgstr "无法获取外部网络\"%s\"."
 
+#: dashboards/project/routers/views.py:195
+msgid "Unable to retrieve router details."
+msgstr "无法获取路由详情"
+
 #: dashboards/project/routers/extensions/routerrules/forms.py:43
 msgid "Input must be in CIDR format"
 msgstr "输入必须是CIDR格式"
+
+#: dashboards/project/routers/extensions/routerrules/forms.py:48
+#: dashboards/project/routers/extensions/routerrules/tables.py:70
+msgid "Source CIDR"
+msgstr "源CIDR"
+
+#: dashboards/project/routers/extensions/routerrules/forms.py:50
+#: dashboards/project/routers/extensions/routerrules/tables.py:72
+msgid "Destination CIDR"
+msgstr "目的CIDR"
 
 #: dashboards/project/routers/extensions/routerrules/forms.py:53
 msgid "Optional: Next Hop Addresses (comma delimited)"
@@ -13624,7 +13723,16 @@ msgid "Deleted Router Rule"
 msgid_plural "Deleted Router Rules"
 msgstr[0] "已删除路由规则"
 
-#: dashboards/project/routers/extensions/routerrules/tabs.py:59
+#: dashboards/project/routers/extensions/routerrules/tables.py:74
+msgid "Next Hops"
+msgstr "下一跳"
+
+#: dashboards/project/routers/extensions/routerrules/tables.py:81
+#: dashboards/project/routers/extensions/routerrules/tabs.py:32
+msgid "Router Rules"
+msgstr "路由规则"
+
+#: dashboards/project/routers/extensions/routerrules/tabs.py:60
 msgid "Router Rules Grid"
 msgstr "路由规则网"
 
@@ -13685,6 +13793,7 @@ msgstr "设置网关%s失败"
 
 #: dashboards/project/routers/ports/tables.py:34
 #: dashboards/project/routers/templates/routers/_detail_overview.html:26
+#: dashboards/project/routers/templates/routers/_detail_overview.html:53
 msgid "External Gateway"
 msgstr "外部网关"
 
@@ -13742,9 +13851,13 @@ msgstr "无法设置网关"
 msgid "Creates a router with specified parameters."
 msgstr ""
 
-#: dashboards/project/routers/templates/routers/_detail_overview.html:27
-msgid "Connected External Network:"
-msgstr "已连接外部网络"
+#: dashboards/project/routers/templates/routers/_detail_overview.html:34
+msgid "External Fixed IPs"
+msgstr ""
+
+#: dashboards/project/routers/templates/routers/_detail_overview.html:46
+msgid "SNAT"
+msgstr ""
 
 #: dashboards/project/routers/templates/routers/_update.html:6
 msgid "You may update the editable properties of your router here."

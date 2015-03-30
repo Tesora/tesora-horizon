@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  var module = angular.module('hz.dashboard.launch-instance', []);
+  var module = angular.module('hz.dashboard.launch-instance', [ 'ngSanitize']);
 
   module.factory('launchInstanceWorkflow', ['dashboardBasePath', function (path) {
 
@@ -28,10 +28,16 @@
           formName: 'launchInstanceNetworkForm'
         },
         {
-          title: gettext('Access and Security'),
-          templateUrl: path + 'launch-instance/access-and-security/access-and-security.html',
-          helpUrl: path + 'launch-instance/access-and-security/access-and-security.help.html',
+          title: gettext('Security Groups'),
+          templateUrl: path + 'launch-instance/security-groups/security-groups.html',
+          helpUrl: path + 'launch-instance/security-groups/security-groups.help.html',
           formName: 'launchInstanceAccessAndSecurityForm'
+        },
+        {
+          title: gettext('Key Pair'),
+          templateUrl: path + 'launch-instance/keypair/keypair.html',
+          helpUrl: path + 'launch-instance/keypair/keypair.help.html',
+          formName: 'launchInstanceKeypairForm'
         },
         {
           title: gettext('Configuration'),
