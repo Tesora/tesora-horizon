@@ -250,6 +250,11 @@ class MyTable(tables.DataTable):
                        MyBatchActionWithHelpText)
 
 
+class TableWithColumnsPermissions(tables.DataTable):
+    name = tables.Column('name')
+    value = tables.Column('value', permissions=['horizon.test'])
+
+
 class MyServerFilterTable(MyTable):
     class Meta(object):
         name = "my_table"
@@ -378,6 +383,24 @@ class DataTableTests(test.TestCase):
         self.assertEqual(MyUpdateAction, name_column.update_action)
         self.assertEqual(forms.CharField, name_column.form_field.__class__)
         self.assertEqual({'class': 'test'}, name_column.form_field_attributes)
+
+    def test_table_column_permissions_not_allowed(self):
+        self.table = TableWithColumnsPermissions(self.request, TEST_DATA)
+        # Properties defined on the table
+        self.assertEqual(TEST_DATA, self.table.data)
+        # The column "value" is restricted thanks to permissions
+        expected_columns = ['<Column: name>']
+        self.assertQuerysetEqual(self.table.columns.values(), expected_columns)
+
+    def test_table_column_permissions_allowed(self):
+        self.set_permissions(['test'])
+        self.table = TableWithColumnsPermissions(self.request, TEST_DATA)
+        # Properties defined on the table
+        self.assertEqual(TEST_DATA, self.table.data)
+        # The user has the right permissions:
+        # the column "value" must be rendered
+        expected_columns = ['<Column: name>', '<Column: value>']
+        self.assertQuerysetEqual(self.table.columns.values(), expected_columns)
 
     def test_table_force_no_multiselect(self):
         class TempTable(MyTable):
