@@ -25,6 +25,112 @@ h3 {
 }
 
 
+// Override _accordion_nav.scss
+
+@mixin tesora_background_gradient($color_start, $color_end) {
+  background: $color-start;
+  background: linear-gradient(top, $color-start 0%, $color-end 100%);
+  background: -moz-linear-gradient(top, $color-start 0%, $color-end 100%);
+  background: -ms-linear-gradient(top, $color-start 0%, $color-end 100%);
+  background: -o-linear-gradient(top, $color-start 0%, $color-end 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $color-start), color-stop(100%, $color-end));
+  background: -webkit-linear-gradient(top, $color-start 0%, $color-end 100%);
+}
+
+@mixin tesora_box_shadow {
+  -webkit-box-shadow: inset 0px 1px 0px 0px rgba(0,0,0, .1), 0px 1px 0px 0px rgba(255,255,255, .1);
+  -moz-box-shadow: inset 0px 1px 0px 0px rgba(0,0,0, .1), 0px 1px 0px 0px rgba(255,255,255, .1);
+  box-shadow: inset 0px 1px 0px 0px rgba(0,0,0, .1), 0px 1px 0px 0px rgba(255,255,255, .1);
+}
+
+.nav_accordion {
+  color: #222222;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px rgba(255,255,255, .35);
+
+  dt {
+      &:first-child { border-top: 0; }
+      display: block;
+      position: relative;
+      min-width: 110px;
+      padding: 0 10px 0 15px;
+
+      font: bold 14px/32px Arial, sans-serif;
+
+      @include tesora_background_gradient($tesora-lightest-gray, $tesora-light-gray);
+      @include tesora_box_shadow;
+
+      @include sidebar_toggle_icon();
+
+      &.active, &:hover {
+        @include tesora_background_gradient($tesora-light-orange, $tesora-orange);
+      }
+  }
+  dd {
+    border-top: 0;
+    border-bottom: 0;
+    div {
+      &:first-child h4 { margin: 0; }
+      &:last-child h4:not(.active) { margin: 0; }
+    }
+
+    h4 {
+        color: #222222;
+        font: bold 13px/32px Arial, sans-serif;
+        font-size: 13px;
+        padding: 0 10px 0 35px;
+        border-top: 0;
+        border-bottom: 0;
+        margin: 0px 0px 0px 0px;
+
+        @include sidebar_toggle_icon();
+
+        @include tesora_background_gradient($tesora-lightest-gray, $tesora-light-gray);
+        @include tesora_box_shadow;
+
+        &.active, &:hover {
+          @include tesora_background_gradient($tesora-light-blue, $tesora-dark-blue);
+        }
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      &:not(:first-child) a {
+        margin-top: 0;
+      }
+      &:not(:last-child) a {
+        margin-bottom: 0;
+      }
+
+      a {
+        display: block;
+        position: relative;
+        min-width: 110px;
+        padding: 0 12px 0 10px;
+
+        color: #222222;
+        font: bold 12px/32px Arial, sans-serif;
+        text-decoration: none;
+        text-align: right;
+
+        @include tesora_background_gradient($tesora-lightest-gray, $tesora-light-gray);
+        @include tesora_box_shadow;
+
+        &.active, &:hover {
+          color: $tesora-orange;
+          background: $accordionItemActiveBgColor;
+          border-left: 4px solid $tesora-orange;
+        }
+      }
+    }
+  }
+}
+
+
 // Override _topbar.scss
 
 .topbar {
