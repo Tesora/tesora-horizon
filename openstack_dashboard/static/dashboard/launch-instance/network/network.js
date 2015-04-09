@@ -42,14 +42,13 @@
    * Controller for the Launch Instance - Network Step Help.
    */
   module.controller('LaunchInstanceNetworkHelpCtrl', [
-    '$scope',
     LaunchInstanceNetworkHelpCtrl
   ]);
 
   function LaunchInstanceNetworkCtrl($scope) {
 
     $scope.label = {
-      title: gettext('Network'),
+      title: gettext('Networks'),
       subtitle: gettext('Networks provide the communication channels for instances in the cloud.'),
       network: gettext('Network'),
       subnet_associated: gettext('Subnets Associated'),
@@ -95,7 +94,7 @@
 
   }
 
-  function LaunchInstanceNetworkHelpCtrl($scope) {
+  function LaunchInstanceNetworkHelpCtrl() {
     var ctrl = this;
 
     ctrl.title = gettext('Network Help');

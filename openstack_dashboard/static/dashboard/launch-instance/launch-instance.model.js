@@ -1,7 +1,8 @@
 (function () {
   'use strict';
 
-  var push = Array.prototype.push;
+  var push = Array.prototype.push,
+      noop = angular.noop;
 
   /**
    * @ngdoc overview
@@ -112,7 +113,11 @@
         arePortProfilesSupported: false,
         imageSnapshots: [],
         keypairs: [],
-        metadataDefs: [],
+        metadataDefs: {
+          flavor: null,
+          image: null,
+          volume: null
+        },
         networks: [],
         novaLimits: {},
         profiles: [],
@@ -183,22 +188,31 @@
 
           model.allowedBootSources.length = 0;
 
-          promise = $q.all(
+          promise = $q.all([
             getImages(),
-            neutronAPI.getNetworks().then(onGetNetworks),
-            novaAPI.getAvailabilityZones().then(onGetAvailabilityZones),
-            novaAPI.getFlavors().then(onGetFlavors),
-            novaAPI.getKeypairs().then(onGetKeypairs),
-            novaAPI.getLimits().then(onGetNovaLimits),
-            securityGroup.query().then(onGetSecurityGroups),
-            serviceCatalog.ifTypeEnabled('volume', onLoadVolumes)
-          );
+            novaAPI.getAvailabilityZones().then(onGetAvailabilityZones, noop),
+            novaAPI.getFlavors(true, true).then(onGetFlavors, noop),
+            novaAPI.getKeypairs().then(onGetKeypairs, noop),
+            novaAPI.getLimits().then(onGetNovaLimits, noop),
+            securityGroup.query().then(onGetSecurityGroups, noop),
+            serviceCatalog.ifTypeEnabled('network').then(getNetworks, noop),
+            serviceCatalog.ifTypeEnabled('volume').then(getVolumes, noop)
+          ]);
 
-          promise.then(function() {
-            model.initializing = false;
-            model.initialized = true;
-            initPromise = null;
-          });
+          promise.then(
+            function() {
+              model.initializing = false;
+              model.initialized = true;
+              // This provides supplemental data non-critical to launching
+              // an instance.  Therefore we load it only if the critical data
+              // all loads successfully.
+              getMetadataDefinitions();
+            },
+            function () {
+              model.initializing = false;
+              model.initialized = false;
+            }
+          );
         }
 
         return promise;
@@ -322,6 +336,10 @@
 
       // Networks
 
+      function getNetworks() {
+        return neutronAPI.getNetworks().then(onGetNetworks, noop);
+      }
+
       function onGetNetworks(data) {
         model.networks.length = 0;
         push.apply(model.networks, data.data.items);
@@ -369,21 +387,21 @@
         addAllowedBootSource(model.imageSnapshots, SOURCE_TYPE_SNAPSHOT, gettext('Instance Snapshot'));
       }
 
-      function onLoadVolumes(){
-        var volumeLoadPromises = [];
+      function getVolumes(){
+        var volumePromises = [];
         // Need to check if Volume service is enabled before getting volumes
         model.volumeBootable = true;
-        addAllowedBootSource(model.volumes, SOURCE_TYPE_VOLUME, 'Volume');
+        addAllowedBootSource(model.volumes, SOURCE_TYPE_VOLUME, gettext('Volume'));
         addAllowedBootSource(model.volumeSnapshots, SOURCE_TYPE_VOLUME_SNAPSHOT, gettext('Volume Snapshot'));
-        volumeLoadPromises.push(cinderAPI.getVolumes({ status: 'available',  bootable: 1 }).then(onGetVolumes));
-        volumeLoadPromises.push(cinderAPI.getVolumeSnapshots({ status: 'available' }).then(onGetVolumeSnapshots));
+        volumePromises.push(cinderAPI.getVolumes({ status: 'available',  bootable: 1 }).then(onGetVolumes));
+        volumePromises.push(cinderAPI.getVolumeSnapshots({ status: 'available' }).then(onGetVolumeSnapshots));
 
         // Can only boot image to volume if the Nova extension is enabled.
         novaExtensions.ifNameEnabled('BlockDeviceMappingV2Boot', function(){
           model.allowCreateVolumeFromImage = true;
         });
 
-        return $q.all(volumeLoadPromises);
+        return $q.all(volumePromises);
       }
 
       function onGetVolumes(data) {
@@ -478,21 +496,37 @@
 
       // Metadata Definitions
 
-      function onGetNamespaces(data) {
-        var promises = [];
+      /**
+       * Metadata definitions provide supplemental information in detail
+       * rows and should not slow down any of the other load processes.
+       * All code should be written to treat metadata definitions as
+       * optional, because they are never guaranteed to exist.
+       */
+      function getMetadataDefinitions() {
+        // Metadata definitions often apply to multiple
+        // resource types. It is optimal to make a single
+        // request for all desired resource types.
+        var resourceTypes = {
+          flavor: 'OS::Nova::Flavor',
+          image: 'OS::Glance::Image',
+          volume: 'OS::Cinder::Volumes'
+        };
 
-        data.data.items.forEach(function (ns) {
-          var promise = glanceAPI.getNamespace(ns.namespace);
-          promise.then(onGetNamespace);
-          promises.push(promise);
+        angular.forEach(resourceTypes, function (resourceType, key) {
+          glanceAPI.getNamespaces({
+            'resource_type': resourceType
+          }, true)
+          .then(function (data) {
+            var namespaces = data.data.items;
+            // This will ensure that the metaDefs model object remains
+            // unchanged until metadefs are fully loaded. Otherwise,
+            // partial results are loaded and can result in some odd
+            // display behavior.
+            if(namespaces.length) {
+              model.metadataDefs[key] = namespaces;
+            }
+          });
         });
-
-        allNamespacesPromise = $q.all(promises);
-      }
-
-      function onGetNamespace(data) {
-        model.metadataDefs.length = 0;
-        push.apply(model.metadataDefs, data.data);
       }
 
       return model;

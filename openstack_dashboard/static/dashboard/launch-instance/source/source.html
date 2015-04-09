@@ -223,6 +223,12 @@
               </td>
               <td ng-class="tableBodyCells[4].classList"
                   ng-style="tableBodyCells[4].style">
+                <span ng-if="model.newInstanceSpec.source_type.type === 'volume' && row.availability_zone !== model.newInstanceSpec.availability_zone"
+                      class="invalid fa fa-exclamation-triangle"
+                      popover="{$ ::trCtrl.helpText.volumeAZHelpText $}"
+                      popover-trigger="mouseenter mouseleave"
+                      popover-append-to-body="true"
+                      popover-placement="top"></span>
                 {$ tableBodyCells[4].filter ? tableBodyCells[4].filter(row[tableBodyCells[4].key], tableBodyCells[4].filterArg) : row[tableBodyCells[4].key] $}
               </td>
               <td class="action-col">
@@ -236,15 +242,8 @@
               </td>
             </tr>
             <tr class="detail-row"
-                ng-repeat-end>
-              <td></td>
-              <td colspan="{$ tableHeadCells.length $}" class="detail">
-                <dl class="dl-horizontal">
-                  <dt>{$ ::label.id $}</dt>
-                  <dd>{$ row.id $}</dd>
-                </dl>
-              </td>
-              <td></td>
+                ng-repeat-end
+                ng-include="sourceDetails">
             </tr>
           </tbody><!-- /transfer table, allocated table body -->
         </table>
@@ -338,6 +337,12 @@
               </td>
               <td ng-class="tableBodyCells[4].classList"
                   ng-style="tableBodyCells[4].style">
+                <span ng-if="model.newInstanceSpec.source_type.type === 'volume' && row.availability_zone !== model.newInstanceSpec.availability_zone"
+                      class="invalid fa fa-exclamation-triangle"
+                      popover="{$ ::trCtrl.helpText.volumeAZHelpText $}"
+                      popover-trigger="mouseenter mouseleave"
+                      popover-append-to-body="true"
+                      popover-placement="top"></span>
                 {$ tableBodyCells[4].filter ? tableBodyCells[4].filter(row[tableBodyCells[4].key], tableBodyCells[4].filterArg) : row[tableBodyCells[4].key] $}
               </td>
               <td class="action-col">
@@ -351,15 +356,8 @@
               </td>
             </tr>
             <tr class="detail-row"
-                ng-repeat-end>
-              <td></td>
-              <td colspan="{$ tableHeadCells.length $}" class="detail">
-                <dl class="dl-horizontal">
-                  <dt>{$ ::label.id $}</dt>
-                  <dd>{$ row.id $}</dd>
-                </dl>
-              </td>
-              <td></td>
+                ng-repeat-end
+                ng-include="sourceDetails">
             </tr>
           </tbody>
         </table>
