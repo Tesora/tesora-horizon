@@ -98,16 +98,6 @@
         availabilityZones: [],
         flavors: [],
         allowedBootSources: [],
-        allowedDiskConfigOptions:[
-          {
-            id:'AUTO',
-            label: gettext('Automatic')
-          },
-          {
-            id:'MANUAL',
-            label: gettext('Manual')
-          }
-        ],
         images: [],
         allowCreateVolumeFromImage: false,
         arePortProfilesSupported: false,
@@ -397,9 +387,8 @@
         volumePromises.push(cinderAPI.getVolumeSnapshots({ status: 'available' }).then(onGetVolumeSnapshots));
 
         // Can only boot image to volume if the Nova extension is enabled.
-        novaExtensions.ifNameEnabled('BlockDeviceMappingV2Boot', function(){
-          model.allowCreateVolumeFromImage = true;
-        });
+        novaExtensions.ifNameEnabled('BlockDeviceMappingV2Boot')
+          .then(function(){ model.allowCreateVolumeFromImage = true; });
 
         return $q.all(volumePromises);
       }
