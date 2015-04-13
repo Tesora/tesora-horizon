@@ -112,12 +112,12 @@ h3 {
         min-width: 110px;
         padding: 0 12px 0 10px;
 
-        color: #222222;
+        color: $tesora-darker-gray;
         font: bold 12px/32px Arial, sans-serif;
         text-decoration: none;
         text-align: right;
 
-        @include tesora_background_gradient($tesora-lightest-gray, $tesora-light-gray);
+        background: $accordionItemActiveBgColor;
         @include tesora_box_shadow;
 
         &.active, &:hover {
