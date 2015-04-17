@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Ilya Alekseyev <ilyaalekseyev@acm.org>, 2015
+# Nikita Burtsev, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-08 17:57-0500\n"
-"PO-Revision-Date: 2015-04-09 06:52+0000\n"
+"POT-Creation-Date: 2015-04-12 16:36-0500\n"
+"PO-Revision-Date: 2015-04-13 12:42+0000\n"
 "Last-Translator: Ilya Alekseyev <ilyaalekseyev@acm.org>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/horizon/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -196,14 +197,14 @@ msgstr "Войти"
 
 #: templates/auth/_login.html:27
 msgid "You do not have permission to access the resource:"
-msgstr "Вы не имеете права доступа к ресурсу:"
+msgstr "Вы не имеете права на доступ к ресурсу:"
 
 #: templates/auth/_login.html:29
 #, python-format
 msgid ""
 "Login as different user or go back to <a href=\"%(home_url)s\"> home "
 "page</a>"
-msgstr "Войдите под другим пользователем или вернитесь на домашнюю страницу <a href=\"%(home_url)s\"> </a>"
+msgstr "Войдите под другим пользователем или вернитесь на<a href=\"%(home_url)s\"> домашнюю страницу</a>"
 
 #: templates/auth/_login.html:45
 msgid "Sign In"
@@ -211,7 +212,7 @@ msgstr "Вход"
 
 #: templates/auth/_login.html:46
 msgid "Connect"
-msgstr "Подключение"
+msgstr "Подключиться"
 
 #: templates/auth/login.html:4
 msgid "Login"
@@ -273,7 +274,7 @@ msgstr "%(name)s: %(error)s"
 
 #: templates/horizon/common/_limit_summary.html:4
 msgid "Limit Summary"
-msgstr "Краткая сводка"
+msgstr "Сводка лимитов"
 
 #: templates/horizon/common/_limit_summary.html:7
 msgid "Instances"
@@ -367,7 +368,7 @@ msgstr "Дата должна иметь формат YYYY-mm-dd."
 
 #: templates/horizon/common/_usage_summary.html:20
 msgid "Active Instances:"
-msgstr "Активные инстансы:"
+msgstr "Активные машины:"
 
 #: templates/horizon/common/_usage_summary.html:21
 msgid "Active RAM:"
