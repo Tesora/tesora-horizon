@@ -141,7 +141,7 @@ class DatabaseTests(test.TestCase):
             self.datastores.list())
         # Mock datastore versions
         api.trove.datastore_version_list(IsA(http.HttpRequest), IsA(str)).\
-            AndReturn(self.datastore_versions.list())
+            MultipleTimes().AndReturn(self.datastore_versions.list())
 
         api.neutron.network_list(IsA(http.HttpRequest),
                                  tenant_id=self.tenant.id,
@@ -208,7 +208,7 @@ class DatabaseTests(test.TestCase):
 
         # Mock datastore versions
         api.trove.datastore_version_list(IsA(http.HttpRequest), IsA(str))\
-            .AndReturn(self.datastore_versions.list())
+            .MultipleTimes().AndReturn(self.datastore_versions.list())
 
         api.neutron.network_list(IsA(http.HttpRequest),
                                  tenant_id=self.tenant.id,
@@ -271,7 +271,7 @@ class DatabaseTests(test.TestCase):
 
         # Mock datastore versions
         api.trove.datastore_version_list(IsA(http.HttpRequest), IsA(str))\
-            .AndReturn(self.datastore_versions.list())
+            .MultipleTimes().AndReturn(self.datastore_versions.list())
 
         api.neutron.network_list(IsA(http.HttpRequest),
                                  tenant_id=self.tenant.id,
@@ -817,7 +817,7 @@ class DatabaseTests(test.TestCase):
 
         api.trove.datastore_version_list(IsA(http.HttpRequest),
                                          IsA(str))\
-            .AndReturn(self.datastore_versions.list())
+            .MultipleTimes().AndReturn(self.datastore_versions.list())
 
         api.neutron.network_list(IsA(http.HttpRequest),
                                  tenant_id=self.tenant.id,

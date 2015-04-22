@@ -13,7 +13,14 @@
 #    under the License.
 
 
-_mysql_compatible_datastores = ('mysql', 'maria', 'percona')
+MARIA = "maria"
+MONGODB = "mongodb"
+MYSQL = "mysql"
+ORACLE = "oracle"
+PERCONA = "percona"
+VERTICA = "vertica"
+
+_mysql_compatible_datastores = (MYSQL, MARIA, PERCONA)
 
 
 def can_backup(datastore):
@@ -41,9 +48,7 @@ def require_configuration_group(datastore):
 
 
 def is_oracle_datastore(datastore):
-    if (datastore is not None) and ("oracle" in datastore.lower()):
-        return True
-    return False
+    return (datastore is not None) and (ORACLE in datastore.lower())
 
 
 def is_mysql_compatible(datastore):
@@ -51,5 +56,12 @@ def is_mysql_compatible(datastore):
         for ds in _mysql_compatible_datastores:
             if ds in datastore.lower():
                 return True
-
     return False
+
+
+def is_mongodb_datastore(datastore):
+    return (datastore is not None) and (MONGODB in datastore.lower())
+
+
+def is_vertica_datastore(datastore):
+    return (datastore is not None) and (VERTICA in datastore.lower())
