@@ -119,11 +119,13 @@ h3 {
 
         background: $accordionItemActiveBgColor;
         @include tesora_box_shadow;
+        border-right: 1px solid $tesora-light-gray;
 
         &.active, &:hover {
           color: $tesora-orange;
           background: $accordionItemActiveBgColor;
           border-left: 4px solid $tesora-orange;
+          border-right: 0;
         }
       }
     }
