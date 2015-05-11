@@ -17,6 +17,7 @@ MARIA = "maria"
 MONGODB = "mongodb"
 MYSQL = "mysql"
 ORACLE = "oracle"
+ORACLE_RA = "oracle_ra"
 PERCONA = "percona"
 VERTICA = "vertica"
 
@@ -36,19 +37,23 @@ def can_launch_from_master(datastore):
 
 
 def db_required_when_creating_user(datastore):
-    if is_oracle_datastore(datastore):
+    if is_oracle_ra_datastore(datastore):
         return False
     return True
 
 
 def require_configuration_group(datastore):
-    if is_oracle_datastore(datastore):
+    if is_oracle_ra_datastore(datastore):
         return True
     return False
 
 
 def is_oracle_datastore(datastore):
     return (datastore is not None) and (ORACLE in datastore.lower())
+
+
+def is_oracle_ra_datastore(datastore):
+    return (datastore is not None) and (ORACLE_RA in datastore.lower())
 
 
 def is_mysql_compatible(datastore):
