@@ -47,6 +47,9 @@ class OverviewTab(tabs.Tab):
     def _get_template_type(self, datastore):
         if db_capability.is_mysql_compatible(datastore):
             return 'mysql'
+        elif db_capability.is_oracle_datastore(datastore) or \
+                db_capability.is_oracle_ra_datastore():
+            return 'oracle'
 
         return datastore
 
