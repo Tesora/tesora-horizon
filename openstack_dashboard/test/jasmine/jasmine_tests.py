@@ -14,33 +14,44 @@
 # under the License.
 
 
-from horizon.test import helpers as test
+from horizon.test.jasmine import jasmine_tests as test
 
 LAUNCH_INST = "dashboard/launch-instance"
 
 
-class ServicesTests(test.JasmineTests):
-    # sources would go here
-    sources = [
-        LAUNCH_INST + "/launch-instance.js",
-        LAUNCH_INST + "/launch-instance.model.js",
-        LAUNCH_INST + 'security-groups/security-groups.js',
-        LAUNCH_INST + 'keypair/keypair.js',
-        LAUNCH_INST + "/configuration/configuration.js",
-        LAUNCH_INST + "/flavor/flavor.js",
-        LAUNCH_INST + "/network/network.js",
-        LAUNCH_INST + "/source/source.js",
+class ServicesTests(test.ServicesTests):
+
+    # We rely on sources from horizon
+    # therefore, we must append the sources
+    dashboard_sources = [
+        'dashboard/dashboard.module.js',
+        'dashboard/workflow/workflow.js',
+        LAUNCH_INST + '/launch-instance.js',
+        LAUNCH_INST + '/launch-instance.model.js',
+        LAUNCH_INST + '/security-groups/security-groups.js',
+        LAUNCH_INST + '/keypair/keypair.js',
+        LAUNCH_INST + '/configuration/configuration.js',
+        LAUNCH_INST + '/flavor/flavor.js',
+        LAUNCH_INST + '/network/network.js',
+        LAUNCH_INST + '/source/source.js',
     ]
-    # spec files would go here
+
+    # We are only testing dashboard specs here
+    # so we override the parent specs
     specs = [
-        LAUNCH_INST + "/launch-instance.spec.js",
-        LAUNCH_INST + "/launch-instance.model.spec.js",
-        LAUNCH_INST + 'security-groups/security-groups.spec.js',
-        LAUNCH_INST + 'keypair/keypair.spec.js',
-        LAUNCH_INST + "/configuration/configuration.spec.js",
-        LAUNCH_INST + "/flavor/flavor.spec.js",
-        LAUNCH_INST + "/network/network.spec.js",
-        LAUNCH_INST + "/source/source.spec.js",
+        'dashboard/dashboard.module.js',
+        'dashboard/workflow/workflow.js',
+        LAUNCH_INST + '/launch-instance.spec.js',
+        LAUNCH_INST + '/launch-instance.model.spec.js',
+        LAUNCH_INST + '/security-groups/security-groups.spec.js',
+        LAUNCH_INST + '/keypair/keypair.spec.js',
+        LAUNCH_INST + '/configuration/configuration.spec.js',
+        LAUNCH_INST + '/flavor/flavor.spec.js',
+        LAUNCH_INST + '/network/network.spec.js',
+        LAUNCH_INST + '/source/source.spec.js',
     ]
-    externalTemplates = [
-    ]
+    externalTemplates = []
+
+    def __init__(self, *args, **kwargs):
+        super(test.ServicesTests, self).__init__(*args, **kwargs)
+        self.sources = self.sources.extend(self.dashboard_sources)

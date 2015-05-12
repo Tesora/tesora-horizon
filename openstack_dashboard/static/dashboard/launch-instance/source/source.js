@@ -1,8 +1,7 @@
 (function () {
   'use strict';
 
-  var push = [].push,
-      forEach = angular.forEach;
+  var push = [].push;
 
   /**
    * @ngdoc overview
@@ -59,20 +58,24 @@
     '$scope',
     'bootSourceTypes',
     'bytesFilter',
+    'donutChartSettings',
     'dateFilter',
     'decodeFilter',
     'diskFormatFilter',
     'gbFilter',
+    'quotaChartDefaults',
     LaunchInstanceSourceCtrl
   ]);
 
   function LaunchInstanceSourceCtrl($scope,
                                     bootSourceTypes,
                                     bytesFilter,
+                                    donutChartSettings,
                                     dateFilter,
                                     decodeFilter,
                                     diskFormatFilter,
-                                    gbFilter) {
+                                    gbFilter,
+                                    quotaChartDefaults) {
 
     $scope.label = {
       title: gettext('Instance Details'),
@@ -254,7 +257,7 @@
       angular.extend($scope.tableData, bootSources[key]);
     }
 
-    function updateHelpText(key) {
+    function updateHelpText() {
       angular.extend($scope.helpText, {
         noneAllocText: gettext('Select a source from those listed below.'),
         availHelpText: gettext('Select one'),
@@ -278,10 +281,9 @@
     //
     // Donut chart
     //
-
+    $scope.chartSettings = donutChartSettings;
     var maxTotalInstances = 1, // Must has default value > 0
-        totalInstancesUsed = 0,
-        remaining = 0;
+        totalInstancesUsed = 0;
 
     if ($scope.model.novaLimits && $scope.model.novaLimits.maxTotalInstances) {
       maxTotalInstances = $scope.model.novaLimits.maxTotalInstances;
@@ -291,25 +293,26 @@
       totalInstancesUsed = $scope.model.novaLimits.totalInstancesUsed;
     }
 
-    $scope.donutSettings = {
-      innerRadius: 24,
-      outerRadius: 30,
-      label: {
-        'font-size': '16px',
-        'fill': '#1f83c6'
-      },
-      title: {
-        'font-size': '10px'
-      }
-    };
-
     $scope.instanceStats = {
       title: gettext('Total Instances'),
+      maxLimit: maxTotalInstances,
       label: '100%',
       data: [
-        { label: gettext('Current Usage'), value: 1, color: '#1f83c6' },
-        { label: gettext('Added'), value: 1, color: '#81c1e7' },
-        { label: gettext('Remaining'), value: 1, color: '#d1d3d4' }
+        {
+          label: quotaChartDefaults.usageLabel,
+          value: 1,
+          colorClass: quotaChartDefaults.usageColorClass
+        },
+        {
+          label: quotaChartDefaults.addedLabel,
+          value: 1,
+          colorClass: quotaChartDefaults.addedColorClass
+        },
+        {
+          label: quotaChartDefaults.remainingLabel,
+          value: 1,
+          colorClass: quotaChartDefaults.remainingColorClass
+        }
       ]
     };
 
@@ -368,16 +371,20 @@
       if ($scope.model.newInstanceSpec.instance_count <= 0) {
         $scope.model.newInstanceSpec.instance_count = 1;
       }
+
       var instance_count = $scope.model.newInstanceSpec.instance_count || 1;
 
       var data = $scope.instanceStats.data;
-      var remaining = Math.max(0, maxTotalInstances - totalInstancesUsed - selection.length * instance_count);
+      var added = instance_count;
+      var remaining = Math.max(0, maxTotalInstances - totalInstancesUsed - added);
 
+      $scope.instanceStats.maxLimit = maxTotalInstances;
       data[0].value = totalInstancesUsed;
-      data[1].value = selection.length * instance_count;
+      data[1].value = added;
       data[2].value = remaining;
-      $scope.instanceStats.label =
-        Math.ceil((maxTotalInstances - remaining) * 100 / maxTotalInstances) + '%';
+      var quotaCalc = Math.round((totalInstancesUsed + added) / maxTotalInstances * 100);
+      $scope.instanceStats.overMax = quotaCalc > 100 ? true : false;
+      $scope.instanceStats.label = quotaCalc + '%';
       $scope.instanceStats = angular.extend({}, $scope.instanceStats);
     }
 
@@ -388,7 +395,7 @@
     // If boot source type is 'image' and 'Create New Volume'
     // is checked, set the minimum volume size for validating
     // vol_size field
-    function checkVolumeForImage(newLength) {
+    function checkVolumeForImage() {
       var source = selection ? selection[0] : undefined;
 
       if (source && $scope.currentBootSource === bootSourceTypes.IMAGE) {
@@ -453,7 +460,7 @@
       function () {
         return $scope.model.images;
       },
-      function (newValue, oldValue) {
+      function () {
         $scope.initPromise.then(function () {
           $scope.$applyAsync(function () {
             if ($scope.launchContext.imageId) {

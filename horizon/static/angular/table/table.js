@@ -1,4 +1,3 @@
-/* jshint globalstrict: true */
 (function() {
   'use strict';
 
@@ -238,8 +237,9 @@
         // state changes (sort, filter, paginate)
         function updateSelectAll() {
           var visibleRows = scope.rows;
+          var numVisibleRows = visibleRows.length;
           var checkedCnt = visibleRows.filter(hzTableCtrl.isSelected).length;
-          element.prop('checked', visibleRows.length === checkedCnt);
+          element.prop('checked', numVisibleRows > 0 && numVisibleRows === checkedCnt);
         }
 
         element.click(clickHandler);
