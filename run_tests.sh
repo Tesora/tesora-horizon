@@ -27,6 +27,7 @@ function usage {
   echo "  -t, --tabs               Check for tab characters in files."
   echo "  -y, --pylint             Just run pylint"
   echo "  -j, --jshint             Just run jshint"
+  echo "  -s, --jscs               Just run jscs"
   echo "  -q, --quiet              Run non-interactively. (Relatively) quiet."
   echo "                           Implies -V if -N is not set."
   echo "  --only-selenium          Run only the Selenium unit tests"
@@ -69,6 +70,7 @@ no_pep8=0
 just_pylint=0
 just_docs=0
 just_tabs=0
+just_jscs=0
 just_jshint=0
 never_venv=0
 quiet=0
@@ -106,6 +108,7 @@ function process_option {
     -P|--no-pep8) no_pep8=1;;
     -y|--pylint) just_pylint=1;;
     -j|--jshint) just_jshint=1;;
+    -s|--jscs) just_jscs=1;;
     -f|--force) force=1;;
     -t|--tabs) just_tabs=1;;
     -q|--quiet) quiet=1;;
@@ -159,6 +162,16 @@ function run_jshint {
   jshint horizon/static/horizon/tests
   jshint horizon/static/angular/
   jshint openstack_dashboard/static/dashboard/
+}
+
+function run_jscs {
+  echo "Running jscs ..."
+  if [ "`which jscs`" == '' ] ; then
+    echo "jscs is not present; please install, e.g. sudo npm install jscs -g"
+  else
+    jscs horizon/static/horizon/js horizon/static/horizon/tests \
+         horizon/static/angular/ openstack_dashboard/static/dashboard/
+  fi
 }
 
 function warn_on_flake8_without_venv {
@@ -426,12 +439,15 @@ function run_makemessages {
   cd ../openstack_dashboard
   ${command_wrapper} $root/manage.py makemessages $DASHBOARD_OPTS $OPTS
   DASHBOARD_RESULT=$?
+  echo -n "openstack_dashboard javascript: "
+  ${command_wrapper} $root/manage.py makemessages -d djangojs $OPTS
+  DASHBOARD_JS_RESULT=$?
   cd ..
   if [ $check_only -eq 1 ]; then
     git checkout -- horizon/locale/en/LC_MESSAGES/django*.po
     git checkout -- openstack_dashboard/locale/en/LC_MESSAGES/django.po
   fi
-  exit $(($HORIZON_PY_RESULT || $HORIZON_JS_RESULT || $DASHBOARD_RESULT))
+  exit $(($HORIZON_PY_RESULT || $HORIZON_JS_RESULT || $DASHBOARD_RESULT || $DASHBOARD_JS_RESULT))
 }
 
 function run_compilemessages {
@@ -444,7 +460,7 @@ function run_compilemessages {
   cd ..
   # English is the source language, so compiled catalogs are unnecessary.
   rm -vf horizon/locale/en/LC_MESSAGES/django*.mo
-  rm -vf openstack_dashboard/locale/en/LC_MESSAGES/django.mo
+  rm -vf openstack_dashboard/locale/en/LC_MESSAGES/django*.mo
   exit $(($HORIZON_PY_RESULT || $DASHBOARD_RESULT))
 }
 
@@ -453,6 +469,7 @@ function run_pseudo {
   # Use English po file as the source file/pot file just like real Horizon translations
   do
       ${command_wrapper} $root/tools/pseudo.py openstack_dashboard/locale/en/LC_MESSAGES/django.po openstack_dashboard/locale/$lang/LC_MESSAGES/django.po $lang
+      ${command_wrapper} $root/tools/pseudo.py openstack_dashboard/locale/en/LC_MESSAGES/djangojs.po openstack_dashboard/locale/$lang/LC_MESSAGES/djangojs.po $lang
       ${command_wrapper} $root/tools/pseudo.py horizon/locale/en/LC_MESSAGES/django.po horizon/locale/$lang/LC_MESSAGES/django.po $lang
       ${command_wrapper} $root/tools/pseudo.py horizon/locale/en/LC_MESSAGES/djangojs.po horizon/locale/$lang/LC_MESSAGES/djangojs.po $lang
   done
@@ -552,6 +569,12 @@ fi
 # Jshint
 if [ $just_jshint -eq 1 ]; then
     run_jshint
+    exit $?
+fi
+
+# Jscs
+if [ $just_jscs -eq 1 ]; then
+    run_jscs
     exit $?
 fi
 

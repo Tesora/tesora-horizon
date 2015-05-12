@@ -14,7 +14,6 @@
 import json
 import logging
 
-from django.core import urlresolvers
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
@@ -90,17 +89,18 @@ class GeneralConfigAction(workflows.Action):
     def __init__(self, request, context, *args, **kwargs):
         super(GeneralConfigAction,
               self).__init__(request, context, *args, **kwargs)
-        resolver_match = urlresolvers.resolve(request.path)
-        if "guide_job_type" in resolver_match.kwargs:
+        if request.REQUEST.get("guide_job_type"):
             self.fields["job_type"].initial = (
-                resolver_match.kwargs["guide_job_type"].lower())
+                request.REQUEST.get("guide_job_type").lower())
 
     def populate_job_type_choices(self, request, context):
-        choices = [("pig", _("Pig")), ("hive", _("Hive")),
-                   ("spark", _("Spark")),
-                   ("mapreduce", _("MapReduce")),
-                   ("mapreduce.streaming", _("Streaming MapReduce")),
-                   ("java", _("Java Action"))]
+        choices = []
+        choices_list = saharaclient.job_types_list(request)
+
+        for choice in choices_list:
+            job_type = choice.name.lower()
+            if job_type in helpers.JOB_TYPE_MAP:
+                choices.append((job_type, helpers.JOB_TYPE_MAP[job_type][0]))
         return choices
 
     def populate_main_binary_choices(self, request, context):

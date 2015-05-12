@@ -61,7 +61,8 @@ class AddPoolAction(workflows.Action):
             networks = []
         for n in networks:
             for s in n['subnets']:
-                subnet_id_choices.append((s.id, s.cidr))
+                name = "%s (%s)" % (s.name, s.cidr)
+                subnet_id_choices.append((s.id, name))
         self.fields['subnet_id'].choices = subnet_id_choices
 
         protocol_choices = [('', _("Select a Protocol"))]
@@ -109,13 +110,7 @@ class AddPoolAction(workflows.Action):
     class Meta(object):
         name = _("Add New Pool")
         permissions = ('openstack.services.network',)
-        help_text = _("Create Pool for current project.\n\n"
-                      "Assign a name and description for the pool. "
-                      "Choose one subnet where all members of this "
-                      "pool must be on. "
-                      "Select the protocol and load balancing method "
-                      "for this pool. "
-                      "Admin State is UP (checked) by default.")
+        help_text_template = 'project/loadbalancers/_create_pool_help.html'
 
 
 class AddPoolStep(workflows.Step):
@@ -206,7 +201,8 @@ class AddVipAction(workflows.Action):
             networks = []
         for n in networks:
             for s in n['subnets']:
-                subnet_id_choices.append((s.id, s.cidr))
+                name = "%s (%s)" % (s.name, s.cidr)
+                subnet_id_choices.append((s.id, name))
         self.fields['subnet_id'].choices = subnet_id_choices
         protocol_choices = [('', _("Select a Protocol"))]
         [protocol_choices.append((p, p)) for p in AVAILABLE_PROTOCOLS]
