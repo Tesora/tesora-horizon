@@ -405,3 +405,50 @@ class PromoteToReplicaSourceView(horizon_forms.ModalFormView):
         return {'instance_id': self.kwargs['instance_id'],
                 'replica': instances['replica'],
                 'replica_source': instances['replica_source']}
+
+
+class EnableRootInfo(object):
+    def __init__(self, instance_id, instance_name, enabled, password=None):
+        self.id = instance_id
+        self.name = instance_name
+        self.enabled = enabled
+        self.password = password
+
+
+class ManageRootView(horizon_tables.DataTableView):
+    table_class = tables.ManageRootTable
+    template_name = 'project/databases/manage_root.html'
+    page_title = _("Manage Root Access")
+
+    @memoized.memoized_method
+    def get_data(self):
+        instance_id = self.kwargs['instance_id']
+        try:
+            instance = api.trove.instance_get(self.request, instance_id)
+        except Exception:
+            redirect = reverse('horizon:project:databases:detail',
+                               args=[instance_id])
+            exceptions.handle(self.request,
+                              _('Unable to retrieve instance details.'),
+                              redirect=redirect)
+        try:
+            enabled = api.trove.root_show(self.request, instance_id)
+        except Exception:
+            redirect = reverse('horizon:project:databases:detail',
+                               args=[instance_id])
+            exceptions.handle(self.request,
+                              _('Unable to determine if instance root '
+                                'is enabled.'),
+                              redirect=redirect)
+
+        root_enabled_list = []
+        root_enabled_info = EnableRootInfo(instance.id,
+                                           instance.name,
+                                           enabled.rootEnabled)
+        root_enabled_list.append(root_enabled_info)
+        return root_enabled_list
+
+    def get_context_data(self, **kwargs):
+        context = super(ManageRootView, self).get_context_data(**kwargs)
+        context['instance_id'] = self.kwargs['instance_id']
+        return context

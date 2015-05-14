@@ -326,6 +326,11 @@ USER_ONE = {
     "databases": [DATABASE_DATA_ONE["name"]],
 }
 
+USER_ROOT_ONE = {
+    "name": "root",
+    "rootEnabled": True
+}
+
 USER_DB_ONE = {
     "name": "db1",
 }
@@ -424,6 +429,8 @@ def data(TEST):
     user1 = users.User(users.Users(None), USER_ONE)
     user_db1 = databases.Database(databases.Databases(None),
                                   USER_DB_ONE)
+    user_root1 = databases.Database(databases.Databases(None),
+                                    USER_ROOT_ONE)
 
     datastore1 = datastores.Datastore(datastores.Datastores(None),
                                       DATASTORE_ONE)
@@ -451,6 +458,7 @@ def data(TEST):
     TEST.database_configurations = utils.TestDataContainer()
     TEST.database_users = utils.TestDataContainer()
     TEST.database_user_dbs = utils.TestDataContainer()
+    TEST.database_user_roots = utils.TestDataContainer()
     TEST.database_flavors = utils.TestDataContainer()
 
     TEST.databases.add(database1)
@@ -476,6 +484,7 @@ def data(TEST):
 
     TEST.database_users.add(user1)
     TEST.database_user_dbs.add(user_db1)
+    TEST.database_user_roots.add(user_root1)
     TEST.database_flavors.add(flavor1, flavor2, flavor3)
     TEST.datastores = utils.TestDataContainer()
     TEST.datastores.add(datastore_mongodb)
