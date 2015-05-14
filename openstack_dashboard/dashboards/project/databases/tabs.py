@@ -12,6 +12,8 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import logging
+
 from django.conf import settings
 from django import template
 from django.utils.translation import ugettext_lazy as _
@@ -25,12 +27,25 @@ from openstack_dashboard.dashboards.project.databases import db_capability
 from openstack_dashboard.dashboards.project.databases import tables
 
 
+LOG = logging.getLogger(__name__)
+
+
 class OverviewTab(tabs.Tab):
     name = _("Overview")
     slug = "overview"
 
     def get_context_data(self, request):
-        return {"instance": self.tab_group.kwargs['instance']}
+        instance = self.tab_group.kwargs['instance']
+        context = {"instance": instance}
+        try:
+            root_show = api.trove.root_show(request, instance.id)
+            context["root_enabled"] = root_show.rootEnabled
+        except Exception:
+            context["root_enabled"] = _('Unable to obtain information on '
+                                        'root user')
+            LOG.exception("Exception while obtaining "
+                          "root enabled status.")
+        return context
 
     def get_template_name(self, request):
         instance = self.tab_group.kwargs['instance']
