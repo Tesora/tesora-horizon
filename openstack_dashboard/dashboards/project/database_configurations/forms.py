@@ -170,21 +170,52 @@ class AddParameterForm(forms.SelfHandlingForm):
 
         if "value" in cleaned_data:
             for config_param in self.parameters:
-                if config_param.name == cleaned_data["name"] and \
-                        config_param.type != u"string":
-                    try:
-                        min = self._adjust_type(config_param.min)
-                        max = self._adjust_type(config_param.max)
-                        val = self._adjust_type(cleaned_data["value"])
-                        if val < min or val > max:
-                            msg = _('Value must be a number '
-                                    'between %(min)s and %(max)s') % \
-                                {"min": min, "max": max}
-                            self._errors['value'] = self.error_class([msg])
-                    except Exception as e:
-                        msg = _('%s') % e.message
-                        self._errors['value'] = self.error_class([msg])
+                if config_param.name == cleaned_data["name"]:
+                    if config_param.type in \
+                       (u"boolean", u"float", u"integer", u"long"):
+                        if config_param.type == u"boolean":
+                            if cleaned_data["value"].lower() not in \
+                                    ("true", "false"):
+                                msg = _('Value must be "true" or "false".')
+                                self._errors['value'] = self.error_class([msg])
+                        else:
+                            try:
+                                float(cleaned_data["value"])
+                            except ValueError:
+                                msg = _('Value must be a number.')
+                                self._errors['value'] = self.error_class([msg])
+                                break
 
+                            min = getattr(config_param, "min", None)
+                            max = getattr(config_param, "max", None)
+                            try:
+                                val = self._adjust_type(config_param.type,
+                                                        cleaned_data["value"])
+                            except ValueError:
+                                msg = _('Value must be of type %s.') % \
+                                    config_param.type
+                                self._errors['value'] = self.error_class([msg])
+                                break
+
+                            if min is not None and max is not None:
+                                if val < min or val > max:
+                                    msg = _('Value must be a number '
+                                            'between %(min)s and %(max)s.') % \
+                                        {"min": min, "max": max}
+                                    self._errors['value'] = \
+                                        self.error_class([msg])
+                            elif min is not None:
+                                if val < min:
+                                    msg = _('Value must be a number greater '
+                                            'than or equal to %s.') % min
+                                    self._errors['value'] = \
+                                        self.error_class([msg])
+                            elif max is not None:
+                                if val > max:
+                                    msg = _('Value must be a number '
+                                            'less than or equal to %s.') % max
+                                    self._errors['value'] = \
+                                        self.error_class([msg])
                     break
 
         return cleaned_data
@@ -193,7 +224,10 @@ class AddParameterForm(forms.SelfHandlingForm):
         try:
             config_param_manager.get(
                 request, self.initial["configuration_id"]) \
-                .add_param(data["name"], self._adjust_type(data["value"]))
+                .add_param(data["name"],
+                           self._adjust_type(
+                               self._find_parameter(data["name"]).type,
+                               data["value"]))
             messages.success(request, _('Successfully added parameter'))
         except Exception as e:
             redirect = reverse("horizon:project:database_configurations:index")
@@ -201,9 +235,22 @@ class AddParameterForm(forms.SelfHandlingForm):
                               % e.message, redirect=redirect)
         return True
 
-    def _adjust_type(self, value):
-        try:
+    def _find_parameter(self, name):
+        for param in self.parameters:
+            if param.name == name:
+                return param
+
+        return None
+
+    def _adjust_type(self, data_type, value):
+        if not value:
+            return value
+        if data_type == "float":
+            new_value = float(value)
+        elif data_type == "long":
+            new_value = long(value)
+        elif data_type == "integer":
             new_value = int(value)
-        except ValueError:
+        else:
             new_value = value
         return new_value

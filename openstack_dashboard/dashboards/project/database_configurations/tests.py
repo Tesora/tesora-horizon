@@ -325,7 +325,7 @@ class DatabaseConfigurationsTests(test.TestCase):
             res = self.client.post(self._get_url_with_arg(ADD_URL, config.id),
                                    post)
             self.assertFormError(res, "form", 'value',
-                                 ['Value must be a number between 0 and 1'])
+                                 ['Value must be a number.'])
         finally:
             config_param_manager.delete(config.id)
 
