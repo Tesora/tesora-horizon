@@ -807,6 +807,43 @@ class UnlockInstance(policy.PolicyTargetMixin, tables.BatchAction):
         api.nova.server_unlock(request, obj_id)
 
 
+class AttachInterface(policy.PolicyTargetMixin, tables.LinkAction):
+    name = "attach_interface"
+    verbose_name = _("Attach Interface")
+    classes = ("btn-confirm", "ajax-modal")
+    url = "horizon:project:instances:attach_interface"
+    policy_rules = (("compute", "compute_extension:attach_interfaces"),)
+
+    def allowed(self, request, instance):
+        return ((instance.status in ACTIVE_STATES
+                 or instance.status == 'SHUTOFF')
+                and not is_deleting(instance)
+                and api.base.is_service_enabled(request, 'network'))
+
+    def get_link_url(self, datum):
+        instance_id = self.table.get_object_id(datum)
+        return urlresolvers.reverse(self.url, args=[instance_id])
+
+
+# TODO(lyj): the policy for detach interface not exists in nova.json,
+#            once it's added, it should be added here.
+class DetachInterface(policy.PolicyTargetMixin, tables.LinkAction):
+    name = "detach_interface"
+    verbose_name = _("Detach Interface")
+    classes = ("btn-confirm", "ajax-modal")
+    url = "horizon:project:instances:detach_interface"
+
+    def allowed(self, request, instance):
+        return ((instance.status in ACTIVE_STATES
+                 or instance.status == 'SHUTOFF')
+                and not is_deleting(instance)
+                and api.base.is_service_enabled(request, 'network'))
+
+    def get_link_url(self, datum):
+        instance_id = self.table.get_object_id(datum)
+        return urlresolvers.reverse(self.url, args=[instance_id])
+
+
 def get_ips(instance):
     template_name = 'project/instances/_instance_ips.html'
     ip_groups = {}
@@ -1059,7 +1096,8 @@ class InstancesTable(tables.DataTable):
                                           InstancesFilterAction)
         row_actions = (StartInstance, ConfirmResize, RevertResize,
                        CreateSnapshot, SimpleAssociateIP, AssociateIP,
-                       SimpleDisassociateIP, EditInstance,
+                       SimpleDisassociateIP, AttachInterface,
+                       DetachInterface, EditInstance,
                        DecryptInstancePassword, EditInstanceSecurityGroups,
                        ConsoleLink, LogLink, TogglePause, ToggleSuspend,
                        ResizeLink, LockInstance, UnlockInstance,
