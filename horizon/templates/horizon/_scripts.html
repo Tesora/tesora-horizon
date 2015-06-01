@@ -14,51 +14,58 @@
 <script src="{{ STATIC_URL }}horizon/lib/angular/lrdragndrop.js"></script>
 <script src="{{ STATIC_URL }}horizon/lib/angular/smart-table.js"></script>
 
-<script src='{{ STATIC_URL }}horizon/js/angular/controllers/namespace-controller.js'></script>
-<script src='{{ STATIC_URL }}horizon/js/angular/controllers/dummy.js'></script>
-<script src='{{ STATIC_URL }}horizon/js/angular/controllers/modal-form-update-metadata-ctrl.js'></script>
-<script src='{{ STATIC_URL }}horizon/js/angular/directives/forms.js'></script>
+<script src="{{ STATIC_URL }}dashboard-app/login/login.js"></script>
+<script src='{{ STATIC_URL }}dashboard-app/utils/utils.module.js'></script>
+<script src='{{ STATIC_URL }}dashboard-app/utils/helper-functions.js'></script>
+<script src='{{ STATIC_URL }}dashboard-app/utils/image-file-on-change.js'></script>
 
-<script src='{{ STATIC_URL }}horizon/js/angular/horizon.conf.js'></script>
-<script src='{{ STATIC_URL }}horizon/js/angular/services/horizon.utils.js'></script>
+<script src='{{ STATIC_URL }}dashboard-app/controllers/namespace-controller.js'></script>
+<script src='{{ STATIC_URL }}dashboard-app/controllers/dummy.js'></script>
+<script src='{{ STATIC_URL }}dashboard-app/controllers/modal-form-update-metadata-ctrl.js'></script>
+
 <script src='{{ STATIC_URL }}horizon/js/angular/hz.api.module.js'></script>
-<script src='{{ STATIC_URL }}horizon/js/angular/services/hz.api.service.js'></script>
 <script src='{{ STATIC_URL }}horizon/js/angular/services/hz.api.cinder.js'></script>
+<script src='{{ STATIC_URL }}horizon/js/angular/services/hz.api.common.js'></script>
 <script src='{{ STATIC_URL }}horizon/js/angular/services/hz.api.config.js'></script>
 <script src='{{ STATIC_URL }}horizon/js/angular/services/hz.api.glance.js'></script>
 <script src='{{ STATIC_URL }}horizon/js/angular/services/hz.api.keystone.js'></script>
 <script src='{{ STATIC_URL }}horizon/js/angular/services/hz.api.neutron.js'></script>
 <script src='{{ STATIC_URL }}horizon/js/angular/services/hz.api.nova.js'></script>
 <script src='{{ STATIC_URL }}horizon/js/angular/services/hz.api.policy.js'></script>
-<script src='{{ STATIC_URL }}horizon/js/angular/filters/filters.js'></script>
 <script src='{{ STATIC_URL }}horizon/js/angular/services/hz.api.security-group.js'></script>
 
 <script src="{{ STATIC_URL }}horizon/lib/d3.js"></script>
 
-<script src='{{ STATIC_URL }}angular/widget.module.js'></script>
-<script src='{{ STATIC_URL }}angular/form/form.js'></script>
-<script src='{{ STATIC_URL }}angular/help-panel/help-panel.js'></script>
-<script src='{{ STATIC_URL }}angular/i18n/i18n.js'></script>
-<script src='{{ STATIC_URL }}angular/wizard/wizard.js'></script>
-<script src='{{ STATIC_URL }}angular/action-list/action-list.js'></script>
-<script src='{{ STATIC_URL }}angular/action-list/button-tooltip.js'></script>
-<script src='{{ STATIC_URL }}angular/table/table.js'></script>
-<script src='{{ STATIC_URL }}angular/table/basic-table.js'></script>
-<script src="{{ STATIC_URL }}angular/login/login.js"></script>
-<script src='{{ STATIC_URL }}angular/modal/modal.js'></script>
-<script src='{{ STATIC_URL }}angular/modal/modal-wait-spinner.js'></script>
-<script src='{{ STATIC_URL }}angular/bind-scope/bind-scope.js'></script>
-<script src='{{ STATIC_URL }}angular/transfer-table/transfer-table.js'></script>
-<script src='{{ STATIC_URL }}angular/charts/charts.js'></script>
-<script src='{{ STATIC_URL }}angular/charts/chart-tooltip.js'></script>
-<script src='{{ STATIC_URL }}angular/charts/pie-chart.js'></script>
-<script src='{{ STATIC_URL }}angular/metadata-tree/metadata-tree.js'></script>
-<script src='{{ STATIC_URL }}angular/metadata-tree/metadata-tree-service.js'></script>
-<script src='{{ STATIC_URL }}angular/metadata-display/metadata-display.js'></script>
-<script src='{{ STATIC_URL }}angular/magic-search/magic-search.js'></script>
-<script src='{{ STATIC_URL }}angular/validators/validators.js'></script>
-<script src='{{ STATIC_URL }}angular/workflow/workflow.js'></script>
-<script src='{{ STATIC_URL }}angular/toast/toast.js'></script>
+<script src='{{ STATIC_URL }}framework/framework.module.js'></script>
+
+<script src='{{ STATIC_URL }}framework/conf/conf.js'></script>
+
+<script src='{{ STATIC_URL }}framework/util/util.module.js'></script>
+<script src='{{ STATIC_URL }}framework/util/bind-scope/bind-scope.js'></script>
+<script src='{{ STATIC_URL }}framework/util/filters/filters.js'></script>
+<script src='{{ STATIC_URL }}framework/util/form/form.js'></script>
+<script src='{{ STATIC_URL }}framework/util/i18n/i18n.js'></script>
+<script src='{{ STATIC_URL }}framework/util/validators/validators.js'></script>
+<script src='{{ STATIC_URL }}framework/util/workflow/workflow.js'></script>
+
+<script src='{{ STATIC_URL }}framework/widgets/widgets.module.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/help-panel/help-panel.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/wizard/wizard.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/action-list/action-list.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/action-list/button-tooltip.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/table/table.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/table/basic-table.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/modal/modal.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/modal-wait-spinner/modal-wait-spinner.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/transfer-table/transfer-table.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/charts/charts.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/charts/chart-tooltip.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/charts/pie-chart.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/metadata-tree/metadata-tree.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/metadata-tree/metadata-tree-service.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/metadata-display/metadata-display.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/magic-search/magic-search.js'></script>
+<script src='{{ STATIC_URL }}framework/widgets/toast/toast.js'></script>
 
 <script src='{{ STATIC_URL }}horizon/lib/jquery/jquery.quicksearch.js'></script>
 <script src="{{ STATIC_URL }}horizon/lib/jquery/jquery.tablesorter.js"></script>
@@ -100,8 +107,6 @@
 <script src='{{ STATIC_URL }}horizon/js/horizon.d3barchart.js'></script>
 <script src='{{ STATIC_URL }}horizon/js/horizon.firewalls.js'></script>
 <script src='{{ STATIC_URL }}horizon/lib/jsencrypt/jsencrypt.js'></script>
-
-<script src='{{ STATIC_URL }}horizon/js/horizon.images.js'></script>
 
 {% for file in HORIZON_CONFIG.js_files %}
     <script src='{{ STATIC_URL }}{{ file }}'></script>

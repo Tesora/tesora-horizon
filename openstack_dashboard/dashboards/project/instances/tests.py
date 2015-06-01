@@ -4344,3 +4344,79 @@ class ConsoleManagerTests(helpers.TestCase):
     def test_invalid_console_type_raise_value_error(self):
         self.assertRaises(exceptions.NotAvailable,
                           console.get_console, None, 'FAKE', None)
+
+    @helpers.create_stubs({api.neutron: ('network_list_for_tenant',)})
+    def test_interface_attach_get(self):
+        server = self.servers.first()
+        api.neutron.network_list_for_tenant(IsA(http.HttpRequest),
+                                            self.tenant.id) \
+            .AndReturn(self.networks.list()[:1])
+
+        self.mox.ReplayAll()
+
+        url = reverse('horizon:project:instances:attach_interface',
+                      args=[server.id])
+        res = self.client.get(url)
+
+        self.assertTemplateUsed(res,
+                                'project/instances/attach_interface.html')
+
+    @helpers.create_stubs({api.neutron: ('network_list_for_tenant',),
+                           api.nova: ('interface_attach',)})
+    def test_interface_attach_post(self):
+        server = self.servers.first()
+        network = api.neutron.network_list_for_tenant(IsA(http.HttpRequest),
+                                                      self.tenant.id) \
+            .AndReturn(self.networks.list()[:1])
+        api.nova.interface_attach(IsA(http.HttpRequest), server.id,
+                                  net_id=network[0].id)
+
+        self.mox.ReplayAll()
+
+        form_data = {'instance_id': server.id,
+                     'network': network[0].id}
+
+        url = reverse('horizon:project:instances:attach_interface',
+                      args=[server.id])
+        res = self.client.post(url, form_data)
+
+        self.assertNoFormErrors(res)
+        self.assertRedirectsNoFollow(res, INDEX_URL)
+
+    @helpers.create_stubs({api.neutron: ('port_list',)})
+    def test_interface_detach_get(self):
+        server = self.servers.first()
+        api.neutron.port_list(IsA(http.HttpRequest),
+                              device_id=server.id)\
+            .AndReturn([self.ports.first()])
+
+        self.mox.ReplayAll()
+
+        url = reverse('horizon:project:instances:detach_interface',
+                      args=[server.id])
+        res = self.client.get(url)
+
+        self.assertTemplateUsed(res,
+                                'project/instances/detach_interface.html')
+
+    @helpers.create_stubs({api.neutron: ('port_list',),
+                           api.nova: ('interface_detach',)})
+    def test_interface_detach_post(self):
+        server = self.servers.first()
+        port = self.ports.first()
+        api.neutron.port_list(IsA(http.HttpRequest),
+                              device_id=server.id)\
+            .AndReturn([port])
+        api.nova.interface_detach(IsA(http.HttpRequest), server.id, port.id)
+
+        self.mox.ReplayAll()
+
+        form_data = {'instance_id': server.id,
+                     'port': port.id}
+
+        url = reverse('horizon:project:instances:detach_interface',
+                      args=[server.id])
+        res = self.client.post(url, form_data)
+
+        self.assertNoFormErrors(res)
+        self.assertRedirectsNoFollow(res, INDEX_URL)

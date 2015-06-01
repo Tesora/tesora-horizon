@@ -46,7 +46,7 @@
      *
      */
 
-    .factory('dashboardWorkflowDecorator', ['$q', 'serviceCatalog',
+    .factory('dashboardWorkflowDecorator', ['$q', 'hz.api.serviceCatalog',
 
       function ($q, serviceCatalog) {
 
@@ -78,7 +78,7 @@
      * @description
      *
      * Injected dependencies:
-     * - workflow {@link hz.framework.workflow.factory:workflow `workflow`}
+     * - workflow {@link horizon.framework.util.workflow.factory:workflow `workflow`}
      * - dashboardWorkflowDecorator {@link hz.dashboard.workflow.factory
      *    :dashboardWorkflowDecorator `dashboardWorkflowDecorator`}
      *
@@ -94,7 +94,7 @@
      */
 
     .factory('dashboardWorkflow', [
-      'workflow',
+      'horizon.framework.util.workflow.service',
       'dashboardWorkflowDecorator',
       function (workflow, dashboardWorkflowDecorator) {
         var decorators = [dashboardWorkflowDecorator];
