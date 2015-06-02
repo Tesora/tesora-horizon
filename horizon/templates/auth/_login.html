@@ -1,5 +1,5 @@
 {% extends "horizon/common/_modal_form.html" %}
-{% load i18n %}
+{% load i18n tesora %}
 {% load url from future %}
 
 {% block modal-header %}{% trans "Log In" %}{% endblock %}
@@ -10,6 +10,7 @@
 {% block autocomplete %}{{ HORIZON_CONFIG.password_autocomplete }}{% endblock %}
 
 {% block modal-body %}
+  <div id="splash-version">{% tesora_version %}</div>
   {% comment %}
     These fake fields are required to prevent Chrome v34+ from autofilling form.
   {% endcomment %}
