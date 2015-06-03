@@ -216,7 +216,10 @@ def backup_create(request, name, instance_id, description=None,
 
 
 def flavor_list(request):
-    return troveclient(request).flavors.list()
+    flavors = troveclient(request).flavors.list()
+    for flavor in flavors:
+        flavor.id = flavor.str_id
+    return flavors
 
 
 def flavor_get(request, flavor_id):
