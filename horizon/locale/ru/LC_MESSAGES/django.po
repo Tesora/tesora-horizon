@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-27 03:00-0500\n"
-"PO-Revision-Date: 2015-05-13 19:11+0000\n"
-"Last-Translator: Akihiro Motoki <amotoki@gmail.com>\n"
+"POT-Creation-Date: 2015-06-08 19:20-0500\n"
+"PO-Revision-Date: 2015-06-08 18:55+0000\n"
+"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/horizon/language/"
 "ru/)\n"
 "MIME-Version: 1.0\n"
@@ -135,10 +135,6 @@ msgstr "Добавить строку"
 msgid "All available"
 msgstr "Все доступные"
 
-#, python-format
-msgid "Allocated <span> %(used)s </span> of <span> %(available)s </span>"
-msgstr "Выделено <span> %(used)s </span> из <span> %(available)s </span>"
-
 msgid "Available"
 msgstr "Доступно"
 
@@ -190,9 +186,6 @@ msgstr "Fake"
 msgid "Filter"
 msgstr "Фильтр"
 
-msgid "Floating IPs"
-msgstr "Назначаемые IP"
-
 msgid "Help"
 msgstr "Помощь"
 
@@ -205,8 +198,10 @@ msgstr "Неправильный формат IP-адреса"
 msgid "Info: "
 msgstr "Информация:"
 
-msgid "Instances"
-msgstr "Машины"
+msgid "Invalid metadata entry. Use comma-separated key=value pairs"
+msgstr ""
+"Некорректная запись метаданных. Используйте пары ключ=значение разделенный "
+"запятой."
 
 msgid "Invalid subnet mask"
 msgstr "Неправильная маска подсети"
@@ -255,9 +250,6 @@ msgstr "Следующий"
 msgid "Next&nbsp;&raquo;"
 msgstr "Следующее&nbsp;&raquo;"
 
-msgid "No Limit"
-msgstr "Без ограничений"
-
 msgid "No items to display."
 msgstr "Нет элементов для отображения."
 
@@ -298,14 +290,8 @@ msgstr "Номер порта должен быть целым числом"
 msgid "Processing..."
 msgstr "Обработка…"
 
-msgid "RAM"
-msgstr "RAM"
-
 msgid "Save"
 msgstr "Сохранить"
-
-msgid "Security Groups"
-msgstr "Группы безопасности"
 
 #, python-format
 msgid "Select a %s to browse."
@@ -373,19 +359,6 @@ msgstr "Обновлено"
 
 msgid "Usage Summary"
 msgstr "Сводка использования"
-
-#, python-format
-msgid "Used <span> %(used)s </span> of <span> %(available)s </span>"
-msgstr "Использовано <span> %(used)s </span> из <span> %(available)s </span>"
-
-msgid "VCPUs"
-msgstr "VCPU"
-
-msgid "Volume Storage"
-msgstr "Хранилище"
-
-msgid "Volumes"
-msgstr "Диски"
 
 msgid "Warning: "
 msgstr "Внимание:"

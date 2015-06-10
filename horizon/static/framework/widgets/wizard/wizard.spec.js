@@ -1,4 +1,4 @@
-(function(){
+(function() {
   'use strict';
 
   describe('horizon.framework.widgets.wizard module', function () {
@@ -39,6 +39,13 @@
       $scope.workflow.title = titleText;
       $scope.$digest();
       expect(element[0].querySelector('.title').textContent).toBe(titleText);
+    });
+
+    it('should contain one help-panel', function () {
+      $scope.workflow = {};
+      $scope.workflow.title = "doesn't matter";
+      $scope.$digest();
+      expect(element[0].querySelectorAll('help-panel').length).toBe(1);
     });
 
     it('should have no steps if no steps defined', function () {
@@ -158,5 +165,57 @@
       $scope.$digest();
       expect(element[0].querySelector('.error-message').textContent).toBe(errorMessage);
     });
+
+    it("checks steps' readiness", function() {
+      var checkedStep = {checkReadiness: function() { return true; }};
+      $scope.workflow = {
+        steps: [{}, checkedStep, {}]
+      };
+
+      spyOn(checkedStep, 'checkReadiness').and.returnValue({then: function(){}});
+      $scope.$digest();
+      expect(checkedStep.checkReadiness).toHaveBeenCalled();
+    });
+
   });
+
+  describe("ModalContainerCtrl", function() {
+    var ctrl, scope, modalInstance, launchContext;
+
+    beforeEach(module('horizon.framework.widgets.wizard'));
+
+    beforeEach(inject(function($controller) {
+      scope = {};
+      modalInstance = { close: angular.noop, dismiss: angular.noop };
+      launchContext = { my: 'data' };
+      ctrl = $controller('ModalContainerCtrl',
+                         { $scope: scope, $modalInstance: modalInstance,
+                           launchContext: launchContext } );
+    }));
+
+    it('is defined', function() {
+      expect(ctrl).toBeDefined();
+    });
+
+    it('sets scope.launchContext', function() {
+      expect(scope.launchContext).toBeDefined();
+      expect(scope.launchContext).toEqual({ my: 'data' });
+    });
+
+    it('sets scope.close to a function that closes the modal', function() {
+      expect(scope.close).toBeDefined();
+      spyOn(modalInstance, 'close');
+      scope.close();
+      expect(modalInstance.close).toHaveBeenCalled();
+    });
+
+    it('sets scope.cancel to a function that dismisses the modal', function() {
+      expect(scope.cancel).toBeDefined();
+      spyOn(modalInstance, 'dismiss');
+      scope.cancel();
+      expect(modalInstance.dismiss).toHaveBeenCalled();
+    });
+
+  });
+
 })();

@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-27 03:00-0500\n"
-"PO-Revision-Date: 2015-05-13 19:11+0000\n"
-"Last-Translator: Andreas Jaeger <jaegerandi@gmail.com>\n"
+"POT-Creation-Date: 2015-06-08 19:20-0500\n"
+"PO-Revision-Date: 2015-06-08 18:55+0000\n"
+"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/horizon/language/"
 "de/)\n"
 "MIME-Version: 1.0\n"
@@ -129,10 +129,6 @@ msgstr "Eine Zeile hinzufügen"
 msgid "All available"
 msgstr "Alle verfügbaren"
 
-#, python-format
-msgid "Allocated <span> %(used)s </span> of <span> %(available)s </span>"
-msgstr "<span> %(used)s </span> von <span> %(available)s </span> zugewiesen"
-
 msgid "Available"
 msgstr "Verfügbar"
 
@@ -178,9 +174,6 @@ msgstr "Fälschung"
 msgid "Filter"
 msgstr "Filter"
 
-msgid "Floating IPs"
-msgstr "Floating IPs"
-
 msgid "Help"
 msgstr "Hilfe"
 
@@ -193,8 +186,10 @@ msgstr "Ungültiges Format der IP-Adresse"
 msgid "Info: "
 msgstr "Information:"
 
-msgid "Instances"
-msgstr "Instanzen"
+msgid "Invalid metadata entry. Use comma-separated key=value pairs"
+msgstr ""
+"Ungültiger Metadateneintrag. Verwenden Sie durch Kommas separierte "
+"Schlüssel=Wert Paare"
 
 msgid "Invalid subnet mask"
 msgstr "Ungültige Subnetzmaske"
@@ -243,9 +238,6 @@ msgstr "Weiter"
 msgid "Next&nbsp;&raquo;"
 msgstr "Weiter&nbsp;&raquo;"
 
-msgid "No Limit"
-msgstr "Keine Begrenzung"
-
 msgid "No items to display."
 msgstr "Keine Einträge zum anzeigen."
 
@@ -286,14 +278,8 @@ msgstr "Port-Nummer muss ganzzahlig sein"
 msgid "Processing..."
 msgstr "Verarbeite..."
 
-msgid "RAM"
-msgstr "RAM"
-
 msgid "Save"
 msgstr "Speichern"
-
-msgid "Security Groups"
-msgstr "Sicherheitsgruppen"
 
 #, python-format
 msgid "Select a %s to browse."
@@ -373,19 +359,6 @@ msgstr "Aktualisiert"
 
 msgid "Usage Summary"
 msgstr "Nutzungsübersicht"
-
-#, python-format
-msgid "Used <span> %(used)s </span> of <span> %(available)s </span>"
-msgstr "<span> %(used)s </span> von <span> %(available)s </span> benutzt"
-
-msgid "VCPUs"
-msgstr "VCPUs"
-
-msgid "Volume Storage"
-msgstr "Datenträger-Speicher"
-
-msgid "Volumes"
-msgstr "Datenträger"
 
 msgid "Warning: "
 msgstr "Warnung:"

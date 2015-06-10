@@ -160,7 +160,7 @@ class NovaUsage(base.APIResourceWrapper):
     def get_summary(self):
         return {'instances': self.total_active_instances,
                 'memory_mb': self.memory_mb,
-                'vcpus': getattr(self, "total_vcpus_usage", 0),
+                'vcpus': self.vcpus,
                 'vcpu_hours': self.vcpu_hours,
                 'local_gb': self.local_gb,
                 'disk_gb_hours': self.disk_gb_hours,
@@ -177,7 +177,7 @@ class NovaUsage(base.APIResourceWrapper):
 
     @property
     def vcpu_hours(self):
-        return getattr(self, "total_hours", 0)
+        return getattr(self, "total_vcpus_usage", 0)
 
     @property
     def local_gb(self):
@@ -227,13 +227,17 @@ class SecurityGroupRule(base.APIResourceWrapper):
         if 'name' in self.group:
             vals = {'from': self.from_port,
                     'to': self.to_port,
+                    'ip_protocol': self.ip_protocol,
                     'group': self.group['name']}
-            return _('ALLOW %(from)s:%(to)s from %(group)s') % vals
+            return (_('ALLOW %(from)s:%(to)s/%(ip_protocol)s from %(group)s') %
+                    vals)
         else:
             vals = {'from': self.from_port,
                     'to': self.to_port,
+                    'ip_protocol': self.ip_protocol,
                     'cidr': self.ip_range['cidr']}
-            return _('ALLOW %(from)s:%(to)s from %(cidr)s') % vals
+            return (_('ALLOW %(from)s:%(to)s/%(ip_protocol)s from %(cidr)s') %
+                    vals)
 
     # The following attributes are defined to keep compatibility with Neutron
     @property

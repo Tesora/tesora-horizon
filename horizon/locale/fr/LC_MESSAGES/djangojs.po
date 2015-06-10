@@ -17,8 +17,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-27 03:01-0500\n"
-"PO-Revision-Date: 2015-05-27 03:11+0000\n"
+"POT-Creation-Date: 2015-06-04 21:20-0500\n"
+"PO-Revision-Date: 2015-06-04 15:51+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/horizon/language/"
 "fr/)\n"
@@ -48,6 +48,9 @@ msgstr "%s To"
 msgid "%s bytes"
 msgstr "%s octets"
 
+msgid "Active"
+msgstr "Active"
+
 msgid "Add Interface"
 msgstr "Ajouter une interface"
 
@@ -74,9 +77,6 @@ msgstr "Retour"
 
 msgid "Cancel"
 msgstr "Annuler"
-
-msgid "Cannot get nova extension list."
-msgstr "Impossible d'obtenir la liste des extensions Nova."
 
 msgid "Cannot get service catalog from keystone."
 msgstr "Impossible d'obtenir le catalogue de services Keystone"
@@ -169,6 +169,9 @@ msgstr "Filtrer"
 msgid "Finish"
 msgstr "Terminer"
 
+msgid "Flavor"
+msgstr "Gabarit"
+
 msgid "Found %(found)s of %(total)s"
 msgstr "Résultat %(found)s parmi %(total)s"
 
@@ -198,6 +201,9 @@ msgstr "Min"
 
 msgid "Min length"
 msgstr "Longueur mini"
+
+msgid "Name"
+msgstr "Nom"
 
 msgid "Next"
 msgstr "Suivant"
@@ -250,12 +256,18 @@ msgstr "Merci de confirmer votre sélection."
 msgid "Policy check failed."
 msgstr "Échec de vérification de la politique"
 
+msgid "Prompt"
+msgstr "Invite de commande"
+
 msgid "Re-order items using drag and drop"
 msgstr ""
 "Ordonnancer les éléments à nouveau en utilisant l'opération glisser-déplacer"
 
 msgid "Remaining"
 msgstr "Restant"
+
+msgid "Remove"
+msgstr "Supprimer"
 
 msgid "Required"
 msgstr "Requis"
@@ -278,6 +290,12 @@ msgstr "Type de service non activé: %(desiredType)s"
 msgid "Setting is not enabled: %(setting)s"
 msgstr "Le paramètre n'est pas activé : %(setting)s"
 
+msgid "Shutdown"
+msgstr "Éteindre "
+
+msgid "Status"
+msgstr "Statut"
+
 #, c-format
 msgid "Status: %s"
 msgstr "État : %s"
@@ -293,6 +311,9 @@ msgstr "Succès :"
 
 msgid "Terminate Instance"
 msgstr "Terminer l'Instance"
+
+msgid "Text"
+msgstr "Text"
 
 msgid ""
 "The action cannot be performed. The contents of this row have errors or are "
@@ -379,87 +400,15 @@ msgstr "Impossible d'accorder le rôle"
 msgid "Unable to import the keypair."
 msgstr "Impossible d'importer la paire de clés."
 
-msgid "Unable to retrieve availability zones."
-msgstr "Impossible de récupérer les zones de disponibilité."
-
-msgid "Unable to retrieve domains"
-msgstr "Impossible de récupérer les domaines."
-
-msgid "Unable to retrieve extensions."
-msgstr "Impossible d'obtenir les extensions."
-
-msgid "Unable to retrieve flavor extra specs."
-msgstr "Impossible de récupérer les paramètres suppl. de gabarits."
-
-msgid "Unable to retrieve flavor."
-msgstr "Impossible de récupérer le gabarit."
-
-msgid "Unable to retrieve flavors."
-msgstr "Impossible de récupérer les gabarits."
-
-msgid "Unable to retrieve image."
-msgstr "Impossible de récupérer l'image."
-
-msgid "Unable to retrieve images."
-msgstr "Impossible de récupérer les images."
-
-msgid "Unable to retrieve keypairs."
-msgstr "Impossible de récupérer les paires de clés."
-
-msgid "Unable to retrieve limits."
-msgstr "Impossible de récupérer les limites."
-
-msgid "Unable to retrieve namespaces."
-msgstr "Impossible de récupérer les espaces de nommage"
-
-msgid "Unable to retrieve networks."
-msgstr "Impossible de récupérer les réseaux."
-
-msgid "Unable to retrieve ports."
-msgstr "Impossible de récupérer les ports."
-
-msgid "Unable to retrieve projects"
-msgstr "Impossible de récupérer les projets."
-
-msgid "Unable to retrieve role"
-msgstr "Impossible de récupérer le rôle."
-
-msgid "Unable to retrieve security groups."
-msgstr "Impossible de récupérer les groupes de sécurité."
-
-msgid "Unable to retrieve server."
-msgstr "Impossible de récupérer le serveur."
-
 msgid "Unable to retrieve settings."
 msgstr "Impossible de récupérer les paramètres."
-
-msgid "Unable to retrieve subnets."
-msgstr "Impossible de récupérer les sous-réseaux."
 
 msgid "Unable to retrieve the current user session."
 msgstr ""
 "Impossible de récupérer les informations de session de l'utilisateur courant."
 
-msgid "Unable to retrieve the domain"
-msgstr "Impossible de récupérer le domaine."
-
-msgid "Unable to retrieve the project"
-msgstr "Impossible de récupérer le projet."
-
-msgid "Unable to retrieve the role"
-msgstr "Impossible de récupérer le rôle."
-
-msgid "Unable to retrieve the user"
-msgstr "Impossible de récupérer l'utilisateur"
-
-msgid "Unable to retrieve users"
-msgstr "Impossible de récupérer les utilisateurs"
-
-msgid "Unable to retrieve volume snapshots."
-msgstr "Impossible de récupérer les instantanés de volume."
-
-msgid "Unable to retrieve volumes."
-msgstr "Impossible de récupérer les volumes."
+msgid "Unable to retrieve users."
+msgstr "Impossible de récupérer les utilisateurs."
 
 msgid "View Details"
 msgstr "Voir les détails"
@@ -497,3 +446,9 @@ msgstr ""
 #, c-format
 msgid "You have selected %s. "
 msgstr "Vous avez sélectionné %s."
+
+msgid "m1.small"
+msgstr "m1.small"
+
+msgid "m1.tiny"
+msgstr "m1.tiny"

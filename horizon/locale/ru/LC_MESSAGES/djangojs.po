@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-27 03:01-0500\n"
-"PO-Revision-Date: 2015-05-27 03:11+0000\n"
+"POT-Creation-Date: 2015-06-04 21:20-0500\n"
+"PO-Revision-Date: 2015-06-04 15:51+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/horizon/language/"
 "ru/)\n"
@@ -44,6 +44,9 @@ msgstr "%s ТБ"
 msgid "%s bytes"
 msgstr "%s байт"
 
+msgid "Active"
+msgstr "Активный"
+
 msgid "Add Interface"
 msgstr "Добавить Интерфейс"
 
@@ -70,9 +73,6 @@ msgstr "Назад"
 
 msgid "Cancel"
 msgstr "Отмена"
-
-msgid "Cannot get nova extension list."
-msgstr "Не удалось получить список расширений nova."
 
 msgid "Cannot get service catalog from keystone."
 msgstr "Не удалось получить службу каталогов с Keystone."
@@ -164,6 +164,9 @@ msgstr "Фильтр"
 msgid "Finish"
 msgstr "Закончить"
 
+msgid "Flavor"
+msgstr "Тип инстанса"
+
 msgid "Found %(found)s of %(total)s"
 msgstr "Найдено %(found)s из %(total)s"
 
@@ -193,6 +196,9 @@ msgstr "Мин."
 
 msgid "Min length"
 msgstr "Мин. длина"
+
+msgid "Name"
+msgstr "Название"
 
 msgid "Next"
 msgstr "Вперёд"
@@ -248,6 +254,9 @@ msgstr "Проверка политики не удалась."
 msgid "Re-order items using drag and drop"
 msgstr "Переопределите элементы перемещением"
 
+msgid "Remove"
+msgstr "Удалить"
+
 msgid "Required"
 msgstr "Требуется"
 
@@ -268,6 +277,12 @@ msgstr "Тип службы не включен: %(desiredType)s"
 
 msgid "Setting is not enabled: %(setting)s"
 msgstr "Настройка не включена: %(setting)s"
+
+msgid "Shutdown"
+msgstr "Выключение"
+
+msgid "Status"
+msgstr "Статус"
 
 #, c-format
 msgid "Status: %s"
@@ -367,86 +382,14 @@ msgstr "Не удалось предоставить роль."
 msgid "Unable to import the keypair."
 msgstr "Не удалось импортировать пару ключей."
 
-msgid "Unable to retrieve availability zones."
-msgstr "Не удалось получить зоны доступности."
-
-msgid "Unable to retrieve domains"
-msgstr "Не удалось получить домены."
-
-msgid "Unable to retrieve extensions."
-msgstr "Не удалось получить расширения."
-
-msgid "Unable to retrieve flavor extra specs."
-msgstr "Не удалось получить доп. параметры типа интанса."
-
-msgid "Unable to retrieve flavor."
-msgstr "Не удалось получить тип инстанса."
-
-msgid "Unable to retrieve flavors."
-msgstr "Не удалось получить типы инстанса."
-
-msgid "Unable to retrieve image."
-msgstr "Не удалось получить образ."
-
-msgid "Unable to retrieve images."
-msgstr "Не удалось получить образы."
-
-msgid "Unable to retrieve keypairs."
-msgstr "Не удалось получить пары ключей."
-
-msgid "Unable to retrieve limits."
-msgstr "Не удалось получить лимиты."
-
-msgid "Unable to retrieve namespaces."
-msgstr "Не удалось получить пространство имён."
-
-msgid "Unable to retrieve networks."
-msgstr "Не удалось получить сети."
-
-msgid "Unable to retrieve ports."
-msgstr "Не удалось получить порты."
-
-msgid "Unable to retrieve projects"
-msgstr "Не удалось получить проекты"
-
-msgid "Unable to retrieve role"
-msgstr "Не удалось получить роль."
-
-msgid "Unable to retrieve security groups."
-msgstr "Не удалось получить группы безопасности."
-
-msgid "Unable to retrieve server."
-msgstr "Не удалось получить сервер."
-
 msgid "Unable to retrieve settings."
 msgstr "Не удалось получить настройки."
-
-msgid "Unable to retrieve subnets."
-msgstr "Не удалось получить подсети."
 
 msgid "Unable to retrieve the current user session."
 msgstr "Не удалось получить текущую сессию пользователя."
 
-msgid "Unable to retrieve the domain"
-msgstr "Не удалось получить домен."
-
-msgid "Unable to retrieve the project"
-msgstr "Не удалось получить проект"
-
-msgid "Unable to retrieve the role"
-msgstr "Не удалось получить роль"
-
-msgid "Unable to retrieve the user"
-msgstr "Не удалось получить пользователя."
-
-msgid "Unable to retrieve users"
-msgstr "Не удалось получить пользователей."
-
-msgid "Unable to retrieve volume snapshots."
-msgstr "Не удалось получить снимки диска."
-
-msgid "Unable to retrieve volumes."
-msgstr "Не удалось получить диски."
+msgid "Unable to retrieve users."
+msgstr "Не удалось получить список пользователей."
 
 msgid "View Details"
 msgstr "Просмотреть детали"

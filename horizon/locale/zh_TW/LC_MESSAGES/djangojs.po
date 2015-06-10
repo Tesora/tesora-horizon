@@ -4,6 +4,7 @@
 #
 # Translators:
 # Chen, Shang-Pin <dreamerwolf.tw@gmail.com>, 2015
+# Lucas H. Xu <xuh@bu.edu>, 2015
 # Tom Fifield <tom@openstack.org>, 2015
 # Xiao Xi LIU <liuxx@cn.ibm.com>, 2014
 # Zhang Xiaowei <zero00072@gmail.com>, 2015
@@ -11,9 +12,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-27 03:01-0500\n"
-"PO-Revision-Date: 2015-05-27 15:22+0000\n"
-"Last-Translator: Tom Fifield <tom@openstack.org>\n"
+"POT-Creation-Date: 2015-06-05 01:49-0500\n"
+"PO-Revision-Date: 2015-06-05 16:19+0000\n"
+"Last-Translator: Lucas H. Xu <xuh@bu.edu>\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/horizon/"
 "language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
@@ -42,6 +43,9 @@ msgstr "%s TB"
 msgid "%s bytes"
 msgstr "%s 位元組"
 
+msgid "Active"
+msgstr "使用中"
+
 msgid "Add Interface"
 msgstr "加入網路卡介面"
 
@@ -68,9 +72,6 @@ msgstr "上一步"
 
 msgid "Cancel"
 msgstr "取消"
-
-msgid "Cannot get nova extension list."
-msgstr "不能獲得 Nova 擴充套件列表。"
 
 msgid "Cannot get service catalog from keystone."
 msgstr "不能從 Keystone 獲得伺服器類別。"
@@ -159,6 +160,9 @@ msgstr "篩選"
 msgid "Finish"
 msgstr "完成"
 
+msgid "Flavor"
+msgstr "虛擬硬體樣板"
+
 msgid "Found %(found)s of %(total)s"
 msgstr "已找到 %(total)s 中的 %(found)s 個"
 
@@ -188,6 +192,9 @@ msgstr "最小"
 
 msgid "Min length"
 msgstr "最小長度"
+
+msgid "Name"
+msgstr "名稱"
 
 msgid "Next"
 msgstr "下一步"
@@ -243,6 +250,12 @@ msgstr "檢查政策時失敗。"
 msgid "Re-order items using drag and drop"
 msgstr "使用拖拉來重新排列"
 
+msgid "Remaining"
+msgstr "剩餘的"
+
+msgid "Remove"
+msgstr "移除"
+
 msgid "Required"
 msgstr "需要"
 
@@ -263,6 +276,12 @@ msgstr "未啟用伺服器類型：%(desiredType)s"
 
 msgid "Setting is not enabled: %(setting)s"
 msgstr "未啟用設定：%(setting)s"
+
+msgid "Shutdown"
+msgstr "關機中"
+
+msgid "Status"
+msgstr "狀態"
 
 #, c-format
 msgid "Status: %s"
@@ -290,6 +309,9 @@ msgstr "與伺服器間的通訊有問題，請再試一次。"
 
 msgid "There was an error submitting the form. Please try again."
 msgstr "提交表單時有錯誤。請再試一次。"
+
+msgid "Total"
+msgstr "總共"
 
 msgid "Unable to create the domain."
 msgstr "無法新增地域。"
@@ -360,86 +382,26 @@ msgstr "無法賦予角色權力。"
 msgid "Unable to import the keypair."
 msgstr "無法匯入密鑰對。"
 
-msgid "Unable to retrieve availability zones."
-msgstr "無法獲得可用區域。"
-
-msgid "Unable to retrieve domains"
-msgstr "無法獲得地域"
-
-msgid "Unable to retrieve extensions."
-msgstr "無法獲得擴充套件。"
-
-msgid "Unable to retrieve flavor extra specs."
-msgstr "無法獲得虛擬硬體樣板額外規格。"
-
-msgid "Unable to retrieve flavor."
-msgstr "無法獲得虛擬硬體樣板。"
-
-msgid "Unable to retrieve flavors."
-msgstr "無法獲得虛擬硬體樣板。"
-
-msgid "Unable to retrieve image."
-msgstr "無法獲得映像檔。"
-
-msgid "Unable to retrieve images."
-msgstr "無法獲得映像檔。"
-
-msgid "Unable to retrieve keypairs."
-msgstr "無法獲得密鑰對。"
-
-msgid "Unable to retrieve limits."
-msgstr "無法獲得限制。"
-
-msgid "Unable to retrieve namespaces."
-msgstr "無法獲得名稱空間。"
-
-msgid "Unable to retrieve networks."
-msgstr "無法獲得網路。"
-
-msgid "Unable to retrieve ports."
-msgstr "無法獲得接口。"
-
-msgid "Unable to retrieve projects"
-msgstr "無法獲得專案"
-
-msgid "Unable to retrieve role"
-msgstr "無法獲得角色"
-
-msgid "Unable to retrieve security groups."
-msgstr "無法獲得安全性群組。"
-
-msgid "Unable to retrieve server."
-msgstr "無法獲得伺服器。"
-
 msgid "Unable to retrieve settings."
 msgstr "無法設定。"
-
-msgid "Unable to retrieve subnets."
-msgstr "無法獲得子網路。"
 
 msgid "Unable to retrieve the current user session."
 msgstr "無法獲得目前用戶連線階段。"
 
-msgid "Unable to retrieve the domain"
-msgstr "無法獲得地域"
+msgid "Unable to retrieve the keypairs."
+msgstr "無法獲取密鑰對"
 
-msgid "Unable to retrieve the project"
-msgstr "無法獲得專案"
+msgid "Unable to retrieve the ports."
+msgstr "無法獲取端口"
 
-msgid "Unable to retrieve the role"
-msgstr "無法獲得角色"
+msgid "Unable to retrieve the security groups."
+msgstr "無法獲取安全組"
 
-msgid "Unable to retrieve the user"
+msgid "Unable to retrieve the server."
+msgstr "無法獲得端口"
+
+msgid "Unable to retrieve users."
 msgstr "無法獲得用戶。"
-
-msgid "Unable to retrieve users"
-msgstr "無法獲得名稱用戶。"
-
-msgid "Unable to retrieve volume snapshots."
-msgstr "無法獲得雲硬碟即時存檔。"
-
-msgid "Unable to retrieve volumes."
-msgstr "無法獲得雲硬碟。"
 
 msgid "View Details"
 msgstr "檢視詳細資訊"
