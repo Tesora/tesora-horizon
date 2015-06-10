@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-27 03:01-0500\n"
-"PO-Revision-Date: 2015-05-27 03:11+0000\n"
+"POT-Creation-Date: 2015-06-04 21:20-0500\n"
+"PO-Revision-Date: 2015-06-04 15:51+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/projects/p/horizon/language/"
 "ca/)\n"
@@ -68,6 +68,9 @@ msgstr "Error: "
 msgid "Filter"
 msgstr "Filtre"
 
+msgid "Flavor"
+msgstr "Sabor"
+
 msgid "ID"
 msgstr "Identificador"
 
@@ -79,6 +82,9 @@ msgstr "Interfícies"
 
 msgid "Loading"
 msgstr "Carregant"
+
+msgid "Name"
+msgstr "Nom"
 
 msgid "No data available."
 msgstr "Sense dades disponibles"
@@ -98,11 +104,17 @@ msgstr "Avís:"
 msgid "Passwords do not match."
 msgstr "Les contrasenyes no coincideixen."
 
+msgid "Remove"
+msgstr "Eliminar"
+
 msgid "Roles"
 msgstr "Rols"
 
 msgid "STATUS"
 msgstr "ESTAT"
+
+msgid "Status"
+msgstr "Estats"
 
 msgid "Submit"
 msgstr "Transmet"
@@ -116,8 +128,8 @@ msgstr "Hi ha hagut un problema de comunicació, si us plau prova de nou. "
 msgid "There was an error submitting the form. Please try again."
 msgstr "Hi ha hagut un error en enviar el formulari. Si us plau prova de nou."
 
-msgid "Unable to retrieve security groups."
-msgstr "No s'han pogut obtenir els grups de seguretat."
+msgid "Unable to retrieve users."
+msgstr "No s'han pogut obtenir els usuaris."
 
 msgid "Warning: "
 msgstr "Advertiment:"

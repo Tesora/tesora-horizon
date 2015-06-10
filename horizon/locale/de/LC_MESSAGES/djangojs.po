@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-27 03:01-0500\n"
-"PO-Revision-Date: 2015-05-27 03:11+0000\n"
+"POT-Creation-Date: 2015-06-04 21:20-0500\n"
+"PO-Revision-Date: 2015-06-04 15:51+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/horizon/language/"
 "de/)\n"
@@ -41,6 +41,9 @@ msgstr "%s TB"
 msgid "%s bytes"
 msgstr "%s Bytes"
 
+msgid "Active"
+msgstr "Aktiv"
+
 msgid "Add Interface"
 msgstr "Schnittstelle hinzufügen"
 
@@ -67,9 +70,6 @@ msgstr "Zurück"
 
 msgid "Cancel"
 msgstr "Abbrechen"
-
-msgid "Cannot get nova extension list."
-msgstr "Liste der Nova-Erweiterungen kann nicht abgerufen werden."
 
 msgid "Cannot get service catalog from keystone."
 msgstr "Dienstekatalog kann nicht von Keystone abgerufen werden."
@@ -162,6 +162,9 @@ msgstr "Filter"
 msgid "Finish"
 msgstr "Beenden"
 
+msgid "Flavor"
+msgstr "Variante"
+
 msgid "Found %(found)s of %(total)s"
 msgstr "%(found)s von %(total)s gefunden"
 
@@ -191,6 +194,9 @@ msgstr "Min"
 
 msgid "Min length"
 msgstr "Minimale Länge"
+
+msgid "Name"
+msgstr "Name"
 
 msgid "Next"
 msgstr "Weiter"
@@ -243,11 +249,17 @@ msgstr "Bitte bestätigen Sie Ihre Auswahl."
 msgid "Policy check failed."
 msgstr "Richtlinienüberprüfung fehlgeschlagen."
 
+msgid "Prompt"
+msgstr "Eingabeaufforderung"
+
 msgid "Re-order items using drag and drop"
 msgstr "Umsortieren der Positionen durch ziehen und ablegen"
 
 msgid "Remaining"
 msgstr "Übrig"
+
+msgid "Remove"
+msgstr "Entfernen"
 
 msgid "Required"
 msgstr "Erforderlich"
@@ -270,6 +282,12 @@ msgstr "Dienst-Typ ist nicht aktiviert:  %(desiredType)s"
 msgid "Setting is not enabled: %(setting)s"
 msgstr "Einstellung ist nicht aktiviert: %(setting)s"
 
+msgid "Shutdown"
+msgstr "Herunterfahren"
+
+msgid "Status"
+msgstr "Status"
+
 #, c-format
 msgid "Status: %s"
 msgstr "Status: %s"
@@ -285,6 +303,9 @@ msgstr "Erfolg:"
 
 msgid "Terminate Instance"
 msgstr "Instanz terminieren"
+
+msgid "Text"
+msgstr "Text"
 
 msgid ""
 "The action cannot be performed. The contents of this row have errors or are "
@@ -375,86 +396,14 @@ msgstr "Die Rolle kann nicht gewährt werden."
 msgid "Unable to import the keypair."
 msgstr "Das Schlüsselpaar kann nicht importiert werden."
 
-msgid "Unable to retrieve availability zones."
-msgstr "Verfügbarkeitszonen können nicht abgerufen werden."
-
-msgid "Unable to retrieve domains"
-msgstr "Domänen können nicht abgerufen werden"
-
-msgid "Unable to retrieve extensions."
-msgstr "Erweiterungen können nicht abgerufen werden."
-
-msgid "Unable to retrieve flavor extra specs."
-msgstr "Extraspezifikationen zur Variante können nicht abgerufen werden."
-
-msgid "Unable to retrieve flavor."
-msgstr "Variante kann nicht abgerufen werden."
-
-msgid "Unable to retrieve flavors."
-msgstr "Varianten können nicht abgerufen werden."
-
-msgid "Unable to retrieve image."
-msgstr "Abbild kann nicht abgerufen werden."
-
-msgid "Unable to retrieve images."
-msgstr "Abbilder können nicht abgerufen werden."
-
-msgid "Unable to retrieve keypairs."
-msgstr "Schlüsselpaare können nicht abgerufen werden."
-
-msgid "Unable to retrieve limits."
-msgstr "Begrenzungen können nicht abgerufen werden."
-
-msgid "Unable to retrieve namespaces."
-msgstr "Namensräume können nicht abgerufen werden."
-
-msgid "Unable to retrieve networks."
-msgstr "Netzwerke können nicht abgerufen werden."
-
-msgid "Unable to retrieve ports."
-msgstr "Ports können nicht abgerufen werden."
-
-msgid "Unable to retrieve projects"
-msgstr "Projekte können nicht abgerufen werden"
-
-msgid "Unable to retrieve role"
-msgstr "Rolle kann nicht abgerufen werden"
-
-msgid "Unable to retrieve security groups."
-msgstr "Sicherheitsgruppen können nicht abgerufen werden."
-
-msgid "Unable to retrieve server."
-msgstr "Server kann nicht abgerufen werden."
-
 msgid "Unable to retrieve settings."
 msgstr "Einstellungen können nicht abgerufen werden."
-
-msgid "Unable to retrieve subnets."
-msgstr "Subnetze können nicht abgerufen werden."
 
 msgid "Unable to retrieve the current user session."
 msgstr "Aktuelle Benutzersitzung kann nicht abgerufen werden."
 
-msgid "Unable to retrieve the domain"
-msgstr "Die Domäne kann nicht abgerufen werden"
-
-msgid "Unable to retrieve the project"
-msgstr "Das Projekt kann nicht abgerufen werden"
-
-msgid "Unable to retrieve the role"
-msgstr "Die Rolle kann nicht abgerufen werden"
-
-msgid "Unable to retrieve the user"
-msgstr "Benutzer kann nicht abgerufen werden"
-
-msgid "Unable to retrieve users"
-msgstr "Benutzer können nicht abgerufen werden"
-
-msgid "Unable to retrieve volume snapshots."
-msgstr "Datenträger-Schattenkopien können nicht abgerufen werden."
-
-msgid "Unable to retrieve volumes."
-msgstr "Datenträger können nicht abgerufen werden."
+msgid "Unable to retrieve users."
+msgstr "Benutzer können nicht abgerufen werden."
 
 msgid "View Details"
 msgstr "Details anzeigen"

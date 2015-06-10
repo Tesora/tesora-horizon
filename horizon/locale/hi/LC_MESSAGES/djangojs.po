@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-27 03:01-0500\n"
-"PO-Revision-Date: 2015-05-27 03:11+0000\n"
+"POT-Creation-Date: 2015-06-04 21:20-0500\n"
+"PO-Revision-Date: 2015-06-04 15:51+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Hindi (http://www.transifex.com/projects/p/horizon/language/"
 "hi/)\n"
@@ -34,6 +34,9 @@ msgstr "%s MB"
 #, c-format
 msgid "%s TB"
 msgstr "%s TB"
+
+msgid "Active"
+msgstr "सक्रिय"
 
 msgid "Add Interface"
 msgstr "अंतरफलक जोड़ें"
@@ -96,6 +99,9 @@ msgstr "मौजूदा मेटाडाटा "
 msgid "Filter"
 msgstr "छानना शुरू..."
 
+msgid "Flavor"
+msgstr "फ्लेवर"
+
 msgid "ID"
 msgstr "आईडी"
 
@@ -107,6 +113,9 @@ msgstr "अंतरफलक"
 
 msgid "Loading"
 msgstr "लोड हो रहा है"
+
+msgid "Name"
+msgstr "नाम"
 
 msgid "Next"
 msgstr "अगला"
@@ -141,10 +150,16 @@ msgstr "सूचना: "
 msgid "Passwords do not match."
 msgstr "पासवर्ड मेल नहीं खाते."
 
+msgid "Remove"
+msgstr "हटाएँ"
+
 msgid "Roles"
 msgstr "भूमिका"
 
 msgid "STATUS"
+msgstr "स्थिति"
+
+msgid "Status"
 msgstr "स्थिति"
 
 msgid "Submit"
@@ -159,26 +174,8 @@ msgstr "सर्वर के साथ संवाद स्थापित �
 msgid "There was an error submitting the form. Please try again."
 msgstr "फार्म जमा करने में त्रुटि हुई. पुन: प्रयास करें."
 
-msgid "Unable to retrieve availability zones."
-msgstr "उपलब्धता क्षेत्रों को पुनः प्राप्त करने में असमर्थ."
-
-msgid "Unable to retrieve flavors."
-msgstr "फ्लेवर को पुनः प्राप्त करने में असमर्थ."
-
-msgid "Unable to retrieve image."
-msgstr "बिंब को पुनः प्राप्त करने में असमर्थ."
-
-msgid "Unable to retrieve images."
-msgstr "बिंब को पुनः प्राप्त करने में असमर्थ."
-
-msgid "Unable to retrieve networks."
-msgstr "नेटवर्क पुनः प्राप्त करने में असमर्थ."
-
-msgid "Unable to retrieve security groups."
-msgstr "सुरक्षा समूहों को पुनः प्राप्त करने में असमर्थ."
-
-msgid "Unable to retrieve volume snapshots."
-msgstr "वॉल्यूम स्नैपशॉट प्राप्त करने में असमर्थ."
+msgid "Unable to retrieve users."
+msgstr " उपयोगकर्ता को प्राप्त करने में असमर्थ."
 
 msgid "View Details"
 msgstr "विवरण देखें"
