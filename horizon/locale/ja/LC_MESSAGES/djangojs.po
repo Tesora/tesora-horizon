@@ -5,13 +5,14 @@
 # Translators:
 # myamamot <myamamot@redhat.com>, 2015
 # naoki yoshida <oimotanaka1122@gmail.com>, 2015
+# Shu Muto <shu-mutou@rf.jp.nec.com>, 2015
 # Tom Fifield <tom@openstack.org>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-04 21:20-0500\n"
-"PO-Revision-Date: 2015-06-04 15:51+0000\n"
+"POT-Creation-Date: 2015-06-16 21:47-0500\n"
+"PO-Revision-Date: 2015-06-16 19:14+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Japanese (http://www.transifex.com/projects/p/horizon/"
 "language/ja/)\n"
@@ -70,9 +71,6 @@ msgstr "戻る"
 
 msgid "Cancel"
 msgstr "取り消し"
-
-msgid "Cannot get service catalog from keystone."
-msgstr "keystone からサービスカタログを取得できません。"
 
 msgid "Click here to expand the row and view the errors."
 msgstr "行を展開してエラーを表示するには、ここをクリックしてください。"
@@ -151,9 +149,6 @@ msgstr "割り当て済みのアイテムを表示するには展開してくだ
 
 msgid "Expand to see available items"
 msgstr "利用可能なアイテムを表示するには展開してください。"
-
-msgid "Extension is not enabled: %(extension)s"
-msgstr "拡張機能 %(extension)s が有効ではありません。"
 
 msgid "Filter"
 msgstr "フィルター"
@@ -245,8 +240,8 @@ msgstr "パターンが一致しません。"
 msgid "Please confirm your selection. "
 msgstr "選択内容を確認してください。"
 
-msgid "Policy check failed."
-msgstr "ポリシーチェックに失敗しました。"
+msgid "Prompt"
+msgstr "プロンプト"
 
 msgid "Re-order items using drag and drop"
 msgstr "順番を並べ替えるには、アイテムをドラッグ＆ドロップしてください。"
@@ -271,12 +266,6 @@ msgstr "以下の利用可能なアイテムから 1 つ選択してください
 
 msgid "Select one"
 msgstr "1 つ選択してください。"
-
-msgid "Service type is not enabled: %(desiredType)s"
-msgstr "サービスタイプが有効化されていません: %(desiredType)s"
-
-msgid "Setting is not enabled: %(setting)s"
-msgstr "設定 %(setting)s が有効になっていません。"
 
 msgid "Shutdown"
 msgstr "シャットダウン"
@@ -317,84 +306,6 @@ msgstr "フォームの送信中にエラーが発生しました。再度お試
 
 msgid "Total"
 msgstr "総計"
-
-msgid "Unable to create the domain."
-msgstr "ドメインを作成できません。"
-
-msgid "Unable to create the keypair."
-msgstr "キーペアを取得できません。"
-
-msgid "Unable to create the network."
-msgstr "ネットワークを作成できません。"
-
-msgid "Unable to create the project."
-msgstr "プロジェクトを作成できません。"
-
-msgid "Unable to create the role."
-msgstr "ロールを作成できません。"
-
-msgid "Unable to create the server."
-msgstr "サーバーを作成できません。"
-
-msgid "Unable to create the subnet."
-msgstr "サブネットを作成できません。"
-
-msgid "Unable to create the user."
-msgstr "ユーザーを作成できません。"
-
-msgid "Unable to delete the domain."
-msgstr "ドメインを削除できません。"
-
-msgid "Unable to delete the domains."
-msgstr "ドメインを削除できません。"
-
-msgid "Unable to delete the project."
-msgstr "プロジェクトを削除できません。"
-
-msgid "Unable to delete the projects."
-msgstr "プロジェクトを削除できません。"
-
-msgid "Unable to delete the role."
-msgstr "ロールを削除できません。"
-
-msgid "Unable to delete the roles."
-msgstr "ロールを削除できません。"
-
-msgid "Unable to delete the user."
-msgstr "ユーザーを削除できません。"
-
-msgid "Unable to delete the users."
-msgstr "ユーザーを削除できません。"
-
-msgid "Unable to edit the domain."
-msgstr "ドメインを編集できません。"
-
-msgid "Unable to edit the project."
-msgstr "プロジェクトを編集できません。"
-
-msgid "Unable to edit the role."
-msgstr "ロールを編集できません。"
-
-msgid "Unable to edit the user."
-msgstr "ユーザーを編集できません。"
-
-msgid "Unable to fetch the service catalog."
-msgstr "サービスカタログを取得できません。"
-
-msgid "Unable to grant the role."
-msgstr "ロールを許可できません。"
-
-msgid "Unable to import the keypair."
-msgstr "キーペアをインポートできません。"
-
-msgid "Unable to retrieve settings."
-msgstr "設定を取得できません。"
-
-msgid "Unable to retrieve the current user session."
-msgstr "現在のユーザーセッションを取得できません。"
-
-msgid "Unable to retrieve users."
-msgstr "ユーザー一覧を取得できません。"
 
 msgid "View Details"
 msgstr "詳細の表示"

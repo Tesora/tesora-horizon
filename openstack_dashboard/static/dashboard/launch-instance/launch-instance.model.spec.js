@@ -29,7 +29,7 @@
       beforeEach(module('hz.dashboard.launch-instance'));
 
       beforeEach(module(function($provide) {
-        $provide.value('hz.api.glance', {
+        $provide.value('horizon.openstack-service-api.glance', {
           getImages: function() {
             var images = [
               { container_format: 'aki', properties: {} },
@@ -55,7 +55,7 @@
           }
         });
 
-        $provide.value('hz.api.nova', {
+        $provide.value('horizon.openstack-service-api.nova', {
           createServer: function(finalSpec) {
             return finalSpec;
           },
@@ -99,7 +99,7 @@
           }
         });
 
-        $provide.value('hz.api.security-group', {
+        $provide.value('horizon.openstack-service-api.security-group', {
           query: function() {
             var secGroups = [
               { name: 'security-group-1' },
@@ -113,7 +113,7 @@
           }
         });
 
-        $provide.value('hz.api.neutron', {
+        $provide.value('horizon.openstack-service-api.neutron', {
           getNetworks: function() {
             var networks = [ { id: 'net-1' }, { id: 'net-2' } ];
 
@@ -124,7 +124,7 @@
           }
         });
 
-        $provide.value('hz.api.cinder', {
+        $provide.value('horizon.openstack-service-api.cinder', {
           getVolumes: function() {
             var volumes = [ { id: 'vol-1' }, { id: 'vol-2' } ];
 
@@ -143,7 +143,7 @@
           }
         });
 
-        $provide.value('hz.api.serviceCatalog', {
+        $provide.value('horizon.openstack-service-api.serviceCatalog', {
           ifTypeEnabled: function(theType) {
             var deferred = $q.defer();
 
@@ -159,7 +159,7 @@
           }
         });
 
-        $provide.value('hz.api.novaExtensions', {
+        $provide.value('horizon.openstack-service-api.novaExtensions', {
           ifNameEnabled: function() {
             var deferred = $q.defer();
 
@@ -173,7 +173,7 @@
           }
         });
 
-        $provide.value('hz.api.keystone', {});
+        $provide.value('horizon.openstack-service-api.keystone', {});
       }));
 
       beforeEach(inject(function(launchInstanceModel, $rootScope, _$q_) {
@@ -392,6 +392,10 @@
           model.newInstanceSpec.key_pair = [ { name: 'keypair1' } ];
           model.newInstanceSpec.security_groups = [ { id: 'adminId', name: 'admin' },
                                                     { id: 'demoId', name: 'demo' } ];
+          model.newInstanceSpec.vol_create = true;
+          model.newInstanceSpec.vol_delete_on_terminate = true;
+          model.newInstanceSpec.vol_device_name = "volTestName";
+          model.newInstanceSpec.vol_size = 10;
         });
 
         it('should set final spec in format required by Nova (Neutron disabled)', function() {
@@ -406,6 +410,21 @@
           expect(finalSpec.nics).toEqual(finalNetworks);
           expect(finalSpec.key_name).toBe('keypair1');
           expect(finalSpec.security_groups).toEqual([ 'admin', 'demo' ]);
+        });
+
+        it('should set final spec in format required for Block Device Mapping v2', function() {
+          var finalSpec = model.createInstance();
+          var expectedBlockDevice = [{
+              device_name: 'volTestName',
+              source_type: 'image',
+              destination_type: 'volume',
+              delete_on_termination: 1,
+              uuid: 'cirros',
+              boot_index: '0',
+              volume_size: 10
+            }];
+
+          expect(finalSpec.block_device_mapping_v2).toEqual(expectedBlockDevice);
         });
 
         it('should set final security groups using name when Neutron enabled', function() {

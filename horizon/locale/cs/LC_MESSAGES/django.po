@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# Zbyněk Schwarz <zbynek.schwarz@gmail.com>, 2014
+# Zbyněk Schwarz <zbynek.schwarz@gmail.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-08 19:20-0500\n"
-"PO-Revision-Date: 2015-06-08 18:55+0000\n"
+"POT-Creation-Date: 2015-06-15 19:53-0500\n"
+"PO-Revision-Date: 2015-06-15 15:01+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Czech (http://www.transifex.com/projects/p/horizon/language/"
 "cs/)\n"
@@ -106,6 +106,9 @@ msgstr "%s nedokončeno"
 msgid "&laquo;&nbsp;Prev"
 msgstr "&laquo;&nbsp;Zpět"
 
+msgid "(No Limit)"
+msgstr "(Bez limitu)"
+
 msgid "-"
 msgstr "-"
 
@@ -179,9 +182,6 @@ msgstr "Falešné"
 msgid "Filter"
 msgstr "Filtr"
 
-msgid "Help"
-msgstr "Nápověda"
-
 msgid "Horizon"
 msgstr "Horizon"
 
@@ -190,6 +190,10 @@ msgstr "Nesprávný formát IP adresy"
 
 msgid "Info: "
 msgstr "Informace:"
+
+msgid "Invalid metadata entry. Use comma-separated key=value pairs"
+msgstr ""
+"Neplatná položka popisných dat. Použijte čárkou oddělené páry klíč=hodnota"
 
 msgid "Invalid subnet mask"
 msgstr "Neplatná maska podsítě"
@@ -202,10 +206,6 @@ msgstr "Omezit souhrn"
 
 msgid "Log In"
 msgstr "Přihlásit"
-
-#, python-format
-msgid "Logged in as: %(username)s"
-msgstr "Přihlášen jako: %(username)s"
 
 msgid "Login"
 msgstr "Přihlášení"
@@ -294,9 +294,6 @@ msgstr "Relace vypršela."
 msgid "Sign In"
 msgstr "Přihlásit"
 
-msgid "Sign Out"
-msgstr "Odhlásit"
-
 msgid "Submit"
 msgstr "Odeslat"
 
@@ -348,6 +345,9 @@ msgstr "Aktualizováno"
 msgid "Usage Summary"
 msgstr "Souhrn využití"
 
+msgid "Used"
+msgstr "Využito"
+
 msgid "Warning: "
 msgstr "Varování:"
 
@@ -361,3 +361,6 @@ msgstr "Nemá oprávnění k přístupu %s"
 
 msgid "You do not have permission to access the resource:"
 msgstr "Nemáte oprávnění k přístupu do zdroje:"
+
+msgid "of"
+msgstr "z"
