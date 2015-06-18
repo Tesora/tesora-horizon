@@ -1,23 +1,24 @@
+'use strict';
 var fs = require('fs');
 var path = require('path');
 
-module.exports = function(config){
+module.exports = function(config) {
   var xstaticPath;
-  var base_paths = [
+  var basePaths = [
     './.venv',
     './.tox/py27'
   ]
 
-  for( var i = 0; i < base_paths.length; i++) {
-    var base_path = path.resolve(base_paths[i]);
+  for (var i = 0; i < basePaths.length; i++) {
+    var basePath = path.resolve(basePaths[i]);
 
-    if( fs.existsSync(base_path) ) {
-      xstaticPath = base_path + '/lib/python2.7/site-packages/xstatic/pkg/';
+    if (fs.existsSync(basePath)) {
+      xstaticPath = basePath + '/lib/python2.7/site-packages/xstatic/pkg/';
       break;
     }
   }
 
-  if( !xstaticPath) {
+  if (!xstaticPath) {
     console.error("xStatic libraries not found, please set up venv");
     process.exit(1);
   }
@@ -63,12 +64,9 @@ module.exports = function(config){
       xstaticPath + 'spin/data/spin.js',
       xstaticPath + 'spin/data/spin.jquery.js',
 
-
       // from jasmine_tests.py; only those that are deps for others
       'horizon/js/horizon.js',
-      'horizon/js/angular/hz.api.module.js',
-      'horizon/js/angular/services/**/*.js',
-      'horizon/js/angular/hz.api.module.js',
+      '../../openstack_dashboard/static/openstack-service-api/openstack-service-api.module.js',
       'dashboard-app/dashboard-app.module.js',
       'dashboard-app/**/*.js',
       'auth/auth.module.js',
@@ -76,9 +74,11 @@ module.exports = function(config){
       'framework/framework.module.js',
       'framework/util/util.module.js',
       'framework/util/tech-debt/tech-debt.module.js',
-      'framework/widgets/charts/charts.js',
-      'framework/widgets/metadata-tree/metadata-tree.js',
-      'framework/widgets/table/table.js',
+      'framework/widgets/charts/charts.module.js',
+      'framework/widgets/modal/modal.module.js',
+      'framework/widgets/metadata-tree/metadata-tree.module.js',
+      'framework/widgets/table/table.module.js',
+      'framework/widgets/toast/toast.module.js',
 
       // Catch-all for stuff that isn't required explicitly by others.
       'auth/**/!(*spec).js',
@@ -91,7 +91,7 @@ module.exports = function(config){
       xstaticPath + 'magic_search/data/magic_search.js',
 
       // TESTS
-      '**/*.spec.js',
+      '**/*.spec.js'
     ],
 
     autoWatch : true,

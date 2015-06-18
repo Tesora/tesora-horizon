@@ -4,13 +4,14 @@
 #
 # Translators:
 # Andreas Jaeger <jaegerandi@gmail.com>, 2014
+# Ettore Atalan <atalanttore@googlemail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-08 19:20-0500\n"
-"PO-Revision-Date: 2015-06-08 18:55+0000\n"
-"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
+"POT-Creation-Date: 2015-06-16 21:47-0500\n"
+"PO-Revision-Date: 2015-06-16 12:25+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/horizon/language/"
 "de/)\n"
 "MIME-Version: 1.0\n"
@@ -104,6 +105,9 @@ msgstr "%s nicht abgeschlossen."
 msgid "&laquo;&nbsp;Prev"
 msgstr "&laquo;&nbsp;Zurück"
 
+msgid "(No Limit)"
+msgstr "(Keine Begrenzung)"
+
 msgid "-"
 msgstr "-"
 
@@ -174,9 +178,6 @@ msgstr "Fälschung"
 msgid "Filter"
 msgstr "Filter"
 
-msgid "Help"
-msgstr "Hilfe"
-
 msgid "Horizon"
 msgstr "Horizon"
 
@@ -202,10 +203,6 @@ msgstr "Übersicht Begrenzungen"
 
 msgid "Log In"
 msgstr "Anmelden"
-
-#, python-format
-msgid "Logged in as: %(username)s"
-msgstr "Angemeldet als: %(username)s"
 
 msgid "Login"
 msgstr "Login"
@@ -300,9 +297,6 @@ msgstr "Die Sitzung ist abgelaufen."
 msgid "Sign In"
 msgstr "Anmelden"
 
-msgid "Sign Out"
-msgstr "Abmelden"
-
 #. Translators: test code, don't really have to translate
 msgid "Sold Puppy"
 msgid_plural "Sold Puppies"
@@ -360,6 +354,9 @@ msgstr "Aktualisiert"
 msgid "Usage Summary"
 msgstr "Nutzungsübersicht"
 
+msgid "Used"
+msgstr "Benutzt"
+
 msgid "Warning: "
 msgstr "Warnung:"
 
@@ -373,3 +370,6 @@ msgstr "Sie sind nicht berechtigt für den Zugriff auf %s"
 
 msgid "You do not have permission to access the resource:"
 msgstr "Sie haben keine Zugriffsrechte auf die Ressource:"
+
+msgid "of"
+msgstr "von"
