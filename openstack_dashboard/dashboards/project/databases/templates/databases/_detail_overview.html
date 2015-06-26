@@ -17,6 +17,7 @@
     <dd>{{ instance.datastore.version }}</dd>
     <dt>{% trans "Status" %}</dt>
     <dd>{{ instance.status|title }}</dd>
+<<<<<<< HEAD
     {% if instance.configuration %}
     <dt>{% trans "Configuration Group" %}</dt>
     <dd>
@@ -25,6 +26,10 @@
         </a>
     </dd>
     {% endif %}
+=======
+    <dt>{% trans "Root Enabled" %}</dt>
+    <dd>{{ root_enabled }}</dd>
+>>>>>>> 21b04ff... Add support for root enable and show
   </dl>
 </div>
 
