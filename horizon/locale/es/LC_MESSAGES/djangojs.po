@@ -1,6 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# Translations template for PROJECT.
+# Copyright (C) 2015 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
 #
 # Translators:
 # Adriana Chisco Landazábal <achisco94@gmail.com>, 2015
@@ -11,35 +11,36 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
-"Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-06-16 21:47-0500\n"
-"PO-Revision-Date: 2015-06-16 19:14+0000\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2015-06-27 14:09+0000\n"
+"PO-Revision-Date: 2015-06-27 11:57+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/horizon/language/"
 "es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#, c-format
+#, python-format
 msgid "%s GB"
 msgstr "%s GB"
 
-#, c-format
+#, python-format
 msgid "%s KB"
 msgstr "%s KB"
 
-#, c-format
+#, python-format
 msgid "%s MB"
 msgstr "%s MB"
 
-#, c-format
+#, python-format
 msgid "%s TB"
 msgstr "%s TB"
 
-#, c-format
+#, python-format
 msgid "%s bytes"
 msgstr "%s bytes"
 
@@ -88,7 +89,7 @@ msgstr "Cerrada"
 msgid "Closing"
 msgstr "Cerrando"
 
-#, c-format
+#, python-format
 msgid "Confirm %s"
 msgstr "Confirmar %s"
 
@@ -128,7 +129,7 @@ msgstr "Eliminar router"
 msgid "Detail Information"
 msgstr "Información detallada"
 
-#, c-format
+#, python-format
 msgid "Displaying %s item"
 msgid_plural "Displaying %s items"
 msgstr[0] "Mostrando %s articulo"
@@ -160,9 +161,6 @@ msgstr "Finalizar"
 
 msgid "Flavor"
 msgstr "Sabor"
-
-msgid "Found %(found)s of %(total)s"
-msgstr "%(found)s de %(total)s encontrado"
 
 msgid "ID"
 msgstr "ID"
@@ -275,7 +273,7 @@ msgstr "Apagar"
 msgid "Status"
 msgstr "Estado"
 
-#, c-format
+#, python-format
 msgid "Status: %s"
 msgstr "Estado: %s"
 
@@ -344,7 +342,7 @@ msgstr ""
 "hay definiciones de metadatos del Glance Metadata Catalog. Utilice la opcion "
 "\"Otro\" para añadir metadatos con la clave que desee. "
 
-#, c-format
+#, python-format
 msgid "You have selected %s. "
 msgstr "Ha seleccionado %s."
 

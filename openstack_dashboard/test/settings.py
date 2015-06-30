@@ -34,6 +34,8 @@ TEMPLATE_CONTEXT_PROCESSORS += (
     'openstack_dashboard.context_processors.openstack',
 )
 
+COMPRESS_OFFLINE = False
+
 INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.auth',
@@ -58,8 +60,6 @@ AUTHENTICATION_BACKENDS = ('openstack_auth.backend.KeystoneBackend',)
 SITE_BRANDING = 'OpenStack'
 
 HORIZON_CONFIG = {
-    'dashboards': ('project', 'admin', 'identity', 'settings', 'router',),
-    'default_dashboard': 'project',
     "password_validator": {
         "regex": '^.{8,18}$',
         "help_text": "Password must be between 8 and 18 characters."

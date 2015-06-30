@@ -1,13 +1,30 @@
+/*
+ *    (c) Copyright 2015 Hewlett-Packard Development Company, L.P.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 'use strict';
+
 var fs = require('fs');
 var path = require('path');
 
-module.exports = function(config) {
+module.exports = function (config) {
   var xstaticPath;
   var basePaths = [
     './.venv',
     './.tox/py27'
-  ]
+  ];
 
   for (var i = 0; i < basePaths.length; i++) {
     var basePath = path.resolve(basePaths[i]);
@@ -19,18 +36,17 @@ module.exports = function(config) {
   }
 
   if (!xstaticPath) {
-    console.error("xStatic libraries not found, please set up venv");
+    console.error('xStatic libraries not found, please set up venv');
     process.exit(1);
   }
 
   config.set({
-
     preprocessors: {
       // Used to collect templates for preprocessing.
       // NOTE: the templates must also be listed in the files section below.
       './**/*.html': ['ng-html2js'],
       // Used to indicate files requiring coverage reports.
-      './**/!(*spec).js': ['coverage']
+      './**/!(*.spec).js': ['coverage']
     },
 
     // Sets up module to process templates.
@@ -40,14 +56,15 @@ module.exports = function(config) {
     },
 
     // Assumes you're in the top-level horizon directory.
-    basePath : './static/',
+    basePath: './static/',
 
     // Contains both source and test files.
-    files : [
-
-      // shim, partly stolen from /i18n/js/horizon/
-      // Contains expected items not provided elsewhere (dynamically by
-      // Django or via jasmine template.
+    files: [
+      /*
+       * shim, partly stolen from /i18n/js/horizon/
+       * Contains expected items not provided elsewhere (dynamically by
+       * Django or via jasmine template.
+       */
       '../../test-shim.js',
 
       // from jasmine.html
@@ -66,39 +83,48 @@ module.exports = function(config) {
 
       // from jasmine_tests.py; only those that are deps for others
       'horizon/js/horizon.js',
-      '../../openstack_dashboard/static/openstack-service-api/openstack-service-api.module.js',
-      'dashboard-app/dashboard-app.module.js',
-      'dashboard-app/**/*.js',
-      'auth/auth.module.js',
-      'auth/login/login.module.js',
-      'framework/framework.module.js',
-      'framework/util/util.module.js',
-      'framework/util/tech-debt/tech-debt.module.js',
-      'framework/widgets/charts/charts.module.js',
-      'framework/widgets/modal/modal.module.js',
-      'framework/widgets/metadata-tree/metadata-tree.module.js',
-      'framework/widgets/table/table.module.js',
-      'framework/widgets/toast/toast.module.js',
 
-      // Catch-all for stuff that isn't required explicitly by others.
-      'auth/**/!(*spec).js',
-      'framework/**/!(*spec).js',
+      /**
+       * First, list all the files that defines application's angular modules.
+       * Those files have extension of `.module.js`. The order among them is
+       * not significant.
+       */
+      '**/*.module.js',
 
-      // Templates.
-      './**/*.html',
+      /**
+       * Followed by other JavaScript files that defines angular providers
+       * on the modules defined in files listed above. And they are not mock
+       * files or spec files defined below. The order among them is not
+       * significant.
+       */
+      '!(horizon)/**/!(*.spec|*.mock).js',
 
       // Magic search requires late ordering due to overriding.
       xstaticPath + 'magic_search/data/magic_search.js',
 
-      // TESTS
-      '**/*.spec.js'
+      /**
+       * Then, list files for mocks with `mock.js` extension. The order
+       * among them should not be significant.
+       */
+      '**/*.mock.js',
+
+      /**
+       * Finally, list files for spec with `spec.js` extension. The order
+       * among them should not be significant.
+       */
+      '**/*.spec.js',
+
+      /**
+       * Angular external templates
+       */
+      '**/*.html'
     ],
 
-    autoWatch : true,
+    autoWatch: true,
 
     frameworks: ['jasmine'],
 
-    browsers : ['PhantomJS'],
+    browsers: ['PhantomJS'],
 
     phantomjsLauncher: {
       // Have phantomjs exit if a ResourceError is encountered
@@ -106,9 +132,9 @@ module.exports = function(config) {
       exitOnResourceError: true
     },
 
-    reporters : [ 'progress', 'coverage' ],
+    reporters: ['progress', 'coverage'],
 
-    plugins : [
+    plugins: [
       'karma-phantomjs-launcher',
       'karma-jasmine',
       'karma-ng-html2js-preprocessor',
@@ -116,10 +142,8 @@ module.exports = function(config) {
     ],
 
     coverageReporter: {
-      type : 'html',
-      dir : '../.coverage-karma/'
+      type: 'html',
+      dir: '../.coverage-karma/'
     }
-
   });
 };
-

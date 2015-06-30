@@ -15,7 +15,7 @@ function usage {
   echo "                           environment. Useful when dependencies have"
   echo "                           been added."
   echo "  -m, --manage             Run a Django management command."
-  echo "  --makemessages           Create/Update English translation files."
+  echo "  --makemessages           Create/Update English translation files using babel."
   echo "  --compilemessages        Compile all translation files."
   echo "  --check-only             Do not update translation files (--makemessages only)."
   echo "  --pseudo                 Pseudo translate a language."
@@ -319,7 +319,6 @@ function restore_environment {
     fi
 
     cp -r /tmp/.horizon_environment/$JOB_NAME/.venv ./ || true
-
     echo "Environment restored successfully."
   fi
 }
@@ -434,28 +433,41 @@ function run_integration_tests {
   exit 0
 }
 
+function babel_extract {
+  DOMAIN=$1
+  KEYWORDS="-k gettext_noop -k gettext_lazy -k ngettext_lazy:1,2"
+  KEYWORDS+=" -k gettext_noop -k ugettext_lazy -k ungettext_lazy:1,2"
+  KEYWORDS+=" -k npgettext:1c,2,3 -k pgettext_lazy:1c,2 -k npgettext_lazy:1c,2,3"
+
+  ${command_wrapper} pybabel extract -F ../babel-${DOMAIN}.cfg -o locale/${DOMAIN}.pot $KEYWORDS .
+}
+
 function run_makemessages {
-  OPTS="-l en --no-obsolete --settings=openstack_dashboard.test.settings"
-  DASHBOARD_OPTS="--extension=html,txt,csv --ignore=openstack"
+
   echo -n "horizon: "
   cd horizon
-  ${command_wrapper} $root/manage.py makemessages $OPTS
+  babel_extract django
   HORIZON_PY_RESULT=$?
+
   echo -n "horizon javascript: "
-  ${command_wrapper} $root/manage.py makemessages -d djangojs $OPTS
+  babel_extract djangojs
   HORIZON_JS_RESULT=$?
+
   echo -n "openstack_dashboard: "
   cd ../openstack_dashboard
-  ${command_wrapper} $root/manage.py makemessages $DASHBOARD_OPTS $OPTS
+  babel_extract django
   DASHBOARD_RESULT=$?
+
   echo -n "openstack_dashboard javascript: "
-  ${command_wrapper} $root/manage.py makemessages -d djangojs $OPTS
+  babel_extract djangojs
   DASHBOARD_JS_RESULT=$?
+
   cd ..
   if [ $check_only -eq 1 ]; then
-    git checkout -- horizon/locale/en/LC_MESSAGES/django*.po
-    git checkout -- openstack_dashboard/locale/en/LC_MESSAGES/django.po
+    git checkout -- horizon/locale/django*.pot
+    git checkout -- openstack_dashboard/locale/django*.pot
   fi
+
   exit $(($HORIZON_PY_RESULT || $HORIZON_JS_RESULT || $DASHBOARD_RESULT || $DASHBOARD_JS_RESULT))
 }
 
@@ -466,21 +478,17 @@ function run_compilemessages {
   cd ../openstack_dashboard
   ${command_wrapper} $root/manage.py compilemessages
   DASHBOARD_RESULT=$?
-  cd ..
-  # English is the source language, so compiled catalogs are unnecessary.
-  rm -vf horizon/locale/en/LC_MESSAGES/django*.mo
-  rm -vf openstack_dashboard/locale/en/LC_MESSAGES/django*.mo
   exit $(($HORIZON_PY_RESULT || $DASHBOARD_RESULT))
 }
 
 function run_pseudo {
   for lang in $testargs
-  # Use English po file as the source file/pot file just like real Horizon translations
+  # Use English pot file as the source file/pot file just like real Horizon translations
   do
-      ${command_wrapper} $root/tools/pseudo.py openstack_dashboard/locale/en/LC_MESSAGES/django.po openstack_dashboard/locale/$lang/LC_MESSAGES/django.po $lang
-      ${command_wrapper} $root/tools/pseudo.py openstack_dashboard/locale/en/LC_MESSAGES/djangojs.po openstack_dashboard/locale/$lang/LC_MESSAGES/djangojs.po $lang
-      ${command_wrapper} $root/tools/pseudo.py horizon/locale/en/LC_MESSAGES/django.po horizon/locale/$lang/LC_MESSAGES/django.po $lang
-      ${command_wrapper} $root/tools/pseudo.py horizon/locale/en/LC_MESSAGES/djangojs.po horizon/locale/$lang/LC_MESSAGES/djangojs.po $lang
+      ${command_wrapper} $root/tools/pseudo.py openstack_dashboard/locale/django.pot openstack_dashboard/locale/$lang/LC_MESSAGES/django.po $lang
+      ${command_wrapper} $root/tools/pseudo.py openstack_dashboard/locale/djangojs.pot openstack_dashboard/locale/$lang/LC_MESSAGES/djangojs.po $lang
+      ${command_wrapper} $root/tools/pseudo.py horizon/locale/django.pot horizon/locale/$lang/LC_MESSAGES/django.po $lang
+      ${command_wrapper} $root/tools/pseudo.py horizon/locale/djangojs.pot horizon/locale/$lang/LC_MESSAGES/djangojs.po $lang
   done
   exit $?
 }
