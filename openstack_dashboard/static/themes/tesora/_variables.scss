@@ -1,4 +1,5 @@
 // Tesora theme
+@import "/themes/default/variables";
 
 $tesora-orange: #f18530;
 $tesora-light-orange: #f1b317;
@@ -12,13 +13,7 @@ $tesora-dark-gray: #a1a1a1;
 $tesora-darker-gray: #6c6c6c;
 $tesora-white: #efefef;
 
-$gray-darker: $tesora-darker-gray;
-$gray-dark: $tesora-dark-gray;
-$gray: $tesora-gray;
-$gray-light: $tesora-light-gray;
-$gray-lighter: $tesora-lighter-gray;
-
-$text-color: $gray-darker;
+$text-color: $tesora-darker-gray;
 $link-color: $tesora-dark-blue;
 
 $accordionBaseFontColor: $tesora-darker-gray !default;
