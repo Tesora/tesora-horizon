@@ -221,6 +221,11 @@ a.current_item:hover h4 {
   padding: 0 0 0 1px;
 }
 
+.table_wrapper > form.wait,
+.table_wrapper > form.wait * {
+  cursor: wait !important;
+}
+
 .table-bordered {
   border: none;
 }
@@ -618,6 +623,11 @@ td.loading {
 
 
 /* Forms */
+
+.datepicker {
+  z-index: $zindex-popover !important;
+}
+
 .datepicker input{
   @extend .form-control;
 }
