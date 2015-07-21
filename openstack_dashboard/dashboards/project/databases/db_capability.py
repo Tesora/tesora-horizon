@@ -19,6 +19,7 @@ MYSQL = "mysql"
 ORACLE = "oracle"
 ORACLE_RA = "oracle_ra"
 PERCONA = "percona"
+REDIS = "redis"
 VERTICA = "vertica"
 
 _mysql_compatible_datastores = (MYSQL, MARIA, PERCONA)
@@ -66,6 +67,10 @@ def is_mysql_compatible(datastore):
 
 def is_mongodb_datastore(datastore):
     return (datastore is not None) and (MONGODB in datastore.lower())
+
+
+def is_redis_datastore(datastore):
+    return (datastore is not None) and (REDIS in datastore.lower())
 
 
 def is_vertica_datastore(datastore):

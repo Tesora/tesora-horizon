@@ -202,7 +202,7 @@ class DatabaseConfigurationsTests(test.TestCase):
         api.trove.configuration_parameters_list(
             IsA(http.HttpRequest),
             self.datastores.first().name,
-            self.datastore_versions.list()[1].name) \
+            self.datastore_versions.list()[3].name) \
             .AndReturn(self.configuration_parameters.list())
         self.mox.ReplayAll()
         res = self.client.get(self._get_url_with_arg(ADD_URL, 'id'))
@@ -226,7 +226,7 @@ class DatabaseConfigurationsTests(test.TestCase):
             api.trove.configuration_parameters_list(
                 IsA(http.HttpRequest),
                 self.datastores.first().name,
-                self.datastore_versions.list()[1].name) \
+                self.datastore_versions.list()[3].name) \
                 .AndRaise(self.exceptions.trove)
             self.mox.ReplayAll()
             toSuppress = ["openstack_dashboard.dashboards.project."
@@ -268,7 +268,7 @@ class DatabaseConfigurationsTests(test.TestCase):
             api.trove.configuration_parameters_list(
                 IsA(http.HttpRequest),
                 self.datastores.first().name,
-                self.datastore_versions.list()[1].name) \
+                self.datastore_versions.list()[3].name) \
                 .AndReturn(self.configuration_parameters.list())
 
             name = self.configuration_parameters.first().name
@@ -310,7 +310,7 @@ class DatabaseConfigurationsTests(test.TestCase):
             api.trove.configuration_parameters_list(
                 IsA(http.HttpRequest),
                 self.datastores.first().name,
-                self.datastore_versions.list()[1].name) \
+                self.datastore_versions.list()[3].name) \
                 .AndReturn(self.configuration_parameters.list())
 
             name = self.configuration_parameters.first().name

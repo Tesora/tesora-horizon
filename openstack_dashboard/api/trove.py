@@ -59,17 +59,14 @@ def cluster_delete(request, cluster_id):
 def cluster_create(request, name, volume, flavor, num_instances,
                    datastore, datastore_version,
                    nics=None, root_password=None):
-    # TODO(dklyle): adding to support trove without volume
-    # support for now until API supports checking for volume support
-    if volume > 0:
-        volume_params = {'size': volume}
-    else:
-        volume_params = None
     instances = []
     for i in range(0, num_instances):
         instance = {}
         instance["flavorRef"] = flavor
-        instance["volume"] = volume_params
+        # TODO(dklyle): adding to support trove without volume
+        # support for now until API supports checking for volume support
+        if volume > 0:
+            instance["volume"] = {'size': volume}
         instance["nics"] = [{'net-id': nics}]
         instances.append(instance)
 
