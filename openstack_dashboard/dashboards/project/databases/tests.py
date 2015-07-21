@@ -313,12 +313,14 @@ class DatabaseTests(test.TestCase):
         self.assertRedirectsNoFollow(res, INDEX_URL)
 
     @test.create_stubs(
-        {api.trove: ('instance_get', 'flavor_get',)})
+        {api.trove: ('instance_get', 'flavor_get', 'root_show',)})
     def _test_details(self, database, with_designate=False):
         api.trove.instance_get(IsA(http.HttpRequest), IsA(unicode))\
             .AndReturn(database)
         api.trove.flavor_get(IsA(http.HttpRequest), IsA(str))\
             .AndReturn(self.flavors.first())
+        api.trove.root_show(IsA(http.HttpRequest), IsA(str)) \
+            .AndReturn(self.database_user_roots.first())
 
         self.mox.ReplayAll()
         res = self.client.get(DETAILS_URL)
@@ -402,6 +404,140 @@ class DatabaseTests(test.TestCase):
 
         res = self.client.post(url, post)
         self.assertEqual(res.status_code, 302)
+
+    @test.create_stubs({api.trove: ('instance_get', 'root_show')})
+    def test_show_root(self):
+        database = self.databases.first()
+        database.id = u'id'
+        user = self.database_user_roots.first()
+
+        api.trove.instance_get(IsA(http.HttpRequest), IsA(unicode))\
+            .AndReturn(database)
+
+        api.trove.root_show(IsA(http.HttpRequest), database.id) \
+            .MultipleTimes().AndReturn(user)
+
+        self.mox.ReplayAll()
+
+        url = reverse('horizon:project:databases:manage_root',
+                      args=['id'])
+        res = self.client.get(url)
+        self.assertTemplateUsed(
+            res, 'project/databases/manage_root.html')
+
+    @test.create_stubs({api.trove: ('instance_get', 'root_show')})
+    def test_show_root_exception(self):
+        database = self.databases.first()
+
+        api.trove.instance_get(IsA(http.HttpRequest), IsA(unicode))\
+            .AndReturn(database)
+
+        api.trove.root_show(IsA(http.HttpRequest), u'id') \
+            .AndRaise(self.exceptions.trove)
+
+        self.mox.ReplayAll()
+
+        url = reverse('horizon:project:databases:manage_root',
+                      args=['id'])
+        res = self.client.get(url)
+        self.assertRedirectsNoFollow(res, DETAILS_URL)
+
+    @test.create_stubs({api.trove: ('root_enable',)})
+    def test_enable_root(self):
+        api.trove.root_enable(IsA(http.HttpRequest), [u'id']) \
+            .AndReturn(("root", "password"))
+
+        self.mox.ReplayAll()
+
+        url = reverse('horizon:project:databases:manage_root',
+                      args=['id'])
+        form_data = {"action": "manage_root__enable_root_action__%s" % 'id'}
+        req = self.factory.post(url, form_data)
+
+        kwargs = {'instance_id': 'id'}
+
+        enable_root_info_list = []
+        enable_root_info = views.EnableRootInfo('id', 'inst1', False, '')
+        enable_root_info_list.append(enable_root_info)
+
+        table = tables.ManageRootTable(req, enable_root_info_list, **kwargs)
+        table.maybe_handle()
+
+        self.assertEqual(table.data[0].enabled, True)
+        self.assertEqual(table.data[0].password, "password")
+
+    @test.create_stubs({api.trove: ('root_enable',)})
+    def test_enable_root_exception(self):
+        api.trove.root_enable(IsA(http.HttpRequest), [u'id']) \
+            .AndRaise(self.exceptions.trove)
+
+        self.mox.ReplayAll()
+
+        url = reverse('horizon:project:databases:manage_root',
+                      args=['id'])
+        form_data = {"action": "manage_root__enable_root_action__%s" % 'id'}
+        req = self.factory.post(url, form_data)
+
+        kwargs = {'instance_id': 'id'}
+
+        enable_root_info_list = []
+        enable_root_info = views.EnableRootInfo('id', 'inst1', False, '')
+        enable_root_info_list.append(enable_root_info)
+
+        table = tables.ManageRootTable(req, enable_root_info_list, **kwargs)
+        table.maybe_handle()
+
+        self.assertNotEqual(table.data[0].enabled, True)
+        self.assertNotEqual(table.data[0].password, "password")
+
+    @test.create_stubs({api.trove: ('root_disable',)})
+    def test_disable_root(self):
+        api.trove.root_disable(IsA(http.HttpRequest), u'id')
+
+        self.mox.ReplayAll()
+
+        url = reverse('horizon:project:databases:manage_root',
+                      args=['id'])
+        form_data = {"action": "manage_root__disable_root_action__%s" % 'id'}
+        req = self.factory.post(url, form_data)
+
+        kwargs = {'instance_id': 'id'}
+
+        enable_root_info_list = []
+        enable_root_info = views.EnableRootInfo(
+            'id', 'inst1', True, 'password')
+        enable_root_info_list.append(enable_root_info)
+
+        table = tables.ManageRootTable(req, enable_root_info_list, **kwargs)
+        table.maybe_handle()
+
+        self.assertEqual(table.data[0].enabled, True)
+        self.assertEqual(table.data[0].password, None)
+
+    @test.create_stubs({api.trove: ('root_disable',)})
+    def test_disable_root_exception(self):
+        api.trove.root_disable(IsA(http.HttpRequest), u'id') \
+            .AndRaise(self.exceptions.trove)
+
+        self.mox.ReplayAll()
+
+        url = reverse('horizon:project:databases:manage_root',
+                      args=['id'])
+        form_data = {"action": "manage_root__disable_root_action__%s" % 'id'}
+        req = self.factory.post(url, form_data)
+
+        kwargs = {'instance_id': 'id'}
+
+        enable_root_info_list = []
+        enable_root_info = views.EnableRootInfo(
+            'id', 'inst1', True, 'password')
+        enable_root_info_list.append(enable_root_info)
+
+        table = tables.ManageRootTable(req, enable_root_info_list, **kwargs)
+        table.maybe_handle()
+
+        self.assertEqual(table.data[0].enabled, True)
+        self.assertEqual(table.data[0].password, "password")
 
     @test.create_stubs(
         {api.trove: ('instance_get', 'flavor_get', 'users_list',
