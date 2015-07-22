@@ -23,6 +23,18 @@ from openstack_dashboard.test import helpers as test
 
 class KeystoneRestTestCase(test.TestCase):
     #
+    # Version
+    #
+    @mock.patch.object(keystone.api, 'keystone')
+    def test_version_get(self, kc):
+        request = self.mock_rest_request()
+        kc.get_version.return_value = '2.0'
+        response = keystone.Version().get(request)
+        self.assertStatusCode(response, 200)
+        self.assertEqual(response.content, '{"version": "2.0"}')
+        kc.get_version.assert_called_once_with()
+
+    #
     # Users
     #
     @mock.patch.object(keystone.api, 'keystone')
@@ -42,7 +54,6 @@ class KeystoneRestTestCase(test.TestCase):
         self.assertStatusCode(response, 200)
         self.assertEqual(response.content, '{"name": "Ni!"}')
         kc.user_get.assert_called_once_with(request, 'current_id')
-        kc.user_get.assert_not_called()
 
     @mock.patch.object(keystone.api, 'keystone')
     def test_user_get_list(self, kc):
@@ -151,7 +162,7 @@ class KeystoneRestTestCase(test.TestCase):
         response = keystone.Users().delete(request)
         self.assertStatusCode(response, 204)
         self.assertEqual(response.content, '')
-        kc.user_delete.assert_has_mock.calls([
+        kc.user_delete.assert_has_calls([
             mock.call(request, 'id1'),
             mock.call(request, 'id2'),
             mock.call(request, 'id3'),
@@ -312,7 +323,7 @@ class KeystoneRestTestCase(test.TestCase):
         response = keystone.Roles().delete(request)
         self.assertStatusCode(response, 204)
         self.assertEqual(response.content, '')
-        kc.role_delete.assert_has_mock.calls([
+        kc.role_delete.assert_has_calls([
             mock.call(request, 'id1'),
             mock.call(request, 'id2'),
             mock.call(request, 'id3'),
@@ -418,7 +429,7 @@ class KeystoneRestTestCase(test.TestCase):
         response = keystone.Domains().delete(request)
         self.assertStatusCode(response, 204)
         self.assertEqual(response.content, '')
-        kc.domain_delete.assert_has_mock.calls([
+        kc.domain_delete.assert_has_calls([
             mock.call(request, 'id1'),
             mock.call(request, 'id2'),
             mock.call(request, 'id3'),
@@ -539,7 +550,7 @@ class KeystoneRestTestCase(test.TestCase):
         response = keystone.Projects().delete(request)
         self.assertStatusCode(response, 204)
         self.assertEqual(response.content, '')
-        kc.tenant_delete.assert_has_mock.calls([
+        kc.tenant_delete.assert_has_calls([
             mock.call(request, 'id1'),
             mock.call(request, 'id2'),
             mock.call(request, 'id3'),

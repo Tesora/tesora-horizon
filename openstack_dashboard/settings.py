@@ -46,7 +46,7 @@ WEBROOT = '/'
 LOGIN_URL = None
 LOGOUT_URL = None
 LOGIN_REDIRECT_URL = None
-
+STATIC_ROOT = None
 
 ROOT_URLCONF = 'openstack_dashboard.urls'
 
@@ -65,6 +65,7 @@ HORIZON_CONFIG = {
     'angular_modules': [],
     'js_files': [],
     'js_spec_files': [],
+    'external_templates': [],
 }
 
 # Set to True to allow users to upload images to glance via Horizon server.
@@ -277,13 +278,57 @@ if LOGIN_REDIRECT_URL is None:
 
 MEDIA_ROOT = os.path.abspath(os.path.join(ROOT_PATH, '..', 'media'))
 MEDIA_URL = WEBROOT + 'media/'
-STATIC_ROOT = os.path.abspath(os.path.join(ROOT_PATH, '..', 'static'))
+
+if STATIC_ROOT is None:
+    STATIC_ROOT = os.path.abspath(os.path.join(ROOT_PATH, '..', 'static'))
+
 STATIC_URL = WEBROOT + 'static/'
 STATICFILES_DIRS = get_staticfiles_dirs(WEBROOT)
 
 CUSTOM_THEME = os.path.join(ROOT_PATH, CUSTOM_THEME_PATH)
+
+# If a custom template directory exists within our custom theme, then prepend
+# it to our first-come, first-serve TEMPLATE_DIRS
+if os.path.exists(os.path.join(CUSTOM_THEME, 'templates')):
+    TEMPLATE_DIRS = \
+        (os.path.join(CUSTOM_THEME_PATH, 'templates'),) + TEMPLATE_DIRS
+
+# Only expose the subdirectory 'static' if it exists from a custom theme,
+# allowing other logic to live with a theme that we might not want to expose
+# statically
+if os.path.exists(os.path.join(CUSTOM_THEME, 'static')):
+    CUSTOM_THEME = os.path.join(CUSTOM_THEME, 'static')
+
 STATICFILES_DIRS.append(
     ('custom', CUSTOM_THEME),
+)
+
+# populate HORIZON_CONFIG with auto-discovered JavaScript sources, mock files,
+# specs files and external templates.
+from horizon.utils import file_discovery as fd
+
+# note the path must end in a '/' or the resultant file paths will have a
+# leading "/"
+fd.populate_horizon_config(
+    HORIZON_CONFIG,
+    os.path.join(ROOT_PATH, '..', 'horizon', 'static/')
+)
+
+# filter out non-angular javascript code and lib
+HORIZON_CONFIG['js_files'] = ([f for f in HORIZON_CONFIG['js_files']
+                               if not f.startswith('horizon/')])
+
+# note the path must end in a '/' or the resultant file paths will have a
+# leading "/"
+fd.populate_horizon_config(
+    HORIZON_CONFIG,
+    os.path.join(ROOT_PATH, 'static/'),
+    sub_path='openstack-service-api/'
+)
+fd.populate_horizon_config(
+    HORIZON_CONFIG,
+    os.path.join(ROOT_PATH, 'static/'),
+    sub_path='app/core/'
 )
 
 # Load the pluggable dashboard settings

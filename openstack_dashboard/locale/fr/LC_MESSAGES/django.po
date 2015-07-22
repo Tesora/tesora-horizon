@@ -23,11 +23,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-06-23 01:20+0000\n"
-"PO-Revision-Date: 2015-06-23 01:20+0000\n"
-"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/horizon/language/"
-"fr/)\n"
+"POT-Creation-Date: 2015-07-03 09:12+0000\n"
+"PO-Revision-Date: 2015-07-08 15:54+0000\n"
+"Last-Translator: JF Taltavull <jftalta@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/p/horizon/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -411,8 +410,8 @@ msgid ""
 "Add member(s) to the selected pool.\n"
 "\n"
 "Choose one or more listed instances to be added to the pool as member(s). "
-"Assign a numeric weight and port number for the selected member(s) to operate"
-"(s) on; e.g., 80. \n"
+"Assign a numeric weight and port number for the selected member(s) to "
+"operate(s) on; e.g., 80. \n"
 "\n"
 "Only one port can be associated with each instance."
 msgstr ""
@@ -1710,6 +1709,10 @@ msgctxt "Admin state of a Firewall"
 msgid "DOWN"
 msgstr "Inactif"
 
+msgctxt "Admin state of a Load balancer"
+msgid "DOWN"
+msgstr "Inactif"
+
 msgctxt "Admin state of a Network"
 msgid "DOWN"
 msgstr "Inactif"
@@ -2623,6 +2626,9 @@ msgstr "Modifier le réseau"
 msgid "Edit Network Profile"
 msgstr "Editer le profil réseau"
 
+msgid "Edit Node Group Template"
+msgstr "Editer le modèle de groupe de noeuds"
+
 msgid "Edit Policy"
 msgstr "Éditer la stratégie"
 
@@ -3046,6 +3052,10 @@ msgstr "L'ajout de l'interface %s a échoué"
 #, python-format
 msgid "Failed to check Neutron '%s' extension is not supported"
 msgstr "Echec de la vérification de la validité de l'extension Neutron '%s'"
+
+msgid "Failed to check if Neutron extraroute extension is supported"
+msgstr ""
+"Impossible de vérifier la disponibilité de l'extension Neutron extraroute"
 
 #, python-format
 msgid "Failed to create a port for network %s"
@@ -3745,7 +3755,7 @@ msgid "IPv6 Address Configuration Mode"
 msgstr "Mode de Configuration d'Adresse IPv6"
 
 msgid "ISO - Optical Disk Image"
-msgstr "ISO - ISO 9660"
+msgstr "ISO - Image ISO 9660"
 
 msgid "Identifier"
 msgstr "Identifiant"
@@ -4131,6 +4141,9 @@ msgstr "Supprimé par force"
 msgid "Kwapi"
 msgstr "Kwapi"
 
+msgid "LB Method"
+msgstr "Algorithme de répartition de charge"
+
 msgid "LUKS Volume Snapshots"
 msgstr "Instantanés de volumes LUKS "
 
@@ -4222,6 +4235,10 @@ msgid ""
 msgstr ""
 "Le lancement d'instances multiples n'est accepté que pour les images et les "
 "instantanés d'instance."
+
+msgctxt "load balancing method"
+msgid "Least Connections"
+msgstr "Least Connections"
 
 msgid "Length of Injected File Path"
 msgstr "Longueur du chemin du fichier injecté"
@@ -4689,13 +4706,6 @@ msgstr "Nouvel hôte"
 msgid "New Size (GB)"
 msgstr "Nouvelle Taille (GB)"
 
-msgid ""
-"New associated QoS Spec must be different than the current associated QoS "
-"Spec."
-msgstr ""
-"La nouvelle Spécification QoS associée doit être différente de la "
-"Spécification QoS associée courante."
-
 msgid "New password"
 msgstr "Nouveau mot de passe"
 
@@ -4799,6 +4809,9 @@ msgstr "Pas de paire de clés"
 msgid "No networks available"
 msgstr "Pas de réseau disponible"
 
+msgid "No new QoS spec available"
+msgstr "Pas de nouvelle spécification QoS disponible"
+
 msgid "No options specified"
 msgstr "Aucune option spécifiée"
 
@@ -4869,6 +4882,10 @@ msgstr "Pas de type de volume"
 
 msgid "No volumes available"
 msgstr "Pas de volumes disponibles"
+
+#, python-format
+msgid "Node Group Template %s updated"
+msgstr "Le modèle de groupe de noeuds \"%s\" a été mis à jour"
 
 msgid "Node Group Template Details"
 msgstr "Détails du modèle de groupe de noeud"
@@ -4944,6 +4961,13 @@ msgstr "Nombre de paquets entrants pour une interface de VM"
 msgid "Number of instances to launch."
 msgstr "Nombre d'instances de l'image à lancer."
 
+msgid ""
+"Number of items to show per page (applies to the pages that have API "
+"supported pagination)"
+msgstr ""
+"Nombre d'éléments à afficher sur chaque page (s'applique si la pagination "
+"est supportée par l'API)"
+
 msgid "Number of log lines to be shown per instance"
 msgstr "Le nombre de lignes de journalisation affichées par instance"
 
@@ -4974,7 +4998,7 @@ msgid "OR Copy/Paste your Private Key"
 msgstr "OU Copier/Coller vote Clé Privée"
 
 msgid "OVA - Open Virtual Appliance"
-msgstr "OVA - Virtuel Appliance Ouverte"
+msgstr "OVA - Open Virtual Appliance"
 
 msgid "Object Details"
 msgstr "Détails de l'Objet"
@@ -5864,6 +5888,10 @@ msgstr "Disque racine"
 msgid "Root Disk (GB)"
 msgstr "Disque racine (Go)"
 
+msgctxt "load balancing method"
+msgid "Round Robin"
+msgstr "Round Robin"
+
 msgid "Router"
 msgstr "Routeur"
 
@@ -6176,6 +6204,9 @@ msgstr "Sélectionner une instance Master"
 #, python-format
 msgid "Select a monitor template for %s"
 msgstr "Sélectionner un modèle de moniteur pour %s"
+
+msgid "Select a new QoS spec"
+msgstr "Sélectionner une nouvelle spécification QoS"
 
 msgid "Select a new agent"
 msgstr "Sélectionnez un nouvel agent"
@@ -7067,6 +7098,13 @@ msgid "The instance password encrypted with your public key."
 msgstr "Le mot de passe de l'instance chiffré avec votre clé publique."
 
 msgid ""
+"The maximum time in seconds for a monitor to wait for a reply. It must be "
+"less than or equal to delay"
+msgstr ""
+"La durée maximum d'attente de réponse d'un membre membres doit être "
+"inférieure au délai d'expiration défini"
+
+msgid ""
 "The minimum disk size required to boot the image. If unspecified, this value "
 "defaults to 0 (no minimum)."
 msgstr ""
@@ -7079,6 +7117,13 @@ msgid ""
 msgstr ""
 "La taille minimale de mémoire vive nécessaire pour démarrer l'image. Si non "
 "spécifiée, la valeur par défaut est 0 (pas de minimum)."
+
+msgid ""
+"The minimum time in seconds between regular checks of a member. It must be "
+"greater than or equal to timeout"
+msgstr ""
+"Délai minimal en secondes entre deux vérifications d'un membre. Doit être au "
+"moins égal à la valeur du timeout."
 
 #, python-format
 msgid "The name \"%s\" is already used by another flavor."
@@ -7135,8 +7180,16 @@ msgstr[1] ""
 
 #, python-format
 msgid ""
-"The requested instance cannot be launched. The following requested resource"
-"(s) exceed quota(s): %s."
+"The requested instance cannot be launched. Requested volume exceeds quota: "
+"Available: %(avail)s, Requested: %(req)s."
+msgstr ""
+"L'instance demandée ne peut être lancée car le volume dépasse le quota. "
+"Disponible : %(avail)s, demandé : %(req)s."
+
+#, python-format
+msgid ""
+"The requested instance cannot be launched. The following requested "
+"resource(s) exceed quota(s): %s."
 msgstr ""
 "L'instance demandée ne peut être lancée. Les ressources demandées suivantes "
 "excèdent les quotas : %s."
@@ -7327,6 +7380,10 @@ msgid "UP"
 msgstr "Actif"
 
 msgctxt "Admin state of a Firewall"
+msgid "UP"
+msgstr "Actif"
+
+msgctxt "Admin state of a Load balancer"
 msgid "UP"
 msgstr "Actif"
 
@@ -7653,9 +7710,6 @@ msgstr "Impossible de récupérer les images disponibles."
 msgid "Unable to fetch cluster list"
 msgstr "Impossible de récupérer la liste de clusters"
 
-msgid "Unable to fetch cluster template details."
-msgstr "Impossible de récupérer les détails du modèle de cluster."
-
 msgid "Unable to fetch cluster template list"
 msgstr "Impossible de récupérer la liste des modèles de cluster"
 
@@ -7689,9 +7743,6 @@ msgstr "Impossible de récupérer les détails de l'instance"
 msgid "Unable to fetch job binary list."
 msgstr "Impossible de récupérer la liste des binaires de tâche."
 
-msgid "Unable to fetch job binary."
-msgstr "Impossible de récupérer le binaire de tâche."
-
 #, python-format
 msgid "Unable to fetch job binary: %(exc)s"
 msgstr "Impossible de récupérer le binaire de tâche : %(exc)s"
@@ -7710,9 +7761,6 @@ msgstr "Impossible de récupérer les détails du groupe de noeud"
 
 msgid "Unable to fetch node group template list."
 msgstr "Impossible de récupérer la liste des modèles de groupe de noeud."
-
-msgid "Unable to fetch node group template."
-msgstr "Impossible de contacter le modèle de groupe de noeud."
 
 msgid "Unable to fetch plugin details."
 msgstr "Impossible de récupérer les détails du plugin."
@@ -8056,9 +8104,6 @@ msgstr "Impossible de récupérer la liste des conteneurs."
 msgid "Unable to retrieve data processing plugins."
 msgstr "Impossible de récupérer les plugins de traitement des données"
 
-msgid "Unable to retrieve data source details"
-msgstr "Impossible de récupérer les détails de la source de données"
-
 msgid "Unable to retrieve database instances."
 msgstr "Impossible de récupérer les instances de base de données"
 
@@ -8077,6 +8122,18 @@ msgid "Unable to retrieve details for backup: %s"
 msgstr "Impossible de récupérer les détails pour la sauvegarde : %s"
 
 #, python-format
+msgid "Unable to retrieve details for cluster \"%s\"."
+msgstr "Impossible de récupérer les détails du cluster  \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr "Impossible de récupérer les détails du modèle de cluster \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr "Impossible de récupérer les détails de la source de données \"%s\"."
+
+#, python-format
 msgid "Unable to retrieve details for database instance: %s"
 msgstr ""
 "Impossible de récupérer les détails pour l'instance %s de base de données"
@@ -8086,12 +8143,29 @@ msgid "Unable to retrieve details for instance \"%s\"."
 msgstr "Impossible de récupérer les détails de l'instance \"%s\"."
 
 #, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "Impossible de récupérer les détails de la tâche \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr "Impossible de récupérer les détails du binaire de tâche \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job template \"%s\"."
+msgstr "Impossible de récupérer les détails du modèle de tâche \"%s\"."
+
+#, python-format
 msgid "Unable to retrieve details for keypair \"%s\"."
 msgstr "Impossible de récupérer les paires de clés \"%s\"."
 
 #, python-format
 msgid "Unable to retrieve details for network \"%s\"."
 msgstr "Impossible de récupérer les détails du réseau \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for node group template \"%s\"."
+msgstr ""
+"Impossible de retrouver les détails du modèle de groupe de noeuds \"%s\"."
 
 #, python-format
 msgid "Unable to retrieve details for parent backup: %s"
@@ -9170,7 +9244,7 @@ msgid "Volume of RAM used"
 msgstr "Quantité de RAM utilisée"
 
 msgid "Volume of reads"
-msgstr "Nombre de lectures"
+msgstr "Volume de lectures"
 
 msgid "Volume of writes"
 msgstr "Volume d'écritures"

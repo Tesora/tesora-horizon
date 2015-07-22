@@ -16,16 +16,18 @@
 (function() {
   'use strict';
 
-  angular.module('horizon.auth.login')
+  angular
+    .module('horizon.auth.login')
 
     /**
-     * @ngdoc hzLoginCtrl
+     * @ngdoc hzLoginController
      * @description
      * controller for determining which
      * authentication method user picked.
      */
-    .controller('hzLoginCtrl', function($scope) {
-      $scope.auth_type = 'credentials';
+    .controller('hzLoginController', function() {
+      var ctrl = this;
+      ctrl.auth_type = 'credentials';
     });
 
 })();

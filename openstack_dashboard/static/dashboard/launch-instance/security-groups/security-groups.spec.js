@@ -18,7 +18,7 @@
 
   describe('Launch Instance Security Groups Step', function() {
 
-    describe('LaunchInstanceSecurityGroupsCtrl', function() {
+    describe('LaunchInstanceSecurityGroupsController', function() {
       var ctrl;
 
       beforeEach(module('hz.dashboard.launch-instance'));
@@ -30,8 +30,8 @@
           },
           securityGroups: [ 'group 1', 'group 2' ]
         };
-        ctrl = $controller('LaunchInstanceSecurityGroupsCtrl',
-                          { launchInstanceModel: model });
+        ctrl = $controller('LaunchInstanceSecurityGroupsController',
+                          { launchInstanceModel: model, dashboardBasePath: '' });
       }));
 
       it('contains its general labels', function() {
@@ -71,13 +71,13 @@
       });
     });
 
-    describe('LaunchInstanceSecurityGroupsHelpCtrl', function() {
+    describe('LaunchInstanceSecurityGroupsHelpController', function() {
       var ctrl;
 
       beforeEach(module('hz.dashboard.launch-instance'));
 
       beforeEach(inject(function($controller) {
-        ctrl = $controller('LaunchInstanceSecurityGroupsHelpCtrl');
+        ctrl = $controller('LaunchInstanceSecurityGroupsHelpController');
       }));
 
       it('defines the title', function() {
@@ -89,8 +89,5 @@
         expect(ctrl.paragraphs.length).toBeGreaterThan(0);
       });
     });
-
   });
-
 })();
-

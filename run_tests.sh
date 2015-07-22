@@ -15,7 +15,7 @@ function usage {
   echo "                           environment. Useful when dependencies have"
   echo "                           been added."
   echo "  -m, --manage             Run a Django management command."
-  echo "  --makemessages           Create/Update English translation files using babel."
+  echo "  --makemessages           Create/Update English translation files."
   echo "  --compilemessages        Compile all translation files."
   echo "  --check-only             Do not update translation files (--makemessages only)."
   echo "  --pseudo                 Pseudo translate a language."
@@ -26,8 +26,7 @@ function usage {
   echo "  -P, --no-pep8            Don't run pep8 by default"
   echo "  -t, --tabs               Check for tab characters in files."
   echo "  -y, --pylint             Just run pylint"
-  echo "  -j, --jshint             Just run jshint"
-  echo "  -s, --jscs               Just run jscs"
+  echo "  -e, --eslint             Just run eslint"
   echo "  -k, --karma              Just run karma"
   echo "  -q, --quiet              Run non-interactively. (Relatively) quiet."
   echo "                           Implies -V if -N is not set."
@@ -71,8 +70,7 @@ no_pep8=0
 just_pylint=0
 just_docs=0
 just_tabs=0
-just_jscs=0
-just_jshint=0
+just_eslint=0
 just_karma=0
 never_venv=0
 quiet=0
@@ -109,8 +107,7 @@ function process_option {
     -8|--pep8-changed) just_pep8_changed=1;;
     -P|--no-pep8) no_pep8=1;;
     -y|--pylint) just_pylint=1;;
-    -j|--jshint) just_jshint=1;;
-    -s|--jscs) just_jscs=1;;
+    -e|--eslint) just_eslint=1;;
     -k|--karma) just_karma=1;;
     -f|--force) force=1;;
     -t|--tabs) just_tabs=1;;
@@ -159,21 +156,13 @@ function run_pylint {
   fi
 }
 
-function run_jshint {
-  echo "Running jshint ..."
-  jshint horizon/static/horizon/js
-  jshint horizon/static/horizon/tests
-  jshint horizon/static/framework/
-  jshint openstack_dashboard/static/dashboard/
-}
-
-function run_jscs {
-  echo "Running jscs ..."
-  if [ "`which jscs`" == '' ] ; then
-    echo "jscs is not present; please install, e.g. sudo npm install jscs -g"
+function run_eslint {
+  echo "Running eslint ..."
+  if [ "`which npm`" == '' ] ; then
+    echo "npm is not present; please install, e.g. sudo apt-get install npm"
   else
-    jscs horizon/static/horizon/js horizon/static/horizon/tests \
-         horizon/static/framework/ openstack_dashboard/static/dashboard/
+    npm install
+    npm run lint
   fi
 }
 
@@ -436,7 +425,7 @@ function run_integration_tests {
 function babel_extract {
   DOMAIN=$1
   KEYWORDS="-k gettext_noop -k gettext_lazy -k ngettext_lazy:1,2"
-  KEYWORDS+=" -k gettext_noop -k ugettext_lazy -k ungettext_lazy:1,2"
+  KEYWORDS+=" -k ugettext_noop -k ugettext_lazy -k ungettext_lazy:1,2"
   KEYWORDS+=" -k npgettext:1c,2,3 -k pgettext_lazy:1c,2 -k npgettext_lazy:1c,2,3"
 
   ${command_wrapper} pybabel extract -F ../babel-${DOMAIN}.cfg -o locale/${DOMAIN}.pot $KEYWORDS .
@@ -583,15 +572,9 @@ if [ $just_pylint -eq 1 ]; then
     exit $?
 fi
 
-# Jshint
-if [ $just_jshint -eq 1 ]; then
-    run_jshint
-    exit $?
-fi
-
-# Jscs
-if [ $just_jscs -eq 1 ]; then
-    run_jscs
+# ESLint
+if [ $just_eslint -eq 1 ]; then
+    run_eslint
     exit $?
 fi
 

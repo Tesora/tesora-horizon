@@ -26,7 +26,18 @@
    */
   angular
     .module('hz.dashboard.identity', [
-      'hz.dashboard.identity.users'
-    ]);
+      'hz.dashboard.identity.users',
+      'hz.dashboard.identity.projects'
+    ])
+
+    /**
+     * @name hz.dashboard.identity.basePath
+     * @description Base path for the identity dashboard
+     */
+    .constant('hz.dashboard.identity.basePath', getBasePath());
+
+  function getBasePath() {
+    return (window.WEBROOT || '') + '/static/dashboard/identity/';
+  }
 
 })();

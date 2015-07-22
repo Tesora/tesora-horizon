@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-06-27 14:09+0000\n"
-"PO-Revision-Date: 2015-06-29 05:55+0000\n"
-"Last-Translator: 刘俊朋 <liujunpeng@inspur.com>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/horizon/"
-"language/zh_CN/)\n"
+"POT-Creation-Date: 2015-07-15 00:44+0000\n"
+"PO-Revision-Date: 2015-07-13 20:02+0000\n"
+"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/p/horizon/language/"
+"zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -82,6 +82,9 @@ msgstr ""
 msgid "A name is required for your instance."
 msgstr "您的实例名字是必须的。"
 
+msgid "Actions"
+msgstr "动作"
+
 msgid "Active"
 msgstr "运行中"
 
@@ -144,6 +147,9 @@ msgstr "无法从认证获取服务目录。"
 msgid "Cannot get the Nova extension list."
 msgstr "无法查询Nova扩展列表。"
 
+msgid "Change Password"
+msgstr "修改密码"
+
 msgid ""
 "Check the <b>Configuration Drive</b> box if you want to write metadata to a "
 "special configuration drive. When the instance boots, it attaches to the "
@@ -169,6 +175,9 @@ msgstr "创建秘钥对"
 msgid "Create New Volume"
 msgstr "创建新卷"
 
+msgid "Create User"
+msgstr "创建用户"
+
 msgid "Created"
 msgstr "已创建"
 
@@ -186,6 +195,12 @@ msgstr ""
 msgid "Customization Script"
 msgstr "自定义脚本"
 
+msgid "Delete"
+msgstr "删除"
+
+msgid "Delete Users"
+msgstr "删除用户"
+
 msgid "Delete Volume on Terminate"
 msgstr "终止后删除卷"
 
@@ -198,11 +213,29 @@ msgstr "设备名称"
 msgid "Direction"
 msgstr "直连"
 
+msgid "Disable"
+msgstr "禁用"
+
 msgid "Disk Partition"
 msgstr "磁盘分区"
 
+msgid "Domain ID"
+msgstr "域ID"
+
 msgid "Down"
 msgstr "停止"
+
+msgid "Edit"
+msgstr "编辑"
+
+msgid "Email"
+msgstr "邮箱"
+
+msgid "Enable"
+msgstr "激活"
+
+msgid "Enabled"
+msgstr "激活"
 
 msgid "Ephemeral Disk"
 msgstr "临时磁盘"
@@ -316,6 +349,9 @@ msgstr ""
 "实例源时用来创建一个实例的模板。您可以用已存在实例的快照、镜像或者卷(如果启"
 "用)。您也可以选择一个持久存储来创建一个新的卷。"
 
+msgid "Insufficient privilege level to view user information."
+msgstr "查看用户信息权限不足。"
+
 msgid "Key Pair"
 msgstr "密钥对"
 
@@ -412,6 +448,9 @@ msgstr "概要"
 
 msgid "Project"
 msgstr "项目"
+
+msgid "Project ID"
+msgstr "项目ID"
 
 msgid ""
 "Project networks are created by users. These networks are fully isolated and "
@@ -809,6 +848,12 @@ msgstr "正常"
 
 msgid "Updated"
 msgstr "已更新"
+
+msgid "User ID"
+msgstr "用户ID"
+
+msgid "User Name"
+msgstr "用户名"
 
 msgid "VCPUs"
 msgstr "虚拟处理器（VCPU）"
