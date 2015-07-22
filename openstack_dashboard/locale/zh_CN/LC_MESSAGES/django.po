@@ -18,11 +18,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-06-26 02:42+0000\n"
-"PO-Revision-Date: 2015-06-26 03:52+0000\n"
-"Last-Translator: 刘俊朋 <liujunpeng@inspur.com>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/horizon/"
-"language/zh_CN/)\n"
+"POT-Creation-Date: 2015-07-15 00:44+0000\n"
+"PO-Revision-Date: 2015-07-11 09:22+0000\n"
+"Last-Translator: LIU Yulong <dragon889@163.com>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/p/horizon/language/"
+"zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -394,8 +394,8 @@ msgid ""
 "Add member(s) to the selected pool.\n"
 "\n"
 "Choose one or more listed instances to be added to the pool as member(s). "
-"Assign a numeric weight and port number for the selected member(s) to operate"
-"(s) on; e.g., 80. \n"
+"Assign a numeric weight and port number for the selected member(s) to "
+"operate(s) on; e.g., 80. \n"
 "\n"
 "Only one port can be associated with each instance."
 msgstr ""
@@ -2541,6 +2541,9 @@ msgstr "编辑网络"
 msgid "Edit Network Profile"
 msgstr "编辑网络配置概要"
 
+msgid "Edit Node Group Template"
+msgstr "编辑节点组模板"
+
 msgid "Edit Policy"
 msgstr "编辑策略"
 
@@ -4531,11 +4534,6 @@ msgstr "新主机"
 msgid "New Size (GB)"
 msgstr "新大小(GB)"
 
-msgid ""
-"New associated QoS Spec must be different than the current associated QoS "
-"Spec."
-msgstr "新关联的QoS规格必须不同于目前关联的QoS规格。"
-
 msgid "New password"
 msgstr "新密码"
 
@@ -4639,6 +4637,9 @@ msgstr "没有密钥对"
 msgid "No networks available"
 msgstr "没有可用的网络"
 
+msgid "No new QoS spec available"
+msgstr "没有新的可用QoS规格"
+
 msgid "No options specified"
 msgstr "无选项指定"
 
@@ -4707,6 +4708,10 @@ msgstr "未设置卷类型"
 msgid "No volumes available"
 msgstr "没有可用云硬盘。"
 
+#, python-format
+msgid "Node Group Template %s updated"
+msgstr "节点组模板 %s 已更新"
+
 msgid "Node Group Template Details"
 msgstr "节点组模板详细信息"
 
@@ -4735,6 +4740,9 @@ msgstr "无"
 msgctxt "Task status of an Instance"
 msgid "None"
 msgstr "无"
+
+msgid "None (removes spec)"
+msgstr "空(移除规格)"
 
 msgid "Normal"
 msgstr "正常"
@@ -5987,6 +5995,9 @@ msgstr "选择一主实例"
 msgid "Select a monitor template for %s"
 msgstr "为 %s 选择监控模板"
 
+msgid "Select a new QoS spec"
+msgstr "选择新的QoS规格"
+
 msgid "Select a new agent"
 msgstr "选择一个新的agent"
 
@@ -6923,8 +6934,8 @@ msgstr ""
 
 #, python-format
 msgid ""
-"The requested instance cannot be launched. The following requested resource"
-"(s) exceed quota(s): %s."
+"The requested instance cannot be launched. The following requested "
+"resource(s) exceed quota(s): %s."
 msgstr "请求的实例无法启动。如下的请求资源超过配额: %s."
 
 msgid ""
@@ -7414,9 +7425,6 @@ msgstr "无法获取可用镜像。"
 msgid "Unable to fetch cluster list"
 msgstr "无法获取集群列表"
 
-msgid "Unable to fetch cluster template details."
-msgstr "无法获取集群模板的详细信息。"
-
 msgid "Unable to fetch cluster template list"
 msgstr "无法获取集群模板列表"
 
@@ -7450,9 +7458,6 @@ msgstr "无法获取云主机实例详情。"
 msgid "Unable to fetch job binary list."
 msgstr "无法获取任务二进制文件列表"
 
-msgid "Unable to fetch job binary."
-msgstr "无法获取任务二进制文件。"
-
 #, python-format
 msgid "Unable to fetch job binary: %(exc)s"
 msgstr "无法获取任务二进制文件： %(exc)s"
@@ -7471,9 +7476,6 @@ msgstr "无法获取节点组的详细信息。"
 
 msgid "Unable to fetch node group template list."
 msgstr "无法获取结点组模板列表"
-
-msgid "Unable to fetch node group template."
-msgstr "无法获取节点组的模板"
 
 msgid "Unable to fetch plugin details."
 msgstr "无法获取插件详情"
@@ -7811,9 +7813,6 @@ msgstr "无法检索容器列表。"
 msgid "Unable to retrieve data processing plugins."
 msgstr "无法获取数据处理插件。"
 
-msgid "Unable to retrieve data source details"
-msgstr "不能顺利获取数据源详细信息"
-
 msgid "Unable to retrieve database instances."
 msgstr "无法获取数据库实例。"
 
@@ -7835,6 +7834,14 @@ msgid "Unable to retrieve details for cluster \"%s\"."
 msgstr "无法获取集群 \"%s\".详情。"
 
 #, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr "无法获取集群模板\"%s\"详情"
+
+#, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr "无法获取数据源\"%s\"详情"
+
+#, python-format
 msgid "Unable to retrieve details for database instance: %s"
 msgstr "无法获取数据库实例%s的详细信息。"
 
@@ -7843,12 +7850,28 @@ msgid "Unable to retrieve details for instance \"%s\"."
 msgstr "无法获取云主机 \"%s\" 的详情。"
 
 #, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "无法获取任务\"%s\"详情"
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr "无法获取二进制任务\"%s\"详情"
+
+#, python-format
+msgid "Unable to retrieve details for job template \"%s\"."
+msgstr "无法获取任务模板\"%s\"详情"
+
+#, python-format
 msgid "Unable to retrieve details for keypair \"%s\"."
 msgstr "无法获取密钥对 \"%s\" 详情。"
 
 #, python-format
 msgid "Unable to retrieve details for network \"%s\"."
 msgstr "无法获取网络\"%s\"的详情."
+
+#, python-format
+msgid "Unable to retrieve details for node group template \"%s\"."
+msgstr "无法获取节点组模板\"%s\"详情"
 
 #, python-format
 msgid "Unable to retrieve details for parent backup: %s"

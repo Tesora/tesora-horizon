@@ -17,7 +17,7 @@ from django.core import cache
 
 from openstack_dashboard import api
 
-from oslo.serialization import jsonutils
+from oslo_serialization import jsonutils
 
 
 def get(request, configuration_group_id):

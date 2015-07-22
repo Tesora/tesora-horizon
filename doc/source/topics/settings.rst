@@ -401,10 +401,14 @@ This example sorts flavors by vcpus in descending order::
 Default: ``"static/themes/default"``
 
 This setting allows Horizon to use a custom theme. The theme folder
-should contains one _variables.scss file and one _styles.scss file.
+should contain one _variables.scss file and one _styles.scss file.
 _variables.scss contains all the bootstrap and horizon specific variables
 which are used to style the GUI. Whereas _styles.scss contains extra styling.
 For example themes, see: /horizon/openstack_dashboard/static/themes/
+
+If the static theme folder also contains a sub-folder 'templates', then
+the path to that sub-folder will be prepended to TEMPLATE_DIRS tuple
+to allow for theme specific template customizations.
 
 ``DROPDOWN_MAX_ITEMS``
 ----------------------
@@ -492,7 +496,6 @@ OpenStack dashboard to use a specific API version for a given service API.
         "identity": 3,
         "volume": 2
     }
-
 
 ``OPENSTACK_ENABLE_PASSWORD_RETRIEVE``
 --------------------------------------
@@ -651,7 +654,8 @@ with Keystone V3. All entities will be created in the default domain.
 Default: ``"_member_"``
 
 The name of the role which will be assigned to a user when added to a project.
-This name must correspond to a role name in Keystone.
+This value must correspond to an existing role name in Keystone. In general,
+the value should match the ``member_role_name`` defined in ``keystone.conf``.
 
 
 ``OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT``
@@ -1028,9 +1032,12 @@ https://<your server>/dashboard, you would set this to ``"/dashboard/"``.
 
 Additionally, setting the ``"$webroot"`` SCSS variable is required. You
 can change this directly in
-``"openstack_dasbboard/static/dashboard/scss/_variables.scss"`` or in the
+``"openstack_dashboard/static/dashboard/scss/_variables.scss"`` or in the
 ``"_variables.scss"`` file in your custom theme. For more information on
 custom themes, see: ``"CUSTOM_THEME_PATH"``.
+
+Make sure you run ``python manage.py collectstatic`` and
+``python manage.py compress`` after you change the ``_variables.scss`` file.
 
 For your convenience, a custom theme for only setting the web root has been
 provided see: ``"/horizon/openstack_dashboard/static/themes/webroot"``
@@ -1038,13 +1045,52 @@ provided see: ``"/horizon/openstack_dashboard/static/themes/webroot"``
 .. note::
 
     Additional settings may be required in the config files of your webserver
-    of choice. For example to make ``"/dashboard/"`` the web root in apache,
+    of choice. For example to make ``"/dashboard/"`` the web root in Apache,
     the ``"sites-available/horizon.conf"`` requires a couple of additional
     aliases set::
 
         Alias /dashboard/static %HORIZON_DIR%/static
 
         Alias /dashboard/media %HORIZON_DIR%/openstack_dashboard/static
+
+    Apache also requires changing your WSGIScriptAlias to reflect the desired
+    path.  For example, you'd replace ``/`` with ``/dashboard`` for the
+    alias.
+
+
+``DISALLOW_IFRAME_EMBED``
+-------------------------
+
+.. versionadded:: 8.0.0(Liberty)
+
+Default: ``True``
+
+This setting can be used to defend against Clickjacking and prevent Horizon from
+being embedded within an iframe. Legacy browsers are still vulnerable to a
+Cross-Frame Scripting (XFS) vulnerability, so this option allows extra security
+hardening where iframes are not used in deployment. When set to true, a
+``"frame-buster"`` script is inserted into the template header that prevents the
+web page from being framed and therefore defends against clickjacking.
+
+For more information see:
+http://tinyurl.com/anticlickjack
+
+.. note::
+
+  If your deployment requires the use of iframes, you can set this setting to
+  ``False`` to exclude the frame-busting code and allow iframe embedding.
+
+
+``OPENSTACK_NOVA_EXTENSIONS_BLACKLIST``
+---------------------------------------
+
+.. versionadded:: 8.0.0(Liberty)
+
+Default: ``[]``
+
+Ignore all listed Nova extensions, and behave as if they were unsupported.
+Can be used to selectively disable certain costly extensions for performance
+reasons.
 
 
 Django Settings (Partial)
@@ -1217,6 +1263,25 @@ Jasmine is a behavior-driven development framework for testing JavaScript code.
 A list of scss files to be included in the compressed set of files that are
 loaded on every page. We recommend one scss file per dashboard, use @import if
 you need to include additional scss files for panels.
+
+.. _auto_discover_static_files:
+
+``AUTO_DISCOVER_STATIC_FILES``
+------------------------------
+
+.. versionadded:: 2015.2(Liberty)
+
+If set to ``True``, JavaScript files and static angular html template files will be
+automatically discovered from the `static` folder in each apps listed in ADD_INSTALLED_APPS.
+
+JavaScript source files will be ordered based on naming convention: files with extension
+`.module.js` listed first, followed by other JavaScript source files.
+
+JavaScript files for testing will also be ordered based on naming convention: files with extension
+`.mock.js` listed first, followed by files with extension `.spec.js`.
+
+If ADD_JS_FILES and/or ADD_JS_SPEC_FILES are also specified, files manually listed there will be
+appended to the auto-discovered files.
 
 ``DISABLED``
 ------------

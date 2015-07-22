@@ -83,7 +83,14 @@ module.exports = function (config) {
 
       // TODO: These should be mocked.
       '../../horizon/static/horizon/js/horizon.js',
-      '../../horizon/static/framework/util/http/http.js',
+
+      /**
+       * Include framework source code from horizon that we need.
+       * Otherwise, karma will not be able to find them when testing.
+       * These files should be mocked in the foreseeable future.
+       */
+      '../../horizon/static/framework/**/*.module.js',
+      '../../horizon/static/framework/**/!(*.spec|*.mock).js',
 
       /**
        * First, list all the files that defines application's angular modules.
@@ -91,7 +98,7 @@ module.exports = function (config) {
        * not significant.
        */
       '**/*.module.js',
-      '**/launch-instance.js',
+      '../dashboards/**/static/**/*.module.js',
 
       /**
        * Followed by other JavaScript files that defines angular providers
@@ -100,23 +107,27 @@ module.exports = function (config) {
        * significant.
        */
       '**/!(*.spec|*.mock).js',
+      '../dashboards/**/static/**/!(*.spec|*.mock).js',
 
       /**
        * Then, list files for mocks with `mock.js` extension. The order
        * among them should not be significant.
        */
       '**/*.mock.js',
+      '../dashboards/**/static/**/*.mock.js',
 
       /**
        * Finally, list files for spec with `spec.js` extension. The order
        * among them should not be significant.
        */
       '**/*.spec.js',
+      '../dashboards/**/static/**/*.spec.js',
 
       /**
        * Angular external templates
        */
-      '**/*.html'
+      '**/*.html',
+      '../dashboards/**/static/**/*.html'
     ],
 
     autoWatch: true,

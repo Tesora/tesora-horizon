@@ -433,7 +433,9 @@ class FloatingIpManager(network_base.FloatingIpManager):
     def _get_reachable_subnets(self, ports):
         if not is_enabled_by_config('enable_fip_topology_check', True):
             # All subnets are reachable from external network
-            return set(p.fixed_ips[0]['subnet_id'] for p in ports)
+            return set(
+                p.fixed_ips[0]['subnet_id'] for p in ports if p.fixed_ips
+            )
         # Retrieve subnet list reachable from external network
         ext_net_ids = [ext_net.id for ext_net in self.list_pools()]
         gw_routers = [r.id for r in router_list(self.request)
@@ -478,6 +480,7 @@ class FloatingIpManager(network_base.FloatingIpManager):
                     continue
                 target = {'name': '%s: %s' % (server_name, ip['ip_address']),
                           'id': '%s_%s' % (port_id, ip['ip_address']),
+                          'port_id': port_id,
                           'instance_id': p.device_id}
                 targets.append(FloatingIpTarget(target))
         return targets
