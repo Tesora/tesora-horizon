@@ -1,0 +1,9 @@
+{% extends "horizon/common/_modal_form.html" %}
+{% load i18n %}
+
+{% block modal-body-right %}
+  <p>{% trans "Specify the details of the instance to be added to the cluster." %}</p>
+  <p>{% trans "The name field is optional.  A name will be generated if the field is left blank." %}</p>
+  <p>{% trans "The type field is datastore specific.  For example, for Redis it can be master/slave and for MongoDB query/replica." %}</p>
+  <p>{% trans "The related_to field is datastore specific.  It generally refers to another instance in the cluster.  See the Trove documentation for more information." %}</p>
+{% endblock %}
