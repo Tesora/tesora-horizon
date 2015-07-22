@@ -38,6 +38,10 @@ def can_launch_from_master(datastore):
     return True
 
 
+def can_modify_cluster(datastore):
+    return (is_mongodb_datastore(datastore) or is_redis_datastore(datastore))
+
+
 def db_required_when_creating_user(datastore):
     if is_oracle_ra_datastore(datastore):
         return False

@@ -41,6 +41,8 @@ CLUSTER_DATA_ONE = {
         {
             "id": "416b0b16-ba55-4302-bbd3-ff566032e1c1",
             "shard_id": "5415b62f-f301-4e84-ba90-8ab0734d15a7",
+            "name": "inst1",
+            "status": "ACTIVE",
             "flavor": {
                 "id": "7",
                 "links": []
@@ -52,6 +54,8 @@ CLUSTER_DATA_ONE = {
         {
             "id": "965ef811-7c1d-47fc-89f2-a89dfdd23ef2",
             "shard_id": "5415b62f-f301-4e84-ba90-8ab0734d15a7",
+            "name": "inst2",
+            "status": "ACTIVE",
             "flavor": {
                 "id": "7",
                 "links": []
@@ -63,6 +67,8 @@ CLUSTER_DATA_ONE = {
         {
             "id": "3642f41c-e8ad-4164-a089-3891bf7f2d2b",
             "shard_id": "5415b62f-f301-4e84-ba90-8ab0734d15a7",
+            "name": "inst3",
+            "status": "ACTIVE",
             "flavor": {
                 "id": "7",
                 "links": []
@@ -92,6 +98,8 @@ CLUSTER_DATA_TWO = {
     "instances": [
         {
             "id": "416b0b16-ba55-4302-bbd3-ff566032e1c1",
+            "name": "inst1",
+            "status": "ACTIVE",
             "flavor": {
                 "id": "7",
                 "links": []
@@ -102,6 +110,8 @@ CLUSTER_DATA_TWO = {
         },
         {
             "id": "965ef811-7c1d-47fc-89f2-a89dfdd23ef2",
+            "name": "inst2",
+            "status": "ACTIVE",
             "flavor": {
                 "id": "7",
                 "links": []
@@ -112,6 +122,8 @@ CLUSTER_DATA_TWO = {
         },
         {
             "id": "3642f41c-e8ad-4164-a089-3891bf7f2d2b",
+            "name": "inst3",
+            "status": "ACTIVE",
             "flavor": {
                 "id": "7",
                 "links": []
