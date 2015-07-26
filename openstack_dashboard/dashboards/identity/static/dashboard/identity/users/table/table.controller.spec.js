@@ -14,7 +14,7 @@
  * under the License.
  */
 
-(function(){
+(function() {
   'use strict';
 
   describe('Identity users table controller', function() {
@@ -26,24 +26,21 @@
           callback(policy);
         }
       };
-    };
+    }
 
     function fakePromise() {
       return {
         success: function() {}
       };
-    };
+    }
 
     function fakeToast() {
       return {
         add: function(type, msg) {}
       };
-    };
+    }
 
-    var controller;
-    var toastService;
-    var policyAPI;
-    var keystoneAPI;
+    var controller, toastService, policyAPI, keystoneAPI, staticUrl;
 
     ///////////////////////
 
@@ -55,12 +52,13 @@
     beforeEach(module('hz.dashboard'));
     beforeEach(module('hz.dashboard.identity'));
     beforeEach(module('hz.dashboard.identity.users'));
-    beforeEach(inject(function($injector){
+    beforeEach(inject(function($injector) {
 
       toastService = $injector.get('horizon.framework.widgets.toast.service');
       policyAPI = $injector.get('horizon.openstack-service-api.policy');
       keystoneAPI = $injector.get('horizon.openstack-service-api.keystone');
       controller = $injector.get('$controller');
+      staticUrl = $injector.get('$window').STATIC_URL;
 
       spyOn(toastService, 'add').and.callFake(fakeToast);
       spyOn(policyAPI, 'check').and.callFake(fakePolicy);
@@ -68,7 +66,7 @@
       spyOn(keystoneAPI, 'getCurrentUserSession').and.callFake(fakePromise);
     }));
 
-    function createController(){
+    function createController() {
       return controller('identityUsersTableController', {
         toast: toastService,
         policyAPI: policyAPI,
@@ -77,7 +75,7 @@
     }
 
     it('should set path properly', function() {
-      var path = '/static/dashboard/identity/users/table/';
+      var path = staticUrl + 'dashboard/identity/users/table/';
       expect(createController().path).toEqual(path);
     });
 
@@ -99,4 +97,5 @@
     });
 
   });
+
 })();

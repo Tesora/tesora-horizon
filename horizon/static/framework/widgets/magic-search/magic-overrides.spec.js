@@ -79,17 +79,20 @@
         }
       ];
 
-      var markup = '<magic-search ' +
-                     'template="/static/framework/widgets/magic-search/magic-search.html" ' +
-                     'strings="filterStrings" ' +
-                     'facets="{{ filterFacets }}">' +
-                   '</magic-search>';
+      /* eslint-disable angular/ng_window_service */
+      var markup =
+        '<magic-search ' +
+          'template="' + window.STATIC_URL + 'framework/widgets/magic-search/magic-search.html" ' +
+          'strings="filterStrings" ' +
+          'facets="{{ filterFacets }}">' +
+        '</magic-search>';
+      /* eslint-enable angular/ng_window_service */
 
       $element = $compile(angular.element(markup))($scope);
 
-      $scope.$digest();
+      $scope.$apply();
 
-      $magicScope = $scope.$$childTail;
+      $magicScope = $scope.$$childTail; // eslint-disable-line angular/ng_no_private_call
 
       spyOn($magicScope, '$emit');
       spyOn($magicScope, 'emitQuery');
