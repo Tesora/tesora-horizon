@@ -12,12 +12,16 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+from django.conf.urls import include
 from django.conf.urls import patterns
 from django.conf.urls import url
 
+from openstack_dashboard.contrib.trove.content.databases.logs \
+    import urls as logs_urls
 from openstack_dashboard.contrib.trove.content.databases import views
 
-INSTANCES = r'^(?P<instance_id>[^/]+)/%s$'
+BASEINSTANCES = r'^(?P<instance_id>[^/]+)/%s'
+INSTANCES = BASEINSTANCES + '$'
 USERS = r'^(?P<instance_id>[^/]+)/(?P<user_name>[^/]+)/%s$'
 
 
@@ -48,4 +52,5 @@ urlpatterns = patterns(
         name='promote_to_replica_source'),
     url(INSTANCES % 'manage_root', views.ManageRootView.as_view(),
         name='manage_root'),
+    url(BASEINSTANCES % 'logs/', include(logs_urls, namespace='logs')),
 )
