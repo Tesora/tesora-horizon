@@ -24,6 +24,8 @@ from openstack_dashboard import api
 from openstack_dashboard.dashboards.project.database_configurations \
     import config_param_manager
 from openstack_dashboard.dashboards.project.databases import db_capability
+from openstack_dashboard.dashboards.project.databases.logs import tables \
+    as log_tables
 from openstack_dashboard.dashboards.project.databases import tables
 
 
@@ -181,7 +183,26 @@ class BackupsTab(tabs.TableTab):
         return True
 
 
+class LogsTab(tabs.TableTab):
+    table_classes = [log_tables.LogsTable]
+    name = _("Logs")
+    slug = "logs_tab"
+    template_name = "horizon/common/_detail_table.html"
+
+    def get_logs_data(self):
+        instance = self.tab_group.kwargs['instance']
+        try:
+            logs = api.trove.log_list(self.request, instance.id)
+            return logs
+        except Exception as e:
+            LOG.exception(
+                _('Unable to retrieve list of logs.\n%s') % e.message)
+            logs = []
+        return logs
+
+
 class InstanceDetailTabs(tabs.TabGroup):
     slug = "instance_details"
-    tabs = (OverviewTab, UserTab, DatabaseTab, BackupsTab, ConfigDefaultsTab)
+    tabs = (OverviewTab, UserTab, DatabaseTab, BackupsTab, ConfigDefaultsTab,
+            LogsTab)
     sticky = True
