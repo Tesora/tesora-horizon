@@ -26,15 +26,15 @@
    * Serve as the focal point for table actions.
    */
   angular
-    .module('hz.dashboard.identity.users')
+    .module('horizon.dashboard.identity.users')
     .controller('identityUsersTableController', identityUsersTableController);
 
   identityUsersTableController.$inject = [
-    'hz.dashboard.identity.basePath',
+    'horizon.dashboard.identity.basePath',
     'horizon.framework.widgets.toast.service',
     'horizon.framework.util.i18n.gettext',
-    'horizon.openstack-service-api.policy',
-    'horizon.openstack-service-api.keystone'
+    'horizon.app.core.openstack-service-api.policy',
+    'horizon.app.core.openstack-service-api.keystone'
   ];
 
   function identityUsersTableController(basepath, toast, gettext, policy, keystone) {

@@ -16,9 +16,27 @@
 (function () {
   'use strict';
 
-  describe('hz.dashboard.project', function () {
+  describe('horizon.dashboard.project', function () {
     it('should be defined', function () {
-      expect(angular.module('hz.dashboard.project')).toBeDefined();
+      expect(angular.module('horizon.dashboard.project')).toBeDefined();
+    });
+  });
+
+  describe('horizon.dashboard.project.basePath constant', function () {
+    var projectBasePath, staticUrl;
+
+    beforeEach(module('horizon.dashboard.project'));
+    beforeEach(inject(function ($injector) {
+      projectBasePath = $injector.get('horizon.dashboard.project.basePath');
+      staticUrl = $injector.get('$window').STATIC_URL;
+    }));
+
+    it('should be defined', function () {
+      expect(projectBasePath).toBeDefined();
+    });
+
+    it('should equal to "/static/dashboard/project/"', function () {
+      expect(projectBasePath).toEqual(staticUrl + 'dashboard/project/');
     });
   });
 

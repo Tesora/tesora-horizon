@@ -5,8 +5,10 @@
 # Translators:
 # Ainur Shakirov <ainur.shakirov.tt@gmail.com>, 2015
 # Dasha Sher <sher.dasha@gmail.com>, 2014
+# Denis Gubanov <v12aml@gmail.com>, 2015
 # Fedor Tarasenko <feodor.tarasenko@gmail.com>, 2015
 # Ilya Alekseyev <ilyaalekseyev@acm.org>, 2015
+# Ilya Shakhat <shakhat@gmail.com>, 2015
 # Kyrylo Romanenko <kromanenko@mirantis.com>, 2015
 # Nikita Burtsev, 2015
 # Nikita Burtsev, 2015
@@ -14,15 +16,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-07-19 22:22+0000\n"
-"PO-Revision-Date: 2015-07-05 16:23+0000\n"
+"POT-Creation-Date: 2015-08-11 04:23+0000\n"
+"PO-Revision-Date: 2015-08-11 01:43+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/horizon/language/"
+"Language-Team: Russian (http://www.transifex.com/openstack/horizon/language/"
 "ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.3\n"
+"Generated-By: Babel 2.0\n"
 "Language: ru\n"
 "Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
@@ -125,9 +127,6 @@ msgstr "-"
 
 msgid "-- not selected --"
 msgstr "-- не выбран --"
-
-msgid "1-4093 for VLAN; 5000 and above for Overlay"
-msgstr "1-4093 для VLAN; 5000 и больше для Overlay"
 
 msgid "3des"
 msgstr "3des"
@@ -351,6 +350,9 @@ msgstr "Добавить машрутизаторы"
 msgid "Add Rule"
 msgstr "Добавить правило"
 
+msgid "Add Static Route"
+msgstr "Добавить статический маршрут"
+
 msgid "Add Subnet"
 msgstr "Добавить подсеть"
 
@@ -544,7 +546,7 @@ msgid "All available hosts"
 msgstr "Все доступные узлы"
 
 msgid "Allocate Floating IP"
-msgstr "Выделить плавающий IP"
+msgstr "Выделить внешний IP"
 
 msgid "Allocate IP"
 msgstr "Выделить IP"
@@ -623,6 +625,9 @@ msgstr "По крайней мере один участник должен бы
 msgid "At least one network must be specified."
 msgstr "По крайней мере одна сеть должна быть указана."
 
+msgid "Attach Interface"
+msgstr "Подключить интерфейс"
+
 msgid "Attach to Instance"
 msgstr "Подключить к инстансу"
 
@@ -645,6 +650,10 @@ msgstr "Подключение"
 msgctxt "Current status of a Volume"
 msgid "Attaching"
 msgstr "Подключение"
+
+#, python-format
+msgid "Attaching interface for instance %s."
+msgstr "Подключить интерфейс к экземпляру %s."
 
 #, python-format
 msgid "Attaching volume %(vol)s to instance %(inst)s on %(dev)s."
@@ -725,6 +734,10 @@ msgstr ""
 
 msgid "Average volume of writes"
 msgstr "Средний объем записи"
+
+msgctxt "Current status of a Volume"
+msgid "Backing Up"
+msgstr "Создание резервной копии"
 
 msgid "Backup"
 msgstr "Резервная копия"
@@ -922,7 +935,7 @@ msgid "Choose a volume"
 msgstr "Выбрать диск"
 
 msgid "Choose an DHCP Agent to attach to."
-msgstr "Выбрать DHCP агент для прикрепления"
+msgstr "Выберите агент DHCP для прикрепления"
 
 msgid "Choose an image"
 msgstr "Выберите образ"
@@ -966,12 +979,6 @@ msgstr ""
 
 msgid "Cipher"
 msgstr "Шифр"
-
-msgid "Cisco Nexus 1000V"
-msgstr "Cisco Nexus 1000V"
-
-msgid "Cisco Nexus 1000v"
-msgstr "Cisco Nexus 1000v"
 
 msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
 msgstr "CIDR (т.е. 192.168.0.0/24)"
@@ -1097,6 +1104,10 @@ msgstr "Подтверждение пароля"
 
 msgid "Confirm Rebuild Password"
 msgstr "Подтвердите Замену Пароля"
+
+msgctxt "Action log of an instance"
+msgid "Confirm Resize"
+msgstr "Подтвердить изменение размера"
 
 msgid "Confirm Resize/Migrate"
 msgstr "Подтвердить изменение типа/Миграцию"
@@ -1319,9 +1330,6 @@ msgstr "Создать сеть"
 
 msgid "Create Network (Quota exceeded)"
 msgstr "Создать сеть (превышена квота)"
-
-msgid "Create Network Profile"
-msgstr "Создать Сетевой профиль"
 
 msgid "Create Node Group Template"
 msgstr "Создать шаблон узла группы"
@@ -1664,7 +1672,7 @@ msgid "DENY"
 msgstr "DENY"
 
 msgid "DHCP Agents"
-msgstr "DHCP агенты"
+msgstr "Агенты DHCP"
 
 msgid "DHCPv6 stateful: Address discovered from OpenStack DHCP"
 msgstr "DHCPv6 stateful: Адрес обнаруженный в OpenStack DHCP"
@@ -1673,7 +1681,7 @@ msgid ""
 "DHCPv6 stateless: Address discovered from OpenStack Router and additional "
 "information from OpenStack DHCP"
 msgstr ""
-"DHCPv6 stateless: Адрес обнаруженый на маршрутизаторе OpenStack и "
+"DHCPv6 stateless: Адрес полученный с маршуризатора OpenStack и "
 "дополнительная информация из OpenStack DHCP"
 
 msgid "DNS Name Servers"
@@ -1774,6 +1782,9 @@ msgid "Delay"
 msgstr "Задержка"
 
 msgid "Delay must be greater than or equal to Timeout"
+msgstr "Задержка должна быть больше или равна Времени ожидания"
+
+msgid "Delay must be greater than or equal to timeout"
 msgstr "Задержка должна быть больше или равна Времени ожидания"
 
 msgid "Delete Backup"
@@ -1967,13 +1978,6 @@ msgstr[1] "Удалить пространства имен"
 msgstr[2] ""
 msgstr[3] "Удалить пространства имен"
 
-msgid "Delete Network Profile"
-msgid_plural "Delete Network Profiles"
-msgstr[0] "Удалить профиль сети"
-msgstr[1] "Удалить профили сети"
-msgstr[2] ""
-msgstr[3] "Удалить профили сети"
-
 msgid "Delete Object"
 msgid_plural "Delete Objects"
 msgstr[0] "Удалить объект"
@@ -2050,6 +2054,13 @@ msgstr[0] "Удалить стек"
 msgstr[1] "Удалить стеки"
 msgstr[2] ""
 msgstr[3] "Удалить стеки"
+
+msgid "Delete Static Route"
+msgid_plural "Delete Static Routes"
+msgstr[0] "Удалить статический маршрут"
+msgstr[1] "Удалить статические маршруты"
+msgstr[2] "Удалить статические маршруты"
+msgstr[3] "Удалить статические маршруты"
 
 msgid "Delete Template"
 msgid_plural "Delete Templates"
@@ -2273,13 +2284,6 @@ msgstr[1] "Сети удалены"
 msgstr[2] ""
 msgstr[3] "Сети удалены"
 
-msgid "Deleted Network Profile"
-msgid_plural "Deleted Network Profiles"
-msgstr[0] "Профиль сети удален"
-msgstr[1] "Профили сети удалены"
-msgstr[2] ""
-msgstr[3] "Профили сети удалены"
-
 msgid "Deleted Object"
 msgid_plural "Deleted Objects"
 msgstr[0] "Объект удален"
@@ -2349,6 +2353,13 @@ msgstr[0] "Стек удален"
 msgstr[1] "Стеки удалены"
 msgstr[2] ""
 msgstr[3] "Стеки удалены"
+
+msgid "Deleted Static Route"
+msgid_plural "Deleted Static Routes"
+msgstr[0] "Статический маршрут удален"
+msgstr[1] "Статические маршруты удалены"
+msgstr[2] "Статические маршруты удалены"
+msgstr[3] "Статические маршруты удалены"
 
 msgid "Deleted Subnet"
 msgid_plural "Deleted Subnets"
@@ -2461,6 +2472,9 @@ msgstr "Конечное имя объекта"
 msgid "Destination port (integer in [1, 65535] or range in a:b)"
 msgstr "Порт назначения (целое число из диапазона [1-65535] или диапазон a:b) "
 
+msgid "Detach Interface"
+msgstr "Отсоединить интерфейс"
+
 msgid "Detach Replica"
 msgid_plural "Detach Replicas"
 msgstr[0] "Отключить реплику"
@@ -2478,6 +2492,10 @@ msgstr[3] "Отсоединить диски"
 msgid "Detached"
 msgstr "Отключено"
 
+msgid "Detaching"
+msgstr "Отсоединение"
+
+msgctxt "Current status of a Volume"
 msgid "Detaching"
 msgstr "Отсоединение"
 
@@ -2775,9 +2793,6 @@ msgstr "Редактировать монитор"
 msgid "Edit Network"
 msgstr "Редактировать сеть"
 
-msgid "Edit Network Profile"
-msgstr "Редактировать Сетевой профиль"
-
 msgid "Edit Policy"
 msgstr "Редактировать политику"
 
@@ -2850,7 +2865,7 @@ msgid "Edit the project details."
 msgstr "Изменить данные проекта"
 
 msgid "Egress"
-msgstr "Egress"
+msgstr "Исходящий трафик"
 
 msgid "Email"
 msgstr "E-mail"
@@ -2917,9 +2932,6 @@ msgstr "Алгоритм шифрования"
 msgid "Engine Id"
 msgstr "ID движка"
 
-msgid "Enhanced VXLAN"
-msgstr "Расширенный VXLAN"
-
 msgid "Enter a value for ICMP code in the range (-1: 255)"
 msgstr "Введите значение кода ICMP из диапазона (-1:255)"
 
@@ -2939,9 +2951,6 @@ msgid ""
 msgstr ""
 "Ввести целое значение между 1 и 65535. Тот же порт будет использован для "
 "всех выбранных участников и может быть изменен позже."
-
-msgid "Enter parameter (e.g. GRE)"
-msgstr "Ввести параметр (напр. GRE)"
 
 msgid "Environment Data"
 msgstr "Данные среды"
@@ -3034,11 +3043,23 @@ msgctxt "Current status of a Volume"
 msgid "Error Extending"
 msgstr "Ошибка при расширении"
 
+msgctxt "Current status of a Volume"
+msgid "Error Restoring"
+msgstr "Ошибка восстановления"
+
+msgctxt "Current status of a Volume Backup"
+msgid "Error Restoring"
+msgstr "Ошибка восстановления"
+
 msgid "Error adding Hosts to the aggregate."
 msgstr "Ошибка добавления узлов в агрегатор."
 
 msgid "Error creating database backup."
 msgstr "Ошибка создания резервной копии БД."
+
+msgctxt "Current status of a Volume"
+msgid "Error deleting"
+msgstr "Ошибка удаления"
 
 msgid "Error deleting database on instance."
 msgstr "Ошибка удаления БД на машине."
@@ -3119,6 +3140,10 @@ msgstr ""
 msgid "Extend Volume"
 msgstr "Расширить диск"
 
+msgctxt "Current status of a Volume"
+msgid "Extending"
+msgstr "Расширение"
+
 #, python-format
 msgid "Extending volume: \"%s\""
 msgstr "Расширить диск: \"%s\""
@@ -3173,6 +3198,10 @@ msgid "Failed to add agent %(agent_name)s for network %(network)s."
 msgstr "Не удалось добавить агент %(agent_name)s в сеть %(network)s"
 
 #, python-format
+msgid "Failed to add route : %s"
+msgstr "Неудалось добавить маршрут : %s"
+
+#, python-format
 msgid "Failed to add router rule %s"
 msgstr "Не удалось создать правило маршрутизатора %s"
 
@@ -3202,10 +3231,6 @@ msgid "Failed to create network %s"
 msgstr "Не удалось создать сеть %s"
 
 #, python-format
-msgid "Failed to create network profile %s"
-msgstr "Не удалось создать сетевой профиль %s"
-
-#, python-format
 msgid "Failed to create router \"%s\"."
 msgstr "Не удалось создать маршрутизатор \"%s\"."
 
@@ -3230,10 +3255,6 @@ msgstr "Неудалось удалить сеть \"%s\""
 #, python-format
 msgid "Failed to delete network %s"
 msgstr "Не удалось удалить сеть %s"
-
-#, python-format
-msgid "Failed to delete network profile (%s)."
-msgstr "Не удалось удалить Сетевой профиль (%s)."
 
 #, python-format
 msgid "Failed to delete port %s"
@@ -3330,9 +3351,6 @@ msgstr ""
 "Не удалось изменить пользователей %s в проекте, обновить группы и квоты "
 "проекта."
 
-msgid "Failed to obtain network profile binding"
-msgstr "Не удалось получить сетевой профиль связывания."
-
 #, python-format
 msgid ""
 "Failed to perform requested operation on instance \"%s\", the instance has "
@@ -3418,10 +3436,6 @@ msgstr "Неудалось обновить участника %s"
 #, python-format
 msgid "Failed to update network %s"
 msgstr "Не удалось обновить сеть %s"
-
-#, python-format
-msgid "Failed to update network profile (%s)."
-msgstr "Не удалось обновить профиль сети (%s)."
 
 #, python-format
 msgid "Failed to update policy %(name)s: %(reason)s"
@@ -3999,7 +4013,7 @@ msgid "Information"
 msgstr "Информация"
 
 msgid "Ingress"
-msgstr "Ingress"
+msgstr "Входящий трафик"
 
 msgctxt "current status of stack"
 msgid "Init Complete"
@@ -4131,6 +4145,10 @@ msgstr "Внутренний исполняемый файл"
 msgid "Invalid date format: Using today as default."
 msgstr "Неверный формат даты: используется текущая по умолчанию."
 
+#, python-format
+msgid "Invalid format for routes : %s"
+msgstr "Неверный формат маршрутов : %s"
+
 msgid ""
 "Invalid time period. The end date should be more recent than the start date."
 msgstr "Неверный временной период. Конечная дата должна быть после начальной."
@@ -4202,6 +4220,9 @@ msgstr "Выбран типа задачи"
 msgid "Jobs"
 msgstr "Задачи"
 
+msgid "Kernel"
+msgstr "Ядро"
+
 msgid "Kernel ID"
 msgstr "ID ядра"
 
@@ -4249,6 +4270,9 @@ msgstr "Отменено"
 
 msgid "Kwapi"
 msgstr "Kwapi"
+
+msgid "LB Method"
+msgstr "Метод балансировки"
 
 msgid "LUKS Volume Snapshots"
 msgstr "Снимки дисков LUKS"
@@ -4346,6 +4370,10 @@ msgstr ""
 "Запуск нескольких инстансов поддерживается только для образов и снимков "
 "инстансов."
 
+msgctxt "load balancing method"
+msgid "Least Connections"
+msgstr "Меньше соединений"
+
 msgid "Length of Injected File Path"
 msgstr "Протяженность пути загруженного файла"
 
@@ -4381,7 +4409,7 @@ msgstr "Балансировщик нагрузки"
 
 #, python-format
 msgid "Load Balancer VIP %s"
-msgstr "Балансировщик нагрузки VIP %s"
+msgstr "Виртуальный IP адрес балансировщика нагрузки %s"
 
 msgid "Load Balancers"
 msgstr "Балансировщики нагрузки"
@@ -4664,12 +4692,6 @@ msgstr "Мониторы"
 msgid "Month to date"
 msgstr "Месяц до текущего дня"
 
-msgid "Multicast IP Range"
-msgstr "Multicast диапазон"
-
-msgid "Multicast IPv4 range(e.g. 224.0.1.0-224.0.1.100)"
-msgstr "Многоадресный диапазон IPv4 (напр. 224.0.1.0-224.0.1.100)"
-
 msgid "Must specify start of period"
 msgstr "Необходимо указать начало периода"
 
@@ -4721,9 +4743,6 @@ msgstr "Обзор пространств имен"
 msgid "Namespaces"
 msgstr "Пространства Имён"
 
-msgid "Native VXLAN"
-msgstr "Родной VXLAN"
-
 msgid "Network"
 msgstr "Сеть"
 
@@ -4759,14 +4778,6 @@ msgstr "Название сети"
 
 msgid "Network Profile"
 msgstr "Профиль сети"
-
-#, python-format
-msgid "Network Profile %s was successfully created."
-msgstr "Сетевой профиль %s был успешно создан."
-
-#, python-format
-msgid "Network Profile %s was successfully updated."
-msgstr "Сетевой профиль %s был успешно обновлен."
 
 msgid "Network Profiles could not be retrieved."
 msgstr "Не удалось получить список профилей сети."
@@ -4844,6 +4855,9 @@ msgstr "Узлы не найдены"
 
 msgid "No Images Available"
 msgstr "Нет доступных образов"
+
+msgid "No Ports available"
+msgstr "Нет доступных портов"
 
 msgid "No Session Persistence"
 msgstr "Не установлен метод постоянства сессии"
@@ -4923,6 +4937,9 @@ msgstr "Нет доступных агентов"
 
 msgid "No other hosts available."
 msgstr "Нет доступных узлов."
+
+msgid "No other volume types available"
+msgstr "Нет больше доступных типов диска"
 
 msgid "No ports available"
 msgstr "Нет доступных портов"
@@ -5117,7 +5134,7 @@ msgstr ""
 "Нет гарантий что освобожденный плавающий IP может быть выделен еще раз."
 
 msgid "Open Port"
-msgstr "Открыть Порт"
+msgstr "Открыть порт"
 
 msgid "OpenStack Flavor"
 msgstr "OpenStack тип инстанса"
@@ -5134,9 +5151,6 @@ msgstr "Необязательная материнская резервная �
 msgid "Optional: Next Hop Addresses (comma delimited)"
 msgstr "Опционально: Адреса следующих переходов (разделенные запятой)"
 
-msgid "Orchestration"
-msgstr "Оркестрация"
-
 msgid "Orchestration Services"
 msgstr "Службы оркестрации"
 
@@ -5151,9 +5165,6 @@ msgstr "Другой Протокол"
 
 msgid "Output"
 msgstr "Вывод"
-
-msgid "Overlay"
-msgstr "Overlay"
 
 msgid "Overview"
 msgstr "Обзор"
@@ -5295,9 +5306,6 @@ msgstr "Сохранить кластера после завершения за
 msgid "Physical Network"
 msgstr "Физическая сеть"
 
-msgid "Physical Network Name"
-msgstr "Название Физической сети"
-
 msgid "Pig"
 msgstr "Pig"
 
@@ -5343,9 +5351,6 @@ msgstr "Политика"
 #, python-format
 msgid "Policy %s was successfully updated."
 msgstr "Политика %s была успешно обновлена."
-
-msgid "Policy Profile"
-msgstr "Профиль политики"
 
 msgid "Policy Profiles"
 msgstr "Профили политики"
@@ -5476,9 +5481,6 @@ msgstr "Использование проекта"
 
 msgid "Projects"
 msgstr "Проекты"
-
-msgid "Projects could not be retrieved."
-msgstr "Не удалось получить список Проектов."
 
 msgid "Projects:"
 msgstr "Проекты:"
@@ -5884,6 +5886,10 @@ msgctxt "Task status of an Instance"
 msgid "Restoring"
 msgstr "Восстановление"
 
+msgctxt "Current status of a Volume"
+msgid "Restoring Backup"
+msgstr "Восстановление резервной копии"
+
 msgctxt "Action log of an instance"
 msgid "Resume"
 msgstr "Продолжить"
@@ -5988,6 +5994,10 @@ msgstr "Корневой диск"
 msgid "Root Disk (GB)"
 msgstr "Корневой диск (ГБ)"
 
+msgctxt "load balancing method"
+msgid "Round Robin"
+msgstr "Равномерно"
+
 msgid "Router"
 msgstr "Маршрутизатор"
 
@@ -6059,7 +6069,7 @@ msgid "Running Instance Migration Type"
 msgstr "Тип миграции запущенных инстансов."
 
 msgid "SLAAC: Address discovered from OpenStack Router"
-msgstr "SLAAC: Адрес обнаруженный на маршрутизаторе OpenStack"
+msgstr "SLAAC: Адрес полученный с маршрутизатора OpenStack"
 
 msgid ""
 "Sahara will use instances of this node group to access other cluster "
@@ -6247,12 +6257,6 @@ msgstr "Правила группы безопасности"
 msgid "Security Groups"
 msgstr "Группы безопасности"
 
-msgid "Segment Range"
-msgstr "Диапазон сегмента"
-
-msgid "Segment Type"
-msgstr "Тип сегмента."
-
 msgid "Segmentation ID"
 msgstr "ID сегмента"
 
@@ -6273,6 +6277,9 @@ msgstr "Выберите снимок инстанса"
 
 msgid "Select Network"
 msgstr "Выберите сеть"
+
+msgid "Select Port"
+msgstr "Выберите порт"
 
 msgid "Select Script Source"
 msgstr "Выберите источник скрипта"
@@ -6334,7 +6341,7 @@ msgid "Select a monitor template for %s"
 msgstr "Выберите шаблон монитора для %s"
 
 msgid "Select a new agent"
-msgstr "Выбрать новый агент"
+msgstr "Выберите новый агент"
 
 msgid "Select a new flavor"
 msgstr "Выберите новый тип инстанса"
@@ -6347,6 +6354,9 @@ msgstr "Выберите новый шаблон для предваритель
 
 msgid "Select a new template to re-launch a stack."
 msgstr "Выбрать новый шаблон для перезапуска стека."
+
+msgid "Select a new volume type"
+msgstr "Выберите новый тип диска"
 
 msgid "Select a port"
 msgstr "Выберете порт"
@@ -6650,6 +6660,10 @@ msgstr "Исходящий CIDR"
 msgid "Source IP"
 msgstr "IP адрес отправления"
 
+msgctxt "load balancing method"
+msgid "Source IP"
+msgstr "IP-адрес источника"
+
 msgid "Source IP Address/Subnet"
 msgstr "IP адрес/подсеть отправления"
 
@@ -6695,9 +6709,9 @@ msgid ""
 "manually or configured by a non-OpenStack system."
 msgstr ""
 "Указывает как настраиваются IPv6-адресы и дополнительная информация. Можно "
-"указать SLAAC/DHCPv6 stateful/DHCPv6 stateless provided by OpenStack или не "
-"указывать ничего. Без указания опции адресы необходимо настраивать вручную "
-"или внешними системами независимыми от OpenStack."
+"указать SLAAC/DHCPv6 stateful/DHCPv6 stateless предоставляемый OpenStack или "
+"не указывать ничего. Без указания опции адресы необходимо настраивать "
+"вручную или внешними системами независимыми от OpenStack."
 
 msgid "Specifies that the newly created volume should be marked as bootable"
 msgstr "Указывает что создаваемый диск должен быть помечен как загрузочный"
@@ -6816,6 +6830,12 @@ msgstr "Запуск миграции узла: %(current)s"
 msgid "State"
 msgstr "Состояние"
 
+msgid "Static Routes"
+msgstr "Статические маршруты"
+
+msgid "Static route added"
+msgstr "Статический маршрут добавлен"
+
 msgid "Stats"
 msgstr "Статистика"
 
@@ -6828,6 +6848,10 @@ msgstr "Статус ="
 msgid "Status Reason"
 msgstr "Причина статуса"
 
+msgctxt "Action log of an instance"
+msgid "Stop"
+msgstr "Остановить"
+
 msgid "Storage location"
 msgstr "Место хранения"
 
@@ -6836,12 +6860,6 @@ msgstr "Тип хранения"
 
 msgid "Streaming MapReduce"
 msgstr "Поточный MapReduce"
-
-msgid "Sub Type"
-msgstr "Подкатегория"
-
-msgid "Sub Type Value (Manual Input)"
-msgstr "Подкатегория значения (Ручной ввод)"
 
 msgid "Subnet"
 msgstr "Подсеть"
@@ -7077,6 +7095,9 @@ msgstr "Показания по использованию ОЗУ"
 msgid "System Outlet Temperature Reading"
 msgstr "Показания температуры на выходе"
 
+msgid "System Temperature Reading"
+msgstr "Показания системной температуры"
+
 msgid "TCP"
 msgstr "TCP"
 
@@ -7213,6 +7234,13 @@ msgid "The instance password encrypted with your public key."
 msgstr "Пароль инстансы зашифрован вашим открытым ключом."
 
 msgid ""
+"The maximum time in seconds for a monitor to wait for a reply. It must be "
+"less than or equal to delay"
+msgstr ""
+"Максимальное время в секундах на ожидание ответа должно быть меньше или "
+"равно задержке"
+
+msgid ""
 "The minimum disk size required to boot the image. If unspecified, this value "
 "defaults to 0 (no minimum)."
 msgstr ""
@@ -7233,6 +7261,9 @@ msgstr "Имя «%s» уже занято другим типом инстанс
 #, python-format
 msgid "The name \"%s\" is already used by another host aggregate."
 msgstr "Имя «%s» уже используется другим агрегатором узлов."
+
+msgid "The name is already in use."
+msgstr "Это имя уже используется"
 
 msgid ""
 "The name of the physical network over which the virtual network is "
@@ -7328,6 +7359,11 @@ msgstr "Возникла проблема при разборе %(prefix)s: %(er
 msgid "This action cannot be undone."
 msgstr "Это действие не может быть отменено."
 
+msgid "This application requires JavaScript to be enabled in your web browser."
+msgstr ""
+"JavaScript должен быть включен в вашем web-браузере для работы этого "
+"приложения ."
+
 msgid ""
 "This is required for operations to be performed throughout the lifecycle of "
 "the stack"
@@ -7359,7 +7395,7 @@ msgid "Timeout"
 msgstr "Таймаут"
 
 msgid "Timezone"
-msgstr "Временная зона"
+msgstr "Часовой пояс"
 
 msgid "Title"
 msgstr "Заглавие"
@@ -7418,9 +7454,6 @@ msgstr "Название передачи"
 
 msgid "Transform Protocol"
 msgstr "Протокол трансформации"
-
-msgid "Trunk"
-msgstr "Trunk"
 
 msgid "Type"
 msgstr "Тип"
@@ -7529,6 +7562,9 @@ msgstr "Не удалось назначить плавающий IP."
 
 msgid "Unable to associate monitor."
 msgstr "Не удалось привязать монитор."
+
+msgid "Unable to attach interface."
+msgstr "Не удалось присоединить интерфейс"
 
 msgid "Unable to attach volume."
 msgstr "Не удалось подключить диск."
@@ -7717,6 +7753,9 @@ msgstr "Не удалось удалить правило. %s"
 msgid "Unable to delete volume transfer."
 msgstr "Не удалось удалить передачу диска."
 
+msgid "Unable to detach interface."
+msgstr "Не удалось отсоединить интерфейс"
+
 msgid "Unable to determine if availability zones extension is supported."
 msgstr "Не удалось определить, поддерживается ли расширение зон доступности."
 
@@ -7863,6 +7902,11 @@ msgstr "Не удалось получить события для стека \"
 
 msgid "Unable to get flavor list"
 msgstr "Не удалось получить список типов инстансов"
+
+#, python-format
+msgid "Unable to get health monitor %(monitor_id)s for pool %(pool)s."
+msgstr ""
+"Не удалось получить мониторы здоровья %(monitor_id)s для пула %(pool)s."
 
 msgid "Unable to get host aggregate list"
 msgstr "Не удалось получить список агрегаторов узлов."
@@ -8151,12 +8195,36 @@ msgid "Unable to retrieve details for backup: %s"
 msgstr "Не удалось получить подробную информацию по резервной копии: %s"
 
 #, python-format
+msgid "Unable to retrieve details for cluster \"%s\"."
+msgstr "Не удалось получить детали кластера \"%s\""
+
+#, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr "Не удалось получить детали шаблона кластера \"%s\""
+
+#, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr "Не удалось получить детали источника данных «%s»."
+
+#, python-format
 msgid "Unable to retrieve details for database instance: %s"
 msgstr "Не удалось получить детальную информацию для экземпляра БД: %s"
 
 #, python-format
 msgid "Unable to retrieve details for instance \"%s\"."
 msgstr "Не удалось получить подробную информацию об инстансе \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "Не удалось получить детали работы \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr "Не удалось получить детали рабочего процесса \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job template \"%s\"."
+msgstr "Не удалось получить детали шаблона работы \"%s\"."
 
 #, python-format
 msgid "Unable to retrieve details for keypair \"%s\"."
@@ -8185,6 +8253,9 @@ msgstr "Не удалось получить информацию о домен�
 
 msgid "Unable to retrieve domain list."
 msgstr "Не удалось получить список доменов."
+
+msgid "Unable to retrieve extensions information"
+msgstr "Не удалось получить информацию о расширениях."
 
 msgid "Unable to retrieve extensions information."
 msgstr "Не удалось получить информацию о расширениях."
@@ -8360,9 +8431,6 @@ msgstr "Не удалось получить детали пространств
 msgid "Unable to retrieve network details."
 msgstr "Не удалось получить детали сети."
 
-msgid "Unable to retrieve network profile details."
-msgstr "Не удалось получить информацию о профиле сети"
-
 msgid "Unable to retrieve network quota information."
 msgstr "Не удалось получить информацию о сетевых квотах."
 
@@ -8420,6 +8488,9 @@ msgstr "Не удалось запросить информацию о порт�
 
 msgid "Unable to retrieve port details."
 msgstr "Не удалось получить информацию о порте."
+
+msgid "Unable to retrieve ports information."
+msgstr "Невозможно получить информацию о портах"
 
 msgid "Unable to retrieve project details."
 msgstr "Не удалось получить подробную информацию о проекте."
@@ -8787,6 +8858,10 @@ msgstr "Не управлять диском"
 msgid "Unmanage a Volume"
 msgstr "Не управлять диском"
 
+msgctxt "Action log of an instance"
+msgid "Unpause"
+msgstr "Снять с паузы"
+
 msgid "Unregister Image"
 msgid_plural "Unregister Images"
 msgstr[0] "Удалить образ"
@@ -8864,9 +8939,6 @@ msgstr "Обновить метаданные"
 
 msgid "Update Network"
 msgstr "Обновить сеть"
-
-msgid "Update Network Profile"
-msgstr "Обновить профиль сети"
 
 msgid "Update Object"
 msgstr "Обновить объект"
@@ -8978,6 +9050,9 @@ msgstr "Использование (часов)"
 msgid "Usage Report"
 msgstr "Отчет об использовании"
 
+msgid "Use HBase Common library"
+msgstr "Использовать обобщённую библитеку HBase"
+
 msgid "Use Server Default"
 msgstr "Использовать сервер по умолчанию"
 
@@ -9017,7 +9092,7 @@ msgid "User ID"
 msgstr "ID пользователя"
 
 msgid "User Name"
-msgstr "Название пользователя"
+msgstr "Имя пользователя"
 
 msgid "User Settings"
 msgstr "Настройки пользователя"
@@ -9033,7 +9108,7 @@ msgid "User password has been updated successfully."
 msgstr "Пароль пользователя успешно изменен."
 
 msgid "Username"
-msgstr "Название пользователя"
+msgstr "Имя пользователя"
 
 msgid "Users"
 msgstr "Пользователи"
@@ -9051,10 +9126,10 @@ msgid "VCPUs (used)"
 msgstr "VCPUs (использовано)"
 
 msgid "VDI - Virtual Disk Image"
-msgstr "VDI - Virtual Disk Image"
+msgstr "VDI - Образ виртуального диска"
 
 msgid "VHD - Virtual Hard Disk"
-msgstr "VHD - Virtual Hard Disk"
+msgstr "VHD - Виртуальный жесткий диск"
 
 msgid "VIP"
 msgstr "VIP"
@@ -9073,7 +9148,7 @@ msgid "VLAN"
 msgstr "VLAN"
 
 msgid "VMDK - Virtual Machine Disk"
-msgstr "VMDK - Virtual Machine Disk"
+msgstr "VMDK - Диск виртуальной машины"
 
 msgid "VPN"
 msgstr "VPN"

@@ -398,17 +398,39 @@ This example sorts flavors by vcpus in descending order::
 
 .. versionadded:: 2015.1(Kilo)
 
-Default: ``"static/themes/default"``
+Default: ``"themes/default"``
 
 This setting allows Horizon to use a custom theme. The theme folder
 should contain one _variables.scss file and one _styles.scss file.
-_variables.scss contains all the bootstrap and horizon specific variables
-which are used to style the GUI. Whereas _styles.scss contains extra styling.
-For example themes, see: /horizon/openstack_dashboard/static/themes/
+_variables.scss contains or must import all the bootstrap and horizon
+specific variables which are used to style the GUI. Whereas _styles.scss
+contains extra styling. For example themes, see:
+/horizon/openstack_dashboard/themes/
 
 If the static theme folder also contains a sub-folder 'templates', then
 the path to that sub-folder will be prepended to TEMPLATE_DIRS tuple
 to allow for theme specific template customizations.
+
+If the theme folder (or its static folder) contain an 'img' directory,
+then all images contained within dashboard/img can be overridden by providing
+a file with the same name.  This makes it very easy to customize logo.png,
+logo-splash.png and favicon.ico.
+
+
+``DEFAULT_THEME_PATH``
+----------------------
+
+.. versionadded:: 8.0.0(Liberty)
+
+Default: ``"themes/default"``
+
+This setting allows Horizon to collect an additional theme during static
+collection and be served up via /static/themes/default.  This is useful
+if CUSTOM_THEME_PATH inherits from another theme (like 'default').
+
+If DEFAULT_THEME_PATH is the same as CUSTOM_THEME_PATH, then collection
+is skipped and /static/themes will not exist.
+
 
 ``DROPDOWN_MAX_ITEMS``
 ----------------------
@@ -964,6 +986,19 @@ are using. Allowed values are the algorithms supported by Python's hashlib
 library.
 
 
+``OPENSTACK_TOKEN_HASH_ENABLED``
+--------------------------------
+
+.. versionadded:: 8.0.0(Liberty)
+
+Default: ``True``
+
+Hashing tokens from Keystone keeps the Horizon session data smaller, but it
+doesn't work in some cases when using PKI tokens.  Uncomment this value and
+set it to False if using PKI tokens and there are 401 errors due to token
+hashing.
+
+
 ``POLICY_FILES``
 ----------------
 
@@ -1042,7 +1077,7 @@ Make sure you run ``python manage.py collectstatic`` and
 ``python manage.py compress`` after you change the ``_variables.scss`` file.
 
 For your convenience, a custom theme for only setting the web root has been
-provided see: ``"/horizon/openstack_dashboard/static/themes/webroot"``
+provided see: ``"/horizon/openstack_dashboard/themes/webroot"``
 
 .. note::
 

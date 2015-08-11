@@ -288,14 +288,16 @@ $em-per-priority: floor($table-col-avg-width / $font-size-base) * 3;
       display: none;
     }
 
-    .rsp-alt-p1, .rsp-alt-p2,
-    .rsp-alt-p3, .rsp-alt-p4 {
-      display: inline-block;
+    th,td {
+      &.rsp-alt-p1, &.rsp-alt-p2,
+      &.rsp-alt-p3, &.rsp-alt-p4 {
+        display: inline-block;
+      }
     }
   }
 
   @media (min-width: 0em) {
-    $content-width: $body-min-width - $sidebar-width - (2 * $content-body-padding);
+    $content-width: $main-content-min-width - $sidebar-width - (2 * $content-body-padding);
     $max-priority: floor($content-width / $font-size-base / $em-per-priority);
 
     @for $i from 1 through $max-priority {

@@ -16,15 +16,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-07-19 22:22+0000\n"
-"PO-Revision-Date: 2015-07-02 07:07+0000\n"
+"POT-Creation-Date: 2015-08-11 04:23+0000\n"
+"PO-Revision-Date: 2015-08-11 01:43+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
-"Language-Team: German (http://www.transifex.com/projects/p/horizon/language/"
+"Language-Team: German (http://www.transifex.com/openstack/horizon/language/"
 "de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.3\n"
+"Generated-By: Babel 2.0\n"
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
@@ -126,9 +126,6 @@ msgstr "-"
 
 msgid "-- not selected --"
 msgstr "-- nicht ausgewählt --"
-
-msgid "1-4093 for VLAN; 5000 and above for Overlay"
-msgstr "1-4093 für VLAN; 5000 und höher für Overlay"
 
 msgid "3des"
 msgstr "3des"
@@ -995,12 +992,6 @@ msgstr ""
 msgid "Cipher"
 msgstr "Chiffre"
 
-msgid "Cisco Nexus 1000V"
-msgstr "Cisco Nexus 1000V"
-
-msgid "Cisco Nexus 1000v"
-msgstr "Cisco Nexus 1000v"
-
 msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
 msgstr "Klassenloses Inter-Domain Routing (z.B. 192.168.0.0/24)"
 
@@ -1038,6 +1029,10 @@ msgstr "Cluster Name"
 msgid "Cluster Template"
 msgstr "Clustervorlage"
 
+#, python-format
+msgid "Cluster Template %s updated"
+msgstr "Clustervorlage %s aktualisiert"
+
 msgid "Cluster Template Details"
 msgstr "Clustervorlage Details"
 
@@ -1053,6 +1048,9 @@ msgstr "Clustervorlagen"
 
 msgid "Cluster template creation failed"
 msgstr "Clustervorlagenerstellung fehlgeschlagen"
+
+msgid "Cluster template update failed"
+msgstr "Hochladen der Clustervorlage fehlgeschlagen"
 
 msgid "Cluster type chosen"
 msgstr "Ausgewählter Clustertyp"
@@ -1349,9 +1347,6 @@ msgstr "Netzwerk erstellen"
 
 msgid "Create Network (Quota exceeded)"
 msgstr "Netzwerk erstellen (Kontingent überschritten)"
-
-msgid "Create Network Profile"
-msgstr "Netzwerkprofil erstellen."
 
 msgid "Create Node Group Template"
 msgstr "Knotengruppenvorlagen erstellen"
@@ -1966,11 +1961,6 @@ msgid_plural "Delete Networks"
 msgstr[0] "Lösche Netzwerk"
 msgstr[1] "Lösche Netzwerke"
 
-msgid "Delete Network Profile"
-msgid_plural "Delete Network Profiles"
-msgstr[0] "Netzwerkprofil löschen"
-msgstr[1] "Netzwerkprofile löschen"
-
 msgid "Delete Object"
 msgid_plural "Delete Objects"
 msgstr[0] "Objekt löschen"
@@ -2210,11 +2200,6 @@ msgid_plural "Deleted Networks"
 msgstr[0] "Gelöschtes Netzwerk"
 msgstr[1] "Gelöschte Netzwerke"
 
-msgid "Deleted Network Profile"
-msgid_plural "Deleted Network Profiles"
-msgstr[0] "Gelöschtes Netzwerkprofil"
-msgstr[1] "Gelöschte Netzwerkprofile"
-
 msgid "Deleted Object"
 msgid_plural "Deleted Objects"
 msgstr[0] "Gelöschtes Objekt"
@@ -2393,6 +2378,10 @@ msgstr "Abgetrennt"
 msgid "Detached interface %(port)s for instance %(instance)s."
 msgstr "Schnittstelle %(port)s für Instanz %(instance)s abgetrennt."
 
+msgid "Detaching"
+msgstr "Abtrennen"
+
+msgctxt "Current status of a Volume"
 msgid "Detaching"
 msgstr "Abtrennen"
 
@@ -2628,6 +2617,9 @@ msgstr "Dauer der Instanz Typ %s (OpenStack Variante)"
 msgid "Edit"
 msgstr "Bearbeiten"
 
+msgid "Edit Cluster Template"
+msgstr "Clustervorlage bearbeiten"
+
 msgid "Edit Connection"
 msgstr "Verbindung bearbeiten"
 
@@ -2685,9 +2677,6 @@ msgstr "Monitor bearbeiten"
 
 msgid "Edit Network"
 msgstr "Netzwerk bearbeiten"
-
-msgid "Edit Network Profile"
-msgstr "Netzwerkprofil bearbeiten"
 
 msgid "Edit Node Group Template"
 msgstr "Knotengruppenvorlage bearbeiten"
@@ -2824,9 +2813,6 @@ msgstr "Verschlüsselungsalgorithmus"
 msgid "Engine Id"
 msgstr "Engine ID"
 
-msgid "Enhanced VXLAN"
-msgstr "Erweitertes VXLAN"
-
 msgid "Enter a value for ICMP code in the range (-1: 255)"
 msgstr "Geben Sie einen Wert für den ICMP-Code im Bereich -1 bis 255 ein"
 
@@ -2847,9 +2833,6 @@ msgid ""
 msgstr ""
 "Einen ganzzahligen Wert zwischen 1 und 65535 eingeben. der gleiche Port wird "
 "für alle ausgewählten Mitglieder benutzt und kann später geändert werden."
-
-msgid "Enter parameter (e.g. GRE)"
-msgstr "Parameter eingeben (z.B. GRE)"
 
 msgid "Environment Data"
 msgstr "Umgebungsdaten"
@@ -3139,10 +3122,6 @@ msgid "Failed to create network %s"
 msgstr "Das Netzwerk %s konnte nicht erstellt werden."
 
 #, python-format
-msgid "Failed to create network profile %s"
-msgstr "Netzwerkprofil %s konnte nicht erstellt werden"
-
-#, python-format
 msgid "Failed to create router \"%s\"."
 msgstr "Router \"%s\" konnte nicht angelegt werden."
 
@@ -3168,10 +3147,6 @@ msgstr "Das Netzwerk \"%s\" konnte nicht gelöscht werden."
 #, python-format
 msgid "Failed to delete network %s"
 msgstr "Das Netzwerk %s konnte nicht gelöscht werden."
-
-#, python-format
-msgid "Failed to delete network profile (%s)."
-msgstr "Netzwerkprofil (%s) konnte nicht gelöscht werden."
 
 #, python-format
 msgid "Failed to delete port %s"
@@ -3270,9 +3245,6 @@ msgstr ""
 "%s Projektmitglieder, Projektgruppen und Projektkontingente konnten nicht "
 "aktualisiert werden."
 
-msgid "Failed to obtain network profile binding"
-msgstr "Fehler beim Abruf der Netzwerk-Profil-Bindung"
-
 #, python-format
 msgid ""
 "Failed to perform requested operation on instance \"%s\", the instance has "
@@ -3359,10 +3331,6 @@ msgstr "Mitglied %s konnte nicht aktualisiert werden."
 #, python-format
 msgid "Failed to update network %s"
 msgstr "Das Netzwerk %s konnte nicht aktualisiert werden."
-
-#, python-format
-msgid "Failed to update network profile (%s)."
-msgstr "Netzwerkprofil (%s) konnte nicht aktualisiert werden."
 
 #, python-format
 msgid "Failed to update policy %(name)s: %(reason)s"
@@ -4609,12 +4577,6 @@ msgstr "Monitore"
 msgid "Month to date"
 msgstr "Aktueller Monat"
 
-msgid "Multicast IP Range"
-msgstr "Multicast IP Bereich"
-
-msgid "Multicast IPv4 range(e.g. 224.0.1.0-224.0.1.100)"
-msgstr "Multicast IPv4 Bereich (z.B. 224.0.1.0-224.0.1.100)"
-
 msgid "Must specify start of period"
 msgstr "Anfang des Zeitraumes muss angegeben werden"
 
@@ -4666,9 +4628,6 @@ msgstr "Namensraum Überblick"
 msgid "Namespaces"
 msgstr "Namensräume"
 
-msgid "Native VXLAN"
-msgstr "Natives VXLAN"
-
 msgid "Network"
 msgstr "Netzwerk"
 
@@ -4704,14 +4663,6 @@ msgstr "Netzwerkname"
 
 msgid "Network Profile"
 msgstr "Netzwerkprofile"
-
-#, python-format
-msgid "Network Profile %s was successfully created."
-msgstr "Netzwerkprofil %s erfolgreich erstellt."
-
-#, python-format
-msgid "Network Profile %s was successfully updated."
-msgstr "Netzwerkprofil %s erfolgreich aktualisiert."
 
 msgid "Network Profiles could not be retrieved."
 msgstr "Netzwerk-Profile konnten nicht abgerufen werden."
@@ -5129,9 +5080,6 @@ msgstr "Anderes Protokoll"
 msgid "Output"
 msgstr "Ausgabe"
 
-msgid "Overlay"
-msgstr "Overlay"
-
 msgid "Overview"
 msgstr "Übersicht"
 
@@ -5270,9 +5218,6 @@ msgstr "Cluster nach Beendigung der Aufgabe bestehen lassen."
 msgid "Physical Network"
 msgstr "Physikalisches Netzwerk"
 
-msgid "Physical Network Name"
-msgstr "Physikalischer Netzwerkname"
-
 msgid "Pig"
 msgstr "Pig"
 
@@ -5319,9 +5264,6 @@ msgstr "Richtlinie"
 #, python-format
 msgid "Policy %s was successfully updated."
 msgstr "Richtlinie %s wurde wurde erfolgreich aktualisiert."
-
-msgid "Policy Profile"
-msgstr "Datenschutz Profil"
 
 msgid "Policy Profiles"
 msgstr "Datenschutz Profile"
@@ -5456,9 +5398,6 @@ msgstr ""
 
 msgid "Projects"
 msgstr "Projekte"
-
-msgid "Projects could not be retrieved."
-msgstr "Projekte können nicht abgerufen werden."
 
 msgid "Projects:"
 msgstr "Projekte:"
@@ -6193,12 +6132,6 @@ msgstr "Sicherheitsgruppenregeln"
 msgid "Security Groups"
 msgstr "Sicherheitsgruppen"
 
-msgid "Segment Range"
-msgstr "Segment Bereich"
-
-msgid "Segment Type"
-msgstr "Segment Typ"
-
 msgid "Segmentation ID"
 msgstr "Segmentierungs-ID"
 
@@ -6537,6 +6470,10 @@ msgstr "Größe des Datenträgers in GB."
 msgid "Size of volume"
 msgstr "Größe des Datenträgers"
 
+msgid "Slash is not allowed at the beginning or end of your string."
+msgstr ""
+"Ein Schrägstrich ist weder an Anfang noch am Ende der Zeichenkette erlaubt."
+
 msgid "Slash is not an allowed character."
 msgstr "Der Schrägstrich (Slash) ist kein erlaubtes Zeichen."
 
@@ -6807,12 +6744,6 @@ msgstr "Speichertyp"
 
 msgid "Streaming MapReduce"
 msgstr "Streaming MapReduce"
-
-msgid "Sub Type"
-msgstr "Untertyp"
-
-msgid "Sub Type Value (Manual Input)"
-msgstr "Untertyp-Wert (Händische Eingabe)"
 
 msgid "Subnet"
 msgstr "Subnetz"
@@ -7449,9 +7380,6 @@ msgstr "Transfername"
 msgid "Transform Protocol"
 msgstr "Verwandlungsprotokoll"
 
-msgid "Trunk"
-msgstr "Trunk"
-
 msgid "Type"
 msgstr "Typ"
 
@@ -7861,6 +7789,9 @@ msgstr "Vorlageobjekt kann nicht abgerufen werden."
 msgid "Unable to fetch template to copy."
 msgstr "Zu kopierende Vorlage kann nicht abgerufen werden."
 
+msgid "Unable to fetch template to edit."
+msgstr "Vorlage zum bearbeiten kann nicht abgerufen werden."
+
 msgid "Unable to fetch the image details"
 msgstr "Abrufen der Abbild Details fehlgeschlagen"
 
@@ -8216,12 +8147,25 @@ msgid "Unable to retrieve details for cluster template \"%s\"."
 msgstr "Details zur Clustervorlage \"%s\" können nicht abgerufen werden."
 
 #, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr "Details zur Datenquelle \"%s\" können nicht abgerufen werden."
+
+#, python-format
 msgid "Unable to retrieve details for database instance: %s"
 msgstr "Details zur Datenbankinstanz können nicht abgerufen werden: %s"
 
 #, python-format
 msgid "Unable to retrieve details for instance \"%s\"."
 msgstr "Details zur Instanz \"%s\" können nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "Details zur Aufgabe \"%s\" können nicht abgerufen werden."
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr ""
+"Details des Aufgaben-Binärprogramms \"%s\" können nicht abgerufen werden."
 
 #, python-format
 msgid "Unable to retrieve details for job template \"%s\"."
@@ -8444,9 +8388,6 @@ msgstr "Einzelheiten zum Namensraum können nicht abgerufen werden."
 
 msgid "Unable to retrieve network details."
 msgstr "Netzwerkdetails können nicht abgerufen werden."
-
-msgid "Unable to retrieve network profile details."
-msgstr "Netzwerkprofildetails können nicht abgerufen werden."
 
 msgid "Unable to retrieve network quota information."
 msgstr "Netzwerk Kontingent Informationen können nicht abgerufen werden."
@@ -8959,9 +8900,6 @@ msgstr "Aktualisiere Metadaten"
 
 msgid "Update Network"
 msgstr "Netzwerk aktualisieren"
-
-msgid "Update Network Profile"
-msgstr "Netzwerkprofil aktualisieren"
 
 msgid "Update Object"
 msgstr "Aktualisiere Objekt"
