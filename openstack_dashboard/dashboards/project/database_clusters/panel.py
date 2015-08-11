@@ -17,12 +17,8 @@
 from django.utils.translation import ugettext_lazy as _
 
 import horizon
-from openstack_dashboard.dashboards.project import dashboard
 
 
 class Clusters(horizon.Panel):
     name = _("Clusters")
     slug = 'database_clusters'
-
-
-dashboard.Project.register(Clusters)

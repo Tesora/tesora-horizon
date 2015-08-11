@@ -16,13 +16,8 @@ from django.utils.translation import ugettext_lazy as _
 
 import horizon
 
-from openstack_dashboard.dashboards.project import dashboard
-
 
 class Datastores(horizon.Panel):
     name = _("Datastores")
     slug = 'database_datastores'
     permissions = ('openstack.services.database',)
-
-
-dashboard.Project.register(Datastores)

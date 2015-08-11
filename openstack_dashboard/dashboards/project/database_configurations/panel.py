@@ -16,13 +16,8 @@ from django.utils.translation import ugettext_lazy as _
 
 import horizon
 
-from openstack_dashboard.dashboards.project import dashboard
-
 
 class Configurations(horizon.Panel):
     name = _("Configuration Groups")
     slug = 'database_configurations'
     permissions = ('openstack.services.database',)
-
-
-dashboard.Project.register(Configurations)
