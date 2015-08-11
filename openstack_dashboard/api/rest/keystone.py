@@ -93,14 +93,6 @@ class Users(generic.View):
             domain=domain.id
         )
 
-        # assign role to user
-        api.keystone.add_tenant_user_role(
-            request,
-            project=request.DATA.get('project_id'),
-            user=new_user.id,
-            role=request.DATA.get('role_id')
-        )
-
         return rest_utils.CreatedResponse(
             '/api/keystone/users/%s' % new_user.id,
             new_user.to_dict()
@@ -420,13 +412,16 @@ class Projects(generic.View):
         if len(filters) == 0:
             filters = None
 
+        paginate = request.GET.get('paginate') == 'true'
+        admin = False if request.GET.get('admin') == 'false' else True
+
         result, has_more = api.keystone.tenant_list(
             request,
-            paginate=request.GET.get('paginate', False),
+            paginate=paginate,
             marker=request.GET.get('marker'),
             domain=request.GET.get('domain_id'),
             user=request.GET.get('user_id'),
-            admin=request.GET.get('admin', True),
+            admin=admin,
             filters=filters
         )
         # return (list of results, has_more_data)
@@ -514,7 +509,7 @@ class Project(generic.View):
 @urls.register
 class ProjectRole(generic.View):
     url_regex = r'keystone/projects/(?P<project_id>[0-9a-f]+)/' \
-                ' (?P<role_id>[0-9a-f]+)/(?P<user_id>[0-9a-f]+)$'
+                '(?P<role_id>[0-9a-f]+)/(?P<user_id>[0-9a-f]+)$'
 
     @rest_utils.ajax()
     def put(self, request, project_id, role_id, user_id):

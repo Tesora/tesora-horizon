@@ -253,6 +253,7 @@ OPENSTACK_NEUTRON_NETWORK = {
     # types in this list will be available to choose from when creating a
     # port.
     # VNIC types include 'normal', 'macvtap' and 'direct'.
+    # Set to empty list or None to disable VNIC type selection.
     'supported_vnic_types': ['*']
 }
 
@@ -618,6 +619,12 @@ SECURITY_GROUP_RULES = {
 # auth_token middleware are using. Allowed values are the
 # algorithms supported by Python's hashlib library.
 #OPENSTACK_TOKEN_HASH_ALGORITHM = 'md5'
+
+# Hashing tokens from Keystone keeps the Horizon session data smaller, but it
+# doesn't work in some cases when using PKI tokens.  Uncomment this value and
+# set it to False if using PKI tokens and there are 401 errors due to token
+# hashing.
+#OPENSTACK_TOKEN_HASH_ENABLED = True
 
 # AngularJS requires some settings to be made available to
 # the client side. Some settings are required by in-tree / built-in horizon

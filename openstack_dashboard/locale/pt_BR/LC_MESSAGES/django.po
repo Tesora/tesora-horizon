@@ -17,15 +17,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-07-19 22:22+0000\n"
-"PO-Revision-Date: 2015-07-06 07:12+0000\n"
+"POT-Creation-Date: 2015-08-11 04:23+0000\n"
+"PO-Revision-Date: 2015-08-11 01:43+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/openstack/"
 "horizon/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 1.3\n"
+"Generated-By: Babel 2.0\n"
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
@@ -124,9 +124,6 @@ msgstr "-"
 
 msgid "-- not selected --"
 msgstr "-- Não Selecionado --"
-
-msgid "1-4093 for VLAN; 5000 and above for Overlay"
-msgstr "1-4093 para VLAN; 5000 e acima para Overlay"
 
 msgid "3des"
 msgstr "3des"
@@ -555,6 +552,9 @@ msgstr "Alocar IP"
 msgid "Allocate IP To Project"
 msgstr "Alocar IP para Projeto"
 
+msgid "Allocated"
+msgstr "Alocado"
+
 #, python-format
 msgid "Allocated Floating IP %(ip)s."
 msgstr "Alocado IP Flutuante %(ip)s"
@@ -625,6 +625,9 @@ msgstr "Ao menos um membro precisa ser especificado"
 
 msgid "At least one network must be specified."
 msgstr "Ao menos uma rede deve ser espeicifacada."
+
+msgid "Attach Interface"
+msgstr "Conectar Interface."
 
 msgid "Attach to Instance"
 msgstr "Anexar em uma Instância."
@@ -983,12 +986,6 @@ msgstr ""
 msgid "Cipher"
 msgstr "Cifra"
 
-msgid "Cisco Nexus 1000V"
-msgstr "Cisco Nexus 1000V"
-
-msgid "Cisco Nexus 1000v"
-msgstr "Cisco Nexus 1000v"
-
 msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
 msgstr "Roteamento Inter-Domínios Sem Classe (ex: 192.168.0.0/24)"
 
@@ -1337,9 +1334,6 @@ msgstr "Criar Rede"
 
 msgid "Create Network (Quota exceeded)"
 msgstr "Criar Rede (Quota excedida)"
-
-msgid "Create Network Profile"
-msgstr "Criar Perfil de Rede"
 
 msgid "Create Node Group Template"
 msgstr "Criar Mode de Node Group"
@@ -1704,6 +1698,10 @@ msgctxt "Admin state of a Firewall"
 msgid "DOWN"
 msgstr "BAIXO"
 
+msgctxt "Admin state of a Load balancer"
+msgid "DOWN"
+msgstr "DOWN"
+
 msgctxt "Admin state of a Network"
 msgid "DOWN"
 msgstr "BAIXO"
@@ -1796,6 +1794,9 @@ msgstr "Atraso"
 
 msgid "Delay must be greater than or equal to Timeout"
 msgstr "O atraso deve ser maior ou igual do que o tempo limite"
+
+msgid "Delay must be greater than or equal to timeout"
+msgstr "Tempo de espera deve ser maior ou igual ao tempo limite"
 
 msgid "Delete Backup"
 msgid_plural "Delete Backups"
@@ -1942,11 +1943,6 @@ msgid "Delete Network"
 msgid_plural "Delete Networks"
 msgstr[0] "Excluir Rede"
 msgstr[1] "Excluir Redes"
-
-msgid "Delete Network Profile"
-msgid_plural "Delete Network Profiles"
-msgstr[0] "Excluir Perfil de Rede"
-msgstr[1] "Excluir Perfis de Rede"
 
 msgid "Delete Object"
 msgid_plural "Delete Objects"
@@ -2186,11 +2182,6 @@ msgid_plural "Deleted Networks"
 msgstr[0] "Redes Excluída"
 msgstr[1] "Redes Excluídas"
 
-msgid "Deleted Network Profile"
-msgid_plural "Deleted Network Profiles"
-msgstr[0] "Perfil de Rede Excluído"
-msgstr[1] "Perfis de Rede Excluídos"
-
 msgid "Deleted Object"
 msgid_plural "Deleted Objects"
 msgstr[0] "Objeto Excluído"
@@ -2349,6 +2340,9 @@ msgstr "Nome do objeto de destino"
 msgid "Destination port (integer in [1, 65535] or range in a:b)"
 msgstr "Porta destino (inteiro em [1, 65535] ou faixa em a:b)"
 
+msgid "Detach Interface"
+msgstr "Desconectar interface"
+
 msgid "Detach Volume"
 msgid_plural "Detach Volumes"
 msgstr[0] "Desanexar Volume"
@@ -2357,6 +2351,14 @@ msgstr[1] "Desanexar Volumes"
 msgid "Detached"
 msgstr "Desanexado"
 
+#, python-format
+msgid "Detached interface %(port)s for instance %(instance)s."
+msgstr "Interface desconectada %(port)s para instância %(instance)s."
+
+msgid "Detaching"
+msgstr "Desanexando"
+
+msgctxt "Current status of a Volume"
 msgid "Detaching"
 msgstr "Desanexando"
 
@@ -2648,8 +2650,8 @@ msgstr "Editar Monitor"
 msgid "Edit Network"
 msgstr "Editar Rede"
 
-msgid "Edit Network Profile"
-msgstr "Editar Perfil de Rede"
+msgid "Edit Node Group Template"
+msgstr "Editar Modelo de Grupo de Nodo"
 
 msgid "Edit Policy"
 msgstr "Editar Política"
@@ -2782,9 +2784,6 @@ msgstr "Algoritmo de encriptação"
 msgid "Engine Id"
 msgstr "Identificador do Motor"
 
-msgid "Enhanced VXLAN"
-msgstr "VXLAN aprimorada"
-
 msgid "Enter a value for ICMP code in the range (-1: 255)"
 msgstr "Digite um valor para o código ICMP na faixa (-1: 255)"
 
@@ -2805,9 +2804,6 @@ msgid ""
 msgstr ""
 "Introduzir um valor inteiro entre 1 e 65535 A mesma porta irá ser utilizado "
 "para todos os membros seleccionados e podem ser modificados posteriormente."
-
-msgid "Enter parameter (e.g. GRE)"
-msgstr "Inserir parametro (ex. GRE)"
 
 msgid "Environment Data"
 msgstr "Dados de Ambiente"
@@ -3089,10 +3085,6 @@ msgid "Failed to create network %s"
 msgstr "Falha ao criar rede %s"
 
 #, python-format
-msgid "Failed to create network profile %s"
-msgstr "Falha ao criar perfil de rede %s"
-
-#, python-format
 msgid "Failed to create router \"%s\"."
 msgstr "Falha ao criar roteador \"%s\"."
 
@@ -3116,10 +3108,6 @@ msgstr "Falha ao excluir rede \"%s\""
 #, python-format
 msgid "Failed to delete network %s"
 msgstr "Falha ao excluir rede %s"
-
-#, python-format
-msgid "Failed to delete network profile (%s)."
-msgstr "Falha ao excluir perfil de rede (%s)."
 
 #, python-format
 msgid "Failed to delete port %s"
@@ -3217,9 +3205,6 @@ msgstr ""
 "Falha ao modificar %s membros de projeto, atualizar grupos de projeto e "
 "atualizar cotas de projeto."
 
-msgid "Failed to obtain network profile binding"
-msgstr "Não foi possível obter perfil de rede de ligação"
-
 #, python-format
 msgid ""
 "Failed to perform requested operation on instance \"%s\", the instance has "
@@ -3302,10 +3287,6 @@ msgstr "Falha ao atualizar membro %s"
 #, python-format
 msgid "Failed to update network %s"
 msgstr "Falha ao atualizar rede %s"
-
-#, python-format
-msgid "Failed to update network profile (%s)."
-msgstr "Falha ao atualizar perfil de rede (%s)."
 
 #, python-format
 msgid "Failed to update policy %(name)s: %(reason)s"
@@ -4145,6 +4126,9 @@ msgstr "Morto"
 msgid "Kwapi"
 msgstr "Kwapi"
 
+msgid "LB Method"
+msgstr "Método LB"
+
 msgid "LUKS Volume Snapshots"
 msgstr "Snapshots de Volumes LUKS "
 
@@ -4236,6 +4220,10 @@ msgid ""
 msgstr ""
 "O disparo de múltiplas instâncias é suportada apenas para imagens e "
 "snapshots de instâncias."
+
+msgctxt "load balancing method"
+msgid "Least Connections"
+msgstr "Menor número de conexões"
 
 msgid "Length of Injected File Path"
 msgstr "Tamanho do Caminho do Arquivo Injetado"
@@ -4548,12 +4536,6 @@ msgstr "Monitores"
 msgid "Month to date"
 msgstr "Data do mês"
 
-msgid "Multicast IP Range"
-msgstr "Faixa de IP Multicast"
-
-msgid "Multicast IPv4 range(e.g. 224.0.1.0-224.0.1.100)"
-msgstr "Range Multicast IPv4 (por exemplo. 224.0.1.0-224.0.1.100)"
-
 msgid "Must specify start of period"
 msgstr "Deve especificar o início do período"
 
@@ -4603,9 +4585,6 @@ msgstr "Visão Geral de Namespaces"
 msgid "Namespaces"
 msgstr "Namespaces"
 
-msgid "Native VXLAN"
-msgstr "VXLAN Nativa"
-
 msgid "Network"
 msgstr "Rede"
 
@@ -4641,14 +4620,6 @@ msgstr "Nome de Rede"
 
 msgid "Network Profile"
 msgstr "Perfil de Rede"
-
-#, python-format
-msgid "Network Profile %s was successfully created."
-msgstr "Perfil de Rede %s foi criado com sucesso."
-
-#, python-format
-msgid "Network Profile %s was successfully updated."
-msgstr "Perfil de Rede %s foi atualizado com sucesso."
 
 msgid "Network Profiles could not be retrieved."
 msgstr "Perfis de Rede não puderam ser obtidos."
@@ -4805,6 +4776,9 @@ msgstr "Sem par de chaves"
 msgid "No networks available"
 msgstr "Não há redes disponíveis"
 
+msgid "No new QoS spec available"
+msgstr "Nenhuma nova especificação QoS disponível"
+
 msgid "No options specified"
 msgstr "Nenhuma opção especificada"
 
@@ -4816,6 +4790,9 @@ msgstr "Não há hosts disponível"
 
 msgid "No other hosts available."
 msgstr "Nenhum outro host disponível."
+
+msgid "No other volume types available"
+msgstr "Nenhum outro tipo de volume disponível"
 
 msgid "No ports available"
 msgstr "Sem portas disponíveis"
@@ -4872,6 +4849,10 @@ msgstr "Sem tipo de volume"
 msgid "No volumes available"
 msgstr "Nenhum volume disponível"
 
+#, python-format
+msgid "Node Group Template %s updated"
+msgstr "Modelo de grupo de nodo \"%s\" atualizado."
+
 msgid "Node Group Template Details"
 msgstr "Detalhes de modelo do Node group"
 
@@ -4900,6 +4881,9 @@ msgstr "Nenhum"
 msgctxt "Task status of an Instance"
 msgid "None"
 msgstr "Nenhum"
+
+msgid "None (removes spec)"
+msgstr "Nenhum (remove especificação)"
 
 msgid "Normal"
 msgstr "Normal"
@@ -5036,9 +5020,6 @@ msgstr "Backup pai Opcional"
 msgid "Optional: Next Hop Addresses (comma delimited)"
 msgstr "Opcionais: Próximos Endereços Hop (delimitado por vírgulas)"
 
-msgid "Orchestration"
-msgstr "Orquestração"
-
 msgid "Orchestration Services"
 msgstr "Serviços de orquestração"
 
@@ -5053,9 +5034,6 @@ msgstr "Outro Protocolo"
 
 msgid "Output"
 msgstr "Output"
-
-msgid "Overlay"
-msgstr "Overlay"
 
 msgid "Overview"
 msgstr "Visão Geral"
@@ -5194,9 +5172,6 @@ msgstr "Persistir cluster após sair do job"
 msgid "Physical Network"
 msgstr "Rede Física"
 
-msgid "Physical Network Name"
-msgstr "Nome de Rede Física"
-
 msgid "Pig"
 msgstr "Pig"
 
@@ -5242,9 +5217,6 @@ msgstr "Política"
 #, python-format
 msgid "Policy %s was successfully updated."
 msgstr "Política %s foi atualizada com sucesso."
-
-msgid "Policy Profile"
-msgstr "Perfil de Política"
 
 msgid "Policy Profiles"
 msgstr "Perfis de Política"
@@ -5379,9 +5351,6 @@ msgstr "Nome do projeto já está em uso. Por favor use um nome diferente."
 msgid "Projects"
 msgstr "Projetos"
 
-msgid "Projects could not be retrieved."
-msgstr "Projetos não puderam ser obtidos."
-
 msgid "Projects:"
 msgstr "Projetos:"
 
@@ -5479,6 +5448,9 @@ msgstr "RAM (utilizado)"
 #, python-format
 msgid "RAM(Available: %(avail)s, Requested: %(req)s)"
 msgstr "RAM(Disponível: %(avail)s, Requisitado: %(req)s)"
+
+msgid "Ramdisk"
+msgstr "Ramdisk"
 
 msgid "Ramdisk ID"
 msgstr "ID do Ramdisk"
@@ -5869,6 +5841,10 @@ msgstr "Disco Raiz"
 msgid "Root Disk (GB)"
 msgstr "Disco Raíz (GB)"
 
+msgctxt "load balancing method"
+msgid "Round Robin"
+msgstr "Round Robin"
+
 msgid "Router"
 msgstr "Roteador"
 
@@ -6099,12 +6075,6 @@ msgstr "Regras do Grupo de Segurança"
 msgid "Security Groups"
 msgstr "Grupos de Segurança"
 
-msgid "Segment Range"
-msgstr "Faixa de Segmento"
-
-msgid "Segment Type"
-msgstr "Tipo de Segmento"
-
 msgid "Segmentation ID"
 msgstr "ID de Segmentação"
 
@@ -6188,6 +6158,9 @@ msgstr "Selecione a instância mestre"
 msgid "Select a monitor template for %s"
 msgstr "Selecione um modelo de monitor para %s"
 
+msgid "Select a new QoS spec"
+msgstr "Selecione uma nova especificação QoS"
+
 msgid "Select a new agent"
 msgstr "Selecione um novo agente"
 
@@ -6202,6 +6175,9 @@ msgstr "Selecione um novo modelo para visualizar uma pilha."
 
 msgid "Select a new template to re-launch a stack."
 msgstr "Selecione um novo modelo para relançar uma pilha."
+
+msgid "Select a new volume type"
+msgstr "Selecione um novo tipo de volume"
 
 msgid "Select a port"
 msgstr "Selecione uma porta"
@@ -6437,6 +6413,9 @@ msgstr "Tamanho do volume em GB."
 msgid "Size of volume"
 msgstr "Tamanho do volume"
 
+msgid "Slash is not allowed at the beginning or end of your string."
+msgstr "O caractere barra não é permitido no início ou final de uma string."
+
 msgid "Slash is not an allowed character."
 msgstr "Barra não é um caracter permitido."
 
@@ -6503,6 +6482,10 @@ msgstr "Algo deu errado!"
 msgid "Source CIDR"
 msgstr "Origem CIDR"
 
+msgid "Source IP"
+msgstr "IP de origem"
+
+msgctxt "load balancing method"
 msgid "Source IP"
 msgstr "IP de origem"
 
@@ -6703,12 +6686,6 @@ msgstr "Tipo de Storage"
 
 msgid "Streaming MapReduce"
 msgstr "Streaming MapReduce"
-
-msgid "Sub Type"
-msgstr "Sub Tipo"
-
-msgid "Sub Type Value (Manual Input)"
-msgstr "Valor de Sub Tipo (entrada manual)"
 
 msgid "Subnet"
 msgstr "Sub-rede"
@@ -7075,6 +7052,13 @@ msgid "The instance password encrypted with your public key."
 msgstr "A senha da instância criptografada com sua chave pública."
 
 msgid ""
+"The maximum time in seconds for a monitor to wait for a reply. It must be "
+"less than or equal to delay"
+msgstr ""
+"O tempo máximo em segundos para um monitor esperar por uma resposta. Deve "
+"ser menor ou igual ao tempo de espera"
+
+msgid ""
 "The minimum disk size required to boot the image. If unspecified, this value "
 "defaults to 0 (no minimum)."
 msgstr ""
@@ -7087,6 +7071,13 @@ msgid ""
 msgstr ""
 "O mínimo do tamanho de memória necessário para inicializar a imagem. Se não "
 "for especificado, o valor padrão será 0 (sem mínimo)."
+
+msgid ""
+"The minimum time in seconds between regular checks of a member. It must be "
+"greater than or equal to timeout"
+msgstr ""
+"O tempo mínimo em segundos entre verificações regulares de um membro. Deve "
+"ser maior ou igual ao tempo limite"
 
 #, python-format
 msgid "The name \"%s\" is already used by another flavor."
@@ -7221,6 +7212,10 @@ msgstr "Houve um problema ao analisar o  %(prefix)s: %(error)s"
 msgid "This action cannot be undone."
 msgstr "Esta ação não pode ser desfeita."
 
+msgid "This application requires JavaScript to be enabled in your web browser."
+msgstr ""
+"Esta aplicação requer que o JavaScript esteja habilitado no seu navegador."
+
 msgid ""
 "This is required for operations to be performed throughout the lifecycle of "
 "the stack"
@@ -7314,9 +7309,6 @@ msgstr "Transferência de Nome"
 msgid "Transform Protocol"
 msgstr "Transformar Protocolo"
 
-msgid "Trunk"
-msgstr "Tronco"
-
 msgid "Type"
 msgstr "Tipo"
 
@@ -7335,6 +7327,10 @@ msgstr "CIMA"
 msgctxt "Admin state of a Firewall"
 msgid "UP"
 msgstr "CIMA"
+
+msgctxt "Admin state of a Load balancer"
+msgid "UP"
+msgstr "UP"
 
 msgctxt "Admin state of a Network"
 msgid "UP"
@@ -7616,6 +7612,9 @@ msgstr "Não foi possível excluir regra. %s"
 
 msgid "Unable to delete volume transfer."
 msgstr "Não é possível excluir a transferência de volume."
+
+msgid "Unable to detach interface."
+msgstr "Não foi possível desconectar interface."
 
 msgid "Unable to determine if availability zones extension is supported."
 msgstr "Não é possível determinar se zonas de disponibilidade são suportadas"
@@ -8057,6 +8056,18 @@ msgid "Unable to retrieve details for backup: %s"
 msgstr "Não foi possível obter detalhes do backup: %s"
 
 #, python-format
+msgid "Unable to retrieve details for cluster \"%s\"."
+msgstr "Não foi possível obter detalhes para o cluster \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for cluster template \"%s\"."
+msgstr "Não foi possível obter detalhes para o modelo de cluster \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for data source \"%s\"."
+msgstr "Não foi possível obter detalhes para a fonte de dados \"%s\"."
+
+#, python-format
 msgid "Unable to retrieve details for database instance: %s"
 msgstr "Não foi possível obter detalhes para a instância da base de dados: %s"
 
@@ -8065,12 +8076,28 @@ msgid "Unable to retrieve details for instance \"%s\"."
 msgstr "Não foi possível recuperar os detalhes da instância \"%s\"."
 
 #, python-format
+msgid "Unable to retrieve details for job \"%s\"."
+msgstr "Não foi possível obter detalhes para o job \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job binary \"%s\"."
+msgstr "Não foi possível obter detalhes para o job binário \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for job template \"%s\"."
+msgstr "Não foi possível obter detalhes para o modelo de job \"%s\"."
+
+#, python-format
 msgid "Unable to retrieve details for keypair \"%s\"."
 msgstr "Não é possível recuperar detalhes para o par de chaves \"%s\"."
 
 #, python-format
 msgid "Unable to retrieve details for network \"%s\"."
 msgstr "Não foi possível obter detalhes de rede \"%s\"."
+
+#, python-format
+msgid "Unable to retrieve details for node group template \"%s\"."
+msgstr "Não foi possível obter detalhes para o modelo de grupo de nodo \"%s\"."
 
 #, python-format
 msgid "Unable to retrieve details for parent backup: %s"
@@ -8091,6 +8118,9 @@ msgstr "Não é possivel recuperar informações do domínio."
 
 msgid "Unable to retrieve domain list."
 msgstr "Não foi possível recuperar a lista de domínios."
+
+msgid "Unable to retrieve extensions information"
+msgstr "Não é possível recuperar informações de extensões."
 
 msgid "Unable to retrieve extensions information."
 msgstr "Não é possível recuperar informações de extensões."
@@ -8272,9 +8302,6 @@ msgstr "Não é possível obter detalhes do namespace."
 msgid "Unable to retrieve network details."
 msgstr "Não foi possível obter detalhes da rede."
 
-msgid "Unable to retrieve network profile details."
-msgstr "Não foi possível obter detalhes do perfil da rede."
-
 msgid "Unable to retrieve network quota information."
 msgstr "Não foi possível obter informações de cota de rede."
 
@@ -8332,6 +8359,9 @@ msgstr "Não foi possível obter detalhes da porta."
 
 msgid "Unable to retrieve port details."
 msgstr "Não foi possível obter detalhes da porta."
+
+msgid "Unable to retrieve ports information."
+msgstr "Não foi possível obter informações de portas."
 
 msgid "Unable to retrieve project details."
 msgstr "Não foi possível obter detalhes da projeto."
@@ -8781,9 +8811,6 @@ msgstr "Atualizar metadados"
 msgid "Update Network"
 msgstr "Atualizar Rede"
 
-msgid "Update Network Profile"
-msgstr "Atualizar Perfil de Rede"
-
 msgid "Update Object"
 msgstr "Atualizar objeto"
 
@@ -9098,6 +9125,9 @@ msgstr "Snapshots de Volume"
 
 msgid "Volume Source"
 msgstr "Origem do Volume"
+
+msgid "Volume Storage"
+msgstr "Armazenamento de volume"
 
 msgid "Volume Transfer"
 msgstr " Transferência de Volume"
