@@ -1,4 +1,4 @@
-# Copyright 2012 Nebula, Inc.
+# Copyright 2013 Rackspace Hosting
 #
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
 #    not use this file except in compliance with the License. You may obtain
@@ -12,13 +12,15 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from django.utils.translation import ugettext_lazy as _
+from django.conf.urls import patterns
+from django.conf.urls import url
 
-import horizon
+from openstack_dashboard.contrib.trove.content.database_backups import views
 
-
-class Project(horizon.Dashboard):
-    name = _("Project")
-    slug = "project"
-
-horizon.register(Project)
+urlpatterns = patterns(
+    '',
+    url(r'^$', views.IndexView.as_view(), name='index'),
+    url(r'^create$', views.BackupView.as_view(), name='create'),
+    url(r'^(?P<backup_id>[^/]+)/$', views.DetailView.as_view(),
+        name='detail'),
+)
