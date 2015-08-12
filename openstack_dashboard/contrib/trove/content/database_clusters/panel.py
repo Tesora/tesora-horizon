@@ -1,4 +1,6 @@
-# Copyright 2012 Nebula, Inc.
+# Copyright (c) 2014 eBay Software Foundation
+# Copyright 2015 HP Software, LLC
+# All Rights Reserved.
 #
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
 #    not use this file except in compliance with the License. You may obtain
@@ -17,8 +19,7 @@ from django.utils.translation import ugettext_lazy as _
 import horizon
 
 
-class Project(horizon.Dashboard):
-    name = _("Project")
-    slug = "project"
-
-horizon.register(Project)
+class Clusters(horizon.Panel):
+    name = _("Clusters")
+    slug = 'database_clusters'
+    permissions = ('openstack.services.database',)

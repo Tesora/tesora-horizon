@@ -6,5 +6,5 @@ PANEL_DASHBOARD = 'project'
 PANEL_GROUP = 'database'
 
 # Python panel class of the PANEL to be added.
-ADD_PANEL = ('openstack_dashboard.dashboards.project.'
+ADD_PANEL = ('openstack_dashboard.contrib.trove.content.'
              'database_configurations.panel.Configurations')
