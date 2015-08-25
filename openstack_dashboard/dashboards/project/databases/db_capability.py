@@ -26,14 +26,10 @@ _mysql_compatible_datastores = (MYSQL, MARIA, PERCONA)
 
 
 def can_backup(datastore):
-    if is_oracle_datastore(datastore):
-        return False
     return True
 
 
 def can_launch_from_master(datastore):
-    if is_oracle_datastore(datastore):
-        return False
     return True
 
 
