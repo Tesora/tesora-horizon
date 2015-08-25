@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-08-18 02:50+0000\n"
-"PO-Revision-Date: 2015-08-17 17:04+0000\n"
+"POT-Creation-Date: 2015-08-22 19:10+0000\n"
+"PO-Revision-Date: 2015-08-22 15:27+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Maithili (http://www.transifex.com/openstack/horizon/language/"
 "mai/)\n"
@@ -1587,15 +1587,6 @@ msgstr "रूटर बनाउ"
 
 msgid "Create a Snapshot"
 msgstr "स्नेपशाट बनाउ"
-
-msgid ""
-"Create a VIP for this pool. Assign a name, description, IP address, port, "
-"and maximum connections allowed for the VIP. Choose the protocol and session "
-"persistence method for the VIP. Admin State is UP (checked) by default."
-msgstr ""
-"ई पूल क लेल एकटा VIP बनाउ. VIP क लेल एकटा नाम, विवरण, IP पता, पोर्ट आओर अधिकतम "
-"अनुमत कनेक्शन असाइन करू. VIP क लेल प्रोटोकाल आओर सत्र दृढ़ता विधि चुनू. पूर्वनिर्धारित रूपेँ "
-"एडमिन स्टेट UP (चिह्नित) अछि."
 
 msgid "Create a Volume"
 msgstr "वाल्यूम बनाउ"
@@ -6028,9 +6019,6 @@ msgstr "प्रवेश द्वार क आईपी पता निर�
 msgid "Specify VIP"
 msgstr "VIP निर्दिष्ट करू"
 
-msgid "Specify a free IP address from the selected subnet"
-msgstr "चयनित सबनेट सँ एकटा स्वतंत्र IP पता निर्दिष्ट करू"
-
 msgid "Specify additional attributes for the subnet."
 msgstr "सबनेट क लेल बाइली विशेषता निर्दिष्ट करू."
 
@@ -8464,9 +8452,6 @@ msgstr "वाल्यूम"
 
 msgid "Volumes Attached"
 msgstr "वाल्यूम संलग्न "
-
-msgid "Volumes are block devices that can be attached to instances."
-msgstr "वाल्यूम इंस्टेंस सँ जुड़ल जाए सकैत अछि जे ब्लाक अओजार रहल अछि."
 
 msgid "Volumes per node"
 msgstr "वाल्यूम प्रति नोड"

@@ -306,6 +306,7 @@ class Panel(HorizonComponent):
         return urlpatterns, self.slug, self.slug
 
 
+@six.python_2_unicode_compatible
 class PanelGroup(object):
     """A container for a set of :class:`~horizon.Panel` classes.
 
@@ -336,7 +337,7 @@ class PanelGroup(object):
     def __repr__(self):
         return "<%s: %s>" % (self.__class__.__name__, self.slug)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def __iter__(self):
@@ -734,14 +735,11 @@ class Site(Registry, HorizonComponent):
                 dashboards.append(dashboard)
                 registered.pop(dashboard.__class__)
             if len(registered):
-                extra = registered.values()
-                extra.sort()
+                extra = sorted(registered.values())
                 dashboards.extend(extra)
             return dashboards
         else:
-            dashboards = self._registry.values()
-            dashboards.sort()
-            return dashboards
+            return sorted(self._registry.values())
 
     def get_default_dashboard(self):
         """Returns the default :class:`~horizon.Dashboard` instance.
