@@ -3,15 +3,16 @@
 # This file is distributed under the same license as the PROJECT project.
 #
 # Translators:
+# Alexander Vasiliev <avasiliev@asdco.ru>, 2015
 # Ilya Alekseyev <ilyaalekseyev@acm.org>, 2015
 # Nikita Burtsev, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-08-04 04:10+0000\n"
-"PO-Revision-Date: 2015-08-03 15:36+0000\n"
-"Last-Translator: Ilya Shakhat <shakhat@gmail.com>\n"
+"POT-Creation-Date: 2015-08-21 01:46+0000\n"
+"PO-Revision-Date: 2015-08-20 17:13+0000\n"
+"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Russian (http://www.transifex.com/openstack/horizon/language/"
 "ru/)\n"
 "MIME-Version: 1.0\n"
@@ -110,6 +111,9 @@ msgstr "%s не завершено."
 
 msgid "&laquo;&nbsp;Prev"
 msgstr "&laquo;&nbsp;Предыдущее"
+
+msgid "(No Limit)"
+msgstr "(нет ограничений)"
 
 msgid "-"
 msgstr "-"

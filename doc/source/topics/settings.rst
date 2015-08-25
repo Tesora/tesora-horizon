@@ -248,7 +248,7 @@ when associating one with an instance.
 Default: ``[]``
 
 A list of AngularJS modules to be loaded when Angular bootstraps. These modules
-are added as dependencies on the root Horizon application ``hz``.
+are added as dependencies on the root Horizon application ``horizon``.
 
 ``js_files``
 -------------------------
@@ -512,12 +512,13 @@ OpenStack dashboard to use a specific API version for a given service API.
     The version should be formatted as it appears in the URL for the
     service API. For example, the identity service APIs have inconsistent
     use of the decimal point, so valid options would be "2.0" or "3".
-    For example,
-    OPENSTACK_API_VERSIONS = {
-        "data-processing": 1.1,
-        "identity": 3,
-        "volume": 2
-    }
+    For example::
+
+        OPENSTACK_API_VERSIONS = {
+            "data-processing": 1.1,
+            "identity": 3,
+            "volume": 2
+        }
 
 ``OPENSTACK_ENABLE_PASSWORD_RETRIEVE``
 --------------------------------------
@@ -1095,7 +1096,7 @@ provided see: ``"/horizon/openstack_dashboard/themes/webroot"``
     alias.
 
 ``STATIC_ROOT``
---------------
+---------------
 
 .. versionadded:: 8.0.0(Liberty)
 
@@ -1307,7 +1308,7 @@ This is needed to expose static files from a plugin.
 .. versionadded:: 2014.2(Juno)
 
 A list of AngularJS modules to be loaded when Angular bootstraps. These modules
-are added as dependencies on the root Horizon application ``hz``.
+are added as dependencies on the root Horizon application ``horizon``.
 
 ``ADD_JS_FILES``
 ----------------------
@@ -1395,11 +1396,11 @@ If set to ``True``, this dashboard will be set as the default dashboard.
 Examples
 --------
 
-To disable the Router dashboard locally, create a file
-``openstack_dashboard/local/enabled/_40_router.py`` with the following
+To disable a dashboard locally, create a file
+``openstack_dashboard/local/enabled/_40_dashboard-name.py`` with the following
 content::
 
-    DASHBOARD = 'router'
+    DASHBOARD = '<dashboard-name>'
     DISABLED = True
 
 To add a Tuskar-UI (Infrastructure) dashboard, you have to install it, and then

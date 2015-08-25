@@ -29,6 +29,7 @@ from django.utils.datastructures import SortedDict
 from django.utils.translation import ugettext_lazy as _
 from neutronclient.common import exceptions as neutron_exc
 from neutronclient.v2_0 import client as neutron_client
+import six
 
 from horizon import messages
 from horizon.utils.memoized import memoized  # noqa
@@ -49,6 +50,25 @@ ROUTER_INTERFACE_OWNERS = (
     'network:router_interface',
     'network:router_interface_distributed'
 )
+
+
+def _init_apiresource(apiresource):
+    """Handle common initialization of apiresource.
+
+        Note: the dictionary is modified in place.
+    """
+
+    if apiresource['admin_state_up']:
+        apiresource['admin_state'] = 'UP'
+    else:
+        apiresource['admin_state'] = 'DOWN'
+
+    # Django cannot handle a key name with ':', so use '__'.
+    apiresource.update({
+        key.replace(':', '__'): value
+        for key, value in apiresource.items()
+        if ':' in key
+    })
 
 
 class NeutronAPIDictWrapper(base.APIDictWrapper):
@@ -76,8 +96,7 @@ class Agent(NeutronAPIDictWrapper):
     """Wrapper for neutron agents."""
 
     def __init__(self, apiresource):
-        apiresource['admin_state'] = \
-            'UP' if apiresource['admin_state_up'] else 'DOWN'
+        _init_apiresource(apiresource)
         super(Agent, self).__init__(apiresource)
 
 
@@ -85,12 +104,7 @@ class Network(NeutronAPIDictWrapper):
     """Wrapper for neutron Networks."""
 
     def __init__(self, apiresource):
-        apiresource['admin_state'] = \
-            'UP' if apiresource['admin_state_up'] else 'DOWN'
-        # Django cannot handle a key name with ':', so use '__'
-        for key in apiresource.keys():
-            if ':' in key:
-                apiresource['__'.join(key.split(':'))] = apiresource[key]
+        _init_apiresource(apiresource)
         super(Network, self).__init__(apiresource)
 
     def to_dict(self):
@@ -115,12 +129,7 @@ class Port(NeutronAPIDictWrapper):
     """Wrapper for neutron ports."""
 
     def __init__(self, apiresource):
-        # Django cannot handle a key name with ':', so use '__'
-        for key in apiresource.keys():
-            if ':' in key:
-                apiresource['__'.join(key.split(':'))] = apiresource[key]
-        apiresource['admin_state'] = \
-            'UP' if apiresource['admin_state_up'] else 'DOWN'
+        _init_apiresource(apiresource)
         if 'mac_learning_enabled' in apiresource:
             apiresource['mac_state'] = \
                 ON_STATE if apiresource['mac_learning_enabled'] else OFF_STATE
@@ -140,8 +149,7 @@ class Router(NeutronAPIDictWrapper):
     """Wrapper for neutron routers."""
 
     def __init__(self, apiresource):
-        apiresource['admin_state'] = \
-            'UP' if apiresource['admin_state_up'] else 'DOWN'
+        _init_apiresource(apiresource)
         super(Router, self).__init__(apiresource)
 
 
@@ -168,6 +176,7 @@ class SecurityGroup(NeutronAPIDictWrapper):
         return {k: self._apidict[k] for k in self._apidict if k != 'rules'}
 
 
+@six.python_2_unicode_compatible
 class SecurityGroupRule(NeutronAPIDictWrapper):
     # Required attributes:
     #   id, parent_group_id
@@ -208,7 +217,7 @@ class SecurityGroupRule(NeutronAPIDictWrapper):
         rule['group'] = {'name': group} if group else {}
         super(SecurityGroupRule, self).__init__(rule)
 
-    def __unicode__(self):
+    def __str__(self):
         if 'name' in self.group:
             remote = self.group['name']
         elif 'cidr' in self.ip_range:

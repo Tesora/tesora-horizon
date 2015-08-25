@@ -1,4 +1,4 @@
-/*
+/**
  * (c) Copyright 2015 Hewlett-Packard Development Company, L.P.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -46,9 +46,7 @@
         {capacity: 1}
       ),
       get: get,
-      ifNameEnabled: ifNameEnabled,
-      // This is an alias to support the extension directive default interface
-      ifEnabled: ifNameEnabled
+      ifNameEnabled: ifNameEnabled
     };
 
     return service;
