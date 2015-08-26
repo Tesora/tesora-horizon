@@ -17,11 +17,11 @@
 """
 Views for managing database clusters.
 """
+from collections import OrderedDict
 import logging
 
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
-from django.utils.datastructures import SortedDict
 from django.utils.translation import ugettext_lazy as _
 
 from horizon import exceptions
@@ -54,7 +54,7 @@ class IndexView(horizon_tables.DataTableView):
             flavors = []
             msg = _('Unable to retrieve database size information.')
             exceptions.handle(self.request, msg)
-        return SortedDict((unicode(flavor.id), flavor) for flavor in flavors)
+        return OrderedDict((unicode(flavor.id), flavor) for flavor in flavors)
 
     def _extra_data(self, cluster):
         try:
@@ -120,6 +120,13 @@ class DetailView(horizon_tabs.TabbedTableView):
             LOG.error('Unable to retrieve flavor details'
                       ' for database cluster: %s' % cluster_id)
         cluster.num_instances = len(cluster.instances)
+
+        # Todo(saurabhs) Set mgmt_url to dispaly Mgmt Console URL on
+        # cluster details page
+        # for instance in cluster.instances:
+        #   if instance['type'] == "master":
+        #       cluster.mgmt_url = "https://%s:5450/webui" % instance['ip'][0]
+
         return cluster
 
     def get_tabs(self, request, *args, **kwargs):
@@ -161,7 +168,7 @@ class AddShardView(horizon_forms.ModalFormView):
         if not hasattr(self, "_flavors"):
             try:
                 flavors = api.trove.flavor_list(self.request)
-                self._flavors = SortedDict([(str(flavor.id), flavor)
+                self._flavors = OrderedDict([(str(flavor.id), flavor)
                                             for flavor in flavors])
             except Exception:
                 redirect = reverse("horizon:project:database_clusters:index")
@@ -184,7 +191,7 @@ class ResetPasswordView(horizon_forms.ModalFormView):
     form_class = forms.ResetPasswordForm
     template_name = 'project/database_clusters/reset_password.html'
     success_url = reverse_lazy('horizon:project:database_clusters:index')
-    page_title = _("Reset Password")
+    page_title = _("Reset Root Password")
 
     @memoized.memoized_method
     def get_object(self, *args, **kwargs):
