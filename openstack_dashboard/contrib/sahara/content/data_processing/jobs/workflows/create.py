@@ -46,6 +46,7 @@ class AdditionalLibsAction(workflows.Action):
                 'data-jobtype-hive': _("Choose libraries"),
                 'data-jobtype-shell': _("Choose additional files"),
                 'data-jobtype-spark': _("Choose libraries"),
+                'data-jobtype-java': _("Choose libraries"),
                 'data-jobtype-mapreduce.streaming': _("Choose libraries")
             }))
 
@@ -91,6 +92,7 @@ class GeneralConfigAction(workflows.Action):
                 'data-jobtype-hive': _("Choose a main binary"),
                 'data-jobtype-shell': _("Choose a shell script"),
                 'data-jobtype-spark': _("Choose a main binary"),
+                'data-jobtype-storm': _("Choose a main binary"),
                 'data-jobtype-mapreduce.streaming': _("Choose a main binary")
             }))
 

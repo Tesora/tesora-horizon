@@ -15,6 +15,7 @@ from django import http
 
 from mox3.mox import IgnoreArg  # noqa
 from mox3.mox import IsA  # noqa
+import six
 
 from openstack_dashboard import api as dash_api
 from openstack_dashboard.contrib.sahara import api
@@ -55,7 +56,7 @@ class DataProcessingNodeGroupTests(test.TestCase):
         dash_api.nova.flavor_get(IsA(http.HttpRequest), flavor.id) \
             .AndReturn(flavor)
         api.sahara.nodegroup_template_get(IsA(http.HttpRequest),
-                                          IsA(unicode)) \
+                                          IsA(six.text_type)) \
             .MultipleTimes().AndReturn(ngt)
         self.mox.ReplayAll()
         res = self.client.get(DETAILS_URL)
@@ -86,7 +87,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
                         dash_api.network: ('floating_ip_pools_list',
                                            'security_group_list'),
                         dash_api.cinder: ('extension_supported',
-                                          'availability_zone_list')})
+                                          'availability_zone_list',
+                                          'volume_type_list')})
     def test_copy(self):
         ngt = self.nodegroup_templates.first()
         configs = self.plugins_configs.first()
@@ -95,6 +97,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
             .AndReturn(True)
         dash_api.cinder.availability_zone_list(IsA(http.HttpRequest))\
             .AndReturn(self.availability_zones.list())
+        dash_api.cinder.volume_type_list(IsA(http.HttpRequest))\
+            .AndReturn([])
         api.sahara.nodegroup_template_get(IsA(http.HttpRequest),
                                           ngt.id) \
             .AndReturn(ngt)
@@ -125,7 +129,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                            'security_group_list'),
                         dash_api.nova: ('flavor_list',),
                         dash_api.cinder: ('extension_supported',
-                                          'availability_zone_list')})
+                                          'availability_zone_list',
+                                          'volume_type_list')})
     def test_create(self):
         flavor = self.flavors.first()
         ngt = self.nodegroup_templates.first()
@@ -139,6 +144,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
             .AndReturn(True)
         dash_api.cinder.availability_zone_list(IsA(http.HttpRequest))\
             .AndReturn(self.availability_zones.list())
+        dash_api.cinder.volume_type_list(IsA(http.HttpRequest))\
+            .AndReturn([])
         dash_api.nova.flavor_list(IsA(http.HttpRequest)).AndReturn([flavor])
         api.sahara.plugin_get_version_details(IsA(http.HttpRequest),
                                               ngt.plugin_name,
@@ -159,6 +166,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
                'flavor_id': flavor.id,
                'volumes_per_node': None,
                'volumes_size': None,
+               'volume_type': None,
+               'volume_local_to_instance': False,
                'volumes_availability_zone': None,
                'node_processes': ['namenode'],
                'node_configs': {},
@@ -183,6 +192,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
              'storage': 'ephemeral_drive',
              'volumes_per_node': 0,
              'volumes_size': 0,
+             'volume_type': None,
+             'volume_local_to_instance': False,
              'volumes_availability_zone': None,
              'floating_ip_pool': None,
              'security_autogroup': True,
@@ -201,7 +212,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
                                            'security_group_list'),
                         dash_api.nova: ('flavor_list',),
                         dash_api.cinder: ('extension_supported',
-                                          'availability_zone_list')})
+                                          'availability_zone_list',
+                                          'volume_type_list')})
     def test_update(self):
         flavor = self.flavors.first()
         ngt = self.nodegroup_templates.first()
@@ -218,6 +230,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
             .AndReturn(True)
         dash_api.cinder.availability_zone_list(IsA(http.HttpRequest)) \
             .AndReturn(self.availability_zones.list())
+        dash_api.cinder.volume_type_list(IsA(http.HttpRequest))\
+            .AndReturn([])
         dash_api.nova.flavor_list(IsA(http.HttpRequest)).AndReturn([flavor])
         api.sahara.plugin_get_version_details(IsA(http.HttpRequest),
                                               ngt.plugin_name,
@@ -242,6 +256,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
             description=ngt.description,
             volumes_per_node=None,
             volumes_size=None,
+            volume_type=None,
+            volume_local_to_instance=False,
             volumes_availability_zone=None,
             node_processes=['namenode'],
             node_configs={},
@@ -265,6 +281,8 @@ class DataProcessingNodeGroupTests(test.TestCase):
              'storage': 'ephemeral_drive',
              'volumes_per_node': 0,
              'volumes_size': 0,
+             'volume_type': None,
+             'volume_local_to_instance': False,
              'volumes_availability_zone': None,
              'floating_ip_pool': None,
              'security_autogroup': True,
