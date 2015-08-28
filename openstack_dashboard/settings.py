@@ -64,6 +64,7 @@ HORIZON_CONFIG = {
     'exceptions': {'recoverable': exceptions.RECOVERABLE,
                    'not_found': exceptions.NOT_FOUND,
                    'unauthorized': exceptions.UNAUTHORIZED},
+    'modal_backdrop': 'static',
     'angular_modules': [],
     'js_files': [],
     'js_spec_files': [],
@@ -141,7 +142,7 @@ STATICFILES_FINDERS = (
 )
 
 COMPRESS_PRECOMPILERS = (
-    ('text/scss', 'django_pyscss.compressor.DjangoScssFilter'),
+    ('text/scss', 'horizon.utils.scss_filter.HorizonScssFilter'),
 )
 
 COMPRESS_CSS_FILTERS = (

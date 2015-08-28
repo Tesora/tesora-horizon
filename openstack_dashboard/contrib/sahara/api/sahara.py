@@ -135,7 +135,9 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
                               auto_security_group=False,
                               availability_zone=False,
                               volumes_availability_zone=False,
-                              is_proxy_gateway=False):
+                              volume_type=None,
+                              is_proxy_gateway=False,
+                              volume_local_to_instance=False):
     return client(request).node_group_templates.create(
         name=name,
         plugin_name=plugin_name,
@@ -151,7 +153,9 @@ def nodegroup_template_create(request, name, plugin_name, hadoop_version,
         auto_security_group=auto_security_group,
         availability_zone=availability_zone,
         volumes_availability_zone=volumes_availability_zone,
-        is_proxy_gateway=is_proxy_gateway)
+        volume_type=volume_type,
+        is_proxy_gateway=is_proxy_gateway,
+        volume_local_to_instance=volume_local_to_instance)
 
 
 def nodegroup_template_list(request, search_opts=None):
@@ -178,7 +182,9 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
                               security_groups=None, auto_security_group=False,
                               availability_zone=False,
                               volumes_availability_zone=False,
-                              is_proxy_gateway=False):
+                              volume_type=None,
+                              is_proxy_gateway=False,
+                              volume_local_to_instance=False):
     return client(request).node_group_templates.update(
         ng_template_id=ngt_id,
         name=name,
@@ -195,7 +201,9 @@ def nodegroup_template_update(request, ngt_id, name, plugin_name,
         auto_security_group=auto_security_group,
         availability_zone=availability_zone,
         volumes_availability_zone=volumes_availability_zone,
-        is_proxy_gateway=is_proxy_gateway)
+        volume_type=volume_type,
+        is_proxy_gateway=is_proxy_gateway,
+        volume_local_to_instance=volume_local_to_instance)
 
 
 def cluster_template_create(request, name, plugin_name, hadoop_version,
@@ -275,8 +283,10 @@ def cluster_list(request, search_opts=None):
     return client(request).clusters.list(search_opts=search_opts)
 
 
-def cluster_get(request, cluster_id):
-    return client(request).clusters.get(cluster_id=cluster_id)
+def cluster_get(request, cluster_id, show_progress=False):
+    return client(request).clusters.get(
+        cluster_id=cluster_id,
+        show_progress=show_progress)
 
 
 def cluster_delete(request, cluster_id):
@@ -304,6 +314,10 @@ def data_source_get(request, ds_id):
 
 def data_source_delete(request, ds_id):
     client(request).data_sources.delete(data_source_id=ds_id)
+
+
+def data_source_update(request, ds_id, data):
+    return client(request).data_sources.update(ds_id, data)
 
 
 def job_binary_create(request, name, url, description, extra):

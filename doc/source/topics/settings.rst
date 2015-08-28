@@ -681,6 +681,24 @@ This value must correspond to an existing role name in Keystone. In general,
 the value should match the ``member_role_name`` defined in ``keystone.conf``.
 
 
+``OPENSTACK_KEYSTONE_ADMIN_ROLES``
+----------------------------------
+
+.. versionadded:: 2015.1(Kilo)
+
+Default: ``["admin"]``
+
+The list of roles that have administrator privileges in this OpenStack
+installation. This check is very basic and essentially only works with
+keystone v2.0 and v3 with the default policy file. The setting assumes there
+is a common ``admin`` like role(s) across services. Example uses of this
+setting are:
+
+    * to rename the ``admin`` role to ``cloud-admin``
+    * allowing multiple roles to have administrative privileges, like
+      ``["admin", "cloud-admin", "net-op"]``
+
+
 ``OPENSTACK_KEYSTONE_MULTIDOMAIN_SUPPORT``
 ------------------------------------------
 
@@ -1068,18 +1086,6 @@ the web server.
 For example, if you're accessing the Dashboard via
 https://<your server>/dashboard, you would set this to ``"/dashboard/"``.
 
-Additionally, setting the ``"$webroot"`` SCSS variable is required. You
-can change this directly in
-``"openstack_dashboard/static/dashboard/scss/_variables.scss"`` or in the
-``"_variables.scss"`` file in your custom theme. For more information on
-custom themes, see: ``"CUSTOM_THEME_PATH"``.
-
-Make sure you run ``python manage.py collectstatic`` and
-``python manage.py compress`` after you change the ``_variables.scss`` file.
-
-For your convenience, a custom theme for only setting the web root has been
-provided see: ``"/horizon/openstack_dashboard/themes/webroot"``
-
 .. note::
 
     Additional settings may be required in the config files of your webserver
@@ -1125,6 +1131,13 @@ webserver configuration should be updated to match.
 .. note::
 
     The value for STATIC_URL must end in '/'.
+
+This value is also available in the scss namespace with the variable name
+$static_url.  Make sure you run ``python manage.py collectstatic`` and
+``python manage.py compress`` after any changes to this value in settings.py.
+
+For your convenience, a custom theme for only setting the static url has been
+provided see: ``"/horizon/openstack_dashboard/themes/webroot"``
 
 For more information see:
 https://docs.djangoproject.com/en/1.7/ref/settings/#static-url

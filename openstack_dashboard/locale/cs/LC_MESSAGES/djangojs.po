@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-08-25 05:51+0000\n"
-"PO-Revision-Date: 2015-08-25 04:21+0000\n"
+"POT-Creation-Date: 2015-08-26 20:04+0000\n"
+"PO-Revision-Date: 2015-08-26 11:36+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
 "Language-Team: Czech (http://www.transifex.com/openstack/horizon/language/"
 "cs/)\n"
@@ -567,6 +567,9 @@ msgstr "Vyžadováno"
 msgid "Root Disk"
 msgstr "Kořenový disk"
 
+msgid "Save"
+msgstr "Uložit"
+
 msgid "Saving"
 msgstr "Ukládání"
 
@@ -683,6 +686,17 @@ msgid ""
 msgstr ""
 "Zvolená konfigurace instance zajišťuje množství výpočetních, úložných a "
 "pamětních zdrojů, které budou vyhrazeny pro instanci."
+
+msgid ""
+"The flavor you select must have enough resources allocated to support the "
+"type of instance you are trying to create. Flavors that do not provide "
+"enough resources for your instance are identified on the <b>Available</b> "
+"table with a yellow warning icon."
+msgstr ""
+"Zvolená konfigurace musí mít dostatek přidělených zdrojů, aby mohla "
+"podporovat typ vámi vytvářené instance. Konfigurace, které vaší instanci "
+"neposkytují dostatek zdrojů, jsou v tabulce <b>Dostupné</b> uvedeny se "
+"žlutou ikonkou s vykřičníkem."
 
 #, python-format
 msgid ""
@@ -944,6 +958,15 @@ msgstr "Nelze získat svazky."
 msgid "Up"
 msgstr "Otevřen"
 
+msgid "Update Aggregate Metadata"
+msgstr "Aktualizovat popisná data agregátu"
+
+msgid "Update Flavor Metadata"
+msgstr "Aktualizovat popisná data konfigurace"
+
+msgid "Update Image Metadata"
+msgstr "Aktualizovat popisná data obrazu"
+
 msgid "Updated"
 msgstr "Aktualizováno"
 
@@ -952,6 +975,9 @@ msgstr "ID uživatele"
 
 msgid "User Name"
 msgstr "Uživatelské jméno"
+
+msgid "VCPUS"
+msgstr "VCPUS"
 
 msgid "Visibility"
 msgstr "Viditelnost"
