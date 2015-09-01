@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-08-26 20:04+0000\n"
-"PO-Revision-Date: 2015-08-26 11:36+0000\n"
-"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
+"POT-Creation-Date: 2015-09-01 03:11+0000\n"
+"PO-Revision-Date: 2015-08-30 13:32+0000\n"
+"Last-Translator: Ettore Atalan <atalanttore@googlemail.com>\n"
 "Language-Team: German (http://www.transifex.com/openstack/horizon/language/"
 "de/)\n"
 "MIME-Version: 1.0\n"
@@ -137,6 +137,9 @@ msgstr "Automatisch"
 msgid "Availability Zone"
 msgstr "Verfügbarkeitszone"
 
+msgid "Boot Source"
+msgstr "Boot-Quelle"
+
 msgid "Cancel"
 msgstr "Abbrechen"
 
@@ -253,6 +256,9 @@ msgstr "Flüchtige Festplatte"
 msgid "Ether Type"
 msgstr "Netzwerktyp"
 
+msgid "Event log is not available."
+msgstr "Ereignisprotokoll ist nicht verfügbar."
+
 #, python-format
 msgid "Extension is not enabled: %(extension)s."
 msgstr "Erweiterung ist nicht aktiviert: %(extension)s."
@@ -317,15 +323,6 @@ msgstr ""
 "Wenn Sie eine Verfügbarkeitszone auswählen und von einem Datenträger booten "
 "wollen, stellen Sie sicher, dass für die Instanz die selbe "
 "Verfügbarkeitszone ausgewählt wird wie für den bootfähigen Datenträger."
-
-msgid ""
-"If you want to create an instance that uses ephemeral storage, meaning the "
-"instance data is lost when the instance is deleted, then choose one of the "
-"following boot sources:"
-msgstr ""
-"Wenn Sie eine Instanz erzeugen wollen, die flüchtigen Storage verwendet, Sie "
-"die Instanzdaten also verlieren, wenn die Instanz gelöscht wird, dann wählen "
-"Sie aus den folgenden Boot-Quellen:"
 
 msgid ""
 "If you want to create an instance that uses persistent storage, meaning the "
@@ -430,6 +427,9 @@ msgstr "Min Disk (GB)"
 msgid "Min Port"
 msgstr "Min Port"
 
+msgid "Min RAM"
+msgstr "Min RAM"
+
 msgid "Min RAM (MB)"
 msgstr "Min RAM (MB)"
 
@@ -502,6 +502,13 @@ msgstr "Projekt"
 msgid "Project ID"
 msgstr "Projekt-ID"
 
+msgid ""
+"Project networks are created by users.\n"
+"    These networks are fully isolated and are project-specific."
+msgstr ""
+"Projektnetzwerke werden von Benutzern angelegt.\n"
+"Diese Netzwerke sind vollständig isoliert und projektspezifisch."
+
 msgid "Protected"
 msgstr "Geschützt"
 
@@ -510,6 +517,14 @@ msgstr "Protokoll"
 
 msgid "Provider Network"
 msgstr "Anbieternetzwerk"
+
+msgid ""
+"Provider networks are created by administrators.\n"
+"    These networks map to an existing physical network in the data center."
+msgstr ""
+"Anbieternetzwerke werden von den Administratoren erstellt.\n"
+"Diese Netzwerke werden auf vorhandenen physikalischen Netzwerken im "
+"Rechenzentrum abgebildet."
 
 msgid "Public"
 msgstr "Öffentlich"
@@ -625,6 +640,9 @@ msgstr "Einstellung ist nicht aktiviert: %(setting)s"
 msgid "Shared"
 msgstr "Gemeinsam verwendet"
 
+msgid "Show events"
+msgstr "Ereignisse anzeigen"
+
 msgid "Size"
 msgstr "Größe"
 
@@ -690,6 +708,9 @@ msgstr ""
 
 msgid "The status indicates whether the network has an active connection."
 msgstr "Der Status zeigt an, ob das Netzwerk eine aktive Verbindung hat."
+
+msgid "The step has completed successfully. No events to display."
+msgstr "Der Schritt wurde erfolgreich beendet. Keine Ereignisse zum Anzeigen."
 
 #, python-format
 msgid "The volume size must be at least %(minVolumeSize)s GB"
@@ -806,6 +827,12 @@ msgstr "Die Benutzer können nicht gelöscht werden."
 msgid "Unable to edit the domain."
 msgstr "Die Domäne kann nicht bearbeitet werden."
 
+msgid "Unable to edit the flavor extra specs."
+msgstr "Extraspezifikationen zur Variante können nicht bearbeitet werden."
+
+msgid "Unable to edit the image custom properties."
+msgstr "Die Abbildanpassungseigenschaften können nicht bearbeitet werden."
+
 msgid "Unable to edit the project."
 msgstr "Das Projekt kann nicht bearbeitet werden."
 
@@ -853,6 +880,9 @@ msgstr "Die Variante kann nicht abgerufen werden."
 
 msgid "Unable to retrieve the flavors."
 msgstr "Die Varianten können nicht abgerufen werden."
+
+msgid "Unable to retrieve the image custom properties."
+msgstr "Die Abbildanpassungseigenschaften können nicht abgerufen werden."
 
 msgid "Unable to retrieve the image."
 msgstr "Das Abbild konnte nicht abgerufen werden."
@@ -908,6 +938,9 @@ msgstr "Datenträger-Schattenkopien können nicht abgerufen werden."
 msgid "Unable to retrieve the volumes."
 msgstr "Die Datenträger können nicht abgerufen werden."
 
+msgid "Unable to validate the template."
+msgstr "Vorlage kann nicht validiert werden."
+
 msgid "Up"
 msgstr "Hoch"
 
@@ -928,6 +961,9 @@ msgstr "Benutzerkennung"
 
 msgid "User Name"
 msgstr "Benutzername"
+
+msgid "VCPUS"
+msgstr "VCPUS"
 
 msgid "Visibility"
 msgstr "Sichtbarkeit"

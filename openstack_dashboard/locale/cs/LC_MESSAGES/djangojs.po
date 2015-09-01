@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-08-26 20:04+0000\n"
-"PO-Revision-Date: 2015-08-26 11:36+0000\n"
-"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
+"POT-Creation-Date: 2015-09-01 03:11+0000\n"
+"PO-Revision-Date: 2015-08-30 04:51+0000\n"
+"Last-Translator: Zbyněk Schwarz <zbynek.schwarz@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/openstack/horizon/language/"
 "cs/)\n"
 "MIME-Version: 1.0\n"
@@ -163,6 +163,9 @@ msgstr "Automaticky"
 msgid "Availability Zone"
 msgstr "Zóna dostupnosti"
 
+msgid "Boot Source"
+msgstr "Zdroj zavedení"
+
 msgid "Cancel"
 msgstr "Zrušit"
 
@@ -277,6 +280,9 @@ msgstr "Efemérní disk"
 msgid "Ether Type"
 msgstr "Typ ethernetu"
 
+msgid "Event log is not available."
+msgstr "Záznam události není dostupný."
+
 #, python-format
 msgid "Extension is not enabled: %(extension)s."
 msgstr "Rozšíření není povoleno: %(extension)s."
@@ -343,7 +349,7 @@ msgstr ""
 "stejná jako zóna, ve které je umístěn zaveditelný svazek."
 
 msgid ""
-"If you want to create an instance that uses ephemeral storage, meaning the "
+"If you want to create an instance that uses ephemeral storage, meaning th "
 "instance data is lost when the instance is deleted, then choose one of the "
 "following boot sources:"
 msgstr ""
@@ -450,6 +456,9 @@ msgstr "Min Kapacita (GB)"
 
 msgid "Min Port"
 msgstr "Minimální port"
+
+msgid "Min RAM"
+msgstr "Min RAM"
 
 msgid "Min RAM (MB)"
 msgstr "Min RAM (MB)"
@@ -657,6 +666,9 @@ msgstr "Nastavení není povoleno: %(setting)s"
 msgid "Shared"
 msgstr "Sdíleno"
 
+msgid "Show events"
+msgstr "Zobrazit události"
+
 msgid "Size"
 msgstr "Velikost"
 
@@ -732,6 +744,9 @@ msgstr ""
 
 msgid "The status indicates whether the network has an active connection."
 msgstr "Stav udává, zda síť má aktivní připojení."
+
+msgid "The step has completed successfully. No events to display."
+msgstr "Krok byl úspěšně dokončen. Žádné události k zobrazení."
 
 msgid ""
 "The subnet identifies a sub-section of a network. A subnet is specified in "
@@ -850,8 +865,17 @@ msgstr "Nelze smazat uživatele."
 msgid "Unable to delete the users."
 msgstr "Nelze smazat uživatele."
 
+msgid "Unable to edit the aggregate extra specs."
+msgstr "Nelze upravit dodatečné specifikace agregátu."
+
 msgid "Unable to edit the domain."
 msgstr "Nelze upravit doménu."
+
+msgid "Unable to edit the flavor extra specs."
+msgstr "Nelze upravit dodatečné specifikace konfigurace."
+
+msgid "Unable to edit the image custom properties."
+msgstr "Nelze upravit přizpůsobené vlastnosti obrazu."
 
 msgid "Unable to edit the project."
 msgstr "Nelze upravit projekt."
@@ -877,6 +901,9 @@ msgstr "Nelze importovat pár klíčů."
 msgid "Unable to retrieve settings."
 msgstr "Nelze získat nastavení."
 
+msgid "Unable to retrieve the aggregate extra specs."
+msgstr "Nelze získat dodatečné specifikace agregátu."
+
 msgid "Unable to retrieve the availability zones."
 msgstr "Nelze získat zóny dostupnosti."
 
@@ -900,6 +927,9 @@ msgstr "Nelze získat konfiguraci."
 
 msgid "Unable to retrieve the flavors."
 msgstr "Nelze získat konfigurace."
+
+msgid "Unable to retrieve the image custom properties."
+msgstr "Nelze získat přizpůsobené vlastnosti obrazu."
 
 msgid "Unable to retrieve the image."
 msgstr "Nelze získat obraz."
@@ -954,6 +984,9 @@ msgstr "Nelze získat svazky snímků."
 
 msgid "Unable to retrieve the volumes."
 msgstr "Nelze získat svazky."
+
+msgid "Unable to validate the template."
+msgstr "Nelze ověřit šablonu."
 
 msgid "Up"
 msgstr "Otevřen"

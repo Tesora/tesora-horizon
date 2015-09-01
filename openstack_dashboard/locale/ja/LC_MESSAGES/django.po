@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-08-22 19:10+0000\n"
-"PO-Revision-Date: 2015-08-22 15:28+0000\n"
-"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
+"POT-Creation-Date: 2015-09-01 03:11+0000\n"
+"PO-Revision-Date: 2015-08-31 01:28+0000\n"
+"Last-Translator: ykatabam <ykatabam@redhat.com>\n"
 "Language-Team: Japanese (http://www.transifex.com/openstack/horizon/language/"
 "ja/)\n"
 "MIME-Version: 1.0\n"
@@ -512,7 +512,7 @@ msgstr ""
 "トに定義する必要があります。"
 
 msgid "A image or external image location must be specified."
-msgstr "イメージまたは外部のイメージの位置を指定する必要があります。"
+msgstr "イメージまたは外部のイメージの場所を指定する必要があります。"
 
 msgid "A local environment to upload."
 msgstr "アップロードする必要のあるローカルの環境設定データ"
@@ -3900,6 +3900,9 @@ msgstr ""
 msgid "Extra Specs"
 msgstr "追加スペック"
 
+msgid "Failed"
+msgstr "失敗"
+
 msgctxt "Current status of a Database Backup"
 msgid "Failed"
 msgstr "失敗"
@@ -6217,6 +6220,9 @@ msgstr "利用可能なボリュームがありません"
 msgid "Node Configurations"
 msgstr "ノード設定"
 
+msgid "Node Group"
+msgstr "ノード数"
+
 #, python-format
 msgid "Node Group Template %s updated"
 msgstr "ノードグループテンプレート %s が更新されました。"
@@ -8502,6 +8508,9 @@ msgstr "ストレージの場所"
 
 msgid "Storage type"
 msgstr "ストレージ種別"
+
+msgid "Storm"
+msgstr "Storm"
 
 msgid "Streaming MapReduce"
 msgstr "ストリーミング MapReduce"
