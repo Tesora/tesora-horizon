@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Horizon\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-08-26 20:04+0000\n"
-"PO-Revision-Date: 2015-08-26 07:10+0000\n"
+"POT-Creation-Date: 2015-09-01 03:11+0000\n"
+"PO-Revision-Date: 2015-08-30 04:51+0000\n"
 "Last-Translator: Zbyněk Schwarz <zbynek.schwarz@gmail.com>\n"
 "Language-Team: Czech (http://www.transifex.com/openstack/horizon/language/"
 "cs/)\n"
@@ -1816,6 +1816,9 @@ msgstr "Průvodce vytvořením clusteru"
 msgid "Cluster Details"
 msgstr "Podrobnosti clusteru"
 
+msgid "Cluster Events"
+msgstr "Události clusteru"
+
 msgid "Cluster Guide"
 msgstr "Průvodce clusterem"
 
@@ -1854,6 +1857,9 @@ msgstr "Cluster může být spuštěn pomocí existujících šablon clusteru."
 msgid "Cluster configurations are not specified"
 msgstr "Konfigurace clusteru není zadána"
 
+msgid "Cluster provision steps"
+msgstr "Kroky k poskytnutí clusteru"
+
 msgid "Cluster template creation failed"
 msgstr "Vytvoření šablony clusteru selhalo"
 
@@ -1881,6 +1887,9 @@ msgstr "Čárkou oddělené páry klíč=hodnota"
 msgctxt "Current status of a Database Backup"
 msgid "Completed"
 msgstr "Dokončené"
+
+msgid "Completed Successfully"
+msgstr "Úspěšně dokončeno"
 
 msgid "Component"
 msgstr "Součásti"
@@ -2069,6 +2078,9 @@ msgstr "Nelze najít výchozí roli \"%s\" v Keystone"
 
 msgid "Could not launch job"
 msgstr "Úkol nelze spustit"
+
+msgid "Could not update data source"
+msgstr "Nelze aktualizovat zdroj dat"
 
 #, python-format
 msgid "Couldn't get current security group list for instance %s."
@@ -2729,6 +2741,9 @@ msgstr ""
 
 msgid "Data source created"
 msgstr "Zdroj dat vytvořen"
+
+msgid "Data source updated"
+msgstr "Zdroj dat aktualizován"
 
 msgid "Database"
 msgstr "Databáze"
@@ -3662,6 +3677,9 @@ msgstr "Stáhnout binární soubor úkolu"
 msgid "Download key pair &quot;%(keypair_name)s&quot;"
 msgstr "Stáhnout pár klíče &quot;%(keypair_name)s&quot;"
 
+msgid "Duration"
+msgstr "Doba trvání"
+
 #, python-format
 msgid "Duration of instance type %s (openstack flavor)"
 msgstr "Trvání typu instance %s (konfigurace openstack)"
@@ -3689,6 +3707,9 @@ msgstr "Upravit spotřebitele"
 
 msgid "Edit Consumer of QoS Spec"
 msgstr "Upravit spotřebitele specifikace QoS"
+
+msgid "Edit Data Source"
+msgstr "Upravit zdroj dat"
 
 msgid "Edit Domain"
 msgstr "Upravit doménu"
@@ -4079,6 +4100,9 @@ msgid ""
 msgstr ""
 "Přesídlit servery ze zvoleného hostitele na aktivního cílového hostitele."
 
+msgid "Event time"
+msgstr "Čas události"
+
 msgid "Events"
 msgstr "Události"
 
@@ -4161,6 +4185,9 @@ msgstr ""
 
 msgid "Extra Specs"
 msgstr "Dodatečné specifikace"
+
+msgid "Failed"
+msgstr "Selhalo"
 
 msgctxt "Current status of a Database Backup"
 msgid "Failed"
@@ -5218,6 +5245,9 @@ msgstr ""
 "Dále můžete, zaškrtnutím odpovídajícího políčka, vytvořit vnější nebo "
 "sdílenou síť."
 
+msgid "In progress"
+msgstr "Probíhá"
+
 msgctxt "Current status of a Volume"
 msgid "In-use"
 msgstr "Používá se"
@@ -5353,6 +5383,10 @@ msgstr "Bezpečnostní skupiny instance"
 
 msgid "Instance Snapshot"
 msgstr "Snímek instance"
+
+msgid "Instance and attached volumes will be created on the same physical host"
+msgstr ""
+"Instance a připojené svazky budou vytvořeny na stejném fyzickém hostiteli"
 
 msgid "Instance to be associated"
 msgstr "Instance která má být přidružena"
@@ -6425,6 +6459,9 @@ msgstr "Žádné obrazy nejsou dostupné"
 msgid "No images available."
 msgstr "Žádné obrazy nejsou dostupné."
 
+msgid "No info available"
+msgstr "Nejsou dostupné žádné informace"
+
 msgid "No input was provided for the namespace content."
 msgstr "Nebyl zadán žádná vstup pro obsah jmenného prostoru."
 
@@ -6531,6 +6568,9 @@ msgstr "Žádné svazky nejsou dostupné"
 
 msgid "Node Configurations"
 msgstr "Konfigurace uzlu"
+
+msgid "Node Group"
+msgstr "Skupina uzlu"
 
 #, python-format
 msgid "Node Group Template %s updated"
@@ -7172,6 +7212,9 @@ msgstr "Procesy které budou spuštěny ve skupině uzlu"
 
 msgid "Profile"
 msgstr "Profil"
+
+msgid "Progress"
+msgstr "Probíhá"
 
 msgid "Project"
 msgstr "Projekt"
@@ -8868,6 +8911,9 @@ msgstr[0] "Instance spuštěna"
 msgstr[1] "Instance spuštěny"
 msgstr[2] "Instance spuštěny"
 
+msgid "Started at"
+msgstr "Zahájeno v"
+
 #, python-format
 msgid "Starting evacuation from %(current)s to %(target)s."
 msgstr "Zahájeno vyklizení z %(current)s do %(target)s."
@@ -8900,6 +8946,9 @@ msgstr "Stav ="
 msgid "Status Reason"
 msgstr "Důvod stavu"
 
+msgid "Step Description"
+msgstr "Popis kroku"
+
 msgctxt "Action log of an instance"
 msgid "Stop"
 msgstr "Zastavit"
@@ -8909,6 +8958,9 @@ msgstr "Umístění úložiště"
 
 msgid "Storage type"
 msgstr "Typ úložiště"
+
+msgid "Storm"
+msgstr "Storm"
 
 msgid "Streaming MapReduce"
 msgstr "Streamování Mapreduce"
@@ -10342,6 +10394,9 @@ msgstr "Nelze získat dostupné hostitele"
 
 msgid "Unable to get user data."
 msgstr "Nelze získat data uživatele."
+
+msgid "Unable to get volume type list."
+msgstr "Nelze získat seznam typů svazku."
 
 msgid "Unable to import key pair."
 msgstr "Nelze importovat pár klíčů."
@@ -11867,6 +11922,9 @@ msgstr ""
 msgid "Volume is Unencrypted"
 msgstr "Svazek není zašifrován"
 
+msgid "Volume local to instance"
+msgstr "Svazek místní k instanci"
+
 msgid ""
 "Volume mount point (e.g. 'vda' mounts at '/dev/vda'). Leave this field blank "
 "to let the system choose a device name for you."
@@ -11931,6 +11989,9 @@ msgstr "Připojené svazky"
 msgid "Volumes Availability Zone"
 msgstr "Zóna dostupnosti svazků"
 
+msgid "Volumes local to instance"
+msgstr "Svazky místní k instanci"
+
 msgid "Volumes per node"
 msgstr "Svazky v uzlu"
 
@@ -11939,6 +12000,9 @@ msgstr "Velikost svazků"
 
 msgid "Volumes size (GB)"
 msgstr "Velikost svazků (GB)"
+
+msgid "Volumes type"
+msgstr "Typy svazků"
 
 msgid "Weight"
 msgstr "Váha"
