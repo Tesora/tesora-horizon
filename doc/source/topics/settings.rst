@@ -417,6 +417,9 @@ file and a _styles.scss file.  These must contain or import all the
 bootstrap and horizon specific variables and styles which are used to style
 the GUI. For example themes, see: /horizon/openstack_dashboard/themes/
 
+Horizon ships with one alternate theme based on Google's Material Design.  To
+use the alternate theme, set your CUSTOM_THEME_PATH to ``themes/material``.
+
 
 ``DEFAULT_THEME_PATH``
 ----------------------
@@ -565,7 +568,8 @@ Default::
 
     {
         'can_set_mount_point': False,
-        'can_set_password': False
+        'can_set_password': False,
+        'requires_keypair': False,
     }
 
 A dictionary containing settings which can be used to identify the
@@ -578,6 +582,9 @@ from the UI.
 
 Setting ``can_set_password`` to ``True`` will enable the option to set
 an administrator password when launching or rebuilding an instance.
+
+Setting ``requires_keypair`` to ``True`` will require users to select
+a key pair when launching an instance.
 
 
 ``OPENSTACK_IMAGE_BACKEND``
@@ -797,6 +804,8 @@ Default::
             'supported_vnic_types': ["*"],
             'segmentation_id_range': {},
             'enable_fip_topology_check': True,
+            'default_ipv4_subnet_pool_label': None,
+            'default_ipv6_subnet_pool_label': None,
         }
 
 A dictionary of settings which can be used to enable optional services provided
@@ -965,7 +974,29 @@ Some Neutron vendors do not require it. Some can even attach a FIP to any port
 Set to False if you want to be able to associate a FIP to an instance on a
 subnet with no router if your Neutron backend allows it.
 
-.. versionadded:: 2015.2(Liberty)
+.. versionadded:: 8.0.0(Liberty)
+
+``default_ipv4_subnet_pool_label``:
+
+.. versionadded:: 8.0.0(Liberty)
+
+Default: ``None`` (Disabled)
+
+Neutron can be configured with a default Subnet Pool to be used for IPv4
+subnet-allocation. Specify the label you wish to display in the Address pool
+selector on the create subnet step if you want to use this feature.
+
+``default_ipv6_subnet_pool_label``:
+
+.. versionadded:: 8.0.0(Liberty)
+
+Default: ``None`` (Disabled)
+
+Neutron can be configured with a default Subnet Pool to be used for IPv6
+subnet-allocation. Specify the label you wish to display in the Address pool
+selector on the create subnet step if you want to use this feature.
+
+You must set this to enable IPv6 Prefix Delegation in a PD-capable environment.
 
 ``OPENSTACK_SSL_CACERT``
 ------------------------
@@ -1344,7 +1375,7 @@ Jasmine is a behavior-driven development framework for testing JavaScript code.
 ``ADD_SCSS_FILES``
 ----------------------
 
-.. versionadded:: 2015.2(Liberty)
+.. versionadded:: 8.0.0(Liberty)
 
 A list of scss files to be included in the compressed set of files that are
 loaded on every page. We recommend one scss file per dashboard, use @import if
@@ -1355,7 +1386,7 @@ you need to include additional scss files for panels.
 ``AUTO_DISCOVER_STATIC_FILES``
 ------------------------------
 
-.. versionadded:: 2015.2(Liberty)
+.. versionadded:: 8.0.0(Liberty)
 
 If set to ``True``, JavaScript files and static angular html template files will be
 automatically discovered from the `static` folder in each apps listed in ADD_INSTALLED_APPS.
