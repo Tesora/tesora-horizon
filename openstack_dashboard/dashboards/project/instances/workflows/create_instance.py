@@ -539,7 +539,6 @@ KEYPAIR_IMPORT_URL = "horizon:project:access_and_security:keypairs:import"
 
 class SetAccessControlsAction(workflows.Action):
     keypair = forms.DynamicChoiceField(label=_("Key Pair"),
-                                       required=False,
                                        help_text=_("Key pair to use for "
                                                    "authentication."),
                                        add_item_link=KEYPAIR_IMPORT_URL)
@@ -570,6 +569,7 @@ class SetAccessControlsAction(workflows.Action):
         if not api.nova.can_set_server_password():
             del self.fields['admin_pass']
             del self.fields['confirm_admin_pass']
+        self.fields['keypair'].required = api.nova.requires_keypair()
 
     def populate_keypair_choices(self, request, context):
         keypairs = instance_utils.keypair_field_data(request, True)
@@ -580,7 +580,11 @@ class SetAccessControlsAction(workflows.Action):
     def populate_groups_choices(self, request, context):
         try:
             groups = api.network.security_group_list(request)
-            security_group_list = [(sg.name, sg.name) for sg in groups]
+            if base.is_service_enabled(request, 'network'):
+                security_group_list = [(sg.id, sg.name) for sg in groups]
+            else:
+                # Nova-Network requires the groups to be listed by name
+                security_group_list = [(sg.name, sg.name) for sg in groups]
         except Exception:
             exceptions.handle(request,
                               _('Unable to retrieve list of security groups'))

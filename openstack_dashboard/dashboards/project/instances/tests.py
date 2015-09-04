@@ -1482,6 +1482,16 @@ class InstanceTests(helpers.TestCase):
     def test_launch_instance_get_without_password(self):
         self.test_launch_instance_get(expect_password_fields=False)
 
+    @django.test.utils.override_settings(
+        OPENSTACK_HYPERVISOR_FEATURES={'requires_keypair': True})
+    def test_launch_instance_required_key(self):
+        flavor = self.flavors.first()
+        image = self.images.first()
+        image.min_ram = flavor.ram
+        image.min_disk = flavor.disk
+        self._test_launch_form_instance_requirement_error(image, flavor,
+                                                          keypair_require=True)
+
     def test_launch_instance_get_no_block_device_mapping_v2_supported(self):
         self.test_launch_instance_get(block_device_mapping_v2=False)
 
@@ -1731,7 +1741,7 @@ class InstanceTests(helpers.TestCase):
                                flavor.id,
                                keypair.name,
                                customization_script,
-                               [sec_group.name],
+                               [str(sec_group.id)],
                                block_device_mapping=None,
                                block_device_mapping_v2=None,
                                nics=nics,
@@ -1756,7 +1766,7 @@ class InstanceTests(helpers.TestCase):
                      'script_data': customization_script,
                      'project_id': self.tenants.first().id,
                      'user_id': self.user.id,
-                     'groups': sec_group.name,
+                     'groups': str(sec_group.id),
                      'availability_zone': avail_zone.zoneName,
                      'volume_type': '',
                      'network': self.networks.first().id,
@@ -1885,7 +1895,7 @@ class InstanceTests(helpers.TestCase):
                      'script_data': customization_script,
                      'project_id': self.tenants.first().id,
                      'user_id': self.user.id,
-                     'groups': sec_group.name,
+                     'groups': str(sec_group.id),
                      'availability_zone': avail_zone.zoneName,
                      'volume_type': '',
                      'network': self.networks.first().id,
@@ -2050,7 +2060,7 @@ class InstanceTests(helpers.TestCase):
                                flavor.id,
                                keypair.name,
                                customization_script,
-                               [sec_group.name],
+                               [str(sec_group.id)],
                                block_device_mapping=block_device_mapping,
                                block_device_mapping_v2=block_device_mapping_2,
                                nics=nics,
@@ -2073,7 +2083,7 @@ class InstanceTests(helpers.TestCase):
                      'script_data': customization_script,
                      'project_id': self.tenants.first().id,
                      'user_id': self.user.id,
-                     'groups': sec_group.name,
+                     'groups': str(sec_group.id),
                      'availability_zone': avail_zone.zoneName,
                      'volume_size': '1',
                      'volume_id': volume_choice,
@@ -2195,7 +2205,7 @@ class InstanceTests(helpers.TestCase):
                                flavor.id,
                                keypair.name,
                                customization_script,
-                               [sec_group.name],
+                               [str(sec_group.id)],
                                block_device_mapping=block_device_mapping,
                                block_device_mapping_v2=None,
                                nics=nics,
@@ -2216,7 +2226,7 @@ class InstanceTests(helpers.TestCase):
                      'script_data': customization_script,
                      'project_id': self.tenants.first().id,
                      'user_id': self.user.id,
-                     'groups': sec_group.name,
+                     'groups': str(sec_group.id),
                      'availability_zone': avail_zone.zoneName,
                      'network': self.networks.first().id,
                      'volume_type': 'volume_id',
@@ -2323,7 +2333,7 @@ class InstanceTests(helpers.TestCase):
                      'script_data': customization_script,
                      'project_id': self.tenants.first().id,
                      'user_id': self.user.id,
-                     'groups': sec_group.name,
+                     'groups': str(sec_group.id),
                      'availability_zone': avail_zone.zoneName,
                      'volume_type': '',
                      'count': 1}
@@ -2588,7 +2598,7 @@ class InstanceTests(helpers.TestCase):
                                flavor.id,
                                keypair.name,
                                customization_script,
-                               [sec_group.name],
+                               [str(sec_group.id)],
                                block_device_mapping=None,
                                block_device_mapping_v2=None,
                                nics=nics,
@@ -2617,7 +2627,7 @@ class InstanceTests(helpers.TestCase):
                      'script_data': customization_script,
                      'project_id': self.tenants.first().id,
                      'user_id': self.user.id,
-                     'groups': sec_group.name,
+                     'groups': str(sec_group.id),
                      'volume_type': '',
                      'network': self.networks.first().id,
                      'count': 1,
@@ -2729,7 +2739,7 @@ class InstanceTests(helpers.TestCase):
                      'script_data': customization_script,
                      'project_id': self.tenants.first().id,
                      'user_id': self.user.id,
-                     'groups': sec_group.name,
+                     'groups': str(sec_group.id),
                      'volume_type': 'volume_id',
                      'volume_id': volume_choice,
                      'device_name': device_name,
@@ -2836,7 +2846,7 @@ class InstanceTests(helpers.TestCase):
                      'script_data': customization_script,
                      'project_id': self.tenants.first().id,
                      'user_id': self.user.id,
-                     'groups': sec_group.name,
+                     'groups': str(sec_group.id),
                      'volume_type': 'volume_id',
                      'volume_id': volume_choice,
                      'device_name': device_name,
@@ -2883,7 +2893,8 @@ class InstanceTests(helpers.TestCase):
                                     'volume_snapshot_list',),
                            quotas: ('tenant_quota_usages',)})
     def _test_launch_form_instance_requirement_error(self, image, flavor,
-                                                     test_with_profile=False):
+                                                     test_with_profile=False,
+                                                     keypair_require=False):
         keypair = self.keypairs.first()
         server = self.servers.first()
         volume = self.volumes.first()
@@ -2954,22 +2965,27 @@ class InstanceTests(helpers.TestCase):
                      'source_type': 'image_id',
                      'image_id': image.id,
                      'availability_zone': avail_zone.zoneName,
-                     'keypair': keypair.name,
                      'name': server.name,
                      'script_source': 'raw',
                      'script_data': customization_script,
                      'project_id': self.tenants.first().id,
                      'user_id': self.user.id,
-                     'groups': sec_group.name,
+                     'groups': str(sec_group.id),
                      'volume_type': 'volume_id',
                      'volume_id': volume_choice,
                      'device_name': device_name,
                      'count': 1}
+        if not keypair_require:
+            form_data['keypair'] = keypair.name
 
         url = reverse('horizon:project:instances:launch')
         res = self.client.post(url, form_data)
-        msg = "The flavor &#39;%s&#39; is too small" % flavor.name
-        self.assertContains(res, msg)
+        if keypair_require:
+            msg = "This field is required"
+            self.assertContains(res, msg)
+        else:
+            msg = "The flavor &#39;%s&#39; is too small" % flavor.name
+            self.assertContains(res, msg)
 
     def test_launch_form_instance_requirement_error_disk(
         self,
@@ -3089,7 +3105,7 @@ class InstanceTests(helpers.TestCase):
                      'customization_script': customization_script,
                      'project_id': self.tenants.first().id,
                      'user_id': self.user.id,
-                     'groups': sec_group.name,
+                     'groups': str(sec_group.id),
                      'volume_type': 'volume_id',
                      'volume_id': volume_choice,
                      'volume_size': max(
@@ -3219,7 +3235,7 @@ class InstanceTests(helpers.TestCase):
             'script_data': customization_script,
             'project_id': self.tenants.first().id,
             'user_id': self.user.id,
-            'groups': sec_group.name,
+            'groups': str(sec_group.id),
             'volume_size': volume_size,
             'device_name': device_name,
             'count': 1
@@ -3402,7 +3418,7 @@ class InstanceTests(helpers.TestCase):
                                flavor.id,
                                keypair.name,
                                customization_script,
-                               [sec_group.name],
+                               [str(sec_group.id)],
                                block_device_mapping=None,
                                block_device_mapping_v2=device_mapping_v2,
                                nics=nics,
@@ -3425,7 +3441,7 @@ class InstanceTests(helpers.TestCase):
             'script_data': customization_script,
             'project_id': self.tenants.first().id,
             'user_id': self.user.id,
-            'groups': sec_group.name,
+            'groups': str(sec_group.id),
             'volume_size': image.size,
             'device_name': device_name,
             'network': self.networks.first().id,
@@ -4550,7 +4566,7 @@ class ConsoleManagerTests(helpers.TestCase):
                                flavor.id,
                                keypair.name,
                                customization_script,
-                               [sec_group.name],
+                               [str(sec_group.id)],
                                block_device_mapping=None,
                                block_device_mapping_v2=None,
                                nics=nics,
@@ -4580,7 +4596,7 @@ class ConsoleManagerTests(helpers.TestCase):
                      'script_data': customization_script,
                      'project_id': self.tenants.first().id,
                      'user_id': self.user.id,
-                     'groups': sec_group.name,
+                     'groups': [str(sec_group.id)],
                      'volume_type': '',
                      'network': self.networks.first().id,
                      'count': 1,
