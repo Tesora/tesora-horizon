@@ -64,10 +64,10 @@ class ManageVolume(forms.SelfHandlingForm):
         required=False,
         help_text=_("Volume name to be assigned"))
     description = forms.CharField(max_length=255, widget=forms.Textarea(
-        attrs={'class': 'modal-body-fixed-width', 'rows': 4}),
+        attrs={'rows': 4}),
         label=_("Description"), required=False)
     metadata = forms.CharField(max_length=255, widget=forms.Textarea(
-        attrs={'class': 'modal-body-fixed-width', 'rows': 2}),
+        attrs={'rows': 2}),
         label=_("Metadata"), required=False,
         help_text=_("Comma-separated key=value pairs"),
         validators=[utils_validators.validate_metadata])
@@ -218,9 +218,7 @@ class CreateVolumeType(forms.SelfHandlingForm):
     name = forms.CharField(max_length=255, label=_("Name"))
     vol_type_description = forms.CharField(
         max_length=255,
-        widget=forms.Textarea(
-            attrs={'class': 'modal-body-fixed-width',
-                   'rows': 4}),
+        widget=forms.Textarea(attrs={'rows': 4}),
         label=_("Description"),
         required=False)
 
@@ -241,11 +239,16 @@ class CreateVolumeType(forms.SelfHandlingForm):
             messages.success(request, _('Successfully created volume type: %s')
                              % data['name'])
             return volume_type
-        except Exception:
-            redirect = reverse("horizon:admin:volumes:index")
-            exceptions.handle(request,
-                              _('Unable to create volume type.'),
-                              redirect=redirect)
+        except Exception as e:
+            if getattr(e, 'code', None) == 409:
+                msg = _('Volume type name "%s" already '
+                        'exists.') % data['name']
+                self._errors['name'] = self.error_class([msg])
+            else:
+                redirect = reverse("horizon:admin:volumes:index")
+                exceptions.handle(request,
+                                  _('Unable to create volume type.'),
+                                  redirect=redirect)
 
 
 class UpdateStatus(forms.SelfHandlingForm):
