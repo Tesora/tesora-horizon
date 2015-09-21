@@ -3,21 +3,23 @@
 # This file is distributed under the same license as the PROJECT project.
 #
 # Translators:
+# OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 msgid ""
 msgstr ""
-"Project-Id-Version: Horizon\n"
+"Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-09-03 04:49+0000\n"
-"PO-Revision-Date: 2015-09-02 07:31+0000\n"
-"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
-"Language-Team: Maithili (http://www.transifex.com/openstack/horizon/language/"
-"mai/)\n"
+"POT-Creation-Date: 2015-09-18 05:57+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2015-09-08 11:14+0000\n"
+"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
+"Language-Team: Maithili (http://www.transifex.com/openstack/horizon/language/"
+"mai/)\n"
 "Generated-By: Babel 2.0\n"
 "Language: mai\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Zanata 3.7.1\n"
 
 #, python-format
 msgid ""
@@ -551,11 +553,6 @@ msgstr "VIP जोड़ू"
 
 msgid "Add VPN Service"
 msgstr "VPN सेवा जोड़ू"
-
-msgid ""
-"Add and remove security groups to this project from the list of available "
-"security groups."
-msgstr "मोजुद सुरक्षा समूह क सूची सँ सुरक्षा समूह केँ एहि प्रोजेक्ट मे जोड़ू आओर निकालू."
 
 msgid "Add custom tag"
 msgstr "पसंदीदा टैग जोड़ू"
@@ -3151,9 +3148,6 @@ msgstr "GRE"
 msgid "Gateway IP"
 msgstr "गेटवे IP"
 
-msgid "Gateway IP (optional)"
-msgstr "गेटवे आईपी (वैकल्पिक)"
-
 msgid "Gateway IP and IP version are inconsistent."
 msgstr "गेटवे आईपी आओर आईपी संस्करण असंगत अछि."
 
@@ -3383,15 +3377,6 @@ msgstr ""
 "192.168.0.0/24, 2001:DB8::1 for 2001:DB8::/48) सँजाल पता क पहिल आईपी अछि. अहाँ "
 "पूर्वनिर्धारित क उपयोग करू, तँ खाली छोड़ दिअ'. अहाँ कोनो प्रवेश द्वार क उपयोग कएनाइ "
 "चाहैत अछि, तँ 'अक्षम गेटवे' नीच्चाँ क जाँच करू."
-
-msgid ""
-"IP address of Gateway (e.g. 192.168.0.254). Specify an explicit address to "
-"set the gateway. If you do not want to use a gateway, check 'Disable "
-"Gateway' below."
-msgstr ""
-"गेटवे (जहिना 192.168.0.254) क आईपी पता. प्रवेश द्वार स्थापित करबाक लेल एकटा स्पष्ट "
-"पता निर्दिष्ट करू. अहाँ कोनो प्रवेश द्वार क उपयोग कएनाइ चाहैत अछि, तँ 'अक्षम गेटवे' "
-"नीच्चाँ क जाँच करू."
 
 msgid "IP allocation pool"
 msgstr "आईपी ​​आवंटन पूल"
@@ -4976,12 +4961,6 @@ msgstr "निज"
 msgid "Private Key File"
 msgstr "निज कुँजी फाइल"
 
-msgid "Processes"
-msgstr "प्रक्रिया"
-
-msgid "Processes to be launched in node group"
-msgstr "ई नोड समूह मे लान्च क जाएबला प्रक्रिया."
-
 msgid "Project"
 msgstr "परियोजना"
 
@@ -5894,9 +5873,6 @@ msgstr "स्लैश एकटा अनुमत वर्ण नहि अ�
 msgid ""
 "Slashes are allowed, and are treated as pseudo-folders by the Object Store."
 msgstr "स्लैश अनुमति देल जाइछ, आओर वस्तु संग्रह सँ छद्म फोल्डर क रूपेँ व्यवहार कए रहल अछि."
-
-msgid "Small"
-msgstr "छोट"
 
 msgid "Snapshot"
 msgstr "स्नेपशाट"

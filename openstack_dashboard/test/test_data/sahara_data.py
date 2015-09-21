@@ -132,6 +132,8 @@ def data(TEST):
         "volume_local_to_instance": False,
         "security_groups": [],
         "volumes_availability_zone": None,
+        "is_proxy_gateway": False,
+        "use_autoconfig": True,
     }
 
     ngt1 = node_group_templates.NodeGroupTemplate(
@@ -150,6 +152,7 @@ def data(TEST):
         "id": "a2c3743f-31a2-4919-8d02-792138a87a98",
         "name": "sample-cluster-template",
         "neutron_management_network": None,
+        "use_autoconfig": True,
         "node_groups": [
             {
                 "count": 1,
@@ -174,6 +177,8 @@ def data(TEST):
                 "volume_type": None,
                 "volume_local_to_instance": False,
                 "volumes_availability_zone": None,
+                "use_autoconfig": True,
+                "is_proxy_gateway": False,
             },
             {
                 "count": 2,
@@ -195,6 +200,8 @@ def data(TEST):
                 "volume_type": None,
                 "volume_local_to_instance": False,
                 "volumes_availability_zone": None,
+                "use_autoconfig": True,
+                "is_proxy_gateway": False
             }
         ],
         "plugin_name": "vanilla",
@@ -221,6 +228,7 @@ def data(TEST):
         "management_public_key": "fakekey",
         "name": "cercluster",
         "neutron_management_network": None,
+        "use_autoconfig": True,
         "node_groups": [
             {
                 "count": 1,
@@ -258,7 +266,9 @@ def data(TEST):
                 "volume_local_to_instance": False,
                 "security_groups": [],
                 "volumes_availability_zone": None,
-                "id": "ng1"
+                "id": "ng1",
+                "use_autoconfig": True,
+                "is_proxy_gateway": False
             },
             {
                 "count": 2,
@@ -303,7 +313,9 @@ def data(TEST):
                 "volume_local_to_instance": False,
                 "security_groups": ["b7857890-09bf-4ee0-a0d5-322d7a6978bf"],
                 "volumes_availability_zone": None,
-                "id": "ng2"
+                "id": "ng2",
+                "use_autoconfig": True,
+                "is_proxy_gateway": False
             }
         ],
         "plugin_name": "vanilla",
@@ -452,6 +464,7 @@ def data(TEST):
                 "url": "internal-db://80121dea-f8bd-4ad3-bcc7-096f4bfc722d"
             }
         ],
+        "interface": [],
         "name": "pigjob",
         "tenant_id": "429ad8447c2d47bc8e0382d244e1d1df",
         "type": "Pig",
@@ -537,6 +550,7 @@ def data(TEST):
             "configs": {},
             "params": {}
         },
+        "interface": {},
         "job_id": "a077b851-46be-4ad7-93c3-2d83894546ef",
         "oozie_job_id": "0000000-140604200538581-oozie-hado-W",
         "output_id": "426fb01c-5c7e-472d-bba2-b1f0fe7e0ede",
