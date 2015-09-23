@@ -1,0 +1,89 @@
+@mixin tesora_background_gradient($color_start, $color_end) {
+  background: $color-start;
+  background: linear-gradient(top, $color-start 0%, $color-end 100%);
+  background: -moz-linear-gradient(top, $color-start 0%, $color-end 100%);
+  background: -ms-linear-gradient(top, $color-start 0%, $color-end 100%);
+  background: -o-linear-gradient(top, $color-start 0%, $color-end 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $color-start), color-stop(100%, $color-end));
+  background: -webkit-linear-gradient(top, $color-start 0%, $color-end 100%);
+}
+
+@mixin tesora_box_shadow {
+  -webkit-box-shadow: inset 0px 1px 0px 0px rgba(0,0,0, .1), 0px 1px 0px 0px rgba(255,255,255, .1);
+  -moz-box-shadow: inset 0px 1px 0px 0px rgba(0,0,0, .1), 0px 1px 0px 0px rgba(255,255,255, .1);
+  box-shadow: inset 0px 1px 0px 0px rgba(0,0,0, .1), 0px 1px 0px 0px rgba(255,255,255, .1);
+}
+
+#sidebar {
+  text-decoration: none;
+  text-shadow: 0px 1px 0px rgba(255,255,255, .35);
+  min-width: 110px;
+
+  .panel {
+    background-color: #ffffff;
+  }
+
+  .openstack-dashboard > a {
+    color: $tesora-black;
+    font-size: 14px;
+    font-weight: bold;
+    @include tesora_background_gradient($tesora-light-orange, $tesora-orange);
+  }
+
+  .nav-header > a {
+    padding-left: 35px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    @include tesora_background_gradient($tesora-light-blue, $tesora-dark-blue);
+    @include tesora_box_shadow;
+  }
+
+  .nav-header > a > .nav-header-title {
+    color: $tesora-black;
+    //padding-left: 20px;
+    border-bottom: none;
+  }
+
+  .openstack-dashboard > a.collapsed,
+  .nav-header > a.collapsed {
+    @include tesora_background_gradient($tesora-lightest-gray, $tesora-light-gray);
+    @include tesora_box_shadow;
+  }
+
+  .openstack-dashboard > a:hover,
+  .openstack-dashboard > a:focus {
+    @include tesora_background_gradient($tesora-light-orange, $tesora-orange);
+  }
+
+  .nav-header > a:hover,
+  .nav-header > a:focus {
+    @include tesora_background_gradient($tesora-light-blue, $tesora-dark-blue);
+    @include tesora_box_shadow;
+  }
+
+  .openstack-panel {
+    & > a {
+      font-size: 12px;
+      font-weight: bold;
+      padding: $padding-medium-vertical $padding-medium-horizontal;
+      border-right: 1px solid $tesora-light-gray;
+      border-bottom: 1px solid $tesora-light-gray;
+    }
+    &.active > a {
+      font-weight: bold;
+      border-right: none;
+    }
+  }
+
+  .openstack-panel > a:hover,
+  .openstack-panel > a:focus {
+    color: $tesora-orange;
+    border-left: 4px solid $tesora-orange;
+    border-right: 0;
+  }
+
+  .openstack-toggle.fa {
+    font-size: $font-size-base;
+    font-weight: bold;
+  }
+}
