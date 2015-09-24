@@ -1,0 +1,10 @@
+include tesora_horizon/openstack_dashboard/dashboards/project/databases/templates/databases/**.html
+include tesora_horizon/openstack_dashboard/dashboards/project/database_backups/templates/database_backups/**.html
+include tesora_horizon/openstack_dashboard/dashboards/project/database_configurations/templates/database_configurations/**.html
+include tesora_horizon/openstack_dashboard/dashboards/project/database_datastores/templates/database_datastores/**.html
+include tesora_horizon/openstack_dashboard/dashboards/project/database_clusters/templates/database_clusters/**.html
+
+#exclude .gitignore
+#exclude .gitreview
+
+#global-exclude *.pyc

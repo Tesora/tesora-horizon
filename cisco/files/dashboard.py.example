@@ -1,0 +1,35 @@
+from django.utils.translation import ugettext_lazy as _  # noqa
+
+import horizon
+
+from ccs_portal_common.customization_module import customizations as custom
+
+
+class Hook1(custom.CustomizationHook):
+
+    def __init__(self):
+        super(Hook1, self).__init__("Hook 1")
+
+    def run(self):
+        try:
+            projects_dashboard = horizon.get_dashboard("project")
+
+            projects_dashboard.panels = tuple([panels for panels in projects_dashboard.panels if panels.slug != 'database'])
+
+            projects_dashboard._panel_groups = {key: value for key,value in projects_dashboard._panel_groups.iteritems() if value.slug != 'database'}
+
+            mydict = {}
+            for key, value in projects_dashboard._registry.iteritems():
+                if value.slug in ('databases', 'database_backups', 'database_clusters',
+                                  'database_datastores', 'database_configurations'):
+                    module = value.__module__
+                    if module.startswith('openstack_dashboard'):
+                        continue
+                mydict[key] = value
+            projects_dashboard._registry = mydict
+        except Exception:
+            pass
+
+
+custom.Customizations.install_customization_hook(Hook1())
+
