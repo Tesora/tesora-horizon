@@ -22,4 +22,5 @@ import horizon
 class Clusters(horizon.Panel):
     name = _("Clusters")
     slug = 'database_clusters'
-    permissions = ('openstack.services.database',)
+    permissions = ('openstack.services.database',
+                   'openstack.services.object-store',)

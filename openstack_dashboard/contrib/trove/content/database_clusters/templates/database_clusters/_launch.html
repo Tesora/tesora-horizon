@@ -9,13 +9,10 @@
 {% block modal-header %}{% trans "Launch Cluster" %}{% endblock %}
 
 {% block modal-body %}
-<div class="left">
+<div class="center">
   <fieldset>
   {% include "horizon/common/_form_fields.html" %}
   </fieldset>
-</div>
-<div class="right">
-  <p>{% blocktrans %}<strong>Please note:</strong> The value specified in the Volume Size field should be greater than 0, however, some configurations do not support specifying volume size. If specifying the volume size results in an error stating volume support is not enabled, enter 0.{% endblocktrans %}</p>
 </div>
 {% endblock %}
 

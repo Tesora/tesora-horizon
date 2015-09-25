@@ -63,6 +63,13 @@ class InstancesTab(tabs.TableTab):
                 flavor_id = instance_info.flavor['id']
                 instance_info.full_flavor = api.trove.flavor_get(self.request,
                                                                  flavor_id)
+                if "type" in instance:
+                    instance_info.type = instance["type"]
+                if "ip" in instance:
+                    instance_info.ip = instance["ip"]
+                if "hostname" in instance:
+                    instance_info.hostname = instance["hostname"]
+
                 data.append(instance_info)
         except Exception:
             msg = _('Unable to get instances data.')
