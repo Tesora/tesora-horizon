@@ -56,20 +56,29 @@ class SetInstanceDetailsAction(workflows.Action):
         return self.cleaned_data
 
     @memoized.memoized_method
-    def flavors(self, request):
+    def datastore_flavors(self, request, datastore_name, datastore_version):
         try:
-            return api.trove.flavor_list(request)
+            return api.trove.datastore_flavors(
+                request, datastore_name, datastore_version)
         except Exception:
             LOG.exception("Exception while obtaining flavors list")
-            redirect = reverse("horizon:project:databases:index")
+            self._flavors = []
+            redirect = reverse('horizon:project:database_clusters:index')
             exceptions.handle(request,
                               _('Unable to obtain flavors.'),
                               redirect=redirect)
 
     def populate_flavor_choices(self, request, context):
-        flavors = self.flavors(request)
-        if flavors:
-            return instance_utils.sort_flavor_list(request, flavors)
+        for ds in self.datastores(request):
+            versions = self.datastore_versions(request, ds.name)
+            for version in versions:
+                if version.name == "inactive":
+                    continue
+                valid_flavors = self.datastore_flavors(request, ds.name,
+                                                       versions[0].name)
+                if valid_flavors:
+                    return instance_utils.sort_flavor_list(request,
+                                                           valid_flavors)
         return []
 
     @memoized.memoized_method
