@@ -21,5 +21,5 @@ PANEL_GROUP = 'tesora_database'
 
 # Python panel class of the PANEL to be added.
 ADD_PANEL = ('tesora_horizon.openstack_dashboard.'
-             'contrib.trove.content.'
+             'dashboards.project.'
              'database_clusters.panel.Clusters')
