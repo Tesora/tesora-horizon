@@ -41,6 +41,10 @@ class SetInstanceDetailsAction(workflows.Action):
                                 min_value=0,
                                 initial=1,
                                 help_text=_("Size of the volume in GB."))
+    volume_type = forms.CharField(
+        label=_("Volume Type"),
+        required=False,
+        help_text=_("Applicable only if the volume size is specified."))
     datastore = forms.ChoiceField(label=_("Datastore"),
                                   help_text=_(
                                       "Type and version of datastore."))
@@ -135,7 +139,7 @@ TROVE_ADD_PERMS = TROVE_ADD_USER_PERMS + TROVE_ADD_DATABASE_PERMS
 
 class SetInstanceDetails(workflows.Step):
     action_class = SetInstanceDetailsAction
-    contributes = ("name", "volume", "flavor", "datastore")
+    contributes = ("name", "volume", "volume_type", "flavor", "datastore")
 
 
 class SetNetworkAction(workflows.Action):
@@ -469,17 +473,24 @@ class LaunchInstance(workflows.Workflow):
             config = context['config']
         return config
 
+    def _get_volume_type(self, context):
+        volume_type = None
+        if context.get('volume_type'):
+            volume_type = context['volume_type']
+        return volume_type
+
     def handle(self, request, context):
         try:
             datastore = self.context['datastore'].split(',')[0]
             datastore_version = self.context['datastore'].split(',')[1]
             LOG.info("Launching database instance with parameters "
-                     "{name=%s, volume=%s, flavor=%s, "
+                     "{name=%s, volume=%s, volume_type=%s, flavor=%s, "
                      "datastore=%s, datastore_version=%s, "
                      "dbs=%s, users=%s, "
                      "backups=%s, nics=%s, "
                      "replica_of=%s, configuration=%s, replica_count=%s}",
-                     context['name'], context['volume'], context['flavor'],
+                     context['name'], context['volume'],
+                     context['volume_type'], context['flavor'],
                      datastore, datastore_version,
                      self._get_databases(context), self._get_users(context),
                      self._get_backup(context), self._get_nics(context),
@@ -497,7 +508,9 @@ class LaunchInstance(workflows.Workflow):
                                       nics=self._get_nics(context),
                                       replica_of=context.get('master'),
                                       configuration=self._get_config(context),
-                                      replica_count=context['replica_count'])
+                                      replica_count=context['replica_count'],
+                                      volume_type=self._get_volume_type(
+                                          context))
             return True
         except Exception:
             exceptions.handle(request)

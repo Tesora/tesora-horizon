@@ -238,7 +238,8 @@ class DatabaseTests(test.TestCase):
             configuration=None,
             users=None,
             nics=nics,
-            replica_count=None).AndReturn(self.databases.first())
+            replica_count=None,
+            volume_type=None).AndReturn(self.databases.first())
 
         self.mox.ReplayAll()
         post = {
@@ -301,7 +302,8 @@ class DatabaseTests(test.TestCase):
             configuration=None,
             users=None,
             nics=nics,
-            replica_count=None).AndRaise(trove_exception)
+            replica_count=None,
+            volume_type=None).AndRaise(trove_exception)
 
         self.mox.ReplayAll()
         post = {
@@ -986,7 +988,8 @@ class DatabaseTests(test.TestCase):
             configuration=None,
             users=None,
             nics=nics,
-            replica_count=2).AndReturn(self.databases.first())
+            replica_count=2,
+            volume_type=None).AndReturn(self.databases.first())
 
         self.mox.ReplayAll()
         post = {
