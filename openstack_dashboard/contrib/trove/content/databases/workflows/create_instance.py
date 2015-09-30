@@ -41,7 +41,7 @@ class SetInstanceDetailsAction(workflows.Action):
                                 min_value=0,
                                 initial=1,
                                 help_text=_("Size of the volume in GB."))
-    volume_type = forms.CharField(
+    volume_type = forms.ChoiceField(
         label=_("Volume Type"),
         required=False,
         help_text=_("Applicable only if the volume size is specified."))
@@ -84,6 +84,17 @@ class SetInstanceDetailsAction(workflows.Action):
                     return instance_utils.sort_flavor_list(request,
                                                            valid_flavors)
         return []
+
+    @memoized.memoized_method
+    def populate_volume_type_choices(self, request, context):
+        try:
+            volume_types = dash_api.cinder.volume_type_list(request)
+            return ([("no_type", _("No volume type"))] +
+                    [(type.name, type.name)
+                     for type in volume_types])
+        except Exception:
+            LOG.exception("Exception while obtaining volume types list")
+            self._volume_types = []
 
     @memoized.memoized_method
     def datastores(self, request):
@@ -475,7 +486,7 @@ class LaunchInstance(workflows.Workflow):
 
     def _get_volume_type(self, context):
         volume_type = None
-        if context.get('volume_type'):
+        if context.get('volume_type') != "no_type":
             volume_type = context['volume_type']
         return volume_type
 
