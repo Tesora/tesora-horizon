@@ -86,9 +86,16 @@ class SetInstanceDetailsAction(workflows.Action):
         return []
 
     @memoized.memoized_method
+    def volume_types(self, request):
+        try:
+            return dash_api.cinder.volume_type_list(request)
+        except Exception:
+            LOG.exception("Exception while obtaining volume types list")
+            self._volume_types = []
+
     def populate_volume_type_choices(self, request, context):
         try:
-            volume_types = dash_api.cinder.volume_type_list(request)
+            volume_types = self.volume_types(request)
             return ([("no_type", _("No volume type"))] +
                     [(type.name, type.name)
                      for type in volume_types])
