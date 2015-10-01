@@ -13,7 +13,6 @@
 #    under the License.
 
 from django.core import urlresolvers
-from django.template import defaultfilters as filters
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ungettext_lazy
 
@@ -41,11 +40,6 @@ class PublishLog(tables.BatchAction):
 
     name = "publish_log"
 
-    def allowed(self, request, datum=None):
-        if datum:
-            return datum.publishable
-        return False
-
     def action(self, request, obj_id):
         instance_id = self.table.kwargs['instance_id']
         api.trove.log_publish(request, instance_id, obj_id)
@@ -55,25 +49,20 @@ class DisableLogCollection(tables.BatchAction):
     @staticmethod
     def action_present(count):
         return ungettext_lazy(
-            u"Stop Collection",
-            u"Stop Collection",
+            u"Clear Container",
+            u"Clear Containers",
             count
         )
 
     @staticmethod
     def action_past(count):
         return ungettext_lazy(
-            u"Stopped Collection",
-            u"Stopped Collection",
+            u"Cleared Container",
+            u"Cleared Containers",
             count
         )
 
     name = "disable_log_collection"
-
-    def allowed(self, request, datum=None):
-        if datum:
-            return datum.status
-        return False
 
     def action(self, request, obj_id):
         instance_id = self.table.kwargs['instance_id']
@@ -91,14 +80,18 @@ class ViewLog(tables.LinkAction):
                                     args=(instance_id,
                                           datum.name))
 
+    def allowed(self, request, datum=None):
+        if datum:
+            return datum.published > 0
+        return False
+
 
 class LogsTable(tables.DataTable):
     name = tables.Column('name', verbose_name=_('Name'))
     type = tables.Column('type', verbose_name=_("Type"))
-    status = tables.Column('status', verbose_name=_("Log Collected"),
-                           filters=(filters.yesno, filters.capfirst))
-    publishable = tables.Column('publishable', verbose_name=_('Can Publish'),
-                                filters=(filters.yesno, filters.capfirst))
+    status = tables.Column('status', verbose_name=_("Status"))
+    published = tables.Column('published', verbose_name=_('Published (bytes)'))
+    pending = tables.Column('pending', verbose_name=_('Publishable (bytes)'))
     container = tables.Column('container', verbose_name=_('Container'))
 
     class Meta(object):

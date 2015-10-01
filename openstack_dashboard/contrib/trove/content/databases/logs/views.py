@@ -20,6 +20,7 @@ from django.views import generic
 from horizon import exceptions
 from horizon import messages
 
+from openstack_dashboard import api as dash_api
 from openstack_dashboard.contrib.trove import api
 
 FULL_LOG_VALUE = 0
@@ -34,8 +35,8 @@ class LogContentsView(generic.TemplateView):
         context = super(LogContentsView, self).get_context_data(**kwargs)
         context["instance_id"] = kwargs['instance_id']
         context["filename"] = kwargs['filename']
-        context["publish"] = 'checked="checked"'
-        publish = True
+        context["publish"] = ''
+        publish = False
 
         try:
             log_length = int(kwargs['lines'])
@@ -58,7 +59,7 @@ def get_contents(request, instance_id, filename, publish, lines):
                                            filename,
                                            publish,
                                            lines,
-                                           api.swift.swift_api(request))
+                                           dash_api.swift.swift_api(request))
         data = ""
         for log_part in log_generator():
             data += log_part
