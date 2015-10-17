@@ -172,6 +172,7 @@ INSTALLED_APPS = [
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 AUTHENTICATION_BACKENDS = ('openstack_auth.backend.KeystoneBackend',)
 AUTHENTICATION_URLS = ['openstack_auth.urls']
+AUTH_USER_MODEL = 'openstack_auth.User'
 MESSAGE_STORAGE = 'django.contrib.messages.storage.fallback.FallbackStorage'
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.signed_cookies'
@@ -196,20 +197,18 @@ SESSION_COOKIE_MAX_SIZE = 4093
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
 LANGUAGES = (
+    ('cs', 'Czech'),
     ('de', 'German'),
     ('en', 'English'),
     ('en-au', 'Australian English'),
-    ('en-gb', 'British English'),
     ('es', 'Spanish'),
     ('fr', 'French'),
-    ('hi', 'Hindi'),
     ('ja', 'Japanese'),
     ('ko', 'Korean (Korea)'),
-    ('nl', 'Dutch (Netherlands)'),
     ('pl', 'Polish'),
     ('pt-br', 'Portuguese (Brazil)'),
     ('ru', 'Russian'),
-    ('sr', 'Serbian'),
+    ('tr', 'Turkish'),
     ('zh-cn', 'Simplified Chinese'),
     ('zh-tw', 'Chinese (Taiwan)'),
 )
