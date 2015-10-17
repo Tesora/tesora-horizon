@@ -437,9 +437,6 @@ def data(TEST):
     version1 = datastores.\
         DatastoreVersion(datastores.DatastoreVersions(None),
                          VERSION_ONE)
-    version2 = datastores.\
-        DatastoreVersion(datastores.DatastoreVersions(None),
-                         VERSION_TWO)
 
     flavor1 = flavors.Flavor(flavors.Flavors(None), FLAVOR_ONE)
     flavor2 = flavors.Flavor(flavors.Flavors(None), FLAVOR_TWO)
@@ -489,6 +486,8 @@ def data(TEST):
     TEST.datastores = utils.TestDataContainer()
     TEST.datastores.add(datastore_mongodb)
     TEST.datastores.add(datastore1)
+    TEST.datastores.add(datastore_mongodb)
+    TEST.database_flavors.add(flavor1, flavor2, flavor3)
     TEST.datastore_versions = utils.TestDataContainer()
     TEST.datastore_versions.add(version_mongodb_2_6)
     TEST.datastore_versions.add(version1)

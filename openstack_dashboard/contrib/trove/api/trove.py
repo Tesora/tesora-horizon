@@ -230,6 +230,19 @@ def datastore_flavors(request, datastore_name=None,
     return flavor_list(request)
 
 
+def datastore_flavors(request, datastore_name=None,
+                      datastore_version=None):
+    # if datastore info is available then get datastore specific flavors
+    if datastore_name and datastore_version:
+        try:
+            return troveclient(request).flavors.\
+                list_datastore_version_associated_flavors(datastore_name,
+                                                          datastore_version)
+        except Exception:
+            LOG.warn("Failed to retrieve datastore specific flavors")
+    return flavor_list(request)
+
+
 def flavor_get(request, flavor_id):
     return troveclient(request).flavors.get(flavor_id)
 
