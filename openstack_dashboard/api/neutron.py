@@ -51,26 +51,22 @@ ROUTER_INTERFACE_OWNERS = (
 )
 
 
-def _init_apiresource(apiresource):
-    """Handle common initialization of apiresource.
-
-        Note: the dictionary is modified in place.
-    """
-
-    if apiresource['admin_state_up']:
-        apiresource['admin_state'] = 'UP'
-    else:
-        apiresource['admin_state'] = 'DOWN'
-
-    # Django cannot handle a key name with ':', so use '__'.
-    apiresource.update({
-        key.replace(':', '__'): value
-        for key, value in apiresource.items()
-        if ':' in key
-    })
-
-
 class NeutronAPIDictWrapper(base.APIDictWrapper):
+
+    def __init__(self, apidict):
+        if 'admin_state_up' in apidict:
+            if apidict['admin_state_up']:
+                apidict['admin_state'] = 'UP'
+            else:
+                apidict['admin_state'] = 'DOWN'
+
+        # Django cannot handle a key name with ':', so use '__'.
+        apidict.update({
+            key.replace(':', '__'): value
+            for key, value in apidict.items()
+            if ':' in key
+        })
+        super(NeutronAPIDictWrapper, self).__init__(apidict)
 
     def set_id_as_name_if_empty(self, length=8):
         try:
@@ -94,17 +90,9 @@ class NeutronAPIDictWrapper(base.APIDictWrapper):
 class Agent(NeutronAPIDictWrapper):
     """Wrapper for neutron agents."""
 
-    def __init__(self, apiresource):
-        _init_apiresource(apiresource)
-        super(Agent, self).__init__(apiresource)
-
 
 class Network(NeutronAPIDictWrapper):
     """Wrapper for neutron Networks."""
-
-    def __init__(self, apiresource):
-        _init_apiresource(apiresource)
-        super(Network, self).__init__(apiresource)
 
     def to_dict(self):
         d = dict(super(NeutronAPIDictWrapper, self).to_dict())
@@ -115,9 +103,9 @@ class Network(NeutronAPIDictWrapper):
 class Subnet(NeutronAPIDictWrapper):
     """Wrapper for neutron subnets."""
 
-    def __init__(self, apiresource):
-        apiresource['ipver_str'] = get_ipver_str(apiresource['ip_version'])
-        super(Subnet, self).__init__(apiresource)
+    def __init__(self, apidict):
+        apidict['ipver_str'] = get_ipver_str(apidict['ip_version'])
+        super(Subnet, self).__init__(apidict)
 
 
 class SubnetPool(NeutronAPIDictWrapper):
@@ -127,12 +115,11 @@ class SubnetPool(NeutronAPIDictWrapper):
 class Port(NeutronAPIDictWrapper):
     """Wrapper for neutron ports."""
 
-    def __init__(self, apiresource):
-        _init_apiresource(apiresource)
-        if 'mac_learning_enabled' in apiresource:
-            apiresource['mac_state'] = \
-                ON_STATE if apiresource['mac_learning_enabled'] else OFF_STATE
-        super(Port, self).__init__(apiresource)
+    def __init__(self, apidict):
+        if 'mac_learning_enabled' in apidict:
+            apidict['mac_state'] = \
+                ON_STATE if apidict['mac_learning_enabled'] else OFF_STATE
+        super(Port, self).__init__(apidict)
 
 
 class Profile(NeutronAPIDictWrapper):
@@ -140,16 +127,9 @@ class Profile(NeutronAPIDictWrapper):
     _attrs = ['profile_id', 'name', 'segment_type', 'segment_range',
               'sub_type', 'multicast_ip_index', 'multicast_ip_range']
 
-    def __init__(self, apiresource):
-        super(Profile, self).__init__(apiresource)
-
 
 class Router(NeutronAPIDictWrapper):
     """Wrapper for neutron routers."""
-
-    def __init__(self, apiresource):
-        _init_apiresource(apiresource)
-        super(Router, self).__init__(apiresource)
 
 
 class RouterStaticRoute(NeutronAPIDictWrapper):
@@ -655,13 +635,13 @@ def network_get(request, network_id, expand_subnet=True, **params):
     LOG.debug("network_get(): netid=%s, params=%s" % (network_id, params))
     network = neutronclient(request).show_network(network_id,
                                                   **params).get('network')
-    # Since the number of subnets per network must be small,
-    # call subnet_get() for each subnet instead of calling
-    # subnet_list() once.
     if expand_subnet:
-        network['subnets'] = [subnet_get(request, sid)
-                              for sid in network['subnets']]
-
+        if request.user.tenant_id == network['tenant_id'] or network['shared']:
+            # Since the number of subnets per network must be small,
+            # call subnet_get() for each subnet instead of calling
+            # subnet_list() once.
+            network['subnets'] = [subnet_get(request, sid)
+                                  for sid in network['subnets']]
     return Network(network)
 
 
@@ -710,24 +690,27 @@ def subnet_get(request, subnet_id, **params):
     return Subnet(subnet)
 
 
-def subnet_create(request, network_id, cidr, ip_version, **kwargs):
+def subnet_create(request, network_id, **kwargs):
     """Create a subnet on a specified network.
 
     :param request: request context
     :param network_id: network id a subnet is created on
-    :param cidr: subnet IP address range
-    :param ip_version: IP version (4 or 6)
+    :param cidr: (optional) subnet IP address range
+    :param ip_version: (optional) IP version (4 or 6)
     :param gateway_ip: (optional) IP address of gateway
     :param tenant_id: (optional) tenant id of the subnet created
     :param name: (optional) name of the subnet created
+    :param subnetpool_id: (optional) subnetpool to allocate prefix from
+    :param prefixlen: (optional) length of prefix to allocate
     :returns: Subnet object
+
+    Although both cidr+ip_version and subnetpool_id+preifxlen is listed as
+    optional you MUST pass along one of the combinations to get a successful
+    result.
     """
-    LOG.debug("subnet_create(): netid=%s, cidr=%s, ipver=%d, kwargs=%s"
-              % (network_id, cidr, ip_version, kwargs))
-    body = {'subnet':
-            {'network_id': network_id,
-             'ip_version': ip_version,
-             'cidr': cidr}}
+    LOG.debug("subnet_create(): netid=%s, kwargs=%s"
+              % (network_id, kwargs))
+    body = {'subnet': {'network_id': network_id}}
     if 'tenant_id' not in kwargs:
         kwargs['tenant_id'] = request.user.project_id
     body['subnet'].update(kwargs)

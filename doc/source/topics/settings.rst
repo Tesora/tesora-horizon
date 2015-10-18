@@ -147,6 +147,17 @@ If provided, will auto-fade the alert types specified. Valid alert types
 include: ['alert-success', 'alert-info', 'alert-warning', 'alert-error']
 Can also define the delay before the alert fades and the fade out duration.
 
+``bug_url``
+------------
+
+.. versionadded:: 9.0.0(Mitaka)
+
+Default: ``None``
+
+If provided, a "Report Bug" link will be displayed in the site header which
+links to the value of this setting (ideally a URL containing information on
+how to report issues).
+
 ``help_url``
 ------------
 
@@ -155,7 +166,7 @@ Can also define the delay before the alert fades and the fade out duration.
 Default: ``None``
 
 If provided, a "Help" link will be displayed in the site header which links
-to the value of this settings (ideally a URL containing help information).
+to the value of this setting (ideally a URL containing help information).
 
 ``exceptions``
 --------------
@@ -766,11 +777,46 @@ Default::
           ("saml2", _("Security Assertion Markup Language"))
         )
 
-This is the list of authentication mechanisms available to the user. It includes
-Keystone federation protocols such as OpenID Connect and SAML. The list of
-choices is completely configurable, so as long as the id remains intact. Do not
-remove the credentials mechanism unless you are sure. Once removed, even admins
-will have no way to log into the system via the dashboard.
+This is the list of authentication mechanisms available to the user. It
+includes Keystone federation protocols such as OpenID Connect and SAML, and
+also keys that map to specific identity provider and federation protocol
+combinations (as defined in ``WEBSSO_IDP_MAPPING``). The list of choices is
+completely configurable, so as long as the id remains intact. Do not remove
+the credentials mechanism unless you are sure. Once removed, even admins will
+have no way to log into the system via the dashboard.
+
+
+``WEBSSO_IDP_MAPPING``
+----------------------
+
+.. versionadded:: 8.0.0(Liberty)
+
+Default: ``{}``
+
+A dictionary of specific identity provider and federation protocol combinations.
+From the selected authentication mechanism, the value will be looked up as keys
+in the dictionary. If a match is found, it will redirect the user to a identity
+provider and federation protocol specific WebSSO endpoint in keystone, otherwise
+it will use the value as the protocol_id when redirecting to the WebSSO by
+protocol endpoint.
+
+Example::
+
+        WEBSSO_CHOICES =  (
+            ("credentials", _("Keystone Credentials")),
+            ("oidc", _("OpenID Connect")),
+            ("saml2", _("Security Assertion Markup Language")),
+            ("acme_oidc", "ACME - OpenID Connect"),
+            ("acme_saml2", "ACME - SAML2")
+        )
+
+        WEBSSO_IDP_MAPPING = {
+            "acme_oidc": ("acme", "oidc"),
+            "acme_saml2": ("acme", "saml2")
+        }
+
+.. note::
+  The value is expected to be a tuple formatted as: (<idp_id>, <protocol_id>).
 
 
 ``OPENSTACK_CINDER_FEATURES``
@@ -1077,10 +1123,12 @@ define the policy rules actions are verified against.
 
 .. versionadded:: 2013.2(Havana)
 
-Default: ``"1800"``
+Default: ``"3600"``
 
-Specifies the timespan in seconds inactivity, until a user is considered as
- logged out.
+This SESSION_TIMEOUT is a method to supercede the token timeout with a shorter
+horizon session timeout (in seconds).  So if your token expires in 60 minutes,
+a value of 1800 will log users out after 30 minutes.
+
 
 ``SAHARA_AUTO_IP_ALLOCATION_ENABLED``
 -------------------------------------
