@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-09-18 05:57+0000\n"
+"POT-Creation-Date: 2015-10-14 02:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1999,48 +1999,8 @@ msgid "Deleted"
 msgstr "நீக்கப்பட்டது"
 
 #, python-format
-msgid "Deleted IKE Policy %s"
-msgstr "IKE கொள்கை %s நீக்கப்பட்டது"
-
-#, python-format
-msgid "Deleted IPSec Policy %s"
-msgstr "IPSec கொள்கை %s நீக்கப்பட்டது"
-
-#, python-format
-msgid "Deleted IPSec Site Connection %s"
-msgstr "நீக்கிய IPSec தள இணைப்பு %s"
-
-#, python-format
 msgid "Deleted VIP %s"
 msgstr "VIP %s நீக்கப்பட்டது"
-
-#, python-format
-msgid "Deleted VPN Service %s"
-msgstr "நீக்கிய VPN சேவை %s"
-
-#, python-format
-msgid "Deleted firewall %s"
-msgstr "நீக்கிய ஃபயர்வால் %s"
-
-#, python-format
-msgid "Deleted member %s"
-msgstr "நீக்கிய உறுப்பினர் %s"
-
-#, python-format
-msgid "Deleted monitor %s"
-msgstr "நீக்கிய மானிட்டர் %s"
-
-#, python-format
-msgid "Deleted policy %s"
-msgstr "நீக்கிய கொள்கை %s"
-
-#, python-format
-msgid "Deleted pool %s"
-msgstr "நீக்கிய சேர்மம் %s"
-
-#, python-format
-msgid "Deleted rule %s"
-msgstr "நீக்கிய விதி %s"
 
 msgid "Deleting"
 msgstr "நீக்குகிறது"
@@ -2608,10 +2568,6 @@ msgid "Error"
 msgstr "பிழை"
 
 msgctxt "current status of router"
-msgid "Error"
-msgstr "பிழை"
-
-msgctxt "status of a neteork port"
 msgid "Error"
 msgstr "பிழை"
 
@@ -7008,24 +6964,8 @@ msgid "Unable to create volume."
 msgstr "தொகுதியை உருவாக்க முடியவில்லை."
 
 #, python-format
-msgid "Unable to delete IKE Policy: %s"
-msgstr "IKE கொள்கை: %s-ஐ நீக்க முடியவில்லை."
-
-#, python-format
-msgid "Unable to delete IPSec Policy: %s"
-msgstr "IPSec கொள்கை: %s-ஐ நீக்க முடியவில்லை."
-
-#, python-format
-msgid "Unable to delete IPSec Site Connection: %s"
-msgstr "IPSec தள இணைப்பு: %s-ஐ மீட்க முடியவில்லை"
-
-#, python-format
 msgid "Unable to delete VIP. %s"
 msgstr "VIP-ஐ நீக்க முடியவில்லை. %s"
-
-#, python-format
-msgid "Unable to delete VPN Service: %s"
-msgstr "VPN சேவை: %s-இன் விவரங்களை நீக்க முடியவில்லை"
 
 msgid "Unable to delete container."
 msgstr "கொள்கலனை நீக்க முடியவில்லை."

@@ -18,9 +18,9 @@
 
   angular
     .module('horizon.app.core.openstack-service-api')
-    .factory('horizon.app.core.openstack-service-api.cinder', CinderAPI);
+    .factory('horizon.app.core.openstack-service-api.cinder', cinderAPI);
 
-  CinderAPI.$inject = [
+  cinderAPI.$inject = [
     'horizon.framework.util.http.service',
     'horizon.framework.widgets.toast.service'
   ];
@@ -30,10 +30,11 @@
    * @name horizon.app.core.openstack-service-api.cinder
    * @description Provides direct access to Cinder APIs.
    */
-  function CinderAPI(apiService, toastService) {
+  function cinderAPI(apiService, toastService) {
     var service = {
       getVolumes: getVolumes,
-      getVolumeSnapshots: getVolumeSnapshots
+      getVolumeSnapshots: getVolumeSnapshots,
+      getExtensions: getExtensions
     };
 
     return service;
@@ -89,6 +90,38 @@
         .error(function () {
           toastService.add('error',
                         gettext('Unable to retrieve the volume snapshots.'));
+        });
+    }
+
+    // Cinder Extensions
+
+    /**
+     * @name horizon.app.core.openstack-service-api.cinder.getExtensions
+     * @description
+     * Returns a list of enabled extensions.
+     *
+     * The listing result is an object with property "items". Each item is
+     * an extension.
+     * @example
+     * The following is an example response:
+     *
+     *  {
+     *    "items": [
+     *      {
+     *        "alias": "NMN",
+     *        "description": "Multiple network support.",
+     *        "links": [],
+     *        "name": "Multinic",
+     *        "namespace": "http://docs.openstack.org/compute/ext/multinic/api/v1.1",
+     *        "updated": "2011-06-09T00:00:00Z"
+     *      }
+     *    ]
+     *  }
+     */
+    function getExtensions(config) {
+      return apiService.get('/api/cinder/extensions/', config)
+        .error(function () {
+          toastService.add('error', gettext('Unable to retrieve the extensions.'));
         });
     }
 

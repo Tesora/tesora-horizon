@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-09-18 05:57+0000\n"
+"POT-Creation-Date: 2015-10-14 02:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1928,48 +1928,8 @@ msgid "Deleted"
 msgstr "মোছা"
 
 #, python-format
-msgid "Deleted IKE Policy %s"
-msgstr "মুছে ফেলা IKE নীতি %s"
-
-#, python-format
-msgid "Deleted IPSec Policy %s"
-msgstr "মুছে ফেলা IPSec নীতি %s"
-
-#, python-format
-msgid "Deleted IPSec Site Connection %s"
-msgstr "মুছে ফেলা IPSec সাইট সংযোগ %s"
-
-#, python-format
 msgid "Deleted VIP %s"
 msgstr "মোছা VIP %s"
-
-#, python-format
-msgid "Deleted VPN Service %s"
-msgstr "মুছে ফেলা VPN সেবা %s"
-
-#, python-format
-msgid "Deleted firewall %s"
-msgstr "মোছা ফায়ারওয়াল %s"
-
-#, python-format
-msgid "Deleted member %s"
-msgstr "মোছা সদস্য %s"
-
-#, python-format
-msgid "Deleted monitor %s"
-msgstr "মোছা মনিটর %s"
-
-#, python-format
-msgid "Deleted policy %s"
-msgstr "মোছা নীতি %s"
-
-#, python-format
-msgid "Deleted pool %s"
-msgstr "মোছা পুল %s"
-
-#, python-format
-msgid "Deleted rule %s"
-msgstr "মোছা নিয়ম %s"
 
 msgid "Deleting"
 msgstr "মুছে ফেলছে"
@@ -2531,10 +2491,6 @@ msgid "Error"
 msgstr "ভুল"
 
 msgctxt "current status of router"
-msgid "Error"
-msgstr "ভুল"
-
-msgctxt "status of a neteork port"
 msgid "Error"
 msgstr "ভুল"
 
@@ -6649,24 +6605,8 @@ msgid "Unable to create volume."
 msgstr "ভলিয়্যুম তৈরি করতে অসমর্থ."
 
 #, python-format
-msgid "Unable to delete IKE Policy: %s"
-msgstr "IKE নীতি মুছে ফেলতে অসমর্থ: %s"
-
-#, python-format
-msgid "Unable to delete IPSec Policy: %s"
-msgstr "IPSec নীতি মুছে ফেলতে অসমর্থ: %s"
-
-#, python-format
-msgid "Unable to delete IPSec Site Connection: %s"
-msgstr "IPSec সাইট সংযোগ মুছে ফেলতে অসমর্থ: %s"
-
-#, python-format
 msgid "Unable to delete VIP. %s"
 msgstr "VIP মুছে ফেলতে অসমর্থ. %s"
-
-#, python-format
-msgid "Unable to delete VPN Service: %s"
-msgstr "VPN সেবা মুছে ফেলতে অসমর্থ: %s"
 
 msgid "Unable to delete container."
 msgstr "কন্টেনার মুছে ফেলতে অসমর্থ."

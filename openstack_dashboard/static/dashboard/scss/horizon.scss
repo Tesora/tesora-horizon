@@ -42,8 +42,40 @@
   zoom: 1;
 } // IE7
 
-body {
+
+// Basic Page Layout
+// Make the sidebar span the entire page, instead of just the Viewport
+// Display Table is not ideal, but it will allow dynamic resizing of
+// the sidebar while growing its container to fill the entire window
+html, body, #container {
+  height: 100%;
 }
+
+// Theme Note:
+// The following 1px is the default 1px for nav border in Bootstrap. If
+// this value is customized, then this value must change to compensate
+$navbar-border-size: 1px !default;
+$navbar-true-height: $navbar-height + $navbar-border-size !default;
+
+#main_content {
+  height: 100%; /* fallback if needed --> its scrolls, but it works */
+  height: calc(100% - #{$navbar-true-height});
+  display: table;
+}
+
+#content_body,
+#sidebar {
+  display: table-cell;
+  vertical-align: top;
+}
+
+#content_body {
+  width: 100%;
+  padding-left: $content-body-padding;
+  padding-right: $content-body-padding;
+}
+
+// Basic Page Layout End
 
 small {
   font-size: 11px;
@@ -347,10 +379,7 @@ table form {
 }
 
 .table-striped tr td {
-  transition: background 0.2s;
-  -webkit-transition: background 0.2s;
-  -moz-transition: background 0.2s;
-  -o-transition: background 0.2s;
+  @include transition(background 0.2s);
 }
 
 .inspect {
@@ -431,11 +460,7 @@ table form {
 }
 
 td.no-transition {
-  -webkit-transition: none !important;
-  -moz-transition: none !important;
-  -o-transition: none !important;
-  -ms-transition: none !important;
-  transition: none !important;
+  @include transition(none !important);
 }
 
 td.success {
@@ -960,11 +985,6 @@ tr.terminated {
   border-bottom-width: 1px;
   padding: 8px;
   text-align: center;
-}
-
-#content_body {
-  padding-left: $sidebar-width + $content-body-padding;
-  padding-right: $content-body-padding;
 }
 
 .tab_wrapper {
@@ -1622,9 +1642,7 @@ label.log-length {
   border: 1px solid $border-color;
   min-height: 2em;
   width: auto !important;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  @include box-sizing(border-box);
   li {
     width: 226px;
     list-style-type: none;
@@ -1733,9 +1751,7 @@ label.log-length {
   border: 1px solid $border-color;
   min-height: 2em;
   width: auto !important;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+  @include box-sizing(border-box);
   li {
     width: 226px;
     list-style-type: none;
