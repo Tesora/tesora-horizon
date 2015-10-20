@@ -1,4 +1,5 @@
 include tesora_horizon/openstack_dashboard/contrib/trove/content/databases/templates/databases/**.html
+include tesora_horizon/openstack_dashboard/contrib/trove/content/databases/templates/databases/logs/**.html
 include tesora_horizon/openstack_dashboard/contrib/trove/content/database_backups/templates/database_backups/**.html
 include tesora_horizon/openstack_dashboard/contrib/trove/content/database_configurations/templates/database_configurations/**.html
 include tesora_horizon/openstack_dashboard/contrib/trove/content/database_datastores/templates/database_datastores/**.html
