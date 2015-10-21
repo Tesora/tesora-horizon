@@ -128,14 +128,16 @@ class DatabaseTests(test.TestCase):
         self.assertMessageCount(res, error=1)
 
     @test.create_stubs({
-        api.trove: ('flavor_list', 'backup_list',
+        api.trove: ('datastore_flavors', 'backup_list',
                     'datastore_list', 'datastore_version_list',
                     'instance_list'),
         dash_api.cinder: ('volume_type_list',),
         dash_api.neutron: ('network_list',)})
     def test_launch_instance(self):
-        api.trove.flavor_list(IsA(http.HttpRequest)).AndReturn(
-            self.flavors.list())
+        api.trove.datastore_flavors(IsA(http.HttpRequest),
+                                    IsA(six.string_types),
+                                    IsA(six.string_types)).\
+            MultipleTimes().AndReturn(self.flavors.list())
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
         api.trove.instance_list(IsA(http.HttpRequest)).AndReturn(
@@ -195,14 +197,16 @@ class DatabaseTests(test.TestCase):
                 log.setLevel(level)
 
     @test.create_stubs({
-        api.trove: ('flavor_list', 'backup_list', 'instance_create',
+        api.trove: ('datastore_flavors', 'backup_list', 'instance_create',
                     'datastore_list', 'datastore_version_list',
                     'instance_list'),
         dash_api.cinder: ('volume_type_list',),
         dash_api.neutron: ('network_list',)})
     def test_create_simple_instance(self):
-        api.trove.flavor_list(IsA(http.HttpRequest)).AndReturn(
-            self.flavors.list())
+        api.trove.datastore_flavors(IsA(http.HttpRequest),
+                                    IsA(six.string_types),
+                                    IsA(six.string_types)).\
+            MultipleTimes().AndReturn(self.flavors.list())
 
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
@@ -254,8 +258,9 @@ class DatabaseTests(test.TestCase):
             'name': "MyDB",
             'volume': '1',
             'flavor': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+            'mysql-5_5': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
             'network': self.networks.first().id,
-            'datastore': 'mysql,5.5',
+            'datastore': 'mysql-5.5',
             'volume_type': 'no_type'
         }
 
@@ -263,15 +268,17 @@ class DatabaseTests(test.TestCase):
         self.assertRedirectsNoFollow(res, INDEX_URL)
 
     @test.create_stubs({
-        api.trove: ('flavor_list', 'backup_list', 'instance_create',
+        api.trove: ('datastore_flavors', 'backup_list', 'instance_create',
                     'datastore_list', 'datastore_version_list',
                     'instance_list'),
         dash_api.cinder: ('volume_type_list',),
         dash_api.neutron: ('network_list',)})
     def test_create_simple_instance_exception(self):
         trove_exception = self.exceptions.nova
-        api.trove.flavor_list(IsA(http.HttpRequest)).AndReturn(
-            self.flavors.list())
+        api.trove.datastore_flavors(IsA(http.HttpRequest),
+                                    IsA(six.string_types),
+                                    IsA(six.string_types)).\
+            MultipleTimes().AndReturn(self.flavors.list())
 
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
@@ -323,8 +330,9 @@ class DatabaseTests(test.TestCase):
             'name': "MyDB",
             'volume': '1',
             'flavor': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+            'mysql-5_5': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
             'network': self.networks.first().id,
-            'datastore': 'mysql,5.5',
+            'datastore': 'mysql-5.5',
             'volume_type': 'no_type'
         }
 
@@ -332,7 +340,7 @@ class DatabaseTests(test.TestCase):
         self.assertRedirectsNoFollow(res, INDEX_URL)
 
     @test.create_stubs(
-        {api.trove: ('instance_get', 'flavor_get', 'root_show',)})
+        {api.trove: ('instance_get', 'flavor_get', 'root_show')})
     def _test_details(self, database, with_designate=False):
         api.trove.instance_get(IsA(http.HttpRequest), IsA(six.text_type))\
             .AndReturn(database)
@@ -953,14 +961,16 @@ class DatabaseTests(test.TestCase):
         self.assertRedirectsNoFollow(res, INDEX_URL)
 
     @test.create_stubs({
-        api.trove: ('flavor_list', 'backup_list', 'instance_create',
+        api.trove: ('datastore_flavors', 'backup_list', 'instance_create',
                     'datastore_list', 'datastore_version_list',
                     'instance_list', 'instance_get'),
         dash_api.cinder: ('volume_type_list',),
         dash_api.neutron: ('network_list',)})
     def test_create_replica_instance(self):
-        api.trove.flavor_list(IsA(http.HttpRequest)).AndReturn(
-            self.flavors.list())
+        api.trove.datastore_flavors(IsA(http.HttpRequest),
+                                    IsA(six.string_types),
+                                    IsA(six.string_types)).\
+            MultipleTimes().AndReturn(self.flavors.list())
 
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
@@ -1014,8 +1024,9 @@ class DatabaseTests(test.TestCase):
             'name': "MyDB",
             'volume': '1',
             'flavor': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+            'mysql-5_5': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
             'network': self.networks.first().id,
-            'datastore': 'mysql,5.5',
+            'datastore': 'mysql-5.5',
             'initial_state': 'master',
             'master': self.databases.first().id,
             'replica_count': 2,
