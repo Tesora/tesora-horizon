@@ -25,16 +25,16 @@ class PublishLog(tables.BatchAction):
     @staticmethod
     def action_present(count):
         return ungettext_lazy(
-            u"Publish",
-            u"Publish All",
+            u"Publish Log",
+            u"Publish Logs",
             count
         )
 
     @staticmethod
     def action_past(count):
         return ungettext_lazy(
-            u"Published",
-            u"Published All",
+            u"Published Log",
+            u"Published Logs",
             count
         )
 
@@ -42,31 +42,84 @@ class PublishLog(tables.BatchAction):
 
     def action(self, request, obj_id):
         instance_id = self.table.kwargs['instance_id']
-        api.trove.log_publish(request, instance_id, obj_id)
+        api.trove.log_action(request, instance_id, obj_id, publish=True)
 
 
-class DisableLogCollection(tables.BatchAction):
+class DiscardLog(tables.BatchAction):
     @staticmethod
     def action_present(count):
         return ungettext_lazy(
-            u"Clear Container",
-            u"Clear Containers",
+            u"Discard Log",
+            u"Discard Logs",
             count
         )
 
     @staticmethod
     def action_past(count):
         return ungettext_lazy(
-            u"Cleared Container",
-            u"Cleared Containers",
+            u"Discarded Log",
+            u"Discarded Logs",
             count
         )
 
-    name = "disable_log_collection"
+    name = "discard_log"
 
     def action(self, request, obj_id):
         instance_id = self.table.kwargs['instance_id']
-        api.trove.log_publish(request, instance_id, obj_id, disable=True)
+        api.trove.log_action(request, instance_id, obj_id, discard=True)
+
+
+class EnableLog(tables.BatchAction):
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Enable Log",
+            u"Enable Logs",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Enabled Log",
+            u"Enabled Logs",
+            count
+        )
+
+    name = "enable_log"
+
+    def action(self, request, obj_id):
+        instance_id = self.table.kwargs['instance_id']
+        api.trove.log_action(request, instance_id, obj_id, enable=True)
+
+
+class DisableLog(tables.BatchAction):
+    @staticmethod
+    def action_present(count):
+        return ungettext_lazy(
+            u"Disable Log",
+            u"Disable Logs",
+            count
+        )
+
+    @staticmethod
+    def action_past(count):
+        return ungettext_lazy(
+            u"Disabled Log",
+            u"Disabled Logs",
+            count
+        )
+
+    name = "disable_log"
+
+    def action(self, request, obj_id):
+        instance_id = self.table.kwargs['instance_id']
+        api.trove.log_action(request, instance_id, obj_id, disable=True)
+
+    def allowed(self, request, datum=None):
+        if datum:
+            return datum.type != "SYS"
+        return False
 
 
 class ViewLog(tables.LinkAction):
@@ -97,7 +150,7 @@ class LogsTable(tables.DataTable):
     class Meta(object):
         name = "logs"
         verbose_name = _("Logs")
-        row_actions = (ViewLog, PublishLog, DisableLogCollection)
+        row_actions = (ViewLog, PublishLog, EnableLog, DisableLog, DiscardLog)
 
     def get_object_id(self, datum):
         return datum.name

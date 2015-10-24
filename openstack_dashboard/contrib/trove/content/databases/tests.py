@@ -350,12 +350,26 @@ class DatabaseTests(test.TestCase):
             .AndReturn(self.database_user_roots.first())
 
         self.mox.ReplayAll()
-        res = self.client.get(DETAILS_URL)
-        self.assertTemplateUsed(res, 'project/databases/detail.html')
-        if with_designate:
-            self.assertContains(res, database.hostname)
-        else:
-            self.assertContains(res, database.ip[0])
+
+        # Suppress expected log messages in the test output
+        loggers = []
+        toSuppress = ["openstack_dashboard.contrib.trove.content."
+                      "databases.tabs", ]
+        for cls in toSuppress:
+            logger = logging.getLogger(cls)
+            loggers.append((logger, logger.getEffectiveLevel()))
+            logger.setLevel(logging.CRITICAL)
+        try:
+            res = self.client.get(DETAILS_URL)
+            self.assertTemplateUsed(res, 'project/databases/detail.html')
+            if with_designate:
+                self.assertContains(res, database.hostname)
+            else:
+                self.assertContains(res, database.ip[0])
+        finally:
+            # Restore the previous log levels
+            for (log, level) in loggers:
+                log.setLevel(level)
 
     def test_details_with_ip(self):
         database = self.databases.first()
