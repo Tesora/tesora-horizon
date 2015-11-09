@@ -1,5 +1,6 @@
 [gerrit]
-host=review.openstack.org
+host=review.elasticdb.org
 port=29418
-project=openstack/horizon.git
-defaultbranch=stable/liberty
+project=tesora/tesora-horizon.git
+defaultbranch=dev/CE-1.6
+
