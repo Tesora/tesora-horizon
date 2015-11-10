@@ -8,18 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-14 02:35+0000\n"
+"POT-Creation-Date: 2015-11-10 01:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-09-08 11:14+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
-"Language-Team: Bodo (http://www.transifex.com/openstack/horizon/language/"
-"brx/)\n"
-"Generated-By: Babel 2.0\n"
 "Language: brx\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 3.7.1\n"
+"Language-Team: Bodo\n"
 
 #, python-format
 msgid ""
@@ -761,9 +760,6 @@ msgstr "गनायथिहोजानाय हस्ट (उफ्राय
 msgid "Amount of energy"
 msgstr "गोहोनि बिबां"
 
-msgid "An external (HTTP) URL to load the image from."
-msgstr "निफ्राय मुसुखाखौ ल'ड खालामनो बाइजोनि (HTTP) URL"
-
 msgid "An external (HTTP) URL to load the template from."
 msgstr "निफ्राय टेमप्लेटखौ ल'ड खालामनो बाइजोनि (HTTP) URL"
 
@@ -1167,9 +1163,6 @@ msgstr "सिन्डार भलिउम"
 
 msgid "Cipher"
 msgstr "सिपार"
-
-msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
-msgstr "थाखोगैयै इसिं-डमेइन रुटिं (जेरै- 192.168.0.0/24)"
 
 msgid "Clear Domain Context"
 msgstr "डमेइन लोब्बागोनांखौ खोमोर"
@@ -1813,15 +1806,6 @@ msgstr "दानि महर (GB)"
 
 msgid "Current password"
 msgstr "दानि पासवार्ड"
-
-msgid ""
-"Currently only images available via an HTTP URL are supported. The image "
-"location must be accessible to the Image Service. Compressed image binaries "
-"are supported (.zip and .tar.gz.)"
-msgstr ""
-"दासान्दि खालि HTTP URL नि गेजेरजों फैनाय मुसुखायाल'नो हेफाजाब खालामजायो। मुसुखा "
-"जायगाया मुसुखा सिबिथायजों हाबनो हाथाव जानांगोन। नारसिनजानाय मुसुखा बाइनारिआ हेफाजाब "
-"होजायो (.zip आरो .tar.gz.)"
 
 msgid "Custom ICMP Rule"
 msgstr "कास्टम ICMP नियम"
@@ -3413,17 +3397,6 @@ msgstr ""
 "जेबो कन्टेनार मुं होयाखैब्ला, भलिउमबेकआप मुंनि डिफल्ट कन्टेनारखौ नोंथांनि थाखाय होगोन। "
 "बेकआपआ भलिउम बादि एखे महरनि जागोन।"
 
-msgid ""
-"If you select an image via an HTTP URL, the Image Location field MUST be a "
-"valid and direct URL to the image binary; it must also be accessible to the "
-"Image Service. URLs that redirect or serve error pages will result in "
-"unusable images."
-msgstr ""
-"नोंथाङा HTTP URL नि गेजेरजों मोनसे मुसुखाखौ सायखयोब्ला, मुसुखा जायगा फोथारआ बाहाय "
-"जाथाव जाथारनांगोन आरो मुसुखा बाइनारियाव थोंजों URL जाथारनांगोन; बेयो मुसुखा सिबिथायाव "
-"हाबनो हाथाव जाथारनांगोन। गोरोन्थि बिलाइखौ फिन-बिथोन होनाय एबा मावनाय URL आ "
-"खामानिआव नाङै मुसुखा जागोन।"
-
 msgid "Image"
 msgstr "मुसुखा"
 
@@ -3437,9 +3410,6 @@ msgstr "मुसुखा (ग्लेन्स)"
 msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "मुसुखा बेकआप"
-
-msgid "Image Details"
-msgstr "मुसुखा गुवारै"
 
 msgid "Image File"
 msgstr "मुसुखा फाइल"
@@ -3455,9 +3425,6 @@ msgstr "मुसुखानि मुं"
 
 msgid "Image Name ="
 msgstr "मुसुखानि मुं ="
-
-msgid "Image Overview"
-msgstr "मुसुखा अभारभिउ"
 
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
@@ -3504,14 +3471,6 @@ msgstr "मुसुखाखौ जाफुंसारै आपडेट ख
 
 msgid "Images"
 msgstr "मुसुखा"
-
-msgid ""
-"Images can be provided via an HTTP URL or be uploaded from your local file "
-"system. Compressed image binaries are supported (.zip and .tar.gz.)"
-msgstr ""
-"HTTP URL नि गेजेरजों मुसुखाखौ होनो हायो एबा नोंथांनि जायगानि फाइल सिस्टेम निफ्राय "
-"आपल'ड खालामनो हायो। नारसिनखानाय मुसुखा बाइनारिआ हेफाजाब होजायो (.zip आरो .tar."
-"gz.)"
 
 msgid "Import Key Pair"
 msgstr "साबि जराखौ लाबो"
@@ -4874,9 +4833,6 @@ msgstr "%s पर्टखौ जाफुंसारै सोरजिबा�
 msgid "Port %s was successfully updated."
 msgstr "%s पर्टखौ जाफुंसारै आपडेट खालामबाय।"
 
-msgid "Port Details"
-msgstr "पर्टनि गुवारै"
-
 msgid "Port ID"
 msgstr "पर्ट ID"
 
@@ -6102,9 +6058,6 @@ msgstr "साबनेट ID"
 
 msgid "Subnet Name"
 msgstr "साबनेट मुं"
-
-msgid "Subnet Overview"
-msgstr "साबनेट अभारभिउ"
 
 msgid "Subnet list can not be retrieved."
 msgstr "साबनेट लिस्टखौ मोनफिननो हाया।"
@@ -8216,13 +8169,6 @@ msgstr "भलिउम (सिन्डार)"
 msgid "Volume Backup"
 msgstr "भलिउम बेकआप"
 
-msgid "Volume Backup Details"
-msgstr "भलिउम बेकआप गुवारै"
-
-#, python-format
-msgid "Volume Backup Overview: %(backup_display_name)s"
-msgstr "भलिउम बेकआप अभारभिउ: %(backup_display_name)s"
-
 msgid "Volume Backup:"
 msgstr "भलिउम बेकआप:"
 
@@ -8236,26 +8182,17 @@ msgstr ""
 "बेसाद दोनथुमग्रा सिबिथायनि हेफाजाबजों भलिउम बेकआपखौ दोनथुमनाय जायो। नोंथांनो मोनसे "
 "बेकआप सोरजिनो थाखाय मावथि खालामखानाय बे सिबिथायखौ नांथारगोन।"
 
-msgid "Volume Details"
-msgstr "भलिउम गुवारै"
-
 msgid "Volume Limits"
 msgstr "भलिउमनि सिम"
 
 msgid "Volume Name"
 msgstr "भलिउम मुं"
 
-msgid "Volume Overview"
-msgstr "भलिउम अभारभिउ"
-
 msgid "Volume Size"
 msgstr "भलिउम महर"
 
 msgid "Volume Snapshot"
 msgstr "भलिउम स्नेपसट"
-
-msgid "Volume Snapshot Details"
-msgstr "भलिउम स्नेपसट गुवारै"
 
 msgid "Volume Snapshot Overview"
 msgstr "भलिउम स्नेपसट अभारभिउ"

@@ -181,7 +181,7 @@ SESSION_COOKIE_HTTPONLY = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 SESSION_COOKIE_SECURE = False
 
-# SESSION_TIMEOUT is a method to supercede the token timeout with a shorter
+# SESSION_TIMEOUT is a method to supersede the token timeout with a shorter
 # horizon session timeout (in seconds).  So if your token expires in 60
 # minutes, a value of 1800 will log users out after 30 minutes
 SESSION_TIMEOUT = 3600
@@ -203,6 +203,7 @@ LANGUAGES = (
     ('en-gb', 'British English'),
     ('es', 'Spanish'),
     ('fr', 'French'),
+    ('it', 'Italian'),
     ('ja', 'Japanese'),
     ('ko', 'Korean (Korea)'),
     ('pl', 'Polish'),

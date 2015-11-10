@@ -15,18 +15,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-14 02:35+0000\n"
+"POT-Creation-Date: 2015-11-10 01:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-10-12 12:58+0000\n"
 "Last-Translator: Ian Y. Choi <ianyrchoi@gmail.com>\n"
-"Language-Team: Korean (Korea) (http://www.transifex.com/openstack/horizon/"
-"language/ko_KR/)\n"
-"Generated-By: Babel 2.0\n"
 "Language: ko-KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 3.7.1\n"
+"Language-Team: Korean (South Korea)\n"
 
 msgid ""
 "\n"
@@ -1199,9 +1198,6 @@ msgstr "허용한 호스트 (선택적)"
 msgid "Amount of energy"
 msgstr "전력 합계"
 
-msgid "An external (HTTP) URL to load the image from."
-msgstr "이미지를 외부 (HTTP) URL로 불러옵니다."
-
 msgid "An external (HTTP) URL to load the template from."
 msgstr "템플릿을 외부 (HTTP) URL로 불러옵니다."
 
@@ -1787,9 +1783,6 @@ msgstr "Cinder 볼륨"
 
 msgid "Cipher"
 msgstr "암호화 방식"
-
-msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
-msgstr "내부 도메인 라우팅 클레스가 정해지지 않았습니다. (예. 192.168.0.0/24)"
 
 msgid "Clear Domain Context"
 msgstr "도메인 컨텍스트 삭제"
@@ -2604,15 +2597,6 @@ msgstr "현재 비밀번호"
 
 msgid "Current type:"
 msgstr "현재 유형:"
-
-msgid ""
-"Currently only images available via an HTTP URL are supported. The image "
-"location must be accessible to the Image Service. Compressed image binaries "
-"are supported (.zip and .tar.gz.)"
-msgstr ""
-"현재 HTTP URL을 통해서만 사용 이미지가 지원됩니다. 이미지 위치는 반드시 이미"
-"지 서비스로만 접근하여야 합니다. 압축된 이미지 바이너리를 지원합니다. (.zip "
-"및 .tar.gz.)"
 
 msgid "Custom ICMP Rule"
 msgstr "사용자 정의 ICMP 규칙"
@@ -4993,14 +4977,6 @@ msgstr "Identity 서비스는 사용자 데이터를 편집할 수 없습니다.
 msgid "Identity service does not allow editing user password."
 msgstr "Identity 서비스는 사용자 암호를 편집할 수 없습니다."
 
-#, python-format
-msgid ""
-"If \"No volume type\" is selected, the default volume type \"%(name)s\" will "
-"be set for the created volume."
-msgstr ""
-"\"볼륨 타입 없음\"을 선택하면, 기본 볼륨 형식인 \"%(name)s\"으로 생성된 볼륨"
-"이 설정됩니다."
-
 msgid ""
 "If \"No volume type\" is selected, the volume will be created without a "
 "volume type."
@@ -5035,17 +5011,6 @@ msgstr ""
 "선택한 경우, 클러스터 생성시 노드 그룹에 대한 인스턴스가 자동으로 구성될 것입"
 "니다. 그렇지 않으면 수동으로 구성 값을 지정해야 합니다."
 
-msgid ""
-"If you select an image via an HTTP URL, the Image Location field MUST be a "
-"valid and direct URL to the image binary; it must also be accessible to the "
-"Image Service. URLs that redirect or serve error pages will result in "
-"unusable images."
-msgstr ""
-"HTTP URL을 통해서 이미지를 선택하면, 이미지 위치 필드는 유효해야하고 이미지 "
-"바이너리에 직접 연결된 URL이어야 합니다. 또한 이미지 서비스에서 접근할 수 있"
-"어야합니다. 리다이렉션 URL이거나 오류 페이지를 지원하는 경우, 이미지를 가져"
-"올 수 없습니다."
-
 msgid "Image"
 msgstr "이미지"
 
@@ -5059,12 +5024,6 @@ msgstr "이미지 (Glance)"
 msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "Image Backup"
-
-msgid "Image Details"
-msgstr "이미지 세부 정보"
-
-msgid "Image Details: {{ image.name }}"
-msgstr "이미지 세부 정보: {{ image.name }}"
 
 msgid "Image File"
 msgstr "이미지 파일"
@@ -5080,9 +5039,6 @@ msgstr "이미지 이름"
 
 msgid "Image Name ="
 msgstr "Image Name ="
-
-msgid "Image Overview"
-msgstr "이미지 개요"
 
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
@@ -5129,13 +5085,6 @@ msgstr "이미지를 성공적으로 업데이트 하였습니다."
 
 msgid "Images"
 msgstr "이미지"
-
-msgid ""
-"Images can be provided via an HTTP URL or be uploaded from your local file "
-"system. Compressed image binaries are supported (.zip and .tar.gz.)"
-msgstr ""
-"이미지를 HTTP URL을 통해서 제공하는 것을 사용하거나 로컬 파일 시스템에서 업로"
-"드할 수 있습니다. 압축 이미지 바이너리도 지원합니다. (.zip과 .tar.gz)"
 
 msgid "Implementation"
 msgstr "구현"
@@ -7090,9 +7039,6 @@ msgstr "포트 %s를 성공적으로 생성하였습니다."
 msgid "Port %s was successfully updated."
 msgstr "포트 %s를 성공적으로 업데이트 하였습니다."
 
-msgid "Port Details"
-msgstr "포트 세부 정보들"
-
 msgid "Port ID"
 msgstr "포트 ID"
 
@@ -8929,9 +8875,6 @@ msgstr "서브넷 ID"
 
 msgid "Subnet Name"
 msgstr "서브넷 이름"
-
-msgid "Subnet Overview"
-msgstr "서브넷 개요"
 
 msgid "Subnet list can not be retrieved."
 msgstr "서브넷 목록을 찾을 수 없습니다."
@@ -11767,16 +11710,6 @@ msgstr "볼륨 (Cinder)"
 msgid "Volume Backup"
 msgstr "볼륨 백업"
 
-msgid "Volume Backup Details"
-msgstr "볼륨 백업 상세 정보"
-
-msgid "Volume Backup Details: {{ backup.name }}"
-msgstr "볼륨 백업 세부 정보: {{ backup.name }}"
-
-#, python-format
-msgid "Volume Backup Overview: %(backup_display_name)s"
-msgstr "볼륨 백업 개요: %(backup_display_name)s"
-
 msgid "Volume Backup:"
 msgstr "볼륨 백업"
 
@@ -11789,12 +11722,6 @@ msgid ""
 msgstr ""
 "볼륨 백업은 오브젝트 스토리지 서비스를 사용하여 저장됩니다. 백업을 생성하기 "
 "위해 활성화된 서비스가 있어야합니다."
-
-msgid "Volume Details"
-msgstr "볼륨 세부 정보"
-
-msgid "Volume Details: {{ volume.name }}"
-msgstr "볼륨 세부 정보: {{ volume.name }}"
 
 msgid "Volume Encryption Details"
 msgstr "볼륨 암호화 세부 정보"
@@ -11815,20 +11742,11 @@ msgstr "볼륨 제한"
 msgid "Volume Name"
 msgstr "볼륨 이름"
 
-msgid "Volume Overview"
-msgstr "볼륨 개요"
-
 msgid "Volume Size"
 msgstr "볼륨 크기"
 
 msgid "Volume Snapshot"
 msgstr "볼륨 스냅샷"
-
-msgid "Volume Snapshot Details"
-msgstr "볼륨 스냅샷 세부 정보"
-
-msgid "Volume Snapshot Details: {{ snapshot.name }}"
-msgstr "볼륨 스냅샷 세부 정보: {{ snapshot.name }}"
 
 msgid "Volume Snapshot Overview"
 msgstr "볼륨 스냅샷 개요"

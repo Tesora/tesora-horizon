@@ -11,23 +11,23 @@
 # ykatabam <ykatabam@redhat.com>, 2015
 # Akihiro Motoki <amotoki@gmail.com>, 2015. #zanata
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
+# Shu Muto <shu-mutou@rf.jp.nec.com>, 2015. #zanata
 # Yuko Katabami <yukokatabami@gmail.com>, 2015. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-14 02:35+0000\n"
+"POT-Creation-Date: 2015-11-10 01:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-10-09 12:17+0000\n"
-"Last-Translator: Yuko Katabami <yukokatabami@gmail.com>\n"
-"Language-Team: Japanese (http://www.transifex.com/openstack/horizon/language/"
-"ja/)\n"
-"Generated-By: Babel 2.0\n"
+"PO-Revision-Date: 2015-11-07 11:59+0000\n"
+"Last-Translator: Akihiro Motoki <amotoki@gmail.com>\n"
 "Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 3.7.1\n"
+"Language-Team: Japanese\n"
 
 msgid ""
 "\n"
@@ -1236,11 +1236,11 @@ msgstr "許可ホスト (省略可)"
 msgid "Amount of energy"
 msgstr "総エネルギー量"
 
-msgid "An external (HTTP) URL to load the image from."
-msgstr "イメージを読み込む外部 (HTTP) URL。"
-
 msgid "An external (HTTP) URL to load the template from."
 msgstr "テンプレートを読み込む外部 (HTTP) URL"
+
+msgid "An external (HTTP/HTTPS) URL to load the image from."
+msgstr "イメージを読み込む外部 (HTTP/HTTPS) URL。"
 
 msgid ""
 "An instance can be launched with varying types of attached storage. You may "
@@ -1268,6 +1268,9 @@ msgid ""
 msgstr ""
 "予期しないエラーが発生しました。ページの再読み込みを試してください。解決しな"
 "ければ、管理者に連絡してください。"
+
+msgid "Another Plugin-based Panel"
+msgstr "他のプラグインによるパネル"
 
 msgid "Anti-affinity enabled for"
 msgstr "anti-affinity の指定"
@@ -1586,6 +1589,10 @@ msgctxt "Current status of a Database Backup"
 msgid "Building"
 msgstr "作成中"
 
+msgctxt "Current status of an Instance"
+msgid "Building"
+msgstr "作成中"
+
 msgctxt "Power state of an Instance"
 msgid "Building"
 msgstr "作成中"
@@ -1834,8 +1841,8 @@ msgstr "Cinder ボリューム"
 msgid "Cipher"
 msgstr "暗号"
 
-msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
-msgstr "ネットワークアドレス (例: 192.168.0.0/24)"
+msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24, or 2001:db8::/128)"
+msgstr "ネットワークアドレス (例: 192.168.0.0/24、2001:db8::/128)"
 
 msgid "Clear Domain Context"
 msgstr "ドメインコンテキストのクリア"
@@ -2657,13 +2664,13 @@ msgid "Current type:"
 msgstr "現在の種別:"
 
 msgid ""
-"Currently only images available via an HTTP URL are supported. The image "
-"location must be accessible to the Image Service. Compressed image binaries "
-"are supported (.zip and .tar.gz.)"
+"Currently only images available via an HTTP/HTTPS URL are supported. The "
+"image location must be accessible to the Image Service. Compressed image "
+"binaries are supported (.zip and .tar.gz.)"
 msgstr ""
-"現在、HTTP URLから取得できるイメージのみがサポートされています。イメージの場"
-"所から Image Service へアクセスできるようにしてください。また、圧縮イメージが"
-"サポートされています(.zip および .tar.gz.)。"
+"現在、HTTP/HTTPS URLから取得できるイメージのみがサポートされています。イメー"
+"ジの場所から Image Service へアクセスできるようにしてください。また、圧縮イ"
+"メージがサポートされています(.zip および .tar.gz.)。"
 
 msgid "Custom ICMP Rule"
 msgstr "カスタム ICMP ルール"
@@ -5064,14 +5071,6 @@ msgstr "Identity Service ではユーザーデータの編集が許可されて�
 msgid "Identity service does not allow editing user password."
 msgstr "Identity Service ではユーザーパスワードの編集ができません。"
 
-#, python-format
-msgid ""
-"If \"No volume type\" is selected, the default volume type \"%(name)s\" will "
-"be set for the created volume."
-msgstr ""
-"もし「ボリューム種別の指定なし」が選択された場合、作成されるボリュームにデ"
-"フォルトのボリューム種別 \"%(name)s\" が設定されます。"
-
 msgid ""
 "If \"No volume type\" is selected, the volume will be created without a "
 "volume type."
@@ -5111,13 +5110,13 @@ msgstr ""
 "ます。選択しない場合は、設定値を手動で指定する必要があります。"
 
 msgid ""
-"If you select an image via an HTTP URL, the Image Location field MUST be a "
-"valid and direct URL to the image binary; it must also be accessible to the "
-"Image Service. URLs that redirect or serve error pages will result in "
+"If you select an image via an HTTP/HTTPS URL, the Image Location field MUST "
+"be a valid and direct URL to the image binary; it must also be accessible to "
+"the Image Service. URLs that redirect or serve error pages will result in "
 "unusable images."
 msgstr ""
-"HTTP URL で指定する場合、イメージの場所のフィールドには、イメージ（バイナ"
-"リー）への有効かつ直接の URL を入力する必要があります。イメージの場所へ "
+"HTTP/HTTPS URL で指定する場合、イメージの場所のフィールドには、イメージ（バイ"
+"ナリー）への有効かつ直接の URL を入力する必要があります。イメージの場所へ "
 "Image Service がアクセスできるようにしてください。URL がリダイレクトのページ"
 "の場合や、エラーページが返ってきた場合には、登録されたイメージは使用できない"
 "可能性があります。"
@@ -5136,14 +5135,11 @@ msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "イメージバックアップ"
 
-msgid "Image Details"
-msgstr "イメージの詳細"
-
-msgid "Image Details: {{ image.name }}"
-msgstr "イメージの詳細: {{ image.name }}"
-
 msgid "Image File"
 msgstr "イメージファイル"
+
+msgid "Image ID"
+msgstr "イメージID"
 
 msgid "Image ID ="
 msgstr "イメージ ID ="
@@ -5156,9 +5152,6 @@ msgstr "イメージ名"
 
 msgid "Image Name ="
 msgstr "イメージ名 ="
-
-msgid "Image Overview"
-msgstr "イメージの概要"
 
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
@@ -5207,12 +5200,12 @@ msgid "Images"
 msgstr "イメージ"
 
 msgid ""
-"Images can be provided via an HTTP URL or be uploaded from your local file "
-"system. Compressed image binaries are supported (.zip and .tar.gz.)"
+"Images can be provided via an HTTP/HTTPS URL or be uploaded from your local "
+"file system. Compressed image binaries are supported (.zip and .tar.gz.)"
 msgstr ""
-"イメージの作成は HTTP URL 経由で指定する方法と、ローカルファイルシステムから"
-"アップロードする方法があります。圧縮イメージがサポートされています (.zip およ"
-"び .tar.gz)。"
+"イメージの作成は HTTP/HTTPS URL 経由で指定する方法と、ローカルファイルシステ"
+"ムからアップロードする方法があります。圧縮イメージがサポートされています (."
+"zip および .tar.gz)。"
 
 msgid "Implementation"
 msgstr "実装"
@@ -5851,6 +5844,13 @@ msgstr "Main クラス"
 
 msgid "Mains"
 msgstr "メイン"
+
+msgid "Maintenance"
+msgstr "メンテナンス"
+
+msgctxt "Current status of a Volume"
+msgid "Maintenance"
+msgstr "メンテナンス"
 
 msgid "Make Private"
 msgstr "プライベートに変更"
@@ -7183,9 +7183,6 @@ msgstr "ポート %s が正常に作成されました。"
 msgid "Port %s was successfully updated."
 msgstr "ポート %s が正常に更新されました。"
 
-msgid "Port Details"
-msgstr "ポートの詳細"
-
 msgid "Port ID"
 msgstr "ポート ID"
 
@@ -7405,6 +7402,10 @@ msgstr "QoS スペックの使用者"
 msgid ""
 "QoS Spec consumer value must be different than the current consumer value."
 msgstr "新しい QOS スペックの使用者は現在と異なる値でなければいけません。"
+
+#, python-format
+msgid "QoS Spec name \"%s\" already exists."
+msgstr "QoS 仕様 \"%s\" は既に存在します。"
 
 msgid "QoS Spec to be associated"
 msgstr "関連付ける QoS スペック"
@@ -7656,6 +7657,9 @@ msgstr "インスタンスから複製"
 msgid "Replication"
 msgstr "レプリケーション"
 
+msgid "Report Bug"
+msgstr "バグ報告"
+
 msgid "Request ID"
 msgstr "リクエスト ID"
 
@@ -7682,6 +7686,10 @@ msgstr ""
 msgctxt "Current status of an Instance"
 msgid "Rescue"
 msgstr "レスキュー中"
+
+msgctxt "Current status of an Instance"
+msgid "Rescued"
+msgstr "レスキュー済み"
 
 msgctxt "Task status of an Instance"
 msgid "Rescuing"
@@ -7728,6 +7736,10 @@ msgstr "ボリュームのリサイズ"
 msgctxt "Current status of an Instance"
 msgid "Resize/Migrate"
 msgstr "リサイズ/マイグレーション中"
+
+msgctxt "Current status of an Instance"
+msgid "Resized"
+msgstr "リサイズ済み"
 
 msgctxt "Task status of an Instance"
 msgid "Resized or Migrated"
@@ -8168,7 +8180,7 @@ msgstr[0] "クラスターの削除を予約しました"
 
 msgid "Scheduled termination of Instance"
 msgid_plural "Scheduled termination of Instances"
-msgstr[0] "インスタンスの終了を予約しました。"
+msgstr[0] "インスタンスの削除を予約しました。"
 
 msgctxt "Task status of an Instance"
 msgid "Scheduling"
@@ -9008,6 +9020,10 @@ msgctxt "Action log of an instance"
 msgid "Stop"
 msgstr "停止"
 
+msgctxt "Current status of an Instance"
+msgid "Stopped"
+msgstr "停止"
+
 msgid "Storage location"
 msgstr "ストレージの場所"
 
@@ -9042,9 +9058,6 @@ msgstr "サブネット ID"
 
 msgid "Subnet Name"
 msgstr "サブネット名"
-
-msgid "Subnet Overview"
-msgstr "サブネットの概要"
 
 msgid "Subnet list can not be retrieved."
 msgstr "サブネット一覧を取得できません。"
@@ -11900,16 +11913,6 @@ msgstr "ボリューム (Cinder)"
 msgid "Volume Backup"
 msgstr "ボリュームバックアップ"
 
-msgid "Volume Backup Details"
-msgstr "ボリュームバックアップの詳細"
-
-msgid "Volume Backup Details: {{ backup.name }}"
-msgstr "ボリュームバックアップの詳細: {{ backup.name }}"
-
-#, python-format
-msgid "Volume Backup Overview: %(backup_display_name)s"
-msgstr "ボリュームバックアップの概要: %(backup_display_name)s"
-
 msgid "Volume Backup:"
 msgstr "ボリュームバックアップ:"
 
@@ -11923,12 +11926,6 @@ msgstr ""
 "ボリュームバックアップはオブジェクトストレージサービスを使って格納されます。"
 "バックアップを作成するには、オブジェクトストレージサービスを有効しなければい"
 "けません。"
-
-msgid "Volume Details"
-msgstr "ボリュームの詳細"
-
-msgid "Volume Details: {{ volume.name }}"
-msgstr "ボリュームの詳細: {{ volume.name }}"
 
 msgid "Volume Encryption Details"
 msgstr "ボリュームの暗号化の詳細"
@@ -11949,20 +11946,11 @@ msgstr "ボリュームの上限"
 msgid "Volume Name"
 msgstr "ボリューム名"
 
-msgid "Volume Overview"
-msgstr "ボリュームの概要"
-
 msgid "Volume Size"
 msgstr "ボリュームサイズ"
 
 msgid "Volume Snapshot"
 msgstr "ボリュームスナップショット"
-
-msgid "Volume Snapshot Details"
-msgstr "ボリュームスナップショットの詳細"
-
-msgid "Volume Snapshot Details: {{ snapshot.name }}"
-msgstr "ボリュームスナップショットの詳細: {{ snapshot.name }}"
 
 msgid "Volume Snapshot Overview"
 msgstr "ボリュームスナップショットの概要"

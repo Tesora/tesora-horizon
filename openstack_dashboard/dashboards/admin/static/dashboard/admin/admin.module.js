@@ -25,6 +25,7 @@
    */
   angular
     .module('horizon.dashboard.admin', [
+      'horizon.dashboard.admin.flavors'
     ])
     .config(config);
 
