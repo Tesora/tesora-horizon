@@ -357,10 +357,14 @@ def log_list(request, instance_id):
     return troveclient(request).instances.log_list(instance_id)
 
 
-def log_publish(request, instance_id, log_name, disable=None):
-    return troveclient(request).instances.log_publish(instance_id,
-                                                      log_name,
-                                                      disable)
+def log_action(request, instance_id, log_name, enable=None, disable=None,
+               publish=None, discard=None):
+    return troveclient(request).instances.log_action(instance_id,
+                                                     log_name,
+                                                     enable=enable,
+                                                     disable=disable,
+                                                     publish=publish,
+                                                     discard=discard)
 
 
 def log_tail(request, instance_id, log_name, publish, lines, swift=None):
