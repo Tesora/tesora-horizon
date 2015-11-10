@@ -742,6 +742,7 @@ class InstanceTests(helpers.TestCase):
 
     @helpers.create_stubs({api.nova: ('server_lock',
                                       'server_list',
+                                      'flavor_list',
                                       'extension_supported',),
                            api.glance: ('image_list_detailed',),
                            api.network: ('servers_update_addresses',)})
@@ -753,6 +754,8 @@ class InstanceTests(helpers.TestCase):
             http.HttpRequest)).MultipleTimes().AndReturn(True)
         api.glance.image_list_detailed(IgnoreArg()).AndReturn((
             self.images.list(), False, False))
+        api.nova.flavor_list(IsA(http.HttpRequest)) \
+            .AndReturn(self.flavors.list())
         search_opts = {'marker': None, 'paginate': True}
         api.nova.server_list(
             IsA(http.HttpRequest),
@@ -769,6 +772,7 @@ class InstanceTests(helpers.TestCase):
 
     @helpers.create_stubs({api.nova: ('server_lock',
                                       'server_list',
+                                      'flavor_list',
                                       'extension_supported',),
                            api.glance: ('image_list_detailed',),
                            api.network: ('servers_update_addresses',)})
@@ -780,6 +784,8 @@ class InstanceTests(helpers.TestCase):
             http.HttpRequest)).MultipleTimes().AndReturn(True)
         api.glance.image_list_detailed(IgnoreArg()).AndReturn((
             self.images.list(), False, False))
+        api.nova.flavor_list(IsA(http.HttpRequest)) \
+            .AndReturn(self.flavors.list())
         search_opts = {'marker': None, 'paginate': True}
         api.nova.server_list(
             IsA(http.HttpRequest),
@@ -797,6 +803,7 @@ class InstanceTests(helpers.TestCase):
 
     @helpers.create_stubs({api.nova: ('server_unlock',
                                       'server_list',
+                                      'flavor_list',
                                       'extension_supported',),
                            api.glance: ('image_list_detailed',),
                            api.network: ('servers_update_addresses',)})
@@ -805,6 +812,8 @@ class InstanceTests(helpers.TestCase):
         server = servers[0]
         api.nova.extension_supported('AdminActions', IsA(
             http.HttpRequest)).MultipleTimes().AndReturn(True)
+        api.nova.flavor_list(IsA(http.HttpRequest)) \
+            .AndReturn(self.flavors.list())
         api.glance.image_list_detailed(IgnoreArg()).AndReturn((
             self.images.list(), False, False))
         search_opts = {'marker': None, 'paginate': True}
@@ -823,6 +832,7 @@ class InstanceTests(helpers.TestCase):
 
     @helpers.create_stubs({api.nova: ('server_unlock',
                                       'server_list',
+                                      'flavor_list',
                                       'extension_supported',),
                            api.glance: ('image_list_detailed',),
                            api.network: ('servers_update_addresses',)})
@@ -835,6 +845,8 @@ class InstanceTests(helpers.TestCase):
         api.glance.image_list_detailed(IgnoreArg()).AndReturn((
             self.images.list(), False, False))
         search_opts = {'marker': None, 'paginate': True}
+        api.nova.flavor_list(IsA(http.HttpRequest)) \
+            .AndReturn(self.flavors.list())
         api.nova.server_list(
             IsA(http.HttpRequest),
             search_opts=search_opts).AndReturn([servers, False])
@@ -3405,7 +3417,7 @@ class InstanceTests(helpers.TestCase):
                      'volume_type': 'volume_id',
                      'volume_id': volume_choice,
                      'volume_size': max(
-                         image.min_disk, image.size / 1024 ** 3),
+                         image.min_disk, image.size // 1024 ** 3),
                      'device_name': device_name,
                      'count': 1}
 
@@ -3544,7 +3556,7 @@ class InstanceTests(helpers.TestCase):
     def test_launch_form_instance_volume_size_error(self,
                                                     test_with_profile=False):
         image = self.images.get(name='protected_images')
-        volume_size = image.min_disk / 2
+        volume_size = image.min_disk // 2
         msg = ("The Volume size is too small for the &#39;%s&#39; image" %
                image.name)
         self._test_launch_form_instance_volume_size(image, volume_size, msg,
@@ -4427,7 +4439,7 @@ class InstanceTests(helpers.TestCase):
 
     def test_clean_file_upload_form_invalid_data(self):
         t = workflows.create_instance.CustomizeAction(self.request, {})
-        upload_str = '\x81'
+        upload_str = b'\x81'
         files = {'script_upload':
                  self.SimpleFile('script_name',
                                  upload_str,

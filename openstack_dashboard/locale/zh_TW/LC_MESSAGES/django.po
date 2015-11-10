@@ -17,18 +17,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-14 02:35+0000\n"
+"POT-Creation-Date: 2015-11-10 01:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-10-06 02:06+0000\n"
-"Last-Translator: Liu Chi Han <t09sunny@gmail.com>\n"
-"Language-Team: Chinese (Taiwan) (http://www.transifex.com/openstack/horizon/"
-"language/zh_TW/)\n"
-"Generated-By: Babel 2.0\n"
+"PO-Revision-Date: 2015-11-02 09:56+0000\n"
+"Last-Translator: Zhang Xiaowei <zero00072@gmail.com>\n"
 "Language: zh-TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 3.7.1\n"
+"Language-Team: Chinese (Taiwan)\n"
 
 msgid ""
 "\n"
@@ -1194,9 +1193,6 @@ msgstr "允許的主機（選填）"
 msgid "Amount of energy"
 msgstr "能量"
 
-msgid "An external (HTTP) URL to load the image from."
-msgstr "可讀取映像檔的外部（HTTP）網址。"
-
 msgid "An external (HTTP) URL to load the template from."
 msgstr "可讀取範本的外部（HTTP）網址。"
 
@@ -1766,9 +1762,6 @@ msgstr "Cinder 雲硬碟"
 
 msgid "Cipher"
 msgstr "加密協定"
-
-msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
-msgstr "無類別域間路由（如 192.168.0.0/24）"
 
 msgid "Clear Domain Context"
 msgstr "清除地域環境"
@@ -2571,14 +2564,6 @@ msgstr "目前密碼"
 
 msgid "Current type:"
 msgstr "目前類型："
-
-msgid ""
-"Currently only images available via an HTTP URL are supported. The image "
-"location must be accessible to the Image Service. Compressed image binaries "
-"are supported (.zip and .tar.gz.)"
-msgstr ""
-"目前僅支援從 HTTP 網址得到映像檔。映像檔位置必須是映像檔伺服器上可訪問的。支"
-"援壓縮後的映像檔格式（.zip 以及 .tar.gz）。"
 
 msgid "Custom ICMP Rule"
 msgstr "自訂 ICMP 規則"
@@ -3885,6 +3870,10 @@ msgctxt "current status of router"
 msgid "Error"
 msgstr "錯誤"
 
+msgctxt "status of a network port"
+msgid "Error"
+msgstr "錯誤"
+
 msgid "Error Deleting"
 msgstr "刪除時出錯"
 
@@ -4023,6 +4012,9 @@ msgstr "正在擴充"
 #, python-format
 msgid "Extending volume: \"%s\""
 msgstr "正在擴充雲硬碟：「%s」"
+
+msgid "External"
+msgstr "對外"
 
 msgid "External Fixed IPs"
 msgstr "對外固定 IP"
@@ -4913,13 +4905,6 @@ msgstr "身份伺服器不允許編輯用戶資料。"
 msgid "Identity service does not allow editing user password."
 msgstr "身份伺服器不允許編輯用戶密碼。"
 
-#, python-format
-msgid ""
-"If \"No volume type\" is selected, the default volume type \"%(name)s\" will "
-"be set for the created volume."
-msgstr ""
-"若選擇了「無雲硬碟類型」，將預設套用雲硬碟類型「%(name)s」給新增的雲硬碟。"
-
 msgid ""
 "If \"No volume type\" is selected, the volume will be created without a "
 "volume type."
@@ -4953,16 +4938,6 @@ msgstr ""
 "若選擇了，節點群組的雲實例將會在群組建立期間自動設置。不然您應該手動指定設置"
 "值。"
 
-msgid ""
-"If you select an image via an HTTP URL, the Image Location field MUST be a "
-"valid and direct URL to the image binary; it must also be accessible to the "
-"Image Service. URLs that redirect or serve error pages will result in "
-"unusable images."
-msgstr ""
-"若您選擇從 HTTP 網址獲得映像檔，映像檔的位置必須是正確且直接的映像檔網址連到"
-"映像檔；而且必須讓映像檔伺服器也能連到。網址若是指到重定向或者伺服器錯誤頁將"
-"導致提供無用的映像檔。"
-
 msgid "Image"
 msgstr "映像檔"
 
@@ -4976,12 +4951,6 @@ msgstr "映像檔（Glance）"
 msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "映像檔備份"
-
-msgid "Image Details"
-msgstr "映像檔詳細資訊"
-
-msgid "Image Details: {{ image.name }}"
-msgstr "映像檔詳細資訊：{{ image.name }}"
 
 msgid "Image File"
 msgstr "映像檔"
@@ -4997,9 +4966,6 @@ msgstr "映像檔名稱"
 
 msgid "Image Name ="
 msgstr "映像檔名稱 ="
-
-msgid "Image Overview"
-msgstr "映像檔概觀"
 
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
@@ -5044,13 +5010,6 @@ msgstr "已成功更新映像檔。"
 
 msgid "Images"
 msgstr "映像檔"
-
-msgid ""
-"Images can be provided via an HTTP URL or be uploaded from your local file "
-"system. Compressed image binaries are supported (.zip and .tar.gz.)"
-msgstr ""
-"目前僅支援從 HTTP 網址或自您目前的檔案系統上傳來得到映像檔。支援壓縮後的映像"
-"檔格式（.zip 以及 .tar.gz）。"
 
 msgid "Implementation"
 msgstr "實作"
@@ -5681,6 +5640,13 @@ msgstr "主類別"
 
 msgid "Mains"
 msgstr "主程式"
+
+msgid "Maintenance"
+msgstr "維護"
+
+msgctxt "Current status of a Volume"
+msgid "Maintenance"
+msgstr "維護"
 
 msgid "Make Private"
 msgstr "使它不公開"
@@ -6985,9 +6951,6 @@ msgstr "已成功新增接口 %s。"
 msgid "Port %s was successfully updated."
 msgstr "已成功更新接口 %s。"
 
-msgid "Port Details"
-msgstr "接口詳細資訊"
-
 msgid "Port ID"
 msgstr "接口識別號"
 
@@ -7451,6 +7414,9 @@ msgstr "來自雲實例的共用資料"
 
 msgid "Replication"
 msgstr "共用資料"
+
+msgid "Report Bug"
+msgstr "回報錯誤"
 
 msgid "Request ID"
 msgstr "請求識別號"
@@ -8810,9 +8776,6 @@ msgstr "子網路識別號"
 
 msgid "Subnet Name"
 msgstr "子網路名稱"
-
-msgid "Subnet Overview"
-msgstr "子網路概觀"
 
 msgid "Subnet list can not be retrieved."
 msgstr "不能獲得子網路列表。"
@@ -11583,16 +11546,6 @@ msgstr "雲硬碟（Cinder）"
 msgid "Volume Backup"
 msgstr "雲硬碟備份"
 
-msgid "Volume Backup Details"
-msgstr "雲硬碟備份的詳細資訊"
-
-msgid "Volume Backup Details: {{ backup.name }}"
-msgstr "雲硬碟備份的詳細資訊：{{ backup.name }}"
-
-#, python-format
-msgid "Volume Backup Overview: %(backup_display_name)s"
-msgstr "雲硬碟備份概觀：%(backup_display_name)s"
-
 msgid "Volume Backup:"
 msgstr "雲硬碟備份："
 
@@ -11605,12 +11558,6 @@ msgid ""
 msgstr ""
 "雲硬碟備份使用了物件式儲存空間伺服器來儲存。您必須已啟動此伺服器才能新增備"
 "份。"
-
-msgid "Volume Details"
-msgstr "雲硬碟的詳細資訊"
-
-msgid "Volume Details: {{ volume.name }}"
-msgstr "雲硬碟詳細資訊：{{ volume.name }}"
 
 msgid "Volume Encryption Details"
 msgstr "雲硬碟加密詳細資訊"
@@ -11631,20 +11578,11 @@ msgstr "雲硬碟限制"
 msgid "Volume Name"
 msgstr "雲硬碟名稱"
 
-msgid "Volume Overview"
-msgstr "雲硬碟概觀"
-
 msgid "Volume Size"
 msgstr "雲硬碟容量"
 
 msgid "Volume Snapshot"
 msgstr "雲硬碟即時存檔"
-
-msgid "Volume Snapshot Details"
-msgstr "雲硬碟即時存檔的詳細資訊"
-
-msgid "Volume Snapshot Details: {{ snapshot.name }}"
-msgstr "雲硬碟即時存檔的詳細資訊：{{ snapshot.name }}"
 
 msgid "Volume Snapshot Overview"
 msgstr "雲硬碟即時存檔概觀"

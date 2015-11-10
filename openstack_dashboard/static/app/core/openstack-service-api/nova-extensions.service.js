@@ -22,7 +22,7 @@
 
   novaExtensionsAPI.$inject = [
     '$cacheFactory',
-    '$q',
+    'horizon.app.core.openstack-service-api.extensions',
     'horizon.app.core.openstack-service-api.nova'
   ];
 
@@ -39,60 +39,13 @@
    * speed up results. Even on a local devstack in informal testing,
    * this saved between 30 - 100 ms per request.
    */
-  function novaExtensionsAPI($cacheFactory, $q, novaAPI) {
-    var service = {
-      cache: $cacheFactory(
+  function novaExtensionsAPI($cacheFactory, extensionsAPI, novaAPI) {
+    return extensionsAPI({
+      cacheFactory: $cacheFactory(
         'horizon.app.core.openstack-service-api.novaExtensions',
         {capacity: 1}
       ),
-      get: get,
-      ifNameEnabled: ifNameEnabled
-    };
-
-    return service;
-
-    ///////////
-
-    function get() {
-      return novaAPI.getExtensions({cache: service.cache}).then(onGetExtensions);
-    }
-
-    function onGetExtensions(data) {
-      return data.data.items;
-    }
-
-    function ifNameEnabled(desired) {
-      var deferred = $q.defer();
-
-      service.get().then(onDataLoaded, onDataFailure);
-
-      function onDataLoaded(extensions) {
-        if (enabled(extensions, 'name', desired)) {
-          deferred.resolve();
-        } else {
-          deferred.reject(interpolate(
-            gettext('Extension is not enabled: %(extension)s.'),
-            {extension: desired},
-            true));
-        }
-      }
-
-      function onDataFailure() {
-        deferred.reject(gettext('Cannot get the Nova extension list.'));
-      }
-
-      return deferred.promise;
-    }
-
-    function enabled(resources, key, desired) {
-      if (resources) {
-        return resources.some(function matchResource(resource) {
-          return resource[key] === desired;
-        });
-      } else {
-        return false;
-      }
-    }
-
+      serviceAPI: novaAPI
+    });
   }
 }());

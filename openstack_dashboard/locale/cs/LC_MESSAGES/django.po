@@ -10,18 +10,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-14 02:35+0000\n"
+"POT-Creation-Date: 2015-11-10 01:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-09-25 10:36+0000\n"
+"PO-Revision-Date: 2015-11-07 09:11+0000\n"
 "Last-Translator: Zbyněk Schwarz <zbynek.schwarz@gmail.com>\n"
-"Language-Team: Czech (http://www.transifex.com/openstack/horizon/language/"
-"cs/)\n"
-"Generated-By: Babel 2.0\n"
 "Language: cs\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 3.7.1\n"
+"Language-Team: Czech\n"
 
 msgid ""
 "\n"
@@ -1240,11 +1239,11 @@ msgstr "Povolený hostitel (nepovinné)"
 msgid "Amount of energy"
 msgstr "Množství energie"
 
-msgid "An external (HTTP) URL to load the image from."
-msgstr "Externí (HTTP) URL z které obraz nahrát."
-
 msgid "An external (HTTP) URL to load the template from."
 msgstr "Vnější (HTTP) URL z které načíst šablonu."
+
+msgid "An external (HTTP/HTTPS) URL to load the image from."
+msgstr "Externí (HTTP/HTTPS) URL z které obraz nahrát."
 
 msgid ""
 "An instance can be launched with varying types of attached storage. You may "
@@ -1272,6 +1271,9 @@ msgid ""
 msgstr ""
 "Byla zjištěna neočekávaná chyba. Zkuste obnovit stránku. Pokud to nepomůže, "
 "kontaktujte správce."
+
+msgid "Another Plugin-based Panel"
+msgstr "Další panel využívající zásuvné moduly"
 
 msgid "Anti-affinity enabled for"
 msgstr "Proti slučivost povolena pro"
@@ -1590,6 +1592,10 @@ msgctxt "Current status of a Database Backup"
 msgid "Building"
 msgstr "Sestavování"
 
+msgctxt "Current status of an Instance"
+msgid "Building"
+msgstr "Sestavování"
+
 msgctxt "Power state of an Instance"
 msgid "Building"
 msgstr "Sestavování"
@@ -1836,8 +1842,9 @@ msgstr "Svazky Cinder"
 msgid "Cipher"
 msgstr "Šifra"
 
-msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
-msgstr "Classless Inter-Domain Routing (např. 192.168.0.0/24)"
+msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24, or 2001:db8::/128)"
+msgstr ""
+"Classless Inter-Domain Routing (např. 192.168.0.0/24, nebo 2001:db8::/128)"
 
 msgid "Clear Domain Context"
 msgstr "Vyčistit kontext domény"
@@ -2662,13 +2669,13 @@ msgid "Current type:"
 msgstr "Současný typ:"
 
 msgid ""
-"Currently only images available via an HTTP URL are supported. The image "
-"location must be accessible to the Image Service. Compressed image binaries "
-"are supported (.zip and .tar.gz.)"
+"Currently only images available via an HTTP/HTTPS URL are supported. The "
+"image location must be accessible to the Image Service. Compressed image "
+"binaries are supported (.zip and .tar.gz.)"
 msgstr ""
-"V současnosti jsou podporovány pouze obrazy dostupné přes HTTP URL. Umístění "
-"obrazu musí být přístupné pro Službu obrazů. Komprimované binární obrazy "
-"jsou podporovány (.zip a .tar.gz)."
+"V současnosti jsou podporovány pouze obrazy dostupné přes HTTP/HTTPS URL. "
+"Umístění obrazu musí být přístupné pro Službu obrazů. Komprimované binární "
+"obrazy jsou podporovány (.zip a .tar.gz)."
 
 msgid "Custom ICMP Rule"
 msgstr "Vlastní pravidlo ICMP"
@@ -2848,6 +2855,10 @@ msgstr "Data nelze rozeznat."
 
 msgid "Day"
 msgstr "Den"
+
+msgctxt "Current status of an Image"
+msgid "Deactivated"
+msgstr "Deaktivováno"
 
 msgid "Dead peer detection action"
 msgstr "Činnost při zjištění mrtvých klientů"
@@ -4175,6 +4186,10 @@ msgctxt "current status of router"
 msgid "Error"
 msgstr "Chyba"
 
+msgctxt "status of a network port"
+msgid "Error"
+msgstr "Chyba"
+
 msgid "Error Deleting"
 msgstr "Chyba při mazání"
 
@@ -4315,6 +4330,9 @@ msgstr "Rozšiřování"
 #, python-format
 msgid "Extending volume: \"%s\""
 msgstr "Rozšiřování svazku: \"%s\""
+
+msgid "External"
+msgstr "Vnější"
 
 msgid "External Fixed IPs"
 msgstr "Vnější pevné adresy IP"
@@ -4770,6 +4788,10 @@ msgstr "Plovoucí IP"
 
 msgid "Floating IP Pool"
 msgstr "Zásoba plovoucích IP"
+
+#, python-format
+msgid "Floating IP will be removed from VIP \"%s\"."
+msgstr "Plovoucí IP adresa bude odstraněna z VIP \"%s\"."
 
 msgid "Floating IP:"
 msgstr "Plovoucí IP:"
@@ -5236,14 +5258,6 @@ msgstr "Služba identity nepovoluje úpravu dat uživatele."
 msgid "Identity service does not allow editing user password."
 msgstr "Služba identity nepovoluje úpravu hesla uživatele."
 
-#, python-format
-msgid ""
-"If \"No volume type\" is selected, the default volume type \"%(name)s\" will "
-"be set for the created volume."
-msgstr ""
-"Pokud je zvoleno \"Žádný typ svazku\", bude u vytvořeného svazku nastaven "
-"výchozí typ \"%(name)s\"."
-
 msgid ""
 "If \"No volume type\" is selected, the volume will be created without a "
 "volume type."
@@ -5282,15 +5296,15 @@ msgstr ""
 "vytváření. V opačném případě musíte hodnoty nastavení zadat ručně."
 
 msgid ""
-"If you select an image via an HTTP URL, the Image Location field MUST be a "
-"valid and direct URL to the image binary; it must also be accessible to the "
-"Image Service. URLs that redirect or serve error pages will result in "
+"If you select an image via an HTTP/HTTPS URL, the Image Location field MUST "
+"be a valid and direct URL to the image binary; it must also be accessible to "
+"the Image Service. URLs that redirect or serve error pages will result in "
 "unusable images."
 msgstr ""
-"Pokud vybíráte obraz přes HTTP URL, pole umístění obrazu MUSÍ být platné a "
-"URL musí směrovat na spustitelný soubor obrazu; musí být také přístupné pro "
-"Službu obrazů. URL, které přesměrovávají nebo vydávají chybové stránky "
-"způsobí nepoužitelnost obrazů."
+"Pokud vybíráte obraz přes HTTP/HTTPS URL, pole umístění obrazu MUSÍ být "
+"platné a URL musí směrovat na spustitelný soubor obrazu; musí být také "
+"přístupné pro Službu obrazů. URL, které přesměrovávají nebo vydávají chybové "
+"stránky způsobí nepoužitelnost obrazů."
 
 msgid "Image"
 msgstr "Obraz"
@@ -5306,14 +5320,11 @@ msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "Záloha obrazu"
 
-msgid "Image Details"
-msgstr "Podrobnosti obrazu"
-
-msgid "Image Details: {{ image.name }}"
-msgstr "Podrobnosti obrazu: {{ image.name }}"
-
 msgid "Image File"
 msgstr "Soubor obrazu"
+
+msgid "Image ID"
+msgstr "ID obrazu"
 
 msgid "Image ID ="
 msgstr "ID obrazu ="
@@ -5326,9 +5337,6 @@ msgstr "Název obrazu"
 
 msgid "Image Name ="
 msgstr "Název obrazu ="
-
-msgid "Image Overview"
-msgstr "Přehled obrazů"
 
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
@@ -5377,11 +5385,12 @@ msgid "Images"
 msgstr "Obrazy"
 
 msgid ""
-"Images can be provided via an HTTP URL or be uploaded from your local file "
-"system. Compressed image binaries are supported (.zip and .tar.gz.)"
+"Images can be provided via an HTTP/HTTPS URL or be uploaded from your local "
+"file system. Compressed image binaries are supported (.zip and .tar.gz.)"
 msgstr ""
-"Obrazy mohou být zadány pomocí HTTP URL, nebo nahrány z místního souborového "
-"systému. Komprimované binární obrazy jsou podporovány (.zip a .tar.gz)."
+"Obrazy mohou být zadány pomocí HTTP/HTTPS URL, nebo nahrány z místního "
+"souborového systému. Komprimované binární obrazy jsou podporovány (.zip a ."
+"tar.gz)."
 
 msgid "Implementation"
 msgstr "Zavedení"
@@ -5467,7 +5476,7 @@ msgid "Initialize Databases"
 msgstr "Zavést databáze"
 
 msgid "Initiator state"
-msgstr "Stav iniciátora"
+msgstr "Stav zavaděče"
 
 msgid "Injected File Content (Bytes)"
 msgstr "Obsah vloženého souboru (Bajty)"
@@ -6028,6 +6037,13 @@ msgstr "Hlavní třída"
 
 msgid "Mains"
 msgstr "Hlavní komponenta"
+
+msgid "Maintenance"
+msgstr "Údržba"
+
+msgctxt "Current status of a Volume"
+msgid "Maintenance"
+msgstr "Údržba"
 
 msgid "Make Private"
 msgstr "Utajit"
@@ -7366,9 +7382,6 @@ msgstr "Port %s byl úspěšně vytvořen."
 msgid "Port %s was successfully updated."
 msgstr "Port %s byl úspěšně aktualizován."
 
-msgid "Port Details"
-msgstr "Podrobnosti portu"
-
 msgid "Port ID"
 msgstr "ID portu"
 
@@ -7590,6 +7603,10 @@ msgid ""
 "QoS Spec consumer value must be different than the current consumer value."
 msgstr ""
 "Hodnota spotřebitele specifikace QoS musí být jiná, než současná hodnota."
+
+#, python-format
+msgid "QoS Spec name \"%s\" already exists."
+msgstr "Specifikace QoS s názvem \"%s\" již existuje."
 
 msgid "QoS Spec to be associated"
 msgstr "Specifikace QoS která má být přidružena"
@@ -7852,6 +7869,9 @@ msgstr "Replikovat z instance"
 msgid "Replication"
 msgstr "Replikace"
 
+msgid "Report Bug"
+msgstr "Nahlásit chybu"
+
 msgid "Request ID"
 msgstr "ID požadavku"
 
@@ -7874,6 +7894,10 @@ msgstr "Vyžadováno pro vyrvání APP_COOKIE; Jinak ignorováno."
 msgctxt "Current status of an Instance"
 msgid "Rescue"
 msgstr "Zachránit"
+
+msgctxt "Current status of an Instance"
+msgid "Rescued"
+msgstr "Zachráněno"
 
 msgctxt "Task status of an Instance"
 msgid "Rescuing"
@@ -7920,6 +7944,10 @@ msgstr "Změnit velikost svazku"
 msgctxt "Current status of an Instance"
 msgid "Resize/Migrate"
 msgstr "Změnit velikost/Přesunout"
+
+msgctxt "Current status of an Instance"
+msgid "Resized"
+msgstr "Velikost změněna"
 
 msgctxt "Task status of an Instance"
 msgid "Resized or Migrated"
@@ -9250,6 +9278,10 @@ msgctxt "Action log of an instance"
 msgid "Stop"
 msgstr "Zastavit"
 
+msgctxt "Current status of an Instance"
+msgid "Stopped"
+msgstr "Zastaveno"
+
 msgid "Storage location"
 msgstr "Umístění úložiště"
 
@@ -9284,9 +9316,6 @@ msgstr "ID podsítě"
 
 msgid "Subnet Name"
 msgstr "Název podsítě"
-
-msgid "Subnet Overview"
-msgstr "Přehled podsítě"
 
 msgid "Subnet list can not be retrieved."
 msgstr "Nelze získat seznam podsítí."
@@ -10475,8 +10504,24 @@ msgid "Unable to create volume."
 msgstr "Nelze vytvořit svazek."
 
 #, python-format
+msgid "Unable to delete IKE Policy. %s"
+msgstr "Nelze smazat zásadu IKE. %s"
+
+#, python-format
+msgid "Unable to delete IPSec Policy. %s"
+msgstr "Nelze smazat zásadu IPSec. %s"
+
+#, python-format
+msgid "Unable to delete IPSec Site Connection. %s"
+msgstr "Nelze smazat IPSec připojení k místu. %s"
+
+#, python-format
 msgid "Unable to delete VIP. %s"
 msgstr "Nelze smazat VIP. %s"
+
+#, python-format
+msgid "Unable to delete VPN Service. %s"
+msgstr "Nelze smazat službu VPN. %s"
 
 msgid "Unable to delete container."
 msgstr "Nelze smazat kontejner."
@@ -12150,16 +12195,6 @@ msgstr "Svazek (Cinder)"
 msgid "Volume Backup"
 msgstr "Záloha svazku"
 
-msgid "Volume Backup Details"
-msgstr "Podrobnosti zálohy svazku"
-
-msgid "Volume Backup Details: {{ backup.name }}"
-msgstr "Podrobnosti zálohy svazku: {{ backup.name }}"
-
-#, python-format
-msgid "Volume Backup Overview: %(backup_display_name)s"
-msgstr "Přehled záloh svazku: %(backup_display_name)s"
-
 msgid "Volume Backup:"
 msgstr "Záloha svazku:"
 
@@ -12172,12 +12207,6 @@ msgid ""
 msgstr ""
 "Zálohy svazku jsou ukládány pomocí služby Úložiště objektů. Pro vytvoření "
 "zálohy je nutné uto službu mít aktivovanou."
-
-msgid "Volume Details"
-msgstr "Podrobnosti svazku"
-
-msgid "Volume Details: {{ volume.name }}"
-msgstr "Podrobnosti svazku: {{ volume.name }}"
 
 msgid "Volume Encryption Details"
 msgstr "Podrobnosti šifrování svazku"
@@ -12198,20 +12227,11 @@ msgstr "Omezení svazku"
 msgid "Volume Name"
 msgstr "Název svazku"
 
-msgid "Volume Overview"
-msgstr "Přehled svazků"
-
 msgid "Volume Size"
 msgstr "Velikost svazku"
 
 msgid "Volume Snapshot"
 msgstr "Snímek svazku"
-
-msgid "Volume Snapshot Details"
-msgstr "Podrobnosti snímku svazku"
-
-msgid "Volume Snapshot Details: {{ snapshot.name }}"
-msgstr "Podrobnosti snímku svazku: {{ snapshot.name }}"
 
 msgid "Volume Snapshot Overview"
 msgstr "Přehled snímku svazku"

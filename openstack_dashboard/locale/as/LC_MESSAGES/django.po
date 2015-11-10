@@ -8,18 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-14 02:35+0000\n"
+"POT-Creation-Date: 2015-11-10 01:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-09-08 11:14+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
-"Language-Team: Assamese (http://www.transifex.com/openstack/horizon/language/"
-"as/)\n"
-"Generated-By: Babel 2.0\n"
 "Language: as\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 3.7.1\n"
+"Language-Team: Assamese\n"
 
 #, python-format
 msgid ""
@@ -763,9 +762,6 @@ msgstr "হষ্ট অনুমোদন কৰা হল (বৈকল্প�
 msgid "Amount of energy"
 msgstr "শক্তিৰ পৰিমাণ"
 
-msgid "An external (HTTP) URL to load the image from."
-msgstr "...ৰ পৰা ছবি লোড কৰিবলৈ এটা বাহ্যিক (HTTP) URL."
-
 msgid "An external (HTTP) URL to load the template from."
 msgstr "...ৰ পৰা নমুনাটো লোড কৰিবলৈ এটা বাহ্যিক (HTTP) URL."
 
@@ -1173,9 +1169,6 @@ msgstr "ছাইণ্ডাৰ আয়তনবোৰ"
 
 msgid "Cipher"
 msgstr "ছিফাৰ"
-
-msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
-msgstr "শ্ৰেণীবিহীন আন্ত-ক্ষেত্ৰ ৰাউটিং (উদাহৰণ 192.168.0.0/24)"
 
 msgid "Clear Domain Context"
 msgstr "ক্ষেত্ৰ প্ৰসংগ সম্পন্ন কৰক"
@@ -1820,14 +1813,6 @@ msgstr "চলিত আকাৰ (GB)"
 
 msgid "Current password"
 msgstr "চলিত পাছৱৰ্ড"
-
-msgid ""
-"Currently only images available via an HTTP URL are supported. The image "
-"location must be accessible to the Image Service. Compressed image binaries "
-"are supported (.zip and .tar.gz.)"
-msgstr ""
-"বৰ্তমান কেৱল এটা HTTP URL সমৰ্থিত ছবিবোৰ উপলব্ধ. ছবিৰ স্থানটো ছবিৰ সেৱাটোত উপলব্ধ "
-"হোৱাটো অপৰিহাৰ্য. সংনমন কৰা ছবি সংখ্যাবোৰ সমৰ্থন কৰা হয় (.zip আৰু .tar.gz.)"
 
 msgid "Custom ICMP Rule"
 msgstr "ICMP নিয়ম ব্যৱস্থা কৰক"
@@ -3427,17 +3412,6 @@ msgstr ""
 "বেকআপবোৰ আপোনাৰ বাবে ব্যৱস্থা কৰা হব. সিহঁতৰ মূলসুঁতিৰ আয়তনৰ সৈতে বেকআপবোৰ একে "
 "আকাৰৰ হব."
 
-msgid ""
-"If you select an image via an HTTP URL, the Image Location field MUST be a "
-"valid and direct URL to the image binary; it must also be accessible to the "
-"Image Service. URLs that redirect or serve error pages will result in "
-"unusable images."
-msgstr ""
-"HTTP URL ৰ যোগেদি আপুনি ছবি এটা নিৰ্বাচন কৰে, তেন্তে ছবি অৱস্থান ক্ষেত্ৰখন ছবি "
-"বাইনেৰীটোলৈ এটা বৈধ আৰু প্ৰত্যক্ষ হোৱাটো অপৰিহাৰ্য; এইটো লগতে ছবি সেৱাটোলৈ "
-"প্ৰৱেশযোগ্য হোৱাটো অপৰিহাৰ্য. ভুল পৃষ্ঠাবোৰ পুনৰ নিৰ্দেশ কৰা আৰু আগবঢ়োৱা URLবোৰে "
-"অব্যৱহৃত ছবিবোৰত ফলাফল দেখুৱাব."
-
 msgid "Image"
 msgstr "ছবি"
 
@@ -3451,9 +3425,6 @@ msgstr "ছবি (গ্লেঞ্চ)"
 msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "ছবি বেকআপ কৰিছে"
-
-msgid "Image Details"
-msgstr "ছবিৰ পূংখানুপূংখ বিৱৰণ"
 
 msgid "Image File"
 msgstr "ছবিৰ ফাইল"
@@ -3469,9 +3440,6 @@ msgstr "ছবিৰ নাম"
 
 msgid "Image Name ="
 msgstr "ছবিৰ নাম ="
-
-msgid "Image Overview"
-msgstr "ছবি অৱলোকন"
 
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
@@ -3518,13 +3486,6 @@ msgstr "ছবি সফলতাৰে আপডেট কৰা হৈছি�
 
 msgid "Images"
 msgstr "ছবিবোৰ"
-
-msgid ""
-"Images can be provided via an HTTP URL or be uploaded from your local file "
-"system. Compressed image binaries are supported (.zip and .tar.gz.)"
-msgstr ""
-"HTTP URL এটাৰ যোগেদি ছবিবোৰ আগবঢ়াব পাৰি বা আপোনাৰ স্থানীয় ফাইল ছিষ্টেমৰ পৰা "
-"আপলোড কৰিব পাৰি. সংনমন কৰা ছবি বাইনেৰীবোৰ সমৰ্থন কৰে (.zip আৰু .tar.gz.)"
 
 msgid "Import Key Pair"
 msgstr "মুখ্য যোৰা আমদানি কৰক"
@@ -4891,9 +4852,6 @@ msgstr "%s পোৰ্ট সফলতাৰে তৈয়াৰ কৰা হ�
 msgid "Port %s was successfully updated."
 msgstr "%s পোৰ্টটো সফলতাৰে আপডেট কৰা হৈছিল."
 
-msgid "Port Details"
-msgstr "পোৰ্টৰ পূংখানুপূংখ বিৱৰণ"
-
 msgid "Port ID"
 msgstr "পোৰ্ট ID"
 
@@ -6118,9 +6076,6 @@ msgstr "উপনেট ID"
 
 msgid "Subnet Name"
 msgstr "উপনেট নাম"
-
-msgid "Subnet Overview"
-msgstr "উপনেট অৱলোকন"
 
 msgid "Subnet list can not be retrieved."
 msgstr "উপনেট তালিকা উদ্ধাৰ কৰিব পৰা নগল."
@@ -8239,13 +8194,6 @@ msgstr "আয়তন (ছাইণ্ডাৰ)"
 msgid "Volume Backup"
 msgstr "আয়তন বেকআপ"
 
-msgid "Volume Backup Details"
-msgstr "আয়তন বেকআপৰ বিৱৰণবোৰ"
-
-#, python-format
-msgid "Volume Backup Overview: %(backup_display_name)s"
-msgstr "আয়তন বেকআপ অৱলোকন: %(backup_display_name)s"
-
 msgid "Volume Backup:"
 msgstr "আয়তন বেকআপ:"
 
@@ -8259,26 +8207,17 @@ msgstr ""
 "বস্তু ভঁৰাল সেৱাটো ব্যৱহাৰ কৰি আয়তন বেকআপবোৰ সঞ্চয় কৰা হৈছে. বেকআপ এটা তৈয়াৰ "
 "কৰিবলৈ আপুনি এই সেৱাটো সক্ৰিয় কৰাটো অপৰিহাৰ্য."
 
-msgid "Volume Details"
-msgstr "আয়তনৰ পূংখানুপূংখ বিৱৰণ"
-
 msgid "Volume Limits"
 msgstr "আয়তন সীমাবোৰ"
 
 msgid "Volume Name"
 msgstr "আয়তনৰ নাম"
 
-msgid "Volume Overview"
-msgstr "আয়তন অৱলোকন"
-
 msgid "Volume Size"
 msgstr "আয়তনৰ আকাৰ"
 
 msgid "Volume Snapshot"
 msgstr "আয়তন স্নেপশ্বট"
-
-msgid "Volume Snapshot Details"
-msgstr "আয়তন স্নেপশ্বটৰ পূংখানুপূংখ বিৱৰণ"
 
 msgid "Volume Snapshot Overview"
 msgstr "আয়তন স্নেপশ্বট অৱলোকন"

@@ -10,18 +10,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-14 02:35+0000\n"
+"POT-Creation-Date: 2015-11-10 01:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-09-08 11:14+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
-"Language-Team: Hindi (http://www.transifex.com/openstack/horizon/language/"
-"hi/)\n"
-"Generated-By: Babel 2.0\n"
 "Language: hi\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 3.7.1\n"
+"Language-Team: Hindi\n"
 
 msgid ""
 "\n"
@@ -623,9 +622,6 @@ msgstr ""
 msgid "Amount of energy"
 msgstr "ऊर्जा की मात्रा"
 
-msgid "An external (HTTP) URL to load the image from."
-msgstr "बाहरी (एचटीटीपी) URL से बिंब लोड करने के लिए."
-
 msgid "An external (HTTP) URL to load the template from."
 msgstr "बाहरी (एचटीटीपी) यूआरएल से टेम्पलेट लोड करने के लिए."
 
@@ -967,9 +963,6 @@ msgstr "आपके द्वारा हटाये जाने निय�
 
 msgid "Cinder"
 msgstr "सिंडर"
-
-msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
-msgstr "वर्गहीन अंतर डोमेन रूटिंग (जैसे 192.168.0.0/24)"
 
 msgid "Clear Domain Context"
 msgstr "डोमेन संदर्भ साफ करें "
@@ -1491,14 +1484,6 @@ msgstr "मौज़ूदा होस्ट"
 
 msgid "Current password"
 msgstr "मौजूदा कूटशब्द"
-
-msgid ""
-"Currently only images available via an HTTP URL are supported. The image "
-"location must be accessible to the Image Service. Compressed image binaries "
-"are supported (.zip and .tar.gz.)"
-msgstr ""
-"वर्तमान में एक HTTP यूआरएल के माध्यम से ही उपलब्ध बिंब का समर्थन कर रहे हैं. बिंब स्थान बिंब "
-"सेवा के लिए सुलभ होना चाहिए. संकुचित बिंब बायनेरिज़ (. ज़िप और. Tar.gz.) समर्थन कर रहे हैं"
 
 msgid "Custom ICMP Rule"
 msgstr "कस्टम ICMP नियम"
@@ -3127,9 +3112,6 @@ msgstr "बिंब"
 msgid "Image (Glance)"
 msgstr "बिंब (ग्लांस) "
 
-msgid "Image Details"
-msgstr "बिंब विवरण"
-
 msgid "Image File"
 msgstr "बिंब फ़ाइल"
 
@@ -3144,9 +3126,6 @@ msgstr "बिंब नाम"
 
 msgid "Image Name ="
 msgstr "बिंब नाम ="
-
-msgid "Image Overview"
-msgstr "बिंब अवलोकन"
 
 msgid "Image Registry"
 msgstr "छवि पंजी"
@@ -5266,9 +5245,6 @@ msgstr "सबनेट  आईडी "
 msgid "Subnet Name"
 msgstr "सबनेट नाम"
 
-msgid "Subnet Overview"
-msgstr "सबनेट अवलोकन"
-
 msgid "Subnet list can not be retrieved."
 msgstr "सबनेट सूची प्राप्त नहीं किया जा सकता है."
 
@@ -6998,26 +6974,17 @@ msgstr "वॉल्यूम बैकअप"
 msgid "Volume Backups"
 msgstr "वॉल्यूम बैकअप"
 
-msgid "Volume Details"
-msgstr "वॉल्यूम विवरण"
-
 msgid "Volume Limits"
 msgstr "वॉल्यूम सीमाएं"
 
 msgid "Volume Name"
 msgstr "वॉल्यूम नाम"
 
-msgid "Volume Overview"
-msgstr "वॉल्यूम अवलोकन"
-
 msgid "Volume Size"
 msgstr "वॉल्यूम आकार"
 
 msgid "Volume Snapshot"
 msgstr "वॉल्यूम स्नैपशॉट"
-
-msgid "Volume Snapshot Details"
-msgstr "वॉल्यूम स्नैपशॉट विवरण"
 
 msgid "Volume Snapshot Overview"
 msgstr "वॉल्यूम स्नैपशॉट अवलोकन"

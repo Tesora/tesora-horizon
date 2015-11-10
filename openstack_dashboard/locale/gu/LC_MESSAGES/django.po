@@ -8,18 +8,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-14 02:35+0000\n"
+"POT-Creation-Date: 2015-11-10 01:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-09-08 11:14+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
-"Language-Team: Gujarati (http://www.transifex.com/openstack/horizon/language/"
-"gu/)\n"
-"Generated-By: Babel 2.0\n"
 "Language: gu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 3.7.1\n"
+"Language-Team: Gujarati\n"
 
 #, python-format
 msgid ""
@@ -752,9 +751,6 @@ msgstr "મંજૂરી આપવામાં આવેલ યજમાન (�
 msgid "Amount of energy"
 msgstr "ઊર્જાની માત્રા"
 
-msgid "An external (HTTP) URL to load the image from."
-msgstr "બાહ્ય (HTTP) URL માંથી ઇમેજ લોડ કરવા માટે."
-
 msgid "An external (HTTP) URL to load the template from."
 msgstr "બાહ્ય (HTTP) URL માંથી ટેમ્પલેટ લોડ કરવા માટે."
 
@@ -1160,9 +1156,6 @@ msgstr "સિન્ડેર વોલ્યુમો"
 
 msgid "Cipher"
 msgstr "સીફર"
-
-msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
-msgstr "ક્લાસલેસ ઇન્ટર-ડોમેન રાઉંટીંગ (દા.ત. 192.168.0.0/24)"
 
 msgid "Clear Domain Context"
 msgstr "સ્પષ્ટ ડોમેન સંદર્ભ"
@@ -1802,14 +1795,6 @@ msgstr "હાલનાં માપ (GB)"
 
 msgid "Current password"
 msgstr "વર્તમાન પાસવર્ડ"
-
-msgid ""
-"Currently only images available via an HTTP URL are supported. The image "
-"location must be accessible to the Image Service. Compressed image binaries "
-"are supported (.zip and .tar.gz.)"
-msgstr ""
-"આધારભૂત HTTP URL મારફતે હાલમાં માત્ર ઈમેજો ઉપલબ્ધ છે. ઇમેજ સ્થાન ઇમેજ સેવા માટે સુલભ હોવા "
-"જ જોઈએ. સંકુચિત ઇમેજ બાઈનરીઓ (ઝિપ અને .tar.gz.) ને આધારભૂત છે"
 
 msgid "Custom ICMP Rule"
 msgstr "કસ્ટમ ICMP નિયમ"
@@ -3394,16 +3379,6 @@ msgstr ""
 "વોલ્યુમ બેકઅપની તમારા માટે જોગવાઈ કરવામાં આવશે. બેકઅપ સમાન માપના થશે વોલ્યુમ જેવા કે "
 "જેમાંથી તેઓ ઉત્તપન થયેલ હશે."
 
-msgid ""
-"If you select an image via an HTTP URL, the Image Location field MUST be a "
-"valid and direct URL to the image binary; it must also be accessible to the "
-"Image Service. URLs that redirect or serve error pages will result in "
-"unusable images."
-msgstr ""
-"જો તમે HTTP URL મારફતે ઇમેજ પસંદ કરી હોય તો,ઈમેજ સ્થાન ક્ષેત્રના ઇમેજ બાઈનરી માટે માન્ય "
-"અને સીધા URL હોવા જ જોઈએ;તે પણ ઇમેજ સેવા માટે સુલભ હોવા જ જોઈએ.ભૂલ પૃષ્ઠો પુનઃદિશામાન "
-"અથવા સેવા આપવા કે જે URL ના બિનઉપયોગી ઈમેજોમા પરિણમશે."
-
 msgid "Image"
 msgstr "ઈમેજ"
 
@@ -3417,9 +3392,6 @@ msgstr "ઈમેજ (નજર)"
 msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "ઇમેજ બૅકઅપ"
-
-msgid "Image Details"
-msgstr "ઇમેજની વિગતો"
 
 msgid "Image File"
 msgstr "ઈમેજ ફાઈલ"
@@ -3435,9 +3407,6 @@ msgstr "ઈમેજ નામ"
 
 msgid "Image Name ="
 msgstr "ઈમેજ નામ ="
-
-msgid "Image Overview"
-msgstr "ઇમેજ અવલોકન"
 
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
@@ -3483,13 +3452,6 @@ msgstr "ઇમેજ સફળતાપૂર્વક સુધારવામ�
 
 msgid "Images"
 msgstr "ઈમેજો"
-
-msgid ""
-"Images can be provided via an HTTP URL or be uploaded from your local file "
-"system. Compressed image binaries are supported (.zip and .tar.gz.)"
-msgstr ""
-"ઈમેજો HTTP URL મારફતે પૂરી પાડી શકાય અથવા તમારી સ્થાનિક ફાઈલ સિસ્ટમ માંથી અપલોડ "
-"કરી શકાય. કમ્પ્રેસ્ડ ઇમેજ બાઈનરીઓ (.zip અને .tar.gz.) આધારભૂત છે"
 
 msgid "Import Key Pair"
 msgstr "કી જોડ આયાત કરો "
@@ -4845,9 +4807,6 @@ msgstr "પોર્ટ% s સફળતાપૂર્વક બનાવવા�
 msgid "Port %s was successfully updated."
 msgstr "પોર્ટ %s સફળતાપૂર્વક અદ્યતન કરવામાં આવ્યા."
 
-msgid "Port Details"
-msgstr "પોર્ટ વિગતો"
-
 msgid "Port ID"
 msgstr "પોર્ટ ID (આઈડી)"
 
@@ -6069,9 +6028,6 @@ msgstr "સબનેટ ID"
 
 msgid "Subnet Name"
 msgstr "સબનેટ નામ"
-
-msgid "Subnet Overview"
-msgstr "સબનેટ અવલોકન"
 
 msgid "Subnet list can not be retrieved."
 msgstr "ઉપનેટ યાદી પુનઃપ્રાપ્ત કરી શકાઈ નથી."
@@ -8181,13 +8137,6 @@ msgstr "વોલ્યુમ (સિન્ડેર)"
 msgid "Volume Backup"
 msgstr "વોલ્યુમ બેકઅપ"
 
-msgid "Volume Backup Details"
-msgstr "વોલ્યુમ બેકઅપની વિગતો"
-
-#, python-format
-msgid "Volume Backup Overview: %(backup_display_name)s"
-msgstr "વોલ્યુમ બેકઅપનું અવલોકન: %(backup_display_name)s"
-
 msgid "Volume Backup:"
 msgstr "વોલ્યુમ બેકઅપ:"
 
@@ -8201,26 +8150,17 @@ msgstr ""
 "વોલ્યુમ બેકઅપ આ Object સંગ્રહ સેવા ઉપયોગ કરીને સંગ્રહવામાં આવે છે. બેકઅપ બનાવવા માટે તમારી "
 "પાસે સેવા સક્રિય હોવી જ જોઈએ."
 
-msgid "Volume Details"
-msgstr "વોલ્યુમ વિગતો"
-
 msgid "Volume Limits"
 msgstr "વોલ્યુમની મર્યાદાઓ"
 
 msgid "Volume Name"
 msgstr "વોલ્યુમનું નામ"
 
-msgid "Volume Overview"
-msgstr "વોલ્યુમના અવલોકન"
-
 msgid "Volume Size"
 msgstr "વોલ્યુમ માપ"
 
 msgid "Volume Snapshot"
 msgstr "વોલ્યુમ સ્નેપશોટ"
-
-msgid "Volume Snapshot Details"
-msgstr "વોલ્યુમ સ્નેપશોટની વિગતો"
 
 msgid "Volume Snapshot Overview"
 msgstr "વોલ્યુમ સ્નેપશોટ અવલોકન"

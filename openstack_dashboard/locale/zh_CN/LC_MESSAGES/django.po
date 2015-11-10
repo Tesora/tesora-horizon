@@ -19,6 +19,7 @@
 # Daisy <guoyingc@cn.ibm.com>, 2015. #zanata
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 # Xu Yang <xuyang@cn.fujitsu.com>, 2015. #zanata
+# Yang Hongyang <hongyang.yang@easystack.cn>, 2015. #zanata
 # Yu Zhiuguo <yuzg@cn.fujitsu.com>, 2015. #zanata
 # yan haifeng <yanheven@qq.com>, 2015. #zanata
 # zhangjingwen <zhangjingwen@cn.fujitsu.com>, 2015. #zanata
@@ -26,18 +27,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-15 21:23+0000\n"
+"POT-Creation-Date: 2015-11-10 01:06+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-10-15 01:12+0000\n"
-"Last-Translator: yan haifeng <yanheven@qq.com>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/openstack/horizon/"
-"language/zh_CN/)\n"
-"Generated-By: Babel 2.0\n"
+"PO-Revision-Date: 2015-11-05 12:16+0000\n"
+"Last-Translator: Yang Hongyang <hongyang.yang@easystack.cn>\n"
 "Language: zh-CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 3.7.1\n"
+"Language-Team: Chinese (China)\n"
 
 msgid ""
 "\n"
@@ -1177,9 +1177,6 @@ msgstr "允许主机(可选)"
 msgid "Amount of energy"
 msgstr "能源数量"
 
-msgid "An external (HTTP) URL to load the image from."
-msgstr "使用外部(HTTP)URL加载镜像。"
-
 msgid "An external (HTTP) URL to load the template from."
 msgstr "一个用于加载模板的外部(HTTP) URL。"
 
@@ -1751,9 +1748,6 @@ msgstr "Cinder卷"
 
 msgid "Cipher"
 msgstr "Cipher"
-
-msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
-msgstr "无类别域间路由(e.g. 192.168.0.0/24)"
 
 msgid "Clear Domain Context"
 msgstr "清除域上下文。"
@@ -2556,14 +2550,6 @@ msgstr "当前密码"
 
 msgid "Current type:"
 msgstr "当前类型"
-
-msgid ""
-"Currently only images available via an HTTP URL are supported. The image "
-"location must be accessible to the Image Service. Compressed image binaries "
-"are supported (.zip and .tar.gz.)"
-msgstr ""
-"目前只支持HTTP URL可用镜像。镜像服务必须能够访问到镜像地址。支持镜像的二进制"
-"压缩格式(.zip,.tar,.gz.)"
 
 msgid "Custom ICMP Rule"
 msgstr "定制ICMP规则"
@@ -4901,12 +4887,6 @@ msgstr "认证服务不允许编辑用户数据。"
 msgid "Identity service does not allow editing user password."
 msgstr "认证服务不允许编辑用户密码。"
 
-#, python-format
-msgid ""
-"If \"No volume type\" is selected, the default volume type \"%(name)s\" will "
-"be set for the created volume."
-msgstr "如果\"No volume type\"被选中, 默认的卷类型 \"%(name)s\"  将被设定。"
-
 msgid ""
 "If \"No volume type\" is selected, the volume will be created without a "
 "volume type."
@@ -4938,15 +4918,6 @@ msgid ""
 msgstr ""
 "如果已选择，节点组的实例将自动在集群创建的时候被配置。否则你需要手动配置。"
 
-msgid ""
-"If you select an image via an HTTP URL, the Image Location field MUST be a "
-"valid and direct URL to the image binary; it must also be accessible to the "
-"Image Service. URLs that redirect or serve error pages will result in "
-"unusable images."
-msgstr ""
-"如果你通过HTTP URL上传镜像，URL必须直接指向一个可用的镜像文件；并且镜像服务必"
-"须能访问这个URL。URL重定向或者服务页面错误会导致镜像无法使用。"
-
 msgid "Image"
 msgstr "镜像"
 
@@ -4960,12 +4931,6 @@ msgstr "镜像(Glance)"
 msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "镜像备份"
-
-msgid "Image Details"
-msgstr "镜像详情 "
-
-msgid "Image Details: {{ image.name }}"
-msgstr "镜像详情： {{ image.name }}"
 
 msgid "Image File"
 msgstr "镜像文件"
@@ -4984,9 +4949,6 @@ msgstr "镜像名称"
 
 msgid "Image Name ="
 msgstr "镜像名称 ="
-
-msgid "Image Overview"
-msgstr "镜像概况"
 
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
@@ -5031,13 +4993,6 @@ msgstr "镜像更新成功。"
 
 msgid "Images"
 msgstr "镜像"
-
-msgid ""
-"Images can be provided via an HTTP URL or be uploaded from your local file "
-"system. Compressed image binaries are supported (.zip and .tar.gz.)"
-msgstr ""
-"镜像可以通过HTTP URL或从您的本地文件系统上传。支持压缩的二进制镜像文件(.zip "
-"和.tar.gz.)"
 
 msgid "Implementation"
 msgstr "实现"
@@ -6958,9 +6913,6 @@ msgstr "成功创建%s端口"
 msgid "Port %s was successfully updated."
 msgstr "端口%s更新成功"
 
-msgid "Port Details"
-msgstr "端口详情"
-
 msgid "Port ID"
 msgstr "端口ID"
 
@@ -8783,9 +8735,6 @@ msgstr "子网ID"
 
 msgid "Subnet Name"
 msgstr "子网名称"
-
-msgid "Subnet Overview"
-msgstr "子网概况"
 
 msgid "Subnet list can not be retrieved."
 msgstr "无法获取子网列表"
@@ -10769,7 +10718,7 @@ msgid "Unable to retrieve router details."
 msgstr "无法获取路由详情"
 
 msgid "Unable to retrieve router list."
-msgstr "无法获取路优列表"
+msgstr "无法获取路由列表"
 
 msgid "Unable to retrieve router."
 msgstr "无法重新获得路由"
@@ -11568,16 +11517,6 @@ msgstr "云硬盘 (Cinder)"
 msgid "Volume Backup"
 msgstr "卷备份"
 
-msgid "Volume Backup Details"
-msgstr "卷备份详情"
-
-msgid "Volume Backup Details: {{ backup.name }}"
-msgstr "备份卷详情： {{ backup.name }}"
-
-#, python-format
-msgid "Volume Backup Overview: %(backup_display_name)s"
-msgstr "云硬盘备份概要：%(backup_display_name)s"
-
 msgid "Volume Backup:"
 msgstr "卷备份:"
 
@@ -11588,12 +11527,6 @@ msgid ""
 "Volume Backups are stored using the Object Storage service. You must have "
 "this service activated in order to create a backup."
 msgstr "卷备份使用的是对象存储服务。你必须激活这个对象存储服务才能创建备份。"
-
-msgid "Volume Details"
-msgstr "云硬盘详情"
-
-msgid "Volume Details: {{ volume.name }}"
-msgstr "卷详细信息:{{ volume.name }}"
 
 msgid "Volume Encryption Details"
 msgstr "存储卷加密详情"
@@ -11614,20 +11547,11 @@ msgstr "云硬盘限度"
 msgid "Volume Name"
 msgstr "云硬盘名称"
 
-msgid "Volume Overview"
-msgstr "云硬盘概览"
-
 msgid "Volume Size"
 msgstr "云硬盘大小"
 
 msgid "Volume Snapshot"
 msgstr "云硬盘快照"
-
-msgid "Volume Snapshot Details"
-msgstr "云硬盘快照详情"
-
-msgid "Volume Snapshot Details: {{ snapshot.name }}"
-msgstr "卷快照详情: {{ snapshot.name }}"
 
 msgid "Volume Snapshot Overview"
 msgstr "云硬盘快照概览"
