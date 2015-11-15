@@ -577,11 +577,6 @@ td.loading {
     width: 1em;
   }
 
-  input {
-    padding: 2px 5px;
-    margin: 0;
-  }
-
   th span.required:after {
     content: "*";
     font-weight: bold;
@@ -888,11 +883,6 @@ th.multi_select_column, td.multi_select_column {
 
 .table-fixed {
   table-layout: fixed;
-}
-
-.table input[type="checkbox"] {
-  display: inline;
-  vertical-align: middle;
 }
 
 div.input input[type="checkbox"] {
@@ -1314,9 +1304,18 @@ label.log-length {
 
   .members, .available_members {
     padding: 0;
+
+    .btn-primary {
+      @include button-variant($btn-primary-color, $btn-primary-bg, $btn-primary-border);
+    }
+
     // reset nav-pills display to block
     ul.nav-pills {
       display: block;
+
+      & > li > a {
+        border-radius: $border-radius-base;
+      }
     }
     ul.btn-group {
       margin-left:0;
@@ -1371,33 +1370,23 @@ label.log-length {
     }
   }
 
+
   /* Role dropdown menus */
-  .role_dropdown li {
-    cursor: pointer;
-    background: none;
-    float: none;
-    display: block;
-    padding: 5px 10px;
-    color: #000;
-    text-align: left;
-    border-radius: 0;
-    border: 0 none;
-    @include box-shadow(none);
-    z-index: 99999;
-    &:hover {
-      background-color: #cdcdcd;
-    }
-    i {
-      opacity: 0;
-    }
-    &.selected i {
-      opacity: 1;
-    }
-  }
-  .dropdown-menu.role_dropdown {
+  .role_dropdown {
     right: 0;
     left: auto;
+
+    & > li {
+      .fa-check {
+        visibility: hidden;
+      }
+
+      &.selected .fa-check {
+        visibility: visible;
+      }
+    }
   }
+
   .nav .role_options {
     float: right;
   }
