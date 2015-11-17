@@ -386,11 +386,29 @@ class AdvancedAction(workflows.Action):
             choices.insert(0, ("", _("No backups available")))
         return choices
 
+    def _get_instances(self):
+        instances = []
+        try:
+            instances = api.trove.instance_list(self.request)
+            marker = instances.next
+            while marker or False:
+                temp_instances = api.trove.instance_list(self.request,
+                                                         marker=marker)
+                marker = temp_instances.next
+                instances.items += temp_instances.items
+                instances.links = temp_instances.links
+            instances.next = None
+        except Exception:
+            msg = _('Unable to retrieve database instances.')
+            exceptions.handle(self.request, msg)
+        return instances
+
     def populate_master_choices(self, request, context):
         try:
-            instances = api.trove.instance_list(request)
-            choices = [(i.id, i.name) for i in
-                       instances if i.status == 'ACTIVE']
+            instances = self._get_instances()
+            choices = sorted([(i.id, i.name) for i in
+                             instances if i.status == 'ACTIVE'],
+                             key=lambda i: i[1])
         except Exception:
             choices = []
 
