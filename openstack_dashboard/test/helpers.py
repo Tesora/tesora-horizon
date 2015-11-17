@@ -19,6 +19,7 @@
 import collections
 import copy
 from functools import wraps  # noqa
+import json
 import os
 
 
@@ -278,7 +279,8 @@ class TestCase(horizon_helpers.TestCase):
                                                 response.content))
 
     def assertItemsCollectionEqual(self, response, items_list):
-        self.assertEqual(response.json, {"items": items_list})
+        self.assertEqual(response.content,
+                         '{"items": ' + json.dumps(items_list) + "}")
 
     @staticmethod
     def mock_rest_request(**args):

@@ -65,48 +65,31 @@ class BaseRegion(basewebobject.BaseWebObject):
     class _DynamicProperty(object):
         """Serves as new property holder."""
 
-        def __init__(self, method, name=None, id_pattern=None):
-            """Invocation of `method` should return either single property, or
-            a dictionary of properties, or a list of them.
-
-            In case it's single, neither name, nor id_pattern is required.
-
-            In case it's a dictionary, it's expected that it has a value for
-            the key equal to `name` argument. That's a standard way of
-            fetching a form field).
-
-            In case it's a list, the element with an id equal to the result of
-            `id_pattern % name` is supposed to be there. That's a standard way
-            of fetching a table action (either table-wise or row-wise).
+        def __init__(self, method, index=None, name=None):
+            """In case object was created with index != None,
+            it is assumed that the result of self.method should be tuple()
+            and just certain index should be returned
             """
             self.method = method
+            self.index = index
             self.name = name
-            self.id_pattern = id_pattern
 
         def __call__(self, *args, **kwargs):
             result = self.method()
-            if self.name is None:
-                return result
+            if isinstance(result, dict):
+                return result if self.name is None else result[self.name]
             else:
-                if isinstance(result, list) and self.id_pattern is not None:
-                    # NOTE(tsufiev): map table actions to action names using
-                    # action tag's ids
-                    actual_id = self.id_pattern % self.name
-                    result = {self.name: entry for entry in result
-                              if entry.get_attribute('id') == actual_id}
-                if isinstance(result, dict):
-                    return result[self.name]
-                return result
+                return result if self.index is None else result[self.index]
 
-    def _init_dynamic_properties(self, new_attr_names, method,
-                                 id_pattern=None):
+    def _init_dynamic_properties(self, new_attr_names, method):
         """Create new object's 'properties' at runtime."""
-        for new_attr_name in new_attr_names:
-            self._init_dynamic_property(new_attr_name, method, id_pattern)
+        for index, new_attr_name in enumerate(new_attr_names):
+            self._init_dynamic_property(new_attr_name, method, index)
 
-    def _init_dynamic_property(self, new_attr_name, method, id_pattern=None):
-        """Create new object's property at runtime. See _DynamicProperty's
-        __init__ docstring for a description of arguments.
+    def _init_dynamic_property(self, new_attr_name, method, index=None):
+        """Create new object's property at runtime. If index argument is
+        supplied it is assumed that method returns tuple() and only element
+        on ${index} position is returned.
         """
         if (new_attr_name in dir(self) or
                 new_attr_name in self._dynamic_properties):
@@ -114,8 +97,8 @@ class BaseRegion(basewebobject.BaseWebObject):
                                  "The new property could not be "
                                  "created." % (self.__class__.__name__,
                                                new_attr_name))
-        new_method = self.__class__._DynamicProperty(
-            method, new_attr_name, id_pattern)
+        new_method = self.__class__._DynamicProperty(method, index,
+                                                     new_attr_name)
         inst_method = types.MethodType(new_method, self)
         self._dynamic_properties[new_attr_name] = inst_method
 

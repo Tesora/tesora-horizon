@@ -52,17 +52,18 @@
       // if user has permission
       // fetch table data and populate it
       var rules = [['identity', 'identity:list_users']];
-      policy.ifAllowed({ rules: rules }).then(policySuccess, policyFailed);
+      policy.check({ rules: rules }).success(policySuccess);
     }
 
-    function policySuccess() {
-      keystone.getUsers().success(getUsersSuccess);
-      keystone.getCurrentUserSession().success(getSessionSuccess);
-    }
-
-    function policyFailed() {
-      var msg = gettext('Insufficient privilege level to view user information.');
-      toast.add('warning', msg);
+    function policySuccess(response) {
+      if (response.allowed) {
+        keystone.getUsers().success(getUsersSuccess);
+        keystone.getCurrentUserSession().success(getSessionSuccess);
+      }
+      else {
+        var msg = gettext('Insufficient privilege level to view user information.');
+        toast.add('info', msg);
+      }
     }
 
     function getUsersSuccess(response) {

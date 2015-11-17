@@ -45,8 +45,8 @@ class ResourceTypesView(tables.DataTableView):
 
 class DetailView(tabs.TabView):
     tab_group_class = project_tabs.ResourceTypeDetailsTabs
-    template_name = 'horizon/common/_detail.html'
-    page_title = "{{ resource_type }}"
+    template_name = 'project/stacks.resource_types/details.html'
+    page_title = _("Resource Type Details")
 
     def get_resource_type(self, request, **kwargs):
         try:

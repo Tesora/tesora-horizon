@@ -290,7 +290,7 @@ def _get_tenant_compute_usages(request, usages, disabled_quotas, tenant_id):
         usages.tally('cores', getattr(flavor, 'vcpus', None))
         usages.tally('ram', getattr(flavor, 'ram', None))
 
-    # Initialize the tally if no instances have been launched yet
+    # Initialise the tally if no instances have been launched yet
     if len(instances) == 0:
         usages.tally('cores', 0)
         usages.tally('ram', 0)
@@ -314,14 +314,8 @@ def _get_tenant_network_usages(request, usages, disabled_quotas, tenant_id):
         networks = []
         networks = neutron.network_list(request, shared=False)
         if tenant_id:
-            networks = [net for net in networks if net.tenant_id == tenant_id]
+            networks = filter(lambda net: net.tenant_id == tenant_id, networks)
         usages.tally('networks', len(networks))
-        # get shared networks
-        shared_networks = neutron.network_list(request, shared=True)
-        if tenant_id:
-            shared_networks = [net for net in shared_networks
-                               if net.tenant_id == tenant_id]
-        usages.tally('networks', len(shared_networks))
 
     if 'subnet' not in disabled_quotas:
         subnets = []
@@ -332,7 +326,7 @@ def _get_tenant_network_usages(request, usages, disabled_quotas, tenant_id):
         routers = []
         routers = neutron.router_list(request)
         if tenant_id:
-            routers = [rou for rou in routers if rou.tenant_id == tenant_id]
+            routers = filter(lambda rou: rou.tenant_id == tenant_id, routers)
         usages.tally('routers', len(routers))
 
 

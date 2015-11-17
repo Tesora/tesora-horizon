@@ -1,15 +1,3 @@
-# Translations template for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-#
-# Translators:
-# jessy1092 <jessy1092@gmail.com>, 2015
-# Joanna H. Huang <joanna.huitzu.huang@gmail.com>, 2015
-# rico lin <rico.lin.guanyu@gmail.com>, 2015
-# Shang Wu <wu1982@gmail.com>, 2015
-# Tom Fifield <tom@openstack.org>, 2015
-# Zhang Xiaowei <zero00072@gmail.com>, 2014
-# Zhang Xiaowei <zero00072@gmail.com>, 2014-2015
 # Chester Cheng <ccheng@redhat.com>, 2015. #zanata
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 # Zhang Xiaowei <zero00072@gmail.com>, 2015. #zanata
@@ -17,15 +5,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-12 12:09+0000\n"
+"POT-Creation-Date: 2015-11-04 14:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-11-02 09:56+0000\n"
+"PO-Revision-Date: 2015-10-06 02:48+0000\n"
 "Last-Translator: Zhang Xiaowei <zero00072@gmail.com>\n"
 "Language: zh-TW\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"Generated-By: Babel 2.0\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Zanata 3.7.1\n"
 "Language-Team: Chinese (Taiwan)\n"
 
@@ -447,6 +434,9 @@ msgstr ""
 msgid ""
 "\"Some flavors not meeting minimum image requirements have been disabled.\""
 msgstr "「已關閉不滿足映像檔最低需求的虛擬硬體樣板。」"
+
+msgid "\"Users\""
+msgstr "「用戶」"
 
 #, python-format
 msgid "%(conf_name)s: %(conf_val)s"
@@ -974,6 +964,15 @@ msgstr "加入、更改或移除已聯結到此雲硬碟類型的 QoS 規格。"
 msgid "Add/Remove Hosts to Aggregate"
 msgstr "加入/移除主機到聚合中"
 
+msgid "AddFirewall"
+msgstr "加入防火牆"
+
+msgid "AddPolicy"
+msgstr "加入政策"
+
+msgid "AddRule"
+msgstr "加入規則"
+
 #, python-format
 msgid "Added Firewall \"%s\"."
 msgstr "加入了防火牆「%s」。"
@@ -1180,6 +1179,9 @@ msgstr "允許的主機（選填）"
 
 msgid "Amount of energy"
 msgstr "能量"
+
+msgid "An external (HTTP) URL to load the image from."
+msgstr "可讀取映像檔的外部（HTTP）網址。"
 
 msgid "An external (HTTP) URL to load the template from."
 msgstr "可讀取範本的外部（HTTP）網址。"
@@ -1751,6 +1753,9 @@ msgstr "Cinder 雲硬碟"
 msgid "Cipher"
 msgstr "加密協定"
 
+msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
+msgstr "無類別域間路由（如 192.168.0.0/24）"
+
 msgid "Clear Domain Context"
 msgstr "清除地域環境"
 
@@ -1777,6 +1782,15 @@ msgstr "叢集計數"
 msgid "Cluster Creation Guide"
 msgstr "叢集建立精靈"
 
+msgid "Cluster Detail"
+msgstr "叢集詳細資訊"
+
+msgid "Cluster Details"
+msgstr "叢集詳細資訊"
+
+msgid "Cluster Details: {{ cluster.name }}"
+msgstr "叢集詳細資訊：{{ cluster.name }}"
+
 msgid "Cluster Events"
 msgstr "叢集事件"
 
@@ -1789,6 +1803,9 @@ msgstr "叢集雲實例"
 msgid "Cluster Name"
 msgstr "叢集名稱"
 
+msgid "Cluster Overview"
+msgstr "叢集概觀"
+
 msgid "Cluster Size"
 msgstr "叢集規模"
 
@@ -1798,6 +1815,9 @@ msgstr "叢集範本"
 #, python-format
 msgid "Cluster Template %s updated"
 msgstr "已更新叢集範本 %s"
+
+msgid "Cluster Template Details"
+msgstr "叢集範本詳細資訊"
 
 msgid "Cluster Template Name"
 msgstr "叢集範本名稱"
@@ -2538,6 +2558,14 @@ msgstr "目前密碼"
 msgid "Current type:"
 msgstr "目前類型："
 
+msgid ""
+"Currently only images available via an HTTP URL are supported. The image "
+"location must be accessible to the Image Service. Compressed image binaries "
+"are supported (.zip and .tar.gz.)"
+msgstr ""
+"目前僅支援從 HTTP 網址得到映像檔。映像檔位置必須是映像檔伺服器上可訪問的。支"
+"援壓縮後的映像檔格式（.zip 以及 .tar.gz）。"
+
 msgid "Custom ICMP Rule"
 msgstr "自訂 ICMP 規則"
 
@@ -2621,6 +2649,9 @@ msgstr "資料處理精靈"
 msgid "Data Processing Plugin Details"
 msgstr "資料處理插件詳細資訊"
 
+msgid "Data Processing Plugin Overview"
+msgstr "資料處理插件概觀"
+
 msgid "Data Processing Plugins"
 msgstr "資料處理插件"
 
@@ -2636,6 +2667,12 @@ msgstr ""
 
 msgid "Data Source"
 msgstr "資料來源"
+
+msgid "Data Source Details"
+msgstr "資料來源詳細資訊"
+
+msgid "Data Source Overview"
+msgstr "資料來源概觀"
 
 msgid "Data Source Type"
 msgstr "資料來源類型"
@@ -3028,6 +3065,18 @@ msgid "Deleted Host Aggregate"
 msgid_plural "Deleted Host Aggregates"
 msgstr[0] "已刪除主機聚合"
 
+#, python-format
+msgid "Deleted IKE Policy %s"
+msgstr "已刪除網際網路密鑰交換政策 %s"
+
+#, python-format
+msgid "Deleted IPSec Policy %s"
+msgstr "已刪除 IPSec 政策 %s"
+
+#, python-format
+msgid "Deleted IPSec Site Connection %s"
+msgstr "已刪除 IPSec 網站連線 %s"
+
 msgid "Deleted Image"
 msgid_plural "Deleted Images"
 msgstr[0] "已刪除映像檔"
@@ -3120,12 +3169,28 @@ msgstr[0] "已刪除用戶"
 msgid "Deleted VIP %s"
 msgstr "已刪除虛擬 IP %s"
 
+#, python-format
+msgid "Deleted VPN Service %s"
+msgstr "已刪除虛擬私人網路伺服器 %s"
+
 msgid "Deleted Volume Type"
 msgid_plural "Deleted Volume Types"
 msgstr[0] "已刪除雲硬碟類型"
 
 msgid "Deleted images are not recoverable."
 msgstr "已刪除的映像檔將無法恢復。"
+
+#, python-format
+msgid "Deleted member %s"
+msgstr "已刪除成員 %s"
+
+#, python-format
+msgid "Deleted monitor %s"
+msgstr "刪除監視器 %s"
+
+#, python-format
+msgid "Deleted pool %s"
+msgstr "已刪除倉庫 %s"
 
 msgid "Deleting"
 msgstr "正在刪除"
@@ -3834,7 +3899,7 @@ msgctxt "current status of router"
 msgid "Error"
 msgstr "錯誤"
 
-msgctxt "status of a network port"
+msgctxt "status of a neteork port"
 msgid "Error"
 msgstr "錯誤"
 
@@ -3976,9 +4041,6 @@ msgstr "正在擴充"
 #, python-format
 msgid "Extending volume: \"%s\""
 msgstr "正在擴充雲硬碟：「%s」"
-
-msgid "External"
-msgstr "對外"
 
 msgid "External Fixed IPs"
 msgstr "對外固定 IP"
@@ -4329,8 +4391,17 @@ msgstr "正在完成調整容量或轉移"
 msgid "Firewall %s was successfully updated."
 msgstr "已成功更新防火牆 %s。"
 
+msgid "Firewall Details"
+msgstr "防火牆詳細資訊"
+
 msgid "Firewall Policies"
 msgstr "防火牆政策"
+
+msgid "Firewall Policy Details"
+msgstr "防火牆政策詳細資訊"
+
+msgid "Firewall Rule Details"
+msgstr "防火牆規則詳細資訊"
 
 msgid "Firewall Rules"
 msgstr "防火牆規則"
@@ -4860,6 +4931,13 @@ msgstr "身份伺服器不允許編輯用戶資料。"
 msgid "Identity service does not allow editing user password."
 msgstr "身份伺服器不允許編輯用戶密碼。"
 
+#, python-format
+msgid ""
+"If \"No volume type\" is selected, the default volume type \"%(name)s\" will "
+"be set for the created volume."
+msgstr ""
+"若選擇了「無雲硬碟類型」，將預設套用雲硬碟類型「%(name)s」給新增的雲硬碟。"
+
 msgid ""
 "If \"No volume type\" is selected, the volume will be created without a "
 "volume type."
@@ -4893,6 +4971,16 @@ msgstr ""
 "若選擇了，節點群組的雲實例將會在群組建立期間自動設置。不然您應該手動指定設置"
 "值。"
 
+msgid ""
+"If you select an image via an HTTP URL, the Image Location field MUST be a "
+"valid and direct URL to the image binary; it must also be accessible to the "
+"Image Service. URLs that redirect or serve error pages will result in "
+"unusable images."
+msgstr ""
+"若您選擇從 HTTP 網址獲得映像檔，映像檔的位置必須是正確且直接的映像檔網址連到"
+"映像檔；而且必須讓映像檔伺服器也能連到。網址若是指到重定向或者伺服器錯誤頁將"
+"導致提供無用的映像檔。"
+
 msgid "Image"
 msgstr "映像檔"
 
@@ -4906,6 +4994,12 @@ msgstr "映像檔（Glance）"
 msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "映像檔備份"
+
+msgid "Image Details"
+msgstr "映像檔詳細資訊"
+
+msgid "Image Details: {{ image.name }}"
+msgstr "映像檔詳細資訊：{{ image.name }}"
 
 msgid "Image File"
 msgstr "映像檔"
@@ -4921,6 +5015,9 @@ msgstr "映像檔名稱"
 
 msgid "Image Name ="
 msgstr "映像檔名稱 ="
+
+msgid "Image Overview"
+msgstr "映像檔概觀"
 
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
@@ -4965,6 +5062,13 @@ msgstr "已成功更新映像檔。"
 
 msgid "Images"
 msgstr "映像檔"
+
+msgid ""
+"Images can be provided via an HTTP URL or be uploaded from your local file "
+"system. Compressed image binaries are supported (.zip and .tar.gz.)"
+msgstr ""
+"目前僅支援從 HTTP 網址或自您目前的檔案系統上傳來得到映像檔。支援壓縮後的映像"
+"檔格式（.zip 以及 .tar.gz）。"
 
 msgid "Implementation"
 msgstr "實作"
@@ -5101,6 +5205,12 @@ msgstr "雲實例主控臺記錄"
 msgid "Instance Count"
 msgstr "雲實例計數"
 
+msgid "Instance Details"
+msgstr "雲實例詳細資訊"
+
+msgid "Instance Details: {{ instance.name }}"
+msgstr "雲實例詳細資訊：{{ instance.name }}"
+
 msgid "Instance ID"
 msgstr "雲實例識別號"
 
@@ -5210,8 +5320,20 @@ msgstr "工作"
 msgid "Job Binaries"
 msgstr "工作程式"
 
+msgid "Job Binary Details"
+msgstr "工作程式詳細資訊"
+
+msgid "Job Binary Overview"
+msgstr "工作程式概觀"
+
 msgid "Job Configuration"
 msgstr "工作設置"
+
+msgid "Job Details"
+msgstr "工作詳細資訊"
+
+msgid "Job Execution Details"
+msgstr "工作執行任務詳細資訊"
 
 msgid "Job Execution Guide"
 msgstr "工作執行任務精靈"
@@ -5222,8 +5344,14 @@ msgstr "工作執行任務識別號"
 msgid "Job Guide"
 msgstr "工作精靈"
 
+msgid "Job Overview"
+msgstr "工作概觀"
+
 msgid "Job Template"
 msgstr "工作範本"
+
+msgid "Job Template Details"
+msgstr "工作範本詳細資訊"
 
 msgid "Job Templates"
 msgstr "工作範本"
@@ -5572,13 +5700,6 @@ msgstr "主類別"
 msgid "Mains"
 msgstr "主程式"
 
-msgid "Maintenance"
-msgstr "維護"
-
-msgctxt "Current status of a Volume"
-msgid "Maintenance"
-msgstr "維護"
-
 msgid "Make Private"
 msgstr "使它不公開"
 
@@ -5918,6 +6039,12 @@ msgstr "已新增命名空間 %s。"
 
 msgid "Namespace Definition Source"
 msgstr "命名空間定義檔來源"
+
+msgid "Namespace Details"
+msgstr "命名空間詳細資訊"
+
+msgid "Namespace Details: {{ namespace.namespace }}"
+msgstr "命名空間詳細資訊：{{ namespace.namespace }}"
 
 msgid "Namespace JSON"
 msgstr "JSON 格式命名空間"
@@ -6313,6 +6440,9 @@ msgstr "節點群組"
 msgid "Node Group Template %s updated"
 msgstr "已更新節點群組範本 %s"
 
+msgid "Node Group Template Details"
+msgstr "節點群組範本詳細資訊"
+
 #, python-format
 msgid "Node Group Template copy %s created"
 msgstr "已新增節點群組範本複本 %s"
@@ -6338,6 +6468,9 @@ msgstr "節點群組叢集"
 
 msgid "Node processes are not specified"
 msgstr "未指定節點處理行程"
+
+msgid "Nodegroup Template Details"
+msgstr "節點群組範本詳細資訊"
 
 msgid "Nodes Count"
 msgstr "節點計數"
@@ -6870,6 +7003,9 @@ msgstr "已成功新增接口 %s。"
 msgid "Port %s was successfully updated."
 msgstr "已成功更新接口 %s。"
 
+msgid "Port Details"
+msgstr "接口詳細資訊"
+
 msgid "Port ID"
 msgstr "接口識別號"
 
@@ -7334,9 +7470,6 @@ msgstr "來自雲實例的共用資料"
 msgid "Replication"
 msgstr "共用資料"
 
-msgid "Report Bug"
-msgstr "回報錯誤"
-
 msgid "Request ID"
 msgstr "請求識別號"
 
@@ -7425,6 +7558,12 @@ msgstr "正在調整雲硬碟「%s」容量"
 msgid "Resource"
 msgstr "資源"
 
+msgid "Resource Details"
+msgstr "資源詳細資訊"
+
+msgid "Resource Details: {{ resource.resource_name }}"
+msgstr "資源詳細資訊：{{ resource.resource_name }}"
+
 msgid "Resource ID"
 msgstr "資源識別號"
 
@@ -7433,6 +7572,12 @@ msgstr "資源詮釋資料"
 
 msgid "Resource Overview"
 msgstr "資源概觀"
+
+msgid "Resource Type"
+msgstr "資源類型"
+
+msgid "Resource Type Details"
+msgstr "資源類型詳細資訊"
 
 msgid "Resource Types"
 msgstr "資源類型"
@@ -7623,6 +7768,9 @@ msgstr "已成功新增路由器 %s。"
 #, python-format
 msgid "Router %s was successfully updated."
 msgstr "已成功更新路由器 %s。"
+
+msgid "Router Details"
+msgstr "路由器詳細資訊"
 
 msgid "Router ID"
 msgstr "路由器識別號"
@@ -8521,6 +8669,12 @@ msgstr ""
 msgid "Specs"
 msgstr "規格"
 
+msgid "Stack Details"
+msgstr "機櫃詳細資訊"
+
+msgid "Stack Details: {{ stack.stack_name }}"
+msgstr "機櫃詳細資訊：{{ stack.stack_name }}"
+
 msgid "Stack Events"
 msgstr "機櫃事件"
 
@@ -8529,6 +8683,9 @@ msgstr "機櫃識別號"
 
 msgid "Stack Name"
 msgstr "機櫃名稱"
+
+msgid "Stack Overview"
+msgstr "機櫃概觀"
 
 msgid "Stack Parameters"
 msgstr "機櫃參數"
@@ -8671,6 +8828,9 @@ msgstr "子網路識別號"
 
 msgid "Subnet Name"
 msgstr "子網路名稱"
+
+msgid "Subnet Overview"
+msgstr "子網路概觀"
 
 msgid "Subnet list can not be retrieved."
 msgstr "不能獲得子網路列表。"
@@ -8929,6 +9089,9 @@ msgstr "範本檔案"
 
 msgid "Template Name"
 msgstr "範本名稱"
+
+msgid "Template Overview"
+msgstr "範本概觀"
 
 msgid "Template Source"
 msgstr "範本來源"
@@ -9787,8 +9950,24 @@ msgid "Unable to create volume."
 msgstr "無法新增雲硬碟。"
 
 #, python-format
+msgid "Unable to delete IKE Policy: %s"
+msgstr "無法刪除網際網路密鑰交換政策：%s"
+
+#, python-format
+msgid "Unable to delete IPSec Policy: %s"
+msgstr "無法刪除 IPSec 政策：%s"
+
+#, python-format
+msgid "Unable to delete IPSec Site Connection: %s"
+msgstr "無法刪除 IPSec 網站連線：%s"
+
+#, python-format
 msgid "Unable to delete VIP. %s"
 msgstr "無法刪除虛擬 IP。%s"
+
+#, python-format
+msgid "Unable to delete VPN Service: %s"
+msgstr "無法刪除虛擬私人網路伺服器：%s"
 
 msgid "Unable to delete container."
 msgstr "無法刪除容器。"
@@ -10929,6 +11108,9 @@ msgstr "無法上傳物件。"
 msgid "Unable to upload volume to image for volume: \"%s\""
 msgstr "無法為雲硬碟上傳雲硬碟到映像檔：「%s」"
 
+msgid "Undefined"
+msgstr "未定義"
+
 msgid "Unit"
 msgstr "單位"
 
@@ -11435,6 +11617,16 @@ msgstr "雲硬碟（Cinder）"
 msgid "Volume Backup"
 msgstr "雲硬碟備份"
 
+msgid "Volume Backup Details"
+msgstr "雲硬碟備份的詳細資訊"
+
+msgid "Volume Backup Details: {{ backup.name }}"
+msgstr "雲硬碟備份的詳細資訊：{{ backup.name }}"
+
+#, python-format
+msgid "Volume Backup Overview: %(backup_display_name)s"
+msgstr "雲硬碟備份概觀：%(backup_display_name)s"
+
 msgid "Volume Backup:"
 msgstr "雲硬碟備份："
 
@@ -11447,6 +11639,12 @@ msgid ""
 msgstr ""
 "雲硬碟備份使用了物件式儲存空間伺服器來儲存。您必須已啟動此伺服器才能新增備"
 "份。"
+
+msgid "Volume Details"
+msgstr "雲硬碟的詳細資訊"
+
+msgid "Volume Details: {{ volume.name }}"
+msgstr "雲硬碟詳細資訊：{{ volume.name }}"
 
 msgid "Volume Encryption Details"
 msgstr "雲硬碟加密詳細資訊"
@@ -11467,11 +11665,20 @@ msgstr "雲硬碟限制"
 msgid "Volume Name"
 msgstr "雲硬碟名稱"
 
+msgid "Volume Overview"
+msgstr "雲硬碟概觀"
+
 msgid "Volume Size"
 msgstr "雲硬碟容量"
 
 msgid "Volume Snapshot"
 msgstr "雲硬碟即時存檔"
+
+msgid "Volume Snapshot Details"
+msgstr "雲硬碟即時存檔的詳細資訊"
+
+msgid "Volume Snapshot Details: {{ snapshot.name }}"
+msgstr "雲硬碟即時存檔的詳細資訊：{{ snapshot.name }}"
 
 msgid "Volume Snapshot Overview"
 msgstr "雲硬碟即時存檔概觀"

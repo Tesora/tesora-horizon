@@ -15,7 +15,6 @@ import json
 import json.encoder as encoder
 
 from django.utils.translation import ugettext_lazy as _
-import six
 
 
 class NaNJSONEncoder(json.JSONEncoder):
@@ -42,9 +41,7 @@ class NaNJSONEncoder(json.JSONEncoder):
         else:
             _encoder = encoder.encode_basestring
 
-        # On Python 3, JSONEncoder has no more encoding attribute, it produces
-        # an Unicode string
-        if six.PY2 and self.encoding != 'utf-8':
+        if self.encoding != 'utf-8':
             def _encoder(o, _orig_encoder=_encoder, _encoding=self.encoding):
                 if isinstance(o, str):
                     o = o.decode(_encoding)

@@ -38,7 +38,6 @@ from horizon.utils import memoized
 from horizon import workflows
 
 from openstack_dashboard import api
-from openstack_dashboard.utils import filters
 
 from openstack_dashboard.dashboards.project.instances \
     import console as project_console
@@ -290,9 +289,9 @@ class DecryptPasswordView(forms.ModalFormView):
 
 class DetailView(tabs.TabView):
     tab_group_class = project_tabs.InstanceDetailTabs
-    template_name = 'horizon/common/_detail.html'
+    template_name = 'project/instances/detail.html'
     redirect_url = 'horizon:project:instances:index'
-    page_title = "{{ instance.name|default:instance.id }}"
+    page_title = _("Instance Details: {{ instance.name }}")
     image_url = 'horizon:project:images:images:detail'
     volume_url = 'horizon:project:volumes:volumes:detail'
 
@@ -328,9 +327,13 @@ class DetailView(tabs.TabView):
             # Need to raise here just in case.
             raise exceptions.Http302(redirect)
 
-        choices = project_tables.STATUS_DISPLAY_CHOICES
-        instance.status_label = (
-            filters.get_display_label(choices, instance.status))
+        status_label = [label for (value, label) in
+                        project_tables.STATUS_DISPLAY_CHOICES
+                        if value.lower() == (instance.status or '').lower()]
+        if status_label:
+            instance.status_label = status_label[0]
+        else:
+            instance.status_label = instance.status
 
         try:
             instance.volumes = api.nova.instance_volumes_list(self.request,

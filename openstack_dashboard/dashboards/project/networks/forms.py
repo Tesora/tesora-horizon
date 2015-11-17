@@ -41,14 +41,12 @@ class UpdateNetwork(forms.SelfHandlingForm):
                                              (False, _('DOWN'))],
                                     required=False,
                                     label=_("Admin State"))
-    shared = forms.BooleanField(label=_("Shared"), required=False)
     failure_url = 'horizon:project:networks:index'
 
     def handle(self, request, data):
         try:
             params = {'admin_state_up': (data['admin_state'] == 'True'),
-                      'name': data['name'],
-                      'shared': data['shared']}
+                      'name': data['name']}
             network = api.neutron.network_update(request,
                                                  data['network_id'],
                                                  **params)

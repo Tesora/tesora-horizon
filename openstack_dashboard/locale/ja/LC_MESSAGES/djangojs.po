@@ -1,26 +1,17 @@
-# Translations template for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-#
-# Translators:
-# Akihiro Motoki <amotoki@gmail.com>, 2015
-# Shu Muto <shu-mutou@rf.jp.nec.com>, 2015
 # Akihiro Motoki <amotoki@gmail.com>, 2015. #zanata
-# Shu Muto <shu-mutou@rf.jp.nec.com>, 2015. #zanata
 # Yuko Katabami <yukokatabami@gmail.com>, 2015. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-14 14:01+0000\n"
+"POT-Creation-Date: 2015-11-11 04:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-11-14 07:51+0000\n"
+"PO-Revision-Date: 2015-11-07 12:02+0000\n"
 "Last-Translator: Akihiro Motoki <amotoki@gmail.com>\n"
 "Language: ja\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"Generated-By: Babel 2.0\n"
+"Plural-Forms: nplurals=1; plural=0\n"
 "X-Generator: Zanata 3.7.1\n"
 "Language-Team: Japanese\n"
 
@@ -178,8 +169,8 @@ msgstr "取り消し"
 msgid "Cannot get service catalog from keystone."
 msgstr "keystone からサービスカタログを取得できません。"
 
-msgid "Cannot get the extension list."
-msgstr "拡張機能一覧を取得できません。"
+msgid "Cannot get the Nova extension list."
+msgstr "Nova の拡張機能一覧を取得できません。"
 
 msgid ""
 "Check the <b>Configuration Drive</b> box if you want to write metadata to a "
@@ -292,9 +283,6 @@ msgstr "フレーバー"
 msgid "Flavor Help"
 msgstr "フレーバーのヘルプ"
 
-msgid "Flavor Name"
-msgstr "フレーバー名"
-
 msgid ""
 "Flavors manage the sizing for the compute, memory and storage capacity of "
 "the instance."
@@ -352,9 +340,9 @@ msgid ""
 "option, make sure that the availability zone you select for the instance is "
 "the same availability zone where your bootable volume resides."
 msgstr ""
-"アベイラビリティーゾーンを指定し、かつボリュームからの起動を選択する場合、イ"
-"ンスタンスのアベイラビリティーゾーンが起動可能なボリュームが置かれたアベイラ"
-"ビリティーゾーンと同じになるようにしてください。"
+"アベイラビリティゾーンを指定し、かつボリュームからの起動を選択する場合、イン"
+"スタンスのアベイラビリティゾーンが起動可能なボリュームが置かれたアベイラビリ"
+"ティゾーンと同じになるようにしてください。"
 
 msgid ""
 "If you want to create an instance that uses ephemeral storage, meaning the "
@@ -379,9 +367,6 @@ msgstr "イメージ"
 
 msgid "Image Name"
 msgstr "イメージ名"
-
-msgid "Images"
-msgstr "イメージ"
 
 msgid "Impact on your quota"
 msgstr "クォータへの影響"
@@ -464,9 +449,6 @@ msgstr "マッピング種別"
 
 msgid "Max Port"
 msgstr "上限ポート番号"
-
-msgid "Metadata"
-msgstr "メタデータ"
 
 msgid "Min Disk"
 msgstr "最小ディスク"
@@ -734,9 +716,6 @@ msgstr "キーペア %(name)s を正常に作成できました。"
 msgid "Successfully imported key pair %(name)s."
 msgstr "キーペア %(name)s を正常に取り込みました"
 
-msgid "Swap Disk"
-msgstr "スワップディスク"
-
 msgid ""
 "The flavor you select for an instance determines the amount of compute, "
 "storage and memory resources that will be carved out for the instance."
@@ -932,9 +911,6 @@ msgstr "ユーザーを編集できません。"
 msgid "Unable to fetch the service catalog."
 msgstr "サービスカタログを取得できません。"
 
-msgid "Unable to get the Glance service version."
-msgstr "Glance のサービスバージョンを取得できません。"
-
 msgid "Unable to get the Keystone service version."
 msgstr "Keystone のサービスバージョンを取得できません。"
 
@@ -951,7 +927,7 @@ msgid "Unable to retrieve the aggregate extra specs."
 msgstr "アグリゲートの追加スペックを取得できません。"
 
 msgid "Unable to retrieve the availability zones."
-msgstr "アベイラビリティーゾーンを取得できません。"
+msgstr "アベイラビリティゾーンを取得できません。"
 
 msgid "Unable to retrieve the current user session."
 msgstr "現在のユーザーセッションを取得できません。"
@@ -1055,13 +1031,7 @@ msgstr "ユーザー ID"
 msgid "User Name"
 msgstr "ユーザー名"
 
-msgid "Users"
-msgstr "ユーザー"
-
 msgid "VCPUS"
-msgstr "仮想 CPU"
-
-msgid "VCPUs"
 msgstr "仮想 CPU"
 
 msgid "Value Type"

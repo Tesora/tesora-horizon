@@ -23,8 +23,7 @@ class UsersPage(basepage.BaseNavigationPage):
 
     USERS_TABLE_NAME_COLUMN_INDEX = 0
 
-    USERS_TABLE_NAME = "users"
-    USERS_TABLE_ACTIONS = ("create", "delete")
+    USERS_TABLE_ACTIONS = ("create_user", "delete_users")
 
     USERS_TABLE_ROW_ACTIONS = {
         tables.ComplexActionRowRegion.PRIMARY_ACTION: "edit_user",
@@ -48,7 +47,6 @@ class UsersPage(basepage.BaseNavigationPage):
         src_elem = self._get_element(*self._users_table_locator)
         return tables.ComplexActionTableRegion(self.driver,
                                                self.conf, src_elem,
-                                               self.USERS_TABLE_NAME,
                                                self.USERS_TABLE_ACTIONS,
                                                self.USERS_TABLE_ROW_ACTIONS
                                                )
@@ -64,7 +62,7 @@ class UsersPage(basepage.BaseNavigationPage):
 
     def create_user(self, name, password,
                     project, role, email=None):
-        self.users_table.create.click()
+        self.users_table.create_user.click()
         self.create_user_form.name.text = name
         if email is not None:
             self.create_user_form.email.text = email
@@ -73,14 +71,14 @@ class UsersPage(basepage.BaseNavigationPage):
         self.create_user_form.project.text = project
         self.create_user_form.role_id.text = role
         self.create_user_form.submit.click()
-        self.wait_till_popups_disappear()
+        self._wait_till_spinner_disappears()
 
     def delete_user(self, name):
         row = self._get_row_with_user_name(name)
         row.mark()
-        self.users_table.delete.click()
+        self.users_table.delete_users.click()
         self.confirm_delete_users_form.submit.click()
-        self.wait_till_popups_disappear()
+        self._wait_till_spinner_disappears()
 
     def is_user_present(self, name):
         return bool(self._get_row_with_user_name(name))

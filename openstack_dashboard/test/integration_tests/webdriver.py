@@ -14,7 +14,6 @@ import time
 from selenium.common import exceptions
 from selenium import webdriver
 from selenium.webdriver.common import by
-from selenium.webdriver.common import desired_capabilities as dc
 from selenium.webdriver.remote import webelement
 
 
@@ -147,14 +146,6 @@ class WebElementWrapper(WrapperFindOverride, webelement.WebElement):
 
 class WebDriverWrapper(WrapperFindOverride, webdriver.Firefox):
     """Wrapper for webdriver to return WebElementWrapper on find_element."""
-    def __init__(self, logging_prefs=None, capabilities=None, **kwargs):
-        if capabilities is None:
-            capabilities = dc.DesiredCapabilities.FIREFOX
-        if logging_prefs is None:
-            logging_prefs = {'browser': 'ALL'}
-        capabilities['loggingPrefs'] = logging_prefs
-        super(WebDriverWrapper, self).__init__(capabilities=capabilities,
-                                               **kwargs)
 
     def reload_request(self, locator, index):
         try:

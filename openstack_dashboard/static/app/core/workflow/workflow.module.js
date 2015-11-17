@@ -26,6 +26,11 @@
    *
    * This module provides utility function factory `dashboardWorkflow` and
    * `dashboardWorkflowDecorator`.
+   *
+   * | Factories                                                                                      |
+   * |------------------------------------------------------------------------------------------------|
+   * | {@link horizon.app.core.workflow.factory:dashboardWorkflowDecorator `dashboardWorkflowDecorator`}  |
+   *
    */
   /* eslint-enable max-len */
   angular.module('horizon.app.core.workflow', []);

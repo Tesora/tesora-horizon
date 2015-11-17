@@ -79,7 +79,11 @@ class UsageTable(tables.DataTable):
     # since these tables are dynamically created and named, we use title
     @property
     def name(self):
-        return text.slugify(six.text_type(self.title))
+        # slugify was introduced in Django 1.5
+        if hasattr(text, 'slugify'):
+            return text.slugify(six.text_type(self.title))
+        else:
+            return self.title
 
     def __str__(self):
         return self.title

@@ -1,24 +1,16 @@
-# Translations template for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-#
-# Translators:
-# rajesh <rajesh>, 2014
-# Rajesh Ranjan <rranjan@redhat.com>, 2014
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-11 05:16+0000\n"
+"POT-Creation-Date: 2015-11-04 14:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-09-08 11:14+0000\n"
-"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
 "Language: hi\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Generated-By: Babel 2.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Zanata 3.7.1\n"
 "Language-Team: Hindi\n"
 
@@ -464,6 +456,15 @@ msgstr "नियम जोड़ें"
 msgid "Add/Remove Hosts to Aggregate"
 msgstr "सकल से होस्ट जोड़ें / हटाये"
 
+msgid "AddFirewall"
+msgstr "फ़ायरवॉल जोड़ें"
+
+msgid "AddPolicy"
+msgstr "नीति जोड़ें"
+
+msgid "AddRule"
+msgstr "नियम जोड़ें"
+
 #, python-format
 msgid "Added Firewall \"%s\"."
 msgstr "जोड़ा गया फ़ायरवॉल \"%s\"."
@@ -612,6 +613,9 @@ msgstr ""
 
 msgid "Amount of energy"
 msgstr "ऊर्जा की मात्रा"
+
+msgid "An external (HTTP) URL to load the image from."
+msgstr "बाहरी (एचटीटीपी) URL से बिंब लोड करने के लिए."
 
 msgid "An external (HTTP) URL to load the template from."
 msgstr "बाहरी (एचटीटीपी) यूआरएल से टेम्पलेट लोड करने के लिए."
@@ -955,6 +959,9 @@ msgstr "आपके द्वारा हटाये जाने निय�
 msgid "Cinder"
 msgstr "सिंडर"
 
+msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
+msgstr "वर्गहीन अंतर डोमेन रूटिंग (जैसे 192.168.0.0/24)"
+
 msgid "Clear Domain Context"
 msgstr "डोमेन संदर्भ साफ करें "
 
@@ -974,14 +981,23 @@ msgstr "केवल कंसोल दिखाने के लिए यह�
 msgid "Close"
 msgstr "बंद करें"
 
+msgid "Cluster Details"
+msgstr "क्लस्टर विवरण"
+
 msgid "Cluster Instances"
 msgstr "क्लस्टर इंस्टैंस"
 
 msgid "Cluster Name"
 msgstr "क्लस्टर नाम"
 
+msgid "Cluster Overview"
+msgstr "क्लस्टर सारांश"
+
 msgid "Cluster Template"
 msgstr "क्लस्टर नमूना"
+
+msgid "Cluster Template Details"
+msgstr "क्लस्टर टैम्प्लेट विवरण"
 
 msgid "Cluster Template Name"
 msgstr "क्लस्टर टैम्प्लेट नाम"
@@ -1467,6 +1483,14 @@ msgstr "मौज़ूदा होस्ट"
 msgid "Current password"
 msgstr "मौजूदा कूटशब्द"
 
+msgid ""
+"Currently only images available via an HTTP URL are supported. The image "
+"location must be accessible to the Image Service. Compressed image binaries "
+"are supported (.zip and .tar.gz.)"
+msgstr ""
+"वर्तमान में एक HTTP यूआरएल के माध्यम से ही उपलब्ध बिंब का समर्थन कर रहे हैं. बिंब स्थान बिंब "
+"सेवा के लिए सुलभ होना चाहिए. संकुचित बिंब बायनेरिज़ (. ज़िप और. Tar.gz.) समर्थन कर रहे हैं"
+
 msgid "Custom ICMP Rule"
 msgstr "कस्टम ICMP नियम"
 
@@ -1507,8 +1531,17 @@ msgstr "डाटा प्रक्रमित कर रहा है"
 msgid "Data Processing Plugin Details"
 msgstr "डाटा प्रक्रमन प्लगिन विवरण"
 
+msgid "Data Processing Plugin Overview"
+msgstr "डाटा प्लगिन सारांश"
+
 msgid "Data Processing Plugins"
 msgstr "डाटा प्रक्रमन प्लगिन"
+
+msgid "Data Source Details"
+msgstr "डाटा स्रोत विवरण"
+
+msgid "Data Source Overview"
+msgstr "डाटा स्रोत सारांश"
 
 msgid "Data Source Type"
 msgstr "डेटा स्रोत प्रकार"
@@ -1769,6 +1802,18 @@ msgid_plural "Deleted Host Aggregates"
 msgstr[0] "कुल मेजबान मिटाया"
 msgstr[1] "कुल मेजबान मिटाया"
 
+#, python-format
+msgid "Deleted IKE Policy %s"
+msgstr "हटाए गए IKE नीति %s"
+
+#, python-format
+msgid "Deleted IPSec Policy %s"
+msgstr "हटाए गए IPSec नीति %s"
+
+#, python-format
+msgid "Deleted IPSec Site Connection %s"
+msgstr "हटाए गए IPSec साइट कनेक्शन %s"
+
 msgid "Deleted Interface"
 msgid_plural "Deleted Interfaces"
 msgstr[0] "मिटाए अंतरफलक"
@@ -1847,6 +1892,22 @@ msgstr[1] "विलोपित उपयोक्ता"
 #, python-format
 msgid "Deleted VIP %s"
 msgstr "हटाए गए VIP %s"
+
+#, python-format
+msgid "Deleted VPN Service %s"
+msgstr "हटाए गए वीपीएन सेवा %s"
+
+#, python-format
+msgid "Deleted member %s"
+msgstr "हटाए गए सदस्य %s"
+
+#, python-format
+msgid "Deleted monitor %s"
+msgstr "मॉनिटर %s हटाए"
+
+#, python-format
+msgid "Deleted pool %s"
+msgstr "%s पूल मिटाया"
 
 msgid "Deleting"
 msgstr "मिटाया जा रहा है"
@@ -2363,6 +2424,10 @@ msgctxt "current status of router"
 msgid "Error"
 msgstr "त्रुटि"
 
+msgctxt "status of a neteork port"
+msgid "Error"
+msgstr "त्रुटि"
+
 msgid "Error Deleting"
 msgstr "मिटाने में त्रुटि"
 
@@ -2667,8 +2732,17 @@ msgstr "आकार बदलने या माइग्रेट होन�
 msgid "Firewall %s was successfully updated."
 msgstr "फ़ायरवॉल %s सफलतापूर्वक अद्यतन किया गया था."
 
+msgid "Firewall Details"
+msgstr "फायरवॉल विवरण"
+
 msgid "Firewall Policies"
 msgstr "फ़ायरवॉल नीतियाँ"
+
+msgid "Firewall Policy Details"
+msgstr "फ़ायरवॉल नीति विवरण"
+
+msgid "Firewall Rule Details"
+msgstr "फ़ायरवॉल नियम विवरण"
 
 msgid "Firewall Rules"
 msgstr "फायरवॉल नियम"
@@ -3076,6 +3150,9 @@ msgstr "बिंब"
 msgid "Image (Glance)"
 msgstr "बिंब (ग्लांस) "
 
+msgid "Image Details"
+msgstr "बिंब विवरण"
+
 msgid "Image File"
 msgstr "बिंब फ़ाइल"
 
@@ -3090,6 +3167,9 @@ msgstr "बिंब नाम"
 
 msgid "Image Name ="
 msgstr "बिंब नाम ="
+
+msgid "Image Overview"
+msgstr "बिंब अवलोकन"
 
 msgid "Image Registry"
 msgstr "छवि पंजी"
@@ -3190,6 +3270,9 @@ msgstr "इंस्टांस कंसोल लॉग"
 msgid "Instance Count"
 msgstr "इंस्टांस गणना"
 
+msgid "Instance Details"
+msgstr "इंस्टांस विवरण"
+
 msgid "Instance ID"
 msgstr "इंस्टैंस आईडी"
 
@@ -3268,8 +3351,17 @@ msgstr "कार्य"
 msgid "Job Binaries"
 msgstr "कार्य बाइनरीज़"
 
+msgid "Job Binary Details"
+msgstr "कार्य द्विपदीय विवरण"
+
+msgid "Job Binary Overview"
+msgstr "कार्य बाइनरी सारांश"
+
 msgid "Job Configuration"
 msgstr "कार्य विन्यास"
+
+msgid "Job Details"
+msgstr "कार्य विवरण"
 
 msgid "Job Type"
 msgstr "कार्य क़िस्म"
@@ -4644,6 +4736,9 @@ msgstr "रूटर %s सफलतापूर्वक बनाया गय
 msgid "Router %s was successfully updated."
 msgstr "रॉटर %s सफलतापूर्वक अद्यतन किया गया था."
 
+msgid "Router Details"
+msgstr "रूटर विवरण"
+
 msgid "Router ID"
 msgstr "रूटर आईडी"
 
@@ -5101,6 +5196,9 @@ msgstr "ढेर आईडी"
 msgid "Stack Name"
 msgstr " ढेर नाम"
 
+msgid "Stack Overview"
+msgstr "ढेर अवलोकन"
+
 msgid "Stack Parameters"
 msgstr "ढेर पैरामीटर्स"
 
@@ -5190,6 +5288,9 @@ msgstr "सबनेट  आईडी "
 
 msgid "Subnet Name"
 msgstr "सबनेट नाम"
+
+msgid "Subnet Overview"
+msgstr "सबनेट अवलोकन"
 
 msgid "Subnet list can not be retrieved."
 msgstr "सबनेट सूची प्राप्त नहीं किया जा सकता है."
@@ -5323,6 +5424,9 @@ msgstr "टेम्पलेट फ़ाइल"
 
 msgid "Template Name"
 msgstr "टैम्प्लेट नाम"
+
+msgid "Template Overview"
+msgstr "नमूना सारांश"
 
 msgid "Template Source"
 msgstr "टेम्पलेट स्रोत"
@@ -5799,8 +5903,24 @@ msgid "Unable to create volume."
 msgstr "वॉल्यूम बनाने में असमर्थ."
 
 #, python-format
+msgid "Unable to delete IKE Policy: %s"
+msgstr "IKE नीति को हटाने में असमर्थ: %s"
+
+#, python-format
+msgid "Unable to delete IPSec Policy: %s"
+msgstr "IPSec नीति को हटाने में असमर्थ: %s"
+
+#, python-format
+msgid "Unable to delete IPSec Site Connection: %s"
+msgstr "IPSec साइट कनेक्शन हटाने में असमर्थ: %s"
+
+#, python-format
 msgid "Unable to delete VIP. %s"
 msgstr " %s VIP हटाने में असमर्थ."
+
+#, python-format
+msgid "Unable to delete VPN Service: %s"
+msgstr "वीपीएन सेवा हटाने में असमर्थ: %s"
 
 msgid "Unable to delete container."
 msgstr "कंटेनर मिटाने में असमर्थ."
@@ -6917,17 +7037,26 @@ msgstr "वॉल्यूम बैकअप"
 msgid "Volume Backups"
 msgstr "वॉल्यूम बैकअप"
 
+msgid "Volume Details"
+msgstr "वॉल्यूम विवरण"
+
 msgid "Volume Limits"
 msgstr "वॉल्यूम सीमाएं"
 
 msgid "Volume Name"
 msgstr "वॉल्यूम नाम"
 
+msgid "Volume Overview"
+msgstr "वॉल्यूम अवलोकन"
+
 msgid "Volume Size"
 msgstr "वॉल्यूम आकार"
 
 msgid "Volume Snapshot"
 msgstr "वॉल्यूम स्नैपशॉट"
+
+msgid "Volume Snapshot Details"
+msgstr "वॉल्यूम स्नैपशॉट विवरण"
 
 msgid "Volume Snapshot Overview"
 msgstr "वॉल्यूम स्नैपशॉट अवलोकन"

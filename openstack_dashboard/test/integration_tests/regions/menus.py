@@ -15,6 +15,10 @@ from selenium.webdriver.common import by
 from openstack_dashboard.test.integration_tests.regions import baseregion
 
 
+class CannotClickMenuItemException(Exception):
+    pass
+
+
 class NavigationAccordionRegion(baseregion.BaseRegion):
     """Navigation menu located in the left."""
     _project_access_security_locator = (
@@ -24,6 +28,8 @@ class NavigationAccordionRegion(baseregion.BaseRegion):
     _project_bar_locator = (by.By.XPATH,
                             ".//*[@id='main_content']//div[contains(text(),"
                             "'Project')]")
+
+    MAX_MENU_ITEM_CLICK_TRIES = 100
 
     @property
     def project_bar(self):
@@ -43,11 +49,6 @@ class NavigationAccordionRegion(baseregion.BaseRegion):
     _third_level_item_xpath_template = (
         "//li[contains(concat('', @class, ''), 'openstack-panel') and "
         "contains(., '%s')]/a")
-
-    _parent_item_locator = (by.By.XPATH, '..')
-    _menu_list_locator = (by.By.CSS_SELECTOR, 'ul')
-    _expanded_menu_class = 'in'
-    _transitioning_menu_class = 'collapsing'
 
     def _get_first_level_item_locator(self, text):
         return (by.By.XPATH,
@@ -81,58 +82,39 @@ class NavigationAccordionRegion(baseregion.BaseRegion):
     def change_password(self):
         return self._get_element(*self._settings_change_password_locator)
 
-    def _wait_until_transition_ends(self, item, to_be_expanded=False):
-        def predicate(d):
-            classes = item.get_attribute('class').split()
-            if to_be_expanded:
-                status = self._expanded_menu_class in classes
-            else:
-                status = self._expanded_menu_class not in classes
-            return status and self._transitioning_menu_class not in classes
-        self._wait_until(predicate)
-
     def _click_menu_item(self, text, loc_craft_func, get_selected_func=None):
         """Click on menu item if not selected.
 
         Menu animation that visualize transition from one selection to
         another take some time - if clicked on item during this animation
-        nothing happens, therefore it is necessary to wait for the transition
-        to complete first.
-
-        Third-level menus are handled differently from others. First, they do
-        not need to collapse other 3rd-level menu item prior to clicking them
-        (because 3rd-level menus are atomic). Second, clicking them doesn't
-        initiate an animated transition, hence no need to wait until it
-        finishes.
+        nothing happens, therefore it is necessary to do this in a loop.
         """
-        is_already_within_required_item = False
-        if get_selected_func is not None:
-            selected_item = get_selected_func()
-            if selected_item:
-                if text != selected_item.text:
-                    # In case different item was chosen previously scroll it,
-                    # because otherwise selenium will complain with
-                    # MoveTargetOutOfBoundsException
+
+        if not get_selected_func:
+            self._click_item(text, loc_craft_func)
+        else:
+            for _ in range(self.MAX_MENU_ITEM_CLICK_TRIES):
+                selected_item = get_selected_func()
+                if selected_item and text == selected_item.text:
+                    break
+
+                # In case different item was chosen previously scroll it,
+                # because otherwise selenium will complain with
+                # MoveTargetOutOfBoundsException
+                if selected_item:
                     selected_item.click()
-                    self._wait_until_transition_ends(selected_item)
-                else:
-                    is_already_within_required_item = True
+                self._click_item(text, loc_craft_func)
+            else:
 
-        if not is_already_within_required_item:
-            item = self._get_item(text, loc_craft_func)
-            item.click()
-            if get_selected_func is not None:
-                self._wait_until_transition_ends(
-                    self._get_menu_list_next_to_menu_title(item),
-                    to_be_expanded=True)
+                # One should never get in here,
+                # this suggest that something is wrong
+                raise CannotClickMenuItemException()
 
-    def _get_item(self, text, loc_craft_func):
+    def _click_item(self, text, loc_craft_func):
+        """Click on item."""
         item_locator = loc_craft_func(text)
-        return self._get_element(*item_locator)
-
-    def _get_menu_list_next_to_menu_title(self, title_item):
-        parent_item = title_item.find_element(*self._parent_item_locator)
-        return parent_item.find_element(*self._menu_list_locator)
+        item = self._get_element(*item_locator)
+        item.click()
 
     def click_on_menu_items(self, first_level=None,
                             second_level=None,
@@ -146,6 +128,8 @@ class NavigationAccordionRegion(baseregion.BaseRegion):
                                   self._get_second_level_item_locator,
                                   self.get_second_level_selected_item)
 
+        # it is not checked that third level item is clicked because behaviour
+        # of the third menu layer is buggy => always click
         if third_level:
             self._click_menu_item(third_level,
                                   self._get_third_level_item_locator)

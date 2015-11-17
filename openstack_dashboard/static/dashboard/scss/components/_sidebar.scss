@@ -1,5 +1,8 @@
 #sidebar {
-  min-width: $sidebar-width;
+  margin-left: -$sidebar-width;
+  left: $sidebar-width;
+  width: $sidebar-width;
+  position: absolute;
   z-index: 0;
 
   // Sets the arrow toggles for each dashboard list

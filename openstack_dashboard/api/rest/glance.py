@@ -1,3 +1,4 @@
+
 # Copyright 2015, Hewlett-Packard Development Company, L.P.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,19 +24,6 @@ from openstack_dashboard.api.rest import urls
 
 
 CLIENT_KEYWORDS = {'resource_type', 'marker', 'sort_dir', 'sort_key', 'paginate'}
-
-
-@urls.register
-class Version(generic.View):
-    """API for active glance version.
-    """
-    url_regex = r'glance/version/$'
-
-    @rest_utils.ajax()
-    def get(self, request):
-        """Get active glance version.
-        """
-        return {'version': api.glance.get_version()}
 
 
 @urls.register

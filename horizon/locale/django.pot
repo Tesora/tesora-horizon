@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-23 06:35+0000\n"
+"POT-Creation-Date: 2015-09-03 06:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.1.1\n"
+"Generated-By: Babel 2.0\n"
 
-#: base.py:497
+#: base.py:491
 msgid "Other"
 msgstr ""
 
@@ -40,8 +40,12 @@ msgstr ""
 msgid "Unauthorized: %s"
 msgstr ""
 
-#: exceptions.py:237 middleware.py:125
+#: exceptions.py:237 middleware.py:162
 msgid "Unauthorized. Please try logging in again."
+msgstr ""
+
+#: middleware.py:103
+msgid "Session timed out."
 msgstr ""
 
 #: browsers/base.py:88
@@ -53,7 +57,7 @@ msgstr ""
 msgid "Select a %s to browse."
 msgstr ""
 
-#: conf/default.py:44
+#: conf/default.py:41
 msgid "Password is not accepted"
 msgstr ""
 
@@ -132,8 +136,13 @@ msgstr ""
 msgid "Updated"
 msgstr ""
 
-#: tables/base.py:305
+#: tables/base.py:306
 msgid "-"
+msgstr ""
+
+#: tables/base.py:362
+#, python-format
+msgid "The attribute %(attr)s doesn't exist on %(obj)s."
 msgstr ""
 
 #: tables/base.py:996
@@ -152,6 +161,10 @@ msgstr ""
 
 #: tables/base.py:1497
 msgid "Please select a row before taking that action."
+msgstr ""
+
+#: tables/base.py:1581
+msgid "N/A"
 msgstr ""
 
 #: templates/auth/_description.html:11
@@ -396,23 +409,27 @@ msgstr ""
 msgid "Never"
 msgstr ""
 
-#: utils/validators.py:28
+#: utils/validators.py:26 utils/validators.py:50
 msgid "Not a valid port number"
 msgstr ""
 
-#: utils/validators.py:33
+#: utils/validators.py:31
 msgid "Not a valid IP protocol number"
 msgstr ""
 
-#: utils/validators.py:47
+#: utils/validators.py:45
 msgid "One colon allowed in port range"
 msgstr ""
 
-#: utils/validators.py:54
+#: utils/validators.py:52
+msgid "Port number must be integer"
+msgstr ""
+
+#: utils/validators.py:56
 msgid "Invalid metadata entry. Use comma-separated key=value pairs"
 msgstr ""
 
-#: utils/validators.py:70
+#: utils/validators.py:72
 msgid "The string may only contain ASCII printable characters."
 msgstr ""
 

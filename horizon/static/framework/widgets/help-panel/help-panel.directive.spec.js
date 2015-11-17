@@ -17,11 +17,12 @@
 
   describe('help-panel directive', function () {
     var $compile,
-      $scope,
-      element;
+        $scope,
+        element;
 
     beforeEach(module('templates'));
-    beforeEach(module('horizon.framework'));
+    beforeEach(module('horizon.framework.widgets'));
+    beforeEach(module('horizon.framework.widgets.help-panel'));
     beforeEach(inject(function ($injector) {
       $scope = $injector.get('$rootScope').$new();
       $compile = $injector.get('$compile');

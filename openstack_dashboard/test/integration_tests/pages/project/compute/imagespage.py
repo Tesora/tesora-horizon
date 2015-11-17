@@ -29,8 +29,7 @@ class ImagesPage(basepage.BaseNavigationPage):
 
     _images_table_locator = (by.By.ID, 'images')
 
-    IMAGES_TABLE_NAME = "images"
-    IMAGES_TABLE_ACTIONS = ("create", "delete")
+    IMAGES_TABLE_ACTIONS = ("create_image", "delete_images")
     IMAGES_TABLE_ROW_ACTIONS = {
         tables.ComplexActionRowRegion.PRIMARY_ACTION: "launch",
         tables.ComplexActionRowRegion.SECONDARY_ACTIONS: ("create_volume",)
@@ -56,7 +55,6 @@ class ImagesPage(basepage.BaseNavigationPage):
         src_elem = self._get_element(*self._images_table_locator)
         return tables.ComplexActionTableRegion(self.driver,
                                                self.conf, src_elem,
-                                               self.IMAGES_TABLE_NAME,
                                                self.IMAGES_TABLE_ACTIONS,
                                                self.IMAGES_TABLE_ROW_ACTIONS
                                                )
@@ -76,7 +74,7 @@ class ImagesPage(basepage.BaseNavigationPage):
                      image_format=DEFAULT_IMAGE_FORMAT,
                      is_public=DEFAULT_ACCESSIBILITY,
                      is_protected=DEFAULT_PROTECTION):
-        self.images_table.create.click()
+        self.images_table.create_image.click()
         self.create_image_form.name.text = name
         if description is not None:
             self.create_image_form.description.text = description
@@ -95,14 +93,14 @@ class ImagesPage(basepage.BaseNavigationPage):
         if is_protected:
             self.create_image_form.protected.mark()
         self.create_image_form.submit.click()
-        self.wait_till_popups_disappear()
+        self._wait_till_spinner_disappears()
 
     def delete_image(self, name):
         row = self._get_row_with_image_name(name)
         row.mark()
-        self.images_table.delete.click()
+        self.images_table.delete_images.click()
         self.confirm_delete_images_form.submit.click()
-        self.wait_till_popups_disappear()
+        self._wait_till_spinner_disappears()
 
     def is_image_present(self, name):
         return bool(self._get_row_with_image_name(name))

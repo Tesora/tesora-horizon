@@ -1,7 +1,11 @@
 {% load i18n sizeformat %}
 {% load url from future %}
 
-<div class="detail">
+<h3>{% trans "Instance Overview" %}</h3>
+
+<div class="status detail">
+  <h4>{% trans "Information" %}</h4>
+  <hr class="header_rule">
   <dl class="dl-horizontal">
     <dt>{% trans "Name" %}</dt>
     <dd>{{ instance.name }}</dd>
@@ -20,8 +24,10 @@
       <dd>{{ instance.host_server|default:_("-") }}</dd>
     {% endif %}
   </dl>
+</div>
 
-  {% if instance.fault %}
+{% if instance.fault %}
+<div class="status detail">
     <h4>{% trans "Fault" %}</h4>
     <hr class="header_rule">
     <dl class="dl-horizontal">
@@ -34,13 +40,15 @@
       <dt>{% trans "Created" %}</dt>
       <dd>{{ instance.fault.created|parse_isotime }}</dd>
     </dl>
-  {% endif %}
+</div>
+{% endif %}
 
+<div class="specs detail">
   <h4>{% trans "Specs" %}</h4>
   <hr class="header_rule">
   <dl class="dl-horizontal">
+    <dt>{% trans "Flavor" %}</dt>
     {% if instance.full_flavor %}
-      <dt>{% trans "Flavor Name" %}</dt>
       <dd>{{ instance.full_flavor.name }}</dd>
       <dt>{% trans "Flavor ID" %}</dt>
       <dd>{{ instance.full_flavor.id }}</dd>
@@ -55,11 +63,12 @@
         <dd>{{ instance.full_flavor.ephemeral }}{% trans "GB" %}</dd>
       {% endif %}
     {% else %}
-      <dt>{% trans "Flavor" %}</dt>
-      <dd>{% trans "Not available" %}</dd>
+      {% trans "Not available" %}
     {% endif %}
   </dl>
+</div>
 
+<div class="addresses detail">
     <h4>{% trans "IP Addresses" %}</h4>
     <hr class="header_rule">
     <dl class="dl-horizontal">
@@ -72,7 +81,9 @@
         </dd>
       {% endfor %}
     </dl>
+</div>
 
+<div class="security_groups detail">
     <h4>{% trans "Security Groups" %}</h4>
     <hr class="header_rule">
     <dl class="dl-horizontal">
@@ -91,7 +102,9 @@
         {% trans "Not available" %}
       {% endfor %}
     </dl>
+</div>
 
+<div class="meta detail">
     <h4>{% trans "Metadata" %}</h4>
     <hr class="header_rule">
     <dl class="dl-horizontal">
@@ -100,15 +113,14 @@
       {% with formatted_default_key_name="<em>"|add:default_key_name|add:"</em>" %}
         <dd>{{ instance.key_name|default:formatted_default_key_name }}</dd>
       {% endwith %}
-      {% if instance.image %}
-        <dt>{% trans "Image Name" %}</dt>
-        <dd><a href="{{ instance.image_url }}">{{ instance.image_name }}</a></dd>
-        <dt>{% trans "Image ID" %}</dt>
-        <dd>{{ instance.image.id }}</dd>
-      {% else %}
-        <dt>{% trans "Image" %}</dt>
-        <dd>{% trans "None" %}</dd>
-      {% endif %}
+      <dt>{% trans "Image Name" %}</dt>
+      <dd>
+        {% if instance.image %}
+          <a href="{{ instance.image_url }}">{{ instance.image_name }}</a>
+        {% else %}
+          <em>{% trans "None" %}</em>
+        {% endif %}
+      </dd>
       {% with default_item_value="<em>"|add:_("N/A")|add:"</em>" %}
       {% for key, value in instance.metadata.items %}
         <dt>{{ key|force_escape }}</dt>
@@ -116,7 +128,9 @@
       {% endfor %}
       {% endwith %}
     </dl>
+</div>
 
+<div class="volumes detail">
     <h4>{% trans "Volumes Attached" %}</h4>
     <hr class="header_rule">
     <dl class="dl-horizontal">

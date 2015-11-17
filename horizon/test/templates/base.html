@@ -11,7 +11,6 @@
     <script src='{{ STATIC_URL }}horizon/lib/jquery/jquery.js' type='text/javascript' charset="utf-8"></script>
     <script src='{{ STATIC_URL }}horizon/lib/jquery/jquery-migrate.js' type='text/javascript' charset="utf-8"></script>
     <script src="{{ STATIC_URL }}horizon/lib/jquery/jquery.tablesorter.js"></script>
-    <script src="{{ STATIC_URL }}horizon/lib/angular/angular.js" type="text/javascript" charset="utf-8"></script>
 
     <script src='{{ STATIC_URL }}horizon/js/horizon.js' type='text/javascript' charset='utf-8'></script>
 
@@ -97,22 +96,8 @@
     <script src='{{ STATIC_URL }}horizon/js/horizon.tables_inline_edit.js'></script>
     <script src='{{ STATIC_URL }}horizon/js/horizon.tabs.js'></script>
 
-    <script>
-        angular.module('test_app', []).run(updateHorizon);
-        updateHorizon.$inject = ['$rootScope', '$compile'];
-        function updateHorizon($rootScope, $compile) {
-            horizon.utils = {loadAngular: loadAngular};
-            function loadAngular(element) {
-              $compile(element)($rootScope);
-              $rootScope.$apply();
-            }
-        }
-    </script>
 </head>
-
-
-
-<body ng-app="test_app">
+<body>
 
 {% block sidebar %}
   {% include 'horizon/common/_sidebar.html' %}

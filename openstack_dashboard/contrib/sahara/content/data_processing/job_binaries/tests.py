@@ -46,7 +46,9 @@ class DataProcessingJobBinaryTests(test.TestCase):
             .MultipleTimes().AndReturn(self.job_binaries.first())
         self.mox.ReplayAll()
         res = self.client.get(DETAILS_URL)
-        self.assertTemplateUsed(res, 'horizon/common/_detail.html')
+        self.assertTemplateUsed(
+            res, 'project/data_processing.job_binaries/details.html')
+        self.assertContains(res, 'Job Binary Details')
 
     @test.create_stubs({api.sahara: ('job_binary_list',
                                      'job_binary_get',
@@ -101,7 +103,7 @@ class DataProcessingJobBinaryTests(test.TestCase):
     @test.create_stubs({api.sahara: ('job_binary_get',
                                      'job_binary_update')})
     def test_update(self):
-        jb = api.sahara.job_binary_get(IsA(http.HttpRequest), IsA(six.text_type)) \
+        jb = api.sahara.job_binary_get(IsA(http.HttpRequest), IsA(unicode)) \
             .AndReturn(self.job_binaries.first())
         api.sahara.job_binary_update(IsA(http.HttpRequest),
                                      IsA(str),

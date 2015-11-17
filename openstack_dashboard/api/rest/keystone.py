@@ -88,7 +88,7 @@ class Users(generic.View):
             name=request.DATA['name'],
             email=request.DATA.get('email') or None,
             password=request.DATA.get('password'),
-            project=request.DATA.get('project_id') or None,
+            project=request.DATA.get('project_id'),
             enabled=True,
             domain=domain.id
         )

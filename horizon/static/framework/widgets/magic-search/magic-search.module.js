@@ -33,6 +33,6 @@
    *
    */
   angular
-    .module('MagicSearch', []);
+    .module('MagicSearch', ['ui.bootstrap']);
 
 })();

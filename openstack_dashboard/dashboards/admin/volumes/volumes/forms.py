@@ -41,7 +41,6 @@ STATUS_CHOICES = (
     ('error', _('Error')),
     ('error_deleting', _('Error Deleting')),
     ('in-use', _('In Use')),
-    ('maintenance', _('Maintenance')),
 )
 
 

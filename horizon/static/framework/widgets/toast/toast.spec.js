@@ -25,15 +25,16 @@
   describe('toast factory', function() {
 
     var $compile,
-      $scope,
-      service;
+        $scope,
+        service;
 
     var successMsg = "I am success.";
     var dangerMsg = "I am danger.";
     var infoMsg = "I am info.";
 
     beforeEach(module('templates'));
-    beforeEach(module('horizon.framework'));
+    beforeEach(module('horizon.framework.widgets'));
+    beforeEach(module('horizon.framework.widgets.toast'));
     beforeEach(inject(function ($injector) {
       service = $injector.get('horizon.framework.widgets.toast.service');
       $scope = $injector.get('$rootScope').$new();
@@ -93,9 +94,9 @@
   describe('toast directive', function () {
 
     var $compile,
-      $scope,
-      $element,
-      service;
+        $scope,
+        $element,
+        service;
 
     var successMsg = "I am success.";
     var dangerMsg = "I am danger.";
@@ -106,7 +107,8 @@
     }
 
     beforeEach(module('templates'));
-    beforeEach(module('horizon.framework'));
+    beforeEach(module('horizon.framework.widgets'));
+    beforeEach(module('horizon.framework.widgets.toast'));
     beforeEach(inject(function ($injector) {
       $scope = $injector.get('$rootScope').$new();
       $compile = $injector.get('$compile');

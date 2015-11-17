@@ -18,9 +18,9 @@
 
   angular
     .module('horizon.app.core.openstack-service-api')
-    .factory('horizon.app.core.openstack-service-api.glance', glanceAPI);
+    .factory('horizon.app.core.openstack-service-api.glance', GlanceAPI);
 
-  glanceAPI.$inject = [
+  GlanceAPI.$inject = [
     'horizon.framework.util.http.service',
     'horizon.framework.widgets.toast.service'
   ];
@@ -30,9 +30,8 @@
    * @name horizon.app.core.openstack-service-api.glance
    * @description Provides direct pass through to Glance with NO abstraction.
    */
-  function glanceAPI(apiService, toastService) {
+  function GlanceAPI(apiService, toastService) {
     var service = {
-      getVersion: getVersion,
       getImage: getImage,
       getImageProps: getImageProps,
       editImageProps: editImageProps,
@@ -43,14 +42,6 @@
     return service;
 
     ///////////////
-
-    // Version
-    function getVersion() {
-      return apiService.get('/api/glance/version/')
-        .error(function () {
-          toastService.add('error', gettext('Unable to get the Glance service version.'));
-        });
-    }
 
     // Images
 

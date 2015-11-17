@@ -19,18 +19,6 @@ from openstack_dashboard.test import helpers as test
 
 
 class ImagesRestTestCase(test.TestCase):
-    #
-    # Version
-    #
-    @mock.patch.object(glance.api, 'glance')
-    def test_version_get(self, gc):
-        request = self.mock_rest_request()
-        gc.get_version.return_value = '2.0'
-        response = glance.Version().get(request)
-        self.assertStatusCode(response, 200)
-        self.assertEqual(response.json, {"version": "2.0"})
-        gc.get_version.assert_called_once_with()
-
     @mock.patch.object(glance.api, 'glance')
     def test_image_get_single(self, gc):
         request = self.mock_rest_request()
@@ -47,7 +35,7 @@ class ImagesRestTestCase(test.TestCase):
 
         response = glance.ImageProperties().get(request, "1")
         self.assertStatusCode(response, 200)
-        self.assertEqual(response.json, {"a": "1", "b": "2"})
+        self.assertEqual(response.content, '{"a": "1", "b": "2"}')
         gc.image_get.assert_called_once_with(request, "1")
 
     @mock.patch.object(glance.api, 'glance')
@@ -58,7 +46,7 @@ class ImagesRestTestCase(test.TestCase):
 
         response = glance.ImageProperties().patch(request, '1')
         self.assertStatusCode(response, 204)
-        self.assertEqual(response.content, b'')
+        self.assertEqual(response.content, '')
         gc.image_update_properties.assert_called_once_with(
             request, '1', ['c', 'd'], a='1', b='2'
         )
@@ -81,9 +69,9 @@ class ImagesRestTestCase(test.TestCase):
 
         response = glance.Images().get(request)
         self.assertStatusCode(response, 200)
-        self.assertEqual(response.json,
-                         {"items": [{"name": "fedora"}, {"name": "cirros"}],
-                          "has_more_data": False, "has_prev_data": False})
+        self.assertEqual(response.content,
+                         '{"items": [{"name": "fedora"}, {"name": "cirros"}]'
+                         ', "has_more_data": false, "has_prev_data": false}')
         gc.image_list_detailed.assert_called_once_with(request,
                                                        filters=filters,
                                                        **kwargs)
@@ -97,9 +85,9 @@ class ImagesRestTestCase(test.TestCase):
 
         response = glance.MetadefsNamespaces().get(request)
         self.assertStatusCode(response, 200)
-        self.assertEqual(response.json,
-                         {"items": [{"namespace": "1"}, {"namespace": "2"}],
-                          "has_more_data": False, "has_prev_data": False})
+        self.assertEqual(response.content,
+                         '{"items": [{"namespace": "1"}, {"namespace": "2"}]'
+                         ', "has_more_data": false, "has_prev_data": false}')
         gc.metadefs_namespace_full_list.assert_called_once_with(
             request, filters={}
         )
@@ -121,9 +109,9 @@ class ImagesRestTestCase(test.TestCase):
 
         response = glance.MetadefsNamespaces().get(request)
         self.assertStatusCode(response, 200)
-        self.assertEqual(response.json,
-                         {"items": [{"namespace": "1"}, {"namespace": "2"}],
-                          "has_more_data": False, "has_prev_data": False})
+        self.assertEqual(response.content,
+                         '{"items": [{"namespace": "1"}, {"namespace": "2"}]'
+                         ', "has_more_data": false, "has_prev_data": false}')
         gc.metadefs_namespace_full_list.assert_called_once_with(
             request, filters=filters, **kwargs
         )

@@ -48,9 +48,9 @@
         {% endif %}
         <span class="fa fa-caret-down"></span>
       </a>
-      <ul class="dropdown-menu dropdown-menu-right">
+      <ul class="dropdown-menu clearfix">
       {% for action in table_actions_menu %}
-        <li>
+        <li class="clearfix">
           {% include "horizon/common/_data_table_table_action.html" %}
         </li>
       {% endfor %}

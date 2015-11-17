@@ -361,7 +361,7 @@ class DatabaseTests(test.TestCase):
             logger.setLevel(logging.CRITICAL)
         try:
             res = self.client.get(DETAILS_URL)
-            self.assertTemplateUsed(res, 'horizon/common/_detail.html')
+            self.assertTemplateUsed(res, 'project/databases/detail.html')
             if with_designate:
                 self.assertContains(res, database.hostname)
             else:

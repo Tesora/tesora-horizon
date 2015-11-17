@@ -70,7 +70,7 @@ class AddRuleAction(workflows.Action):
         super(AddRuleAction, self).__init__(request, *args, **kwargs)
 
     class Meta(object):
-        name = _("Rule")
+        name = _("AddRule")
         permissions = ('openstack.services.network',)
         help_text = _("Create a firewall rule.\n\n"
                       "Protocol and action must be specified. "
@@ -230,7 +230,7 @@ class AddPolicyAction(workflows.Action):
         super(AddPolicyAction, self).__init__(request, *args, **kwargs)
 
     class Meta(object):
-        name = _("Policy")
+        name = _("AddPolicy")
         permissions = ('openstack.services.network',)
         help_text = _("Create a firewall policy with an ordered list "
                       "of firewall rules.\n\n"
@@ -301,7 +301,7 @@ class AddFirewallAction(workflows.Action):
         self.fields['firewall_policy_id'].choices = firewall_policy_id_choices
 
     class Meta(object):
-        name = _("Firewall")
+        name = _("AddFirewall")
         permissions = ('openstack.services.network',)
         help_text = _("Create a firewall based on a policy.\n\n"
                       "A policy must be selected. "

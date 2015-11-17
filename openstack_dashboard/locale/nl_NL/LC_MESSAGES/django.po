@@ -1,24 +1,16 @@
-# Translations template for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-#
-# Translators:
-# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2015
-# Roeltje, 2015
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-11 05:16+0000\n"
+"POT-Creation-Date: 2015-11-04 14:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-09-08 11:14+0000\n"
-"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
 "Language: nl-NL\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Generated-By: Babel 2.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Zanata 3.7.1\n"
 "Language-Team: Dutch (Netherlands)\n"
 
@@ -362,6 +354,15 @@ msgstr "Regel toevoegen"
 msgid "Add/Remove Hosts to Aggregate"
 msgstr "Toevoegen/verwijderen van gastheren aan het aggregaat"
 
+msgid "AddFirewall"
+msgstr "Firewall toevoegen"
+
+msgid "AddPolicy"
+msgstr "Beleid toevoegen"
+
+msgid "AddRule"
+msgstr "Regel toevoegen"
+
 #, python-format
 msgid "Added Firewall \"%s\"."
 msgstr "Firewall \"%s\" toegevoegd."
@@ -500,6 +501,9 @@ msgstr "Toegestane Host (optioneel)"
 
 msgid "Amount of energy"
 msgstr "Hoeveelheid energie"
+
+msgid "An external (HTTP) URL to load the image from."
+msgstr "Een externe (HTTP) URL waar de afbeelding vandaan te laden."
 
 msgid "An external (HTTP) URL to load the template from."
 msgstr "Een externe (HTTP) URL om het sjabloonformulier vandaan te laden."
@@ -781,6 +785,9 @@ msgstr "Kies de regel die u wenst te verwijderen."
 msgid "Cinder"
 msgstr "Cinder"
 
+msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
+msgstr "Klasseloos inter-domein routering (bv. 192.168.0.0/24)"
+
 msgid "Clear Domain Context"
 msgstr "Domeincontext wissen"
 
@@ -793,11 +800,17 @@ msgstr "Sluiten"
 msgid "Cluster"
 msgstr "Cluster"
 
+msgid "Cluster Details"
+msgstr "Cluster Details"
+
 msgid "Cluster Instances"
 msgstr "Cluster Exemplaren"
 
 msgid "Cluster Name"
 msgstr "Cluster Naam"
+
+msgid "Cluster Overview"
+msgstr "Cluster Overzicht"
 
 msgid "Cluster Template"
 msgstr "Cluster Sjabloon"
@@ -1224,6 +1237,16 @@ msgstr "Huidige Grootte (GB)"
 msgid "Current password"
 msgstr "Huidig wachtwoord"
 
+msgid ""
+"Currently only images available via an HTTP URL are supported. The image "
+"location must be accessible to the Image Service. Compressed image binaries "
+"are supported (.zip and .tar.gz.)"
+msgstr ""
+"Op dit moment worden alleen afbeeldingen ondersteund die beschikbaar zijn "
+"via een HTTP URL. De afbeeldingslocatie moet beschikbaar zijn voor de "
+"afbeeldingsdienst. Gecomprimeerde programma-afbeeldingen worden ondersteund "
+"(.zip en .tar.gz)."
+
 msgid "Custom ICMP Rule"
 msgstr "Maatwerk ICMP regel"
 
@@ -1283,6 +1306,9 @@ msgstr "OMLAAG"
 
 msgid "Daily Usage Report"
 msgstr "Dagelijks Gebruiksrapport"
+
+msgid "Data Source Overview"
+msgstr "Databron Overzicht"
 
 msgid "Data Sources"
 msgstr "Databronnen"
@@ -1399,6 +1425,18 @@ msgid_plural "Deleted DHCP Agents"
 msgstr[0] "DHCP Agent Verwijderd"
 msgstr[1] "DHCP Agenten Verwijderd"
 
+#, python-format
+msgid "Deleted IKE Policy %s"
+msgstr "IKE beleidslijn \"%s\" verwijderd."
+
+#, python-format
+msgid "Deleted IPSec Policy %s"
+msgstr "IPSec beleidslijn \"%s\" verwijderd."
+
+#, python-format
+msgid "Deleted IPSec Site Connection %s"
+msgstr "IPSec locatieverbinding \"%s\" verwijderd."
+
 msgid "Deleted Network"
 msgid_plural "Deleted Networks"
 msgstr[0] "Netwerk Verwijderd"
@@ -1412,6 +1450,22 @@ msgstr[1] "Poorten Verwijderd"
 #, python-format
 msgid "Deleted VIP %s"
 msgstr "VIP \"%s\" verwijderd."
+
+#, python-format
+msgid "Deleted VPN Service %s"
+msgstr "VPN dienst \"%s\" verwijderd."
+
+#, python-format
+msgid "Deleted member %s"
+msgstr "Lid \"%s\" verwijderd."
+
+#, python-format
+msgid "Deleted monitor %s"
+msgstr "Bewaking \"%s\" verwijderd."
+
+#, python-format
+msgid "Deleted pool %s"
+msgstr "Poule \"%s\" verwijderd."
 
 msgid "Deleting"
 msgstr "Verwijderen"
@@ -1867,6 +1921,10 @@ msgctxt "current status of router"
 msgid "Error"
 msgstr "Fout"
 
+msgctxt "status of a neteork port"
+msgid "Error"
+msgstr "Fout"
+
 msgid "Error Deleting"
 msgstr "Fout Verwijderen"
 
@@ -2176,8 +2234,17 @@ msgstr "Herdimensionering of verplaatsing aan het afronden"
 msgid "Firewall %s was successfully updated."
 msgstr "Firewall %s is succesvol bijgewerkt."
 
+msgid "Firewall Details"
+msgstr "Firewall Details"
+
 msgid "Firewall Policies"
 msgstr "Firewall beleidslijnen"
+
+msgid "Firewall Policy Details"
+msgstr "Beleidsdetails firewall"
+
+msgid "Firewall Rule Details"
+msgstr "Firewall regeldetails"
 
 msgid "Firewall Rules"
 msgstr "Firewall regels"
@@ -2515,6 +2582,9 @@ msgstr "Afbeelding"
 msgid "Image (Glance)"
 msgstr "Afbeelding (Glance)"
 
+msgid "Image Details"
+msgstr "Afbeelding details"
+
 msgid "Image File"
 msgstr "Afbeeldingsbestand"
 
@@ -2529,6 +2599,9 @@ msgstr "Afbeeldingsnaam"
 
 msgid "Image Name ="
 msgstr "Afbeeldingsnaam ="
+
+msgid "Image Overview"
+msgstr "Afbeeldingoverzicht"
 
 msgid "Image Source"
 msgstr "Afbeeldingsbron"
@@ -2631,6 +2704,9 @@ msgstr "Exemplaar beheervenster log"
 
 msgid "Instance Count"
 msgstr "Exemplaartelling"
+
+msgid "Instance Details"
+msgstr "Exemplaardetails"
 
 msgid "Instance ID"
 msgstr "Exemplaar ID"
@@ -3967,6 +4043,9 @@ msgstr "Router %s was succesvol gecreeerd."
 msgid "Router %s was successfully updated."
 msgstr "Router %s is succesvol bijgewerkt."
 
+msgid "Router Details"
+msgstr "Routerdetails"
+
 msgid "Router ID"
 msgstr "Router ID"
 
@@ -4349,6 +4428,9 @@ msgstr "Stapel ID"
 msgid "Stack Name"
 msgstr "Stapelnaam"
 
+msgid "Stack Overview"
+msgstr "Stapeloverzicht"
+
 msgid "Stack Parameters"
 msgstr "Stapelparameters"
 
@@ -4428,6 +4510,9 @@ msgstr "Subnet ID"
 
 msgid "Subnet Name"
 msgstr "Subnetnaam"
+
+msgid "Subnet Overview"
+msgstr "Subnetoverzicht"
 
 msgid "Subnet list can not be retrieved."
 msgstr "Subnetlijst kan niet worden opgehaald."
@@ -4539,6 +4624,9 @@ msgstr "Sjabloonbestand"
 
 msgid "Template Name"
 msgstr "Sjabloon Naam"
+
+msgid "Template Overview"
+msgstr "Sjabloon Overzicht"
 
 msgid "Template Source"
 msgstr "Sjabloonbron"
@@ -5007,8 +5095,24 @@ msgid "Unable to create volume."
 msgstr "Niet in staat om het volume te creëren."
 
 #, python-format
+msgid "Unable to delete IKE Policy: %s"
+msgstr "Niet in staat om het IKE beleid te verwijderen: %s"
+
+#, python-format
+msgid "Unable to delete IPSec Policy: %s"
+msgstr "Niet in staat om het IPSec beleid te verwijderen: %s"
+
+#, python-format
+msgid "Unable to delete IPSec Site Connection: %s"
+msgstr "Niet in staat om de IPSec locatieverbinding te verwijderen: %s "
+
+#, python-format
 msgid "Unable to delete VIP. %s"
 msgstr "Niet in staat om het VIP te verwijderen. %s"
+
+#, python-format
+msgid "Unable to delete VPN Service: %s"
+msgstr "Niet in staat om de VPN dienst te verwijderen: %s"
 
 #, python-format
 msgid "Unable to delete firewall. %s"
@@ -5668,6 +5772,9 @@ msgstr "Niet in staat om volume bij te werken."
 msgid "Unable to upload object."
 msgstr "Niet in staan om object te uploaden."
 
+msgid "Undefined"
+msgstr "Onbepaald"
+
 msgid "Unknown"
 msgstr "Onbekend"
 
@@ -5944,17 +6051,26 @@ msgstr "Volume"
 msgid "Volume (Cinder)"
 msgstr "Volume (Cinder)"
 
+msgid "Volume Details"
+msgstr "Volumedetails"
+
 msgid "Volume Limits"
 msgstr "Volumelimieten"
 
 msgid "Volume Name"
 msgstr "Volumenaam"
 
+msgid "Volume Overview"
+msgstr "Volumeoverzicht"
+
 msgid "Volume Size"
 msgstr "Volumegrootte"
 
 msgid "Volume Snapshot"
 msgstr "Volume momentopname"
+
+msgid "Volume Snapshot Details"
+msgstr "Volume momentopname details"
 
 msgid "Volume Snapshot Overview"
 msgstr "Volume momentopname overzicht"

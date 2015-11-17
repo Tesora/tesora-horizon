@@ -29,6 +29,8 @@
 
     beforeEach(module('templates'));
     beforeEach(module('horizon.framework'));
+    beforeEach(module('horizon.framework.widgets'));
+    beforeEach(module('horizon.framework.widgets.headers'));
 
     beforeEach(inject(function ($injector) {
       $compile = $injector.get('$compile');
@@ -36,8 +38,10 @@
     }));
 
     it('defines basic elements', function () {
-      var markup = '<hz-page-header header="A Title" ' +
-        'description="A Description"><a href="#">A href</a></hz-page-header>';
+      $scope.scopeTitle = 'A Title';
+      $scope.scopeDesc = 'A Description';
+      var markup = '<hz-page-header header="scopeTitle" ' +
+        'description="scopeDesc"><a href="#">A href</a></hz-page-header>';
 
       var $element = digestMarkup($scope, $compile, markup);
 

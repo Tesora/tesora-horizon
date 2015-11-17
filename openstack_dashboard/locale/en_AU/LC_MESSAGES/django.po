@@ -1,9 +1,3 @@
-# Translations template for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-#
-# Translators:
-# Tom Fifield <tom@openstack.org>, 2015
 # Daisy <guoyingc@cn.ibm.com>, 2015. #zanata
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 # Tom Fifield <tom@openstack.org>, 2015. #zanata
@@ -11,15 +5,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-12 12:09+0000\n"
+"POT-Creation-Date: 2015-11-04 14:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-10-01 04:29+0000\n"
 "Last-Translator: Daisy <guoyingc@cn.ibm.com>\n"
 "Language: en-AU\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Generated-By: Babel 2.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Zanata 3.7.1\n"
 "Language-Team: English (Australia)\n"
 
@@ -469,6 +462,9 @@ msgid ""
 "\"Some flavors not meeting minimum image requirements have been disabled.\""
 msgstr ""
 "\"Some flavours not meeting minimum image requirements have been disabled.\""
+
+msgid "\"Users\""
+msgstr "\"Users\""
 
 #, python-format
 msgid "%(conf_name)s: %(conf_val)s"
@@ -1018,6 +1014,15 @@ msgstr "Add, modify or remove the QoS Spec associated with this volume type."
 msgid "Add/Remove Hosts to Aggregate"
 msgstr "Add/Remove Hosts to Aggregate"
 
+msgid "AddFirewall"
+msgstr "AddFirewall"
+
+msgid "AddPolicy"
+msgstr "AddPolicy"
+
+msgid "AddRule"
+msgstr "AddRule"
+
 #, python-format
 msgid "Added Firewall \"%s\"."
 msgstr "Added Firewall \"%s\"."
@@ -1229,6 +1234,9 @@ msgstr "Allowed Host (optional)"
 
 msgid "Amount of energy"
 msgstr "Amount of energy"
+
+msgid "An external (HTTP) URL to load the image from."
+msgstr "An external (HTTP) URL to load the image from."
 
 msgid "An external (HTTP) URL to load the template from."
 msgstr "An external (HTTP) URL to load the template from."
@@ -1820,6 +1828,9 @@ msgstr "Cinder volumes"
 msgid "Cipher"
 msgstr "Cipher"
 
+msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
+msgstr "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
+
 msgid "Clear Domain Context"
 msgstr "Clear Domain Context"
 
@@ -1848,6 +1859,15 @@ msgstr "Cluster Count"
 msgid "Cluster Creation Guide"
 msgstr "Cluster Creation Guide"
 
+msgid "Cluster Detail"
+msgstr "Cluster Detail"
+
+msgid "Cluster Details"
+msgstr "Cluster Details"
+
+msgid "Cluster Details: {{ cluster.name }}"
+msgstr "Cluster Details: {{ cluster.name }}"
+
 msgid "Cluster Events"
 msgstr "Cluster Events"
 
@@ -1860,6 +1880,9 @@ msgstr "Cluster Instances"
 msgid "Cluster Name"
 msgstr "Cluster Name"
 
+msgid "Cluster Overview"
+msgstr "Cluster Overview"
+
 msgid "Cluster Size"
 msgstr "Cluster Size"
 
@@ -1869,6 +1892,9 @@ msgstr "Cluster Template"
 #, python-format
 msgid "Cluster Template %s updated"
 msgstr "Cluster Template %s updated"
+
+msgid "Cluster Template Details"
+msgstr "Cluster Template Details"
 
 msgid "Cluster Template Name"
 msgstr "Cluster Template Name"
@@ -2624,6 +2650,15 @@ msgstr "Current password"
 msgid "Current type:"
 msgstr "Current type:"
 
+msgid ""
+"Currently only images available via an HTTP URL are supported. The image "
+"location must be accessible to the Image Service. Compressed image binaries "
+"are supported (.zip and .tar.gz.)"
+msgstr ""
+"Currently only images available via an HTTP URL are supported. The image "
+"location must be accessible to the Image Service. Compressed image binaries "
+"are supported (.zip and .tar.gz.)"
+
 msgid "Custom ICMP Rule"
 msgstr "Custom ICMP Rule"
 
@@ -2709,6 +2744,9 @@ msgstr "Data Processing Guides"
 msgid "Data Processing Plugin Details"
 msgstr "Data Processing Plugin Details"
 
+msgid "Data Processing Plugin Overview"
+msgstr "Data Processing Plugin Overview"
+
 msgid "Data Processing Plugins"
 msgstr "Data Processing Plugins"
 
@@ -2724,6 +2762,12 @@ msgstr ""
 
 msgid "Data Source"
 msgstr "Data Source"
+
+msgid "Data Source Details"
+msgstr "Data Source Details"
+
+msgid "Data Source Overview"
+msgstr "Data Source Overview"
 
 msgid "Data Source Type"
 msgstr "Data Source Type"
@@ -3179,6 +3223,18 @@ msgid_plural "Deleted Host Aggregates"
 msgstr[0] "Deleted Host Aggregate"
 msgstr[1] "Deleted Host Aggregates"
 
+#, python-format
+msgid "Deleted IKE Policy %s"
+msgstr "Deleted IKE Policy %s"
+
+#, python-format
+msgid "Deleted IPSec Policy %s"
+msgstr "Deleted IPSec Policy %s"
+
+#, python-format
+msgid "Deleted IPSec Site Connection %s"
+msgstr "Deleted IPSec Site Connection %s"
+
 msgid "Deleted Image"
 msgid_plural "Deleted Images"
 msgstr[0] "Deleted Image"
@@ -3293,6 +3349,10 @@ msgstr[1] "Deleted Users"
 msgid "Deleted VIP %s"
 msgstr "Deleted VIP %s"
 
+#, python-format
+msgid "Deleted VPN Service %s"
+msgstr "Deleted VPN Service %s"
+
 msgid "Deleted Volume Type"
 msgid_plural "Deleted Volume Types"
 msgstr[0] "Deleted Volume Type"
@@ -3300,6 +3360,18 @@ msgstr[1] "Deleted Volume Types"
 
 msgid "Deleted images are not recoverable."
 msgstr "Deleted images are not recoverable."
+
+#, python-format
+msgid "Deleted member %s"
+msgstr "Deleted member %s"
+
+#, python-format
+msgid "Deleted monitor %s"
+msgstr "Deleted monitor %s"
+
+#, python-format
+msgid "Deleted pool %s"
+msgstr "Deleted pool %s"
 
 msgid "Deleting"
 msgstr "Deleting"
@@ -4027,6 +4099,10 @@ msgctxt "current status of router"
 msgid "Error"
 msgstr "Error"
 
+msgctxt "status of a neteork port"
+msgid "Error"
+msgstr "Error"
+
 msgid "Error Deleting"
 msgstr "Error Deleting"
 
@@ -4530,8 +4606,17 @@ msgstr "Finishing Resize or Migrate"
 msgid "Firewall %s was successfully updated."
 msgstr "Firewall %s was successfully updated."
 
+msgid "Firewall Details"
+msgstr "Firewall Details"
+
 msgid "Firewall Policies"
 msgstr "Firewall Policies"
+
+msgid "Firewall Policy Details"
+msgstr "Firewall Policy Details"
+
+msgid "Firewall Rule Details"
+msgstr "Firewall Rule Details"
 
 msgid "Firewall Rules"
 msgstr "Firewall Rules"
@@ -5076,6 +5161,14 @@ msgstr "Identity service does not allow editing user data."
 msgid "Identity service does not allow editing user password."
 msgstr "Identity service does not allow editing user password."
 
+#, python-format
+msgid ""
+"If \"No volume type\" is selected, the default volume type \"%(name)s\" will "
+"be set for the created volume."
+msgstr ""
+"If \"No volume type\" is selected, the default volume type \"%(name)s\" will "
+"be set for the created volume."
+
 msgid ""
 "If \"No volume type\" is selected, the volume will be created without a "
 "volume type."
@@ -5114,6 +5207,17 @@ msgstr ""
 "If selected, instances of a node group will be automatically configured "
 "during cluster creation. Otherwise you should manually specify configuration "
 "values."
+
+msgid ""
+"If you select an image via an HTTP URL, the Image Location field MUST be a "
+"valid and direct URL to the image binary; it must also be accessible to the "
+"Image Service. URLs that redirect or serve error pages will result in "
+"unusable images."
+msgstr ""
+"If you select an image via an HTTP URL, the Image Location field MUST be a "
+"valid and direct URL to the image binary; it must also be accessible to the "
+"Image Service. URLs that redirect or serve error pages will result in "
+"unusable images."
 
 msgid "Image"
 msgstr "Image"
@@ -5129,6 +5233,12 @@ msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "Image Backup"
 
+msgid "Image Details"
+msgstr "Image Details"
+
+msgid "Image Details: {{ image.name }}"
+msgstr "Image Details: {{ image.name }}"
+
 msgid "Image File"
 msgstr "Image File"
 
@@ -5143,6 +5253,9 @@ msgstr "Image Name"
 
 msgid "Image Name ="
 msgstr "Image Name ="
+
+msgid "Image Overview"
+msgstr "Image Overview"
 
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
@@ -5189,6 +5302,13 @@ msgstr "Image was successfully updated."
 
 msgid "Images"
 msgstr "Images"
+
+msgid ""
+"Images can be provided via an HTTP URL or be uploaded from your local file "
+"system. Compressed image binaries are supported (.zip and .tar.gz.)"
+msgstr ""
+"Images can be provided via an HTTP URL or be uploaded from your local file "
+"system. Compressed image binaries are supported (.zip and .tar.gz.)"
 
 msgid "Implementation"
 msgstr "Implementation"
@@ -5327,6 +5447,12 @@ msgstr "Instance Console Log"
 msgid "Instance Count"
 msgstr "Instance Count"
 
+msgid "Instance Details"
+msgstr "Instance Details"
+
+msgid "Instance Details: {{ instance.name }}"
+msgstr "Instance Details: {{ instance.name }}"
+
 msgid "Instance ID"
 msgstr "Instance ID"
 
@@ -5440,8 +5566,20 @@ msgstr "Job"
 msgid "Job Binaries"
 msgstr "Job Binaries"
 
+msgid "Job Binary Details"
+msgstr "Job Binary Details"
+
+msgid "Job Binary Overview"
+msgstr "Job Binary Overview"
+
 msgid "Job Configuration"
 msgstr "Job Configuration"
+
+msgid "Job Details"
+msgstr "Job Details"
+
+msgid "Job Execution Details"
+msgstr "Job Execution Details"
 
 msgid "Job Execution Guide"
 msgstr "Job Execution Guide"
@@ -5452,8 +5590,14 @@ msgstr "Job Execution ID"
 msgid "Job Guide"
 msgstr "Job Guide"
 
+msgid "Job Overview"
+msgstr "Job Overview"
+
 msgid "Job Template"
 msgstr "Job Template"
+
+msgid "Job Template Details"
+msgstr "Job Template Details"
 
 msgid "Job Templates"
 msgstr "Job Templates"
@@ -6166,6 +6310,12 @@ msgstr "Namespace %s has been created."
 msgid "Namespace Definition Source"
 msgstr "Namespace Definition Source"
 
+msgid "Namespace Details"
+msgstr "Namespace Details"
+
+msgid "Namespace Details: {{ namespace.namespace }}"
+msgstr "Namespace Details: {{ namespace.namespace }}"
+
 msgid "Namespace JSON"
 msgstr "Namespace JSON"
 
@@ -6566,6 +6716,9 @@ msgstr "Node Group"
 msgid "Node Group Template %s updated"
 msgstr "Node Group Template %s updated"
 
+msgid "Node Group Template Details"
+msgstr "Node Group Template Details"
+
 #, python-format
 msgid "Node Group Template copy %s created"
 msgstr "Node Group Template copy %s created"
@@ -6591,6 +6744,9 @@ msgstr "Node group cluster"
 
 msgid "Node processes are not specified"
 msgstr "Node processes are not specified"
+
+msgid "Nodegroup Template Details"
+msgstr "Nodegroup Template Details"
 
 msgid "Nodes Count"
 msgstr "Nodes Count"
@@ -7137,6 +7293,9 @@ msgstr "Port %s was successfully created."
 #, python-format
 msgid "Port %s was successfully updated."
 msgstr "Port %s was successfully updated."
+
+msgid "Port Details"
+msgstr "Port Details"
 
 msgid "Port ID"
 msgstr "Port ID"
@@ -7699,6 +7858,12 @@ msgstr "Resizing volume \"%s\""
 msgid "Resource"
 msgstr "Resource"
 
+msgid "Resource Details"
+msgstr "Resource Details"
+
+msgid "Resource Details: {{ resource.resource_name }}"
+msgstr "Resource Details: {{ resource.resource_name }}"
+
 msgid "Resource ID"
 msgstr "Resource ID"
 
@@ -7707,6 +7872,12 @@ msgstr "Resource Metadata"
 
 msgid "Resource Overview"
 msgstr "Resource Overview"
+
+msgid "Resource Type"
+msgstr "Resource Type"
+
+msgid "Resource Type Details"
+msgstr "Resource Type Details"
 
 msgid "Resource Types"
 msgstr "Resource Types"
@@ -7904,6 +8075,9 @@ msgstr "Router %s was successfully created."
 #, python-format
 msgid "Router %s was successfully updated."
 msgstr "Router %s was successfully updated."
+
+msgid "Router Details"
+msgstr "Router Details"
 
 msgid "Router ID"
 msgstr "Router ID"
@@ -8835,6 +9009,12 @@ msgstr ""
 msgid "Specs"
 msgstr "Specs"
 
+msgid "Stack Details"
+msgstr "Stack Details"
+
+msgid "Stack Details: {{ stack.stack_name }}"
+msgstr "Stack Details: {{ stack.stack_name }}"
+
 msgid "Stack Events"
 msgstr "Stack Events"
 
@@ -8843,6 +9023,9 @@ msgstr "Stack ID"
 
 msgid "Stack Name"
 msgstr "Stack Name"
+
+msgid "Stack Overview"
+msgstr "Stack Overview"
 
 msgid "Stack Parameters"
 msgstr "Stack Parameters"
@@ -8987,6 +9170,9 @@ msgstr "Subnet ID"
 
 msgid "Subnet Name"
 msgstr "Subnet Name"
+
+msgid "Subnet Overview"
+msgstr "Subnet Overview"
 
 msgid "Subnet list can not be retrieved."
 msgstr "Subnet list can not be retrieved."
@@ -9255,6 +9441,9 @@ msgstr "Template File"
 
 msgid "Template Name"
 msgstr "Template Name"
+
+msgid "Template Overview"
+msgstr "Template Overview"
 
 msgid "Template Source"
 msgstr "Template Source"
@@ -10168,8 +10357,24 @@ msgid "Unable to create volume."
 msgstr "Unable to create volume."
 
 #, python-format
+msgid "Unable to delete IKE Policy: %s"
+msgstr "Unable to delete IKE Policy: %s"
+
+#, python-format
+msgid "Unable to delete IPSec Policy: %s"
+msgstr "Unable to delete IPSec Policy: %s"
+
+#, python-format
+msgid "Unable to delete IPSec Site Connection: %s"
+msgstr "Unable to delete IPSec Site Connection: %s"
+
+#, python-format
 msgid "Unable to delete VIP. %s"
 msgstr "Unable to delete VIP. %s"
+
+#, python-format
+msgid "Unable to delete VPN Service: %s"
+msgstr "Unable to delete VPN Service: %s"
 
 msgid "Unable to delete container."
 msgstr "Unable to delete container."
@@ -11313,6 +11518,9 @@ msgstr "Unable to upload object."
 msgid "Unable to upload volume to image for volume: \"%s\""
 msgstr "Unable to upload volume to image for volume: \"%s\""
 
+msgid "Undefined"
+msgstr "Undefined"
+
 msgid "Unit"
 msgstr "Unit"
 
@@ -11833,6 +12041,16 @@ msgstr "Volume (Cinder)"
 msgid "Volume Backup"
 msgstr "Volume Backup"
 
+msgid "Volume Backup Details"
+msgstr "Volume Backup Details"
+
+msgid "Volume Backup Details: {{ backup.name }}"
+msgstr "Volume Backup Details: {{ backup.name }}"
+
+#, python-format
+msgid "Volume Backup Overview: %(backup_display_name)s"
+msgstr "Volume Backup Overview: %(backup_display_name)s"
+
 msgid "Volume Backup:"
 msgstr "Volume Backup:"
 
@@ -11845,6 +12063,12 @@ msgid ""
 msgstr ""
 "Volume Backups are stored using the Object Storage service. You must have "
 "this service activated in order to create a backup."
+
+msgid "Volume Details"
+msgstr "Volume Details"
+
+msgid "Volume Details: {{ volume.name }}"
+msgstr "Volume Details: {{ volume.name }}"
 
 msgid "Volume Encryption Details"
 msgstr "Volume Encryption Details"
@@ -11865,11 +12089,20 @@ msgstr "Volume Limits"
 msgid "Volume Name"
 msgstr "Volume Name"
 
+msgid "Volume Overview"
+msgstr "Volume Overview"
+
 msgid "Volume Size"
 msgstr "Volume Size"
 
 msgid "Volume Snapshot"
 msgstr "Volume Snapshot"
+
+msgid "Volume Snapshot Details"
+msgstr "Volume Snapshot Details"
+
+msgid "Volume Snapshot Details: {{ snapshot.name }}"
+msgstr "Volume Snapshot Details: {{ snapshot.name }}"
 
 msgid "Volume Snapshot Overview"
 msgstr "Volume Snapshot Overview"

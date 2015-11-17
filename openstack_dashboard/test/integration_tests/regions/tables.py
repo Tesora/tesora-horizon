@@ -45,13 +45,10 @@ class BtnActionRowRegion(BaseActionRowRegion):
     def __init__(self, driver, conf, src_elem, action_name):
         super(BtnActionRowRegion, self).__init__(driver, conf, src_elem)
         self.action_name = action_name
-        self._action_id_pattern = ("%s__action_%%s" %
-                                   src_elem.get_attribute('id'))
         self._init_action()
 
     def _init_action(self):
-        self._init_dynamic_property(self.action_name, self._get_action,
-                                    self._action_id_pattern)
+        self._init_dynamic_property(self.action_name, self._get_action)
 
     def _get_action(self):
         return self._get_element(*self._action_locator)
@@ -81,19 +78,15 @@ class ComplexActionRowRegion(BaseActionRowRegion):
         try:
             self.primary_action_name = action_names[self.PRIMARY_ACTION]
             self.secondary_action_names = action_names[self.SECONDARY_ACTIONS]
-            self._action_id_pattern = ("%s__action_%%s" %
-                                       src_elem.get_attribute('id'))
             self._init_actions()
         except (TypeError, KeyError):
             raise AttributeError(self.ACTIONS_ERROR_MSG)
 
     def _init_actions(self):
         self._init_dynamic_property(self.primary_action_name,
-                                    self._get_primary_action,
-                                    self._action_id_pattern)
+                                    self._get_primary_action)
         self._init_dynamic_properties(self.secondary_action_names,
-                                      self._get_secondary_actions,
-                                      self._action_id_pattern)
+                                      self._get_secondary_actions)
 
     def _get_primary_action(self):
         return self._get_element(*self._primary_action_locator)
@@ -189,9 +182,8 @@ class ActionsTableRegion(BasicTableRegion):
                                             ' div.table_actions > a')
 
     # private methods
-    def __init__(self, driver, conf, src_elm, table_name, action_names):
+    def __init__(self, driver, conf, src_elm, action_names):
         super(ActionsTableRegion, self).__init__(driver, conf, src_elm)
-        self._action_id_pattern = "%s__action_%%s" % table_name
         self.action_names = action_names
         self._init_actions()
 
@@ -200,8 +192,7 @@ class ActionsTableRegion(BasicTableRegion):
         """Create new methods that corresponds to picking table's
         action buttons.
         """
-        self._init_dynamic_properties(self.action_names, self._get_actions,
-                                      self._action_id_pattern)
+        self._init_dynamic_properties(self.action_names, self._get_actions)
 
     def _get_actions(self):
         return self._get_elements(*self._actions_locator)
@@ -215,10 +206,9 @@ class ActionsTableRegion(BasicTableRegion):
 class SimpleActionsTableRegion(ActionsTableRegion):
     """Table which rows has buttons in action column."""
 
-    def __init__(self, driver, conf, src_elm, table_name, action_names,
-                 row_action_name):
-        super(SimpleActionsTableRegion, self).__init__(
-            driver, conf, src_elm, table_name, action_names)
+    def __init__(self, driver, conf, src_elm, action_names, row_action_name):
+        super(SimpleActionsTableRegion, self).__init__(driver, conf, src_elm,
+                                                       action_names)
         self.row_action_name = row_action_name
 
     def _get_rows(self):
@@ -232,10 +222,9 @@ class SimpleActionsTableRegion(ActionsTableRegion):
 class ComplexActionTableRegion(ActionsTableRegion):
     """Table which has button and selectbox in the action column."""
 
-    def __init__(self, driver, conf, src_elm, table_name,
-                 action_names, row_action_names):
-        super(ComplexActionTableRegion, self).__init__(
-            driver, conf, src_elm, table_name, action_names)
+    def __init__(self, driver, conf, src_elm, action_names, row_action_names):
+        super(ComplexActionTableRegion, self).__init__(driver, conf, src_elm,
+                                                       action_names)
         self.row_action_names = row_action_names
 
     def _get_rows(self):

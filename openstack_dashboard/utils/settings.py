@@ -47,12 +47,11 @@ def import_dashboard_config(modules):
                 dashboard = submodule.DASHBOARD
                 config[dashboard].update(submodule.__dict__)
             elif (hasattr(submodule, 'PANEL')
-                  or hasattr(submodule, 'PANEL_GROUP')
-                  or hasattr(submodule, 'FEATURE')):
+                  or hasattr(submodule, 'PANEL_GROUP')):
                 config[submodule.__name__] = submodule.__dict__
             else:
                 logging.warning("Skipping %s because it doesn't have DASHBOARD"
-                                ", PANEL, PANEL_GROUP, or FEATURE defined.",
+                                ", PANEL or PANEL_GROUP defined.",
                                 submodule.__name__)
     return sorted(six.iteritems(config),
                   key=lambda c: c[1]['__name__'].rsplit('.', 1))

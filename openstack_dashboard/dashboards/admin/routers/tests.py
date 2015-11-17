@@ -118,8 +118,7 @@ class RouterTests(test.BaseAdminViewTests, r_test.RouterTests):
         res = self.client.post(self.INDEX_URL, formData, follow=True)
         self.assertNoFormErrors(res)
         self.assertMessageCount(response=res, success=1)
-        self.assertIn('Deleted Router: ' + router.name,
-                      res.content.decode('utf-8'))
+        self.assertIn('Deleted Router: ' + router.name, res.content)
 
     @test.create_stubs({api.neutron: ('router_list', 'network_list',
                                       'port_list', 'router_remove_interface',
@@ -162,8 +161,7 @@ class RouterTests(test.BaseAdminViewTests, r_test.RouterTests):
         res = self.client.post(self.INDEX_URL, formData, follow=True)
         self.assertNoFormErrors(res)
         self.assertMessageCount(response=res, success=1)
-        self.assertIn('Deleted Router: ' + router.name,
-                      res.content.decode('utf-8'))
+        self.assertIn('Deleted Router: ' + router.name, res.content)
 
 
 class RouterRouteTest(test.BaseAdminViewTests, r_test.RouterRouteTests):

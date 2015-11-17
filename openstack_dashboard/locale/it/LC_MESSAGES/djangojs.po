@@ -1,8 +1,3 @@
-# Translations template for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-#
-# Translators:
 # Alessandra <alessandra@translated.net>, 2015. #zanata
 # Mattia Gandolfi <mgandolf@redhat.com>, 2015. #zanata
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
@@ -10,15 +5,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-22 08:58+0000\n"
+"POT-Creation-Date: 2015-11-04 14:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-10-19 02:33+0000\n"
 "Last-Translator: Alessandra <alessandra@translated.net>\n"
 "Language: it\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Generated-By: Babel 2.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Zanata 3.7.1\n"
 "Language-Team: Italian\n"
 
@@ -179,6 +173,9 @@ msgstr "Annulla"
 
 msgid "Cannot get service catalog from keystone."
 msgstr "Impossibile ottenere il catalogo del servizio dal keystone."
+
+msgid "Cannot get the Nova extension list."
+msgstr "Impossibile richiamare l'elenco di estensioni Nova."
 
 msgid ""
 "Check the <b>Configuration Drive</b> box if you want to write metadata to a "
@@ -415,7 +412,9 @@ msgstr ""
 "memoria persistente creando un nuovo volume."
 
 msgid "Insufficient privilege level to view user information."
-msgstr "Privilegi insufficienti per visualizzare le informazioni utente"
+msgstr ""
+"Livello di autorizzazione insufficiente per visualizzare le informazioni "
+"sull'utente."
 
 msgid "Key Pair"
 msgstr "Coppia di chiavi"
@@ -658,7 +657,7 @@ msgid "Select Boot Source"
 msgstr "Seleziona origine di avvio"
 
 msgid "Select Source"
-msgstr "Selezionare l'origine"
+msgstr "Seleziona origine"
 
 msgid "Select Source Help"
 msgstr "Seleziona guida sull'origine"

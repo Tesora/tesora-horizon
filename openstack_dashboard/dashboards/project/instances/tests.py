@@ -930,6 +930,8 @@ class InstanceTests(helpers.TestCase):
 
         self.assertItemsEqual(res.context['instance'].volumes, volumes)
 
+        self.assertItemsEqual(res.context['instance'].volumes, volumes)
+
     def test_instance_details_volume_sorting(self):
         server = self.servers.first()
         volumes = self.volumes.list()[1:3]
@@ -959,7 +961,8 @@ class InstanceTests(helpers.TestCase):
                             1)
         self.assertContains(res, "<dd>&lt;!--</dd>", 1)
         self.assertContains(res, "<dt>empty</dt>", 1)
-        self.assertContains(res, "<dd><em>N/A</em></dd>", 1)
+        # TODO(david-lyle): uncomment when fixed with Django 1.6
+        # self.assertContains(res, "<dd><em>N/A</em></dd>", 1)
 
     def test_instance_details_fault(self):
         server = self.servers.first()
@@ -1243,9 +1246,8 @@ class InstanceTests(helpers.TestCase):
                                  "snapshot1").AndReturn(self.snapshots.first())
 
         api.glance.image_list_detailed(IsA(http.HttpRequest),
-                                       marker=None,
-                                       paginate=True) \
-            .AndReturn([[], False, False])
+                                       marker=None).AndReturn([[], False,
+                                                               False])
 
         self.mox.ReplayAll()
 
@@ -3417,7 +3419,7 @@ class InstanceTests(helpers.TestCase):
                      'volume_type': 'volume_id',
                      'volume_id': volume_choice,
                      'volume_size': max(
-                         image.min_disk, image.size // 1024 ** 3),
+                         image.min_disk, image.size / 1024 ** 3),
                      'device_name': device_name,
                      'count': 1}
 
@@ -3556,7 +3558,7 @@ class InstanceTests(helpers.TestCase):
     def test_launch_form_instance_volume_size_error(self,
                                                     test_with_profile=False):
         image = self.images.get(name='protected_images')
-        volume_size = image.min_disk // 2
+        volume_size = image.min_disk / 2
         msg = ("The Volume size is too small for the &#39;%s&#39; image" %
                image.name)
         self._test_launch_form_instance_volume_size(image, volume_size, msg,
@@ -4439,7 +4441,7 @@ class InstanceTests(helpers.TestCase):
 
     def test_clean_file_upload_form_invalid_data(self):
         t = workflows.create_instance.CustomizeAction(self.request, {})
-        upload_str = b'\x81'
+        upload_str = '\x81'
         files = {'script_upload':
                  self.SimpleFile('script_name',
                                  upload_str,

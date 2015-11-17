@@ -1,23 +1,16 @@
-# Translations template for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-#
-# Translators:
-# Heleno Jimenez de la Cruz <heleno.jimenez@gmail.com>, 2015
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-22 08:58+0000\n"
+"POT-Creation-Date: 2015-11-04 14:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-08-20 05:13+0000\n"
-"Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
 "Language: es-MX\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Generated-By: Babel 2.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Zanata 3.7.1\n"
 "Language-Team: Spanish (Mexico)\n"
 
@@ -213,6 +206,9 @@ msgstr "Miembros"
 msgid "More Actions"
 msgstr "Más Acciones"
 
+msgid "N/A"
+msgstr "N/A"
+
 msgid "Navigation Item"
 msgstr "Ítem de navegación"
 
@@ -259,6 +255,9 @@ msgstr "Inicie sesión para continuar."
 msgid "Please select a row before taking that action."
 msgstr "Seleccione una fila antes de realizar la acción."
 
+msgid "Port number must be integer"
+msgstr "El número de puerto debe ser un número entero"
+
 msgid "Processing..."
 msgstr "Procesando..."
 
@@ -272,6 +271,9 @@ msgstr "Seleccione una %s para navegar."
 msgid "Select a period of time to query its usage:"
 msgstr "Seleccione un periodo de tiempo para consultar su uso:"
 
+msgid "Session timed out."
+msgstr "Sesión ha expirado."
+
 msgid "Sign In"
 msgstr "Darse de alta"
 
@@ -283,6 +285,10 @@ msgstr "Correcto:"
 
 msgid "Summary"
 msgstr "Resumen"
+
+#, python-format
+msgid "The attribute %(attr)s doesn't exist on %(obj)s."
+msgstr "El atributo %(attr)s no existe en %(obj)s."
 
 msgid "The date should be in YYYY-mm-dd format."
 msgstr "La fecha debe estar en formato YYYY-mm-dd."

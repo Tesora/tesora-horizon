@@ -204,6 +204,9 @@
         var currentSearch = angular.copy($scope.currentSearch);
         $scope.currentSearch = [];
         $scope.initFacets(currentSearch);
+
+        // broadcast to check facets for server-side
+        $scope.$emit('checkFacets', $scope.currentSearch);
       };
 
       $scope.emitQuery();

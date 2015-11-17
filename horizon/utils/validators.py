@@ -14,8 +14,6 @@
 
 import re
 
-from oslo_utils import netutils
-
 from django.core.exceptions import ValidationError  # noqa
 from django.core import validators  # noqa
 from django.utils.translation import ugettext_lazy as _
@@ -24,12 +22,12 @@ from horizon import conf
 
 
 def validate_port_range(port):
-    if not netutils.is_valid_port(port):
+    if port not in range(-1, 65536):
         raise ValidationError(_("Not a valid port number"))
 
 
 def validate_ip_protocol(ip_proto):
-    if ip_proto not in range(0, 256):
+    if ip_proto not in range(-1, 256):
         raise ValidationError(_("Not a valid IP protocol number"))
 
 
@@ -47,7 +45,11 @@ def validate_port_or_colon_separated_port_range(port_range):
         raise ValidationError(_("One colon allowed in port range"))
     ports = port_range.split(':')
     for port in ports:
-        validate_port_range(port)
+        try:
+            if int(port) not in range(-1, 65536):
+                raise ValidationError(_("Not a valid port number"))
+        except ValueError:
+            raise ValidationError(_("Port number must be integer"))
 
 
 def validate_metadata(value):

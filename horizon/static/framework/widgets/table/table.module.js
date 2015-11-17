@@ -29,7 +29,9 @@
    * module and jQuery (for table drawer slide animation in IE9) to be installed.
    */
   angular
-    .module('horizon.framework.widgets.table', [])
+    .module('horizon.framework.widgets.table', [
+      'smart-table', 'lrDragNDrop'
+    ])
 
     /**
      * @ngdoc parameters

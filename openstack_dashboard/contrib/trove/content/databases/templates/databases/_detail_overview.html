@@ -1,7 +1,11 @@
 {% load i18n sizeformat %}
 {% load url from future %}
 
-<div class="detail">
+<h3>{% trans "Instance Overview" %}</h3>
+
+<div class="status row detail">
+  <h4>{% trans "Information" %}</h4>
+  <hr class="header_rule">
   <dl class="dl-horizontal">
     <dt>{% trans "Name" %}</dt>
     <dd>{{ instance.name }}</dd>
@@ -24,7 +28,9 @@
     <dt>{% trans "Root Enabled" %}</dt>
     <dd>{{ root_enabled|yesno|capfirst }}</dd>
   </dl>
+</div>
 
+<div class="specs row detail">
   <h4>{% trans "Specs" %}</h4>
   <hr class="header_rule">
   <dl class="dl-horizontal">
@@ -41,11 +47,13 @@
     <dt>{% trans "Updated" %}</dt>
     <dd>{{ instance.updated|parse_isotime }}</dd>
   </dl>
+</div>
 
 {% block connection_info %}
 {% endblock %}
 
 {% if instance.replica_of or instance.replicas %}
+<div class="specs row detail">
   <h4>{% trans "Replication" %}</h4>
   <hr class="header_rule">
   <dl>
@@ -67,5 +75,5 @@
       {% endfor %}
     {% endif %}
   </dl>
-{% endif %}
 </div>
+{% endif %}

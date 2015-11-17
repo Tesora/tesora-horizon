@@ -1,8 +1,3 @@
-# Translations template for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-#
-# Translators:
 # Alessandra <alessandra@translated.net>, 2015. #zanata
 # Andreas Jaeger <jaegerandi@gmail.com>, 2015. #zanata
 # Mattia Gandolfi <mgandolf@redhat.com>, 2015. #zanata
@@ -11,15 +6,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-12 12:09+0000\n"
+"POT-Creation-Date: 2015-11-11 04:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-10-22 06:52+0000\n"
-"Last-Translator: Andreas Jaeger <jaegerandi@gmail.com>\n"
+"PO-Revision-Date: 2015-11-10 07:26+0000\n"
+"Last-Translator: Alessandra <alessandra@translated.net>\n"
 "Language: it\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Generated-By: Babel 2.0\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "X-Generator: Zanata 3.7.1\n"
 "Language-Team: Italian\n"
 
@@ -490,6 +484,9 @@ msgstr ""
 "\"Alcuni flavor che non soddisfano i requisiti minimi dell'immagine, sono "
 "stati disabilitati.\""
 
+msgid "\"Users\""
+msgstr "\"Utenti\""
+
 #, python-format
 msgid "%(conf_name)s: %(conf_val)s"
 msgstr "%(conf_name)s: %(conf_val)s"
@@ -864,7 +861,7 @@ msgid "Adapt For Oozie"
 msgstr "Adatta per Oozie"
 
 msgid "Add"
-msgstr "Aggiungere"
+msgstr "Aggiungi"
 
 msgid "Add DHCP Agent"
 msgstr "Aggiungi agent DHCP"
@@ -968,7 +965,7 @@ msgstr[0] "Aggiungi utente"
 msgstr[1] "Aggiungi utenti"
 
 msgid "Add User to Group"
-msgstr "Aggiungi l'Utente al Gruppo"
+msgstr "Aggiungi utente al gruppo"
 
 msgid "Add Users"
 msgstr "Aggiungi utenti"
@@ -1045,6 +1042,15 @@ msgstr ""
 
 msgid "Add/Remove Hosts to Aggregate"
 msgstr "Aggiungi/Rimuovi host in Aggregato"
+
+msgid "AddFirewall"
+msgstr "AddFirewall"
+
+msgid "AddPolicy"
+msgstr "AddPolicy"
+
+msgid "AddRule"
+msgstr "AddRule"
 
 #, python-format
 msgid "Added Firewall \"%s\"."
@@ -1189,7 +1195,7 @@ msgid "All ICMP"
 msgstr "Tutti i parametri ICMP"
 
 msgid "All Projects"
-msgstr "Progetti"
+msgstr "Tutti i progetti"
 
 msgid "All Security Groups"
 msgstr "Tutti i gruppi di sicurezza"
@@ -1257,6 +1263,9 @@ msgstr "Host consentiti (facoltativo)"
 
 msgid "Amount of energy"
 msgstr "Quantità di energia"
+
+msgid "An external (HTTP) URL to load the image from."
+msgstr "Un URL esterno (HTTP) da cui caricare l'immagine."
 
 msgid "An external (HTTP) URL to load the template from."
 msgstr "Un URL (HTTP) esterno da cui caricare il template."
@@ -1392,7 +1401,7 @@ msgid "Audited"
 msgstr "Verificato"
 
 msgid "Authentication URL"
-msgstr "Autenticazione URL"
+msgstr "URL di autenticazione"
 
 msgid "Authorization Key"
 msgstr "Chiave di autorizzazione"
@@ -1864,6 +1873,9 @@ msgstr "Volumi Cinder"
 msgid "Cipher"
 msgstr "Cifratura"
 
+msgid "Classless Inter-Domain Routing (e.g. 192.168.0.0/24)"
+msgstr "Instradamento Classless tra domini (es. 192.168.0.0/24)"
+
 msgid "Clear Domain Context"
 msgstr "Resettare il Contesto di Dominio"
 
@@ -1892,6 +1904,15 @@ msgstr "Conteggio cluster"
 msgid "Cluster Creation Guide"
 msgstr "Guida per la creazione cluster"
 
+msgid "Cluster Detail"
+msgstr "Dettagli cluster"
+
+msgid "Cluster Details"
+msgstr "Dettagli cluster"
+
+msgid "Cluster Details: {{ cluster.name }}"
+msgstr "Dettagli cluster: {{ cluster.name }}"
+
 msgid "Cluster Events"
 msgstr "Eventi cluster"
 
@@ -1904,6 +1925,9 @@ msgstr "Istanze cluster"
 msgid "Cluster Name"
 msgstr "Nome cluster"
 
+msgid "Cluster Overview"
+msgstr "Panoramica sul cluster"
+
 msgid "Cluster Size"
 msgstr "Dimensione cluster"
 
@@ -1913,6 +1937,9 @@ msgstr "Template cluster"
 #, python-format
 msgid "Cluster Template %s updated"
 msgstr "Template cluster %s aggiornato"
+
+msgid "Cluster Template Details"
+msgstr "Dettagli template cluster"
 
 msgid "Cluster Template Name"
 msgstr "Nome template cluster"
@@ -2164,7 +2191,9 @@ msgstr "Impossibile aggiornare l'origine dati"
 
 #, python-format
 msgid "Couldn't get current security group list for instance %s."
-msgstr "Impossibile ottenere la lista dei security groups per l'istanza %s."
+msgstr ""
+"Impossibile ottenere l'elenco dei gruppi di sicurezza corrente per l'istanza "
+"%s."
 
 msgid "Couldn't get security group list."
 msgstr "Impossibile ottenere l'elenco dei gruppi di sicurezza."
@@ -2184,7 +2213,7 @@ msgid "Create"
 msgstr "Crea"
 
 msgid "Create An Image"
-msgstr "Creare Un'Immagine"
+msgstr "Crea un'immagine"
 
 msgid "Create Backup"
 msgstr "Crea backup"
@@ -2203,7 +2232,7 @@ msgid "Create Data Source"
 msgstr "Crea origine dati"
 
 msgid "Create Domain"
-msgstr "Creare un Dominio"
+msgstr "Crea dominio"
 
 msgid "Create Encrypted Volume Type"
 msgstr "Crea tipo di volume crittografato"
@@ -2222,7 +2251,7 @@ msgid "Create Flavor"
 msgstr "Crea flavor"
 
 msgid "Create Group"
-msgstr "Creare il Gruppo"
+msgstr "Crea gruppo"
 
 msgid "Create Host Aggregate"
 msgstr "Crea aggregato host"
@@ -2257,7 +2286,7 @@ msgstr ""
 "campi di questa scheda sono obbligatori."
 
 msgid "Create Image"
-msgstr "Creare un'Immagine"
+msgstr "Crea immagine"
 
 msgctxt "current status of stack"
 msgid "Create In Progress"
@@ -2273,7 +2302,7 @@ msgid "Create Key Pair"
 msgstr "Crea coppia di chiavi"
 
 msgid "Create Network"
-msgstr "Creare una Rete"
+msgstr "Crea rete"
 
 msgid "Create Network (Quota exceeded)"
 msgstr "Crea rete (quota superata)"
@@ -2282,10 +2311,10 @@ msgid "Create Node Group Template"
 msgstr "Crea template gruppo nodi"
 
 msgid "Create Port"
-msgstr "Creare una Porta"
+msgstr "Crea porta"
 
 msgid "Create Project"
-msgstr "Creare un Progetto"
+msgstr "Crea progetto"
 
 msgid "Create Pseudo-folder"
 msgstr "Crea pseudo-cartella"
@@ -2318,7 +2347,7 @@ msgid "Create Stack"
 msgstr "Crea stack"
 
 msgid "Create Subnet"
-msgstr "Creare una Sottorete"
+msgstr "Crea sottorete"
 
 msgid "Create Subnet (Quota exceeded)"
 msgstr "Crea sottorete (quota superata)"
@@ -2675,6 +2704,15 @@ msgstr "Password corrente"
 msgid "Current type:"
 msgstr "Tipo corrente:"
 
+msgid ""
+"Currently only images available via an HTTP URL are supported. The image "
+"location must be accessible to the Image Service. Compressed image binaries "
+"are supported (.zip and .tar.gz.)"
+msgstr ""
+"Al momento sono supportate solo le immagini disponibili tramite un URL HTTP. "
+"L'ubicazione dell'immagine deve essere accessibile al Servizio di immagine. "
+"Sono supportati i valori binari di immagine compressa (.zip e .tar.gz.)"
+
 msgid "Custom ICMP Rule"
 msgstr "Regola ICMP personalizzata"
 
@@ -2760,6 +2798,9 @@ msgstr "Guide all'elaborazione dei dati"
 msgid "Data Processing Plugin Details"
 msgstr "Dettali plugin Data Processing"
 
+msgid "Data Processing Plugin Overview"
+msgstr "Plugin Data Processing - Panoramica"
+
 msgid "Data Processing Plugins"
 msgstr "Plugin Data Processing"
 
@@ -2776,6 +2817,12 @@ msgstr ""
 
 msgid "Data Source"
 msgstr "Origine dati"
+
+msgid "Data Source Details"
+msgstr "Dettagli origine dati"
+
+msgid "Data Source Overview"
+msgstr "Panoramica origine dati"
 
 msgid "Data Source Type"
 msgstr "Tipo origine dati"
@@ -3234,6 +3281,18 @@ msgid_plural "Deleted Host Aggregates"
 msgstr[0] "Aggregato host eliminato"
 msgstr[1] "Aggregati host eliminati"
 
+#, python-format
+msgid "Deleted IKE Policy %s"
+msgstr "Eliminata politica IKE %s"
+
+#, python-format
+msgid "Deleted IPSec Policy %s"
+msgstr "Eliminata politica IPSec %s"
+
+#, python-format
+msgid "Deleted IPSec Site Connection %s"
+msgstr "Eliminata connessione al sito IPSec %s"
+
 msgid "Deleted Image"
 msgid_plural "Deleted Images"
 msgstr[0] "Immagine eliminata"
@@ -3348,6 +3407,10 @@ msgstr[1] "Utenti eliminati"
 msgid "Deleted VIP %s"
 msgstr "VIP eliminato %s"
 
+#, python-format
+msgid "Deleted VPN Service %s"
+msgstr "Eliminato servizio VPN %s"
+
 msgid "Deleted Volume Type"
 msgid_plural "Deleted Volume Types"
 msgstr[0] "Tipo di volume eliminato"
@@ -3355,6 +3418,18 @@ msgstr[1] "Tipi di volume eliminati"
 
 msgid "Deleted images are not recoverable."
 msgstr "Le immagini eliminate non sono ripristinabili."
+
+#, python-format
+msgid "Deleted member %s"
+msgstr "Eliminato membro %s"
+
+#, python-format
+msgid "Deleted monitor %s"
+msgstr "Eliminato monitor %s"
+
+#, python-format
+msgid "Deleted pool %s"
+msgstr "Pool eliminato %s"
 
 msgid "Deleting"
 msgstr "Eliminazione"
@@ -3592,7 +3667,7 @@ msgstr "Docker"
 #, python-format
 msgid "Domain \"%s\" must be disabled before it can be deleted."
 msgstr ""
-"Il Dominio \"%s\" deve essere disabilitato prima di poter essere cancellato."
+"Il dominio \"%s\" deve essere disabilitato prima di poter essere eliminato."
 
 msgid "Domain Context cleared."
 msgstr "Contesto di Dominio resettato."
@@ -3717,7 +3792,7 @@ msgstr "Durata"
 
 #, python-format
 msgid "Duration of instance type %s (openstack flavor)"
-msgstr "Durata dell'istanza tipo %s (sapore di openstack)"
+msgstr "Durata dell'istanza tipo %s (flavor openstack)"
 
 msgid "EC2 Access Key"
 msgstr "Chiave di accesso EC2"
@@ -3747,7 +3822,7 @@ msgid "Edit Data Source"
 msgstr "Modifica origine dati"
 
 msgid "Edit Domain"
-msgstr "Modificare il Dominio"
+msgstr "Modifica dominio"
 
 #, python-format
 msgid "Edit Extra Spec Value: %s"
@@ -3763,7 +3838,7 @@ msgid "Edit Flavor"
 msgstr "Modifica flavor"
 
 msgid "Edit Group"
-msgstr "Modificare il Gruppo"
+msgstr "Modifica gruppo"
 
 msgid "Edit Host Aggregate"
 msgstr "Modifica aggregato host"
@@ -3796,7 +3871,7 @@ msgid "Edit Monitor"
 msgstr "Modifica monitor"
 
 msgid "Edit Network"
-msgstr "Modificare la rete"
+msgstr "Modifica rete"
 
 msgid "Edit Node Group Template"
 msgstr "Modifica template gruppo nodi"
@@ -3814,10 +3889,10 @@ msgid "Edit Pool"
 msgstr "Modifica pool"
 
 msgid "Edit Port"
-msgstr "Modificare una Porta"
+msgstr "Modifica porta"
 
 msgid "Edit Project"
-msgstr "Modificare un Progetto"
+msgstr "Modifica progetto"
 
 msgid "Edit QoS Spec Consumer"
 msgstr "Modifica consumer specifica QoS"
@@ -3847,7 +3922,7 @@ msgid "Edit Spec Value"
 msgstr "Modifica valore specifica"
 
 msgid "Edit Subnet"
-msgstr "Modificare una Sottorete"
+msgstr "Modifica sottorete"
 
 msgid "Edit Tags"
 msgstr "Modifica tag"
@@ -4090,6 +4165,10 @@ msgid "Error"
 msgstr "Errore"
 
 msgctxt "current status of router"
+msgid "Error"
+msgstr "Errore"
+
+msgctxt "status of a neteork port"
 msgid "Error"
 msgstr "Errore"
 
@@ -4504,7 +4583,7 @@ msgstr "Impossibile richiamare i monitor di integrità."
 
 #, python-format
 msgid "Failed to retrieve network %s for a subnet"
-msgstr "Impossibile ottenere la rete %s per una sottorete"
+msgstr "Impossibile richiamare la rete %s per una sottorete"
 
 #, python-format
 msgid "Failed to set gateway %s"
@@ -4616,8 +4695,17 @@ msgstr "Completamento del ridimensionamento o della migrazione"
 msgid "Firewall %s was successfully updated."
 msgstr "Il firewall %s è stato aggiornato correttamente."
 
+msgid "Firewall Details"
+msgstr "Dettagli del firewall"
+
 msgid "Firewall Policies"
 msgstr "Politiche del firewall"
+
+msgid "Firewall Policy Details"
+msgstr "Dettagli della politica del firewall"
+
+msgid "Firewall Rule Details"
+msgstr "Dettagli della regola del firewall"
 
 msgid "Firewall Rules"
 msgstr "Regole del firewall"
@@ -4648,7 +4736,7 @@ msgid "Flat"
 msgstr "Flat"
 
 msgid "Flavor"
-msgstr "Sapore"
+msgstr "Flavor"
 
 msgid "Flavor Access"
 msgstr "Accesso al flavor"
@@ -4706,7 +4794,7 @@ msgid "Floating IP:"
 msgstr "IP mobile:"
 
 msgid "Floating IPs"
-msgstr "Floating IPs"
+msgstr "IP mobili"
 
 msgid "Floating IPs:"
 msgstr "IP mobili:"
@@ -4852,13 +4940,13 @@ msgstr "Vai"
 
 #, python-format
 msgid "Group \"%s\" was successfully created."
-msgstr "Il gruppo \"%s\" è stato creato con successo."
+msgstr "Il gruppo \"%s\" è stato creato correttamente."
 
 msgid "Group ID"
 msgstr "Identificativo del Gruppo"
 
 msgid "Group Management"
-msgstr "Gestione Gruppi"
+msgstr "Gestione gruppi"
 
 msgid "Group Management: {{ group.name }}"
 msgstr "Gestione gruppo: {{ group.name }}"
@@ -4870,7 +4958,7 @@ msgid "Group by:"
 msgstr "Raggruppa per:"
 
 msgid "Group has been updated successfully."
-msgstr "Il gruppo è stato aggiornato con successo."
+msgstr "Il gruppo è stato aggiornato correttamente."
 
 msgid "Groups"
 msgstr "Gruppi"
@@ -5001,7 +5089,7 @@ msgid "Host or IP that the user is allowed to connect through."
 msgstr "Host o IP attraverso cui all'utente è consentito connettersi."
 
 msgid "Hostname"
-msgstr "Hostname"
+msgstr "Nome host"
 
 msgid "Hosts"
 msgstr "Host"
@@ -5163,7 +5251,7 @@ msgid "Identifier Type"
 msgstr "Tipo di identificativo"
 
 msgid "Identity"
-msgstr "Identity"
+msgstr "Identità"
 
 msgid "Identity service does not allow editing user data."
 msgstr "Il servizio di identità non consente di modificare i dati dell'utente."
@@ -5171,6 +5259,14 @@ msgstr "Il servizio di identità non consente di modificare i dati dell'utente."
 msgid "Identity service does not allow editing user password."
 msgstr ""
 "Il servizio di identità non consente la modifica della password utente."
+
+#, python-format
+msgid ""
+"If \"No volume type\" is selected, the default volume type \"%(name)s\" will "
+"be set for the created volume."
+msgstr ""
+"Se è selezionato \"Nessun tipo di volume\", il tipo di volume predefinito "
+"\"%(name)s\" verrà impostato per il volume creato."
 
 msgid ""
 "If \"No volume type\" is selected, the volume will be created without a "
@@ -5212,6 +5308,18 @@ msgstr ""
 "automaticamente configurate durante la creazione del cluster. Altrimenti, "
 "sarà necessario specificare i valori di configurazione manualmente."
 
+msgid ""
+"If you select an image via an HTTP URL, the Image Location field MUST be a "
+"valid and direct URL to the image binary; it must also be accessible to the "
+"Image Service. URLs that redirect or serve error pages will result in "
+"unusable images."
+msgstr ""
+"Se si seleziona un'immagine mediante un URL HTTP, il campo ubicazione "
+"immagine DEVE essere un URL valido e diretto al valore binario "
+"dell'immagine; deve inoltre essere accessibile al Servizio immagini. Gli URL "
+"che reindirizzano o utilizzano pagine in errore genereranno immagini non "
+"utilizzabili."
+
 msgid "Image"
 msgstr "Immagine"
 
@@ -5225,6 +5333,12 @@ msgstr "Immagine (Glance)"
 msgctxt "Task status of an Instance"
 msgid "Image Backup"
 msgstr "Backup immagine"
+
+msgid "Image Details"
+msgstr "Dettagli immagine"
+
+msgid "Image Details: {{ image.name }}"
+msgstr "Dettagli immagine: {{ image.name }}"
 
 msgid "Image File"
 msgstr "File immagine"
@@ -5240,6 +5354,9 @@ msgstr "Nome dell'Immagine"
 
 msgid "Image Name ="
 msgstr "Nome immagine ="
+
+msgid "Image Overview"
+msgstr "Panoramica sulle immagini"
 
 msgctxt "Task status of an Instance"
 msgid "Image Pending Upload"
@@ -5286,6 +5403,14 @@ msgstr "L'immagine è stata aggiornata correttamente."
 
 msgid "Images"
 msgstr "Immagini"
+
+msgid ""
+"Images can be provided via an HTTP URL or be uploaded from your local file "
+"system. Compressed image binaries are supported (.zip and .tar.gz.)"
+msgstr ""
+"Le immagini possono essere fornite mediante un URL HTTP oppure essere "
+"caricate da un file system locale. Sono supportati valori binari "
+"dell'immagine compressa (.zip e .tar.gz.)"
 
 msgid "Implementation"
 msgstr "Implementazione"
@@ -5422,7 +5547,13 @@ msgid "Instance Console Log"
 msgstr "Log console dell'istanza"
 
 msgid "Instance Count"
-msgstr "Conta Istanza"
+msgstr "Conteggio istanze"
+
+msgid "Instance Details"
+msgstr "Dettagli istanza"
+
+msgid "Instance Details: {{ instance.name }}"
+msgstr "Dettagli istanza: {{ instance.name }}"
 
 msgid "Instance ID"
 msgstr "ID istanza"
@@ -5547,8 +5678,20 @@ msgstr "Job"
 msgid "Job Binaries"
 msgstr "Job binary"
 
+msgid "Job Binary Details"
+msgstr "Dettagli job binary"
+
+msgid "Job Binary Overview"
+msgstr "Panoramica job binary"
+
 msgid "Job Configuration"
 msgstr "Configurazione job"
+
+msgid "Job Details"
+msgstr "Dettagli job"
+
+msgid "Job Execution Details"
+msgstr "Dettagli esecuzione job"
 
 msgid "Job Execution Guide"
 msgstr "Guida per l'esecuzione del job"
@@ -5559,8 +5702,14 @@ msgstr "ID esecuzione job"
 msgid "Job Guide"
 msgstr "Guida per il job"
 
+msgid "Job Overview"
+msgstr "Panoramica sul job"
+
 msgid "Job Template"
 msgstr "Template job"
+
+msgid "Job Template Details"
+msgstr "Dettagli template job"
 
 msgid "Job Templates"
 msgstr "Template job"
@@ -6067,7 +6216,7 @@ msgid "Message"
 msgstr "Messaggio"
 
 msgid "Metadata"
-msgstr "Metadata"
+msgstr "Metadati"
 
 msgid "Metadata Definition File"
 msgstr "File di definizione di metadati"
@@ -6188,7 +6337,7 @@ msgid "Modify Consumer"
 msgstr "Modifica consumer"
 
 msgid "Modify Groups"
-msgstr "Modificare i Gruppi"
+msgstr "Modifica gruppi"
 
 msgid "Modify Quotas"
 msgstr "Modifica quote"
@@ -6281,6 +6430,12 @@ msgstr "Lo spazio dei nomi %s è stato creato."
 msgid "Namespace Definition Source"
 msgstr "Origine definizione spazio dei nomi"
 
+msgid "Namespace Details"
+msgstr "Dettagli spazio dei nomi"
+
+msgid "Namespace Details: {{ namespace.namespace }}"
+msgstr "Dettagli spazio dei nomi: {{ namespace.namespace }}"
+
 msgid "Namespace JSON"
 msgstr "JSON spazio dei nomi"
 
@@ -6311,11 +6466,11 @@ msgstr "La rete \"%s\" è stata creata correttamente."
 
 #, python-format
 msgid "Network %s was successfully created."
-msgstr "La rete %s è stata creata con successo."
+msgstr "La rete %s è stata creata correttamente."
 
 #, python-format
 msgid "Network %s was successfully updated."
-msgstr "La rete %s è stata aggiornata con successo."
+msgstr "La rete %s è stata aggiornata correttamente."
 
 msgid "Network (Neutron)"
 msgstr "Rete (Neutron)"
@@ -6345,7 +6500,7 @@ msgid "Network Mask"
 msgstr "Maschera di rete"
 
 msgid "Network Name"
-msgstr "Nome di Rete"
+msgstr "Nome di rete"
 
 msgid "Network Overview"
 msgstr "Panoramica sulla rete"
@@ -6373,7 +6528,7 @@ msgid "Network attached to instance."
 msgstr "Rete collegata all'istanza."
 
 msgid "Network list can not be retrieved."
-msgstr "Impossibile ottenere la lista delle reti."
+msgstr "Impossibile richiamare l'elenco delle reti."
 
 msgid "Networking"
 msgstr "Rete"
@@ -6689,6 +6844,9 @@ msgstr "Gruppo nodi"
 msgid "Node Group Template %s updated"
 msgstr "Template gruppo nodi %s aggiornato"
 
+msgid "Node Group Template Details"
+msgstr "Dettagli template gruppo nodi"
+
 #, python-format
 msgid "Node Group Template copy %s created"
 msgstr "Copia del template gruppo nodi %s creata"
@@ -6714,6 +6872,9 @@ msgstr "Cluster gruppo nodi"
 
 msgid "Node processes are not specified"
 msgstr "I processi del nodo non sono specificati"
+
+msgid "Nodegroup Template Details"
+msgstr "Dettagli template gruppo nodi"
 
 msgid "Nodes Count"
 msgstr "Conteggio nodi"
@@ -6801,7 +6962,7 @@ msgid "Number of Snapshots"
 msgstr "Numero di istantanee"
 
 msgid "Number of VCPUs"
-msgstr "Numero di VCPUs"
+msgstr "Numero di VCPU"
 
 msgid "Number of Volumes"
 msgstr "Numero di volumi"
@@ -7103,7 +7264,7 @@ msgstr[1] "Istanze sospese"
 
 msgctxt "Task status of an Instance"
 msgid "Pausing"
-msgstr "Sospensione in corso"
+msgstr "In pausa"
 
 msgid "Peer gateway public IPv4/IPv6 Address or FQDN"
 msgstr "Indirizzo IPv4/IPv6 o FQDN peer gateway pubblico "
@@ -7226,10 +7387,10 @@ msgid "Plugins"
 msgstr "Plugin"
 
 msgid "Policies"
-msgstr "Polacco"
+msgstr "Politiche"
 
 msgid "Policy"
-msgstr "Polacco"
+msgstr "Politica"
 
 #, python-format
 msgid "Policy %s was successfully updated."
@@ -7259,11 +7420,14 @@ msgstr "Porta"
 
 #, python-format
 msgid "Port %s was successfully created."
-msgstr "La porta %s è stata creata con successo."
+msgstr "La porta %s è stata creata correttamente."
 
 #, python-format
 msgid "Port %s was successfully updated."
-msgstr "La porta %s è stata aggiornata con successo."
+msgstr "La porta %s è stata aggiornata correttamente."
+
+msgid "Port Details"
+msgstr "Dettagli porta"
 
 msgid "Port ID"
 msgstr "ID porta"
@@ -7276,7 +7440,7 @@ msgid "Port cleanup failed for these port-ids (%s)."
 msgstr "Il cleanup non è riuscito per gli id porta (%s)."
 
 msgid "Port list can not be retrieved."
-msgstr "Impossibile ottenere la lista delle porte."
+msgstr "Impossibile richiamare l'elenco delle porte."
 
 msgid "Port to be associated"
 msgstr "Porta da associare"
@@ -7291,7 +7455,7 @@ msgid "Positional Argument"
 msgstr "Argomento posizionale"
 
 msgid "Post-Creation"
-msgstr "Dopo-Creazione"
+msgstr "Dopo la creazione"
 
 msgid "Power State"
 msgstr "Stato attivazione"
@@ -7373,7 +7537,7 @@ msgid "Project Groups"
 msgstr "Gruppi del Progetto"
 
 msgid "Project ID"
-msgstr "Identificativo del Progetto"
+msgstr "ID progetto"
 
 msgid "Project ID:"
 msgstr "ID progetto"
@@ -7382,7 +7546,7 @@ msgid "Project Information"
 msgstr "Informazioni sul progetto"
 
 msgid "Project Limits"
-msgstr "Progetti"
+msgstr "Limiti del progetto"
 
 msgid "Project Members"
 msgstr "Membri del Progetto"
@@ -7507,7 +7671,7 @@ msgid "Queued"
 msgstr "In coda"
 
 msgid "Quota"
-msgstr "Limite"
+msgstr "Quota"
 
 msgid "Quota Name"
 msgstr "Nome quota"
@@ -7836,6 +8000,12 @@ msgstr "Ridimensionamento del volume \"%s\""
 msgid "Resource"
 msgstr "Risorsa"
 
+msgid "Resource Details"
+msgstr "Dettagli risorsa"
+
+msgid "Resource Details: {{ resource.resource_name }}"
+msgstr "Dettagli risorsa: {{ resource.resource_name }}"
+
 msgid "Resource ID"
 msgstr "ID risorsa"
 
@@ -7844,6 +8014,12 @@ msgstr "Metadati della risorsa"
 
 msgid "Resource Overview"
 msgstr "Panoramica sulla risorse"
+
+msgid "Resource Type"
+msgstr "Tipo di risorsa"
+
+msgid "Resource Type Details"
+msgstr "Dettagli tipo di risorsa"
 
 msgid "Resource Types"
 msgstr "Tipi di risorsa"
@@ -7976,7 +8152,7 @@ msgid "Role ID"
 msgstr "ID ruolo"
 
 msgid "Role Name"
-msgstr "Nome del Ruolo"
+msgstr "Nome ruolo"
 
 msgid "Role created successfully."
 msgstr "Ruolo creato correttamente."
@@ -8041,6 +8217,9 @@ msgstr "Il router %s è stato creato correttamente."
 #, python-format
 msgid "Router %s was successfully updated."
 msgstr "Il router %s è stato aggiornato correttamente."
+
+msgid "Router Details"
+msgstr "Dettagli router"
 
 msgid "Router ID"
 msgstr "ID router"
@@ -8149,7 +8328,7 @@ msgid "Save"
 msgstr "Salva"
 
 msgid "Save Changes"
-msgstr "Salvare le Modifiche"
+msgstr "Salvare modifiche"
 
 #, python-format
 msgid "Saved extra spec \"%s\"."
@@ -8410,7 +8589,7 @@ msgid "Select a monitor template for %s"
 msgstr "Selezionare un template di monitor per %s"
 
 msgid "Select a name for your network."
-msgstr "Si selezioni un nome per la propria rete."
+msgstr "Selezionare un nome per la propria rete."
 
 msgid "Select a new QoS spec"
 msgstr "Selezionare una nuova specifica QoS"
@@ -8487,7 +8666,7 @@ msgid "Select datastore type and version"
 msgstr "Seleziona il tipo e versione di archivio dati"
 
 msgid "Select format"
-msgstr "Seleziona il formato"
+msgstr "Seleziona formato"
 
 msgid "Select from active instances"
 msgstr "Selezionare dalle istanze attive"
@@ -8988,6 +9167,12 @@ msgstr ""
 msgid "Specs"
 msgstr "Specifiche"
 
+msgid "Stack Details"
+msgstr "Dettagli stack"
+
+msgid "Stack Details: {{ stack.stack_name }}"
+msgstr "Dettagli stack: {{ stack.stack_name }}"
+
 msgid "Stack Events"
 msgstr "Eventi stack"
 
@@ -8996,6 +9181,9 @@ msgstr "ID stack"
 
 msgid "Stack Name"
 msgstr "Nome stack"
+
+msgid "Stack Overview"
+msgstr "Panoramica stack"
 
 msgid "Stack Parameters"
 msgstr "Parametri dello stack"
@@ -9141,8 +9329,11 @@ msgstr "ID sottorete"
 msgid "Subnet Name"
 msgstr "Nome sottorete"
 
+msgid "Subnet Overview"
+msgstr "Panoramica sulla rete"
+
 msgid "Subnet list can not be retrieved."
-msgstr "Impossibile ottenere la lista delle sottoreti."
+msgstr "Impossibile richiamare l'elenco delle sottoreti."
 
 #, python-format
 msgid "Subnet: %(dest_subnetname)s"
@@ -9159,7 +9350,7 @@ msgid "Subnets"
 msgstr "Sottoreti"
 
 msgid "Subnets Associated"
-msgstr "Sottoreti Associate"
+msgstr "Sottoreti associate"
 
 msgctxt "Current status of a Job"
 msgid "Succeeded"
@@ -9399,7 +9590,7 @@ msgid "Target Host"
 msgstr "Host di destinazione"
 
 msgid "Task"
-msgstr "Task"
+msgstr "Attività"
 
 msgid "Template"
 msgstr "Template"
@@ -9412,6 +9603,9 @@ msgstr "File template"
 
 msgid "Template Name"
 msgstr "Nome template"
+
+msgid "Template Overview"
+msgstr "Panoramica sui template"
 
 msgid "Template Source"
 msgstr "Origine template"
@@ -10353,8 +10547,24 @@ msgid "Unable to create volume."
 msgstr "Impossibile creare il volume."
 
 #, python-format
+msgid "Unable to delete IKE Policy: %s"
+msgstr "Impossibile eliminare la politica IKE: %s"
+
+#, python-format
+msgid "Unable to delete IPSec Policy: %s"
+msgstr "Impossibile eliminare la politica IPsec: %s"
+
+#, python-format
+msgid "Unable to delete IPSec Site Connection: %s"
+msgstr "Impossibile eliminare la connessione al sito IPSec: %s"
+
+#, python-format
 msgid "Unable to delete VIP. %s"
 msgstr "Impossibile eliminare il VIP. %s"
+
+#, python-format
+msgid "Unable to delete VPN Service: %s"
+msgstr "Impossibile eliminare il servizio VPN: %s"
 
 msgid "Unable to delete container."
 msgstr "Impossibile eliminare il contenitore."
@@ -10722,7 +10932,7 @@ msgid "Unable to restore backup."
 msgstr "Impossibile ripristinare il backup."
 
 msgid "Unable to retrieve Ceilometer meter list."
-msgstr "Impossibile ottenere la lista delle metriche di Ceilometer."
+msgstr "Impossibile richiamare l'elenco delle metriche di Ceilometer."
 
 msgid "Unable to retrieve IKE Policies list."
 msgstr "Impossibile richiamare l'elenco delle politiche IKE."
@@ -10922,13 +11132,13 @@ msgid "Unable to retrieve details."
 msgstr "Impossibile richiamare i dettagli."
 
 msgid "Unable to retrieve domain details."
-msgstr "Impossibile ottenere i dettagli del dominio."
+msgstr "Impossibile richiamare i dettagli del dominio."
 
 msgid "Unable to retrieve domain information."
 msgstr "Impossibile richiamare le informazioni sul dominio."
 
 msgid "Unable to retrieve domain list."
-msgstr "Impossibile ottenere la lista dei domini."
+msgstr "Impossibile richiamare l'elenco dei domini."
 
 msgid "Unable to retrieve extensions information"
 msgstr "Impossibile richiamare le informazioni sulle estensioni."
@@ -10977,11 +11187,10 @@ msgid "Unable to retrieve floating IP pools."
 msgstr "Impossibile richiamare i pool IP mobili."
 
 msgid "Unable to retrieve group list."
-msgstr "Impossibile ottenere la lista dei gruppi."
+msgstr "Impossibile richiamare l'elenco dei gruppi."
 
 msgid "Unable to retrieve group list. Please try again later."
-msgstr ""
-"Impossibile ottenere la lista dei gruppi. Per favore riprovare più tardi."
+msgstr "Impossibile richiamare l'elenco dei gruppi. Riprovare più tardi."
 
 msgid "Unable to retrieve group users."
 msgstr "Impossibile richiamare gli utenti del gruppo."
@@ -11012,7 +11221,7 @@ msgid "Unable to retrieve image list"
 msgstr "Impossibile richiamare l'elenco di immagini"
 
 msgid "Unable to retrieve image list."
-msgstr "Impossibile ottenere la lista delle immagini."
+msgstr "Impossibile richiamare l'elenco delle immagini."
 
 msgid "Unable to retrieve image."
 msgstr "Impossibile richiamare l'immagine."
@@ -11043,7 +11252,7 @@ msgid "Unable to retrieve instance flavors."
 msgstr "Impossibile richiamare i flavor dell'istanza."
 
 msgid "Unable to retrieve instance list."
-msgstr "Impossibile ottenere la lista delle istanze."
+msgstr "Impossibile richiamare l'elenco delle istanze."
 
 msgid "Unable to retrieve instance password."
 msgstr "Impossibile richiamare la password dell'istanza."
@@ -11120,7 +11329,7 @@ msgid "Unable to retrieve network quota information."
 msgstr "Impossibile richiamare le informazioni sulla quota di rete."
 
 msgid "Unable to retrieve network."
-msgstr "Impossibile ottenere la rete."
+msgstr "Impossibile richiamare la rete."
 
 msgid "Unable to retrieve networks list."
 msgstr "Impossibile richiamare l'elenco di reti."
@@ -11175,22 +11384,22 @@ msgid "Unable to retrieve port details"
 msgstr "Impossibile richiamare i dettagli della porta"
 
 msgid "Unable to retrieve port details."
-msgstr "Impossibile ottenere i dettagli della porta."
+msgstr "Impossibile richiamare i dettagli della porta."
 
 msgid "Unable to retrieve ports information."
 msgstr "Impossibile richiamare le informazioni sulle porte."
 
 msgid "Unable to retrieve project details."
-msgstr "Impossibile ottenere i dettagli del progetto."
+msgstr "Impossibile richiamare i dettagli del progetto."
 
 msgid "Unable to retrieve project domain."
 msgstr "Impossibile richiamare il dominio del progetto."
 
 msgid "Unable to retrieve project information."
-msgstr "Impossibile ottenere informazioni sul progetto."
+msgstr "Impossibile richiamare le informazioni sul progetto."
 
 msgid "Unable to retrieve project list."
-msgstr "Impossibile ottenere la lista dei progetti."
+msgstr "Impossibile richiamare l'elenco dei progetti."
 
 msgid "Unable to retrieve providers list."
 msgstr "Impossibile richiamare l'elenco di provider."
@@ -11208,7 +11417,7 @@ msgid "Unable to retrieve resource."
 msgstr "Impossibile richiamare la risorsa."
 
 msgid "Unable to retrieve role list."
-msgstr "Impossibile ottenere la lista dei ruoli."
+msgstr "Impossibile richiamare l'elenco dei ruoli."
 
 msgid "Unable to retrieve roles list."
 msgstr "Impossibile richiamare l'elenco ruoli."
@@ -11317,11 +11526,10 @@ msgid "Unable to retrieve user information."
 msgstr "Impossibile richiamare le informazioni sull'utente."
 
 msgid "Unable to retrieve user list."
-msgstr "Impossibile ottenere la lista degli utenti."
+msgstr "Impossibile richiamare l'elenco degli utenti."
 
 msgid "Unable to retrieve user list. Please try again later."
-msgstr ""
-"Impossibile ottenere la lista degli utenti. Per favore riprovare più tardi."
+msgstr "Impossibile richiamare l'elenco degli utenti. Riprovare più tardi."
 
 msgid "Unable to retrieve user roles."
 msgstr "Impossibile richiamare i ruoli utente."
@@ -11520,6 +11728,9 @@ msgstr "Impossibile caricare l'oggetto."
 msgid "Unable to upload volume to image for volume: \"%s\""
 msgstr "Impossibile caricare il volume nell'immagine per il volume: \"%s\""
 
+msgid "Undefined"
+msgstr "Non definito"
+
 msgid "Unit"
 msgstr "Unità"
 
@@ -11622,10 +11833,10 @@ msgid "Update Failed"
 msgstr "Aggiornamento non riuscito"
 
 msgid "Update Group"
-msgstr "Aggiornare un Gruppo"
+msgstr "Aggiorna gruppo"
 
 msgid "Update Image"
-msgstr "Aggiornare un'Immagine"
+msgstr "Aggiorna immagine"
 
 msgctxt "current status of stack"
 msgid "Update In Progress"
@@ -11635,13 +11846,13 @@ msgid "Update Metadata"
 msgstr "Aggiorna metadati"
 
 msgid "Update Network"
-msgstr "Aggiornare la Rete"
+msgstr "Aggiorna rete"
 
 msgid "Update Object"
 msgstr "Aggiorna oggetto"
 
 msgid "Update Port"
-msgstr "Aggiornare la Porta"
+msgstr "Aggiorna porta"
 
 msgid "Update Role"
 msgstr "Aggiorna ruolo"
@@ -11900,13 +12111,13 @@ msgid "VCPU Usage"
 msgstr "Utilizzo delle VCPU"
 
 msgid "VCPUs"
-msgstr "VCPUs"
+msgstr "VCPU"
 
 msgid "VCPUs (total)"
-msgstr "VCPUs (totali)"
+msgstr "VCPU (totali)"
 
 msgid "VCPUs (used)"
-msgstr "VCPUs (in uso)"
+msgstr "VCPU (in uso)"
 
 msgid "VDI - Virtual Disk Image"
 msgstr "VDI - Virtual Disk Image"
@@ -11946,7 +12157,7 @@ msgid "VPN"
 msgstr "VPN"
 
 msgid "VPN Connections"
-msgstr "Progetti"
+msgstr "Connessioni VPN"
 
 msgid "VPN Service"
 msgstr "Servizio VPN"
@@ -12021,7 +12232,7 @@ msgid "View Log"
 msgstr "Visualizza log"
 
 msgid "View Usage"
-msgstr "Vedi Utilizzo"
+msgstr "Visualizza utilizzo"
 
 msgid "View Usage Report"
 msgstr "Visualizza report di utilizzo"
@@ -12045,6 +12256,16 @@ msgstr "Volume (Cinder)"
 msgid "Volume Backup"
 msgstr "Backup del volume"
 
+msgid "Volume Backup Details"
+msgstr "Dettagli backup del volume"
+
+msgid "Volume Backup Details: {{ backup.name }}"
+msgstr "Dettagli backup del volume: {{ backup.name }}"
+
+#, python-format
+msgid "Volume Backup Overview: %(backup_display_name)s"
+msgstr "Panoramica backup del volume: %(backup_display_name)s"
+
 msgid "Volume Backup:"
 msgstr "Backup del volume:"
 
@@ -12058,6 +12279,12 @@ msgstr ""
 "I backup del volume vengono memorizzati utilizzando il servizio Object "
 "Storage. Per poter creare un backup è necessario che questo servizio sia "
 "attivo."
+
+msgid "Volume Details"
+msgstr "Dettagli del volume"
+
+msgid "Volume Details: {{ volume.name }}"
+msgstr "Dettagli volume: {{ volume.name }}"
 
 msgid "Volume Encryption Details"
 msgstr "Dettagli codifica del volume"
@@ -12078,11 +12305,20 @@ msgstr "Limiti del volume"
 msgid "Volume Name"
 msgstr "Nome volume"
 
+msgid "Volume Overview"
+msgstr "Panoramica sul volume"
+
 msgid "Volume Size"
 msgstr "Dimensione del volume"
 
 msgid "Volume Snapshot"
 msgstr "Istantanea del volume"
+
+msgid "Volume Snapshot Details"
+msgstr "Dettagli sull'istantanea del volume"
+
+msgid "Volume Snapshot Details: {{ snapshot.name }}"
+msgstr "Dettagli istantanea del volume: {{ snapshot.name }}"
 
 msgid "Volume Snapshot Overview"
 msgstr "Panoramica sull'istantanea del volume"

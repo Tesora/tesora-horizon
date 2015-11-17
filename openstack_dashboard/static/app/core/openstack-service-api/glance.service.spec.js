@@ -24,9 +24,9 @@
 
     beforeEach(
       module('horizon.mock.openstack-service-api',
-        function($provide, initServices) {
-          testCall = initServices($provide, apiService, toastService);
-        })
+             function($provide, initServices) {
+               testCall = initServices($provide, apiService, toastService);
+             })
     );
 
     beforeEach(module('horizon.app.core.openstack-service-api'));
@@ -40,12 +40,6 @@
     });
 
     var tests = [
-      {
-        "func": "getVersion",
-        "method": "get",
-        "path": "/api/glance/version/",
-        "error": "Unable to get the Glance service version."
-      },
       {
         "func": "getImage",
         "method": "get",

@@ -225,8 +225,8 @@ class AccessDetailView(horizon_tables.DataTableView):
 
 class DetailView(horizon_tabs.TabbedTableView):
     tab_group_class = tabs.InstanceDetailTabs
-    template_name = 'horizon/common/_detail.html'
-    page_title = "{{ instance.name }}"
+    template_name = 'project/databases/detail.html'
+    page_title = _("Instance Details: {{ instance.name }}")
 
     def get_context_data(self, **kwargs):
         context = super(DetailView, self).get_context_data(**kwargs)

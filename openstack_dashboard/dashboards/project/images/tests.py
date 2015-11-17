@@ -41,9 +41,8 @@ class ImagesAndSnapshotsTests(test.TestCase):
     def test_index(self):
         images = self.images.list()
         api.glance.image_list_detailed(IsA(http.HttpRequest),
-                                       marker=None,
-                                       paginate=True) \
-            .AndReturn([images, False, False])
+                                       marker=None).AndReturn([images,
+                                                               False, False])
         self.mox.ReplayAll()
 
         res = self.client.get(INDEX_URL)
@@ -67,9 +66,8 @@ class ImagesAndSnapshotsTests(test.TestCase):
     @test.create_stubs({api.glance: ('image_list_detailed',)})
     def test_index_no_images(self):
         api.glance.image_list_detailed(IsA(http.HttpRequest),
-                                       marker=None,
-                                       paginate=True) \
-            .AndReturn([(), False, False])
+                                       marker=None).AndReturn([(),
+                                                               False, False])
         self.mox.ReplayAll()
 
         res = self.client.get(INDEX_URL)
@@ -78,8 +76,7 @@ class ImagesAndSnapshotsTests(test.TestCase):
     @test.create_stubs({api.glance: ('image_list_detailed',)})
     def test_index_error(self):
         api.glance.image_list_detailed(IsA(http.HttpRequest),
-                                       marker=None,
-                                       paginate=True) \
+                                       marker=None) \
             .AndRaise(self.exceptions.glance)
         self.mox.ReplayAll()
 
@@ -89,9 +86,7 @@ class ImagesAndSnapshotsTests(test.TestCase):
     @test.create_stubs({api.glance: ('image_list_detailed',)})
     def test_snapshot_actions(self):
         snapshots = self.snapshots.list()
-        api.glance.image_list_detailed(IsA(http.HttpRequest),
-                                       marker=None,
-                                       paginate=True) \
+        api.glance.image_list_detailed(IsA(http.HttpRequest), marker=None) \
             .AndReturn([snapshots, False, False])
         self.mox.ReplayAll()
 

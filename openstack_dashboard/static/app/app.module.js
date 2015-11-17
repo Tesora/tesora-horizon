@@ -23,10 +23,8 @@
    */
   var libraryModules = [
     'gettext',
-    'lrDragNDrop',
     'ngCookies',
     'ngSanitize',
-    'smart-table',
     'ui.bootstrap'
   ];
 
@@ -61,6 +59,7 @@
       .concat(horizonBuiltInModules)
       .concat(horizonPlugInModules)
     )
+
     .run(updateHorizon);
 
   updateHorizon.$inject = [
@@ -80,34 +79,35 @@
     $http,
     $cookies) {
 
-      $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
+    $http.defaults.headers.post['X-CSRFToken'] = $cookies.csrftoken;
 
-      // expose the legacy utils module
-      horizon.utils = hzUtils;
+    //expose the configuration for horizon legacy variable
+    horizon.utils = hzUtils;
 
-      horizon.conf.spinner_options = spinnerOptions;
+    horizon.conf.spinner_options = spinnerOptions;
 
-      horizon.cookies = angular.extend({}, $cookieStore, {
-        put: put,
-        getRaw: getRaw
+    horizon.cookies = angular.extend({}, $cookieStore, {
+      put: put,
+      getRaw: getRaw
+    });
+
+    // rewire the angular-gettext catalog to use django catalog
+    gettextCatalog.setCurrentLanguage(horizon.languageCode);
+    gettextCatalog.setStrings(horizon.languageCode, django.catalog);
+
+    /*
+     * cookies are updated at the end of current $eval, so for the horizon
+     * namespace we need to wrap it in a $apply function.
+     */
+    function put(key, value) {
+      angular.element('body').scope().$apply(function () {
+        $cookieStore.put(key, value);
       });
-
-      // rewire the angular-gettext catalog to use django catalog
-      gettextCatalog.setCurrentLanguage(horizon.languageCode);
-      gettextCatalog.setStrings(horizon.languageCode, django.catalog);
-
-      /*
-       * cookies are updated at the end of current $eval, so for the horizon
-       * namespace we need to wrap it in a $apply function.
-       */
-      function put(key, value) {
-        angular.element('body').scope().$apply(function () {
-          $cookieStore.put(key, value);
-        });
-      }
-
-      function getRaw(key) {
-        return $cookies[key];
-      }
     }
+
+    function getRaw(key) {
+      return $cookies[key];
+    }
+  }
+
 }());

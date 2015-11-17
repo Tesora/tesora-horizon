@@ -12,13 +12,15 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+import json
 
 import mock
 
 from openstack_dashboard.api.rest import neutron
-from openstack_dashboard.test import helpers as test
 from openstack_dashboard.test.test_data import neutron_data
 from openstack_dashboard.test.test_data.utils import TestData  # noqa
+
+from openstack_dashboard.test import helpers as test
 
 
 TEST = TestData(neutron_data.data)
@@ -64,7 +66,8 @@ class NeutronNetworksTestCase(test.TestCase):
         self.assertEqual(response['location'],
                          '/api/neutron/networks/'
                          + str(TEST.api_networks.first().get("id")))
-        self.assertEqual(response.json, TEST.api_networks.first())
+        self.assertEqual(response.content,
+                         json.dumps(TEST.api_networks.first()))
 
 
 class NeutronSubnetsTestCase(test.TestCase):
@@ -97,7 +100,8 @@ class NeutronSubnetsTestCase(test.TestCase):
         self.assertEqual(response['location'],
                          '/api/neutron/subnets/' +
                          str(TEST.api_subnets.first().get("id")))
-        self.assertEqual(response.json, TEST.api_subnets.first())
+        self.assertEqual(response.content,
+                         json.dumps(TEST.api_subnets.first()))
 
 
 class NeutronPortsTestCase(test.TestCase):

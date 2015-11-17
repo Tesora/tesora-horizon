@@ -998,16 +998,12 @@ STATUS_DISPLAY_CHOICES = (
                                 u"Migrating")),
     ("build", pgettext_lazy("Current status of an Instance", u"Build")),
     ("rescue", pgettext_lazy("Current status of an Instance", u"Rescue")),
-    ("soft-delete", pgettext_lazy("Current status of an Instance",
-                                  u"Soft Deleted")),
+    ("deleted", pgettext_lazy("Current status of an Instance", u"Deleted")),
+    ("soft_deleted", pgettext_lazy("Current status of an Instance",
+                                   u"Soft Deleted")),
     ("shelved", pgettext_lazy("Current status of an Instance", u"Shelved")),
     ("shelved_offloaded", pgettext_lazy("Current status of an Instance",
                                         u"Shelved Offloaded")),
-    # these vm states are used when generating CSV usage summary
-    ("building", pgettext_lazy("Current status of an Instance", u"Building")),
-    ("stopped", pgettext_lazy("Current status of an Instance", u"Stopped")),
-    ("rescued", pgettext_lazy("Current status of an Instance", u"Rescued")),
-    ("resized", pgettext_lazy("Current status of an Instance", u"Resized")),
 )
 
 TASK_DISPLAY_NONE = pgettext_lazy("Task status of an Instance", u"None")

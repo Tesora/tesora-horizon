@@ -26,10 +26,12 @@
   describe('pie chart directive', function () {
 
     var $scope, $elementMax, $elementTotal, $elementOverMax,
-      $elementNoQuota, donutChartSettings, quotaChartDefaults;
+        $elementNoQuota, donutChartSettings, quotaChartDefaults;
 
     beforeEach(module('templates'));
     beforeEach(module('horizon.framework'));
+    beforeEach(module('horizon.framework.widgets'));
+    beforeEach(module('horizon.framework.widgets.charts'));
 
     function cleanSpaces(string) {
       return string.trim().replace(/\s+/, ' ');
