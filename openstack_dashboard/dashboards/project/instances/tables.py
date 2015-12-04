@@ -81,31 +81,31 @@ def is_deleting(instance):
     return task_state.lower() == "deleting"
 
 
-class DeleteInstance(policy.PolicyTargetMixin, tables.BatchAction):
-    name = "delete"
+class TerminateInstance(policy.PolicyTargetMixin, tables.BatchAction):
+    name = "terminate"
     classes = ("btn-danger",)
     icon = "remove"
     policy_rules = (("compute", "compute:delete"),)
-    help_text = _("Deleted instances are not recoverable.")
+    help_text = _("Terminated instances are not recoverable.")
 
     @staticmethod
     def action_present(count):
         return ungettext_lazy(
-            u"Delete Instance",
-            u"Delete Instances",
+            u"Terminate Instance",
+            u"Terminate Instances",
             count
         )
 
     @staticmethod
     def action_past(count):
         return ungettext_lazy(
-            u"Scheduled deletion of Instance",
-            u"Scheduled deletion of Instances",
+            u"Scheduled termination of Instance",
+            u"Scheduled termination of Instances",
             count
         )
 
     def allowed(self, request, instance=None):
-        """Allow delete action if instance not currently being deleted."""
+        """Allow terminate action if instance not currently being deleted."""
         return not is_deleting(instance)
 
     def action(self, request, obj_id):
@@ -1168,7 +1168,7 @@ class InstancesTable(tables.DataTable):
             launch_actions = (LaunchLink,) + launch_actions
         if getattr(settings, 'LAUNCH_INSTANCE_NG_ENABLED', False):
             launch_actions = (LaunchLinkNG,) + launch_actions
-        table_actions = launch_actions + (DeleteInstance,
+        table_actions = launch_actions + (TerminateInstance,
                                           InstancesFilterAction)
         row_actions = (StartInstance, ConfirmResize, RevertResize,
                        CreateSnapshot, SimpleAssociateIP, AssociateIP,
@@ -1178,4 +1178,4 @@ class InstancesTable(tables.DataTable):
                        ConsoleLink, LogLink, TogglePause, ToggleSuspend,
                        ToggleShelve, ResizeLink, LockInstance, UnlockInstance,
                        SoftRebootInstance, RebootInstance,
-                       StopInstance, RebuildInstance, DeleteInstance)
+                       StopInstance, RebuildInstance, TerminateInstance)

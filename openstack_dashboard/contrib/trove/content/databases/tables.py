@@ -32,26 +32,26 @@ from openstack_dashboard.contrib.trove.content.database_backups \
 ACTIVE_STATES = ("ACTIVE",)
 
 
-class DeleteInstance(tables.BatchAction):
-    help_text = _("Deleted instances are not recoverable.")
+class TerminateInstance(tables.BatchAction):
+    help_text = _("Terminated instances are not recoverable.")
 
     @staticmethod
     def action_present(count):
         return ungettext_lazy(
-            u"Delete Instance",
-            u"Delete Instances",
+            u"Terminate Instance",
+            u"Terminate Instances",
             count
         )
 
     @staticmethod
     def action_past(count):
         return ungettext_lazy(
-            u"Scheduled deletion of Instance",
-            u"Scheduled deletion of Instances",
+            u"Scheduled termination of Instance",
+            u"Scheduled termination of Instances",
             count
         )
 
-    name = "delete"
+    name = "terminate"
     classes = ("btn-danger", )
     icon = "remove"
 
@@ -621,7 +621,7 @@ class InstancesTable(tables.DataTable):
         verbose_name = _("Instances")
         status_columns = ["status"]
         row_class = UpdateRow
-        table_actions = (LaunchLink, DeleteInstance)
+        table_actions = (LaunchLink, TerminateInstance)
         row_actions = (CreateBackup,
                        ResizeVolume,
                        ResizeInstance,
@@ -632,7 +632,7 @@ class InstancesTable(tables.DataTable):
                        ManageRoot,
                        RestartInstance,
                        DetachReplica,
-                       DeleteInstance)
+                       TerminateInstance)
 
 
 class UsersTable(tables.DataTable):

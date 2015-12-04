@@ -29,25 +29,25 @@ from openstack_dashboard.contrib.trove.content.databases import db_capability
 ACTIVE_STATES = ("ACTIVE",)
 
 
-class DeleteCluster(tables.BatchAction):
-    name = "delete"
+class TerminateCluster(tables.BatchAction):
+    name = "terminate"
     icon = "remove"
     classes = ('btn-danger',)
-    help_text = _("Deleted cluster is not recoverable.")
+    help_text = _("Terminated cluster is not recoverable.")
 
     @staticmethod
     def action_present(count):
         return ungettext_lazy(
-            u"Delete Cluster",
-            u"Delete Clusters",
+            u"Terminate Cluster",
+            u"Terminate Clusters",
             count
         )
 
     @staticmethod
     def action_past(count):
         return ungettext_lazy(
-            u"Scheduled deletion of Cluster",
-            u"Scheduled deletion of Clusters",
+            u"Scheduled termination of Cluster",
+            u"Scheduled termination of Clusters",
             count
         )
 
@@ -159,8 +159,8 @@ class ClustersTable(tables.DataTable):
         verbose_name = _("Clusters")
         status_columns = ["task"]
         row_class = UpdateRow
-        table_actions = (LaunchLink, DeleteCluster)
-        row_actions = (AddShard, ResetPassword, DeleteCluster)
+        table_actions = (LaunchLink, TerminateCluster)
+        row_actions = (AddShard, ResetPassword, TerminateCluster)
 
 
 def get_instance_size(instance):

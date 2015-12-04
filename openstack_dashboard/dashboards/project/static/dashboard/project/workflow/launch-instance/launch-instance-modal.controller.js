@@ -21,17 +21,36 @@
     .controller('LaunchInstanceModalController', LaunchInstanceModalController);
 
   LaunchInstanceModalController.$inject = [
-    'horizon.dashboard.project.workflow.launch-instance.modal.service'
+    '$modal',
+    '$window',
+    'horizon.dashboard.project.workflow.launch-instance.modal-spec'
   ];
 
-  function LaunchInstanceModalController(modalService) {
+  function LaunchInstanceModalController($modal, $window, modalSpec) {
     var ctrl = this;
 
-    ctrl.openLaunchInstanceWizard = openLaunchInstanceWizard;
-
-    function openLaunchInstanceWizard(launchContext) {
-      modalService.open(launchContext);
-    }
+    ctrl.openLaunchInstanceWizard = function (launchContext) {
+      var localSpec = {
+        resolve: {
+          launchContext: function () {
+            return launchContext;
+          }
+        }
+      };
+      angular.extend(localSpec, modalSpec);
+      var launchInstanceModal = $modal.open(localSpec);
+      var handleModalClose = function (redirectPropertyName) {
+        return function () {
+          if (launchContext && launchContext[redirectPropertyName]) {
+            $window.location.href = launchContext[redirectPropertyName];
+          }
+        };
+      };
+      launchInstanceModal.result.then(
+        handleModalClose('successUrl'),
+        handleModalClose('dismissUrl')
+      );
+    };
   }
 
 })();
