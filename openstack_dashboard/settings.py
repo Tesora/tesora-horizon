@@ -373,5 +373,3 @@ if DEBUG:
 # below may be omitted, though it should not be harmful
 from openstack_auth import utils as auth_utils
 auth_utils.patch_middleware_get_user()
-
-CSRF_COOKIE_AGE = None

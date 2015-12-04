@@ -62,7 +62,6 @@ RECOVERABLE = (
     novaclient.ClientException,
     novaclient.Forbidden,
     glanceclient.ClientException,
-    glanceclient.CommunicationError,
     neutronclient.Forbidden,
     neutronclient.NeutronClientException,
     swiftclient.ClientException,

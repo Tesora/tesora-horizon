@@ -9,7 +9,6 @@
 #    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 #    License for the specific language governing permissions and limitations
 #    under the License.
-import os
 import time
 
 from selenium.common import exceptions
@@ -145,14 +144,7 @@ class WebElementWrapper(WrapperFindOverride, webelement.WebElement):
         return result
 
 
-# select the active webdriver based on whether we --selenium-phantomjs or not
-if os.environ.get('SELENIUM_PHANTOMJS'):
-    WebDriver = webdriver.PhantomJS
-else:
-    WebDriver = webdriver.Firefox
-
-
-class WebDriverWrapper(WrapperFindOverride, WebDriver):
+class WebDriverWrapper(WrapperFindOverride, webdriver.Firefox):
     """Wrapper for webdriver to return WebElementWrapper on find_element."""
 
     def reload_request(self, locator, index):

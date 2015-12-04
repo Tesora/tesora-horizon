@@ -59,13 +59,14 @@
     .directive('buttonTooltip', buttonTooltip);
 
   buttonTooltip.$inject = [
+    'horizon.framework.widgets.basePath',
     '$compile',
     '$http',
     '$templateCache',
     'horizon.framework.widgets.action-list.tooltipConfig'
   ];
 
-  function buttonTooltip($compile, $http, $templateCache, tooltipConfig) {
+  function buttonTooltip(path, $compile, $http, $templateCache, tooltipConfig) {
     var directive = {
       link: link,
       restrict: 'A',

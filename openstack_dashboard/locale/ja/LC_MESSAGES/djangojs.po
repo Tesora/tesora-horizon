@@ -1,27 +1,18 @@
-# Translations template for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-#
-# Translators:
-# Akihiro Motoki <amotoki@gmail.com>, 2015
-# Shu Muto <shu-mutou@rf.jp.nec.com>, 2015
 # Akihiro Motoki <amotoki@gmail.com>, 2015. #zanata
-# Shu Muto <shu-mutou@rf.jp.nec.com>, 2015. #zanata
 # Yuko Katabami <yukokatabami@gmail.com>, 2015. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-12-02 02:47+0000\n"
+"POT-Creation-Date: 2015-11-11 04:40+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-12-02 12:35+0000\n"
-"Last-Translator: Shu Muto <shu-mutou@rf.jp.nec.com>\n"
+"PO-Revision-Date: 2015-11-07 12:02+0000\n"
+"Last-Translator: Akihiro Motoki <amotoki@gmail.com>\n"
 "Language: ja\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
-"Generated-By: Babel 2.0\n"
-"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"X-Generator: Zanata 3.7.1\n"
 "Language-Team: Japanese\n"
 
 msgid "(Max: 16Kb)"
@@ -169,14 +160,17 @@ msgstr "自動"
 msgid "Availability Zone"
 msgstr "アベイラビリティーゾーン"
 
+msgid "Boot Source"
+msgstr "ブートソース"
+
 msgid "Cancel"
 msgstr "取り消し"
 
 msgid "Cannot get service catalog from keystone."
 msgstr "keystone からサービスカタログを取得できません。"
 
-msgid "Cannot get the extension list."
-msgstr "拡張機能一覧を取得できません。"
+msgid "Cannot get the Nova extension list."
+msgstr "Nova の拡張機能一覧を取得できません。"
 
 msgid ""
 "Check the <b>Configuration Drive</b> box if you want to write metadata to a "
@@ -243,9 +237,6 @@ msgstr "削除"
 msgid "Description"
 msgstr "説明"
 
-msgid "Details"
-msgstr "詳細"
-
 msgid "Device Name"
 msgstr "デバイス名"
 
@@ -291,9 +282,6 @@ msgstr "フレーバー"
 
 msgid "Flavor Help"
 msgstr "フレーバーのヘルプ"
-
-msgid "Flavor Name"
-msgstr "フレーバー名"
 
 msgid ""
 "Flavors manage the sizing for the compute, memory and storage capacity of "
@@ -348,15 +336,13 @@ msgstr ""
 "のみインスタンスにアクセスできます。"
 
 msgid ""
-"If you select an availability zone and plan to use the 'boot from volume' "
-"option in the Source step, make sure that the availability zone you select "
-"for the instance is the same availability zone where your bootable volume "
-"resides."
+"If you select an availability zone and plan to use the boot from volume "
+"option, make sure that the availability zone you select for the instance is "
+"the same availability zone where your bootable volume resides."
 msgstr ""
-"送信元のステップにおいて、アベイラビリティーゾーンを指定し、かつ「ボリューム"
-"からの起動」を選択する場合、インスタンスのアベイラビリティーゾーンが起動可能"
-"なボリュームが置かれたアベイラビリティーゾーンと同じになるようにしてくださ"
-"い。"
+"アベイラビリティゾーンを指定し、かつボリュームからの起動を選択する場合、イン"
+"スタンスのアベイラビリティゾーンが起動可能なボリュームが置かれたアベイラビリ"
+"ティゾーンと同じになるようにしてください。"
 
 msgid ""
 "If you want to create an instance that uses ephemeral storage, meaning the "
@@ -382,9 +368,6 @@ msgstr "イメージ"
 msgid "Image Name"
 msgstr "イメージ名"
 
-msgid "Images"
-msgstr "イメージ"
-
 msgid "Impact on your quota"
 msgstr "クォータへの影響"
 
@@ -393,9 +376,6 @@ msgstr "キーペアのインポート"
 
 msgid "Instance Details"
 msgstr "インスタンスの詳細"
-
-msgid "Instance Details Help"
-msgstr "インスタンスの詳細のヘルプ"
 
 msgid "Instance Name"
 msgstr "インスタンス名"
@@ -406,21 +386,18 @@ msgstr "インスタンスのスナップショット"
 msgid "Instance Source"
 msgstr "インスタンスのソース"
 
-msgid "Instance Source Help"
-msgstr "インスタンスのソースのヘルプ"
-
 msgid "Instance count is required and must be an integer of at least 1"
 msgstr "インスタンス数は必須で、最低でも 1 以上の整数でなければなりません。"
 
 msgid ""
 "Instance source is the template used to create an instance. You can use a "
-"snapshot of an existing instance, an image, or a volume (if enabled).\n"
-"      You can also choose to use persistent storage by creating a new volume."
+"snapshot of an existing instance, an image, or a volume (if enabled). You "
+"can also choose to use persistent storage by creating a new volume."
 msgstr ""
 "インスタンスのソースは、インスタンスを作成する際のテンプレートです。ソースと"
 "して、既存のインスタンスのスナップショット、イメージ、ボリューム (有効になっ"
-"ている場合) が選択できます。\n"
-"      永続ストレージを選択して、新しいボリュームを作成することもできます。"
+"ている場合) が選択できます。永続ストレージを選択して、新しいボリュームを作成"
+"することもできます。"
 
 msgid "Insufficient privilege level to view user information."
 msgstr "ユーザー情報を参照するのに必要な権限がありません。"
@@ -473,9 +450,6 @@ msgstr "マッピング種別"
 msgid "Max Port"
 msgstr "上限ポート番号"
 
-msgid "Metadata"
-msgstr "メタデータ"
-
 msgid "Min Disk"
 msgstr "最小ディスク"
 
@@ -490,6 +464,9 @@ msgstr "最小メモリー"
 
 msgid "Min RAM (MB)"
 msgstr "最小メモリー (MB)"
+
+msgid "Min Ram"
+msgstr "最小メモリー"
 
 msgid "Name"
 msgstr "名前"
@@ -531,14 +508,13 @@ msgid "Physical Network"
 msgstr "物理ネットワーク"
 
 msgid ""
-"Please provide the initial hostname for the instance, the availability zone "
-"where it will be deployed, and the instance count.\n"
-"      Increase the Count to create multiple instances with the same settings."
+"Please provide the initial host name for the instance, the availability zone "
+"where it will be deployed, and the instance count. Increase the Count to "
+"create multiple instances with the same settings."
 msgstr ""
 "インスタンスの最初のホスト名、インスタンスを配置するアベイラビリティーゾー"
-"ン、作成するインスタンス数を指定してください。\n"
-"      同じ設定で複数のインスタンスを作成したい場合はインスタンス数を増やして"
-"ください。"
+"ン、作成するインスタンス数を指定してください。同じ設定で複数のインスタンスを"
+"作成したい場合はインスタンス数を増やしてください。"
 
 msgid "Policy check failed."
 msgstr "ポリシーチェックに失敗しました。"
@@ -665,6 +641,12 @@ msgstr "セグメント ID"
 msgid "Select Boot Source"
 msgstr "ブートソースを選択してください"
 
+msgid "Select Source"
+msgstr "ソースを選択してください"
+
+msgid "Select Source Help"
+msgstr "起動元の選択のヘルプ"
+
 msgid "Select a key pair from the available key pairs below."
 msgstr "以下の利用可能なキーペアから、１つのキーペアを選択してください。"
 
@@ -717,9 +699,6 @@ msgstr "サイズ (GB)"
 msgid "Snapshot"
 msgstr "スナップショット"
 
-msgid "Source"
-msgstr "送信元"
-
 msgid "Status"
 msgstr "ステータス"
 
@@ -736,9 +715,6 @@ msgstr "キーペア %(name)s を正常に作成できました。"
 #, python-format
 msgid "Successfully imported key pair %(name)s."
 msgstr "キーペア %(name)s を正常に取り込みました"
-
-msgid "Swap Disk"
-msgstr "スワップディスク"
 
 msgid ""
 "The flavor you select for an instance determines the amount of compute, "
@@ -935,9 +911,6 @@ msgstr "ユーザーを編集できません。"
 msgid "Unable to fetch the service catalog."
 msgstr "サービスカタログを取得できません。"
 
-msgid "Unable to get the Glance service version."
-msgstr "Glance のサービスバージョンを取得できません。"
-
 msgid "Unable to get the Keystone service version."
 msgstr "Keystone のサービスバージョンを取得できません。"
 
@@ -954,13 +927,10 @@ msgid "Unable to retrieve the aggregate extra specs."
 msgstr "アグリゲートの追加スペックを取得できません。"
 
 msgid "Unable to retrieve the availability zones."
-msgstr "アベイラビリティーゾーンを取得できません。"
+msgstr "アベイラビリティゾーンを取得できません。"
 
 msgid "Unable to retrieve the current user session."
 msgstr "現在のユーザーセッションを取得できません。"
-
-msgid "Unable to retrieve the default volume type."
-msgstr "デフォルトのボリューム種別を取得できません。"
 
 msgid "Unable to retrieve the domain."
 msgstr "ドメインを取得できません。"
@@ -1034,15 +1004,6 @@ msgstr "ユーザーを取得できません。"
 msgid "Unable to retrieve the volume snapshots."
 msgstr "ボリュームスナップショットの一覧を取得できません。"
 
-msgid "Unable to retrieve the volume type."
-msgstr "ボリューム種別を取得できません。"
-
-msgid "Unable to retrieve the volume types."
-msgstr "ボリューム種別の一覧を取得できません。"
-
-msgid "Unable to retrieve the volume."
-msgstr "ボリューム情報を取得できません。"
-
 msgid "Unable to retrieve the volumes."
 msgstr "ボリュームの一覧を取得できません。"
 
@@ -1070,13 +1031,7 @@ msgstr "ユーザー ID"
 msgid "User Name"
 msgstr "ユーザー名"
 
-msgid "Users"
-msgstr "ユーザー"
-
 msgid "VCPUS"
-msgstr "仮想 CPU"
-
-msgid "VCPUs"
 msgstr "仮想 CPU"
 
 msgid "Value Type"

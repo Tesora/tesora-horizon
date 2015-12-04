@@ -22,17 +22,18 @@
     var apiService = {};
     var toastService = {};
 
-    beforeEach(function() {
-      module('horizon.mock.openstack-service-api', function($provide, initServices) {
-        testCall = initServices($provide, apiService, toastService);
-      });
+    beforeEach(
+      module('horizon.mock.openstack-service-api',
+             function($provide, initServices) {
+               testCall = initServices($provide, apiService, toastService);
+             })
+    );
 
-      module('horizon.app.core.openstack-service-api');
+    beforeEach(module('horizon.app.core.openstack-service-api'));
 
-      inject(['horizon.app.core.openstack-service-api.glance', function(glanceAPI) {
-        service = glanceAPI;
-      }]);
-    });
+    beforeEach(inject(['horizon.app.core.openstack-service-api.glance', function(glanceAPI) {
+      service = glanceAPI;
+    }]));
 
     it('defines the service', function() {
       expect(service).toBeDefined();
@@ -40,52 +41,12 @@
 
     var tests = [
       {
-        "func": "getVersion",
-        "method": "get",
-        "path": "/api/glance/version/",
-        "error": "Unable to get the Glance service version."
-      },
-      {
         "func": "getImage",
         "method": "get",
         "path": "/api/glance/images/42",
         "error": "Unable to retrieve the image.",
         "testInput": [
           42
-        ]
-      },
-      {
-        "func": "deleteImage",
-        "method": "delete",
-        "path": "/api/glance/images/42",
-        "error": "Unable to delete the image with id: 42",
-        "testInput": [
-          42
-        ]
-      },
-      {
-        "func": "createImage",
-        "method": "post",
-        "path": "/api/glance/images/",
-        "data": {
-          name: '1'
-        },
-        "error": "Unable to create the image.",
-        "testInput": [
-          {name: '1'}
-        ]
-      },
-      {
-        "func": "updateImage",
-        "method": "patch",
-        "path": "/api/glance/images/1/",
-        "data": {
-          id: '1',
-          name: '1'
-        },
-        "error": "Unable to update the image.",
-        "testInput": [
-          {name: '1', id: '1'}
         ]
       },
       {
@@ -168,11 +129,6 @@
     it('supresses the error if instructed for getNamespaces', function() {
       spyOn(apiService, 'get').and.returnValue("promise");
       expect(service.getNamespaces("whatever", true)).toBe("promise");
-    });
-
-    it('supresses the error if instructed for deleteImage', function() {
-      spyOn(apiService, 'delete').and.returnValue("promise");
-      expect(service.deleteImage("whatever", true)).toBe("promise");
     });
 
   });

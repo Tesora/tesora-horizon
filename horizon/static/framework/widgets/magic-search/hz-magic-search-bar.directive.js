@@ -100,7 +100,7 @@
       scope.filterStrings = scope.filterStrings ? scope.filterStrings : defaultFilterStrings;
     }
 
-    function compile(element) {
+    function compile(element, attrs) {
       /**
         * Need to set template here since MagicSearch template
         * attribute is not interpolated. Can't hardcode the

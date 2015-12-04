@@ -662,7 +662,7 @@ class NetworkSubnetTests(test.BaseAdminViewTests):
         subnet = self.subnets.first()
 
         api.neutron.network_get(IsA(http.HttpRequest), network.id)\
-            .MultipleTimes().AndReturn(network)
+            .AndReturn(network)
         api.neutron.subnet_get(IsA(http.HttpRequest), subnet.id)\
             .AndReturn(subnet)
 

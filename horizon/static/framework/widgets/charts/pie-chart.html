@@ -7,7 +7,7 @@
   </div>
 
   <svg class="svg-pie-chart"
-    ng-show="chartData.showChart"
+    ng-if="chartData.showChart"
     ng-attr-height="{$ ::model.settings.diameter $}"
     ng-attr-width="{$ ::model.settings.diameter $}">
     <g class="chart"

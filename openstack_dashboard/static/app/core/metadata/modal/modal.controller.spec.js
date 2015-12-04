@@ -50,7 +50,7 @@
       var controller = createController(modalInstance);
       metadataService.editMetadata = function() {
         return {
-          then: function(success) {
+          then: function(success, fail) {
             success();
           }
         };

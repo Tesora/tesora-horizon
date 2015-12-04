@@ -24,17 +24,21 @@
 
   describe('toast factory', function() {
 
-    var $timeout, service;
+    var $compile,
+        $scope,
+        service;
 
     var successMsg = "I am success.";
     var dangerMsg = "I am danger.";
     var infoMsg = "I am info.";
 
     beforeEach(module('templates'));
-    beforeEach(module('horizon.framework'));
+    beforeEach(module('horizon.framework.widgets'));
+    beforeEach(module('horizon.framework.widgets.toast'));
     beforeEach(inject(function ($injector) {
       service = $injector.get('horizon.framework.widgets.toast.service');
-      $timeout = $injector.get('$timeout');
+      $scope = $injector.get('$rootScope').$new();
+      $compile = $injector.get('$compile');
     }));
 
     it('should create different toasts', function() {
@@ -47,18 +51,6 @@
       service.add('info', infoMsg);
       expect(service.get().length).toBe(3);
       expect(service.get()[2].msg).toBe(infoMsg);
-    });
-
-    it('should dismiss specific toasts after a delay', function() {
-      service.add('danger', dangerMsg);
-      service.add('success', successMsg);
-      service.add('info', infoMsg);
-      expect(service.get().length).toBe(3);
-
-      $timeout.flush();
-
-      expect(service.get().length).toBe(1);
-      expect(service.get()[0].type).toBe('danger');
     });
 
     it('should provide a function to clear all toasts', function() {
@@ -102,9 +94,9 @@
   describe('toast directive', function () {
 
     var $compile,
-      $scope,
-      $element,
-      service;
+        $scope,
+        $element,
+        service;
 
     var successMsg = "I am success.";
     var dangerMsg = "I am danger.";
@@ -115,7 +107,8 @@
     }
 
     beforeEach(module('templates'));
-    beforeEach(module('horizon.framework'));
+    beforeEach(module('horizon.framework.widgets'));
+    beforeEach(module('horizon.framework.widgets.toast'));
     beforeEach(inject(function ($injector) {
       $scope = $injector.get('$rootScope').$new();
       $compile = $injector.get('$compile');

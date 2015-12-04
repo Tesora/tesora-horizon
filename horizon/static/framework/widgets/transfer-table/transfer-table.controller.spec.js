@@ -39,7 +39,7 @@
       log = { error: function() {} };
       var attrs = angular.noop;
       var parse = function(attr) {
-        return function() {
+        return function(scope) {
           return attr ? attr : {};
         };
       };
