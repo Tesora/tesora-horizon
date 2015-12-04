@@ -59,8 +59,13 @@ class VolumeSnapshotsViewTests(test.BaseAdminViewTests):
                       args=[snapshot.id])
         res = self.client.get(url)
 
-        self.assertTemplateUsed(res, 'horizon/common/_detail.html')
-        self.assertEqual(res.context['snapshot'].id, snapshot.id)
+        self.assertContains(res,
+                            "<h1>Volume Snapshot Details: %s</h1>" %
+                            snapshot.name,
+                            1, 200)
+        self.assertContains(res, "<dd>test snapshot</dd>", 1, 200)
+        self.assertContains(res, "<dd>%s</dd>" % snapshot.id, 1, 200)
+        self.assertContains(res, "<dd>Available</dd>", 1, 200)
 
     @test.create_stubs({cinder: ('volume_snapshot_get',
                                  'volume_get')})
