@@ -10,6 +10,7 @@
 .noseids
 .DS_STORE
 coverage.xml
+coverage-karma
 nosetests.xml
 pep8.txt
 pylint.txt
@@ -22,6 +23,7 @@ openstack_dashboard/wsgi/horizon.wsgi
 doc/build/
 doc/source/sourcecode
 /static/
+integration_tests_screenshots/
 .venv
 .tox
 node_modules
