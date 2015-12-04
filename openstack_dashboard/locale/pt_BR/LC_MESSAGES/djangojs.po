@@ -1,29 +1,18 @@
-# Translations template for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-#
-# Translators:
-# Gabriel Wainer, 2015
-# Lafaiet <coldmetall@gmail.com>, 2015
-# Luís Eduardo Tenório Silva <eduardovansilva@gmail.com>, 2015
-# Tiago OR (James) <tiagoor@gmail.com>, 2015
-# André Campos <andrecbezerra@gmail.com>, 2015. #zanata
 # Marcelo Dieder <marcelodieder@gmail.com>, 2015. #zanata
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-25 05:47+0000\n"
+"POT-Creation-Date: 2015-11-04 14:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-11-06 06:27+0000\n"
-"Last-Translator: André Campos <andrecbezerra@gmail.com>\n"
+"PO-Revision-Date: 2015-10-02 02:54+0000\n"
+"Last-Translator: Marcelo Dieder <marcelodieder@gmail.com>\n"
 "Language: pt-BR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Generated-By: Babel 2.0\n"
-"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"X-Generator: Zanata 3.7.1\n"
 "Language-Team: Portuguese (Brazil)\n"
 
 msgid "(Max: 16Kb)"
@@ -174,14 +163,17 @@ msgstr "Automático"
 msgid "Availability Zone"
 msgstr "Zona de Disponibilidade"
 
+msgid "Boot Source"
+msgstr "Origem do Boot"
+
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgid "Cannot get service catalog from keystone."
 msgstr "Não é possível obter o catálogo de serviços a partir do keystone."
 
-msgid "Cannot get the extension list."
-msgstr "Não foi possível obter lista de extensão."
+msgid "Cannot get the Nova extension list."
+msgstr "Não é possível obter lista de extensão do Nova."
 
 msgid ""
 "Check the <b>Configuration Drive</b> box if you want to write metadata to a "
@@ -295,9 +287,6 @@ msgstr "Flavor"
 msgid "Flavor Help"
 msgstr "Ajuda em Flavor"
 
-msgid "Flavor Name"
-msgstr "Nome do Flavor"
-
 msgid ""
 "Flavors manage the sizing for the compute, memory and storage capacity of "
 "the instance."
@@ -356,6 +345,16 @@ msgstr ""
 "console de VNC."
 
 msgid ""
+"If you select an availability zone and plan to use the boot from volume "
+"option, make sure that the availability zone you select for the instance is "
+"the same availability zone where your bootable volume resides."
+msgstr ""
+"Se você selecionar uma zona de disponibilidade e planeja usar o boot a "
+"partir de opção de volume, certifique-se de que a zona de disponibilidade "
+"que você selecionar para a instância é a mesma zona de disponibilidade onde "
+"o seu volume bootavel reside."
+
+msgid ""
 "If you want to create an instance that uses ephemeral storage, meaning the "
 "instance data is lost when the instance is deleted, then choose one of the "
 "following boot sources:"
@@ -399,6 +398,16 @@ msgstr "Origem da Instância"
 
 msgid "Instance count is required and must be an integer of at least 1"
 msgstr "Quantidade de instância é requerido e deve ser de no mínimo 1"
+
+msgid ""
+"Instance source is the template used to create an instance. You can use a "
+"snapshot of an existing instance, an image, or a volume (if enabled). You "
+"can also choose to use persistent storage by creating a new volume."
+msgstr ""
+"Fonte da instância é o modelo usado para criar uma instância. Você pode usar "
+"um instantâneo de uma instância existente, uma imagem, ou um volume (se "
+"ativado). Você também pode optar por usar armazenamento persistente através "
+"da criação de um novo volume."
 
 msgid "Insufficient privilege level to view user information."
 msgstr ""
@@ -454,9 +463,6 @@ msgstr "Tipo de mapeamento"
 msgid "Max Port"
 msgstr "Máx. Porta"
 
-msgid "Metadata"
-msgstr "Metadado"
-
 msgid "Min Disk"
 msgstr "Mín. Disco"
 
@@ -471,6 +477,9 @@ msgstr "Mín. RAM"
 
 msgid "Min RAM (MB)"
 msgstr "Mín. RAM (MB)"
+
+msgid "Min Ram"
+msgstr "Mín. RAM"
 
 msgid "Name"
 msgstr "Nome"
@@ -510,6 +519,15 @@ msgstr "Aguardando a Exclusão"
 
 msgid "Physical Network"
 msgstr "Rede Física"
+
+msgid ""
+"Please provide the initial host name for the instance, the availability zone "
+"where it will be deployed, and the instance count. Increase the Count to "
+"create multiple instances with the same settings."
+msgstr ""
+"Por favor, forneça o nome do host inicial para a instância, a zona de "
+"disponibilidade onde será implantada, e a contagem de instância. Aumentar a "
+"contagem para criar várias instâncias com as mesmas configurações."
 
 msgid "Policy check failed."
 msgstr "Verificação de política falhou."
@@ -634,6 +652,12 @@ msgstr "ID de Segmentação"
 msgid "Select Boot Source"
 msgstr "Selecionar origem da Inicialização da Instância"
 
+msgid "Select Source"
+msgstr "Selecionar Origem"
+
+msgid "Select Source Help"
+msgstr "Selecione a fonte de ajuda"
+
 msgid "Select a key pair from the available key pairs below."
 msgstr "Selecione um par de chaves dentre os pares disponíveis abaixo."
 
@@ -701,9 +725,6 @@ msgstr "Par de chaves %(name)s criado com sucesso."
 #, python-format
 msgid "Successfully imported key pair %(name)s."
 msgstr "Par de chaves %(name)s importados com sucesso."
-
-msgid "Swap Disk"
-msgstr "Disco de Swap"
 
 msgid ""
 "The flavor you select for an instance determines the amount of compute, "
@@ -898,9 +919,6 @@ msgstr "Não foi possível editar o usuário."
 msgid "Unable to fetch the service catalog."
 msgstr "Não é possível obter o catálogo de serviços."
 
-msgid "Unable to get the Glance service version."
-msgstr "Não foi possível obter versão do serviço Glance."
-
 msgid "Unable to get the Keystone service version."
 msgstr "Não foi possível obter a versão do serviço Keystone."
 
@@ -1023,9 +1041,6 @@ msgstr "Nome do Usuário"
 
 msgid "VCPUS"
 msgstr "VCPUS"
-
-msgid "VCPUs"
-msgstr "VPCUs"
 
 msgid "Value Type"
 msgstr "Tipo de Valor"

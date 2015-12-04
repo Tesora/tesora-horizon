@@ -1102,7 +1102,7 @@ POWER_DISPLAY_CHOICES = (
 
 class InstancesFilterAction(tables.FilterAction):
     filter_type = "server"
-    filter_choices = (('name', _("Instance Name ="), True),
+    filter_choices = (('name', _("Instance Name"), True),
                       ('status', _("Status ="), True),
                       ('image', _("Image ID ="), True),
                       ('flavor', _("Flavor ID ="), True))
@@ -1131,7 +1131,9 @@ class InstancesTable(tables.DataTable):
     ip = tables.Column(get_ips,
                        verbose_name=_("IP Address"),
                        attrs={'data-type': "ip"})
-    size = tables.Column(get_size, sortable=False, verbose_name=_("Size"))
+    size = tables.Column(get_size,
+                         verbose_name=_("Size"),
+                         attrs={'data-type': 'size'})
     keypair = tables.Column(get_keyname, verbose_name=_("Key Pair"))
     status = tables.Column("status",
                            filters=(title, filters.replace_underscores),

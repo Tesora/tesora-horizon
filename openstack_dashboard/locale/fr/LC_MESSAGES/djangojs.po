@@ -1,16 +1,5 @@
-# Translations template for PROJECT.
-# Copyright (C) 2015 ORGANIZATION
-# This file is distributed under the same license as the PROJECT project.
-#
-# Translators:
-# Corina Roe <croe@redhat.com>, 2015
-# Corinne Verheyde <cverheyd@hotmail.com>, 2015
-# Lucas Mascaro <mascaro.lucas@yahoo.fr>, 2015
-# Maxime COQUEREL <max.coquerel@gmail.com>, 2015
 # Corinne Verheyde <cverheyd@gmail.com>, 2015. #zanata
 # François Bureau <bureaufrancois@gmail.com>, 2015. #zanata
-# Gael Rehault <gael01@gmail.com>, 2015. #zanata
-# Maxime Coquerel <max.coquerel@gmail.com>, 2015. #zanata
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 # Romain Chantereau <rchanter@redhat.com>, 2015. #zanata
 # andrew melim <nokostya.translation@gmail.com>, 2015. #zanata
@@ -18,16 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-11-25 05:47+0000\n"
+"POT-Creation-Date: 2015-11-04 14:35+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-11-27 02:38+0000\n"
-"Last-Translator: Maxime Coquerel <max.coquerel@gmail.com>\n"
+"PO-Revision-Date: 2015-10-05 01:27+0000\n"
+"Last-Translator: François Bureau <bureaufrancois@gmail.com>\n"
 "Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"Generated-By: Babel 2.0\n"
-"X-Generator: Zanata 3.7.3\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"X-Generator: Zanata 3.7.1\n"
 "Language-Team: French\n"
 
 msgid "(Max: 16Kb)"
@@ -179,14 +167,17 @@ msgstr "Automatique"
 msgid "Availability Zone"
 msgstr "Zone de disponibilité"
 
+msgid "Boot Source"
+msgstr "Source de démarrage"
+
 msgid "Cancel"
 msgstr "Annuler"
 
 msgid "Cannot get service catalog from keystone."
 msgstr "Impossible d'obtenir le catalogue de services Keystone"
 
-msgid "Cannot get the extension list."
-msgstr "Impossible d'obtenir la liste des extensions."
+msgid "Cannot get the Nova extension list."
+msgstr "Impossible d'obtenir la liste des extensions Nova."
 
 msgid ""
 "Check the <b>Configuration Drive</b> box if you want to write metadata to a "
@@ -255,9 +246,6 @@ msgstr "Supprimée"
 msgid "Description"
 msgstr "Description"
 
-msgid "Details"
-msgstr "Détails"
-
 msgid "Device Name"
 msgstr "Nom du périphérique"
 
@@ -303,9 +291,6 @@ msgstr "Gabarit"
 
 msgid "Flavor Help"
 msgstr "Aide Gabarits"
-
-msgid "Flavor Name"
-msgstr "Nom du Gabarit"
 
 msgid ""
 "Flavors manage the sizing for the compute, memory and storage capacity of "
@@ -365,6 +350,16 @@ msgstr ""
 "d'une console VNC."
 
 msgid ""
+"If you select an availability zone and plan to use the boot from volume "
+"option, make sure that the availability zone you select for the instance is "
+"the same availability zone where your bootable volume resides."
+msgstr ""
+"Si vous sélectionnez une zone de disponibilité et que vous pensez utiliser "
+"le démarrage de l'option volume, veillez à ce que la zone de disponibilité "
+"que vous avez sélectionnée pour l'instance est la même zone de disponibilité "
+"que celle où votre volume de démarrage se trouve."
+
+msgid ""
 "If you want to create an instance that uses ephemeral storage, meaning the "
 "instance data is lost when the instance is deleted, then choose one of the "
 "following boot sources:"
@@ -389,9 +384,6 @@ msgstr "Image"
 msgid "Image Name"
 msgstr "Nom de l'Image"
 
-msgid "Images"
-msgstr "Images"
-
 msgid "Impact on your quota"
 msgstr "Impact sur votre quota"
 
@@ -400,9 +392,6 @@ msgstr "Importer une Paire Clés"
 
 msgid "Instance Details"
 msgstr "Détails de l'instance"
-
-msgid "Instance Details Help"
-msgstr "Aide avec les détails de l'instance"
 
 msgid "Instance Name"
 msgstr "Nom de l'instance"
@@ -413,13 +402,20 @@ msgstr "Instantané d'Instance"
 msgid "Instance Source"
 msgstr "Source de l'instance"
 
-msgid "Instance Source Help"
-msgstr "Aide à la source de l'instance"
-
 msgid "Instance count is required and must be an integer of at least 1"
 msgstr ""
 "Le nombre d'instances est obligatoire et doit correspondre à un nombre "
 "entier supérieur ou égal à 1"
+
+msgid ""
+"Instance source is the template used to create an instance. You can use a "
+"snapshot of an existing instance, an image, or a volume (if enabled). You "
+"can also choose to use persistent storage by creating a new volume."
+msgstr ""
+"La source d'instance est le modèle utilisé pour créer une instance. Vous "
+"pouvez utiliser une capture d'instance déjà existante, une image ou un "
+"volume (si actif). Vous pouvez aussi opter pour un stockage persistant en "
+"créant un nouveau volume."
 
 msgid "Insufficient privilege level to view user information."
 msgstr ""
@@ -476,9 +472,6 @@ msgstr "Type de mappage"
 msgid "Max Port"
 msgstr "Port Max"
 
-msgid "Metadata"
-msgstr "Métadonnées"
-
 msgid "Min Disk"
 msgstr "Disque Min"
 
@@ -493,6 +486,9 @@ msgstr "RAM Min"
 
 msgid "Min RAM (MB)"
 msgstr "Ram Mon (Mo)"
+
+msgid "Min Ram"
+msgstr "RAM Min"
 
 msgid "Name"
 msgstr "Nom"
@@ -534,6 +530,16 @@ msgstr "Suppression de Mise en attente"
 
 msgid "Physical Network"
 msgstr "Réseau physique"
+
+msgid ""
+"Please provide the initial host name for the instance, the availability zone "
+"where it will be deployed, and the instance count. Increase the Count to "
+"create multiple instances with the same settings."
+msgstr ""
+"Veuillez fournir le nom d'hôte initial de l'instance, la zone de "
+"disponibilité où elle sera déployée, et le nombre d'instances au compteur. "
+"Augmenter le nombre pour pouvoir créer plusieurs instances sur les mêmes "
+"bases de configuration."
 
 msgid "Policy check failed."
 msgstr "La vérification de la stratégie a échoué."
@@ -661,6 +667,12 @@ msgstr "ID de segmentation"
 msgid "Select Boot Source"
 msgstr "Sélectionnez la source de démarrage."
 
+msgid "Select Source"
+msgstr "Sélectionner Source"
+
+msgid "Select Source Help"
+msgstr "Aide à la sélection de la source"
+
 msgid "Select a key pair from the available key pairs below."
 msgstr "Sélectionner une paire de clés parmi les paires de clés ci-dessous."
 
@@ -713,9 +725,6 @@ msgstr "Taille (Go)"
 msgid "Snapshot"
 msgstr "Instantané"
 
-msgid "Source"
-msgstr "Source"
-
 msgid "Status"
 msgstr "Statut"
 
@@ -732,9 +741,6 @@ msgstr "La paire de clés %(name)s est maintenant créée."
 #, python-format
 msgid "Successfully imported key pair %(name)s."
 msgstr "La paire de clés %(name)s a été importée avec succès."
-
-msgid "Swap Disk"
-msgstr "Disque d'échange"
 
 msgid ""
 "The flavor you select for an instance determines the amount of compute, "
@@ -933,9 +939,6 @@ msgstr "Impossible d'éditer l'utilisateur"
 msgid "Unable to fetch the service catalog."
 msgstr "Impossible d'extraire le catalogue de services."
 
-msgid "Unable to get the Glance service version."
-msgstr "Impossible d'obtenir la version du service Glance."
-
 msgid "Unable to get the Keystone service version."
 msgstr "Impossible d'obtenir la version de service Keystone."
 
@@ -1058,14 +1061,8 @@ msgstr "ID Utilisateur"
 msgid "User Name"
 msgstr "Nom d'utilisateur"
 
-msgid "Users"
-msgstr "Utilisateurs"
-
 msgid "VCPUS"
 msgstr "VCPUS"
-
-msgid "VCPUs"
-msgstr "VCPUs"
 
 msgid "Value Type"
 msgstr "Type de valeur"

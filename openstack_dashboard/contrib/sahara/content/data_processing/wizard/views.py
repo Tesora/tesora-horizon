@@ -50,7 +50,6 @@ class ClusterGuideView(horizon_views.APIView):
 
 class ResetClusterGuideView(generic.RedirectView):
     pattern_name = 'horizon:project:data_processing.wizard:cluster_guide'
-    permanent = True
 
     def get(self, request, *args, **kwargs):
         if kwargs["reset_cluster_guide"]:
@@ -75,7 +74,6 @@ class JobExecutionGuideView(horizon_views.APIView):
 
 class ResetJobExGuideView(generic.RedirectView):
     pattern_name = 'horizon:project:data_processing.wizard:jobex_guide'
-    permanent = True
 
     def get(self, request, *args, **kwargs):
         if kwargs["reset_jobex_guide"]:

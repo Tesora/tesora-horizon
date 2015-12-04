@@ -47,6 +47,4 @@ var Horizon = function () {
 };
 
 // Create the one and only horizon object.
-/*eslint-disable no-unused-vars */
 var horizon = new Horizon();
-/*eslint-enable no-unused-vars */

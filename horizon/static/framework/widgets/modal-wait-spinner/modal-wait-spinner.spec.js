@@ -18,13 +18,14 @@
 
   describe('Wait Spinner Tests', function() {
 
-    var service;
+    var service, modal;
     beforeEach(module('ui.bootstrap'));
     beforeEach(module('horizon.framework.conf'));
     beforeEach(module('horizon.framework.widgets.modal-wait-spinner'));
 
-    beforeEach(inject(function($injector) {
+    beforeEach(inject(function($injector, $modal) {
       service = $injector.get('horizon.framework.widgets.modal-wait-spinner.service');
+      modal = $modal;
     }));
 
     it('returns the service', function() {
@@ -71,7 +72,7 @@
   });
 
   describe('Wait Spinner Directive', function() {
-    var $scope, $element;
+    var $scope, $element, $timeout;
 
     beforeEach(module('ui.bootstrap'));
     beforeEach(module('horizon.framework.conf'));
@@ -80,6 +81,7 @@
     beforeEach(inject(function($injector) {
       var $compile = $injector.get('$compile');
       $scope = $injector.get('$rootScope').$new();
+      $timeout = $injector.get('$timeout');
 
       var markup = '<div wait-spinner text="hello!"></div>';
       $element = angular.element(markup);

@@ -35,10 +35,7 @@
     .module('horizon.framework.widgets.toast')
     .factory('horizon.framework.widgets.toast.service', toastService);
 
-  toastService.$inject = ['$timeout',
-                          'horizon.framework.conf.toastOptions'];
-
-  function toastService($timeout, toastOptions) {
+  function toastService() {
 
     var toasts = [];
     var service = {
@@ -78,18 +75,6 @@
       }
     }
 
-    function autoDismiss(toast) {
-      $timeout(function dismiss() {
-        var index = toasts.indexOf(toast);
-        var dismissible = toastOptions.dimissible.indexOf('alert-' + toast.type);
-        // check if the toast exists and if it is dismissible (by checking
-        // the toastOptions config), then we remove it after a delay
-        if (index > -1 && dismissible > -1) {
-          toasts.splice(index, 1);
-        }
-      }, toastOptions.delay);
-    }
-
     /**
      * Remove a single toast.
      */
@@ -107,7 +92,6 @@
         msg: msg,
         cancel: cancel
       };
-      autoDismiss(toast);
       toasts.push(toast);
     }
 

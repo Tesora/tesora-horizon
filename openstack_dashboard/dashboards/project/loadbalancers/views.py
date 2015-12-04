@@ -71,8 +71,8 @@ class AddMonitorView(workflows.WorkflowView):
 
 class PoolDetailsView(tabs.TabView):
     tab_group_class = project_tabs.PoolDetailsTabs
-    template_name = 'horizon/common/_detail.html'
-    page_title = "{{ pool.name|default:pool.id }}"
+    template_name = 'project/loadbalancers/details_tabs.html'
+    page_title = _("Pool Details")
 
     @memoized.memoized_method
     def get_data(self):
@@ -111,52 +111,14 @@ class PoolDetailsView(tabs.TabView):
 
 class VipDetailsView(tabs.TabView):
     tab_group_class = project_tabs.VipDetailsTabs
-    template_name = 'horizon/common/_detail.html'
-    page_title = "{{ vip.name|default:vip_id }}"
-
-    @memoized.memoized_method
-    def get_data(self):
-        vid = self.kwargs['vip_id']
-        vip = []
-        try:
-            vip = api.lbaas.vip_get(self.request, vid)
-            fips = api.network.tenant_floating_ip_list(self.request)
-            vip_fip = [fip for fip in fips
-                       if fip.port_id == vip.port.id]
-            if vip_fip:
-                vip.fip = vip_fip[0]
-        except Exception:
-            exceptions.handle(self.request,
-                              _('Unable to retrieve VIP details.'))
-        return vip
-
-    def get_context_data(self, **kwargs):
-        context = super(VipDetailsView, self).get_context_data(**kwargs)
-        vip = self.get_data()
-        context['vip'] = vip
-        vip_nav = vip.pool.name_or_id
-        breadcrumb = [
-            (_("Load Balancers"), self.get_redirect_url()),
-            (vip_nav,
-             reverse('horizon:project:loadbalancers:vipdetails',
-                     args=(vip.id,))),
-            (_("VIP"),), ]
-        context["custom_breadcrumb"] = breadcrumb
-        return context
-
-    def get_tabs(self, request, *args, **kwargs):
-        vip = self.get_data()
-        return self.tab_group_class(request, vip=vip, **kwargs)
-
-    @staticmethod
-    def get_redirect_url():
-        return reverse("horizon:project:loadbalancers:index")
+    template_name = 'project/loadbalancers/details_tabs.html'
+    page_title = _("VIP Details")
 
 
 class MemberDetailsView(tabs.TabView):
     tab_group_class = project_tabs.MemberDetailsTabs
-    template_name = 'horizon/common/_detail.html'
-    page_title = "{{ member.name|default:member.id }}"
+    template_name = 'project/loadbalancers/details_tabs.html'
+    page_title = _("Member Details")
 
     @memoized.memoized_method
     def get_data(self):
@@ -171,15 +133,6 @@ class MemberDetailsView(tabs.TabView):
         context = super(MemberDetailsView, self).get_context_data(**kwargs)
         member = self.get_data()
         context['member'] = member
-        member_nav = member.pool.name_or_id
-        breadcrumb = [
-            (_("Load Balancers"), self.get_redirect_url()),
-            (member_nav,
-             reverse('horizon:project:loadbalancers:pooldetails',
-                     args=(member.pool.id,))),
-            (_("Members"), reverse('horizon:project:loadbalancers:members')),
-        ]
-        context["custom_breadcrumb"] = breadcrumb
         table = project_tables.MembersTable(self.request)
         context["url"] = self.get_redirect_url()
         context["actions"] = table.render_row_actions(member)
@@ -196,8 +149,8 @@ class MemberDetailsView(tabs.TabView):
 
 class MonitorDetailsView(tabs.TabView):
     tab_group_class = project_tabs.MonitorDetailsTabs
-    template_name = 'horizon/common/_detail.html'
-    page_title = "{{ monitor.name|default:monitor.id }}"
+    template_name = 'project/loadbalancers/details_tabs.html'
+    page_title = _("Monitor Details")
 
     @memoized.memoized_method
     def get_data(self):
@@ -212,11 +165,6 @@ class MonitorDetailsView(tabs.TabView):
         context = super(MonitorDetailsView, self).get_context_data(**kwargs)
         monitor = self.get_data()
         context['monitor'] = monitor
-        breadcrumb = [
-            (_("Load Balancers"), self.get_redirect_url()),
-            (_("Monitors"), reverse('horizon:project:loadbalancers:monitors')),
-        ]
-        context["custom_breadcrumb"] = breadcrumb
         table = project_tables.MonitorsTable(self.request)
         context["url"] = self.get_redirect_url()
         context["actions"] = table.render_row_actions(monitor)

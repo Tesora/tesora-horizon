@@ -1,5 +1,5 @@
 describe("Messages (horizon.messages.js)", function () {
-   var message;
+   var message, message2;
 
    it("Basic Alert", function () {
       message = horizon.alert("success", "A message!");
@@ -14,7 +14,7 @@ describe("Messages (horizon.messages.js)", function () {
       message = horizon.alert("error", "An error!");
       expect(message.hasClass("alert-danger")).toBe(true);
 
-      horizon.alert("success", "Another message");
+      message2 = horizon.alert("success", "Another message");
       expect($('#main_content .messages .alert').length).toEqual(2);
 
       horizon.clearErrorMessages();

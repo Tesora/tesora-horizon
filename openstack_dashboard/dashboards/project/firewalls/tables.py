@@ -286,7 +286,6 @@ class RulesTable(tables.DataTable):
     ACTION_DISPLAY_CHOICES = (
         ("Allow", pgettext_lazy("Action Name of a Firewall Rule", u"ALLOW")),
         ("Deny", pgettext_lazy("Action Name of a Firewall Rule", u"DENY")),
-        ("Reject", pgettext_lazy("Action Name of a Firewall Rule", u"REJECT")),
     )
     name = tables.Column("name_or_id",
                          verbose_name=_("Name"),
@@ -320,9 +319,7 @@ class RulesTable(tables.DataTable):
     class Meta(object):
         name = "rulestable"
         verbose_name = _("Rules")
-        table_actions = (AddRuleLink,
-                         DeleteRuleLink,
-                         tables.NameFilterAction)
+        table_actions = (AddRuleLink, DeleteRuleLink)
         row_actions = (UpdateRuleLink, DeleteRuleLink)
 
 
@@ -343,9 +340,7 @@ class PoliciesTable(tables.DataTable):
     class Meta(object):
         name = "policiestable"
         verbose_name = _("Policies")
-        table_actions = (AddPolicyLink,
-                         DeletePolicyLink,
-                         tables.NameFilterAction)
+        table_actions = (AddPolicyLink, DeletePolicyLink)
         row_actions = (UpdatePolicyLink, InsertRuleToPolicyLink,
                        RemoveRuleFromPolicyLink, DeletePolicyLink)
 
@@ -393,9 +388,7 @@ class FirewallsTable(tables.DataTable):
     class Meta(object):
         name = "firewallstable"
         verbose_name = _("Firewalls")
-        table_actions = (AddFirewallLink,
-                         DeleteFirewallLink,
-                         tables.NameFilterAction)
+        table_actions = (AddFirewallLink, DeleteFirewallLink)
         row_actions = (UpdateFirewallLink, DeleteFirewallLink,
                        AddRouterToFirewallLink, RemoveRouterFromFirewallLink)
 

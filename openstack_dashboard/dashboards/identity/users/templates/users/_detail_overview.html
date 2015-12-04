@@ -1,6 +1,10 @@
 {% load i18n %}
 
-<div class="detail tab-content">
+<h3>{% trans "User Overview" %}</h3>
+
+<div class="info detail">
+  <h4>{% trans "Information" %}</h4>
+  <hr class="header_rule">
   <dl class="dl-horizontal">
     {% if domain_id %}
       <dt>{% trans "Domain ID" %}</dt>

@@ -56,7 +56,6 @@
     viewModel.showSpinner = false;
     viewModel.hasError = false;
     viewModel.onClickFinishBtn = onClickFinishBtn;
-    viewModel.isSubmitting = false;
 
     $scope.initPromise.then(onInitSuccess, onInitError);
 
@@ -85,7 +84,6 @@
       viewModel.showSpinner = false;
       viewModel.errorMessage = errorMessage;
       viewModel.hasError = true;
-      viewModel.isSubmitting = false;
     }
 
     function beforeSubmit() {
@@ -100,8 +98,6 @@
     }
 
     function onClickFinishBtn() {
-      // prevent the finish button from being clicked again
-      viewModel.isSubmitting = true;
       beforeSubmit();
       $scope.submit().then(afterSubmit, showError);
     }
