@@ -10,18 +10,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-07 03:30+0000\n"
+"POT-Creation-Date: 2015-12-05 16:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-10-06 02:07+0000\n"
 "Last-Translator: Sungjin Kang <gang.sungjin@gmail.com>\n"
-"Language-Team: Korean (Korea) (http://www.transifex.com/openstack/horizon/"
-"language/ko_KR/)\n"
-"Generated-By: Babel 2.0\n"
 "Language: ko-KR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Zanata 3.7.1\n"
+"Generated-By: Babel 2.0\n"
+"X-Generator: Zanata 3.7.3\n"
+"Language-Team: Korean (South Korea)\n"
 
 msgid "(Max: 16Kb)"
 msgstr "(최대: 16Kb)"
@@ -31,17 +30,6 @@ msgstr "(수정됨)"
 
 msgid "(None)"
 msgstr "(None)"
-
-msgid ""
-"<li><b>Image (with Create New Volume checked)</b>: This options uses an "
-"image to boot the instance, and creates a new volume to persist instance "
-"data. You can specify volume size and whether to delete the volume on "
-"termination of the instance.</li>"
-msgstr ""
-"<li><b>이미지 (새 볼륨 생성 체크 포함)</b>: 이 옵션을 인스턴스를 부팅하는데 "
-"이미지를 사용하고, 인스턴스 데이터를 영구보존하기 위한 새로운 볼륨을 생성합니"
-"다. 볼륨 크기와 인스턴스 종료시 해당 볼륨을 삭제할 것인지를 선택할 수 있습니"
-"다.</li>"
 
 msgid "<li><b>Image</b>: This option uses an image to boot the instance.</li>"
 msgstr ""
@@ -54,25 +42,6 @@ msgid ""
 msgstr ""
 "<li><b>인스턴스 스냅샷</b>:이 옵션은 인스턴스를 부팅하기 위해 인스턴스 스냅샷"
 "을 사용합니다.</li>"
-
-msgid ""
-"<li><b>Volume Snapshot</b>: This option uses a volume snapshot to boot the "
-"instance, and creates a new volume to persist instance data. You can choose "
-"to delete the volume on termination of the instance.</li>"
-msgstr ""
-"<li><b>볼륨 스냅샷</b>: 이 옵션은 인스턴스를 부팅하는데 볼륨 스냅샷을 사용하"
-"고, 인스턴스 데이터를 영구보존하기 위한 새로운 볼륨을 생성합니다. 인스턴스 종"
-"료시 해당 볼륨을 삭제하도록 선택할 수 있습니다.</li>"
-
-msgid ""
-"<li><b>Volume</b>: This option uses a volume that already exists. It does "
-"not create a new volume. You can choose to delete the volume on termination "
-"of the instance. <em>Note: when selecting Volume, you can only launch one "
-"instance.</em></li>"
-msgstr ""
-"<li><b>볼륨</b>: 이 옵션은 이미 존재하는 볼륨을 사용합니다. 새로운 볼륨을 생"
-"성하지 않습니다. 인스턴스 종료시 해당 볼륨을 삭제하도록 선택할 수 있습니다. "
-"<em>노트: 볼륨 선택시, 인스턴스 하나에서만 구동할 수 있습니다.</em></li>"
 
 msgid ""
 "A floating IP allows instances to be addressable from an external network.\n"
@@ -162,17 +131,11 @@ msgstr "자동"
 msgid "Availability Zone"
 msgstr "가용 구역"
 
-msgid "Boot Source"
-msgstr "부팅 소스"
-
 msgid "Cancel"
 msgstr "취소"
 
 msgid "Cannot get service catalog from keystone."
 msgstr "Keystone으로부터 서비스 카탈로그를 가져오지 못했습니다."
-
-msgid "Cannot get the Nova extension list."
-msgstr "Nova 확장 목록을 가져오지 못했습니다."
 
 msgid ""
 "Check the <b>Configuration Drive</b> box if you want to write metadata to a "
@@ -194,9 +157,6 @@ msgstr "드라이브 구성"
 
 msgid "Configuration Help"
 msgstr "구성 도움말"
-
-msgid "Configuration Value"
-msgstr "구성 값"
 
 msgid "Count"
 msgstr "개수"
@@ -222,15 +182,6 @@ msgstr ""
 
 msgid "Customization Script"
 msgstr "사용자 스크립트"
-
-msgid "Data Source"
-msgstr "데이터 소스"
-
-msgid "Default Value"
-msgstr "기본 값"
-
-msgid "Delete Volume on Terminate"
-msgstr "종료시 볼륨 삭제"
 
 msgid "Deleted"
 msgstr "삭제 완료"
@@ -265,9 +216,6 @@ msgstr "Ephemeral 디스크"
 msgid "Ether Type"
 msgstr "Ether 유형"
 
-msgid "Event log is not available."
-msgstr "이벤트 로그를 사용할 수 없습니다."
-
 #, python-format
 msgid "Extension is not enabled: %(extension)s."
 msgstr "확장을 활성화하지 못했습니다: %(extension)s"
@@ -289,20 +237,6 @@ msgid ""
 "the instance."
 msgstr ""
 "Flavor는 인스턴스의 컴퓨트, 메모리 및 스토리지 용량에 대한 크기를 관리합니다."
-
-msgid ""
-"For configs and params, type the key name; for args, type the index as an "
-"integer, starting from 0."
-msgstr ""
-"구성과 매개 변수는 키 이름 타입입니다. 인수로는 숫자로 된 인덱스 타입이며, 0"
-"부터 시작합니다."
-
-msgid ""
-"For data sources, use a data source UUID or a path (as per data source "
-"creation.)"
-msgstr ""
-"데이터 소스의 경우, 데이터 소스 UUID 또는 위치를 사용합니다. (데이터 소스 생"
-"성시 마다.)"
 
 msgid "Format"
 msgstr "포멧"
@@ -337,15 +271,6 @@ msgstr ""
 "인스턴스 작동 전에 시큐리티 그룹에 추가되어 있지 않다면, 인스턴스가 배치되고 "
 "난 뒤 매우 제한적인 접근만 가능합니다. VNC 콘솔을 통한 인스턴스 접근만 허용됩"
 "니다."
-
-msgid ""
-"If you select an availability zone and plan to use the boot from volume "
-"option, make sure that the availability zone you select for the instance is "
-"the same availability zone where your bootable volume resides."
-msgstr ""
-"가용 구역을 선택한 다음, 볼륨 옵션으로부터 부팅을 사용하고자 하는 경우에는, "
-"인스턴스에 대해 선택한 가용 구역이 부팅 가능한 볼륨이 있는 가용 구역과 같은 "
-"위치에 있는지 확인하십시오."
 
 msgid ""
 "If you want to create an instance that uses ephemeral storage, meaning the "
@@ -391,15 +316,6 @@ msgstr "인스턴스 소스"
 msgid "Instance count is required and must be an integer of at least 1"
 msgstr "인스턴스 개수는 필수이며 적어도 1 이상의 정수값이어야 합니다"
 
-msgid ""
-"Instance source is the template used to create an instance. You can use a "
-"snapshot of an existing instance, an image, or a volume (if enabled). You "
-"can also choose to use persistent storage by creating a new volume."
-msgstr ""
-"인스턴스 소스는 인스턴스를 생성할 때 사용되는 템플릿입니다. 기존 인스턴스에 "
-"대한 스냅샷, 이미지, 또는 볼륨 (활성화된 경우)을 사용 가능합니다. 또한 새 볼"
-"륨을 생성할 때 영구적인 스토리지를 사용하도록 선택할 수 있습니다."
-
 msgid "Insufficient privilege level to view user information."
 msgstr "사용자 정보를 볼 수 있는 권한이 없습니다."
 
@@ -438,14 +354,8 @@ msgstr "인스턴스 시작"
 msgid "Load script from a file"
 msgstr "파일에서 스크립트 불러오기"
 
-msgid "Location"
-msgstr "장소"
-
 msgid "Manual"
 msgstr "수동"
-
-msgid "Mapping Type"
-msgstr "매핑 타입"
 
 msgid "Max Port"
 msgstr "최대 포트번호"
@@ -465,14 +375,8 @@ msgstr "최소 RAM"
 msgid "Min RAM (MB)"
 msgstr "최소 RAM (MB)"
 
-msgid "Min Ram"
-msgstr "최소 RAM"
-
 msgid "Name"
 msgstr "이름"
-
-msgid "Named Parameter"
-msgstr "이름 매개변수"
 
 msgid "Network"
 msgstr "네트워크"
@@ -495,9 +399,6 @@ msgstr "아니오"
 msgid "No available items"
 msgstr "사용 가능한 항목 없음"
 
-msgid "Number"
-msgstr "숫자"
-
 msgid "OK"
 msgstr "OK"
 
@@ -507,19 +408,8 @@ msgstr "Pending Delete"
 msgid "Physical Network"
 msgstr "물리 네트워크"
 
-msgid ""
-"Please provide the initial host name for the instance, the availability zone "
-"where it will be deployed, and the instance count. Increase the Count to "
-"create multiple instances with the same settings."
-msgstr ""
-"가용 구역에 배치되고 인스턴스 수를 확인할 수 있는 초기 호스트 이름을 추가해주"
-"세요. 동일한 설정으로 여러 개의 인스턴스를 생성할 경우 값이 늘어납니다."
-
 msgid "Policy check failed."
 msgstr "정책 확인을 하지 못했습니다."
-
-msgid "Positional Argument"
-msgstr "위치 인수"
 
 msgid "Private"
 msgstr "사설"
@@ -577,14 +467,8 @@ msgstr "다시 주문할 아이템은 드래그 앤 드롭으로 가져옵니다
 msgid "Remote"
 msgstr "원격"
 
-msgid "Remove"
-msgstr "제거"
-
 msgid "Required"
 msgstr "필요한"
-
-msgid "Required?"
-msgstr "필요합니까?"
 
 msgid "Root Disk"
 msgstr "Root 디스크"
@@ -623,24 +507,11 @@ msgstr ""
 "<b>Compute | 접근 & 시큐리티</b> 뷰에서 시큐리티 그룹을 찾은 뒤 <b>규칙 관리"
 "</b>를 선택합니다."
 
-msgid ""
-"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
-"definitions."
-msgstr ""
-"http://docs.openstack.org/developer/sahara/userdoc/edp.html 에서 정의를 확인"
-"하세요."
-
 msgid "Segmentation ID"
 msgstr "구분 ID"
 
 msgid "Select Boot Source"
 msgstr "부팅 소스 선택"
-
-msgid "Select Source"
-msgstr "소스 선택"
-
-msgid "Select Source Help"
-msgstr "소스 도움말 선택"
 
 msgid "Select a key pair from the available key pairs below."
 msgstr "아래에서 사용 가능한 키 페어 중 하나를 선택합니다."
@@ -680,9 +551,6 @@ msgstr "설정을 활성하지 못했습니다: %(setting)s"
 msgid "Shared"
 msgstr "공유"
 
-msgid "Show events"
-msgstr "이벤트 보기"
-
 msgid "Size"
 msgstr "크기"
 
@@ -694,9 +562,6 @@ msgstr "스냅샷"
 
 msgid "Status"
 msgstr "상태"
-
-msgid "String"
-msgstr "문자열"
 
 msgid "Subnets Associated"
 msgstr "서브넷 특징"
@@ -753,9 +618,6 @@ msgstr ""
 
 msgid "The status indicates whether the network has an active connection."
 msgstr "해당 상태는 네트워크가 활성화된 연결을 이루고 있는지를 가리킵니다."
-
-msgid "The step has completed successfully. No events to display."
-msgstr "이번 단계에서 성공적으로 완료하였습니다. 보여줄 이벤트가 없습니다."
 
 msgid ""
 "The subnet identifies a sub-section of a network. A subnet is specified in "
@@ -1019,9 +881,6 @@ msgstr "사용자 이름"
 
 msgid "VCPUS"
 msgstr "VCPUS"
-
-msgid "Value Type"
-msgstr "값 유형"
 
 msgid "Visibility"
 msgstr "가시성"

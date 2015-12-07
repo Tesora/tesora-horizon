@@ -7,24 +7,24 @@
 # Lafaiet <coldmetall@gmail.com>, 2015
 # Luís Eduardo Tenório Silva <eduardovansilva@gmail.com>, 2015
 # Tiago OR (James) <tiagoor@gmail.com>, 2015
+# André Campos <andrecbezerra@gmail.com>, 2015. #zanata
 # Marcelo Dieder <marcelodieder@gmail.com>, 2015. #zanata
 # OpenStack Infra <zanata@openstack.org>, 2015. #zanata
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-07 03:30+0000\n"
+"POT-Creation-Date: 2015-12-05 16:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-10-02 02:54+0000\n"
-"Last-Translator: Marcelo Dieder <marcelodieder@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/openstack/"
-"horizon/language/pt_BR/)\n"
-"Generated-By: Babel 2.0\n"
+"PO-Revision-Date: 2015-11-06 06:27+0000\n"
+"Last-Translator: André Campos <andrecbezerra@gmail.com>\n"
 "Language: pt-BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Zanata 3.7.1\n"
+"Generated-By: Babel 2.0\n"
+"X-Generator: Zanata 3.7.3\n"
+"Language-Team: Portuguese (Brazil)\n"
 
 msgid "(Max: 16Kb)"
 msgstr "(Max: 16Kb)"
@@ -34,17 +34,6 @@ msgstr "(Modificado)"
 
 msgid "(None)"
 msgstr "(Nenhum)"
-
-msgid ""
-"<li><b>Image (with Create New Volume checked)</b>: This options uses an "
-"image to boot the instance, and creates a new volume to persist instance "
-"data. You can specify volume size and whether to delete the volume on "
-"termination of the instance.</li>"
-msgstr ""
-"<li><b>Image (com a opção Criar Novo Volume marcada)</ b>: Esta opção usa "
-"uma imagem para iniciar a instância, e cria um novo volume de persistir "
-"dados da instância. Você pode especificar o tamanho do volume e se deseja "
-"excluir o volume no encerramento da instância.</li>"
 
 msgid "<li><b>Image</b>: This option uses an image to boot the instance.</li>"
 msgstr ""
@@ -57,26 +46,6 @@ msgid ""
 msgstr ""
 "<li><b>Instantâneo de Instância</b>: Esta opção utiliza um instantâneo de "
 "instância para inicializar a instância.</li>"
-
-msgid ""
-"<li><b>Volume Snapshot</b>: This option uses a volume snapshot to boot the "
-"instance, and creates a new volume to persist instance data. You can choose "
-"to delete the volume on termination of the instance.</li>"
-msgstr ""
-"<li> <b>Volume Snapshot</ b>: Esta opção usa um instantâneo do volume para "
-"inicializar a instância, e cria um novo volume de persistir dados da "
-"instância. Você pode optar por excluir o volume ao término da instância.</li>"
-
-msgid ""
-"<li><b>Volume</b>: This option uses a volume that already exists. It does "
-"not create a new volume. You can choose to delete the volume on termination "
-"of the instance. <em>Note: when selecting Volume, you can only launch one "
-"instance.</em></li>"
-msgstr ""
-"<li><b>Volume</ b>: Esta opção utiliza um volume que já existe. Ele não cria "
-"um novo volume. Você pode optar por excluir o volume ao término da "
-"instância. <em>Nota: ao selecionar Volume, você só pode lançar uma instância."
-"</em></ li>"
 
 msgid ""
 "A floating IP allows instances to be addressable from an external network.\n"
@@ -174,17 +143,14 @@ msgstr "Automático"
 msgid "Availability Zone"
 msgstr "Zona de Disponibilidade"
 
-msgid "Boot Source"
-msgstr "Origem do Boot"
-
 msgid "Cancel"
 msgstr "Cancelar"
 
 msgid "Cannot get service catalog from keystone."
 msgstr "Não é possível obter o catálogo de serviços a partir do keystone."
 
-msgid "Cannot get the Nova extension list."
-msgstr "Não é possível obter lista de extensão do Nova."
+msgid "Cannot get the extension list."
+msgstr "Não foi possível obter lista de extensão."
 
 msgid ""
 "Check the <b>Configuration Drive</b> box if you want to write metadata to a "
@@ -206,9 +172,6 @@ msgstr "Configuração de Drive"
 
 msgid "Configuration Help"
 msgstr "Ajuda na configiração"
-
-msgid "Configuration Value"
-msgstr "Valor de configuração"
 
 msgid "Count"
 msgstr "Contagem"
@@ -236,15 +199,6 @@ msgstr ""
 
 msgid "Customization Script"
 msgstr "Script de Customização"
-
-msgid "Data Source"
-msgstr "Fonte de Dados"
-
-msgid "Default Value"
-msgstr "Valor padrão"
-
-msgid "Delete Volume on Terminate"
-msgstr "Excluir Volume ao Finalizar"
 
 msgid "Deleted"
 msgstr "Excluído"
@@ -279,9 +233,6 @@ msgstr "Disco Temporário"
 msgid "Ether Type"
 msgstr "Tipo Ether"
 
-msgid "Event log is not available."
-msgstr "Log de evento não está disponível"
-
 #, python-format
 msgid "Extension is not enabled: %(extension)s."
 msgstr "Extensão não está habilitada: %(extension)s"
@@ -298,26 +249,15 @@ msgstr "Flavor"
 msgid "Flavor Help"
 msgstr "Ajuda em Flavor"
 
+msgid "Flavor Name"
+msgstr "Nome do Flavor"
+
 msgid ""
 "Flavors manage the sizing for the compute, memory and storage capacity of "
 "the instance."
 msgstr ""
 "Flavors gerenciam o dimensionamento para processamento, memória e capacidade "
 "de armazenamento da instância."
-
-msgid ""
-"For configs and params, type the key name; for args, type the index as an "
-"integer, starting from 0."
-msgstr ""
-"Para configurações e parâmetros, digite o nome da chave; para argumentos, "
-"digite o índice como um número inteiro, a partir de 0."
-
-msgid ""
-"For data sources, use a data source UUID or a path (as per data source "
-"creation.)"
-msgstr ""
-"Para fontes de dados, use uma fonte de dados UUID ou um caminho (como por "
-"criação de fonte de dados.)"
 
 msgid "Format"
 msgstr "Formato"
@@ -354,16 +294,6 @@ msgstr ""
 "iniciado, então você terá um acesso muito limitado à instância após a "
 "implantação. Você só será capaz de acessar a instância a partir de um "
 "console de VNC."
-
-msgid ""
-"If you select an availability zone and plan to use the boot from volume "
-"option, make sure that the availability zone you select for the instance is "
-"the same availability zone where your bootable volume resides."
-msgstr ""
-"Se você selecionar uma zona de disponibilidade e planeja usar o boot a "
-"partir de opção de volume, certifique-se de que a zona de disponibilidade "
-"que você selecionar para a instância é a mesma zona de disponibilidade onde "
-"o seu volume bootavel reside."
 
 msgid ""
 "If you want to create an instance that uses ephemeral storage, meaning the "
@@ -410,16 +340,6 @@ msgstr "Origem da Instância"
 msgid "Instance count is required and must be an integer of at least 1"
 msgstr "Quantidade de instância é requerido e deve ser de no mínimo 1"
 
-msgid ""
-"Instance source is the template used to create an instance. You can use a "
-"snapshot of an existing instance, an image, or a volume (if enabled). You "
-"can also choose to use persistent storage by creating a new volume."
-msgstr ""
-"Fonte da instância é o modelo usado para criar uma instância. Você pode usar "
-"um instantâneo de uma instância existente, uma imagem, ou um volume (se "
-"ativado). Você também pode optar por usar armazenamento persistente através "
-"da criação de um novo volume."
-
 msgid "Insufficient privilege level to view user information."
 msgstr ""
 "Nível de privilégios insuficientes para visualizar informações de usuário."
@@ -462,17 +382,14 @@ msgstr "Disparar Instância"
 msgid "Load script from a file"
 msgstr "Carregar script de um arquivo"
 
-msgid "Location"
-msgstr "Localização"
-
 msgid "Manual"
 msgstr "Manual"
 
-msgid "Mapping Type"
-msgstr "Tipo de mapeamento"
-
 msgid "Max Port"
 msgstr "Máx. Porta"
+
+msgid "Metadata"
+msgstr "Metadado"
 
 msgid "Min Disk"
 msgstr "Mín. Disco"
@@ -489,14 +406,8 @@ msgstr "Mín. RAM"
 msgid "Min RAM (MB)"
 msgstr "Mín. RAM (MB)"
 
-msgid "Min Ram"
-msgstr "Mín. RAM"
-
 msgid "Name"
 msgstr "Nome"
-
-msgid "Named Parameter"
-msgstr "Parâmetro Nomeado"
 
 msgid "Network"
 msgstr "Rede"
@@ -519,9 +430,6 @@ msgstr "Não"
 msgid "No available items"
 msgstr "Itens indisponíveis"
 
-msgid "Number"
-msgstr "Número"
-
 msgid "OK"
 msgstr "OK"
 
@@ -531,20 +439,8 @@ msgstr "Aguardando a Exclusão"
 msgid "Physical Network"
 msgstr "Rede Física"
 
-msgid ""
-"Please provide the initial host name for the instance, the availability zone "
-"where it will be deployed, and the instance count. Increase the Count to "
-"create multiple instances with the same settings."
-msgstr ""
-"Por favor, forneça o nome do host inicial para a instância, a zona de "
-"disponibilidade onde será implantada, e a contagem de instância. Aumentar a "
-"contagem para criar várias instâncias com as mesmas configurações."
-
 msgid "Policy check failed."
 msgstr "Verificação de política falhou."
-
-msgid "Positional Argument"
-msgstr "Argumento posicional"
 
 msgid "Private"
 msgstr "Privado"
@@ -602,14 +498,8 @@ msgstr "reordene os itens clicando em um deles e arrastando-o"
 msgid "Remote"
 msgstr "Remoto"
 
-msgid "Remove"
-msgstr "Remover"
-
 msgid "Required"
 msgstr "Requerido"
-
-msgid "Required?"
-msgstr "Necessário?"
 
 msgid "Root Disk"
 msgstr "Disco raiz"
@@ -650,24 +540,11 @@ msgstr ""
 "adicionais, vá para o <b>Compute | Acesso e Segurança</ b> view, em seguida, "
 "encontrar o grupo de segurança e clique em <b>Gerenciar Regras</ b>."
 
-msgid ""
-"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
-"definitions."
-msgstr ""
-"Veja http://docs.openstack.org/developer/sahara/userdoc/edp.html para "
-"definições."
-
 msgid "Segmentation ID"
 msgstr "ID de Segmentação"
 
 msgid "Select Boot Source"
 msgstr "Selecionar origem da Inicialização da Instância"
-
-msgid "Select Source"
-msgstr "Selecionar Origem"
-
-msgid "Select Source Help"
-msgstr "Selecione a fonte de ajuda"
 
 msgid "Select a key pair from the available key pairs below."
 msgstr "Selecione um par de chaves dentre os pares disponíveis abaixo."
@@ -708,9 +585,6 @@ msgstr "Configuração não está habilitada: %(setting)s"
 msgid "Shared"
 msgstr "Compartilhado"
 
-msgid "Show events"
-msgstr "Mostrar eventos"
-
 msgid "Size"
 msgstr "Tamanho"
 
@@ -723,9 +597,6 @@ msgstr "Snapshot"
 msgid "Status"
 msgstr "Status"
 
-msgid "String"
-msgstr "String"
-
 msgid "Subnets Associated"
 msgstr "Sub-redes Associadas"
 
@@ -736,6 +607,9 @@ msgstr "Par de chaves %(name)s criado com sucesso."
 #, python-format
 msgid "Successfully imported key pair %(name)s."
 msgstr "Par de chaves %(name)s importados com sucesso."
+
+msgid "Swap Disk"
+msgstr "Disco de Swap"
 
 msgid ""
 "The flavor you select for an instance determines the amount of compute, "
@@ -784,9 +658,6 @@ msgstr ""
 
 msgid "The status indicates whether the network has an active connection."
 msgstr "O status indica se a rede tem uma conexão ativa."
-
-msgid "The step has completed successfully. No events to display."
-msgstr "A etapa foi concluída com sucesso. Não há eventos para exibir."
 
 msgid ""
 "The subnet identifies a sub-section of a network. A subnet is specified in "
@@ -930,6 +801,9 @@ msgstr "Não foi possível editar o usuário."
 msgid "Unable to fetch the service catalog."
 msgstr "Não é possível obter o catálogo de serviços."
 
+msgid "Unable to get the Glance service version."
+msgstr "Não foi possível obter versão do serviço Glance."
+
 msgid "Unable to get the Keystone service version."
 msgstr "Não foi possível obter a versão do serviço Keystone."
 
@@ -1053,8 +927,8 @@ msgstr "Nome do Usuário"
 msgid "VCPUS"
 msgstr "VCPUS"
 
-msgid "Value Type"
-msgstr "Tipo de Valor"
+msgid "VCPUs"
+msgstr "VPCUs"
 
 msgid "Visibility"
 msgstr "Visibilidade"

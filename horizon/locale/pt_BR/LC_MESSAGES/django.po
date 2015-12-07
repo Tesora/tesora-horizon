@@ -14,18 +14,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-07 03:29+0000\n"
+"POT-Creation-Date: 2015-11-18 04:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-09-21 10:46+0000\n"
 "Last-Translator: Gabriel Wainer <gabrielcw@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/openstack/"
-"horizon/language/pt_BR/)\n"
-"Generated-By: Babel 2.0\n"
 "Language: pt-BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 3.7.1\n"
+"Language-Team: Portuguese (Brazil)\n"
 
 #, python-format
 msgid ""
@@ -224,18 +223,8 @@ msgstr "Versão inválida para o endereço IP"
 msgid "Limit Summary"
 msgstr "Resumo de Limites"
 
-msgid "Log In"
-msgstr "Entrar"
-
 msgid "Login"
 msgstr "Logar"
-
-#, python-format
-msgid ""
-"Login as different user or go back to <a href=\"%(home_url)s\"> home page</a>"
-msgstr ""
-"Faça login com um usuário diferente ou volte para a <a href=\"%(home_url)s"
-"\"> página inicial</a>"
 
 msgid "Members"
 msgstr "Membros"
@@ -288,9 +277,6 @@ msgstr "Por favor faça login para continuar."
 
 msgid "Please select a row before taking that action."
 msgstr "Por favor selecione uma linha antes de realizar esta ação."
-
-msgid "Port number must be integer"
-msgstr "Número de porta deve ser inteiro"
 
 msgid "Processing..."
 msgstr "Processando..."

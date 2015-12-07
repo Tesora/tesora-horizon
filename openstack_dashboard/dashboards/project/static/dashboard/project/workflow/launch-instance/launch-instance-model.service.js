@@ -160,7 +160,7 @@
         vol_create: false,
         // May be null
         vol_device_name: 'vda',
-        vol_delete_on_terminate: false,
+        vol_delete_on_instance_delete: false,
         vol_size: 1
       };
     }
@@ -237,7 +237,7 @@
     function createInstance() {
       var finalSpec = angular.copy(model.newInstanceSpec);
 
-      cleanNullProperties();
+      cleanNullProperties(finalSpec);
 
       setFinalSpecBootsource(finalSpec);
       setFinalSpecFlavor(finalSpec);
@@ -251,7 +251,7 @@
     function cleanNullProperties(finalSpec) {
       // Initially clean fields that don't have any value.
       for (var key in finalSpec) {
-        if (finalSpec.hasOwnProperty(key)  && finalSpec[key] === null) {
+        if (finalSpec.hasOwnProperty(key) && finalSpec[key] === null) {
           delete finalSpec[key];
         }
       }
@@ -322,15 +322,6 @@
     function onGetSecurityGroups(data) {
       model.securityGroups.length = 0;
       push.apply(model.securityGroups, data.data.items);
-      // set initial default
-      if (model.newInstanceSpec.security_groups.length === 0 &&
-          model.securityGroups.length > 0) {
-        model.securityGroups.forEach(function (securityGroup) {
-          if (securityGroup.name === 'default') {
-            model.newInstanceSpec.security_groups.push(securityGroup);
-          }
-        });
-      }
     }
 
     function setFinalSpecSecurityGroups(finalSpec) {
@@ -414,7 +405,7 @@
         SOURCE_TYPE_VOLUME_SNAPSHOT,
         gettext('Volume Snapshot')
       );
-      volumePromises.push(cinderAPI.getVolumes({ status: 'available',  bootable: 1 })
+      volumePromises.push(cinderAPI.getVolumes({ status: 'available', bootable: 1 })
                           .then(onGetVolumes));
       volumePromises.push(cinderAPI.getVolumeSnapshots({ status: 'available' })
                           .then(onGetVolumeSnapshots));
@@ -472,7 +463,7 @@
       delete finalSpec.source_type;
       delete finalSpec.vol_create;
       delete finalSpec.vol_device_name;
-      delete finalSpec.vol_delete_on_terminate;
+      delete finalSpec.vol_delete_on_instance_delete;
       delete finalSpec.vol_size;
     }
 
@@ -486,7 +477,7 @@
             'device_name': deviceName,
             'source_type': SOURCE_TYPE_IMAGE,
             'destination_type': SOURCE_TYPE_VOLUME,
-            'delete_on_termination': finalSpec.vol_delete_on_terminate,
+            'delete_on_termination': finalSpec.vol_delete_on_instance_delete,
             'uuid': finalSpec.source_id,
             'boot_index': '0',
             'volume_size': finalSpec.vol_size
@@ -503,7 +494,7 @@
         ':',
         sourceType,
         '::',
-        finalSpec.vol_delete_on_terminate
+        finalSpec.vol_delete_on_instance_delete
       ].join('');
 
       // Source ID must be empty for API

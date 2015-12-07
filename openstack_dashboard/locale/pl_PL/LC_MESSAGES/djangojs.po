@@ -10,19 +10,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-07 03:30+0000\n"
+"POT-Creation-Date: 2015-12-05 16:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2015-09-27 07:33+0000\n"
+"PO-Revision-Date: 2015-09-27 07:29+0000\n"
 "Last-Translator: Łukasz Jernas <deejay1@srem.org>\n"
-"Language-Team: Polish (Poland) (http://www.transifex.com/openstack/horizon/"
-"language/pl_PL/)\n"
-"Generated-By: Babel 2.0\n"
 "Language: pl-PL\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Zanata 3.7.1\n"
+"Generated-By: Babel 2.0\n"
+"X-Generator: Zanata 3.7.3\n"
+"Language-Team: Polish (Poland)\n"
 
 msgid "(Max: 16Kb)"
 msgstr "(Max: 16Kb)"
@@ -32,17 +31,6 @@ msgstr "(Zmodyfikowano)"
 
 msgid "(None)"
 msgstr "(brak)"
-
-msgid ""
-"<li><b>Image (with Create New Volume checked)</b>: This options uses an "
-"image to boot the instance, and creates a new volume to persist instance "
-"data. You can specify volume size and whether to delete the volume on "
-"termination of the instance.</li>"
-msgstr ""
-"<li><b>Obraz (z zaznaczoną opcją Utwórz nowy wolumen)</b>: Wykorzystuję "
-"obraz do uruchomienia instancji i tworzy nowy wolumen by przechowywać dane. "
-"Można podać rozmiar wolumenu oraz to czy usunąć wolumen po usunięciu "
-"instancji.</li>"
 
 msgid "<li><b>Image</b>: This option uses an image to boot the instance.</li>"
 msgstr ""
@@ -54,26 +42,6 @@ msgid ""
 msgstr ""
 "<li><b>Migawka instancji</b>: Wykorzystuje migawkę jako źródło uruchomienia "
 "instancji.</li>"
-
-msgid ""
-"<li><b>Volume Snapshot</b>: This option uses a volume snapshot to boot the "
-"instance, and creates a new volume to persist instance data. You can choose "
-"to delete the volume on termination of the instance.</li>"
-msgstr ""
-"<li><b>Migawka wolumenu</b>: Wykorzystuję istniejącą migawkę wolumenu do "
-"uruchomienia instancji i tworzy nowy wolumen do przechowywania danych. Można "
-"wybrać czy należy usunąć wolumen po usunięciu instancji.</li>"
-
-msgid ""
-"<li><b>Volume</b>: This option uses a volume that already exists. It does "
-"not create a new volume. You can choose to delete the volume on termination "
-"of the instance. <em>Note: when selecting Volume, you can only launch one "
-"instance.</em></li>"
-msgstr ""
-"<li><b>Wolumen</b>: Wykorzystuje już istniejący wolumen. Nie tworzy nowego "
-"wolumenu. Można wybrać czy należy usunąć wolumen po usunięciu instancji. "
-"<em>Uwaga: po wybraniu wolumenu można uruchomić z niego tylko jedną "
-"instancję.</em></li>"
 
 msgid ""
 "A floating IP allows instances to be addressable from an external network.\n"
@@ -169,17 +137,11 @@ msgstr "Automatyczne"
 msgid "Availability Zone"
 msgstr "Strefa dostępności"
 
-msgid "Boot Source"
-msgstr "Źródło uruchamiania:"
-
 msgid "Cancel"
 msgstr "Anuluj"
 
 msgid "Cannot get service catalog from keystone."
 msgstr "Nie można pobrać katalogu usług z keystone."
-
-msgid "Cannot get the Nova extension list."
-msgstr "Nie można pobrać listy rozszerzeń Nova."
 
 msgid ""
 "Check the <b>Configuration Drive</b> box if you want to write metadata to a "
@@ -201,9 +163,6 @@ msgstr "Dysk konfiguracyjny"
 
 msgid "Configuration Help"
 msgstr "Pomoc konfiguracji"
-
-msgid "Configuration Value"
-msgstr "Wartość konfiguracyjna"
 
 msgid "Count"
 msgstr "Liczba"
@@ -231,15 +190,6 @@ msgstr ""
 
 msgid "Customization Script"
 msgstr "Skrypt modyfikujący"
-
-msgid "Data Source"
-msgstr "źródło danych"
-
-msgid "Default Value"
-msgstr "Domyślna wartość"
-
-msgid "Delete Volume on Terminate"
-msgstr "Usuń wolumen podczas niszczenia"
 
 msgid "Deleted"
 msgstr "Usunięto"
@@ -274,9 +224,6 @@ msgstr "Ulotny dysk"
 msgid "Ether Type"
 msgstr "Typ medium"
 
-msgid "Event log is not available."
-msgstr "Log zdarzeń nie jest dostępny."
-
 #, python-format
 msgid "Extension is not enabled: %(extension)s."
 msgstr "Rozszerzenie jest wyłączone: %(extension)s"
@@ -299,20 +246,6 @@ msgid ""
 msgstr ""
 "Odmiany zarządzają wymiarowaniem zasobów obliczeniowych, pamięci i dysku "
 "instancji."
-
-msgid ""
-"For configs and params, type the key name; for args, type the index as an "
-"integer, starting from 0."
-msgstr ""
-"Dla konfiguracji oraz parametrów należy podać nazwę klucza; dla argumentów "
-"należy podać indeks, jako liczbę całkowitą począwszy od 0."
-
-msgid ""
-"For data sources, use a data source UUID or a path (as per data source "
-"creation.)"
-msgstr ""
-"Dla źródeł danych, należy podać UUID źródła danych lub ścieżkę (jak podczas "
-"tworzenia źródła danych)."
 
 msgid "Format"
 msgstr "Format"
@@ -348,16 +281,6 @@ msgstr ""
 "Jeśli żadna grupa zabezpieczeń nie zostanie przypisana do instancji przed "
 "jej uruchomieniem, dostęp do niej będzie bardzo ograniczony. Można będzie "
 "się dostać do instancji tylko poprzez konsolę VNC."
-
-msgid ""
-"If you select an availability zone and plan to use the boot from volume "
-"option, make sure that the availability zone you select for the instance is "
-"the same availability zone where your bootable volume resides."
-msgstr ""
-"Jeśli wybrano strefę dostępności i planowane jest wykorzystanie opcji "
-"uruchamiania z wolumenu, należy upewnić się, że wybrana strefa dostępności "
-"dla instancji jest taka sama jak strefa dostępności, w której znajduje się "
-"wolumen."
 
 msgid ""
 "If you want to create an instance that uses ephemeral storage, meaning the "
@@ -406,16 +329,6 @@ msgstr ""
 "Liczba instancji jest wymagana, powinna być liczbą całkowitą większą lub "
 "równą 1"
 
-msgid ""
-"Instance source is the template used to create an instance. You can use a "
-"snapshot of an existing instance, an image, or a volume (if enabled). You "
-"can also choose to use persistent storage by creating a new volume."
-msgstr ""
-"Źródło instancji to szablon wykorzystywany do jej utworzenia. Można "
-"wykorzystać migawkę istniejącej instancji, obraz lub wolumen (jeśli opcja ta "
-"jest dostępna). Można również wybrać stałe miejsce przechowywania, poprzez "
-"utworzenie nowego wolumenu."
-
 msgid "Insufficient privilege level to view user information."
 msgstr "Brak uprawnień do przeglądania informacji o użytkowniku."
 
@@ -455,14 +368,8 @@ msgstr "Uruchom instancję"
 msgid "Load script from a file"
 msgstr "Wczytaj skrypt z pliku"
 
-msgid "Location"
-msgstr "Położenie"
-
 msgid "Manual"
 msgstr "Ręczne"
-
-msgid "Mapping Type"
-msgstr "Typ mapowania"
 
 msgid "Max Port"
 msgstr "Maks. port"
@@ -482,14 +389,8 @@ msgstr "Min. RAM"
 msgid "Min RAM (MB)"
 msgstr "Min. RAM (MB)"
 
-msgid "Min Ram"
-msgstr "Min. Ram"
-
 msgid "Name"
 msgstr "Nazwa"
-
-msgid "Named Parameter"
-msgstr "Nazwany parametr"
 
 msgid "Network"
 msgstr "Sieć"
@@ -512,9 +413,6 @@ msgstr "Nie"
 msgid "No available items"
 msgstr "Brak dostępnych pozycji"
 
-msgid "Number"
-msgstr "liczba"
-
 msgid "OK"
 msgstr "OK"
 
@@ -524,20 +422,8 @@ msgstr "Oczekuje na usunięcie"
 msgid "Physical Network"
 msgstr "Sieć fizyczna"
 
-msgid ""
-"Please provide the initial host name for the instance, the availability zone "
-"where it will be deployed, and the instance count. Increase the Count to "
-"create multiple instances with the same settings."
-msgstr ""
-"Należy podać początkową nazwę hosta dla instancji, strefę dostępności gdzie "
-"ma ona zostać uruchomiona oraz liczbę instancji. Można zwiększyć liczbę "
-"instancji, aby utworzyć wiele instancji z tymi samymi ustawieniami."
-
 msgid "Policy check failed."
 msgstr "Sprawdzenie polityki się nie powiodło."
-
-msgid "Positional Argument"
-msgstr "Argument pozycyjny"
 
 msgid "Private"
 msgstr "Prywatna"
@@ -595,14 +481,8 @@ msgstr "Zmień kolejność pozycji poprzez przesuwanie i upuszczanie"
 msgid "Remote"
 msgstr "Zdalne"
 
-msgid "Remove"
-msgstr "Usuń"
-
 msgid "Required"
 msgstr "Wymagane"
-
-msgid "Required?"
-msgstr "Wymagane?"
 
 msgid "Root Disk"
 msgstr "Główny dysk"
@@ -643,24 +523,11 @@ msgstr ""
 "widoku <b>Obliczenia | Dostęp i bezpieczeństwo</b>, a następnie kliknąć "
 "<b>Zarządzaj regułami</b>."
 
-msgid ""
-"See http://docs.openstack.org/developer/sahara/userdoc/edp.html for "
-"definitions."
-msgstr ""
-"Można zapoznać się z definicjami na stronie http://docs.openstack.org/"
-"developer/sahara/userdoc/edp.html ."
-
 msgid "Segmentation ID"
 msgstr "ID segmentacji"
 
 msgid "Select Boot Source"
 msgstr "Wybór źródła uruchamiania"
-
-msgid "Select Source"
-msgstr "Wybierz źródło"
-
-msgid "Select Source Help"
-msgstr "Pomoc wyboru źródła"
 
 msgid "Select a key pair from the available key pairs below."
 msgstr "Należy wybrać parę kluczy z listy dostępnych poniżej."
@@ -701,9 +568,6 @@ msgstr "Ustawienie jest wyłączone: %(setting)s"
 msgid "Shared"
 msgstr "Współdzielona"
 
-msgid "Show events"
-msgstr "Wyświetl zdarzenia"
-
 msgid "Size"
 msgstr "Rozmiar"
 
@@ -715,9 +579,6 @@ msgstr "Migawka"
 
 msgid "Status"
 msgstr "Status"
-
-msgid "String"
-msgstr "ciąg znaków"
 
 msgid "Subnets Associated"
 msgstr "Powiązane podsieci"
@@ -777,9 +638,6 @@ msgstr ""
 
 msgid "The status indicates whether the network has an active connection."
 msgstr "Status wskazuje czy sieć ma aktywne połączenie."
-
-msgid "The step has completed successfully. No events to display."
-msgstr "Ten krok zakończył się powodzeniem. Brak zdarzeń do wyświetlenia."
 
 msgid ""
 "The subnet identifies a sub-section of a network. A subnet is specified in "
@@ -1044,9 +902,6 @@ msgstr "Nazwa użytkownika"
 
 msgid "VCPUS"
 msgstr "VCPU"
-
-msgid "Value Type"
-msgstr "Typ wartości"
 
 msgid "Visibility"
 msgstr "Widoczność"
