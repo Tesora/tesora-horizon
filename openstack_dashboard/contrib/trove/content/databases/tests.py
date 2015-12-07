@@ -343,7 +343,7 @@ class DatabaseTests(test.TestCase):
 
         self.mox.ReplayAll()
         res = self.client.get(DETAILS_URL)
-        self.assertTemplateUsed(res, 'project/databases/detail.html')
+        self.assertTemplateUsed(res, 'horizon/common/_detail.html')
         if with_designate:
             self.assertContains(res, database.hostname)
         else:

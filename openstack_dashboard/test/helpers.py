@@ -280,6 +280,46 @@ class TestCase(horizon_helpers.TestCase):
     def assertItemsCollectionEqual(self, response, items_list):
         self.assertEqual(response.json, {"items": items_list})
 
+    def getAndAssertTableRowAction(self, response, table_name,
+                                   action_name, row_id):
+        table = response.context[table_name + '_table']
+        rows = list(moves.filter(lambda x: x.id == row_id,
+                                 table.data))
+        self.assertEqual(1, len(rows),
+                         "Did not find a row matching id '%s'" % row_id)
+        row_actions = table.get_row_actions(rows[0])
+        actions = list(moves.filter(lambda x: x.name == action_name,
+                                    row_actions))
+
+        msg_args = (action_name, table_name, row_id)
+        self.assertTrue(
+            len(actions) > 0,
+            "No action named '%s' found in '%s' table for id '%s'" % msg_args)
+
+        self.assertEqual(
+            1, len(actions),
+            "Multiple actions named '%s' found in '%s' table for id '%s'"
+            % msg_args)
+
+        return actions[0]
+
+    def getAndAssertTableAction(self, response, table_name, action_name):
+
+        table = response.context[table_name + '_table']
+        table_actions = table.get_table_actions()
+        actions = list(moves.filter(lambda x: x.name == action_name,
+                                    table_actions))
+        msg_args = (action_name, table_name)
+        self.assertTrue(
+            len(actions) > 0,
+            "No action named '%s' found in '%s' table" % msg_args)
+
+        self.assertEqual(
+            1, len(actions),
+            "More than one action named '%s' found in '%s' table" % msg_args)
+
+        return actions[0]
+
     @staticmethod
     def mock_rest_request(**args):
         mock_args = {
@@ -332,6 +372,14 @@ class APITestCase(TestCase):
             """
             return self.stub_keystoneclient()
 
+        def fake_glanceclient(request, version='1'):
+            """Returns the stub glanceclient.
+
+            Only necessary because the function takes too many arguments to
+            conveniently be a lambda.
+            """
+            return self.stub_glanceclient()
+
         # Store the original clients
         self._original_glanceclient = api.glance.glanceclient
         self._original_keystoneclient = api.keystone.keystoneclient
@@ -342,7 +390,7 @@ class APITestCase(TestCase):
         self._original_ceilometerclient = api.ceilometer.ceilometerclient
 
         # Replace the clients with our stubs.
-        api.glance.glanceclient = lambda request: self.stub_glanceclient()
+        api.glance.glanceclient = fake_glanceclient
         api.keystone.keystoneclient = fake_keystoneclient
         api.nova.novaclient = lambda request: self.stub_novaclient()
         api.neutron.neutronclient = lambda request: self.stub_neutronclient()

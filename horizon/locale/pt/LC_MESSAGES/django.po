@@ -9,18 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-10-07 03:29+0000\n"
+"POT-Creation-Date: 2015-11-18 04:22+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "PO-Revision-Date: 2015-08-20 05:13+0000\n"
 "Last-Translator: openstackjenkins <jenkins@openstack.org>\n"
-"Language-Team: Portuguese (http://www.transifex.com/openstack/horizon/"
-"language/pt/)\n"
-"Generated-By: Babel 2.0\n"
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Generated-By: Babel 2.0\n"
 "X-Generator: Zanata 3.7.1\n"
+"Language-Team: Portuguese\n"
 
 #, python-format
 msgid ""
@@ -178,18 +177,8 @@ msgstr "Versão inválido para o endereço de IP"
 msgid "Limit Summary"
 msgstr "Resumo do Limite"
 
-msgid "Log In"
-msgstr "Iniciar Sessão"
-
 msgid "Login"
 msgstr "Iniciar Sessão"
-
-#, python-format
-msgid ""
-"Login as different user or go back to <a href=\"%(home_url)s\"> home page</a>"
-msgstr ""
-"Inicie a sessão como um utilizador diferente ou volte para a <a href="
-"\"%(home_url)s\">Página Principal</a>"
 
 msgid "Members"
 msgstr "Membros."
@@ -242,9 +231,6 @@ msgstr "Por favor, inicie a sessão para continuar."
 
 msgid "Please select a row before taking that action."
 msgstr "Por favor, selecione uma linha antes de realizar esta ação."
-
-msgid "Port number must be integer"
-msgstr "O número da porta deve ser um íntegro"
 
 msgid "Processing..."
 msgstr "A processar ..."

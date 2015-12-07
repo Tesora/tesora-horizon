@@ -25,14 +25,15 @@
   describe('wizard directive', function () {
     var $compile,
       $scope,
+      $q,
       element;
 
     beforeEach(module('templates'));
-    beforeEach(module('horizon.framework.widgets'));
-    beforeEach(module('horizon.framework.widgets.wizard'));
+    beforeEach(module('horizon.framework'));
     beforeEach(inject(function ($injector) {
       $scope = $injector.get('$rootScope').$new();
       $compile = $injector.get('$compile');
+      $q = $injector.get('$q');
       element = $compile('<wizard></wizard>')($scope);
     }));
 
@@ -173,6 +174,14 @@
       expect(element[0].querySelector('button.finish').hasAttribute('disabled')).toBe(false);
     });
 
+    it('should have finish button disabled if isSubmitting is set', function () {
+      $scope.viewModel = { };
+      $scope.$apply();
+      $scope.viewModel.isSubmitting = true;
+      $scope.$apply();
+      expect(element[0].querySelector('button.finish').hasAttribute('disabled')).toBe(true);
+    });
+
     it('should show error message after calling method showError', function () {
       var errorMessage = 'some error message';
       $scope.$apply();
@@ -192,12 +201,25 @@
       expect(checkedStep.checkReadiness).toHaveBeenCalled();
     });
 
+    it('should pass result of submit function on to close function', function () {
+      $scope.$apply();
+      $scope.submit = function() {
+        var deferred = $q.defer();
+        deferred.resolve('foo');
+        return deferred.promise;
+      };
+      $scope.close = angular.noop;
+      spyOn($scope, 'close');
+      element[0].querySelector('button.finish').click();
+      expect($scope.close).toHaveBeenCalledWith('foo');
+    });
+
   });
 
   describe("ModalContainerController", function() {
     var ctrl, scope, modalInstance, launchContext;
 
-    beforeEach(module('horizon.framework.widgets.wizard'));
+    beforeEach(module('horizon.framework'));
 
     beforeEach(inject(function($controller) {
       scope = {};
@@ -222,6 +244,12 @@
       spyOn(modalInstance, 'close');
       scope.close();
       expect(modalInstance.close).toHaveBeenCalled();
+    });
+
+    it('passes arguments to scope.close on to the modal close function', function() {
+      spyOn(modalInstance, 'close');
+      scope.close('foo');
+      expect(modalInstance.close).toHaveBeenCalledWith('foo');
     });
 
     it('sets scope.cancel to a function that dismisses the modal', function() {
