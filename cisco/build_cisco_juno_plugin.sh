@@ -2,10 +2,11 @@
 SOURCE_BRANCH=${1:-master}
 TARGET_BRANCH=${2:-stable/juno}
 
-if [ "$SOURCE_BRANCH" != "stable/EE-1.4" ] && [ "$SOURCE_BRANCH" != "master" ]; then
+if [ "$SOURCE_BRANCH" != "stable/EE-1.4" ] && [ "$SOURCE_BRANCH" != "dev/EE-1.6" ] && [ "$SOURCE_BRANCH" != "master" ]; then
     echo '********************************************************'
     echo '* The first parameter (SOURCE_BRANCH) must be one of:  *'
     echo '* stable/EE-1.4                                        *'
+    echo '* dev/EE-1.6                                           *'
     echo '* master                                               *'
     echo '********************************************************'
 fi
@@ -25,6 +26,11 @@ CLONE_CMD="git clone -b $SOURCE_BRANCH https://github.com/Tesora/tesora-horizon.
 echo $CLONE_CMD tmp-tesora-horizon
 $CLONE_CMD tmp-tesora-horizon
 
+rm -rf tmp-tesora-python-troveclient
+CLONE_CMD="git clone -b $SOURCE_BRANCH https://github.com/Tesora/tesora-python-troveclient.git"
+echo $CLONE_CMD tmp-tesora-python-troveclient
+$CLONE_CMD tmp-tesora-python-troveclient
+
 CISCO_ARTIFACTS_HORIZON_DIR=cisco-artifacts/ccs-portal-tesora-horizon/tesora_horizon/openstack_dashboard
 CISCO_ARTIFACTS_CONFIG_DIR=cisco-artifacts/ccs-portal-tesora-horizon-config
 SOURCE_HORIZON_BASE=tmp-tesora-horizon/openstack_dashboard
@@ -36,7 +42,7 @@ if [ "$SOURCE_BRANCH" == "stable/EE-1.4" ]; then
     mkdir -p $CISCO_ARTIFACTS_HORIZON_DIR/dashboards/project
     mkdir -p $CISCO_ARTIFACTS_HORIZON_DIR/test/test_data
     mkdir -p $CISCO_ARTIFACTS_CONFIG_DIR
-elif [ "$SOURCE_BRANCH" == "master" ]; then
+elif [ "$SOURCE_BRANCH" == "dev/EE-1.6" ] || [ "$SOURCE_BRANCH" == "master" ]; then
     mkdir -p $CISCO_ARTIFACTS_HORIZON_DIR/contrib/trove
     mkdir -p $CISCO_ARTIFACTS_HORIZON_DIR/test/test_data
     mkdir -p $CISCO_ARTIFACTS_CONFIG_DIR
@@ -63,15 +69,17 @@ if [ "$SOURCE_BRANCH" == "stable/EE-1.4" ]; then
     cp -r $SOURCE_HORIZON_BASE/dashboards/project/database_datastores $CISCO_ARTIFACTS_HORIZON_DIR/dashboards/project
     cp -r $SOURCE_HORIZON_BASE/test/test_data/__init__.py $CISCO_ARTIFACTS_HORIZON_DIR/test/test_data
     cp -r $SOURCE_HORIZON_BASE/test/test_data/trove_data.py $CISCO_ARTIFACTS_HORIZON_DIR/test/test_data
-elif [ "$SOURCE_BRANCH" == "master" ]; then
+elif [ "$SOURCE_BRANCH" == "dev/EE-1.6" ] || [ "$SOURCE_BRANCH" == "master" ]; then
     cp files/enabled/*.py $CISCO_ARTIFACTS_CONFIG_DIR
     cp -r $SOURCE_HORIZON_BASE/contrib/trove/* $CISCO_ARTIFACTS_HORIZON_DIR/contrib/trove
     cp -r $SOURCE_HORIZON_BASE/test/test_data/trove_data.py $CISCO_ARTIFACTS_HORIZON_DIR/test/test_data
+    cp -r tmp-tesora-python-troveclient/troveclient cisco-artifacts/ccs-portal-tesora-horizon/tesora_horizon
 fi
 
 # get rid of the temp horizon code
 echo Deleting temporary repo
 rm -rf tmp-tesora-horizon
+rm -rf tmp-tesora-python-troveclient
 
 # make the directories packages
 echo Making directories python packages
@@ -81,7 +89,7 @@ if [ "$SOURCE_BRANCH" == "stable/EE-1.4" ]; then
     touch $CISCO_ARTIFACTS_HORIZON_DIR/dashboards/__init__.py
     touch $CISCO_ARTIFACTS_HORIZON_DIR/dashboards/project/__init__.py
     touch $CISCO_ARTIFACTS_HORIZON_DIR/test/__init__.py
-elif [ "$SOURCE_BRANCH" == "master" ]; then
+elif [ "$SOURCE_BRANCH" == "dev/EE-1.6" ] || [ "$SOURCE_BRANCH" == "master" ]; then
     touch cisco-artifacts/ccs-portal-tesora-horizon/tesora_horizon/__init__.py
     touch $CISCO_ARTIFACTS_HORIZON_DIR/__init__.py
     touch $CISCO_ARTIFACTS_HORIZON_DIR/contrib/__init__.py
@@ -128,7 +136,7 @@ if [ "$TARGET_BRANCH" == "stable/juno" ]; then
         sed -i '' -e '/"immediately after the root is "/d' $CISCO_ARTIFACTS_HORIZON_DIR/dashboards/project/databases/tables.py
 
         sed -i '' -e '/"enabled or reset.")/d' $CISCO_ARTIFACTS_HORIZON_DIR/dashboards/project/databases/tables.py
-    elif [ "$SOURCE_BRANCH" == "master" ]; then
+    elif [ "$SOURCE_BRANCH" == "dev/EE-1.6" ] || [ "$SOURCE_BRANCH" == "master" ]; then
         # change api import for trove to tesora_horizon
         echo 'Modify api import of trove to prefix tesora_horizon'
         sed -i '' -e "s/from openstack_dashboard.contrib.trove.api import trove/from tesora_horizon.openstack_dashboard.contrib.trove.api import trove/g" $CISCO_ARTIFACTS_HORIZON_DIR/contrib/trove/api/__init__.py
@@ -162,6 +170,22 @@ if [ "$TARGET_BRANCH" == "stable/juno" ]; then
         sed -i '' -e '/"immediately after the root is "/d' $CISCO_ARTIFACTS_HORIZON_DIR/contrib/trove/content/databases/tables.py
 
         sed -i '' -e '/"enabled or reset.")/d' $CISCO_ARTIFACTS_HORIZON_DIR/contrib/trove/content/databases/tables.py
+
+        # changes for tesora-python-troveclient
+        echo 'Prefix tesora_horizon for from troveclient'
+        find . -name '[^_]*.py' -type f -print0 | xargs -0 sed -i '' -e 's/from troveclient/from tesora_horizon.troveclient/g'
+
+        echo 'Prefix tesora_horizon for import troveclient'
+        find . -name '[^_]*.py' -type f -print0 | xargs -0 sed -i '' -e 's/import troveclient/import tesora_horizon.troveclient/g'
+
+        echo 'Change from oslo_utils import encodeutils to Juno path'
+        find . -name '[^_]*.py' -type f -print0 | xargs -0 sed -i '' -e 's/from oslo_utils import encodeutils/from tesora_horizon.troveclient.openstack.common import strutils as encodeutils/g'
+
+        echo 'Change from oslo_utils import importutils to Juno path'
+        find . -name '[^_]*.py' -type f -print0 | xargs -0 sed -i '' -e 's/from oslo_utils import importutils/from tesora_horizon.troveclient.openstack.common import importutils/g'
+
+        echo 'Change from oslo_utils import strutils to Juno path'
+        find . -name '[^_]*.py' -type f -print0 | xargs -0 sed -i '' -e 's/from oslo_utils import strutils/from tesora_horizon.troveclient.openstack.common import strutils/g'
     fi
 fi
 
