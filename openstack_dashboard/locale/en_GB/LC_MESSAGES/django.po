@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-12-05 16:12+0000\n"
+"POT-Creation-Date: 2015-12-12 03:12+0000\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1887,24 +1887,6 @@ msgid "Create Host Aggregate"
 msgstr "Create Host Aggregate"
 
 msgid ""
-"Create IKE Policy for current project.\n"
-"\n"
-"Assign a name and description for the IKE Policy. "
-msgstr ""
-"Create IKE Policy for current project.\n"
-"\n"
-"Assign a name and description for the IKE Policy. "
-
-msgid ""
-"Create IPSec Policy for current project.\n"
-"\n"
-"Assign a name and description for the IPSec Policy. "
-msgstr ""
-"Create IPSec Policy for current project.\n"
-"\n"
-"Assign a name and description for the IPSec Policy. "
-
-msgid ""
 "Create IPSec Site Connection for current project.\n"
 "\n"
 "Assign a name and description for the IPSec Site Connection. All fields in "
@@ -1978,17 +1960,6 @@ msgstr "Create Transfer"
 
 msgid "Create User"
 msgstr "Create User"
-
-msgid ""
-"Create VPN Service for current project.\n"
-"\n"
-"Specify a name, description, router, and subnet for the VPN Service. Admin "
-"State is Up (checked) by default."
-msgstr ""
-"Create VPN Service for current project.\n"
-"\n"
-"Specify a name, description, router, and subnet for the VPN Service. Admin "
-"State is Up (checked) by default."
 
 msgid "Create Volume"
 msgstr "Create Volume"
@@ -3109,9 +3080,6 @@ msgstr "Download EC2 Credentials"
 
 msgid "Download Key Pair"
 msgstr "Download Key Pair"
-
-msgid "Download OpenStack RC File"
-msgstr "Download OpenStack RC File"
 
 #, python-format
 msgid "Download key pair &quot;%(keypair_name)s&quot;"
@@ -4773,12 +4741,6 @@ msgstr "Kwapi"
 
 msgid "LB Method"
 msgstr "LB Method"
-
-msgid "LUKS Volume Snapshots"
-msgstr "LUKS Volume Snapshots"
-
-msgid "LUKS Volumes"
-msgstr "LUKS Volumes"
 
 msgid "Language"
 msgstr "Language"
@@ -8300,9 +8262,6 @@ msgstr ""
 msgid "The specified port is invalid."
 msgstr "The specified port is invalid."
 
-msgid "The state to start in."
-msgstr "The state to start in."
-
 msgid "The state to start the network in."
 msgstr "The state to start the network in."
 
@@ -8478,9 +8437,6 @@ msgstr "Total Memory Usage (Hours):"
 
 msgid "Total RAM"
 msgstr "Total RAM"
-
-msgid "Total Size of LUKS Volumes and Snapshots (GB)"
-msgstr "Total Size of LUKS Volumes and Snapshots (GB)"
 
 msgid "Total Size of Volumes and Snapshots (GB)"
 msgstr "Total Size of Volumes and Snapshots (GB)"
