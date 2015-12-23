@@ -128,8 +128,10 @@ full use of the Bootstrap theme architecture.
 ~~~~~~~~~~~~~~
 
 * Tables_
+* `Bar Charts`_
 * Login_
 * Tabs_
+* Alerts_
 
 Step 1
 ------
@@ -171,15 +173,34 @@ The side navigation component has been refactored to use the native Stacked
 Pills element from Bootstrap.  See **Pills** section of your variables file
 for specific variables to customize.
 
-Pie Charts
-----------
+Charts
+------
 
-Pie Charts, in Horizon, are SVG elements.  SVG elements allow CSS
-customizations for only a basic element's look and feel (i.e. colors, size).
+Pie Charts
+~~~~~~~~~~
+
+Pie Charts are SVG elements.  SVG elements allow CSS customizations for
+only a basic element's look and feel (i.e. colors, size).
 
 Since there is no native element in Bootstrap specifically for pie charts,
 the look and feel of the charts are inheriting from other elements of the
 theme. Please see ``_pie_charts.scss`` for specifics.
+
+.. _Bar Charts:
+
+Bar Charts
+~~~~~~~~~~
+
+Bar Charts can be either a Bootstrap Progress Bar or an SVG element. Either
+implementation will use the Bootstrap Progress Bar styles.
+
+The SVG implementation will not make use of the customized Progress Bar
+height though, so it is recommended that Bootstrap Progress Bars are used
+whenever possible.
+
+Please see ``_bar_charts.scss`` for specifics on what can be customized for
+SVGs.  See the **Progress bars** section of your variables file for specific
+variables to customize.
 
 Tables
 ------
@@ -216,6 +237,12 @@ Tabs
 The standard tabs make use of the native Bootstrap tab markup.
 
 See **Tabs** section of your variables file for variables to customize.
+
+Alerts
+------
+
+Alerts use the basic Bootstrap brand colors.  See **Colors** section of your
+variables file for specifics.
 
 Bootswatch and Material Design
 ------------------------------
