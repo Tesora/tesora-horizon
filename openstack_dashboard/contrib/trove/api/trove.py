@@ -166,6 +166,11 @@ def instance_detach_configuration(request, instance_id):
     return troveclient(request).instances.modify(instance_id)
 
 
+def instance_upgrade(request, instance_id, datastore_version):
+    return troveclient(request).instances.upgrade(instance_id,
+                                                  datastore_version)
+
+
 def promote_to_replica_source(request, instance_id):
     return troveclient(request).instances.promote_to_replica_source(
         instance_id)
