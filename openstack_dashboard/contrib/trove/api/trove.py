@@ -111,7 +111,8 @@ def instance_create(request, name, volume, flavor, databases=None,
                     users=None, restore_point=None, nics=None,
                     datastore=None, datastore_version=None,
                     replica_of=None, configuration=None,
-                    replica_count=None, volume_type=None):
+                    replica_count=None, volume_type=None,
+                    locality=None):
     # TODO(dklyle): adding conditional to support trove without volume
     # support for now until API supports checking for volume support
     if volume > 0:
@@ -132,7 +133,8 @@ def instance_create(request, name, volume, flavor, databases=None,
         datastore_version=datastore_version,
         replica_of=replica_of,
         configuration=configuration,
-        replica_count=replica_count)
+        replica_count=replica_count,
+        locality=locality)
 
 
 def instance_resize_volume(request, instance_id, size):

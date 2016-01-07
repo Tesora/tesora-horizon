@@ -51,6 +51,23 @@ class SetInstanceDetailsAction(workflows.Action):
             'data-slug': 'datastore'
         }))
 
+    def __init__(self, request, *args, **kwargs):
+        super(SetInstanceDetailsAction, self).__init__(request,
+                                                       *args,
+                                                       **kwargs)
+        # add this field to the end after the dynamic fields
+        self.fields['locality'] = forms.ChoiceField(
+            label=_("Locality"),
+            choices=[(None, "None"),
+                     ("affinity", "affinity"),
+                     ("anti-affinity", "anti-affinity")],
+            required=False,
+            help_text=_("Specify whether future replicated instances will "
+                        "be created on the same hypervisor (affinity) or on "
+                        "different hypervisors (anti-affinity).  "
+                        "This value is ignored if the instance to be "
+                        "launched is a replica."))
+
     class Meta(object):
         name = _("Details")
         help_text_template = "project/databases/_launch_details_help.html"
@@ -69,6 +86,9 @@ class SetInstanceDetailsAction(workflows.Action):
             if not flavor:
                 msg = _("You must select a flavor.")
                 self._errors[field_name] = self.error_class([msg])
+
+        if not self.data.get("locality", None):
+            self.cleaned_data["locality"] = None
 
         return self.cleaned_data
 
@@ -206,7 +226,8 @@ TROVE_ADD_PERMS = TROVE_ADD_USER_PERMS + TROVE_ADD_DATABASE_PERMS
 
 class SetInstanceDetails(workflows.Step):
     action_class = SetInstanceDetailsAction
-    contributes = ("name", "volume", "volume_type", "flavor", "datastore")
+    contributes = ("name", "volume", "volume_type", "flavor", "datastore",
+                   "locality")
 
 
 class SetNetworkAction(workflows.Action):
@@ -564,6 +585,13 @@ class LaunchInstance(workflows.Workflow):
             volume_type = context['volume_type']
         return volume_type
 
+    def _get_locality(self, context):
+        # if creating a replica from a master then always set to None
+        if context.get('master'):
+            return None
+
+        return context.get('locality')
+
     def handle(self, request, context):
         try:
             datastore = self.context['datastore'].split('-')[0]
@@ -573,14 +601,15 @@ class LaunchInstance(workflows.Workflow):
                      "datastore=%s, datastore_version=%s, "
                      "dbs=%s, users=%s, "
                      "backups=%s, nics=%s, "
-                     "replica_of=%s, configuration=%s, replica_count=%s}",
+                     "replica_of=%s, configuration=%s, replica_count=%s,"
+                     "locality=%s}",
                      context['name'], context['volume'],
                      context['volume_type'], context['flavor'],
                      datastore, datastore_version,
                      self._get_databases(context), self._get_users(context),
                      self._get_backup(context), self._get_nics(context),
                      context.get('master'), self._get_config(context),
-                     context['replica_count'])
+                     context['replica_count'], self._get_locality(context))
             api.trove.instance_create(request,
                                       context['name'],
                                       context['volume'],
@@ -595,7 +624,8 @@ class LaunchInstance(workflows.Workflow):
                                       configuration=self._get_config(context),
                                       replica_count=context['replica_count'],
                                       volume_type=self._get_volume_type(
-                                          context))
+                                          context),
+                                      locality=self._get_locality(context))
             return True
         except Exception:
             exceptions.handle(request)
