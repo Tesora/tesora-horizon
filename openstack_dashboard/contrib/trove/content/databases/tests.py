@@ -251,7 +251,8 @@ class DatabaseTests(test.TestCase):
             users=None,
             nics=nics,
             replica_count=None,
-            volume_type=None).AndReturn(self.databases.first())
+            volume_type=None,
+            locality=None).AndReturn(self.databases.first())
 
         self.mox.ReplayAll()
         post = {
@@ -323,7 +324,8 @@ class DatabaseTests(test.TestCase):
             users=None,
             nics=nics,
             replica_count=None,
-            volume_type=None).AndRaise(trove_exception)
+            volume_type=None,
+            locality=None).AndRaise(trove_exception)
 
         self.mox.ReplayAll()
         post = {
@@ -341,7 +343,7 @@ class DatabaseTests(test.TestCase):
 
     @test.create_stubs(
         {api.trove: ('instance_get', 'flavor_get', 'root_show')})
-    def _test_details(self, database, with_designate=False):
+    def _test_details(self, database, test_text, assert_contains=True):
         api.trove.instance_get(IsA(http.HttpRequest), IsA(six.text_type))\
             .AndReturn(database)
         api.trove.flavor_get(IsA(http.HttpRequest), IsA(str))\
@@ -362,10 +364,10 @@ class DatabaseTests(test.TestCase):
         try:
             res = self.client.get(DETAILS_URL)
             self.assertTemplateUsed(res, 'project/databases/detail.html')
-            if with_designate:
-                self.assertContains(res, database.hostname)
+            if assert_contains:
+                self.assertContains(res, test_text)
             else:
-                self.assertContains(res, database.ip[0])
+                self.assertNotContains(res, test_text)
         finally:
             # Restore the previous log levels
             for (log, level) in loggers:
@@ -373,11 +375,19 @@ class DatabaseTests(test.TestCase):
 
     def test_details_with_ip(self):
         database = self.databases.first()
-        self._test_details(database, with_designate=False)
+        self._test_details(database, database.ip[0])
 
     def test_details_with_hostname(self):
         database = self.databases.list()[1]
-        self._test_details(database, with_designate=True)
+        self._test_details(database, database.hostname)
+
+    def test_details_without_locality(self):
+        database = self.databases.list()[1]
+        self._test_details(database, "Locality", assert_contains=False)
+
+    def test_details_with_locality(self):
+        database = self.databases.first()
+        self._test_details(database, "Locality")
 
     def test_create_database(self):
         database = self.databases.first()
@@ -1031,7 +1041,8 @@ class DatabaseTests(test.TestCase):
             users=None,
             nics=nics,
             replica_count=2,
-            volume_type=None).AndReturn(self.databases.first())
+            volume_type=None,
+            locality=None).AndReturn(self.databases.first())
 
         self.mox.ReplayAll()
         post = {

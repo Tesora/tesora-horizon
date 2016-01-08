@@ -27,6 +27,10 @@
     {% endif %}
     <dt>{% trans "Root Enabled" %}</dt>
     <dd>{{ root_enabled|yesno|capfirst }}</dd>
+    {% if instance.locality %}
+        <dt>{% trans "Locality" %}</dt>
+        <dd>{{ instance.locality }}</dd>
+    {% endif %}
   </dl>
 </div>
 
