@@ -18,6 +18,8 @@ from django.conf.urls import url
 
 from openstack_dashboard.contrib.trove.content.databases.logs \
     import urls as logs_urls
+from openstack_dashboard.contrib.trove.content.databases.upgrade \
+    import urls as upgrade_urls
 from openstack_dashboard.contrib.trove.content.databases import views
 
 BASEINSTANCES = r'^(?P<instance_id>[^/]+)/%s'
@@ -53,4 +55,6 @@ urlpatterns = patterns(
     url(INSTANCES % 'manage_root', views.ManageRootView.as_view(),
         name='manage_root'),
     url(BASEINSTANCES % 'logs/', include(logs_urls, namespace='logs')),
+    url(BASEINSTANCES % 'upgrade/',
+        include(upgrade_urls, namespace='upgrade')),
 )

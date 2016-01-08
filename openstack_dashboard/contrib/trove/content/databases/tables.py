@@ -27,6 +27,8 @@ from horizon.utils import filters
 from openstack_dashboard.contrib.trove import api
 from openstack_dashboard.contrib.trove.content.database_backups \
     import tables as backup_tables
+from openstack_dashboard.contrib.trove.content.databases.upgrade \
+    import tables as upgrade_tables
 
 
 ACTIVE_STATES = ("ACTIVE",)
@@ -630,6 +632,7 @@ class InstancesTable(tables.DataTable):
                        PromoteToReplicaSource,
                        EjectReplicaSource,
                        ManageRoot,
+                       upgrade_tables.UpgradeInstanceAction,
                        RestartInstance,
                        DetachReplica,
                        TerminateInstance)
