@@ -157,7 +157,8 @@ class EjectReplicaSource(tables.BatchAction):
     classes = ('btn-danger', 'btn-eject-replica-source')
 
     def _allowed(self, request, instance=None):
-        return (hasattr(instance, 'replicas'))
+        return (instance.status != 'PROMOTE'
+                and hasattr(instance, 'replicas'))
 
     def action(self, request, obj_id):
         api.trove.eject_replica_source(request, obj_id)
