@@ -33,6 +33,14 @@ from openstack_dashboard.dashboards.project.instances \
 LOG = logging.getLogger(__name__)
 
 
+def parse_datastore_and_version_text(datastore_and_version):
+    if datastore_and_version:
+        datastore = datastore_and_version.split('-', 1)[0]
+        datastore_version = datastore_and_version.split('-', 1)[1]
+        return datastore.strip(), datastore_version.strip()
+    return None, None
+
+
 class SetInstanceDetailsAction(workflows.Action):
     name = forms.CharField(max_length=80, label=_("Instance Name"))
     volume = forms.IntegerField(label=_("Volume Size"),
@@ -204,11 +212,7 @@ class SetInstanceDetailsAction(workflows.Action):
         return datastore + ' - ' + datastore_version
 
     def _parse_datastore_display_text(self, datastore_and_version):
-        if datastore_and_version:
-            datastore = datastore_and_version.split('-')[0]
-            datastore_version = datastore_and_version.split('-')[1]
-            return datastore.strip(), datastore_version.strip()
-        return None, None
+        return parse_datastore_and_version_text(datastore_and_version)
 
     def _build_widget_field_name(self, datastore, datastore_version):
         return self._build_datastore_display_text(
@@ -594,8 +598,8 @@ class LaunchInstance(workflows.Workflow):
 
     def handle(self, request, context):
         try:
-            datastore = self.context['datastore'].split('-')[0]
-            datastore_version = self.context['datastore'].split('-')[1]
+            datastore, datastore_version = (
+                parse_datastore_and_version_text(self.context['datastore']))
             LOG.info("Launching database instance with parameters "
                      "{name=%s, volume=%s, volume_type=%s, flavor=%s, "
                      "datastore=%s, datastore_version=%s, "
