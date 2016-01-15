@@ -2,11 +2,12 @@
 SOURCE_BRANCH=${1:-master}
 TARGET_BRANCH=${2:-stable/juno}
 
-if [ "$SOURCE_BRANCH" != "stable/EE-1.4" ] && [ "$SOURCE_BRANCH" != "dev/EE-1.6" ] && [ "$SOURCE_BRANCH" != "master" ]; then
+if [ "$SOURCE_BRANCH" != "stable/EE-1.4" ] && [ "$SOURCE_BRANCH" != "dev/EE-1.6" ] && [ "$SOURCE_BRANCH" != "dev/EE-1.7" ] && [ "$SOURCE_BRANCH" != "master" ]; then
     echo '********************************************************'
     echo '* The first parameter (SOURCE_BRANCH) must be one of:  *'
     echo '* stable/EE-1.4                                        *'
     echo '* dev/EE-1.6                                           *'
+    echo '* dev/EE-1.7                                           *'
     echo '* master                                               *'
     echo '********************************************************'
 fi
@@ -42,7 +43,7 @@ if [ "$SOURCE_BRANCH" == "stable/EE-1.4" ]; then
     mkdir -p $CISCO_ARTIFACTS_HORIZON_DIR/dashboards/project
     mkdir -p $CISCO_ARTIFACTS_HORIZON_DIR/test/test_data
     mkdir -p $CISCO_ARTIFACTS_CONFIG_DIR
-elif [ "$SOURCE_BRANCH" == "dev/EE-1.6" ] || [ "$SOURCE_BRANCH" == "master" ]; then
+elif [ "$SOURCE_BRANCH" == "dev/EE-1.6" ] || [ "$SOURCE_BRANCH" == "dev/EE-1.7" ] || [ "$SOURCE_BRANCH" == "master" ]; then
     mkdir -p $CISCO_ARTIFACTS_HORIZON_DIR/contrib/trove
     mkdir -p $CISCO_ARTIFACTS_HORIZON_DIR/test/test_data
     mkdir -p $CISCO_ARTIFACTS_CONFIG_DIR
@@ -69,7 +70,7 @@ if [ "$SOURCE_BRANCH" == "stable/EE-1.4" ]; then
     cp -r $SOURCE_HORIZON_BASE/dashboards/project/database_datastores $CISCO_ARTIFACTS_HORIZON_DIR/dashboards/project
     cp -r $SOURCE_HORIZON_BASE/test/test_data/__init__.py $CISCO_ARTIFACTS_HORIZON_DIR/test/test_data
     cp -r $SOURCE_HORIZON_BASE/test/test_data/trove_data.py $CISCO_ARTIFACTS_HORIZON_DIR/test/test_data
-elif [ "$SOURCE_BRANCH" == "dev/EE-1.6" ] || [ "$SOURCE_BRANCH" == "master" ]; then
+elif [ "$SOURCE_BRANCH" == "dev/EE-1.6" ] || [ "$SOURCE_BRANCH" == "dev/EE-1.7" ] ||  [ "$SOURCE_BRANCH" == "master" ]; then
     cp files/enabled/*.py $CISCO_ARTIFACTS_CONFIG_DIR
     cp -r $SOURCE_HORIZON_BASE/contrib/trove/* $CISCO_ARTIFACTS_HORIZON_DIR/contrib/trove
     cp -r $SOURCE_HORIZON_BASE/test/test_data/trove_data.py $CISCO_ARTIFACTS_HORIZON_DIR/test/test_data
@@ -89,7 +90,7 @@ if [ "$SOURCE_BRANCH" == "stable/EE-1.4" ]; then
     touch $CISCO_ARTIFACTS_HORIZON_DIR/dashboards/__init__.py
     touch $CISCO_ARTIFACTS_HORIZON_DIR/dashboards/project/__init__.py
     touch $CISCO_ARTIFACTS_HORIZON_DIR/test/__init__.py
-elif [ "$SOURCE_BRANCH" == "dev/EE-1.6" ] || [ "$SOURCE_BRANCH" == "master" ]; then
+elif [ "$SOURCE_BRANCH" == "dev/EE-1.6" ] || [ "$SOURCE_BRANCH" == "dev/EE-1.7" ] || [ "$SOURCE_BRANCH" == "master" ]; then
     touch cisco-artifacts/ccs-portal-tesora-horizon/tesora_horizon/__init__.py
     touch $CISCO_ARTIFACTS_HORIZON_DIR/__init__.py
     touch $CISCO_ARTIFACTS_HORIZON_DIR/contrib/__init__.py
@@ -136,7 +137,7 @@ if [ "$TARGET_BRANCH" == "stable/juno" ]; then
         sed -i '' -e '/"immediately after the root is "/d' $CISCO_ARTIFACTS_HORIZON_DIR/dashboards/project/databases/tables.py
 
         sed -i '' -e '/"enabled or reset.")/d' $CISCO_ARTIFACTS_HORIZON_DIR/dashboards/project/databases/tables.py
-    elif [ "$SOURCE_BRANCH" == "dev/EE-1.6" ] || [ "$SOURCE_BRANCH" == "master" ]; then
+    elif [ "$SOURCE_BRANCH" == "dev/EE-1.6" ] || [ "$SOURCE_BRANCH" == "dev/EE-1.7" ] || [ "$SOURCE_BRANCH" == "master" ]; then
         # change api import for trove to tesora_horizon
         echo 'Modify api import of trove to prefix tesora_horizon'
         sed -i '' -e "s/from openstack_dashboard.contrib.trove.api import trove/from tesora_horizon.openstack_dashboard.contrib.trove.api import trove/g" $CISCO_ARTIFACTS_HORIZON_DIR/contrib/trove/api/__init__.py
@@ -151,6 +152,9 @@ if [ "$TARGET_BRANCH" == "stable/juno" ]; then
         # special one of to change the log views_mod to prefix tesora_horizon
         echo 'Prefix tesora_horizon for log file url path'
         find . -name '[^_]*.py' -type f -print0 | xargs -0 sed -i '' -e "s/('openstack_dashboard.contrib.trove.content.databases.logs.views')/('tesora_horizon.openstack_dashboard.contrib.trove.content.databases.logs.views')/g"
+
+        echo 'Do a general replace of path openstack_dashboard.contrib.trove.content'
+        find . -name '[^_]*.py' -type f -print0 | xargs -0 sed -i '' -e 's/ openstack_dashboard.contrib.trove.content/ tesora_horizon.openstack_dashboard.contrib.trove.content/g'
 
         # database_configurations need to change the json utils package
         echo 'Modify code to use common for json utils'
