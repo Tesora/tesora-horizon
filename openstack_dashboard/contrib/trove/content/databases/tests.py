@@ -53,11 +53,26 @@ class DatabaseTests(test.TestCase):
             .AndReturn(self.flavors.list())
 
         self.mox.ReplayAll()
-        res = self.client.get(INDEX_URL)
-        self.assertTemplateUsed(res, 'project/databases/index.html')
-        # Check the Host column displaying ip or hostname
-        self.assertContains(res, '10.0.0.3')
-        self.assertContains(res, 'trove.instance-2.com')
+
+        toSuppress = ["horizon.tables.base"]
+
+        # Suppress expected log messages in the test output
+        loggers = []
+        for cls in toSuppress:
+            logger = logging.getLogger(cls)
+            loggers.append((logger, logger.getEffectiveLevel()))
+            logger.setLevel(logging.CRITICAL)
+
+        try:
+            res = self.client.get(INDEX_URL)
+            self.assertTemplateUsed(res, 'project/databases/index.html')
+            # Check the Host column displaying ip or hostname
+            self.assertContains(res, '10.0.0.3')
+            self.assertContains(res, 'trove.instance-2.com')
+        finally:
+            # Restore the previous log levels
+            for (log, level) in loggers:
+                log.setLevel(level)
 
     @test.create_stubs(
         {api.trove: ('instance_list', 'flavor_list')})
@@ -71,9 +86,24 @@ class DatabaseTests(test.TestCase):
             .AndRaise(self.exceptions.trove)
 
         self.mox.ReplayAll()
-        res = self.client.get(INDEX_URL)
-        self.assertTemplateUsed(res, 'project/databases/index.html')
-        self.assertMessageCount(res, error=1)
+
+        toSuppress = ["horizon.tables.base"]
+
+        # Suppress expected log messages in the test output
+        loggers = []
+        for cls in toSuppress:
+            logger = logging.getLogger(cls)
+            loggers.append((logger, logger.getEffectiveLevel()))
+            logger.setLevel(logging.CRITICAL)
+
+        try:
+            res = self.client.get(INDEX_URL)
+            self.assertTemplateUsed(res, 'project/databases/index.html')
+            self.assertMessageCount(res, error=1)
+        finally:
+            # Restore the previous log levels
+            for (log, level) in loggers:
+                log.setLevel(level)
 
     @test.create_stubs(
         {api.trove: ('instance_list',)})
@@ -101,10 +131,25 @@ class DatabaseTests(test.TestCase):
             .AndReturn(self.flavors.list())
 
         self.mox.ReplayAll()
-        res = self.client.get(INDEX_URL)
-        self.assertTemplateUsed(res, 'project/databases/index.html')
-        self.assertContains(
-            res, 'marker=' + last_record.id)
+
+        toSuppress = ["horizon.tables.base"]
+
+        # Suppress expected log messages in the test output
+        loggers = []
+        for cls in toSuppress:
+            logger = logging.getLogger(cls)
+            loggers.append((logger, logger.getEffectiveLevel()))
+            logger.setLevel(logging.CRITICAL)
+
+        try:
+            res = self.client.get(INDEX_URL)
+            self.assertTemplateUsed(res, 'project/databases/index.html')
+            self.assertContains(
+                res, 'marker=' + last_record.id)
+        finally:
+            # Restore the previous log levels
+            for (log, level) in loggers:
+                log.setLevel(level)
 
     @test.create_stubs(
         {api.trove: ('instance_list', 'flavor_list')})
@@ -122,10 +167,23 @@ class DatabaseTests(test.TestCase):
 
         self.mox.ReplayAll()
 
-        res = self.client.get(INDEX_URL)
+        toSuppress = ["horizon.tables.base"]
 
-        self.assertTemplateUsed(res, 'project/databases/index.html')
-        self.assertMessageCount(res, error=1)
+        # Suppress expected log messages in the test output
+        loggers = []
+        for cls in toSuppress:
+            logger = logging.getLogger(cls)
+            loggers.append((logger, logger.getEffectiveLevel()))
+            logger.setLevel(logging.CRITICAL)
+
+        try:
+            res = self.client.get(INDEX_URL)
+            self.assertTemplateUsed(res, 'project/databases/index.html')
+            self.assertMessageCount(res, error=1)
+        finally:
+            # Restore the previous log levels
+            for (log, level) in loggers:
+                log.setLevel(level)
 
     @test.create_stubs({
         api.trove: ('datastore_flavors', 'backup_list',
@@ -356,7 +414,8 @@ class DatabaseTests(test.TestCase):
         # Suppress expected log messages in the test output
         loggers = []
         toSuppress = ["openstack_dashboard.contrib.trove.content."
-                      "databases.tabs", ]
+                      "databases.tabs",
+                      "horizon.tables", ]
         for cls in toSuppress:
             logger = logging.getLogger(cls)
             loggers.append((logger, logger.getEffectiveLevel()))

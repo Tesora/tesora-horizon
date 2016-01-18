@@ -69,7 +69,7 @@ class DatabaseConfigurationsTests(test.TestCase):
         api.trove.datastore_list(IsA(http.HttpRequest)) \
             .AndRaise(self.exceptions.trove)
         self.mox.ReplayAll()
-        toSuppress = ["openstack_dashboard.dashboards.project."
+        toSuppress = ["openstack_dashboard.contrib.trove.content."
                       "database_configurations.forms", ]
 
         # Suppress expected log messages in the test output
@@ -229,7 +229,7 @@ class DatabaseConfigurationsTests(test.TestCase):
                 self.datastore_versions.list()[1].name) \
                 .AndRaise(self.exceptions.trove)
             self.mox.ReplayAll()
-            toSuppress = ["openstack_dashboard.dashboards.project."
+            toSuppress = ["openstack_dashboard.contrib.trove.content."
                           "database_configurations.forms", ]
 
             # Suppress expected log messages in the test output
