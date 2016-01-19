@@ -20,9 +20,11 @@ MYSQL = "mysql"
 ORACLE = "oracle"
 ORACLE_RA = "oracle_ra"
 PERCONA = "percona"
+REDIS = "redis"
 VERTICA = "vertica"
 
 _mysql_compatible_datastores = (MYSQL, MARIA, PERCONA)
+_cluster_capable_datastores = (MONGODB, REDIS, VERTICA)
 
 
 def can_backup(datastore):
@@ -35,6 +37,10 @@ def can_launch_from_master(datastore):
     if is_oracle_datastore(datastore):
         return False
     return True
+
+
+def can_modify_cluster(datastore):
+    return (is_mongodb_datastore(datastore) or is_redis_datastore(datastore))
 
 
 def db_required_when_creating_user(datastore):
@@ -73,5 +79,18 @@ def is_mongodb_datastore(datastore):
     return (datastore is not None) and (MONGODB in datastore.lower())
 
 
+def is_redis_datastore(datastore):
+    return (datastore is not None) and (REDIS in datastore.lower())
+
+
 def is_vertica_datastore(datastore):
     return (datastore is not None) and (VERTICA in datastore.lower())
+
+
+def is_cluster_capable_datastore(datastore):
+    if datastore is not None:
+        datastore_lower = datastore.lower()
+        for ds in _cluster_capable_datastores:
+            if ds in datastore_lower:
+                return True
+    return False
