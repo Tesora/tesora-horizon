@@ -178,6 +178,7 @@ class LaunchForm(forms.SelfHandlingForm):
         for ds in self.datastores(request):
             # TODO(michayu): until capabilities lands
             if (db_capability.is_mongodb_datastore(ds.name) or
+                    db_capability.is_percona_cluster_datastore(ds.name) or
                     db_capability.is_redis_datastore(ds.name)):
                 versions = self.datastore_versions(request, ds.name)
                 for version in versions:
