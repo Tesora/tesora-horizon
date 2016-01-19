@@ -67,6 +67,8 @@ class OverviewTab(tabs.Tab):
         elif db_capability.is_oracle_datastore(datastore) or \
                 db_capability.is_oracle_ra_datastore(datastore):
             return 'oracle'
+        elif db_capability.is_datastax_enterprise(datastore):
+            return 'cassandra'
 
         return datastore
 

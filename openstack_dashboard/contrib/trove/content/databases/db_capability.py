@@ -13,6 +13,7 @@
 #    under the License.
 
 
+DSE = "dse"
 MARIA = "maria"
 MONGODB = "mongodb"
 MYSQL = "mysql"
@@ -46,6 +47,10 @@ def require_configuration_group(datastore):
     if is_oracle_ra_datastore(datastore):
         return True
     return False
+
+
+def is_datastax_enterprise(datastore):
+    return (datastore is not None) and (DSE in datastore.lower())
 
 
 def is_oracle_datastore(datastore):
