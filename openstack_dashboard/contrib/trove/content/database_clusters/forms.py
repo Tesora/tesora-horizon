@@ -293,8 +293,8 @@ class LaunchForm(forms.SelfHandlingForm):
     @sensitive_variables('data')
     def handle(self, request, data):
         try:
-            datastore = data['datastore'].split('-')[0]
-            datastore_version = data['datastore'].split('-')[1]
+            datastore = data['datastore'].split('-', 1)[0]
+            datastore_version = data['datastore'].split('-', 1)[1]
 
             final_flavor = data['flavor']
             num_instances = data['num_instances']
