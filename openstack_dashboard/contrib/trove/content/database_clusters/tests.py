@@ -500,8 +500,8 @@ class ClustersTests(test.TestCase):
         cluster = self.trove_clusters.first()
         trove_api.trove.cluster_get(IsA(http.HttpRequest), cluster.id)\
             .MultipleTimes().AndReturn(cluster)
-        cluster_id = cluster.instances[0]['id']
-        cluster_instances = [cluster_id]
+        instance_id = cluster.instances[0]['id']
+        cluster_instances = [{'id': instance_id}]
         trove_api.trove.cluster_shrink(IsA(http.HttpRequest),
                                        cluster.id,
                                        cluster_instances)
@@ -519,7 +519,7 @@ class ClustersTests(test.TestCase):
 
         action = "".join([tables.ClusterShrinkInstancesTable.Meta.name, '__',
                           tables.ClusterShrinkAction.name, '__',
-                          cluster_id])
+                          instance_id])
         res = self.client.post(url, {'action': action})
         self.assertNoFormErrors(res)
         self.assertMessageCount(info=1)

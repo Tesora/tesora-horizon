@@ -263,7 +263,8 @@ class ClusterShrinkAction(tables.BatchAction):
 
         try:
             cluster_id = table.kwargs['cluster_id']
-            api.trove.cluster_shrink(request, cluster_id, obj_ids)
+            data = [{'id': instance_id} for instance_id in obj_ids]
+            api.trove.cluster_shrink(request, cluster_id, data)
             LOG.info('%s: "%s"' %
                      (self._get_action_name(past=True),
                       display_str))
