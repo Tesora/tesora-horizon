@@ -1,0 +1,21 @@
+{% extends "project/database_clusters/_detail_overview.html" %}
+{% load i18n sizeformat %}
+
+{% block connection_info %}
+<div class="addresses row detail">
+    <h4>{% trans "Connection Information" %}</h4>
+    <hr class="header_rule">
+    <dl>
+        {% with cluster.ip.0 as ip %}
+            <dt>{% trans "Connection URL Example" %}</dt>
+            {% if not ip %}
+                {% trans "Host Not Assigned" %}
+            </dd>
+            {% else %}
+                <dd>couchbase://{{ ip }}/default</dd>
+            </dd>
+            {% endif %}
+        {% endwith %}
+    </dl>
+</div>
+{% endblock %}
