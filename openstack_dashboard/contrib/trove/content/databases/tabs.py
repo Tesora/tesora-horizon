@@ -190,6 +190,7 @@ class LogsTab(tabs.TableTab):
     name = _("Logs")
     slug = "logs_tab"
     template_name = "horizon/common/_detail_table.html"
+    preload = False
 
     def get_logs_data(self):
         instance = self.tab_group.kwargs['instance']
