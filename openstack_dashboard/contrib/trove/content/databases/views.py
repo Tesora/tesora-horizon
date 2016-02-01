@@ -124,7 +124,9 @@ class AttachConfigurationView(horizon_forms.ModalFormView):
     def get_initial(self):
         instance = self.get_object()
         return {'instance_id': self.kwargs['instance_id'],
-                'orig_size': instance.volume.get('size', 0)}
+                'orig_size': instance.volume.get('size', 0),
+                'datastore': instance.datastore.get('type', ''),
+                'datastore_version': instance.datastore.get('version', '')}
 
 
 class DBAccess(object):

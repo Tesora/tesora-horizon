@@ -387,7 +387,12 @@ class AdvancedAction(workflows.Action):
     def populate_config_choices(self, request, context):
         try:
             configs = api.trove.configuration_list(request)
-            choices = [(c.id, c.name) for c in configs]
+            config_name = "%(name)s (%(datastore)s - %(version)s)"
+            choices = [(c.id,
+                        config_name % {'name': c.name,
+                                       'datastore': c.datastore_name,
+                                       'version': c.datastore_version_name})
+                       for c in configs]
         except Exception:
             choices = []
 
