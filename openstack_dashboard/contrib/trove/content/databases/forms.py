@@ -129,10 +129,14 @@ class AttachConfigurationForm(forms.SelfHandlingForm):
     def __init__(self, request, *args, **kwargs):
         super(AttachConfigurationForm, self).__init__(request, *args, **kwargs)
         instance_id = kwargs.get('initial', {}).get('instance_id')
+        datastore = kwargs.get('initial', {}).get('datastore')
+        datastore_version = kwargs.get('initial', {}).get('datastore_version')
         self.fields['instance_id'].initial = instance_id
 
         configurations = api.trove.configuration_list(request)
-        choices = [(c.id, c.name) for c in configurations]
+        choices = [(c.id, c.name) for c in configurations
+                   if (c.datastore_name == datastore and
+                       c.datastore_version_name == datastore_version)]
         if choices:
             choices.insert(0, ("", _("Select configuration group")))
         else:
