@@ -96,7 +96,6 @@ class UserTab(tabs.TableTab):
                 except Exception:
                     msg = _('Unable to get user access data.')
                     exceptions.handle(self.request, msg)
-                    data = []
         except Exception:
             msg = _('Unable to get user data.')
             exceptions.handle(self.request, msg)
