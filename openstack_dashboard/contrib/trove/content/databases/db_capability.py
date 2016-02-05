@@ -31,13 +31,13 @@ _cluster_capable_datastores = (COUCHBASE, MONGODB, PERCONA_CLUSTER, REDIS,
 
 
 def can_backup(datastore):
-    if is_oracle_datastore(datastore):
+    if is_oracle_ra_datastore(datastore):
         return False
     return True
 
 
 def can_launch_from_master(datastore):
-    if is_oracle_datastore(datastore):
+    if is_oracle_ra_datastore(datastore):
         return False
     return True
 
