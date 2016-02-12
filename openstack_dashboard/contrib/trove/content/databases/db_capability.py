@@ -13,6 +13,7 @@
 #    under the License.
 
 
+CASSANDRA = "cassandra"
 COUCHBASE = "couchbase"
 DSE = "dse"
 MARIA = "maria"
@@ -26,8 +27,8 @@ REDIS = "redis"
 VERTICA = "vertica"
 
 _mysql_compatible_datastores = (MYSQL, MARIA, PERCONA)
-_cluster_capable_datastores = (COUCHBASE, MONGODB, PERCONA_CLUSTER, REDIS,
-                               VERTICA)
+_cluster_capable_datastores = (CASSANDRA, COUCHBASE, DSE, MONGODB,
+                               PERCONA_CLUSTER, REDIS, VERTICA)
 
 
 def can_backup(datastore):
