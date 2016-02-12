@@ -66,7 +66,7 @@ class SetInstanceDetailsAction(workflows.Action):
         # add this field to the end after the dynamic fields
         self.fields['locality'] = forms.ChoiceField(
             label=_("Locality"),
-            choices=[(None, "None"),
+            choices=[("", "None"),
                      ("affinity", "affinity"),
                      ("anti-affinity", "anti-affinity")],
             required=False,
@@ -599,7 +599,10 @@ class LaunchInstance(workflows.Workflow):
         if context.get('master'):
             return None
 
-        return context.get('locality')
+        locality = None
+        if context.get('locality'):
+            locality = context['locality']
+        return locality
 
     def handle(self, request, context):
         try:
