@@ -33,6 +33,7 @@ from horizon import workflows as horizon_workflows
 from horizon.utils import memoized
 
 from openstack_dashboard.contrib.trove import api
+from openstack_dashboard.contrib.trove.content.databases import db_capability
 from openstack_dashboard.contrib.trove.content.databases import forms
 from openstack_dashboard.contrib.trove.content.databases import tables
 from openstack_dashboard.contrib.trove.content.databases import tabs
@@ -167,12 +168,15 @@ class EditUserView(horizon_forms.ModalFormView):
         context = super(EditUserView, self).get_context_data(**kwargs)
         context['instance_id'] = self.kwargs['instance_id']
         context['user_name'] = self.kwargs['user_name']
+        context['user_host'] = self.kwargs['user_host']
         return context
 
     def get_initial(self):
         instance_id = self.kwargs['instance_id']
         user_name = self.kwargs['user_name']
-        return {'instance_id': instance_id, 'user_name': user_name}
+        user_host = self.kwargs['user_host']
+        return {'instance_id': instance_id, 'user_name': user_name,
+                'user_host': user_host}
 
 
 class AccessDetailView(horizon_tables.DataTableView):
@@ -184,6 +188,7 @@ class AccessDetailView(horizon_tables.DataTableView):
     def _get_data(self):
         instance_id = self.kwargs['instance_id']
         user_name = self.kwargs['user_name']
+        user_host = self.kwargs['user_host']
         try:
             databases = api.trove.database_list(self.request, instance_id)
         except Exception:
@@ -193,8 +198,11 @@ class AccessDetailView(horizon_tables.DataTableView):
                               _('Unable to retrieve databases.'),
                               redirect=redirect)
         try:
+            instance = api.trove.instance_get(self.request, instance_id)
+            username = db_capability.get_fully_qualified_username(
+                instance.datastore['type'], user_name, user_host)
             granted = api.trove.user_show_access(
-                self.request, instance_id, user_name)
+                self.request, instance_id, username)
         except Exception:
             redirect = reverse('horizon:project:databases:detail',
                                args=[instance_id])

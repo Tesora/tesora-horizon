@@ -21,6 +21,7 @@ from horizon import forms
 from horizon import messages
 from horizon.utils import validators
 from openstack_dashboard.contrib.trove import api
+from openstack_dashboard.contrib.trove.content.databases import db_capability
 
 
 class CreateDatabaseForm(forms.SelfHandlingForm):
@@ -229,6 +230,9 @@ class EditUserForm(forms.SelfHandlingForm):
     user_name = forms.CharField(
         max_length=80, label=_("Name"), required=False,
         widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+    user_host = forms.CharField(
+        max_length=80, label=_("Host"), required=False,
+        widget=forms.TextInput(attrs={'readonly': 'readonly'}))
     new_name = forms.CharField(
         max_length=80, label=_("New Name"), required=False)
     password = forms.RegexField(
@@ -244,12 +248,16 @@ class EditUserForm(forms.SelfHandlingForm):
         _('A new name or new password or new host must be specified')
 
     def handle(self, request, data):
-        instance = data.get('instance_id')
+        instance_id = data.get('instance_id')
         try:
+            instance = api.trove.instance_get(request, instance_id)
+
             api.trove.user_update_attributes(
                 request,
-                instance,
-                data['user_name'],
+                instance_id,
+                self._get_user_name(instance.datastore['type'],
+                                    data['user_name'],
+                                    data['user_host']),
                 data['new_name'],
                 data['password'],
                 data['host'])
@@ -258,7 +266,7 @@ class EditUserForm(forms.SelfHandlingForm):
                              _('Updated user "%s"') % data['user_name'])
         except Exception as e:
             redirect = reverse("horizon:project:databases:detail",
-                               args=(instance,))
+                               args=(instance_id,))
             exceptions.handle(request, _('Unable to update user. %s') %
                               e.message, redirect=redirect)
         return True
@@ -271,3 +279,7 @@ class EditUserForm(forms.SelfHandlingForm):
             raise ValidationError(self.validation_err_msg)
 
         return cleaned_data
+
+    def _get_user_name(self, datastore, user_name, user_host):
+        return db_capability.get_fully_qualified_username(
+            datastore, user_name, user_host)

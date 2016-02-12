@@ -3,7 +3,7 @@
 {% load url from future %}
 
 {% block form_id %}edit_user_form{% endblock %}
-{% block form_action %}{% url "horizon:project:databases:edit_user" instance_id user_name %}{% endblock %}
+{% block form_action %}{% url "horizon:project:databases:edit_user" instance_id user_name user_host %}{% endblock %}
 
 {% block modal_id %}edit_user_modal{% endblock %}
 {% block modal-header %}{% trans "Edit User" %}{% endblock %}
