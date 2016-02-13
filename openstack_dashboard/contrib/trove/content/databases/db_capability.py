@@ -102,3 +102,9 @@ def is_cluster_capable_datastore(datastore):
             if ds in datastore_lower:
                 return True
     return False
+
+
+def get_fully_qualified_username(datastore, user_name, user_host):
+    if is_mysql_compatible(datastore):
+        return user_name + '@' + user_host
+    return user_name

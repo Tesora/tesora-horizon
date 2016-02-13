@@ -88,9 +88,11 @@ class UserTab(tabs.TableTab):
             for user in data:
                 user.instance = instance
                 try:
+                    username = db_capability.get_fully_qualified_username(
+                        instance.datastore['type'], user.name, user.host)
                     user.access = api.trove.user_list_access(self.request,
                                                              instance.id,
-                                                             user.name)
+                                                             username)
                 except exceptions.NOT_FOUND:
                     pass
                 except Exception:
