@@ -502,7 +502,8 @@ class ManageRoot(tables.LinkAction):
 
 class ManageRootTable(tables.DataTable):
     name = tables.Column('name', verbose_name=_('Instance Name'))
-    enabled = tables.Column('enabled', verbose_name=_('Root Has Been Enabled'),
+    enabled = tables.Column('enabled',
+                            verbose_name=_('Has Root Ever Been Enabled'),
                             filters=(d_filters.yesno, d_filters.capfirst),
                             help_text=_("Status if root was ever enabled "
                                         "for an instance."))
