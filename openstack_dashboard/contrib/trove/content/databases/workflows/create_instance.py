@@ -12,6 +12,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import binascii
 import logging
 
 from django.conf import settings
@@ -86,8 +87,8 @@ class SetInstanceDetailsAction(workflows.Action):
             msg = _("You must select a datastore type and version.")
             self._errors["datastore"] = self.error_class([msg])
         else:
-            datastore, datastore_version = self._parse_datastore_display_text(
-                datastore_and_version)
+            datastore, datastore_version = parse_datastore_and_version_text(
+                binascii.unhexlify(datastore_and_version))
             field_name = self._build_flavor_field_name(datastore,
                                                        datastore_version)
             flavor = self.data.get(field_name, None)
@@ -101,10 +102,9 @@ class SetInstanceDetailsAction(workflows.Action):
         return self.cleaned_data
 
     def handle(self, request, context):
-        datastore_and_version = context["datastore"]
-        if datastore_and_version:
-            datastore, datastore_version = self._parse_datastore_display_text(
-                datastore_and_version)
+        if context["datastore"]:
+            datastore, datastore_version = parse_datastore_and_version_text(
+                binascii.unhexlify(context["datastore"]))
             field_name = self._build_flavor_field_name(datastore,
                                                        datastore_version)
             flavor = self.data[field_name]
@@ -211,16 +211,16 @@ class SetInstanceDetailsAction(workflows.Action):
     def _build_datastore_display_text(self, datastore, datastore_version):
         return datastore + ' - ' + datastore_version
 
-    def _parse_datastore_display_text(self, datastore_and_version):
-        return parse_datastore_and_version_text(datastore_and_version)
-
     def _build_widget_field_name(self, datastore, datastore_version):
-        return self._build_datastore_display_text(
-            datastore, datastore_version).replace(' ', '')
+        # Since the fieldnames cannot contain an uppercase character
+        # we generate a hex encoded string representation of the
+        # datastore and version as the fieldname
+        return binascii.hexlify(
+            self._build_datastore_display_text(datastore, datastore_version))
 
     def _build_flavor_field_name(self, datastore, datastore_version):
-        return self._build_widget_field_name(
-            datastore, datastore_version).replace('.', '_')
+        return self._build_widget_field_name(datastore,
+                                             datastore_version)
 
 
 TROVE_ADD_USER_PERMS = getattr(settings, 'TROVE_ADD_USER_PERMS', [])
@@ -319,8 +319,9 @@ class AddDatabasesAction(workflows.Action):
             if not cleaned_data.get('password'):
                 msg = _('You must specify a password if you create a user.')
                 self._errors["password"] = self.error_class([msg])
-            if db_capability.db_required_when_creating_user(
-                    self.data[u'datastore']):
+            datastore, datastore_version = parse_datastore_and_version_text(
+                binascii.unhexlify(self.data[u'datastore']))
+            if db_capability.db_required_when_creating_user(datastore):
                 if not cleaned_data.get('databases'):
                     msg = _('You must specify at least one database if '
                             'you create a user.')
@@ -451,7 +452,8 @@ class AdvancedAction(workflows.Action):
     def clean(self):
         cleaned_data = super(AdvancedAction, self).clean()
 
-        datastore = self.data[u'datastore']
+        datastore, datastore_version = parse_datastore_and_version_text(
+            binascii.unhexlify(self.data[u'datastore']))
 
         config = self.cleaned_data['config']
         if config:
@@ -606,8 +608,8 @@ class LaunchInstance(workflows.Workflow):
 
     def handle(self, request, context):
         try:
-            datastore, datastore_version = (
-                parse_datastore_and_version_text(self.context['datastore']))
+            datastore, datastore_version = parse_datastore_and_version_text(
+                binascii.unhexlify(self.context['datastore']))
             LOG.info("Launching database instance with parameters "
                      "{name=%s, volume=%s, volume_type=%s, flavor=%s, "
                      "datastore=%s, datastore_version=%s, "
