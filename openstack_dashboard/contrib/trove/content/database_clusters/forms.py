@@ -183,7 +183,7 @@ class LaunchForm(forms.SelfHandlingForm):
 
             versions = self.datastore_versions(request, ds.name)
             for version in versions:
-                if version.name == "inactive":
+                if not version.active:
                     continue
                 valid_flavor = self.datastore_flavors(request, ds.name,
                                                       versions[0].name)
@@ -253,7 +253,7 @@ class LaunchForm(forms.SelfHandlingForm):
                     # only add to choices if datastore has at least one version
                     version_choices = ()
                     for v in versions:
-                        if "inactive" in v.name:
+                        if not v.active:
                             continue
                         selection_text = ds.name + ' - ' + v.name
                         widget_text = ds.name + '-' + v.name

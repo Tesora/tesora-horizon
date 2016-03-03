@@ -170,7 +170,7 @@ class SetInstanceDetailsAction(workflows.Action):
                     # only add to choices if datastore has at least one version
                     version_choices = ()
                     for v in versions:
-                        if "inactive" in v.name:
+                        if not v.active:
                             continue
                         selection_text = self._build_datastore_display_text(
                             ds.name, v.name)
