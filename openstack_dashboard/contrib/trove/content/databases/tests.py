@@ -301,8 +301,8 @@ class DatabaseTests(test.TestCase):
             IsA(int),
             IsA(six.text_type),
             databases=None,
-            datastore=IsA(six.text_type),
-            datastore_version=IsA(six.text_type),
+            datastore='mysql',
+            datastore_version='5.5',
             restore_point=None,
             replica_of=None,
             configuration=None,
@@ -317,10 +317,11 @@ class DatabaseTests(test.TestCase):
             'name': "MyDB",
             'volume': '1',
             'flavor': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-            'mysql-5_5': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+            '6d7973716c202d20352e35':
+                'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
             'network': self.networks.first().id,
-            'datastore': 'mysql-5.5',
-            'volume_type': 'no_type'
+            'datastore': '6d7973716c202d20352e35',
+            'volume_type': 'no_type',
         }
 
         res = self.client.post(LAUNCH_URL, post)
@@ -374,8 +375,8 @@ class DatabaseTests(test.TestCase):
             IsA(int),
             IsA(six.text_type),
             databases=None,
-            datastore=IsA(six.text_type),
-            datastore_version=IsA(six.text_type),
+            datastore='mysql',
+            datastore_version='5.5',
             restore_point=None,
             replica_of=None,
             configuration=None,
@@ -390,9 +391,10 @@ class DatabaseTests(test.TestCase):
             'name': "MyDB",
             'volume': '1',
             'flavor': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-            'mysql-5_5': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+            '6d7973716c202d20352e35':
+                'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
             'network': self.networks.first().id,
-            'datastore': 'mysql-5.5',
+            'datastore': '6d7973716c202d20352e35',
             'volume_type': 'no_type'
         }
 
@@ -1144,8 +1146,8 @@ class DatabaseTests(test.TestCase):
             IsA(int),
             IsA(six.text_type),
             databases=None,
-            datastore=IsA(six.text_type),
-            datastore_version=IsA(six.text_type),
+            datastore='mysql',
+            datastore_version='5.5',
             restore_point=None,
             replica_of=self.databases.first().id,
             configuration=None,
@@ -1160,9 +1162,10 @@ class DatabaseTests(test.TestCase):
             'name': "MyDB",
             'volume': '1',
             'flavor': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-            'mysql-5_5': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
+            '6d7973716c202d20352e35':
+                'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
             'network': self.networks.first().id,
-            'datastore': 'mysql-5.5',
+            'datastore': '6d7973716c202d20352e35',
             'initial_state': 'master',
             'master': self.databases.first().id,
             'replica_count': 2,
