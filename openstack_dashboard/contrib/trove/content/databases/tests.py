@@ -186,8 +186,8 @@ class DatabaseTests(test.TestCase):
                 log.setLevel(level)
 
     @test.create_stubs({
-        api.trove: ('datastore_flavors', 'backup_list',
-                    'datastore_list', 'datastore_version_list',
+        api.trove: ('datastore_flavors', 'datastore_volume_types',
+                    'backup_list', 'datastore_list', 'datastore_version_list',
                     'instance_list'),
         dash_api.cinder: ('volume_type_list',),
         dash_api.neutron: ('network_list',)})
@@ -196,6 +196,10 @@ class DatabaseTests(test.TestCase):
                                     IsA(six.string_types),
                                     IsA(six.string_types)).\
             MultipleTimes().AndReturn(self.flavors.list())
+        api.trove.datastore_volume_types(IsA(http.HttpRequest),
+                                         IsA(six.string_types),
+                                         IsA(six.string_types)). \
+            MultipleTimes().AndReturn(self.volume_types.list())
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
         api.trove.instance_list(IsA(http.HttpRequest)).AndReturn(
@@ -206,9 +210,6 @@ class DatabaseTests(test.TestCase):
         # Mock datastore versions
         api.trove.datastore_version_list(IsA(http.HttpRequest), IsA(str)).\
             MultipleTimes().AndReturn(self.datastore_versions.list())
-
-        dash_api.cinder.volume_type_list(IsA(http.HttpRequest))\
-            .AndReturn([])
 
         dash_api.neutron.network_list(IsA(http.HttpRequest),
                                       tenant_id=self.tenant.id,
@@ -255,7 +256,8 @@ class DatabaseTests(test.TestCase):
                 log.setLevel(level)
 
     @test.create_stubs({
-        api.trove: ('datastore_flavors', 'backup_list', 'instance_create',
+        api.trove: ('datastore_flavors', 'datastore_volume_types',
+                    'backup_list', 'instance_create',
                     'datastore_list', 'datastore_version_list',
                     'instance_list'),
         dash_api.cinder: ('volume_type_list',),
@@ -265,6 +267,10 @@ class DatabaseTests(test.TestCase):
                                     IsA(six.string_types),
                                     IsA(six.string_types)).\
             MultipleTimes().AndReturn(self.flavors.list())
+        api.trove.datastore_volume_types(IsA(http.HttpRequest),
+                                         IsA(six.string_types),
+                                         IsA(six.string_types)). \
+            MultipleTimes().AndReturn(self.volume_types.list())
 
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
@@ -279,9 +285,6 @@ class DatabaseTests(test.TestCase):
         # Mock datastore versions
         api.trove.datastore_version_list(IsA(http.HttpRequest), IsA(str))\
             .MultipleTimes().AndReturn(self.datastore_versions.list())
-
-        dash_api.cinder.volume_type_list(IsA(http.HttpRequest))\
-            .AndReturn([])
 
         dash_api.neutron.network_list(IsA(http.HttpRequest),
                                       tenant_id=self.tenant.id,
@@ -317,7 +320,7 @@ class DatabaseTests(test.TestCase):
             'name': "MyDB",
             'volume': '1',
             'flavor': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-            '6d7973716c202d20352e35':
+            'flavor-6d7973716c202d20352e35':
                 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
             'network': self.networks.first().id,
             'datastore': '6d7973716c202d20352e35',
@@ -328,7 +331,8 @@ class DatabaseTests(test.TestCase):
         self.assertRedirectsNoFollow(res, INDEX_URL)
 
     @test.create_stubs({
-        api.trove: ('datastore_flavors', 'backup_list', 'instance_create',
+        api.trove: ('datastore_flavors', 'datastore_volume_types',
+                    'backup_list', 'instance_create',
                     'datastore_list', 'datastore_version_list',
                     'instance_list'),
         dash_api.cinder: ('volume_type_list',),
@@ -339,6 +343,10 @@ class DatabaseTests(test.TestCase):
                                     IsA(six.string_types),
                                     IsA(six.string_types)).\
             MultipleTimes().AndReturn(self.flavors.list())
+        api.trove.datastore_volume_types(IsA(http.HttpRequest),
+                                         IsA(six.string_types),
+                                         IsA(six.string_types)). \
+            MultipleTimes().AndReturn(self.volume_types.list())
 
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
@@ -353,9 +361,6 @@ class DatabaseTests(test.TestCase):
         # Mock datastore versions
         api.trove.datastore_version_list(IsA(http.HttpRequest), IsA(str))\
             .MultipleTimes().AndReturn(self.datastore_versions.list())
-
-        dash_api.cinder.volume_type_list(IsA(http.HttpRequest))\
-            .AndReturn([])
 
         dash_api.neutron.network_list(IsA(http.HttpRequest),
                                       tenant_id=self.tenant.id,
@@ -391,7 +396,7 @@ class DatabaseTests(test.TestCase):
             'name': "MyDB",
             'volume': '1',
             'flavor': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-            '6d7973716c202d20352e35':
+            'flavor-6d7973716c202d20352e35':
                 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
             'network': self.networks.first().id,
             'datastore': '6d7973716c202d20352e35',
@@ -1098,16 +1103,20 @@ class DatabaseTests(test.TestCase):
         self.assertRedirectsNoFollow(res, INDEX_URL)
 
     @test.create_stubs({
-        api.trove: ('datastore_flavors', 'backup_list', 'instance_create',
+        api.trove: ('datastore_flavors', 'datastore_volume_types',
+                    'backup_list', 'instance_create',
                     'datastore_list', 'datastore_version_list',
                     'instance_list', 'instance_get'),
-        dash_api.cinder: ('volume_type_list',),
         dash_api.neutron: ('network_list',)})
     def test_create_replica_instance(self):
         api.trove.datastore_flavors(IsA(http.HttpRequest),
                                     IsA(six.string_types),
                                     IsA(six.string_types)).\
             MultipleTimes().AndReturn(self.flavors.list())
+        api.trove.datastore_volume_types(IsA(http.HttpRequest),
+                                         IsA(six.string_types),
+                                         IsA(six.string_types)).\
+            MultipleTimes().AndReturn(self.volume_types.list())
 
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
@@ -1121,9 +1130,6 @@ class DatabaseTests(test.TestCase):
         api.trove.datastore_version_list(IsA(http.HttpRequest),
                                          IsA(str))\
             .MultipleTimes().AndReturn(self.datastore_versions.list())
-
-        dash_api.cinder.volume_type_list(IsA(http.HttpRequest))\
-            .AndReturn([])
 
         dash_api.neutron.network_list(IsA(http.HttpRequest),
                                       tenant_id=self.tenant.id,
@@ -1162,7 +1168,7 @@ class DatabaseTests(test.TestCase):
             'name': "MyDB",
             'volume': '1',
             'flavor': 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
-            '6d7973716c202d20352e35':
+            'flavor-6d7973716c202d20352e35':
                 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
             'network': self.networks.first().id,
             'datastore': '6d7973716c202d20352e35',

@@ -253,6 +253,27 @@ def flavor_get(request, flavor_id):
     return troveclient(request).flavors.get(flavor_id)
 
 
+def volume_type_list(request):
+    return troveclient(request).volume_types.list()
+
+
+def datastore_volume_types(request, datastore_name=None,
+                           datastore_version=None):
+    # if datastore info is available then get datastore specific types
+    if datastore_name and datastore_version:
+        try:
+            return troveclient(request).volume_types.\
+                list_datastore_version_associated_volume_types(
+                    datastore_name, datastore_version)
+        except Exception:
+            LOG.warn("Failed to retrive datastore specific volume types")
+    return volume_type_list(request)
+
+
+def volume_type_get(request, volume_type):
+    return troveclient(request).volume_types.get(volume_type)
+
+
 def root_enable(request, instance_ids):
     username, password = troveclient(request).root.create(instance_ids[0])
     return username, password
