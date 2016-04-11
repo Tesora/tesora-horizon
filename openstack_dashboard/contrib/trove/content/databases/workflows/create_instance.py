@@ -44,6 +44,9 @@ def parse_datastore_and_version_text(datastore_and_version):
 
 
 class SetInstanceDetailsAction(workflows.Action):
+    availability_zone = forms.ChoiceField(
+        label=_("Availability Zone"),
+        required=False)
     name = forms.CharField(max_length=80, label=_("Instance Name"))
     volume = forms.IntegerField(label=_("Volume Size"),
                                 min_value=0,
@@ -109,6 +112,33 @@ class SetInstanceDetailsAction(workflows.Action):
                 context["flavor"] = flavor
                 return context
         return None
+
+    @memoized.memoized_method
+    def availability_zones(self, request):
+        try:
+            return dash_api.nova.availability_zone_list(request)
+        except Exception:
+            LOG.exception("Exception while obtaining availablity zones")
+            self._availability_zones = []
+
+    def populate_availability_zone_choices(self, request, context):
+        try:
+            zones = self.availability_zones(request)
+        except Exception:
+            zones = []
+            redirect = reverse('horizon:project:databases:index')
+            exceptions.handle(request,
+                              _('Unable to retrieve availability zones.'),
+                              redirect=redirect)
+
+        zone_list = [(zone.zoneName, zone.zoneName)
+                     for zone in zones if zone.zoneState['available']]
+        zone_list.sort()
+        if not zone_list:
+            zone_list.insert(0, ("", _("No availability zones found")))
+        elif len(zone_list) > 1:
+            zone_list.insert(0, ("", _("Any Availability Zone")))
+        return zone_list
 
     @memoized.memoized_method
     def datastore_flavors(self, request, datastore_name, datastore_version):
@@ -257,7 +287,7 @@ TROVE_ADD_PERMS = TROVE_ADD_USER_PERMS + TROVE_ADD_DATABASE_PERMS
 class SetInstanceDetails(workflows.Step):
     action_class = SetInstanceDetailsAction
     contributes = ("name", "volume", "volume_type", "flavor", "datastore",
-                   "locality")
+                   "locality", "availability_zone")
 
 
 class SetNetworkAction(workflows.Action):
@@ -634,6 +664,8 @@ class LaunchInstance(workflows.Workflow):
 
     def handle(self, request, context):
         try:
+            avail_zone = context.get('availability_zone', None)
+
             datastore, datastore_version = parse_datastore_and_version_text(
                 binascii.unhexlify(self.context['datastore']))
             LOG.info("Launching database instance with parameters "
@@ -642,14 +674,15 @@ class LaunchInstance(workflows.Workflow):
                      "dbs=%s, users=%s, "
                      "backups=%s, nics=%s, "
                      "replica_of=%s, configuration=%s, replica_count=%s,"
-                     "locality=%s}",
+                     "locality=%s, availability_zone=%s}",
                      context['name'], context['volume'],
                      context['volume_type'], context['flavor'],
                      datastore, datastore_version,
                      self._get_databases(context), self._get_users(context),
                      self._get_backup(context), self._get_nics(context),
                      context.get('master'), self._get_config(context),
-                     context['replica_count'], self._get_locality(context))
+                     context['replica_count'], self._get_locality(context),
+                     avail_zone)
             api.trove.instance_create(request,
                                       context['name'],
                                       context['volume'],
@@ -665,7 +698,8 @@ class LaunchInstance(workflows.Workflow):
                                       replica_count=context['replica_count'],
                                       volume_type=self._get_volume_type(
                                           context),
-                                      locality=self._get_locality(context))
+                                      locality=self._get_locality(context),
+                                      availability_zone=avail_zone)
             return True
         except Exception:
             exceptions.handle(request)
