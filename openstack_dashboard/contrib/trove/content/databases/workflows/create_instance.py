@@ -110,7 +110,14 @@ class SetInstanceDetailsAction(workflows.Action):
             flavor = self.data[field_name]
             if flavor:
                 context["flavor"] = flavor
-                return context
+
+            volume_type_field_name = self._build_volume_type_field_name(
+                datastore, datastore_version)
+            volume_type = self.data.get(volume_type_field_name, None)
+            if volume_type:
+                context["volume_type"] = volume_type
+
+            return context
         return None
 
     @memoized.memoized_method
@@ -676,7 +683,7 @@ class LaunchInstance(workflows.Workflow):
                      "replica_of=%s, configuration=%s, replica_count=%s,"
                      "locality=%s, availability_zone=%s}",
                      context['name'], context['volume'],
-                     context['volume_type'], context['flavor'],
+                     self._get_volume_type(context), context['flavor'],
                      datastore, datastore_version,
                      self._get_databases(context), self._get_users(context),
                      self._get_backup(context), self._get_nics(context),

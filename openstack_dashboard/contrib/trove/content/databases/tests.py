@@ -270,6 +270,7 @@ class DatabaseTests(test.TestCase):
         dash_api.nova: ('availability_zone_list',)
     })
     def test_create_simple_instance(self):
+        volume_type = self.database_volume_types.first()
         api.trove.datastore_flavors(IsA(http.HttpRequest),
                                     IsA(six.string_types),
                                     IsA(six.string_types)).\
@@ -282,8 +283,10 @@ class DatabaseTests(test.TestCase):
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
 
+        paginated_instance_list = common.Paginated(self.databases.list(),
+                                                   next_marker=None)
         api.trove.instance_list(IsA(http.HttpRequest)).AndReturn(
-            self.databases.list())
+            paginated_instance_list)
 
         # Mock datastores
         api.trove.datastore_list(IsA(http.HttpRequest))\
@@ -322,7 +325,7 @@ class DatabaseTests(test.TestCase):
             users=None,
             nics=nics,
             replica_count=None,
-            volume_type=None,
+            volume_type=volume_type.id,
             locality=None,
             availability_zone=IsA(six.text_type)
         ).AndReturn(self.databases.first())
@@ -336,7 +339,9 @@ class DatabaseTests(test.TestCase):
                 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
             'network': self.networks.first().id,
             'datastore': '6d7973716c202d20352e35',
-            'volume_type': 'no_type',
+            'volume-type-6d7973716c202d20352e35':
+                volume_type.id,
+            'volume_type': volume_type.id
         }
 
         res = self.client.post(LAUNCH_URL, post)
@@ -352,6 +357,7 @@ class DatabaseTests(test.TestCase):
         dash_api.nova: ('availability_zone_list',)
     })
     def test_create_simple_instance_exception(self):
+        volume_type = self.database_volume_types.first()
         trove_exception = self.exceptions.nova
         api.trove.datastore_flavors(IsA(http.HttpRequest),
                                     IsA(six.string_types),
@@ -365,8 +371,10 @@ class DatabaseTests(test.TestCase):
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
 
+        paginated_instance_list = common.Paginated(self.databases.list(),
+                                                   next_marker=None)
         api.trove.instance_list(IsA(http.HttpRequest)).AndReturn(
-            self.databases.list())
+            paginated_instance_list)
 
         # Mock datastores
         api.trove.datastore_list(IsA(http.HttpRequest))\
@@ -405,7 +413,7 @@ class DatabaseTests(test.TestCase):
             users=None,
             nics=nics,
             replica_count=None,
-            volume_type=None,
+            volume_type=volume_type.id,
             locality=None,
             availability_zone=IsA(six.text_type)
         ).AndRaise(trove_exception)
@@ -419,7 +427,9 @@ class DatabaseTests(test.TestCase):
                 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa',
             'network': self.networks.first().id,
             'datastore': '6d7973716c202d20352e35',
-            'volume_type': 'no_type'
+            'volume-type-6d7973716c202d20352e35':
+                volume_type.id,
+            'volume_type': volume_type.id
         }
 
         res = self.client.post(LAUNCH_URL, post)
@@ -1130,6 +1140,7 @@ class DatabaseTests(test.TestCase):
         dash_api.nova: ('availability_zone_list',)
     })
     def test_create_replica_instance(self):
+        volume_type = self.database_volume_types.first()
         api.trove.datastore_flavors(IsA(http.HttpRequest),
                                     IsA(six.string_types),
                                     IsA(six.string_types)).\
@@ -1142,8 +1153,10 @@ class DatabaseTests(test.TestCase):
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
 
+        paginated_instance_list = common.Paginated(self.databases.list(),
+                                                   next_marker=None)
         api.trove.instance_list(IsA(http.HttpRequest)).AndReturn(
-            self.databases.list())
+            paginated_instance_list)
 
         api.trove.datastore_list(IsA(http.HttpRequest))\
             .AndReturn(self.datastores.list())
@@ -1184,7 +1197,7 @@ class DatabaseTests(test.TestCase):
             users=None,
             nics=nics,
             replica_count=2,
-            volume_type=None,
+            volume_type=volume_type.id,
             locality=None,
             availability_zone=IsA(six.text_type)
         ).AndReturn(self.databases.first())
@@ -1201,7 +1214,9 @@ class DatabaseTests(test.TestCase):
             'initial_state': 'master',
             'master': self.databases.first().id,
             'replica_count': 2,
-            'volume_type': 'no_type'
+            'volume-type-6d7973716c202d20352e35':
+                volume_type.id,
+            'volume_type': volume_type.id
         }
 
         res = self.client.post(LAUNCH_URL, post)
