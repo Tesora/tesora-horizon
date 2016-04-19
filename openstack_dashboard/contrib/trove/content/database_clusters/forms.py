@@ -236,7 +236,7 @@ class LaunchForm(forms.SelfHandlingForm):
                     # only add to choices if datastore has at least one version
                     version_choices = ()
                     for v in versions:
-                        if not v.active:
+                        if hasattr(v, 'active') and not v.active:
                             continue
                         selection_text = self._build_datastore_display_text(
                             ds.name, v.name)
