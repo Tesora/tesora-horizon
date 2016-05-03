@@ -58,7 +58,8 @@ def cluster_delete(request, cluster_id):
 
 def cluster_create(request, name, volume, flavor, num_instances,
                    datastore, datastore_version,
-                   nics=None, root_password=None, locality=None):
+                   nics=None, root_password=None, locality=None,
+                   availability_zone=None):
     instances = []
     for i in range(num_instances):
         instance = {}
@@ -67,6 +68,8 @@ def cluster_create(request, name, volume, flavor, num_instances,
             instance["volume"] = {'size': volume}
         if nics:
             instance["nics"] = [{'net-id': nics}]
+        if availability_zone:
+            instance["availability_zone"] = availability_zone
         instances.append(instance)
 
     # TODO(saurabhs): vertica needs root password on cluster create
@@ -91,6 +94,8 @@ def cluster_grow(request, cluster_id, new_instances):
             instance["type"] = new_instance.type
         if new_instance.related_to:
             instance["related_to"] = new_instance.related_to
+        if new_instance.availability_zone:
+            instance["availability_zone"] = new_instance.availability_zone
         instances.append(instance)
     return troveclient(request).clusters.grow(cluster_id, instances)
 
