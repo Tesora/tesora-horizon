@@ -34,6 +34,21 @@
   </dl>
 </div>
 
+{% if instance.fault %}
+<div class="status row detail">
+  <h4>{% trans "Fault" %}</h4>
+  <hr class="header_rule">
+  <dl class="dl-horizontal">
+    <dt>{% trans "Message" %}</dt>
+    <dd>{{ instance.fault.message }}</dd>
+    <dt>{% trans "Details" %}</dt>
+    <dd>{{ instance.fault.details }}</dd>
+    <dt>{% trans "Created" %}</dt>
+    <dd>{{ instance.fault.created|parse_isotime }}</dd>
+  </dl>
+</div>
+{% endif %}
+
 <div class="specs row detail">
   <h4>{% trans "Specs" %}</h4>
   <hr class="header_rule">
