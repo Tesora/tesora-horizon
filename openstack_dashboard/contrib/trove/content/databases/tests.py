@@ -201,7 +201,7 @@ class DatabaseTests(test.TestCase):
         api.trove.datastore_volume_types(IsA(http.HttpRequest),
                                          IsA(six.string_types),
                                          IsA(six.string_types)). \
-            MultipleTimes().AndReturn(self.volume_types.list())
+            MultipleTimes().AndReturn(self.database_volume_types.list())
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
         api.trove.instance_list(IsA(http.HttpRequest)).AndReturn(
@@ -278,7 +278,7 @@ class DatabaseTests(test.TestCase):
         api.trove.datastore_volume_types(IsA(http.HttpRequest),
                                          IsA(six.string_types),
                                          IsA(six.string_types)). \
-            MultipleTimes().AndReturn(self.volume_types.list())
+            MultipleTimes().AndReturn(self.database_volume_types.list())
 
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
@@ -366,7 +366,7 @@ class DatabaseTests(test.TestCase):
         api.trove.datastore_volume_types(IsA(http.HttpRequest),
                                          IsA(six.string_types),
                                          IsA(six.string_types)). \
-            MultipleTimes().AndReturn(self.volume_types.list())
+            MultipleTimes().AndReturn(self.database_volume_types.list())
 
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
@@ -1148,7 +1148,7 @@ class DatabaseTests(test.TestCase):
         api.trove.datastore_volume_types(IsA(http.HttpRequest),
                                          IsA(six.string_types),
                                          IsA(six.string_types)).\
-            MultipleTimes().AndReturn(self.volume_types.list())
+            MultipleTimes().AndReturn(self.database_volume_types.list())
 
         api.trove.backup_list(IsA(http.HttpRequest)).AndReturn(
             self.database_backups.list())
