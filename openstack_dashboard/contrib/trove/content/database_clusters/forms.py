@@ -41,6 +41,9 @@ LOG = logging.getLogger(__name__)
 
 
 class LaunchForm(forms.SelfHandlingForm):
+    availability_zone = forms.ChoiceField(
+        label=_("Availability Zone"),
+        required=False)
     name = forms.CharField(label=_("Cluster Name"),
                            max_length=80)
     datastore = forms.ChoiceField(
@@ -127,6 +130,8 @@ class LaunchForm(forms.SelfHandlingForm):
             request)
         self.fields['network'].choices = self.populate_network_choices(
             request)
+        self.fields['availability_zone'].choices = (
+            self.populate_availability_zone_choices(request))
 
     def clean(self):
         datastore_field_value = self.data.get("datastore", None)
@@ -192,6 +197,26 @@ class LaunchForm(forms.SelfHandlingForm):
                               _('Unable to retrieve networks.'),
                               redirect=redirect)
         return network_list
+
+    @memoized.memoized_method
+    def populate_availability_zone_choices(self, request):
+        try:
+            zones = api.nova.availability_zone_list(request)
+        except Exception:
+            zones = []
+            redirect = reverse('horizon:project:database_clusters:index')
+            exceptions.handle(request,
+                              _('Unable to retrieve availability zones.'),
+                              redirect=redirect)
+
+        zone_list = [(zone.zoneName, zone.zoneName)
+                     for zone in zones if zone.zoneState['available']]
+        zone_list.sort()
+        if not zone_list:
+            zone_list.insert(0, ("", _("No availability zones found")))
+        elif len(zone_list) > 1:
+            zone_list.insert(0, ("", _("Any Availability Zone")))
+        return zone_list
 
     @memoized.memoized_method
     def datastores(self, request):
@@ -328,6 +353,7 @@ class LaunchForm(forms.SelfHandlingForm):
     @sensitive_variables('data')
     def handle(self, request, data):
         try:
+            avail_zone = data.get('availability_zone', None)
             datastore, datastore_version = (
                 create_instance.parse_datastore_and_version_text(
                     binascii.unhexlify(data['datastore'])))
@@ -343,9 +369,10 @@ class LaunchForm(forms.SelfHandlingForm):
             LOG.info("Launching cluster with parameters "
                      "{name=%s, volume=%s, flavor=%s, "
                      "datastore=%s, datastore_version=%s,"
-                     "locality=%s",
+                     "locality=%s, AZ=%s",
                      data['name'], data['volume'], flavor,
-                     datastore, datastore_version, self._get_locality(data))
+                     datastore, datastore_version, self._get_locality(data),
+                     avail_zone)
 
             trove_api.trove.cluster_create(request,
                                            data['name'],
@@ -356,7 +383,8 @@ class LaunchForm(forms.SelfHandlingForm):
                                            datastore_version=datastore_version,
                                            nics=data['network'],
                                            root_password=root_password,
-                                           locality=self._get_locality(data))
+                                           locality=self._get_locality(data),
+                                           availability_zone=avail_zone)
             messages.success(request,
                              _('Launched cluster "%s"') % data['name'])
             return True
@@ -371,6 +399,9 @@ class ClusterAddInstanceForm(forms.SelfHandlingForm):
     cluster_id = forms.CharField(
         required=False,
         widget=forms.HiddenInput())
+    availability_zone = forms.ChoiceField(
+        label=_("Availability Zone"),
+        required=False)
     flavor = forms.ChoiceField(
         label=_("Flavor"),
         help_text=_("Size of image to launch."))
@@ -398,6 +429,8 @@ class ClusterAddInstanceForm(forms.SelfHandlingForm):
         super(ClusterAddInstanceForm, self).__init__(request, *args, **kwargs)
         self.fields['cluster_id'].initial = kwargs['initial']['cluster_id']
         self.fields['flavor'].choices = self.populate_flavor_choices(request)
+        self.fields['availability_zone'].choices = (
+            self.populate_availability_zone_choices(request))
 
     @memoized.memoized_method
     def flavors(self, request):
@@ -424,6 +457,26 @@ class ClusterAddInstanceForm(forms.SelfHandlingForm):
         flavor_list = [(f.id, "%s" % f.name) for f in self.flavors(request)]
         return sorted(flavor_list)
 
+    @memoized.memoized_method
+    def populate_availability_zone_choices(self, request):
+        try:
+            zones = api.nova.availability_zone_list(request)
+        except Exception:
+            zones = []
+            redirect = reverse('horizon:project:database_clusters:index')
+            exceptions.handle(request,
+                              _('Unable to retrieve availability zones.'),
+                              redirect=redirect)
+
+        zone_list = [(zone.zoneName, zone.zoneName)
+                     for zone in zones if zone.zoneState['available']]
+        zone_list.sort()
+        if not zone_list:
+            zone_list.insert(0, ("", _("No availability zones found")))
+        elif len(zone_list) > 1:
+            zone_list.insert(0, ("", _("Any Availability Zone")))
+        return zone_list
+
     def handle(self, request, data):
         try:
             flavor = trove_api.trove.flavor_get(request, data['flavor'])
@@ -434,7 +487,8 @@ class ClusterAddInstanceForm(forms.SelfHandlingForm):
                                  flavor.name,
                                  data['volume'],
                                  data.get('type', None),
-                                 data.get('related_to', None))
+                                 data.get('related_to', None),
+                                 data.get('availability_zone', None))
         except Exception as e:
             redirect = reverse("horizon:project:database_clusters:index")
             exceptions.handle(request,
