@@ -94,6 +94,8 @@ def cluster_grow(request, cluster_id, new_instances):
             instance["type"] = new_instance.type
         if new_instance.related_to:
             instance["related_to"] = new_instance.related_to
+        if new_instance.nics:
+            instance["nics"] = [{'net-id': new_instance.nics}]
         if new_instance.availability_zone:
             instance["availability_zone"] = new_instance.availability_zone
         instances.append(instance)
