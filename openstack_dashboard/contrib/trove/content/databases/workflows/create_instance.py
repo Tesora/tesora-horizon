@@ -611,7 +611,7 @@ class LaunchInstance(workflows.Workflow):
 
     def _get_databases(self, context):
         """Returns the initial databases for this instance."""
-        databases = None
+        databases = []
         db_value = context.get('databases')
         if db_value and db_value != u'':
             dbs = context['databases']
