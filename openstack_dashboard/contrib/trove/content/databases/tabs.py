@@ -28,6 +28,7 @@ from openstack_dashboard.contrib.trove.content.databases.logs import tables \
     as log_tables
 from openstack_dashboard.contrib.trove.content.databases import tables
 
+from troveclient import exceptions as trove_exceptions
 
 LOG = logging.getLogger(__name__)
 
@@ -95,6 +96,12 @@ class UserTab(tabs.TableTab):
                                                              username)
                 except exceptions.NOT_FOUND:
                     pass
+                except trove_exceptions.BadRequest as e:
+                    if not ("The 'list_access' operation "
+                            "is not supported") in e.message:
+                        raise
+                    LOG.info("List user access is not available.  "
+                             "Reason: %s", e.message)
                 except Exception:
                     msg = _('Unable to get user access data.')
                     exceptions.handle(self.request, msg)
@@ -125,6 +132,13 @@ class DatabaseTab(tabs.TableTab):
             data = api.trove.database_list(self.request, instance.id)
             add_instance = lambda d: setattr(d, 'instance', instance)
             map(add_instance, data)
+        except trove_exceptions.BadRequest as e:
+            data = []
+            if not ("The 'list_databases' operation "
+                    "is not supported") in e.message:
+                raise
+            LOG.info("List database is not available.  "
+                     "Reason: %s", e.message)
         except Exception:
             msg = _('Unable to get databases data.')
             exceptions.handle(self.request, msg)
@@ -149,7 +163,14 @@ class ConfigDefaultsTab(tabs.TableTab):
     def get_config_defaults_data(self):
         instance = self.tab_group.kwargs['instance']
         values_data = []
-        data = api.trove.configuration_default(self.request, instance.id)
+        try:
+            data = api.trove.configuration_default(self.request, instance.id)
+        except trove_exceptions.BadRequest as e:
+            data = None
+            if not ("No configuration parser found") in e.message:
+                raise
+            LOG.info("Configuration defaults are not available.  "
+                     "Reason: %s", e.message)
         if data is not None:
             for k, v in data.configuration.items():
                 values_data.append(
